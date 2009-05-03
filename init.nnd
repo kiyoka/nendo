@@ -1,0 +1,45 @@
+;;-*- mode: scheme; syntax: scheme -*-;;
+
+;; ruby's p like function.
+(define p
+  (lambda (x)
+    (printf "%s\n" x)
+    x))
+
+;; ----------------------------------------
+;; Higher-order functions
+;; ----------------------------------------
+(define map
+  (lambda (pred lst)
+    (if (null? lst)
+        '()
+        (cons
+         (pred (car lst))
+         (map pred (cdr lst))))))
+(define foreach map)
+
+(define filter
+  (lambda (pred lst)
+    (if (null? lst)
+        '()
+        (let ((result  (pred (car lst))))
+          (if result
+              (cons
+               result
+               (filter pred (cdr lst)))
+              (filter pred (cdr lst)))))))
+
+
+;; ----------------------------------------
+;; List Utility functions
+;; ----------------------------------------
+(define iota range)
+
+;; ----------------------------------------
+;; Utility function for testing
+;; ----------------------------------------
+;; pass through the argument value as return value.
+(define pass
+  (lambda (x)
+    x))
+

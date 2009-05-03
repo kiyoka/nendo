@@ -1,0 +1,29 @@
+
+
+          DESIGN memo of Nendo
+
+
+How to translate:
+  (+ 1 2)  => _apply( "+", Cell.new( 1, Cell.new( 2 )))
+
+  1
+  => 1
+
+  '(1)
+  => _apply( "quote", Cell.new( 1 ))
+
+  (let1 x 2
+    x)
+  => _lambda1 = lambda {|x| x}
+     _lambda1.call( 2 )
+
+  (def func1 (lambda (arg1 arg2))
+     (+ arg1 arg2))
+  => func1 = lambda {|arg1,arg2|
+                       _apply( "+", Cell.new( arg1, Cell.new( arg2 ))) }
+
+  (func1 1 2)
+  => _apply( "func1", Cell.new( 1, Cell.new( 2 )))
+
+
+
