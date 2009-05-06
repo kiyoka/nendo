@@ -81,6 +81,49 @@ describe Nendo, "when call evalSexp() with comparative operators" do
   end
 end
 
+describe Nendo, "when call evalSexp() with boolean operators" do
+  before do
+    @nendo = Nendo.new()
+  end
+  it "should" do
+    @nendo.evalSexp( " true " ).should == "true"
+    @nendo.evalSexp( " false " ).should == "false"
+    @nendo.evalSexp( " (not true) " ).should == "false"
+    @nendo.evalSexp( " (not 1) " ).should == "false"
+    @nendo.evalSexp( " (not false) " ).should == "true"
+    @nendo.evalSexp( " (not \"str\") " ).should == "false"
+    @nendo.evalSexp( " (not not) " ).should == "false"
+    @nendo.evalSexp( " (not (not true)) " ).should == "true"
+    @nendo.evalSexp( " (not '()) " ).should == "false"
+    @nendo.evalSexp( " (not '(1)) " ).should == "false"
+    @nendo.evalSexp( " (or true) " ).should == "true"
+    @nendo.evalSexp( " (or false) " ).should == "false"
+    @nendo.evalSexp( " (or nil) " ).should == "false"
+    @nendo.evalSexp( " (or '(1)) " ).should == "(1)"
+    @nendo.evalSexp( " (or '()) " ).should == "()"
+    @nendo.evalSexp( " (or true true true) " ).should == "true"
+    @nendo.evalSexp( " (or 1 2 3) " ).should == "1"
+    @nendo.evalSexp( " (or false 2) " ).should == "2"
+    @nendo.evalSexp( " (or false false 3) " ).should == "3"
+    @nendo.evalSexp( " (or false '(2) false) " ).should == "(2)"
+    @nendo.evalSexp( " (and true) " ).should == "true"
+    @nendo.evalSexp( " (and false) " ).should == "false"
+    @nendo.evalSexp( " (and nil) " ).should == "false"
+    @nendo.evalSexp( " (and '(1)) " ).should == "(1)"
+    @nendo.evalSexp( " (and '()) " ).should == "()"
+    @nendo.evalSexp( " (and true true true) " ).should == "true"
+    @nendo.evalSexp( " (and 1 2 3) " ).should == "3"
+    @nendo.evalSexp( " (and false 2) " ).should == "false"
+    @nendo.evalSexp( " (and false false 3) " ).should == "false"
+    @nendo.evalSexp( " (and true  2) " ).should == "2"
+    @nendo.evalSexp( " (and true  true  3) " ).should == "3"
+    @nendo.evalSexp( " (and true  true  3 false) " ).should == "false"
+    @nendo.evalSexp( " (and true '(2) true) " ).should == "true"
+    @nendo.evalSexp( " (and true true '(2)) " ).should == "(2)"
+    @nendo.evalSexp( " (and true '(2) false) " ).should == "false"
+  end
+end
+
 describe Nendo, "when call evalSexp() with `+' function" do
   before do
     @nendo = Nendo.new()
@@ -189,6 +232,7 @@ describe Nendo, "when read various list expressions" do
     @nendo = Nendo.new()
   end
   it "should" do
+    @nendo.evalSexp( " '() " ).should == "()"
     @nendo.evalSexp( " '(1 . 1) " ).should == "(1 . 1)"
     @nendo.evalSexp( " '(1 2 3) " ).should == "(1 2 3)"
     @nendo.evalSexp( " '(1.1 2.2 3.3) " ).should == "(1.1 2.2 3.3)"
@@ -198,10 +242,18 @@ describe Nendo, "when read various list expressions" do
     @nendo.evalSexp( " '(''a)" ).should == "((quote (quote a)))"
     @nendo.evalSexp( " '('a 'b 'c)" ).should == "((quote a) (quote b) (quote c))"
     @nendo.evalSexp( " '(\"str\") " ).should == "(\"str\")"
-    pending "these examples doesn't work" do
-      @nendo.evalSexp( " '(\"str\" . 1) " ).should == "(\"str\" . 1)"
-      @nendo.evalSexp( " '(1 . \"str\") " ).should == "(1 . \"str\")"
-    end
+    @nendo.evalSexp( " '(\"str\" . 1) " ).should == "(\"str\" . 1)"
+    @nendo.evalSexp( " '(1 . \"str\") " ).should == "(1 . \"str\")"
+    @nendo.evalSexp( " '((a)(b)(c)) " ).should == "((a) (b) (c))"
+    @nendo.evalSexp( " 'a " ).should == "a"
+    @nendo.evalSexp( " 'symbol " ).should == "symbol"
+    @nendo.evalSexp( " ''a " ).should == "(quote a)"
+    @nendo.evalSexp( " '1 " ).should == "1"
+    @nendo.evalSexp( " ''1 " ).should == "(quote 1)"
+    @nendo.evalSexp( " '''1 " ).should == "(quote (quote 1))"
+    @nendo.evalSexp( " '1.1 " ).should == "1.1"
+    @nendo.evalSexp( " ''1.1 " ).should == "(quote 1.1)"
+    @nendo.evalSexp( " '''1.1 " ).should == "(quote (quote 1.1))"
   end
 end
 
@@ -210,12 +262,13 @@ describe Nendo, "when call evalSexp() with built-in functions" do
     @nendo = Nendo.new()
   end
   it "should" do
-    @nendo.evalSexp( " (car '(1 2 3)) " ).should == "1"
-    @nendo.evalSexp( " (first '(1 2 3)) " ).should == "1"
-    @nendo.evalSexp( " (cadr '(1 2 3)) " ).should == "2"
-    @nendo.evalSexp( " (caddr '(1 2 3)) " ).should == "3"
-    @nendo.evalSexp( " (cdr '(1 2 3)) " ).should == "(2 3)"
-    @nendo.evalSexp( " (rest '(1 2 3)) " ).should == "(2 3)"
+    @nendo.evalSexp( " (car '(1 2 3 4)) " ).should == "1"
+    @nendo.evalSexp( " (first '(1 2 3 4)) " ).should == "1"
+    @nendo.evalSexp( " (cadr '(1 2 3 4)) " ).should == "2"
+    @nendo.evalSexp( " (caddr '(1 2 3 4)) " ).should == "3"
+    @nendo.evalSexp( " (cadddr '(1 2 3 4)) " ).should == "4"
+    @nendo.evalSexp( " (cdr '(1 2 3 4)) " ).should == "(2 3 4)"
+    @nendo.evalSexp( " (rest '(1 2 3 4)) " ).should == "(2 3 4)"
   end
 end
 

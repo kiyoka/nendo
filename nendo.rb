@@ -544,25 +544,29 @@ class Evaluator
       }
     when 'or'
       lambda {|*args| 
-        assertFlat( *args )
-        ret = false
-        args.each{ |x|
-          if x
-            ret = x
-            break
-          end
-        }
-        ret
+        ret = args.select { |x| x }
+        if 0 == ret.length
+          false
+        else
+          ret[0]
+        end
       }
     when 'and'
       lambda {|*args| 
-        assertFlat( *args )
-        args[1..-1].inject(args[0]) {|x,y| x and y}
+        ret = args.select { |x| x }
+        if args.length != ret.length
+          false
+        else
+          ret[-1]
+        end
       }
     when 'not'
-      lambda {|*args| 
-        assertFlat( *args )
-        not args[0]
+      lambda {|*args|
+        if 1 < args.length
+          raise ArgumentError, "Error: wrong number of arguments: not"
+        else
+          not args[0]
+        end
       }
     when 'cons'
       lambda {|*args|
@@ -796,7 +800,7 @@ class Printer
     when Cell
       arr = []
       if sexp.isDotted
-        arr << sprintf( "%s . %s", sexp.car, sexp.cdr )
+        arr << sprintf( "%s . %s", _print(sexp.car), _print(sexp.cdr) )
       else
         arr << _print( sexp.car )
         ptr = sexp.cdr
@@ -810,6 +814,8 @@ class Printer
       sprintf( "%s", sexp.to_s )
     when String
       sprintf( "\"%s\"", sexp.to_s )
+    when Nil
+      "()"
     when nil
       "nil"
     else
