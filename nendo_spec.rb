@@ -136,12 +136,15 @@ describe Nendo, "when call evalSexp() with `+' function" do
     @nendo.evalSexp( " (+ 1 (+ 2 (+ 3 (+ 4 (+ 5))))) " ).should == "15"
     @nendo.evalSexp( " (+ 1   1.1) " ).should == "2.1"
     @nendo.evalSexp( " (+ 1.1 1.2) " ).should == "2.3"
+    @nendo.evalSexp( " (+ \"a\" \"B\" \"c\" ) " ).should == "\"aBc\""
     lambda { @nendo.evalSexp( " (+) " ) }.should              raise_error(ArgumentError)
     lambda { @nendo.evalSexp( " (+ '(1) ) " ) }.should        raise_error(ArgumentError)
     lambda { @nendo.evalSexp( " (+ '() ) " ) }.should         raise_error(ArgumentError)
     lambda { @nendo.evalSexp( " (+ 1 '() ) " ) }.should       raise_error(ArgumentError)
     lambda { @nendo.evalSexp( " (+ 1.1 '() ) " ) }.should     raise_error(ArgumentError)
     lambda { @nendo.evalSexp( " (+ 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+    lambda { @nendo.evalSexp( " (+ \"a\" 1) " ) }.should      raise_error(TypeError)
+    lambda { @nendo.evalSexp( " (+ \"a\" 1.1) " ) }.should    raise_error(TypeError)
   end
 end
 
@@ -269,22 +272,28 @@ describe Nendo, "when call evalSexp() with built-in functions" do
     @nendo.evalSexp( " (cadddr '(1 2 3 4)) " ).should == "4"
     @nendo.evalSexp( " (cdr '(1 2 3 4)) " ).should == "(2 3 4)"
     @nendo.evalSexp( " (rest '(1 2 3 4)) " ).should == "(2 3 4)"
+    @nendo.evalSexp( " (null? '()) " ).should == "true"
+    @nendo.evalSexp( " (null? '(1)) " ).should == "false"
+    @nendo.evalSexp( " (null? false) " ).should == "false"
+    @nendo.evalSexp( " (null? nil) " ).should == "false"
+    @nendo.evalSexp( " (null? true) " ).should == "false"
+    @nendo.evalSexp( " (cons 1 2) " ).should == "(1 . 2)"
+    @nendo.evalSexp( " (cons 1 '(2 3)) " ).should == "(1 2 3)"
+    @nendo.evalSexp( " (cons '(1 2) '(3 4)) " ).should == "((1 2) 3 4)"
+    @nendo.evalSexp( " (cons '(1 2) '((3 4))) " ).should == "((1 2) (3 4))"
+    lambda { @nendo.evalSexp( " (cons 1 2 3) " ) }.should    raise_error(ArgumentError)
+    lambda { @nendo.evalSexp( " (cons 1) " ) }.should        raise_error(ArgumentError)
+    lambda { @nendo.evalSexp( " (cons) " ) }.should          raise_error(ArgumentError)
+    @nendo.evalSexp( " (list 1 2 3) " ).should == "(1 2 3)"
+    @nendo.evalSexp( " (list '(1) '(2) '(3)) " ).should == "((1) (2) (3))"
+    @nendo.evalSexp( " (list 'a 'b 'c) " ).should == "(a b c)"
+    @nendo.evalSexp( " (list '(a) '((b c))) " ).should == "((a) ((b c)))"
+    @nendo.evalSexp( " (list) " ).should == "()"
+    @nendo.evalSexp( " (list 1) " ).should == "(1)"
   end
 end
 
 
-#    @nendo.evalSexp( " (null? '()) " ).should == "true"
-#    @nendo.evalSexp( " (null? '(1)) " ).should == "false"
-#    @nendo.evalSexp( " ;;(+ 1 2) \n " ).should == "nil "
-#    @nendo.evalSexp( " '+ " ).should == "+ "
-#  replTest( " '('1) " )
-#  replTest( " '('1 2 '3) " )
-#  replTest( " '123 " )
-#  replTest( " '\"123\" " )
-#  replTest( " '( 1 ) " )
-#  replTest( " + " )
-#  replTest( " 123 " )
-#  replTest( " \"123\" " )
 #  replTest( " (+ \"123\" \"456\" ) " )
 #  replTest( " (+ 1 2 (+ 3 4 )) " )
 #  replTest( " (* 1 2 3 (* 4 5)) " )

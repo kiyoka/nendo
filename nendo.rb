@@ -75,15 +75,19 @@ end
 
 class Array
   def to_list
-    cells = self.map { |x|
-      Cell.new( x )
-    }
-    ptr = cells.pop
-    cells.reverse.each { |x|
-      x.cdr = ptr
-      ptr = x
-    }
-    return ptr
+    if 0 == self.length
+      Nil.new
+    else
+      cells = self.map { |x|
+        Cell.new( x )
+      }
+      ptr = cells.pop
+      cells.reverse.each { |x|
+        x.cdr = ptr
+        ptr = x
+      }
+      return ptr
+    end
   end
 end
 
@@ -563,14 +567,18 @@ class Evaluator
     when 'not'
       lambda {|*args|
         if 1 < args.length
-          raise ArgumentError, "Error: wrong number of arguments: not"
+          raise ArgumentError, "Error: wrong number of arguments: not requires 1"
         else
           not args[0]
         end
       }
     when 'cons'
       lambda {|*args|
-        Cell.new( args[0], args[1] )
+        if 2 == args.length
+          Cell.new( args[0], args[1] )
+        else
+          raise ArgumentError, "Error: wrong number of arguments: cons requires 2"
+        end
       }
     when 'exit'
       lambda {|*args|
