@@ -10,13 +10,12 @@ def main
   if "-t" == ARGV[0] 
     testSequence
   elsif 0 < ARGV.length
-    core = Nendo.new( STDIN )
+    core = Nendo.new
+    core.loadInitFile
     core.loadFile( ARGV[0] )
   else
-    core = Nendo.new( STDIN )
-    while true
-      core.repl
-    end
+    core = Nendo.new
+    core.repl
   end
 end
 

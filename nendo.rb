@@ -159,6 +159,7 @@ class Reader
     @chReader = CharReader.new( inport )
     @curtoken = nil
     @debug    = debug
+    token # setup first token.
   end
 
   def reset
@@ -386,7 +387,6 @@ class Reader
 
   # return [ S-expression-tree, eof-flag ]
   def _read
-    token # setup first token.
     case curtoken.kind
     when T_EOF
       [ Nil.new, true ]
@@ -834,11 +834,13 @@ end
 
 
 class Nendo
-  def initialize( io = STDIN )
+  def initialize( io = nil )
+    if not io
+      io = StringIO.open( "" )
+    end
     @reader       = Reader.new( io, false )
     @evaluator    = Evaluator.new( false )
     @printer      = Printer.new( false )
-    loadInitFile
   end
   
   def loadInitFile
@@ -873,12 +875,18 @@ class Nendo
     end
   end
 
-  def evalSexp( str )
+  def replStr( str )
     sio       = StringIO.open( str )
     reader    = Reader.new( sio, false )
-    evaluator = Evaluator.new( false )
-    printer   = Printer.new
-    s = reader._read
-    printer._print( evaluator._eval( s[0] ))
+    result    = nil
+    while true
+      s = reader._read
+      if s[1] # EOF?
+        break
+      elsif Nil != s[0].class
+        result = @printer._print( @evaluator._eval( s[0] )) 
+      end
+    end
+    result
   end
 end
