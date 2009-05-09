@@ -218,8 +218,11 @@ class Reader
           readwhile( /[^\r\n]/ )
           str = ""
           T_COMMENT
-        when /[a-zA-Z+*\/=!<>&|%-]/ # symbol
+        when /[a-zA-Z]/ # symbol
           str += readwhile( /[a-zA-Z0-9+*\/=!<>&|?%-]/ )
+          T_SYMBOL
+        when /[+*\/=!<>&|%-]/ # symbol
+          str += readwhile( /[+*\/=!<>&|?%-]/ )
           T_SYMBOL
         when /[0-9]/           # number
           str += readwhile( /[0-9.]/ )
@@ -391,6 +394,7 @@ class Reader
     when T_EOF
       [ Nil.new, true ]
     when T_LINEFEED
+      token
       [ Nil.new, false ]
     else
       [ sexp(),  false ]
@@ -404,8 +408,6 @@ class Evaluator
   def initialize( debug = false )
     @binding = binding
     @debug   = debug
-    @lineno      = 1
-    @sourcefile  = ''
     @alias   = {
       '+'        => '_plus',
       '-'        => '_minus',
@@ -775,7 +777,7 @@ class Evaluator
         if @alias[ sym ]
           sym = @alias[ sym ]
         end
-        str += sprintf( 'begin %s ; rescue NameError ; print "%s:%d: NameError: undefined valiable `%s\'" ; nil ; end', sym, @sourcefile, @lineno, sym )
+        str += sprintf( 'begin %s ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end', sym, "a", 1 )
       when Fixnum
         str += sexp.to_s
       when LispString
@@ -786,12 +788,10 @@ class Evaluator
     end
   end
 
-  def _eval( sexp, sourcefile = nil, lineno = nil )
-    @sourcefile = sourcefile    if ( sourcefile ) 
-    @lineno     = lineno        if ( lineno     )
+  def _eval( sexp, sourcefile, lineno )
     rubyExp = translate( sexp );
     printf( "          rubyExp=<<< %s >>>\n", rubyExp ) if @debug
-    eval( rubyExp, @binding );
+    eval( rubyExp, @binding, sourcefile, lineno );
   end
 end
 
@@ -834,12 +834,8 @@ end
 
 
 class Nendo
-  def initialize( io = nil )
-    if not io
-      io = StringIO.open( "" )
-    end
-    @reader       = Reader.new( io, false )
-    @evaluator    = Evaluator.new( false )
+  def initialize()
+    @evaluator    = Evaluator.new( true )
     @printer      = Printer.new( false )
   end
   
@@ -863,14 +859,21 @@ class Nendo
   end
 
   def repl
+    print "nendo> "
+    reader = Reader.new( STDIN, false )
     while true
-      print "nendo> "
-      s = @reader._read
+      lineno = reader.lineno
+      s = reader._read
       if s[1] # EOF?
         break
       elsif Nil != s[0].class
-        print @printer._print( @evaluator._eval( s[0] )) 
-        print "\n"
+        begin
+          print @printer._print( @evaluator._eval( s[0], "(stdin)", lineno ))
+        rescue => e
+          print e.message + "\n"
+          e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
+        end
+        print "\n" + "nendo> "
       end
     end
   end
@@ -880,11 +883,12 @@ class Nendo
     reader    = Reader.new( sio, false )
     result    = nil
     while true
+      lineno = reader.lineno
       s = reader._read
       if s[1] # EOF?
         break
       elsif Nil != s[0].class
-        result = @printer._print( @evaluator._eval( s[0] )) 
+        result = @printer._print( @evaluator._eval( s[0], "(string)", lineno )) 
       end
     end
     result

@@ -7,14 +7,11 @@
 require 'nendo'
 
 def main
-  if "-t" == ARGV[0] 
-    testSequence
-  elsif 0 < ARGV.length
-    core = Nendo.new
-    core.loadInitFile
+  core = Nendo.new
+  core.loadInitFile
+  if 0 < ARGV.length
     core.loadFile( ARGV[0] )
   else
-    core = Nendo.new
     core.repl
   end
 end

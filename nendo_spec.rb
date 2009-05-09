@@ -314,8 +314,8 @@ describe Nendo, "when call replStr() with variable modifications" do
     @nendo.replStr( " (define x (+ 1 2 3)) x " ).should   == "6"
     @nendo.replStr( " (define x (sprintf \"$%02X\" 17))    x  x  x " ).should   == "\"$11\""
     @nendo.replStr( " 1 2 3 " ).should   == "3"
-    @nendo.replStr( " (define x 3.14)  (define x (* x 2))        x " ).should   == "6.28"
-#    @nendo.replStr( " 1 \n 2 \n 3 \n " ).should   == "3"
+    @nendo.replStr( " (define x 3.14)  (set! x (* x 2))          x " ).should   == "6.28"
+    @nendo.replStr( " 1 \n 2 \n 3 \n " ).should   == "3"
   end
 end
 
