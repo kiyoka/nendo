@@ -16,6 +16,18 @@ end
 class LispString < String
 end
 
+class Symbol
+  def setLispToken( token )
+    @token = token
+  end
+  def sourcefile
+    @token ? @token.sourcefile : ""
+  end
+  def lineno
+    @token ? @token.lineno : 1
+  end
+end
+
 class Cell
   include Enumerable
 
@@ -92,19 +104,21 @@ class Array
 end
 
 class Token
-  def initialize( kind, str, lineno = nil, column = nil )
-    @kind   = kind
-    @str    = str
-    @lineno = lineno
-    @column = column
+  def initialize( kind, str, sourcefile, lineno = nil, column = nil )
+    @kind       = kind
+    @str        = str
+    @sourcefile = sourcefile
+    @lineno     = lineno
+    @column     = column
   end
-  attr_accessor :kind, :str
+  attr_accessor :kind, :str, :sourcefile, :lineno, :column
 end
 
 
 class CharReader
-  def initialize( inport )
-    @inport = inport
+  def initialize( inport, sourcefile )
+    @inport     = inport
+    @sourcefile = sourcefile
     self.reset
   end
 
@@ -132,6 +146,10 @@ class CharReader
     @inport.ungetc( ch )
   end
 
+  def sourcefile
+    @sourcefile
+  end
+
   def lineno
     @lineno
   end
@@ -155,15 +173,19 @@ class Reader
   T_COMMENT   = :t_comment
 
   # inport is IO class
-  def initialize( inport, debug = false )
-    @chReader = CharReader.new( inport )
-    @curtoken = nil
-    @debug    = debug
+  def initialize( inport, sourcefile, debug = false )
+    @chReader   = CharReader.new( inport, sourcefile )
+    @curtoken   = nil
+    @debug      = debug
     token # setup first token.
   end
 
   def reset
     @chReader.reset
+  end
+
+  def sourcefile
+    @chReader.sourcefile
   end
 
   def lineno
@@ -201,7 +223,7 @@ class Reader
     skipspace
     ch = @chReader.getc
     if nil == ch # eof?
-      @curtoken = Token.new( T_EOF, "", @chReader.lineno, @chReader.column )
+      @curtoken = Token.new( T_EOF, "", @chReader.sourcefile, @chReader.lineno, @chReader.column )
     else
       str = ch.chr
       kind =
@@ -233,8 +255,8 @@ class Reader
         when /[\']/
           T_QUOTE
         end
-      printf( "    token: [%s] : %s   (L%d:C%d)\n", str, kind.to_s, @chReader.lineno, @chReader.column ) if @debug
-      @curtoken = Token.new( kind, str, @chReader.lineno, @chReader.column )
+      printf( "    token: [%s] : %s   (%s:L%d:C%d)\n", str, kind.to_s, @chReader.sourcefile, @chReader.lineno, @chReader.column ) if @debug
+      @curtoken = Token.new( kind, str, @chReader.sourcefile, @chReader.lineno, @chReader.column )
     end
   end
 
@@ -271,7 +293,9 @@ class Reader
     token
     case cur.kind
     when T_SYMBOL
-      cur.str.intern
+      sym = cur.str.intern
+      sym.setLispToken( cur )
+      sym
     when T_NUM
       if cur.str.match( /[.]/ ) # floating point
         cur.str.to_f
@@ -777,7 +801,7 @@ class Evaluator
         if @alias[ sym ]
           sym = @alias[ sym ]
         end
-        str += sprintf( 'begin %s ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end', sym, "a", 1 )
+        str += sprintf( 'begin %s ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end', sym, sexp.sourcefile, sexp.lineno )
       when Fixnum
         str += sexp.to_s
       when LispString
@@ -835,7 +859,7 @@ end
 
 class Nendo
   def initialize()
-    @evaluator    = Evaluator.new( true )
+    @evaluator    = Evaluator.new( false )
     @printer      = Printer.new( false )
   end
   
@@ -845,14 +869,14 @@ class Nendo
 
   def loadFile( filename )
     open( filename ) {|f|
-      reader = Reader.new( f, false )
+      reader = Reader.new( f, filename, false )
       while true
         lineno = reader.lineno
         s = reader._read
         if s[1] # EOF?
           break
         elsif Nil != s[0].class
-          @evaluator._eval( s[0], filename, lineno )
+          @evaluator._eval( s[0], reader.sourcefile, lineno )
         end
       end
     }
@@ -860,7 +884,7 @@ class Nendo
 
   def repl
     print "nendo> "
-    reader = Reader.new( STDIN, false )
+    reader = Reader.new( STDIN, "(stdin)", false )
     while true
       lineno = reader.lineno
       s = reader._read
@@ -868,7 +892,7 @@ class Nendo
         break
       elsif Nil != s[0].class
         begin
-          print @printer._print( @evaluator._eval( s[0], "(stdin)", lineno ))
+          print @printer._print( @evaluator._eval( s[0], reader.sourcefile, lineno ))
         rescue => e
           print e.message + "\n"
           e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
@@ -880,7 +904,7 @@ class Nendo
 
   def replStr( str )
     sio       = StringIO.open( str )
-    reader    = Reader.new( sio, false )
+    reader    = Reader.new( sio, "(string)", false )
     result    = nil
     while true
       lineno = reader.lineno
@@ -888,7 +912,7 @@ class Nendo
       if s[1] # EOF?
         break
       elsif Nil != s[0].class
-        result = @printer._print( @evaluator._eval( s[0], "(string)", lineno )) 
+        result = @printer._print( @evaluator._eval( s[0], reader.sourcefile, lineno )) 
       end
     end
     result

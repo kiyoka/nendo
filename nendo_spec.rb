@@ -319,6 +319,22 @@ describe Nendo, "when call replStr() with variable modifications" do
   end
 end
 
+describe Nendo, "when call replStr() with undefined variable" do
+  before do
+    @nendo = Nendo.new()
+  end
+  it "should" do
+    lambda { @nendo.replStr( " true " ) }.should_not                   raise_error
+    lambda { @nendo.replStr( " false " ) }.should_not                  raise_error
+    lambda { @nendo.replStr( " nil " ) }.should_not                    raise_error
+    lambda { @nendo.replStr( " line1 " ) }.should                      raise_error( NameError )
+    lambda { @nendo.replStr( " true \n line2 " ) }.should              raise_error( NameError )
+    lambda { @nendo.replStr( " true \n true \n line3 " ) }.should      raise_error( NameError )
+    lambda { @nendo.replStr( " (+ 1 x) " ) }.should                    raise_error( NameError )
+    lambda { @nendo.replStr( " true \n (+ 1 y) " ) }.should            raise_error( NameError )
+  end
+end
+
 describe Nendo, "when call replStr() with built-in special forms" do
   before do
     @nendo = Nendo.new()
