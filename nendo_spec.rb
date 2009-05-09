@@ -340,13 +340,25 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo = Nendo.new()
   end
   it "should" do
-    @nendo.replStr( " (let () 100) " ).should == "100"
-    @nendo.replStr( " (let ((a 11)) a) " ).should == "11"
-    @nendo.replStr( " (let ((a 11) (b 22)) (+ a b)) " ).should == "33"
+    @nendo.replStr( " (begin 1) " ).should == "1"
+    @nendo.replStr( " (begin 1 2) " ).should == "2"
+    @nendo.replStr( " (begin 1 2 3) " ).should == "3"
+    @nendo.replStr( " (define x 2) (define y (begin (set! x (* x 2)) (set! x (* x 2)) (set! x (* x 2)) 100))  (+ x y)" ).should == "116"
+    @nendo.replStr( " (let ()                 100) " ).should == "100"
+    @nendo.replStr( " (let ((a 11))           a) " ).should == "11"
+    @nendo.replStr( " (let ((a 11) (b 22))    (+ a b)) " ).should == "33"
     @nendo.replStr( " (if true   'T 'F)" ).should == "T"
     @nendo.replStr( " (if true   '(1) '(2))" ).should == "(1)"
     @nendo.replStr( " (if false  'T 'F)" ).should == "F"
     @nendo.replStr( " (if false  '(1) '(2))" ).should == "(2)"
+    @nendo.replStr( " (define x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
+    @nendo.replStr( " (define x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"
+    @nendo.replStr( " (define func (lambda (arg1) arg1))              (func 1) " ).should == "1"
+    @nendo.replStr( " (define func (lambda (arg1) arg1))              (func 2) " ).should == "2"
+    pending( "These anonymous procedure code does not work." ) do
+      @nendo.replStr( " ((lambda (arg1) arg1)  3)" ).should == "3" 
+      @nendo.replStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
+    end
   end
 end
 

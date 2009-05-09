@@ -669,6 +669,13 @@ class Evaluator
     end
   end
 
+  def makeBegin( args )
+    ar = args.map { |e|
+      translate( e.car )
+    }
+    "begin " + ar.join( ";" ) + " end"
+  end
+
   def makeClosure( args )
     first   = args.car.cdr.car
     rest    = args.cdr
@@ -785,6 +792,8 @@ class Evaluator
         raise ExceptionNonSymbol
       elsif Cell == sexp.car.class
         str += translate( sexp.car )
+      elsif :begin == sexp.car
+        str += self.makeBegin( sexp.cdr )
       elsif :lambda == sexp.car
         str += self.makeClosure( sexp.cdr )
       elsif :if == sexp.car
@@ -858,9 +867,9 @@ end
 
 
 class Nendo
-  def initialize()
-    @evaluator    = Evaluator.new( false )
-    @printer      = Printer.new( false )
+  def initialize( debug_evaluator = false, debug_printer = false )
+    @evaluator    = Evaluator.new( debug_evaluator )
+    @printer      = Printer.new( debug_printer )
   end
   
   def loadInitFile
@@ -902,7 +911,7 @@ class Nendo
     end
   end
 
-  def replStr( str )
+  def replStr( str, debug = false )
     sio       = StringIO.open( str )
     reader    = Reader.new( sio, "(string)", false )
     result    = nil
