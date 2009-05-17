@@ -3,6 +3,44 @@
           DESIGN memo of Nendo
 
 
+
+Samples in my mind:
+  1. How to call Ruby's method
+    file.txt is
+      a1 a2 a3
+      b1 b2 b3
+      c1 c2 c3
+      [EOF]
+
+    (let1 f (open "file.txt" "r")
+      (map
+       (lambda (x)
+         (x.chomp.split))
+       (f.readlines.to_list))
+      (f.close))
+    => '(("a1" "a2" "a3") ("b1" "b2" "b3") ("c1" "c2" "c3"))
+
+  2. method call form
+    str is "a a a"
+
+    (str.split)               will translate    (split str)
+    (str.split.sort)          will translate    (sort (split str))
+    (str.split.sort.reverse)  will translate    (reverse (sort (split str)))
+
+  3. method call form
+    str is "a a a"
+
+    (str.chomp)               will translate    (chomp str)
+
+  4. method call form
+    arr is [ "a", "b", "c" ]
+    (arr.join "/")            will translate    (join arr "/")
+
+  5. method call form
+    (Array.new 1 2 3)         will translate    (. new Array 1 2 3)
+
+
+
 How to translate:
   (+ 1 2)  => _apply( "+", Cell.new( 1, Cell.new( 2 )))
 
