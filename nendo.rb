@@ -16,6 +16,9 @@ end
 class LispString < String
 end
 
+class LispMacro < Proc
+end
+
 class Symbol
   def setLispToken( token )
     @token = token
@@ -240,8 +243,8 @@ class Reader
           readwhile( /[^\r\n]/ )
           str = ""
           T_COMMENT
-        when /[a-zA-Z]/ # symbol
-          str += readwhile( /[a-zA-Z0-9+*\/=!<>&|?%-]/ )
+        when /[_a-zA-Z]/ # symbol
+          str += readwhile( /[_a-zA-Z0-9+*\/=!<>&|?%-]/ )
           T_SYMBOL
         when /[+*\/=!<>&|%-]/ # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
@@ -269,22 +272,6 @@ class Reader
 
   def curtoken
     @curtoken
-  end
-
-  # insert quote in let argument list
-  #  ((sym1 list1)
-  #   (sym2 list2)
-  #   (sym3 list3))
-  # will be transformed
-  #  (((quote sym1) list1)
-  #   ((quote sym2) list2)
-  #   ((quote sym3) list3))
-  def letArgumentList( sexp )
-    printf( "  letArg: [%s]\n", sexp ) if @debug
-    sexp.each { |arg|
-      arg.car.car = Cell.new( :quote, Cell.new( arg.car.car ))
-    }
-    sexp
   end
 
   def atom
@@ -353,27 +340,14 @@ class Reader
       ## setup list
       if 0 == cells.size
         Cell.new() # null list
-      else
-        if 1 < cells.size
-          ## special form
-          case cells[0].car 
-          when :define , :set! , :lambda
-            cells[1].car = Cell.new( :quote, Cell.new( cells[1].car ))
-          when :let
-            case cells[1].car
-            when Cell        # let
-              cells[1].car = letArgumentList( cells[1].car )
-            when Symbol      # named let
-              cells[1].car = Cell.new( :quote, Cell.new( cells[1].car ))
-              cells[2].car = letArgumentList( cells[2].car )
-            end
-          end
-          ptr = cells.pop
-          cells.reverse.each { |x|
-            x.cdr = ptr
-            ptr = x
-          }
-        end
+      elsif 1 == cells.size
+        cells.first
+      elsif 1 < cells.size
+        ptr = cells.pop
+        cells.reverse.each { |x|
+          x.cdr = ptr
+          ptr = x
+        }
         cells.first
       end
     end
@@ -676,11 +650,18 @@ class Evaluator
     "begin " + ar.join( ";" ) + " end"
   end
 
-  def makeClosure( args )
+  def makeClosure( sym, args )
     first   = args.car.cdr.car
     rest    = args.cdr
     argsyms = first.map { |x| x.car }
-    str = sprintf( "lambda { |%s| ", argsyms.join( "," ))
+    str = case sym
+          when :macro
+            sprintf( "LispMacro.new { |%s| ", argsyms.join( "," ))
+          when :lambda
+            sprintf( "     Proc.new { |%s| ", argsyms.join( "," ))
+          else
+            raise "Error: makeClosure unknown symbol type " + sym
+          end
     ar = rest.map { |e|
       translate( e.car )
     }
@@ -795,7 +776,9 @@ class Evaluator
       elsif :begin == sexp.car
         str += self.makeBegin( sexp.cdr )
       elsif :lambda == sexp.car
-        str += self.makeClosure( sexp.cdr )
+        str += self.makeClosure( :lambda, sexp.cdr )
+      elsif :macro == sexp.car
+        str += self.makeClosure( :macro, sexp.cdr )
       elsif :if == sexp.car
         str += self.makeIf( sexp.cdr )
       elsif :let == sexp.car
@@ -821,7 +804,91 @@ class Evaluator
     end
   end
 
+  # insert quote in let argument list
+  #  ((sym1 list1)
+  #   (sym2 list2)
+  #   (sym3 list3))
+  # will be transformed
+  #  (((quote sym1) list1)
+  #   ((quote sym2) list2)
+  #   ((quote sym3) list3))
+  def letArgumentList( sexp )
+    printf( "  letArg: [%s]\n", sexp ) if @debug
+    sexp.each { |arg|
+      arg.car.car = Cell.new( :quote, Cell.new( arg.car.car ))
+    }
+    sexp
+  end
+
+  def _quoting( sexp )
+    case sexp
+    when Cell
+      if :quote == sexp.car
+        sexp
+      elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
+        #pp ["_quoting:2", sexp ]
+        sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
+        sexp.cdr.cdr = _quoting( sexp.cdr.cdr )
+        #pp ["_quoting:3", sexp ]
+        sexp
+      elsif :let == sexp.car
+        case sexp.cdr.car
+        when Cell        # let
+          sexp.cdr.car     = letArgumentList( sexp.cdr.car )
+        when Symbol      # named let
+          sexp.cdr.car     = Cell.new( :quote, Cell.new( sexp.cdr.car ))
+          sexp.cdr.cdr.car = letArgumentList( sexp.cdr.cdr.car )
+        end
+        sexp
+      else
+        Cell.new( _quoting( sexp.car ), _quoting( sexp.cdr ))
+      end
+    else
+      sexp
+    end
+  end
+
+  def _macroexpand1( sexp )
+    case sexp
+    when Cell
+      sym = sexp.car.to_s
+      sym = @alias[ sym ]  if @alias[ sym ]
+      if :quote == sexp.car or :define == sexp.car or :set! == sexp.car or :if == sexp.car or :begin == sexp.car or :lambda == sexp.car or :macro == sexp.car
+        Cell.new( sexp.car, _macroexpand1( sexp.cdr ))
+      elsif sexp.car.class == Symbol
+        if eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
+          eval( sprintf( "@_macro = %s", sym ), @binding )
+          @_tmp   = sexp.cdr.car
+          #p "_macro"
+          #p @_macro
+          #p "_tmp"
+          #p @_tmp
+          @_macro.call( @_tmp )
+        else
+          sexp
+        end
+      else
+        Cell.new( _macroexpand1( sexp.car ), _macroexpand1( sexp.cdr ))
+      end
+    else
+      sexp
+    end
+  end
+
+  def _compile( sexp )
+    converge = true
+    begin
+      newSexp = _macroexpand1( sexp )
+      converge = true
+      #converge = _equalv( newSexp, sexp )
+      sexp = newSexp
+    end until converge
+    sexp
+  end
+
   def _eval( sexp, sourcefile, lineno )
+    sexp = _compile( sexp )
+    sexp = _quoting( sexp );
     rubyExp = translate( sexp );
     printf( "          rubyExp=<<< %s >>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
@@ -868,6 +935,7 @@ end
 
 class Nendo
   def initialize( debug_evaluator = false, debug_printer = false )
+    @debug_evaluator = debug_evaluator
     @evaluator    = Evaluator.new( debug_evaluator )
     @printer      = Printer.new( debug_printer )
   end
@@ -921,6 +989,7 @@ class Nendo
       if s[1] # EOF?
         break
       elsif Nil != s[0].class
+        printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
         result = @printer._print( @evaluator._eval( s[0], reader.sourcefile, lineno )) 
       end
     end

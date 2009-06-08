@@ -7,7 +7,7 @@
 require 'nendo'
 
 def main
-  core = Nendo.new
+  core = Nendo.new()
   core.loadInitFile
   if 0 < ARGV.length
     core.loadFile( ARGV[0] )
