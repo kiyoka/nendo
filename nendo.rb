@@ -418,6 +418,7 @@ class Evaluator
       '||'       => '_or',
       '&&'       => '_and',
       '='        => '_eq1',
+      'eq?'      => '_eq1',
       'first'    => 'car',
       'rest'     => 'cdr',
       'null?'    => 'nullp',
@@ -426,6 +427,7 @@ class Evaluator
       'reverse'  => '_reverse',
       'uniq'     => '_uniq',
       'range'    => '_range',
+      'equal?'   => '_equalp',
     }
     @sym = {
       '_plus'      => getIFunc( '+' ),
@@ -447,6 +449,7 @@ class Evaluator
       '_reverse'   => getIFunc( 'reverse' ),
       '_uniq'      => getIFunc( 'uniq' ),
       '_range'     => getIFunc( 'range' ),
+      '_equalp'    => getIFunc( 'equalp' ),
     }
     # initialize operator function
     _operators = {
@@ -500,6 +503,22 @@ class Evaluator
   def assertList( funcname, arg )
     if Cell != arg.class
       raise ArgumentError, "Error: %s expects a list argument.\n"
+    end
+  end
+
+  def __equal?( a, b )
+    if a.class != b.class
+      false
+    elsif a.class == Cell
+      if a.isNull and b.isNull
+        true
+      else
+        __equal?( a.car, b.car ) and __equal?( a.cdr, b.cdr )
+      end
+    elsif a.class == Nil and b.class == Nil
+      true
+    else
+      (a === b)
     end
   end
 
@@ -623,12 +642,12 @@ class Evaluator
       lambda {|arg|     arg.to_arr.uniq.to_list }
     when 'range'
       lambda {|num|     (0..num-1).map.to_list }
+    when 'equalp'
+      lambda {|a,b|     __equal?( a, b ) }
     end
   end
 
   def execFunc( funcname, args )
-    #printf( "execFunc( %s, %s )\n", funcname, "xxx" )
-    #pp args
     case funcname
     when :define , :set!   # `define' and `set!' special form
       sprintf( "%s = %s", args.car.to_s.sub( /^:/, "" ), args.cdr.car.to_s )
@@ -669,8 +688,6 @@ class Evaluator
   end
 
   def makeIf( args )
-    #pp args
-    #pp args.length
     _condition = translate( args.car )
     _then      = translate( args.cdr.car )
     _else      = nil
@@ -685,8 +702,6 @@ class Evaluator
   end
 
   def makeLet( args )
-    #p "makeLet"
-    #pp args
     _name = "___lambda"
     if :quote == args.car.car
       _name = args.car.cdr.car.to_s
@@ -694,16 +709,12 @@ class Evaluator
     end
     rest = args.cdr
     str = _name + " = "
-    # printer = Printer.new
-    # p "args: " + printer._print( args.car )
     argsyms = args.car.map { |x|
       x.car.car.cdr.car.to_s
     }
     argvals = args.car.map { |x|
       translate( x.car.cdr.car )
     }
-    #p "rest"
-    #pp rest
     str += sprintf( "lambda { |%s| ", argsyms.join( "," ))
     ar = rest.map { |e|
       translate( e.car )
@@ -715,8 +726,6 @@ class Evaluator
   def apply( car, cdr )
     ptr = cdr
     while Nil != ptr.class
-      #print "ptr.car: "
-      #pp ptr.car
       ptr.car = translate( ptr.car )
       ptr = ptr.cdr
     end

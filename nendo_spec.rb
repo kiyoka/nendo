@@ -71,6 +71,8 @@ describe Nendo, "when call replStr() with comparative operators" do
   it "should" do
     @nendo.replStr( " (= 1 1) " ).should == "true"
     @nendo.replStr( " (= 1 2) " ).should == "false"
+    @nendo.replStr( " (eq? 1 1) " ).should == "true"
+    @nendo.replStr( " (eq? 1 2) " ).should == "false"
     @nendo.replStr( " (< 1 1) " ).should == "false"
     @nendo.replStr( " (< 1 2) " ).should == "true"
     @nendo.replStr( " (> 1 1) " ).should == "false"
@@ -80,7 +82,22 @@ describe Nendo, "when call replStr() with comparative operators" do
     @nendo.replStr( " (<= 1 2) " ).should == "true"
     @nendo.replStr( " (>= 0 1) " ).should == "false"
     @nendo.replStr( " (>= 1 1) " ).should == "true"
-    @nendo.replStr( " (>= 2 1) " ).should == "true"
+    @nendo.replStr( " (equal? 1 1) " ).should == "true"
+    @nendo.replStr( " (equal? 1 2) " ).should == "false"
+    @nendo.replStr( " (equal? 2 2) " ).should == "true"
+    @nendo.replStr( " (equal? '() '()) " ).should == "true"
+    @nendo.replStr( " (equal? '(1) '(1)) " ).should == "true"
+    @nendo.replStr( " (equal? '(1) '(2)) " ).should == "false"
+    @nendo.replStr( " (equal? '(1 2 3) '(1 2 3)) " ).should == "true"
+    @nendo.replStr( " (equal? '(1 2 (3)) '(1 2 (3))) " ).should == "true"
+    @nendo.replStr( " (equal? '(1 2 (3)) '(1 2 (4))) " ).should == "false"
+    @nendo.replStr( " (equal? '(1 2 (3 (4))) '(1 2 (3 (4)))) " ).should == "true"
+    @nendo.replStr( " (equal? '((1) 2 3 4) '((2) 2 3 4)) " ).should == "false"
+    @nendo.replStr( " (equal? \"aaa\" \"aaa\") " ).should == "true"
+    @nendo.replStr( " (equal? \"aaa\" \"aax\") " ).should == "false"
+    @nendo.replStr( " (equal? '(\"aaa\") '(\"aaa\")) " ).should == "true"
+    @nendo.replStr( " (equal? '(\"aaa\" (1)) '(\"aaa\" (1))) " ).should == "true"
+    @nendo.replStr( " (equal? '(\"aaa\" (1)) '(\"aaa\" (2))) " ).should == "false"
   end
 end
 
