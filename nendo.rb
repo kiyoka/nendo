@@ -430,26 +430,27 @@ class Evaluator
       'equal?'   => '_equalp',
     }
     @sym = {
-      '_plus'      => getIFunc( '+' ),
-      '_minus'     => getIFunc( '-' ),
-      '_multi'     => getIFunc( '*' ),
-      '_div'       => getIFunc( '/' ),
-      '_mod'       => getIFunc( '%' ),
-      '_or'        => getIFunc( 'or' ),
-      '_and'       => getIFunc( 'and' ),
-      '_not'       => getIFunc( 'not' ),
-      'cons'       => getIFunc( 'cons' ),
-      'exit'       => getIFunc( 'exit' ),
-      'print'      => getIFunc( 'print' ),
-      'printf'     => getIFunc( 'printf' ),
-      'sprintf'    => getIFunc( 'sprintf' ),
-      'nullp'      => getIFunc( 'nullp' ),
-      '_list'      => getIFunc( 'list' ),
-      '_sort'      => getIFunc( 'sort' ),
-      '_reverse'   => getIFunc( 'reverse' ),
-      '_uniq'      => getIFunc( 'uniq' ),
-      '_range'     => getIFunc( 'range' ),
-      '_equalp'    => getIFunc( 'equalp' ),
+      '_plus'          => getIFunc( '+' ),
+      '_minus'         => getIFunc( '-' ),
+      '_multi'         => getIFunc( '*' ),
+      '_div'           => getIFunc( '/' ),
+      '_mod'           => getIFunc( '%' ),
+      '_or'            => getIFunc( 'or' ),
+      '_and'           => getIFunc( 'and' ),
+      '_not'           => getIFunc( 'not' ),
+      'cons'           => getIFunc( 'cons' ),
+      'exit'           => getIFunc( 'exit' ),
+      'print'          => getIFunc( 'print' ),
+      'printf'         => getIFunc( 'printf' ),
+      'sprintf'        => getIFunc( 'sprintf' ),
+      'nullp'          => getIFunc( 'nullp' ),
+      '_list'          => getIFunc( 'list' ),
+      '_sort'          => getIFunc( 'sort' ),
+      '_reverse'       => getIFunc( 'reverse' ),
+      '_uniq'          => getIFunc( 'uniq' ),
+      '_range'         => getIFunc( 'range' ),
+      '_equalp'        => getIFunc( 'equalp' ),
+      'macroexpand1'   => getIFunc( 'macroexpand1' ),
     }
     # initialize operator function
     _operators = {
@@ -644,6 +645,8 @@ class Evaluator
       lambda {|num|     (0..num-1).map.to_list }
     when 'equalp'
       lambda {|a,b|     __equal?( a, b ) }
+    when 'macroexpand1'
+      lambda {|arg|     _macroexpand1( arg ) }
     end
   end
 
@@ -888,8 +891,7 @@ class Evaluator
     converge = true
     begin
       newSexp = _macroexpand1( sexp )
-      converge = true
-      #converge = _equalv( newSexp, sexp )
+      converge = __equal?( newSexp, sexp )
       sexp = newSexp
     end until converge
     sexp

@@ -379,37 +379,17 @@ describe Nendo, "when call replStr() with built-in special forms" do
   end
 end
 
-
-
-#    @nendo.replStr( " (let name1 ((a 1)) name1) ").should == "1"
-
-#  replTest( " (define x 1) \n (set! x 2) \n x" )
-#  replTest( " (define plusone (lambda (a) (+ a 1))) \n (plusone 1) " )
-#  replTest( " (define x 1) \n (set! x 2) \n x" )
-#  replTest( " (define plusone (lambda (a) (+ a 1))) \n (plusone 1) " )
-#  replTest( " (lambda (a) a) " )
-#  replTest( " (lambda (a) (+ 1 2)) " )
-#  replTest( " (car '(a b c)) " )
-#  replTest( " (cdr '(a b c)) " )
-#  replTest( " (+ (+ 1 2) (+ 3 4 )) " )
-#  replTest( " (- (* 3 3) (* 2 2 )) " )
-#  replTest( " (car '( 1 . 2 )) " )
-#  replTest( " (cdr '( 1 . 2 )) " )
-#  replTest( " (cons 3 4 ) " )
-#  replTest( " (cons 3 '(4 5))) " )
-#  replTest( " '( 1 ) " )
-#  replTest( " '( 1 2 3 '4 ) " )
-#  replTest( " (+ 123 \"456\" ) " )
-#  replTest( " (+ \"123\" 456 ) " )
-#  replTest( " (( 1 )) " )
-#  replTest( " ( 1 2 ( 3 4 )) " )
-#  replTest( " ( " )
-#  replTest( " ) " )
-#  replTest( " (define tak (lambda  (x y z)
-#                        (if (> x y)
-#                           (tak (tak (- x 1) y z)
-#                            (tak (- y 1) z x)
-#                            (tak (- z 1) x y))
-#                           y)))
-#              (tak 9 6 0)
-#" )
+describe Nendo, "when call replStr() with macroexpand1 function" do
+  before do
+    @nendo = Nendo.new()
+  end
+  it "should" do
+    @nendo.replStr( " (define twice (macro (x) (list 'begin x x)))           (macroexpand1 '(twice (+ 1 1))) " ).should == "(begin (+ 1 1) (+ 1 1))"
+    @nendo.replStr( " (define inc (macro (x) (list 'set! x (list '+ x 1))))  (macroexpand1 '(inc a)) " ).should == "(set! a (+ a 1))"
+    @nendo.replStr( " (define a 10) (inc a) " ).should == "11"
+    @nendo.replStr( " (define a 10) (inc a) (inc a)" ).should == "12"
+    @nendo.replStr( " (macroexpand1 '(twice (twice (inc a))))" ).should == "(begin (twice (inc a)) (twice (inc a)))"
+    @nendo.replStr( " (macroexpand1 (macroexpand1 '(twice (twice (inc a)))))" ).should == "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
+    @nendo.replStr( " (define a 10) (twice (twice (inc a)))" ).should == "14"
+  end
+end
