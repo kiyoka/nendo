@@ -386,7 +386,7 @@ class Reader
     end
   end
 
-  # return [ S-expression-tree, eof-flag ]
+  # return value is [ S-expression-tree, eof-flag ]
   def _read
     case curtoken.kind
     when T_EOF
@@ -401,95 +401,9 @@ class Reader
 end
 
 
-# Translate S expression to Ruby expression and Evaluation
-class Evaluator
-  def initialize( debug = false )
-    @binding = binding
-    @debug   = debug
-    @alias   = {
-      '+'        => '_plus',
-      '-'        => '_minus',
-      '*'        => '_multi',
-      '/'        => '_div',
-      '%'        => '_mod',
-      'or'       => '_or',
-      'and'      => '_and',
-      'not'      => '_not',
-      '||'       => '_or',
-      '&&'       => '_and',
-      '='        => '_eq1',
-      'eq?'      => '_eq1',
-      'first'    => 'car',
-      'rest'     => 'cdr',
-      'null?'    => 'nullp',
-      'list'     => '_list',
-      'sort'     => '_sort',
-      'reverse'  => '_reverse',
-      'uniq'     => '_uniq',
-      'range'    => '_range',
-      'equal?'   => '_equalp',
-    }
-    @sym = {
-      '_plus'          => getIFunc( '+' ),
-      '_minus'         => getIFunc( '-' ),
-      '_multi'         => getIFunc( '*' ),
-      '_div'           => getIFunc( '/' ),
-      '_mod'           => getIFunc( '%' ),
-      '_or'            => getIFunc( 'or' ),
-      '_and'           => getIFunc( 'and' ),
-      '_not'           => getIFunc( 'not' ),
-      'cons'           => getIFunc( 'cons' ),
-      'exit'           => getIFunc( 'exit' ),
-      'print'          => getIFunc( 'print' ),
-      'printf'         => getIFunc( 'printf' ),
-      'sprintf'        => getIFunc( 'sprintf' ),
-      'nullp'          => getIFunc( 'nullp' ),
-      '_list'          => getIFunc( 'list' ),
-      '_sort'          => getIFunc( 'sort' ),
-      '_reverse'       => getIFunc( 'reverse' ),
-      '_uniq'          => getIFunc( 'uniq' ),
-      '_range'         => getIFunc( 'range' ),
-      '_equalp'        => getIFunc( 'equalp' ),
-      'macroexpand1'   => getIFunc( 'macroexpand1' ),
-    }
-    # initialize operator function
-    _operators = {
-      '=='  => '_eq1',
-      '>'   => '_gt',
-      '>='  => '_ge',
-      '<'   => '_lg',
-      '<='  => '_le',
-      '===' => '_eq2',
-    }
-    _operators.keys.each { |rubyOp|
-      eval( sprintf("%s = lambda {|*args| assertFlat( *args ) ; args[0] %s args[1] } ;", _operators[rubyOp], rubyOp ), @binding )
-      @alias[ rubyOp ] = _operators[ rubyOp ]
-    }
-    # initialize car, cdr, caar, cadr functions.
-    [ 'car',
-      'cdr',
-      'caar',
-      'cadr',
-      'cdar',
-      'cddr',
-      'cadar',
-      'caddr',
-      'cadaar',
-      'cadddr',
-      'cddddr' ].each { |str|
-      pattern = str[1..-2].split( // ).reverse
-      _chain = pattern.map{ |x| "c" + x + "r" }.join( "." )
-      eval( sprintf("%s = lambda {|arg|  assertList( '%s', arg ) ; arg.%s} ;", str, str, _chain ), @binding )
-    }
-
-    # initialize global symbols
-    rubyExp = @sym.keys.map { |name|
-      sprintf( "%s = @sym[ '%s' ] ", name, name )
-    }.join( " ; " )
-    eval( rubyExp, @binding )
-  end
-
-  def assertFlat( *args )
+# built-in functions
+module BuiltinFunctions
+  def __assertFlat( *args )
     if 0 == args.length
       raise ArgumentError, "Error: + - * / % operator got illegal argument. "
     else
@@ -501,20 +415,20 @@ class Evaluator
     end
   end
   
-  def assertList( funcname, arg )
+  def __assertList( funcname, arg )
     if Cell != arg.class
       raise ArgumentError, "Error: %s expects a list argument.\n"
     end
   end
-
-  def __equal?( a, b )
+  
+  def _equal_P( a, b )
     if a.class != b.class
       false
     elsif a.class == Cell
       if a.isNull and b.isNull
         true
       else
-        __equal?( a.car, b.car ) and __equal?( a.cdr, b.cdr )
+        _equal_P( a.car, b.car ) and _equal_P( a.cdr, b.cdr )
       end
     elsif a.class == Nil and b.class == Nil
       true
@@ -522,142 +436,166 @@ class Evaluator
       (a === b)
     end
   end
-
-  def getIFunc( name )
-    case name
-    when '+'
-      lambda {|*args| 
-        assertFlat( *args )
-        if 1 == args.length 
-          args[0]
-        else
-          args[1..-1].inject(args[0]){|x,y| x+y}
-        end
-      }
-    when '-'
-      lambda {|*args|
-        assertFlat( *args )
-        if 1 == args.length 
-          - args[0]
-        else
-          args[1..-1].inject(args[0]){|x,y| x-y}
-        end
-      }
-    when '*'
-      lambda {|*args|
-        assertFlat( *args )
-        args.inject(1) {|x,y| x*y}
-      }
-    when '/'
-      lambda {|*args|
-        assertFlat( *args )
-        if 1 == args.length 
-          1 / args[0]
-        else
-          args[1..-1].inject(args[0]) {|x,y| x/y}
-        end
-      }
-    when '%'
-      lambda {|*args|
-        assertFlat( *args )
-        if 1 == args.length 
-          1 % args[0]
-        else
-          args[1..-1].inject(args[0]) {|x,y| x%y}
-         end
-      }
-    when 'or'
-      lambda {|*args| 
-        ret = args.select { |x| x }
-        if 0 == ret.length
-          false
-        else
-          ret[0]
-        end
-      }
-    when 'and'
-      lambda {|*args| 
-        ret = args.select { |x| x }
-        if args.length != ret.length
-          false
-        else
-          ret[-1]
-        end
-      }
-    when 'not'
-      lambda {|*args|
-        if 1 < args.length
-          raise ArgumentError, "Error: wrong number of arguments: not requires 1"
-        else
-          not args[0]
-        end
-      }
-    when 'cons'
-      lambda {|*args|
-        if 2 == args.length
-          Cell.new( args[0], args[1] )
-        else
-          raise ArgumentError, "Error: wrong number of arguments: cons requires 2"
-        end
-      }
-    when 'exit'
-      lambda {|*args|
-        if 0 == args.length
-          exit(0)
-        else
-          exit(args[0])
-        end
-      }
-    when 'print'
-      lambda {|*args| 
-        assertFlat( *args )
-        print( *args )
-      }
-    when 'printf'
-      lambda {|*args| 
-        assertFlat( *args )
-        printf( *args )
-      }
-    when 'sprintf'
-      lambda {|*args| 
-        assertFlat( *args )
-        sprintf( *args )
-      }
-    when 'nullp'
-      lambda {|arg| 
-        if Nil == arg.class
-          true
-        elsif Cell == arg.class
-          arg.isNull
-        else
-          false
-        end
-      }
-    when 'list'
-      lambda {|*args|   args.to_list }
-    when 'sort'
-      lambda {|arg|     arg.to_arr.sort.to_list }
-    when 'reverse'
-      lambda {|arg|     arg.to_arr.reverse.to_list }
-    when 'uniq'
-      lambda {|arg|     arg.to_arr.uniq.to_list }
-    when 'range'
-      lambda {|num|     (0..num-1).map.to_list }
-    when 'equalp'
-      lambda {|a,b|     __equal?( a, b ) }
-    when 'macroexpand1'
-      lambda {|arg|     _macroexpand1( arg ) }
+  
+  def _plus( *args )
+    __assertFlat( *args )
+    if 1 == args.length 
+      args[0]
+    else
+      args[1..-1].inject(args[0]){|x,y| x+y}
     end
+  end
+  
+  def _minus( *args )
+    __assertFlat( *args )
+    if 1 == args.length 
+      - args[0]
+    else
+      args[1..-1].inject(args[0]){|x,y| x-y}
+    end
+  end
+
+  def _multi( *args )
+    __assertFlat( *args )
+    args.inject(1) {|x,y| x*y}
+  end
+
+  def _div( *args )
+    __assertFlat( *args )
+    if 1 == args.length 
+      1 / args[0]
+    else
+      args[1..-1].inject(args[0]) {|x,y| x/y}
+    end
+  end
+
+  def _mod( *args )
+    __assertFlat( *args )
+    if 1 == args.length 
+      1 % args[0]
+    else
+      args[1..-1].inject(args[0]) {|x,y| x%y}
+    end
+  end
+
+  def _not( *args )
+    if 1 < args.length
+      raise ArgumentError, "Error: wrong number of arguments: not requires 1"
+    else
+      not args[0]
+    end
+  end
+
+  def _cons( *args )
+    if 2 == args.length
+      Cell.new( args[0], args[1] )
+    else
+      raise ArgumentError, "Error: wrong number of arguments: cons requires 2"
+    end
+  end
+
+  def _exit( *args )
+    if 0 == args.length
+      Kernel::exit(0)
+    else
+      Kernel::exit(args[0])
+    end
+  end
+
+  def _print( *args )
+    __assertFlat( *args )
+    print( *args )
+  end
+
+  def _printf( *args )
+    __assertFlat( *args )
+    Kernel::printf( *args )
+  end
+
+  def _sprintf( *args )
+    __assertFlat( *args )
+    Kernel::sprintf( *args )
+  end
+
+  def _nullP( arg )
+    if Nil == arg.class
+      true
+    elsif Cell == arg.class
+      arg.isNull
+    else
+      false
+    end
+  end
+  def _list(    *args)      args.to_list end
+  def _sort(     arg )      arg.to_arr.sort.to_list end
+  def _reverse(  arg )      arg.to_arr.reverse.to_list end
+  def _uniq(     arg )      arg.to_arr.uniq.to_list end
+  def _range(    num )      (0..num-1).map.to_list end
+  def _macroexpand1( arg )  _macroexpand1( arg ) end
+  def _eq_P(      a,b )      a ==  b end
+  def _gt_P(      a,b )      a >   b end
+  def _ge_P(      a,b )      a >=  b end
+  def _lt_P(      a,b )      a <   b end
+  def _le_P(      a,b )      a <=  b end
+  def _eqv_P(     a,b )      a === b end
+  def _car(      cell )     cell.car end
+  def _cdr(      cell )     cell.cdr end
+end
+
+
+# Translate S expression to Ruby expression and Evaluation
+class Evaluator
+  include BuiltinFunctions
+  def initialize( debug = false )
+    @binding = binding
+    @debug   = debug
+    @alias   = {'+'        => 'plus',
+                '-'        => 'minus',
+                '*'        => 'multi',
+                '/'        => 'div',
+                '%'        => 'mod',
+                '='        => 'eq?',
+                '=='       => 'eq?',
+                '>'        => 'gt?',
+                '>='       => 'ge?',
+                '<'        => 'lt?',
+                '<='       => 'le?',
+                '==='      => 'eqv?',
+
+    }
+    # built-in functions
+    @sym = Hash.new
+    self.methods.grep( /^_/ ) { |rubySymbol|
+      @sym[ rubySymbol ] = self.method( rubySymbol )
+    }
+
+    # initialize global symbols
+    rubyExp = @sym.keys.map { |name|
+      sprintf( "%s = @sym[ '%s' ] ", name, name )
+    }.join( " ; " )
+    eval( rubyExp, @binding )
+  end
+
+  def toRubySymbol( name )
+    name = name.to_s  if Symbol == name.class
+    '_' + name.gsub( /[?]/, '_P' ).gsub( /[!]/, '_E' )
+  end
+
+  def toLispSymbol( name )
+    name = name.to_s  if Symbol == name.class
+    raise ArgumentError if '_' == name[0]
+    name = name[1..-1]
+    name.gsub( /_P/, '?' ).gsub( /_E/, '!' )
   end
 
   def execFunc( funcname, args )
     case funcname
     when :define , :set!   # `define' and `set!' special form
-      sprintf( "%s = %s", args.car.to_s.sub( /^:/, "" ), args.cdr.car.to_s )
+      sprintf( "%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), args.cdr.car.to_s )
     else
       funcname = funcname.to_s
       funcname = @alias[ funcname ] if @alias[ funcname ] 
-      str  = sprintf( "%s.call(", funcname )
+      str  = sprintf( "%s.call(", toRubySymbol( funcname ))
       str += args.map { |x|
         x.car.to_s
       }.join( " , " )
@@ -675,7 +613,7 @@ class Evaluator
   def makeClosure( sym, args )
     first   = args.car.cdr.car
     rest    = args.cdr
-    argsyms = first.map { |x| x.car }
+    argsyms = first.map { |x| toRubySymbol( x.car ) }
     str = case sym
           when :macro
             sprintf( "LispMacro.new { |%s| ", argsyms.join( "," ))
@@ -713,7 +651,7 @@ class Evaluator
     rest = args.cdr
     str = _name + " = "
     argsyms = args.car.map { |x|
-      x.car.car.cdr.car.to_s
+      toRubySymbol( x.car.car.cdr.car.to_s )
     }
     argvals = args.car.map { |x|
       translate( x.car.cdr.car )
@@ -801,11 +739,15 @@ class Evaluator
     else
       case sexp
       when Symbol
-        sym = sexp.to_s
-        if @alias[ sym ]
-          sym = @alias[ sym ]
+        case sexp
+        when :true , :false , :nil  # reserved symbols
+          str += sexp.to_s
+        else
+          sym = sexp.to_s
+          sym = @alias[ sym ]  if @alias[ sym ]
+          sym = toRubySymbol( sym )
+          str += sprintf( 'begin %s ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end', sym, sexp.sourcefile, sexp.lineno )
         end
-        str += sprintf( 'begin %s ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end', sym, sexp.sourcefile, sexp.lineno )
       when Fixnum
         str += sexp.to_s
       when LispString
@@ -832,16 +774,16 @@ class Evaluator
     sexp
   end
 
-  def _quoting( sexp )
+  def quoting( sexp )
     case sexp
     when Cell
       if :quote == sexp.car
         sexp
       elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
-        #pp ["_quoting:2", sexp ]
+        #pp ["quoting:2", sexp ]
         sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
-        sexp.cdr.cdr = _quoting( sexp.cdr.cdr )
-        #pp ["_quoting:3", sexp ]
+        sexp.cdr.cdr = quoting( sexp.cdr.cdr )
+        #pp ["quoting:3", sexp ]
         sexp
       elsif :let == sexp.car
         case sexp.cdr.car
@@ -853,7 +795,7 @@ class Evaluator
         end
         sexp
       else
-        Cell.new( _quoting( sexp.car ), _quoting( sexp.cdr ))
+        Cell.new( quoting( sexp.car ), quoting( sexp.cdr ))
       end
     else
       sexp
@@ -865,6 +807,7 @@ class Evaluator
     when Cell
       sym = sexp.car.to_s
       sym = @alias[ sym ]  if @alias[ sym ]
+      sym = toRubySymbol( sym )
       if :quote == sexp.car or :define == sexp.car or :set! == sexp.car or :if == sexp.car or :begin == sexp.car or :lambda == sexp.car or :macro == sexp.car
         Cell.new( sexp.car, _macroexpand1( sexp.cdr ))
       elsif sexp.car.class == Symbol
@@ -887,19 +830,19 @@ class Evaluator
     end
   end
 
-  def _compile( sexp )
+  def lispCompile( sexp )
     converge = true
     begin
       newSexp = _macroexpand1( sexp )
-      converge = __equal?( newSexp, sexp )
+      converge = _equal_P( newSexp, sexp )
       sexp = newSexp
     end until converge
     sexp
   end
 
-  def _eval( sexp, sourcefile, lineno )
-    sexp = _compile( sexp )
-    sexp = _quoting( sexp );
+  def lispEval( sexp, sourcefile, lineno )
+    sexp = lispCompile( sexp )
+    sexp = quoting( sexp );
     rubyExp = translate( sexp );
     printf( "          rubyExp=<<< %s >>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
@@ -964,7 +907,7 @@ class Nendo
         if s[1] # EOF?
           break
         elsif Nil != s[0].class
-          @evaluator._eval( s[0], reader.sourcefile, lineno )
+          @evaluator.lispEval( s[0], reader.sourcefile, lineno )
         end
       end
     }
@@ -980,7 +923,7 @@ class Nendo
         break
       elsif Nil != s[0].class
         begin
-          print @printer._print( @evaluator._eval( s[0], reader.sourcefile, lineno ))
+          print @printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
         rescue => e
           print e.message + "\n"
           e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
@@ -1001,7 +944,7 @@ class Nendo
         break
       elsif Nil != s[0].class
         printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
-        result = @printer._print( @evaluator._eval( s[0], reader.sourcefile, lineno )) 
+        result = @printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno )) 
       end
     end
     result
