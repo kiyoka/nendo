@@ -813,12 +813,12 @@ class Evaluator
       elsif sexp.car.class == Symbol
         if eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
           eval( sprintf( "@_macro = %s", sym ), @binding )
-          @_tmp   = sexp.cdr.car
+          @_tmp = sexp.cdr.map{ |x| x.car }
           #p "_macro"
           #p @_macro
           #p "_tmp"
-          #p @_tmp
-          @_macro.call( @_tmp )
+          #pp @_tmp
+          @_macro.call( *@_tmp )
         else
           sexp
         end
