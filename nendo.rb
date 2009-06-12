@@ -517,7 +517,7 @@ module BuiltinFunctions
     Kernel::sprintf( *args )
   end
 
-  def _nullP( arg )
+  def _null_P( arg )
     if Nil == arg.class
       true
     elsif Cell == arg.class
@@ -540,6 +540,8 @@ module BuiltinFunctions
   def _eqv_P(     a,b )      a === b end
   def _car(      cell )     cell.car end
   def _cdr(      cell )     cell.cdr end
+  def _display(  arg  )     printer = Printer.new ; print printer._print( arg ) end
+  def _newline(       )     print "\n" end
 end
 
 
@@ -779,6 +781,14 @@ class Evaluator
     when Cell
       if :quote == sexp.car
         sexp
+      elsif :define == sexp.car and Cell == sexp.cdr.car.class    # (define (func arg1 arg2 ...) body)  form
+        second = sexp.cdr.car
+        third  = sexp.cdr.cdr
+        sexp.cdr = _cons( second.car,
+                          _cons( _cons( :lambda,
+                                        _cons( second.cdr, third )),
+                                 Nil.new ))
+        quoting( sexp )
       elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
         #pp ["quoting:2", sexp ]
         sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))

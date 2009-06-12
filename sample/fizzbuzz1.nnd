@@ -1,21 +1,19 @@
 -;;-*- mode: scheme; syntax: scheme -*-;;
 
 ;; FizzBuzz write in Nendo
-(define fizzbuzz
-  (lambda (max)
-    (map
-     (lambda (x)
-       (let ((x (+ x 1)))
-         (if (= 0 (% x 15))
-             "FizzBuzz"
-             (if (= 0 (% x 3))
-                 "Fizz"
-                 (if (= 0 (% x 5))
-                     "Buzz"
-                     x)))))
-     (range max))))
+(define (fizzbuzz max)
+  (map
+   (lambda (x)
+     (let ((x (+ x 1)))
+       (if (= 0 (% x 15))
+           "FizzBuzz"
+           (if (= 0 (% x 3))
+               "Fizz"
+               (if (= 0 (% x 5))
+                   "Buzz"
+                   x)))))
+   (range max)))
 
 (foreach
  p
  (fizzbuzz 30))
-
