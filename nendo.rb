@@ -542,6 +542,18 @@ module BuiltinFunctions
   def _cdr(      cell )     cell.cdr end
   def _display(  arg  )     printer = Printer.new ; print printer._print( arg ) end
   def _newline(       )     print "\n" end
+  def _procedure_P( arg )   ((Proc == arg.class) or (Method == arg.class)) end
+  def _macro_P( arg )       (LispMacro == arg.class) end
+  def _symbol_P(    arg )   (Symbol == arg.class) end
+  def _pair_P(      arg )   
+    if _null_P( arg )
+      false
+    else
+      (Cell == arg.class)
+    end
+  end
+  def _number_P(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
+  def _string_P(   arg )    String == arg.class end
 end
 
 
@@ -790,10 +802,8 @@ class Evaluator
                                  Nil.new ))
         quoting( sexp )
       elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
-        #pp ["quoting:2", sexp ]
         sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
         sexp.cdr.cdr = quoting( sexp.cdr.cdr )
-        #pp ["quoting:3", sexp ]
         sexp
       elsif :let == sexp.car
         case sexp.cdr.car
@@ -824,10 +834,6 @@ class Evaluator
         if eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
           eval( sprintf( "@_macro = %s", sym ), @binding )
           @_tmp = sexp.cdr.map{ |x| x.car }
-          #p "_macro"
-          #p @_macro
-          #p "_tmp"
-          #pp @_tmp
           @_macro.call( *@_tmp )
         else
           sexp

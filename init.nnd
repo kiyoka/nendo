@@ -1,6 +1,8 @@
 ;;-*- mode: scheme; syntax: scheme -*-;;
 
+;; ----------------------------------------
 ;; car and cdr functions
+;; ----------------------------------------
 (define (caar x) (car (car x)))
 (define (cadr x) (car (cdr x)))
 (define (cdar x) (cdr (car x)))
@@ -29,11 +31,6 @@
 (define (cddadr x) (cdr (cdr (car (cdr x)))))
 (define (cdddar x) (cdr (cdr (cdr (car x)))))
 (define (cddddr x) (cdr (cdr (cdr (cdr x)))))
-
-;; ruby's p like function.
-(define (p x)
-  (printf "%s\n" x)
-  x)
 
 ;; ----------------------------------------
 ;; Higher-order functions
@@ -67,3 +64,8 @@
 ;; ----------------------------------------
 ;; pass through the argument value as return value.
 (define (pass x) x)
+
+;; ruby's p like function.
+(define (p x)
+  (printf "%s\n" x)
+  x)
