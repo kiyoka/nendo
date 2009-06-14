@@ -32,6 +32,17 @@
 (define (cdddar x) (cdr (cdr (cdr (car x)))))
 (define (cddddr x) (cdr (cdr (cdr (cdr x)))))
 
+
+;; ----------------------------------------
+;; basic forms
+;; ----------------------------------------
+(define (macroexpand sexp)
+  (let ((newsexp (macroexpand1 sexp)))
+    (if (not (equal? sexp newsexp))
+        (macroexpand newsexp)
+        newsexp)))
+
+
 ;; ----------------------------------------
 ;; Higher-order functions
 ;; ----------------------------------------
