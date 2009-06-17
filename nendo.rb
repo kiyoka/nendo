@@ -45,7 +45,11 @@ class Cell
       it = self
       while Nil != it.class
         yield it
-        it = it.cdr
+        if Cell == it.class
+          it = it.cdr
+        else
+          it = Nil.new
+        end
       end
     end
   end
@@ -297,15 +301,13 @@ class Reader
   end
 
   # list := sexp 
-  #       | atom . atom 
-  #       | atom ...
-  #       | lambda (arg1 arg2) body
-  #       | let ((arg1 value1) (arg2 value2)...) body
-  #       | let name ((arg1 value1) (arg2 value2)...) body
+  #      | atom ... atom
+  #      | atom ... . atom 
   def list
     printf( "  NonT: [%s]\n", "list" ) if @debug
     dotted = false
     cells = []
+    lastAtom = nil
     while true
       case curtoken.kind
       when T_LINEFEED
@@ -317,39 +319,37 @@ class Reader
         cells << Cell.new( sexp() )
       when T_RPAREN
         break
+      when T_DOT
+        token
+        lastAtom = atom()
+      when T_QUOTE
+        cells << Cell.new( sexp() )
       else
-        if curtoken.kind == T_DOT
-          if 1 == cells.size
-            dotted = true
-            token
-          else
-            print "Error : illegal dotted pair syntax"
-            break
-          end
-        elsif curtoken.kind == T_QUOTE
-          cells << Cell.new( sexp() )
+        if lastAtom
+          raise "Error : illegal dotted pair syntax."
         else
           cells << Cell.new( atom() )
         end
       end
     end
-    if dotted
-      ## dotted list
-      Cell.new( cells[0].car, cells[1].car )
-    else
-      ## setup list
-      if 0 == cells.size
-        Cell.new() # null list
-      elsif 1 == cells.size
-        cells.first
-      elsif 1 < cells.size
-        ptr = cells.pop
-        cells.reverse.each { |x|
-          x.cdr = ptr
-          ptr = x
-        }
-        cells.first
+    ## setup list
+    if 0 == cells.size
+      Cell.new() # null list
+    elsif 1 == cells.size
+      if lastAtom
+        cells.first.cdr = lastAtom
       end
+      cells.first
+    elsif 1 < cells.size
+      ptr = cells.pop
+      if lastAtom
+        ptr.cdr = lastAtom
+      end
+      cells.reverse.each { |x|
+        x.cdr = ptr
+        ptr = x
+      }
+      cells.first
     end
   end
 
@@ -624,17 +624,35 @@ class Evaluator
     "begin " + ar.join( ";" ) + " end"
   end
 
+  def toRubyArgument( argform )
+    argsyms = []
+    if Symbol == argform.class
+      argsyms[0] = "*" + toRubySymbol( argform )
+    else
+      argsyms    = argform.map { |x|
+        if Cell == x.class
+          toRubySymbol( x.car )
+        elsif Symbol == x.class
+          "*" + toRubySymbol( x )
+        else
+          raise "Error: makeClosure: unknown symbol type " + x
+        end
+      }
+    end
+    argsyms.join( "," )
+  end
+
   def makeClosure( sym, args )
     first   = args.car.cdr.car
     rest    = args.cdr
-    argsyms = first.map { |x| toRubySymbol( x.car ) }
+    argStr  = toRubyArgument( first )
     str = case sym
           when :macro
-            sprintf( "LispMacro.new { |%s| ", argsyms.join( "," ))
+            sprintf( "LispMacro.new { |%s| ", argStr )
           when :lambda
-            sprintf( "     Proc.new { |%s| ", argsyms.join( "," ))
+            sprintf( "     Proc.new { |%s| ", argStr )
           else
-            raise "Error: makeClosure unknown symbol type " + sym
+            raise "Error: makeClosure: unknown symbol type " + sym
           end
     ar = rest.map { |e|
       translate( e.car )
@@ -693,20 +711,23 @@ class Evaluator
     when Cell
       if sexp.isNull
         str += "Nil.new"
-      elsif sexp.isDotted
-        str += sprintf( "Cell.new(%s, %s)", genQuote( sexp.car ), genQuote( sexp.cdr ))
       else
-        arr = Array.new
-        arr << genQuote( sexp.car )
-        ptr = sexp.cdr
-        while Nil != ptr.class
-          arr << genQuote( ptr.car )
-          ptr = ptr.cdr
-        end
+        lastAtom = nil
+        arr = sexp.map { |x|
+          if x.is_a? Cell
+            genQuote( x.car )
+          else
+            lastAtom = genQuote( x ); false
+          end
+        }.select {|x| x}
+        #p "kiyoka:1"
+        #pp arr
+        #pp lastAtom
         str += "Cell.new("
         str += arr.map{ |e|
           e
         }.join( " ,Cell.new(" )
+        str += "," + lastAtom.to_s  if lastAtom
         str += arr.map{ |e|
           ")"
         }.join( "" )
@@ -876,18 +897,18 @@ class Printer
     end
     case sexp
     when Cell
-      arr = []
-      if sexp.isDotted
-        arr << sprintf( "%s . %s", _print(sexp.car), _print(sexp.cdr) )
-      else
-        arr << _print( sexp.car )
-        ptr = sexp.cdr
-        while Nil != ptr.class
-          arr << _print( ptr.car )
-          ptr = ptr.cdr
+      lastAtom = nil
+      arr = sexp.map { |x|
+        if x.is_a? Cell
+          _print( x.car )
+        else
+          lastAtom = _print( x ) ; false
         end
-      end
-      "(" +  arr.join( " " ) + ")"
+      }.select {|x| x}
+      #p "kiyoka:2"
+      #pp arr
+      #pp lastAtom
+      "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtom : "") + ")"
     when Symbol
       sprintf( "%s", sexp.to_s )
     when String
