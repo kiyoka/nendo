@@ -9,8 +9,9 @@ require 'pp'
 
 class Nil
   include Enumerable
-  def each
-  end
+  def each()      end
+  def to_arr() [] end
+  def length() 0  end
 end
 
 class LispString < String
@@ -437,84 +438,85 @@ module BuiltinFunctions
     end
   end
   
-  def _plus( *args )
-    __assertFlat( *args )
-    if 1 == args.length 
-      args[0]
+  def _plus( first, *rest )
+    raise TypeError if not (_number_P(first) or _string_P(first))
+    rest = rest[0].to_arr
+    __assertFlat( rest )
+    if 0 == rest.length 
+      first
     else
-      args[1..-1].inject(args[0]){|x,y| x+y}
+      rest.inject(first){|x,y| x+y}
     end
   end
   
-  def _minus( *args )
-    __assertFlat( *args )
-    if 1 == args.length 
-      - args[0]
+  def _minus( first, *rest )
+    raise TypeError if not (_number_P(first) or _string_P(first))
+    rest = rest[0].to_arr
+    __assertFlat( rest )
+    if 0 == rest.length 
+      - first
     else
-      args[1..-1].inject(args[0]){|x,y| x-y}
+      rest.inject(first){|x,y| x-y}
     end
   end
 
-  def _multi( *args )
-    __assertFlat( *args )
-    args.inject(1) {|x,y| x*y}
-  end
-
-  def _div( *args )
-    __assertFlat( *args )
-    if 1 == args.length 
-      1 / args[0]
+  def _multi( first, *rest )
+    raise TypeError if not _number_P(first)
+    rest = rest[0].to_arr
+    __assertFlat( rest )
+    if 0 == rest.length 
+      first
     else
-      args[1..-1].inject(args[0]) {|x,y| x/y}
+      rest.inject(first){|x,y| x*y}
     end
   end
 
-  def _mod( *args )
-    __assertFlat( *args )
-    if 1 == args.length 
-      1 % args[0]
+  def _div( first, *rest )
+    raise TypeError if not _number_P(first)
+    rest = rest[0].to_arr
+    __assertFlat( rest )
+    if 0 == rest.length 
+      1 / first
     else
-      args[1..-1].inject(args[0]) {|x,y| x%y}
+      rest.inject(first){|x,y| x/y}
     end
   end
 
-  def _not( *args )
-    if 1 < args.length
-      raise ArgumentError, "Error: wrong number of arguments: not requires 1"
+  def _mod( first, *rest )
+    raise TypeError if not _number_P(first)
+    rest = rest[0].to_arr
+    __assertFlat( rest )
+    if 0 == rest.length 
+      1 % first
     else
-      not args[0]
+      rest.inject(first){|x,y| x%y}
     end
   end
 
-  def _cons( *args )
-    if 2 == args.length
-      Cell.new( args[0], args[1] )
-    else
-      raise ArgumentError, "Error: wrong number of arguments: cons requires 2"
-    end
+  def _not( arg )  not arg  end
+
+  def _cons( first, second )
+    Cell.new( first, second )
   end
 
   def _exit( *args )
-    if 0 == args.length
+    if 0 == args[0].length
       Kernel::exit(0)
     else
-      Kernel::exit(args[0])
+      Kernel::exit(args[0][0])
     end
   end
 
-  def _print( *args )
-    __assertFlat( *args )
-    print( *args )
+  def _print( format, *rest )
+    print( format, *(rest[0].to_arr) )
   end
 
-  def _printf( *args )
-    __assertFlat( *args )
-    Kernel::printf( *args )
+  def _printf( format, *rest )
+    Kernel::printf( format, *(rest[0].to_arr) )
   end
 
-  def _sprintf( *args )
-    __assertFlat( *args )
-    Kernel::sprintf( *args )
+  def _sprintf( format, *rest )
+    Kernel::sprintf( format, *(rest[0].to_arr) )
   end
 
   def _null_P( arg )
@@ -526,7 +528,7 @@ module BuiltinFunctions
       false
     end
   end
-  def _list(    *args)      args.to_list end
+  def _list(    *args)      args[0] end
   def _sort(     arg )      arg.to_arr.sort.to_list end
   def _reverse(  arg )      arg.to_arr.reverse.to_list end
   def _uniq(     arg )      arg.to_arr.uniq.to_list end
@@ -602,17 +604,54 @@ class Evaluator
     name.gsub( /_P/, '?' ).gsub( /_E/, '!' )
   end
 
+  def toRubyArgument( origname, funcname, args )
+    eval( sprintf( "((defined? %s and _procedure_P( %s ))  ?  @_func = %s  :  @_func = false)", funcname, funcname, funcname ), @binding )
+    if not @_func
+      args.map { |x|  x.car.to_s   }.join( " , " )
+    else
+      num = @_func.arity
+      if 0 == num
+        raise ArgumentError  if 0 != args.length
+        ""
+      elsif 0 < num
+        raise ArgumentError  if num != args.length
+        args.map { |x|  x.car.to_s   }.join( " , " )
+      else
+        num = num.abs( )-1
+        raise ArgumentError  if num > args.length
+        params = []
+        rest = []
+        args.each_with_index { |x,i|
+          if i < num
+            params << x.car
+          else
+            rest   << x.car
+          end
+        }
+        strArray = []
+        if 0 < params.length
+          strArray << params.map { |x| x.to_s   }.join( " , " )
+        end
+        if 0 == rest.length
+          strArray << "Cell.new()"
+        else
+          strArray << rest.map   { |x| "Cell.new( " + x.to_s }.join( "," )   +   rest.map   { |x| ")" }.join( "" )
+        end
+        strArray.join( "," )
+      end
+    end
+  end
+
   def execFunc( funcname, args )
     case funcname
     when :define , :set!   # `define' and `set!' special form
       sprintf( "%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), args.cdr.car.to_s )
     else
+      origname = funcname.to_s
       funcname = funcname.to_s
       funcname = @alias[ funcname ] if @alias[ funcname ] 
       str  = sprintf( "%s.call(", toRubySymbol( funcname ))
-      str += args.map { |x|
-        x.car.to_s
-      }.join( " , " )
+      str += toRubyArgument( origname, toRubySymbol( funcname ), args )
       str += ")"
     end
   end
@@ -624,7 +663,7 @@ class Evaluator
     "begin " + ar.join( ";" ) + " end"
   end
 
-  def toRubyArgument( argform )
+  def toRubyParameter( argform )
     argsyms = []
     if Symbol == argform.class
       argsyms[0] = "*" + toRubySymbol( argform )
@@ -645,7 +684,7 @@ class Evaluator
   def makeClosure( sym, args )
     first   = args.car.cdr.car
     rest    = args.cdr
-    argStr  = toRubyArgument( first )
+    argStr  = toRubyParameter( first )
     str = case sym
           when :macro
             sprintf( "LispMacro.new { |%s| ", argStr )
@@ -697,11 +736,11 @@ class Evaluator
   end
 
   def apply( car, cdr )
-    ptr = cdr
-    while Nil != ptr.class
-      ptr.car = translate( ptr.car )
-      ptr = ptr.cdr
-    end
+    cdr.each { |x| 
+      if Cell == x.class
+        x.car = translate( x.car )
+      end
+    }
     execFunc( car, cdr )
   end
 
@@ -720,9 +759,6 @@ class Evaluator
             lastAtom = genQuote( x ); false
           end
         }.select {|x| x}
-        #p "kiyoka:1"
-        #pp arr
-        #pp lastAtom
         str += "Cell.new("
         str += arr.map{ |e|
           e
@@ -905,9 +941,6 @@ class Printer
           lastAtom = _print( x ) ; false
         end
       }.select {|x| x}
-      #p "kiyoka:2"
-      #pp arr
-      #pp lastAtom
       "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtom : "") + ")"
     when Symbol
       sprintf( "%s", sexp.to_s )
@@ -944,6 +977,7 @@ class Nendo
         if s[1] # EOF?
           break
         elsif Nil != s[0].class
+          printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
           @evaluator.lispEval( s[0], reader.sourcefile, lineno )
         end
       end
@@ -960,6 +994,7 @@ class Nendo
         break
       elsif Nil != s[0].class
         begin
+          printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
           print @printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
         rescue => e
           print e.message + "\n"
