@@ -665,20 +665,27 @@ class Evaluator
 
   def toRubyParameter( argform )
     argsyms = []
+    rest = nil
     if Symbol == argform.class
-      argsyms[0] = "*" + toRubySymbol( argform )
+      rest = toRubySymbol( argform )
+      argsyms[0] = "*__rest__"
     else
       argsyms    = argform.map { |x|
         if Cell == x.class
           toRubySymbol( x.car )
         elsif Symbol == x.class
-          "*" + toRubySymbol( x )
+          rest = toRubySymbol( x )
+          "*__rest__"
         else
           raise "Error: makeClosure: unknown symbol type " + x
         end
       }
     end
-    argsyms.join( "," )
+    if rest
+      sprintf( "|%s| %s = __rest__[0] ; ", argsyms.join( "," ), rest )
+    else
+      sprintf( "|%s|",                     argsyms.join( "," ))
+    end
   end
 
   def makeClosure( sym, args )
@@ -687,9 +694,9 @@ class Evaluator
     argStr  = toRubyParameter( first )
     str = case sym
           when :macro
-            sprintf( "LispMacro.new { |%s| ", argStr )
+            sprintf( "LispMacro.new { %s ", argStr )
           when :lambda
-            sprintf( "     Proc.new { |%s| ", argStr )
+            sprintf( "     Proc.new { %s ", argStr )
           else
             raise "Error: makeClosure: unknown symbol type " + sym
           end
