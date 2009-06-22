@@ -493,7 +493,10 @@ module BuiltinFunctions
     end
   end
 
-  def _not( arg )  not arg  end
+  def _not( arg )
+    arg = false   if Nil == arg.class
+    not arg
+  end
 
   def _cons( first, second )
     Cell.new( first, second )
@@ -604,42 +607,46 @@ class Evaluator
     name.gsub( /_P/, '?' ).gsub( /_E/, '!' )
   end
 
-  def toRubyArgument( origname, funcname, args )
-    eval( sprintf( "((defined? %s and _procedure_P( %s ))  ?  @_func = %s  :  @_func = false)", funcname, funcname, funcname ), @binding )
-    if not @_func
-      args.map { |x|  x.car.to_s   }.join( " , " )
-    else
-      num = @_func.arity
-      if 0 == num
-        raise ArgumentError  if 0 != args.length
-        ""
-      elsif 0 < num
-        raise ArgumentError  if num != args.length
-        args.map { |x|  x.car.to_s   }.join( " , " )
+  def toRubyArgument( origname, pred, args )
+    num = pred.arity
+    if 0 == num
+      raise ArgumentError  if 0 != args.length
+      []
+    elsif 0 < num
+      if args.isNull
+        [ Nil.new ]
       else
-        num = num.abs( )-1
-        raise ArgumentError  if num > args.length
-        params = []
-        rest = []
-        args.each_with_index { |x,i|
-          if i < num
-            params << x.car
-          else
-            rest   << x.car
-          end
-        }
-        strArray = []
-        if 0 < params.length
-          strArray << params.map { |x| x.to_s   }.join( " , " )
-        end
-        if 0 == rest.length
-          strArray << "Cell.new()"
-        else
-          strArray << rest.map   { |x| "Cell.new( " + x.to_s }.join( "," )   +   rest.map   { |x| ")" }.join( "" )
-        end
-        strArray.join( "," )
+        raise ArgumentError  if num != args.length
+        args.map { |x|  x.car }
       end
+    else
+      num = num.abs( )-1
+      raise ArgumentError  if num > args.length
+      params = []
+      rest = []
+      args.each_with_index { |x,i|
+        if i < num
+          params << x.car
+        else
+          rest   << x.car
+        end
+      }
+      result = []
+      if 0 < params.length
+        result = params
+      end
+      if 0 == rest.length
+        result << Cell.new
+      else
+        result << rest.to_list
+      end
+      result
     end
+  end
+
+  def callProcedure( origname, pred, args )
+    rubyArgument = toRubyArgument( origname, pred, args )
+    pred.call( *rubyArgument )
   end
 
   def execFunc( funcname, args )
@@ -650,9 +657,9 @@ class Evaluator
       origname = funcname.to_s
       funcname = funcname.to_s
       funcname = @alias[ funcname ] if @alias[ funcname ] 
-      str  = sprintf( "%s.call(", toRubySymbol( funcname ))
-      str += toRubyArgument( origname, toRubySymbol( funcname ), args )
-      str += ")"
+      argStr  = args.map { |x| x.car.to_s }.join( " ,Cell.new(" )
+      argStr += args.map { |x| "" }.join( ")" )
+      sprintf( "callProcedure( '%s', %s, Cell.new( %s ))", origname, toRubySymbol( funcname ), argStr )
     end
   end
 

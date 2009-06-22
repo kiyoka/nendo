@@ -85,7 +85,7 @@ describe Nendo, "when call replStr() with comparative operators" do
     @nendo.replStr( " (equal? 1 1) " ).should == "true"
     @nendo.replStr( " (equal? 1 2) " ).should == "false"
     @nendo.replStr( " (equal? 2 2) " ).should == "true"
-    @nendo.replStr( " (equal? '() '()) " ).should == "true"
+    lambda { @nendo.replStr( " (equal? '() '()) " ) }.should                raise_error(ArgumentError)
     @nendo.replStr( " (equal? '(1) '(1)) " ).should == "true"
     @nendo.replStr( " (equal? '(1) '(2)) " ).should == "false"
     @nendo.replStr( " (equal? '(1 2 3) '(1 2 3)) " ).should == "true"
@@ -115,7 +115,7 @@ describe Nendo, "when call replStr() with boolean operators" do
     @nendo.replStr( " (not \"str\") " ).should == "false"
     @nendo.replStr( " (not not) " ).should == "false"
     @nendo.replStr( " (not (not true)) " ).should == "true"
-    @nendo.replStr( " (not '()) " ).should == "false"
+    @nendo.replStr( " (not '()) " ).should == "true"
     @nendo.replStr( " (not '(1)) " ).should == "false"
   end
 end
@@ -137,7 +137,7 @@ describe Nendo, "when call replStr() with `+' function" do
     @nendo.replStr( " (+ 1.1 '() ) " ).should == "1.1"
     lambda { @nendo.replStr( " (+) " ) }.should              raise_error(ArgumentError)
     lambda { @nendo.replStr( " (+ '(1) ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.replStr( " (+ '() ) " ) }.should         raise_error(TypeError)
+    lambda { @nendo.replStr( " (+ '() ) " ) }.should         raise_error(ArgumentError)
     lambda { @nendo.replStr( " (+ 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
     lambda { @nendo.replStr( " (+ \"a\" 1) " ) }.should      raise_error(TypeError)
     lambda { @nendo.replStr( " (+ \"a\" 1.1) " ) }.should    raise_error(TypeError)
@@ -160,7 +160,7 @@ describe Nendo, "when call replStr() with `-' function" do
     @nendo.replStr( " (- 1.1 '() ) " ).should == "-1.1"
     lambda { @nendo.replStr( " (-) " ) }.should              raise_error(ArgumentError)
     lambda { @nendo.replStr( " (- '(1) ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.replStr( " (- '() ) " ) }.should         raise_error(TypeError)
+    lambda { @nendo.replStr( " (- '() ) " ) }.should         raise_error(ArgumentError)
     lambda { @nendo.replStr( " (- 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
   end
 end
@@ -181,7 +181,7 @@ describe Nendo, "when call replStr() with `*' function" do
     @nendo.replStr( " (* 1.1 '() ) " ).should == "1.1"
     lambda { @nendo.replStr( " (*) " ) }.should              raise_error(ArgumentError)
     lambda { @nendo.replStr( " (* '(1) ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.replStr( " (* '() ) " ) }.should         raise_error(TypeError)
+    lambda { @nendo.replStr( " (* '() ) " ) }.should         raise_error(ArgumentError)
     lambda { @nendo.replStr( " (* 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
   end
 end
@@ -204,7 +204,7 @@ describe Nendo, "when call replStr() with `/' function" do
     @nendo.replStr( " (/ 1 '() ) " ).should == "1"
     @nendo.replStr( " (/ 1.1 '() ) " ).should == "0.909090909090909"
     lambda { @nendo.replStr( " (/) " ) }.should             raise_error(ArgumentError)
-    lambda { @nendo.replStr( " (/ '() ) " ) }.should        raise_error(TypeError)
+    lambda { @nendo.replStr( " (/ '() ) " ) }.should        raise_error(ArgumentError)
     lambda { @nendo.replStr( " (/ 1.1 \"a\" ) " ) }.should  raise_error(TypeError)
   end
 end
@@ -226,7 +226,7 @@ describe Nendo, "when call replStr() with `%' function" do
     @nendo.replStr( " (% 1 '() ) " ).should == "0"
     @nendo.replStr( " (% 1.1 '() ) " ).should == "1.0"
     lambda { @nendo.replStr( " (\%) " ) }.should             raise_error(ArgumentError)
-    lambda { @nendo.replStr( " (\% '() ) " ) }.should        raise_error(TypeError)
+    lambda { @nendo.replStr( " (\% '() ) " ) }.should        raise_error(ArgumentError)
     lambda { @nendo.replStr( " (\% 1.1 \"a\" ) " ) }.should  raise_error(TypeError)
   end
 end
