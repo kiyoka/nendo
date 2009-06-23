@@ -80,7 +80,7 @@ class Cell
   end
 
   def isNull
-    (Nil  == @car.class)
+    ((Nil  == @car.class) and (Nil == @cdr.class))
   end
 
   def to_arr
@@ -904,8 +904,7 @@ class Evaluator
       elsif sexp.car.class == Symbol
         if eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
           eval( sprintf( "@_macro = %s", sym ), @binding )
-          @_tmp = sexp.cdr.map{ |x| x.car }
-          @_macro.call( *@_tmp )
+          callProcedure( sym, @_macro, sexp.cdr )
         else
           sexp
         end

@@ -85,7 +85,7 @@ describe Nendo, "when call replStr() with comparative operators" do
     @nendo.replStr( " (equal? 1 1) " ).should == "true"
     @nendo.replStr( " (equal? 1 2) " ).should == "false"
     @nendo.replStr( " (equal? 2 2) " ).should == "true"
-    lambda { @nendo.replStr( " (equal? '() '()) " ) }.should                raise_error(ArgumentError)
+    @nendo.replStr( " (equal? '() '()) " ).should == "true"
     @nendo.replStr( " (equal? '(1) '(1)) " ).should == "true"
     @nendo.replStr( " (equal? '(1) '(2)) " ).should == "false"
     @nendo.replStr( " (equal? '(1 2 3) '(1 2 3)) " ).should == "true"

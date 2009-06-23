@@ -34,6 +34,18 @@
 
 
 ;; ----------------------------------------
+;; List Utility functions
+;; ----------------------------------------
+(define iota range)
+
+(define (append a b)
+  (define (append_reverse a b)
+    (if (pair? a)
+        (append_reverse (cdr a) (cons (car a) b))
+        b))
+  (append_reverse (reverse a) b))
+
+;; ----------------------------------------
 ;; basic forms
 ;; ----------------------------------------
 (define (macroexpand sexp)
@@ -64,11 +76,6 @@
              (filter pred (cdr lst)))
             (filter pred (cdr lst))))))
 
-
-;; ----------------------------------------
-;; List Utility functions
-;; ----------------------------------------
-(define iota range)
 
 ;; ----------------------------------------
 ;; Utility function for testing
