@@ -249,7 +249,7 @@ class Reader
           str = ""
           T_COMMENT
         when /[_a-zA-Z]/ # symbol
-          str += readwhile( /[_a-zA-Z0-9+*\/=!<>&|?%-]/ )
+          str += readwhile( /[_a-zA-Z0-9+*\/=!<>&|?%]/ )
           T_SYMBOL
         when /[+*\/=!<>&|%-]/ # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
@@ -529,6 +529,15 @@ module BuiltinFunctions
       arg.isNull
     else
       false
+    end
+  end
+  def _length(   arg )
+    if _null_P( arg )
+      0
+    elsif arg.is_a? Cell
+      arg.length
+    else
+      raise TypeError
     end
   end
   def _list(    *args)      args[0] end

@@ -347,6 +347,12 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (macro? 'a) " ).should == "false"
     @nendo.replStr( " (macro? '(1)) " ).should == "false"
     @nendo.replStr( " (macro? '()) " ).should == "false"
+    @nendo.replStr( " (length '()) " ).should == "0"
+    @nendo.replStr( " (length '(1)) " ).should == "1"
+    @nendo.replStr( " (length '((1))) " ).should == "1"
+    @nendo.replStr( " (length '(1 2)) " ).should == "2"
+    lambda { @nendo.replStr( " (length \"str\") " ) }.should  raise_error(TypeError)
+    lambda { @nendo.replStr( " (length 1) " ) }.should  raise_error(TypeError)
   end
 end
 
