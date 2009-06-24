@@ -449,6 +449,13 @@ describe Nendo, "when call functions in init.scm " do
     @nendo.replStr( " (cdar '((5 6 7 8))) " ).should == "(6 7 8)"
     @nendo.replStr( " (cadar '((5 6 7 8))) " ).should == "6"
     @nendo.replStr( " (cddar '((5 6 7 8))) " ).should == "(7 8)"
+    @nendo.replStr( " (iota 1) " ).should == "(0)"
+    @nendo.replStr( " (iota 3) " ).should == "(0 1 2)"
+    @nendo.replStr( " (append '() '()) " ).should == "()"
+    @nendo.replStr( " (append '(1) '()) " ).should == "(1)"
+    @nendo.replStr( " (append '() '(2)) " ).should == "(2)"
+    @nendo.replStr( " (append '(1) '(2)) " ).should == "(1 2)"
+    @nendo.replStr( " (append '(1 2) '(3 4)) " ).should == "(1 2 3 4)"
     pending( "These macro will be implemented in the future." ) do
       @nendo.replStr( " (or true) " ).should == "true"
       @nendo.replStr( " (or false) " ).should == "false"

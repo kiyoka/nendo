@@ -54,35 +54,31 @@
         (macroexpand newsexp)
         newsexp)))
 
-(define caseblock
-  (lambda (elem . elseblock)
-    (let ((condition (car elem))
-          (body      (cdr elem)))
-      (append
-       (list 'if
-             (if (eq? 'else condition)
-                 true
-                 condition)
-             (cons 'begin body))
-       (if (< 0 (length elseblock))
-           elseblock
-           '())))))
-
-;;(caseblock '(true (print "1") (newline)) '())
-;;(caseblock '(else (print "1") (newline)) '(if))
-
-(define (cond_iter lst)
-  (if (eq? 0 (length lst))
-      '()
-      (if (eq? 1 (length lst))
-          (caseblock (car lst) '())
-          (caseblock (car lst)
-                     (cond_iter (cdr lst))))))
-
 (define cond
   (macro lst
-    (cond_iter lst)))
+    (define caseblock
+      (lambda (elem . elseblock)
+        (let ((condition (car elem))
+              (body      (cdr elem)))
+          (append
+           (list 'if
+                 (if (eq? 'else condition)
+                     true
+                     condition)
+                 (cons 'begin body))
+           (if (< 0 (length elseblock))
+               elseblock
+               '())))))
 
+    (define (cond_iter lst)
+      (if (eq? 0 (length lst))
+          '()
+          (if (eq? 1 (length lst))
+              (caseblock (car lst) '())
+              (caseblock (car lst)
+                         (cond_iter (cdr lst))))))
+
+    (cond_iter lst)))
 
 
 ;; ----------------------------------------
