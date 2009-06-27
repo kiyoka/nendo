@@ -28,6 +28,9 @@ describe Cell, "when initialized as '(100)" do
     @cell.size.should == 1
     @cell.car.should == 100
     @cell.cdr.class.should == Nil
+    @cell.to_arr.should == [ 100 ]
+    @cell.lastCell.car.should == 100
+    @cell.lastCell.cdr.class.should == Nil
   end
 end
 
@@ -39,16 +42,19 @@ describe Cell, "when initialized as '(100 . 200)" do
   it "should" do
     @cell.isNull.should_not be_true
     @cell.isDotted.should be_true
-    lambda { @cell.length }.should raise_error(TypeError)
-    lambda { @cell.size }.should   raise_error(TypeError)
+    @cell.length.should == 1
+    @cell.size.should == 1
     @cell.car.should == 100
     @cell.cdr.should == 200
+    @cell.to_arr.should == [ 100 ]
+    @cell.lastCell.car.should == 100
+    @cell.lastCell.cdr.should == 200
   end
 end
 
 describe Nendo, "when call replStr() with literals" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo.new(true)
   end
   it "should" do
     @nendo.replStr( " 1 " ).should == "1"
@@ -66,7 +72,7 @@ end
 
 describe Nendo, "when call replStr() with comparative operators" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo.new(true)
   end
   it "should" do
     @nendo.replStr( " (= 1 1) " ).should == "true"
@@ -291,8 +297,8 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (list '(a) '((b c))) " ).should == "((a) ((b c)))"
     @nendo.replStr( " (list) " ).should == "()"
     @nendo.replStr( " (list 1) " ).should == "(1)"
-    @nendo.replStr( " (define aFunc (lambda (x) x)) true" ).should == "true"
-    @nendo.replStr( " (define aMacro (macro (x) x)) true" ).should == "true"
+    @nendo.replStr( " (set! aFunc (lambda (x) x)) true" ).should == "true"
+    @nendo.replStr( " (set! aMacro (macro (x) x)) true" ).should == "true"
     @nendo.replStr( " (procedure? car) " ).should == "true"
     @nendo.replStr( " (procedure? aFunc) " ).should == "true"
     @nendo.replStr( " (procedure? aMacro) " ).should == "false"
@@ -361,18 +367,18 @@ describe Nendo, "when call replStr() with variable modifications" do
     @nendo = Nendo.new()
   end
   it "should" do
-    @nendo.replStr( " (define x 1)     x " ).should == "1"
-    @nendo.replStr( " (define x 2)     x " ).should == "2"
-    @nendo.replStr( " (define x 100)   x " ).should == "100"
-    @nendo.replStr( " (define x true)  x " ).should == "true"
-    @nendo.replStr( " (define x false) x " ).should == "false"
-    @nendo.replStr( " (define x nil) x " ).should   == "nil"
-    @nendo.replStr( " (define x '()) x " ).should   == "()"
-    @nendo.replStr( " (define x '(1)) x " ).should   == "(1)"
-    @nendo.replStr( " (define x (+ 1 2 3)) x " ).should   == "6"
-    @nendo.replStr( " (define x (sprintf \"$%02X\" 17))    x  x  x " ).should   == "\"$11\""
+    @nendo.replStr( " (set! x 1)     x " ).should == "1"
+    @nendo.replStr( " (set! x 2)     x " ).should == "2"
+    @nendo.replStr( " (set! x 100)   x " ).should == "100"
+    @nendo.replStr( " (set! x true)  x " ).should == "true"
+    @nendo.replStr( " (set! x false) x " ).should == "false"
+    @nendo.replStr( " (set! x nil) x " ).should   == "nil"
+    @nendo.replStr( " (set! x '()) x " ).should   == "()"
+    @nendo.replStr( " (set! x '(1)) x " ).should   == "(1)"
+    @nendo.replStr( " (set! x (+ 1 2 3)) x " ).should   == "6"
+    @nendo.replStr( " (set! x (sprintf \"$%02X\" 17))    x  x  x " ).should   == "\"$11\""
     @nendo.replStr( " 1 2 3 " ).should   == "3"
-    @nendo.replStr( " (define x 3.14)  (set! x (* x 2))          x " ).should   == "6.28"
+    @nendo.replStr( " (set! x 3.14)  (set! x (* x 2))          x " ).should   == "6.28"
     @nendo.replStr( " 1 \n 2 \n 3 \n " ).should   == "3"
   end
 end
@@ -401,7 +407,7 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo.replStr( " (begin 1) " ).should == "1"
     @nendo.replStr( " (begin 1 2) " ).should == "2"
     @nendo.replStr( " (begin 1 2 3) " ).should == "3"
-    @nendo.replStr( " (define x 2) (define y (begin (set! x (* x 2)) (set! x (* x 2)) (set! x (* x 2)) 100))  (+ x y)" ).should == "116"
+    @nendo.replStr( " (set! x 2) (set! y (begin (set! x (* x 2)) (set! x (* x 2)) (set! x (* x 2)) 100))  (+ x y)" ).should == "116"
     @nendo.replStr( " (let ()                 100) " ).should == "100"
     @nendo.replStr( " (let ((a 11))           a) " ).should == "11"
     @nendo.replStr( " (let ((a 11) (b 22))    (+ a b)) " ).should == "33"
@@ -409,11 +415,10 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo.replStr( " (if true   '(1) '(2))" ).should == "(1)"
     @nendo.replStr( " (if false  'T 'F)" ).should == "F"
     @nendo.replStr( " (if false  '(1) '(2))" ).should == "(2)"
-    @nendo.replStr( " (define x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
-    @nendo.replStr( " (define x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"
-    @nendo.replStr( " (define func (lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
-    @nendo.replStr( " (define (func arg1) arg1)                       (list (func 3) (func 4))" ).should == "(3 4)"
-    @nendo.replStr( " (define (map pred lst)  (if (null? lst)      '()      (cons       (pred (car lst))       (map pred (cdr lst)))))      (define foreach map)   (map (lambda (x) x) '(1 2 3))" ).should == "(1 2 3)"
+    @nendo.replStr( " (set! x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
+    @nendo.replStr( " (set! x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"
+    @nendo.replStr( " (set! func (lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
+    @nendo.replStr( " (set! (func arg1) arg1)                       (list (func 3) (func 4))" ).should == "(3 4)"
     pending( "These anonymous procedure code does not work." ) do
       @nendo.replStr( " ((lambda (arg1) arg1)  3)" ).should == "3" 
       @nendo.replStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
@@ -426,13 +431,13 @@ describe Nendo, "when call replStr() with macroexpand1 function" do
     @nendo = Nendo.new()
   end
   it "should" do
-    @nendo.replStr( " (define twice (macro (x) (list 'begin x x)))           (macroexpand1 '(twice (+ 1 1))) " ).should == "(begin (+ 1 1) (+ 1 1))"
-    @nendo.replStr( " (define inc (macro (x) (list 'set! x (list '+ x 1))))  (macroexpand1 '(inc a)) " ).should == "(set! a (+ a 1))"
-    @nendo.replStr( " (define a 10) (inc a) " ).should == "11"
-    @nendo.replStr( " (define a 10) (inc a) (inc a)" ).should == "12"
+    @nendo.replStr( " (set! twice (macro (x) (list 'begin x x)))           (macroexpand1 '(twice (+ 1 1))) " ).should == "(begin (+ 1 1) (+ 1 1))"
+    @nendo.replStr( " (set! inc (macro (x) (list 'set! x (list '+ x 1))))  (macroexpand1 '(inc a)) " ).should == "(set! a (+ a 1))"
+    @nendo.replStr( " (set! a 10) (inc a) " ).should == "11"
+    @nendo.replStr( " (set! a 10) (inc a) (inc a)" ).should == "12"
     @nendo.replStr( " (macroexpand1 '(twice (twice (inc a))))" ).should == "(begin (twice (inc a)) (twice (inc a)))"
     @nendo.replStr( " (macroexpand1 (macroexpand1 '(twice (twice (inc a)))))" ).should == "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
-    @nendo.replStr( " (define a 10) (twice (twice (inc a)))" ).should == "14"
+    @nendo.replStr( " (set! a 10) (twice (twice (inc a)))" ).should == "14"
   end
 end
 
