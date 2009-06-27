@@ -9,9 +9,11 @@ require 'pp'
 
 class Nil
   include Enumerable
-  def each()      end
-  def to_arr() [] end
-  def length() 0  end
+  def each()            end
+  def to_arr()    []    end
+  def length()    0     end
+  def isNull()    true  end
+  def isDotted()  false end
 end
 
 class LispString < String
@@ -46,7 +48,7 @@ class Cell
       it = self
       while Nil != it.class
         yield it
-        if Cell == it.class
+        if it.cdr.is_a? Cell
           it = it.cdr
         else
           it = Nil.new
@@ -55,25 +57,8 @@ class Cell
     end
   end
 
-  def length
-    if isNull
-      0
-    elsif isDotted
-      raise TypeError, "Error: proper list required"
-    else
-      count = 0
-      it = self
-      begin
-        it = it.cdr
-        count += 1
-      end while Nil != it.class
-      count
-    end
-  end
-
-  def size # alias of length
-    length
-  end    
+  def length() self.to_arr.length  end
+  def size()   self.length         end # alias of length
 
   def isDotted
     ((Cell != @cdr.class) and (Nil != @cdr.class))
@@ -83,6 +68,21 @@ class Cell
     ((Nil  == @car.class) and (Nil == @cdr.class))
   end
 
+  def lastCell
+    lastOne = self
+    self.each { |x| lastOne = x }
+    lastOne
+  end
+
+  def lastAtom
+    lastOne = self.lastCell
+    if lastOne.isDotted
+      lastOne.cdr
+    else
+      nil
+    end
+  end
+
   def to_arr
     if isNull
       []
@@ -90,11 +90,10 @@ class Cell
       self.map {|x| x.car}
     end
   end
-
 end
 
 class Array
-  def to_list
+  def to_list( lastAtom = nil )
     if 0 == self.length
       Nil.new
     else
@@ -102,6 +101,7 @@ class Array
         Cell.new( x )
       }
       ptr = cells.pop
+      ptr.cdr = lastAtom  if lastAtom
       cells.reverse.each { |x|
         x.cdr = ptr
         ptr = x
@@ -545,7 +545,6 @@ module BuiltinFunctions
   def _reverse(  arg )      arg.to_arr.reverse.to_list end
   def _uniq(     arg )      arg.to_arr.uniq.to_list end
   def _range(    num )      (0..num-1).map.to_list end
-  def _macroexpand1( arg )  _macroexpand1( arg ) end
   def _eq_P(      a,b )      a ==  b end
   def _gt_P(      a,b )      a >   b end
   def _ge_P(      a,b )      a >=  b end
@@ -568,6 +567,13 @@ module BuiltinFunctions
   end
   def _number_P(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
   def _string_P(   arg )    String == arg.class end
+  def _macroexpand1( arg )
+    if _pair_P( arg )
+      macroexpand1( arg )
+    else
+      Cell.new
+    end
+  end
 end
 
 
@@ -660,7 +666,7 @@ class Evaluator
 
   def execFunc( funcname, args )
     case funcname
-    when :define , :set!   # `define' and `set!' special form
+    when :set!   # `set!' special form
       sprintf( "%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), args.cdr.car.to_s )
     else
       origname = funcname.to_s
@@ -683,21 +689,14 @@ class Evaluator
     argsyms = []
     rest = nil
     if Symbol == argform.class
-      rest = toRubySymbol( argform )
-      argsyms[0] = "*__rest__"
+      rest       = argform
     else
-      argsyms    = argform.map { |x|
-        if Cell == x.class
-          toRubySymbol( x.car )
-        elsif Symbol == x.class
-          rest = toRubySymbol( x )
-          "*__rest__"
-        else
-          raise "Error: makeClosure: unknown symbol type " + x
-        end
-      }
+      argsyms    = argform.map { |x|  toRubySymbol( x.car ) }
+      rest       = argform.lastAtom
     end
     if rest
+      rest       = toRubySymbol( rest ) 
+      argsyms    << "*__rest__"
       sprintf( "|%s| %s = __rest__[0] ; ", argsyms.join( "," ), rest )
     else
       sprintf( "|%s|",                     argsyms.join( "," ))
@@ -738,22 +737,27 @@ class Evaluator
 
   def makeLet( args )
     _name = "___lambda"
-    if :quote == args.car.car
-      _name = args.car.cdr.car.to_s
-      args = args.cdr
+    str = ""
+    argvals = []
+    if args.car.is_a? Nil
+      # nothing to do
+      str = sprintf( "%s = lambda { || ", _name )
+      rest = args.cdr
+    else
+      if :quote == args.car.car
+        _name = args.car.cdr.car.to_s
+        args = args.cdr
+      end
+      rest = args.cdr
+      argsyms = args.car.map { |x|
+        toRubySymbol( x.car.car.cdr.car.to_s )
+      }
+      argvals = args.car.map { |x|
+        translate( x.car.cdr.car )
+      }
+      str = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
     end
-    rest = args.cdr
-    str = _name + " = "
-    argsyms = args.car.map { |x|
-      toRubySymbol( x.car.car.cdr.car.to_s )
-    }
-    argvals = args.car.map { |x|
-      translate( x.car.cdr.car )
-    }
-    str += sprintf( "lambda { |%s| ", argsyms.join( "," ))
-    ar = rest.map { |e|
-      translate( e.car )
-    }
+    ar = rest.map { |e|  translate( e.car ) }
     str += ar.join( ";" ) + "}\n"
     str += sprintf( "%s.call( %s )\n", _name, argvals.join( "," ))
   end
@@ -774,22 +778,12 @@ class Evaluator
       if sexp.isNull
         str += "Nil.new"
       else
-        lastAtom = nil
-        arr = sexp.map { |x|
-          if x.is_a? Cell
-            genQuote( x.car )
-          else
-            lastAtom = genQuote( x ); false
-          end
-        }.select {|x| x}
+        arr = sexp.map { |x| genQuote( x.car ) }
         str += "Cell.new("
-        str += arr.map{ |e|
-          e
-        }.join( " ,Cell.new(" )
-        str += "," + lastAtom.to_s  if lastAtom
-        str += arr.map{ |e|
-          ")"
-        }.join( "" )
+        str += arr.join( " ,Cell.new(" )
+        lastAtom = sexp.lastAtom
+        str += "," + genQuote( lastAtom )  if lastAtom
+        str += arr.map{ |e| ")" }.join
       end
     when Symbol
       case sexp
@@ -873,15 +867,7 @@ class Evaluator
     when Cell
       if :quote == sexp.car
         sexp
-      elsif :define == sexp.car and Cell == sexp.cdr.car.class    # (define (func arg1 arg2 ...) body)  form
-        second = sexp.cdr.car
-        third  = sexp.cdr.cdr
-        sexp.cdr = _cons( second.car,
-                          _cons( _cons( :lambda,
-                                        _cons( second.cdr, third )),
-                                 Nil.new ))
-        quoting( sexp )
-      elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
+      elsif :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
         sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
         sexp.cdr.cdr = quoting( sexp.cdr.cdr )
         sexp
@@ -902,23 +888,22 @@ class Evaluator
     end
   end
 
-  def _macroexpand1( sexp )
+  def macroexpand1( sexp )
     case sexp
     when Cell
-      sym = sexp.car.to_s
-      sym = @alias[ sym ]  if @alias[ sym ]
-      sym = toRubySymbol( sym )
-      if :quote == sexp.car or :define == sexp.car or :set! == sexp.car or :if == sexp.car or :begin == sexp.car or :lambda == sexp.car or :macro == sexp.car
-        Cell.new( sexp.car, _macroexpand1( sexp.cdr ))
-      elsif sexp.car.class == Symbol
-        if eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
+      if :quote == sexp.car
+        sexp
+      else
+        sym = sexp.car.to_s
+        sym = @alias[ sym ]  if @alias[ sym ]
+        sym = toRubySymbol( sym )
+        if sexp.car.class == Symbol and eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
           eval( sprintf( "@_macro = %s", sym ), @binding )
           callProcedure( sym, @_macro, sexp.cdr )
         else
-          sexp
+          arr = sexp.map { |x| macroexpand1( x.car ) }
+          arr.to_list( sexp.lastAtom )
         end
-      else
-        Cell.new( _macroexpand1( sexp.car ), _macroexpand1( sexp.cdr ))
       end
     else
       sexp
@@ -928,7 +913,7 @@ class Evaluator
   def lispCompile( sexp )
     converge = true
     begin
-      newSexp = _macroexpand1( sexp )
+      newSexp  = macroexpand1( sexp )
       converge = _equal_P( newSexp, sexp )
       sexp = newSexp
     end until converge
@@ -955,14 +940,9 @@ class Printer
     end
     case sexp
     when Cell
-      lastAtom = nil
-      arr = sexp.map { |x|
-        if x.is_a? Cell
-          _print( x.car )
-        else
-          lastAtom = _print( x ) ; false
-        end
-      }.select {|x| x}
+      arr = sexp.map { |x| _print( x.car ) }
+      lastAtom = sexp.lastAtom
+      lastAtom = _print( lastAtom )  if lastAtom
       "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtom : "") + ")"
     when Symbol
       sprintf( "%s", sexp.to_s )
@@ -1027,7 +1007,7 @@ class Nendo
     end
   end
 
-  def replStr( str, debug = false )
+  def replStr( str )
     sio       = StringIO.open( str )
     reader    = Reader.new( sio, "(string)", false )
     result    = nil

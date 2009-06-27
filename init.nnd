@@ -1,6 +1,22 @@
 ;;-*- mode: scheme; syntax: scheme -*-;;
 
 ;; ----------------------------------------
+;; define
+;; ----------------------------------------
+(set! define
+      (macro (arg . body)
+        (if (not (pair? arg))
+            (cons 'set!
+                  (cons arg
+                        body))
+            (cons 'set!
+                  (cons (car arg)
+                        (list
+                         (cons 'lambda
+                               (cons  (cdr arg)
+                                      body))))))))
+
+;; ----------------------------------------
 ;; car and cdr functions
 ;; ----------------------------------------
 (define (caar x) (car (car x)))
@@ -37,6 +53,13 @@
 ;; List Utility functions
 ;; ----------------------------------------
 (define iota range)
+
+(macroexpand1
+ '(define (append_reverse a b)
+    (if (pair? a)
+        (append_reverse (cdr a) (cons (car a) b))
+        b)))
+ 
 
 (define (append a b)
   (define (append_reverse a b)

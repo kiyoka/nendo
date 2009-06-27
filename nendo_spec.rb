@@ -14,6 +14,7 @@ describe Cell, "when initialized as '()" do
     @cell.to_arr.should == []
     @cell.class.should == Cell
     @cell.map{ |x| x }.should == []
+    @cell.lastAtom.should == nil
   end
 end
 
@@ -31,6 +32,7 @@ describe Cell, "when initialized as '(100)" do
     @cell.to_arr.should == [ 100 ]
     @cell.lastCell.car.should == 100
     @cell.lastCell.cdr.class.should == Nil
+    @cell.lastAtom.should == nil
   end
 end
 
@@ -52,9 +54,29 @@ describe Cell, "when initialized as '(100 . 200)" do
   end
 end
 
+describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
+  before do
+    @cell = Cell.new( 100, Cell.new( 200, 300 ))
+  end
+  
+  it "should" do
+    @cell.isNull.should_not   be_true
+    @cell.isDotted.should_not be_true
+    @cell.length.should == 2
+    @cell.size.should == 2
+    @cell.car.should == 100
+    @cell.cdr.car.should == 200
+    @cell.cdr.cdr.should == 300
+    @cell.to_arr.should == [ 100, 200 ]
+    @cell.lastCell.car.should == 200
+    @cell.lastCell.cdr.should == 300
+    @cell.lastAtom.should == 300
+  end
+end
+
 describe Nendo, "when call replStr() with literals" do
   before do
-    @nendo = Nendo.new(true)
+    @nendo = Nendo.new()
   end
   it "should" do
     @nendo.replStr( " 1 " ).should == "1"
@@ -72,7 +94,7 @@ end
 
 describe Nendo, "when call replStr() with comparative operators" do
   before do
-    @nendo = Nendo.new(true)
+    @nendo = Nendo.new()
   end
   it "should" do
     @nendo.replStr( " (= 1 1) " ).should == "true"
@@ -418,7 +440,6 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo.replStr( " (set! x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
     @nendo.replStr( " (set! x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"
     @nendo.replStr( " (set! func (lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
-    @nendo.replStr( " (set! (func arg1) arg1)                       (list (func 3) (func 4))" ).should == "(3 4)"
     pending( "These anonymous procedure code does not work." ) do
       @nendo.replStr( " ((lambda (arg1) arg1)  3)" ).should == "3" 
       @nendo.replStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
