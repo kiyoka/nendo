@@ -79,19 +79,18 @@
 
 (define cond
   (macro lst
-    (define caseblock
-      (lambda (elem . elseblock)
-        (let ((condition (car elem))
-              (body      (cdr elem)))
-          (append
-           (list 'if
-                 (if (eq? 'else condition)
-                     true
-                     condition)
-                 (cons 'begin body))
-           (if (< 0 (length elseblock))
-               elseblock
-               '())))))
+    (define (caseblock elem . elseblock)
+      (let ((condition (car elem))
+            (body      (cdr elem)))
+        (append
+         (list 'if
+               (if (eq? 'else condition)
+                   true
+                   condition)
+               (cons 'begin body))
+         (if (< 0 (length elseblock))
+             elseblock
+             '()))))
 
     (define (cond_iter lst)
       (if (eq? 0 (length lst))
