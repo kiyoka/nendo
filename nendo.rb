@@ -874,10 +874,12 @@ class Evaluator
       elsif :let == sexp.car
         case sexp.cdr.car
         when Cell        # let
-          sexp.cdr.car     = letArgumentList( sexp.cdr.car )
+          sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
+                               quoting( sexp.cdr.cdr ))
         when Symbol      # named let
           sexp.cdr.car     = Cell.new( :quote, Cell.new( sexp.cdr.car ))
-          sexp.cdr.cdr.car = letArgumentList( sexp.cdr.cdr.car )
+          sexp.cdr.cdr     = Cell.new( letArgumentList( sexp.cdr.cdr.car ),
+                                       quoting( sexp.cdr.cdr.cdr ))
         end
         sexp
       else

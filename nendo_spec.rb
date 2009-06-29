@@ -433,6 +433,8 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo.replStr( " (let ()                 100) " ).should == "100"
     @nendo.replStr( " (let ((a 11))           a) " ).should == "11"
     @nendo.replStr( " (let ((a 11) (b 22))    (+ a b)) " ).should == "33"
+    @nendo.replStr( " (let ((a 22)) (let ((b 33))   (+ a b))) " ).should == "55"
+    @nendo.replStr( " (let ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
     @nendo.replStr( " (if true   'T 'F)" ).should == "T"
     @nendo.replStr( " (if true   '(1) '(2))" ).should == "(1)"
     @nendo.replStr( " (if false  'T 'F)" ).should == "F"
