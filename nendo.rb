@@ -9,11 +9,12 @@ require 'pp'
 
 class Nil
   include Enumerable
-  def each()            end
-  def to_arr()    []    end
-  def length()    0     end
-  def isNull()    true  end
-  def isDotted()  false end
+  def each()               end
+  def to_arr()    []       end
+  def length()    0        end
+  def isNull()    true     end
+  def isDotted()  false    end
+  def lastAtom()  nil      end
 end
 
 class LispString < String
@@ -608,6 +609,12 @@ class Evaluator
       sprintf( "%s = @sym[ '%s' ] ", name, name )
     }.join( " ; " )
     eval( rubyExp, @binding )
+    @gensym_counter = 0
+  end
+
+  def _gensym( )
+    @gensym_counter += 1
+    sprintf( "__gensym__%d", @gensym_counter ).intern
   end
 
   def toRubySymbol( name )
@@ -855,7 +862,6 @@ class Evaluator
   #   ((quote sym2) list2)
   #   ((quote sym3) list3))
   def letArgumentList( sexp )
-    printf( "  letArg: [%s]\n", sexp ) if @debug
     sexp.each { |arg|
       arg.car.car = Cell.new( :quote, Cell.new( arg.car.car ))
     }

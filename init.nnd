@@ -102,6 +102,41 @@
 
     (cond_iter lst)))
 
+(define let1
+  (macro (var expr body)
+    (list 'let (list (list var expr)) body)))
+
+
+(define or
+  (macro lst
+    (define (or_iter lst)
+      (cond
+       ((eq? 0 (length lst))
+        false)
+       ((eq? 1 (length lst))
+        (let1 sym (gensym)
+              (list 'let1 sym (car lst)
+                    (list 'if sym sym false))))
+       (else
+        (let1 sym (gensym)
+              (list 'let1 sym (car lst)
+                    (list 'if sym sym (or_iter (cdr lst))))))))
+    (or_iter lst)))
+
+(define and
+  (macro lst
+    (define (and_iter lst)
+      (cond
+       ((eq? 0 (length lst))
+        true)
+       ((eq? 1 (length lst))
+        (car lst))
+       (else
+        (list 'if (list 'not (list 'eq? 'false (car lst)))
+              (and_iter (cdr lst))
+              'false))))
+    (and_iter lst)))
+
 
 ;; ----------------------------------------
 ;; Higher-order functions
