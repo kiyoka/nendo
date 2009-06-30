@@ -671,17 +671,22 @@ class Evaluator
     pred.call( *rubyArgument )
   end
 
-  def execFunc( funcname, args )
+  def execFunc( funcname, args, lambda_flag )
     case funcname
     when :set!   # `set!' special form
       sprintf( "%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), args.cdr.car.to_s )
     else
-      origname = funcname.to_s
-      funcname = funcname.to_s
-      funcname = @alias[ funcname ] if @alias[ funcname ] 
       argStr  = args.map { |x| x.car.to_s }.join( " ,Cell.new(" )
       argStr += args.map { |x| "" }.join( ")" )
-      sprintf( "callProcedure( '%s', %s, Cell.new( %s ))", origname, toRubySymbol( funcname ), argStr )
+      if lambda_flag
+        "anonymouse"
+        sprintf( "callProcedure( 'anonymouse', %s, Cell.new( %s ))", funcname, argStr )
+      else
+        origname = funcname.to_s
+        funcname = funcname.to_s
+        funcname = @alias[ funcname ] if @alias[ funcname ] 
+        sprintf( "callProcedure( '%s', %s, Cell.new( %s ))", origname, toRubySymbol( funcname ), argStr )
+      end
     end
   end
 
@@ -769,13 +774,13 @@ class Evaluator
     str += sprintf( "%s.call( %s )\n", _name, argvals.join( "," ))
   end
 
-  def apply( car, cdr )
+  def apply( car, cdr, lambda_flag = false )
     cdr.each { |x| 
       if Cell == x.class
         x.car = translate( x.car )
       end
     }
-    execFunc( car, cdr )
+    execFunc( car, cdr, lambda_flag )
   end
 
   def genQuote( sexp, str = "" )
@@ -817,7 +822,11 @@ class Evaluator
         print "Error: can't eval dotted pair"
         raise ExceptionNonSymbol
       elsif Cell == sexp.car.class
-        str += translate( sexp.car )
+        if :lambda == sexp.car.car
+          str += self.apply( translate( sexp.car ), sexp.cdr, true )
+        else
+          str += translate( sexp.car )
+        end
       elsif :begin == sexp.car
         str += self.makeBegin( sexp.cdr )
       elsif :lambda == sexp.car

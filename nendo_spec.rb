@@ -442,10 +442,8 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo.replStr( " (set! x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
     @nendo.replStr( " (set! x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"
     @nendo.replStr( " (set! func (lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
-    pending( "These anonymous procedure code does not work." ) do
-      @nendo.replStr( " ((lambda (arg1) arg1)  3)" ).should == "3" 
-      @nendo.replStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
-    end
+    @nendo.replStr( " ((lambda (arg1) arg1)  3)" ).should == "3" 
+    @nendo.replStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
   end
 end
 
