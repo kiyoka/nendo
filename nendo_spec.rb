@@ -519,5 +519,11 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (and true '(2) false) " ).should == "false"
     @nendo.replStr( " (and 1 2 (print \"3\") (print \"4\") 5)" ).should == "5"
     @nendo.replStr( " (and 1 2 false (print \"3\") (print \"4\") 5)" ).should == "false"
+    @nendo.replStr( " (apply + 100 '()) " ).should == "100"
+    @nendo.replStr( " (apply + '(1 2)) " ).should == "3"
+    @nendo.replStr( " (apply + 1 2 '(3)) " ).should == "6"
+    @nendo.replStr( " (apply + 1 2 '(3 4)) " ).should == "10"
+    @nendo.replStr( " (apply + 1 2 3 '(4)) " ).should == "10"
+    @nendo.replStr( " (apply + '(\"a\" \"b\" \"c\")) " ).should == "\"abc\""
   end
 end

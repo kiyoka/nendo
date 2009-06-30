@@ -821,6 +821,8 @@ class Evaluator
       elsif sexp.isDotted
         print "Error: can't eval dotted pair"
         raise ExceptionNonSymbol
+      elsif sexp.isNull
+        str += "Cell.new()"
       elsif Cell == sexp.car.class
         if :lambda == sexp.car.car
           str += self.apply( translate( sexp.car ), sexp.cdr, true )
@@ -856,6 +858,8 @@ class Evaluator
         str += sexp.to_s
       when LispString
         str += sprintf( "\"%s\"", sexp )
+      when Nil
+        str += "Nil.new"
       else
         str += sexp.to_s
       end

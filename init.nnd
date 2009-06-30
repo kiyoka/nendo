@@ -137,6 +137,25 @@
               'false))))
     (and_iter lst)))
 
+(define
+  apply
+  (macro (proc . args)
+    (define (strip_quote lst)
+      (if (eq? 'quote (car lst))
+          (cadr lst)
+          lst))
+    (define (apply_iter lst)
+      (cond
+       ((eq? 0 (length lst))
+        '())
+       ((eq? 1 (length lst))
+        (if (pair? (car lst))
+            (strip_quote (car lst))
+            (error "not a proper list")))
+       (else
+        (append (list (car lst)) (apply_iter (cdr lst))))))
+    (append (list proc) (apply_iter args))))
+
 
 ;; ----------------------------------------
 ;; Higher-order functions
