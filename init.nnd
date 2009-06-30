@@ -137,8 +137,7 @@
               'false))))
     (and_iter lst)))
 
-(define
-  apply
+(define apply
   (macro (proc . args)
     (define (strip_quote lst)
       (if (eq? 'quote (car lst))
