@@ -464,7 +464,7 @@ describe Nendo, "when call replStr() with macroexpand1 function" do
   end
 end
 
-describe Nendo, "when call functions in init.scm " do
+describe Nendo, "when call functions in init.nnd " do
   before do
     @nendo = Nendo.new()
     @nendo.loadInitFile
@@ -487,6 +487,11 @@ describe Nendo, "when call functions in init.scm " do
     @nendo.replStr( " (let1 aaa 111 aaa)" ).should == "111"
     @nendo.replStr( " (let1 aaa (+ 2 3) aaa)" ).should == "5"
     @nendo.replStr( " (let1 aaa 333 (let1 bbb 444 (+ aaa bbb)))" ).should == "777"
+    @nendo.replStr( " (cond (true  1) (false 2)) " ).should == "1"
+    @nendo.replStr( " (cond (false 1) (true  2)) " ).should == "2"
+    @nendo.replStr( " (cond (true  1) (true  2)) " ).should == "1"
+    @nendo.replStr( " (cond (false 1) (false 2)) " ).should == "nil"
+    @nendo.replStr( " (cond (false 1) (false 2) (else 3)) " ).should == "3"
     @nendo.replStr( " (or) " ).should == "false"
     @nendo.replStr( " (or true) " ).should == "true"
     @nendo.replStr( " (or false) " ).should == "false"
