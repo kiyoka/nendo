@@ -69,6 +69,22 @@
   (append_reverse (reverse a) b))
 
 ;; ----------------------------------------
+;; Utility functions
+;; ----------------------------------------
+(define (even? n) (= (% n 2) 0))
+(define (odd? n) (not (= (% n 2) 0)))
+(define (zero? n) (= n 0))
+(define (positive? n) (> n 0))
+(define (negative? n) (< n 0))
+(define (abs n) (if (>= n 0) n (- n)))
+(define (max . lst)
+     (foldr (lambda (a b) (if (> a b) a b)) (car lst) (cdr lst)))
+(define (min . lst)
+     (foldr (lambda (a b) (if (< a b) a b)) (car lst) (cdr lst)))
+(define (succ x) (+ x 1))
+(define (pred x) (- x 1))
+
+;; ----------------------------------------
 ;; basic forms
 ;; ----------------------------------------
 (define (macroexpand sexp)
@@ -236,19 +252,6 @@
 ;; ----------------------------------------
 ;; Utility function for testing
 ;; ----------------------------------------
-(define (even? n) (= (% n 2) 0))
-(define (odd? n) (not (= (% n 2) 0)))
-(define (zero? n) (= n 0))
-(define (positive? n) (> n 0))
-(define (negative? n) (< n 0))
-(define (abs n) (if (>= n 0) n (- n)))
-(define (max . lst)
-     (foldr (lambda (a b) (if (> a b) a b)) (car lst) (cdr lst)))
-(define (min . lst)
-     (foldr (lambda (a b) (if (< a b) a b)) (car lst) (cdr lst)))
-(define (succ x) (+ x 1))
-(define (pred x) (- x 1))
-
 ;; pass through the argument value as return value.
 (define (pass x) x)
 
