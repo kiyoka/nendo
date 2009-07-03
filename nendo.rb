@@ -15,6 +15,7 @@ class Nil
   def isNull()    true     end
   def isDotted()  false    end
   def lastAtom()  nil      end
+  def to_s()      ""       end
 end
 
 class LispString < String
@@ -170,16 +171,19 @@ end
 
 class Reader
   ## tokens
-  T_EOF       = :t_eof
-  T_LPAREN    = :t_lparen
-  T_RPAREN    = :t_rparen
-  T_SYMBOL    = :t_symbol
-  T_NUM       = :t_num
-  T_STRING    = :t_string
-  T_QUOTE     = :t_quote
-  T_DOT       = :t_dot
-  T_LINEFEED  = :t_linefeed
-  T_COMMENT   = :t_comment
+  T_EOF                 = :t_eof
+  T_LPAREN              = :t_lparen
+  T_RPAREN              = :t_rparen
+  T_SYMBOL              = :t_symbol
+  T_NUM                 = :t_num
+  T_STRING              = :t_string
+  T_QUOTE               = :t_quote
+  T_QUASIQUOTE          = :t_quasiquote
+  T_UNQUOTE             = :t_unquote
+  T_UNQUOTE_SPLICING    = :t_unquote_splicing
+  T_DOT                 = :t_dot
+  T_LINEFEED            = :t_linefeed
+  T_COMMENT             = :t_comment
 
   # inport is IO class
   def initialize( inport, sourcefile, debug = false )
@@ -237,6 +241,17 @@ class Reader
       str = ch.chr
       kind =
         case str
+        when /[\']/
+          T_QUOTE
+        when /[\`]/
+          T_QUASIQUOTE
+        when /[,]/
+          str += readwhile( /[@]/ )
+          if 1 == str.length
+            T_UNQUOTE
+          else
+            T_UNQUOTE_SPLICING
+          end
         when '('
           T_LPAREN
         when ')'
@@ -252,17 +267,22 @@ class Reader
         when /[_a-zA-Z]/ # symbol
           str += readwhile( /[_a-zA-Z0-9+*\/=!<>&|?%]/ )
           T_SYMBOL
-        when /[+*\/=!<>&|%-]/ # symbol
+        when /[*\/=!<>&|%]/ # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
           T_SYMBOL
+        when /[+-]/           # number
+          str += readwhile( /[0-9.]/ )
+          if 1 < str.length
+            T_NUM
+          else
+            T_SYMBOL
+          end
         when /[0-9]/           # number
           str += readwhile( /[0-9.]/ )
           T_NUM
         when /["]/             # String
           str = LispString.new( readwhile( /[^"]/ )) ; readwhile( /["]/ )
           T_STRING
-        when /[\']/
-          T_QUOTE
         end
       printf( "    token: [%s] : %s   (%s:L%d:C%d)\n", str, kind.to_s, @chReader.sourcefile, @chReader.lineno, @chReader.column ) if @debug
       @curtoken = Token.new( kind, str, @chReader.sourcefile, @chReader.lineno, @chReader.column )
@@ -299,6 +319,12 @@ class Reader
       cur.str
     when T_QUOTE
       :quote
+    when T_QUASIQUOTE
+      :quasiquote
+    when T_UNQUOTE
+      :unquote
+    when T_UNQUOTE_SPLICING
+      :unquote_splicing
     end
   end
 
@@ -324,7 +350,7 @@ class Reader
       when T_DOT
         token
         lastAtom = atom()
-      when T_QUOTE
+      when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
         cells << Cell.new( sexp() )
       else
         if lastAtom
@@ -361,7 +387,7 @@ class Reader
     end
   end
 
-  # sexp := ( list ) | 'sexp | atom
+  # sexp := ( list ) | 'sexp | `sexp | atom
   def sexp
     printf( "  NonT: [%s]\n", "sexp" ) if @debug
     case curtoken.kind
@@ -380,7 +406,7 @@ class Reader
     when T_RPAREN
       print "Error: unbalanced paren(3)\n"
       raise ExceptionParen
-    when T_QUOTE
+    when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
       _atom = atom() ## "quote" symbol
       Cell.new( _atom, Cell.new( sexp() ))
     else
@@ -884,7 +910,7 @@ class Evaluator
   def quoting( sexp )
     case sexp
     when Cell
-      if :quote == sexp.car
+      if :quote == sexp.car or :quasiquote == sexp.car 
         sexp
       elsif :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
         sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))

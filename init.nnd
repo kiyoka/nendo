@@ -156,6 +156,61 @@
     (append (list proc) (apply_iter args))))
 
 
+;; The following quasiquote macro is due to Eric S. Tiedemann.
+;;   Copyright 1988 by Eric S. Tiedemann; all rights reserved.
+;;
+;; Subsequently modified for initialize library for nendo: Kiyoka Nishiyama
+(define
+ quasiquote
+ (macro (l)
+   (define (mcons f l r)
+     (if (and (pair? r)
+              (eq? (car r) 'quote)
+              (eq? (car (cdr r)) (cdr f))
+              (pair? l)
+              (eq? (car l) 'quote)
+              (eq? (car (cdr l)) (car f)))
+         (if (or (procedure? f) (number? f) (string? f))
+               f
+               (list 'quote f))
+         (list 'cons l r)))
+   (define (mappend f l r)
+     (if (or (null? (cdr f))
+             (and (pair? r)
+                  (eq? (car r) 'quote)
+                  (eq? (car (cdr r)) '())))
+         l
+         (list 'append l r)))
+   (define (foo level form)
+     (cond ((not (pair? form))
+               (if (or (procedure? form) (number? form) (string? form))
+                    form
+                    (list 'quote form))
+               )
+           ((eq? 'quasiquote (car form))
+            (mcons form ''quasiquote (foo (+ level 1) (cdr form))))
+           (else (if (zero? level)
+                   (cond ((eq? (car form) 'unquote) (car (cdr form)))
+                         ((eq? (car form) 'unquote_splicing)
+                          (error "Unquote_splicing wasn't in a list:"
+                                 form))
+                         ((and (pair? (car form))
+                               (eq? (car (car form)) 'unquote_splicing))
+                          (mappend form (car (cdr (car form)))
+                                   (foo level (cdr form))))
+                         (else (mcons form (foo level (car form))
+                                         (foo level (cdr form)))))
+                   (cond ((eq? (car form) 'unquote)
+                          (mcons form ''unquote (foo (- level 1)
+                                                     (cdr form))))
+                         ((eq? (car form) 'unquote_splicing)
+                          (mcons form ''unquote_splicing
+                                      (foo (- level 1) (cdr form))))
+                         (else (mcons form (foo level (car form))
+                                         (foo level (cdr form)))))))))
+   (foo 0 l)))
+
+
 ;; ----------------------------------------
 ;; Higher-order functions
 ;; ----------------------------------------
@@ -181,6 +236,19 @@
 ;; ----------------------------------------
 ;; Utility function for testing
 ;; ----------------------------------------
+(define (even? n) (= (% n 2) 0))
+(define (odd? n) (not (= (% n 2) 0)))
+(define (zero? n) (= n 0))
+(define (positive? n) (> n 0))
+(define (negative? n) (< n 0))
+(define (abs n) (if (>= n 0) n (- n)))
+(define (max . lst)
+     (foldr (lambda (a b) (if (> a b) a b)) (car lst) (cdr lst)))
+(define (min . lst)
+     (foldr (lambda (a b) (if (< a b) a b)) (car lst) (cdr lst)))
+(define (succ x) (+ x 1))
+(define (pred x) (- x 1))
+
 ;; pass through the argument value as return value.
 (define (pass x) x)
 
