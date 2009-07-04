@@ -284,7 +284,8 @@ class Reader
           str = LispString.new( readwhile( /[^"]/ )) ; readwhile( /["]/ )
           T_STRING
         else
-          raise SyntaxError, sprintf( "unknown token for Nendo [%s]", str )
+          str += readwhile( /[^ \t\r\n]/ )
+          raise NameError, sprintf( "unknown token for Nendo [%s]", str )
         end
       printf( "    token: [%s] : %s   (%s:L%d:C%d)\n", str, kind.to_s, @chReader.sourcefile, @chReader.lineno, @chReader.column ) if @debug
       @curtoken = Token.new( kind, str, @chReader.sourcefile, @chReader.lineno, @chReader.column )
@@ -1060,21 +1061,32 @@ class Nendo
   end
 
   def repl
+    reader = nil
     print "nendo> "
-    reader = Reader.new( STDIN, "(stdin)", false )
+    begin
+      begin
+        reader = Reader.new( STDIN, "(stdin)", false )
+      rescue => e
+        print e.message + "\n"
+        e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
+        reader = nil
+        print "\n" + "nendo> "
+      end
+    end until reader
     while true
       lineno = reader.lineno
-      s = reader._read
-      if s[1] # EOF?
-        break
-      elsif Nil != s[0].class
-        begin
+      begin
+        s = reader._read
+        if s[1] # EOF?
+          break
+        elsif Nil != s[0].class
           printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
           print @printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
-        rescue => e
-          print e.message + "\n"
-          e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
+          print "\n" + "nendo> "
         end
+      rescue => e
+        print e.message + "\n"
+        e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
         print "\n" + "nendo> "
       end
     end
