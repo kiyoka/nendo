@@ -700,10 +700,12 @@ class Evaluator
     pred.call( *rubyArgument )
   end
 
-  def execFunc( funcname, args, lambda_flag )
+  def execFunc( funcname, args, sourcefile, lineno, lambda_flag )
     case funcname
     when :set!   # `set!' special form
       sprintf( "%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), args.cdr.car.to_s )
+    when :error
+      sprintf( 'begin raise RuntimeError, %s ; rescue => __e ;  __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end ', args.car.to_s, sourcefile, lineno )
     else
       argStr  = args.map { |x| x.car.to_s }.join( " ,Cell.new(" )
       argStr += args.map { |x| "" }.join( ")" )
@@ -803,13 +805,13 @@ class Evaluator
     str += sprintf( "%s.call( %s )\n", _name, argvals.join( "," ))
   end
 
-  def apply( car, cdr, lambda_flag = false )
+  def apply( car, cdr, sourcefile, lineno, lambda_flag = false )
     cdr.each { |x| 
       if Cell == x.class
         x.car = translate( x.car )
       end
     }
-    execFunc( car, cdr, lambda_flag )
+    execFunc( car, cdr, sourcefile, lineno, lambda_flag )
   end
 
   def genQuote( sexp, str = "" )
@@ -849,12 +851,12 @@ class Evaluator
         genQuote( sexp.cdr.car )
       elsif sexp.isDotted
         print "Error: can't eval dotted pair"
-        raise ExceptionNonSymbol
+        raise NameError
       elsif sexp.isNull
         str += "Cell.new()"
       elsif Cell == sexp.car.class
         if :lambda == sexp.car.car
-          str += self.apply( translate( sexp.car ), sexp.cdr, true )
+          str += self.apply( translate( sexp.car ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, true )
         else
           str += translate( sexp.car )
         end
@@ -869,7 +871,7 @@ class Evaluator
       elsif :let == sexp.car
         str += self.makeLet( sexp.cdr )
       else
-        str += self.apply( sexp.car, sexp.cdr )
+        str += self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno )
       end
     else
       case sexp
