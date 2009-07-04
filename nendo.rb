@@ -982,6 +982,20 @@ class Printer
   end
 
   def _print( sexp, str = "" )
+    getQuoteKeyword = lambda { |x|
+      case x
+      when :quote
+        "'"
+      when :quasiquote
+        "`"
+      when :unquote
+        ","
+      when :unquote_splicing
+        ",@"
+      else
+        false
+      end
+    }
     if 0 == str.length and @debug 
       pp sexp
     end
@@ -990,9 +1004,19 @@ class Printer
       arr = sexp.map { |x| _print( x.car ) }
       lastAtom = sexp.lastAtom
       lastAtom = _print( lastAtom )  if lastAtom
-      "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtom : "") + ")"
+      keyword = getQuoteKeyword.call( sexp.car )
+      if keyword
+        keyword + arr[1..-1].join( " " ) + (lastAtom ? " . " + lastAtom : "")
+      else
+        "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtom : "") + ")"
+      end
     when Symbol
-      sprintf( "%s", sexp.to_s )
+      keyword = getQuoteKeyword.call( sexp )
+      if keyword
+        keyword
+      else
+        sprintf( "%s", sexp.to_s )
+      end
     when String
       sprintf( "\"%s\"", sexp.to_s )
     when Nil
