@@ -597,9 +597,9 @@ module BuiltinFunctions
   end
   def _number_QMARK(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
   def _string_QMARK(   arg )    String == arg.class end
-  def _macroexpand1( arg )
+  def _macroexpand_1( arg )
     if _pair_QMARK( arg )
-      macroexpand1( arg )
+      macroexpand_1( arg )
     else
       Cell.new
     end
@@ -938,7 +938,7 @@ class Evaluator
     end
   end
 
-  def macroexpand1( sexp )
+  def macroexpand_1( sexp )
     case sexp
     when Cell
       if :quote == sexp.car
@@ -951,7 +951,7 @@ class Evaluator
           eval( sprintf( "@_macro = %s", sym ), @binding )
           callProcedure( sym, @_macro, sexp.cdr )
         else
-          arr = sexp.map { |x| macroexpand1( x.car ) }
+          arr = sexp.map { |x| macroexpand_1( x.car ) }
           arr.to_list( sexp.lastAtom )
         end
       end
@@ -963,7 +963,7 @@ class Evaluator
   def lispCompile( sexp )
     converge = true
     begin
-      newSexp  = macroexpand1( sexp )
+      newSexp  = macroexpand_1( sexp )
       converge = _equal_QMARK( newSexp, sexp )
       sexp = newSexp
     end until converge

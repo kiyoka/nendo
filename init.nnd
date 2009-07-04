@@ -54,13 +54,6 @@
 ;; ----------------------------------------
 (define iota range)
 
-(macroexpand1
- '(define (append-reverse a b)
-    (if (pair? a)
-        (append-reverse (cdr a) (cons (car a) b))
-        b)))
- 
-
 (define (append a b)
   (define (append-reverse a b)
     (if (pair? a)
@@ -88,7 +81,7 @@
 ;; basic forms
 ;; ----------------------------------------
 (define (macroexpand sexp)
-  (let ((newsexp (macroexpand1 sexp)))
+  (let ((newsexp (macroexpand-1 sexp)))
     (if (not (equal? sexp newsexp))
         (macroexpand newsexp)
         newsexp)))
@@ -227,6 +220,15 @@
    (foo 0 l)))
 
 
+(define when
+  (macro form
+    `(if ,(car form) (begin ,@(cdr form)))))
+  
+(define unless
+  (macro form
+    `(if (not ,(car form)) (begin ,@(cdr form)))))
+
+
 ;; ----------------------------------------
 ;; Higher-order functions
 ;; ----------------------------------------
@@ -247,6 +249,16 @@
              result
              (filter pred (cdr lst)))
             (filter pred (cdr lst))))))
+
+
+
+;; ----------------------------------------
+;; List library functions
+;; ----------------------------------------
+(define (last-pair x)
+    (if (pair? (cdr x))
+        (last-pair (cdr x))
+        x))
 
 
 ;; ----------------------------------------

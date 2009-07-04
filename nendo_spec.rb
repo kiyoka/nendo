@@ -307,8 +307,8 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '((a)(b)(c)) " ).should == "((a) (b) (c))"
     @nendo.replStr( " 'a " ).should == "a"
     @nendo.replStr( " 'symbol " ).should == "symbol"
-    lambda { @nendo.replStr( " 'SYMBOL " ) }.should raise_error(SyntaxError)
-    lambda { @nendo.replStr( " 'SyMbOl " ) }.should raise_error(SyntaxError)
+    lambda { @nendo.replStr( " 'SYMBOL " ) }.should raise_error(NameError)
+    lambda { @nendo.replStr( " 'SyMbOl " ) }.should raise_error(NameError)
     @nendo.replStr( " ''a " ).should == "'a"
     @nendo.replStr( " '1 " ).should == "1"
     @nendo.replStr( " ''1 " ).should == "'1"
@@ -476,17 +476,17 @@ describe Nendo, "when call replStr() with built-in special forms" do
   end
 end
 
-describe Nendo, "when call replStr() with macroexpand1 function" do
+describe Nendo, "when call replStr() with macroexpand-1 function" do
   before do
     @nendo = Nendo.new()
   end
   it "should" do
-    @nendo.replStr( " (set! twice (macro (x) (list 'begin x x)))           (macroexpand1 '(twice (+ 1 1))) " ).should == "(begin (+ 1 1) (+ 1 1))"
-    @nendo.replStr( " (set! inc (macro (x) (list 'set! x (list '+ x 1))))  (macroexpand1 '(inc a)) " ).should == "(set! a (+ a 1))"
+    @nendo.replStr( " (set! twice (macro (x) (list 'begin x x)))           (macroexpand-1 '(twice (+ 1 1))) " ).should == "(begin (+ 1 1) (+ 1 1))"
+    @nendo.replStr( " (set! inc (macro (x) (list 'set! x (list '+ x 1))))  (macroexpand-1 '(inc a)) " ).should == "(set! a (+ a 1))"
     @nendo.replStr( " (set! a 10) (inc a) " ).should == "11"
     @nendo.replStr( " (set! a 10) (inc a) (inc a)" ).should == "12"
-    @nendo.replStr( " (macroexpand1 '(twice (twice (inc a))))" ).should == "(begin (twice (inc a)) (twice (inc a)))"
-    @nendo.replStr( " (macroexpand1 (macroexpand1 '(twice (twice (inc a)))))" ).should == "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
+    @nendo.replStr( " (macroexpand-1 '(twice (twice (inc a))))" ).should == "(begin (twice (inc a)) (twice (inc a)))"
+    @nendo.replStr( " (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))" ).should == "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
     @nendo.replStr( " (set! a 10) (twice (twice (inc a)))" ).should == "14"
   end
 end
