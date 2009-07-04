@@ -74,6 +74,31 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
   end
 end
 
+describe Evaluator, "When use Evaluator's util methods" do
+  before do
+    @evaluator = Evaluator.new()
+  end
+  it "should" do
+    @evaluator.toRubySymbol( "a" ).should == "_a"
+    @evaluator.toRubySymbol( "a_b_c" ).should == "_a_b_c"
+    @evaluator.toRubySymbol( "_a_b_c_" ).should == "__a_b_c_"
+    @evaluator.toRubySymbol( "a?" ).should == "_a_QMARK"
+    @evaluator.toRubySymbol( "a!" ).should == "_a_EMARK"
+    @evaluator.toRubySymbol( "a?b" ).should == "_a_QMARKb"
+    @evaluator.toRubySymbol( "a!b" ).should == "_a_EMARKb"
+    @evaluator.toRubySymbol( "a-b" ).should == "_a_b"
+    @evaluator.toRubySymbol( "a-b-c" ).should == "_a_b_c"
+    @evaluator.toRubySymbol( "-a-b-c" ).should == "__a_b_c"
+    @evaluator.toRubySymbol( "-a-!-b" ).should == "__a__EMARK_b"
+    @evaluator.toRubySymbol( "-a-!-?b" ).should == "__a__EMARK__QMARKb"
+    @evaluator.toLispSymbol( "_a_QMARK" ).should == "a?"
+    @evaluator.toLispSymbol( "_a_EMARK" ).should == "a!"
+    @evaluator.toLispSymbol( "_a_b" ).should == "a_b"
+    @evaluator.toLispSymbol( "_a_b_c" ).should == "a_b_c"
+    @evaluator.toLispSymbol( "_A_B_C" ).should == "A_B_C"
+  end
+end
+
 describe Nendo, "when call replStr() with literals" do
   before do
     @nendo = Nendo.new()
@@ -282,8 +307,8 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '((a)(b)(c)) " ).should == "((a) (b) (c))"
     @nendo.replStr( " 'a " ).should == "a"
     @nendo.replStr( " 'symbol " ).should == "symbol"
-    @nendo.replStr( " 'SYMBOL " ).should == "SYMBOL"
-    @nendo.replStr( " 'SyMbOl " ).should == "SyMbOl"
+    lambda { @nendo.replStr( " 'SYMBOL " ) }.should raise_error(SyntaxError)
+    lambda { @nendo.replStr( " 'SyMbOl " ) }.should raise_error(SyntaxError)
     @nendo.replStr( " ''a " ).should == "'a"
     @nendo.replStr( " '1 " ).should == "1"
     @nendo.replStr( " ''1 " ).should == "'1"
@@ -321,6 +346,10 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (list 1) " ).should == "(1)"
     @nendo.replStr( " (set! aFunc (lambda (x) x)) true" ).should == "true"
     @nendo.replStr( " (set! aMacro (macro (x) x)) true" ).should == "true"
+    @nendo.replStr( " (set! a! 123) a!" ).should == "123"
+    @nendo.replStr( " (set! b? 321) b?" ).should == "321"
+    @nendo.replStr( " (set! a-b 1234) a-b" ).should == "1234"
+    @nendo.replStr( " (set! start-end!? 4321) start-end!?" ).should == "4321"
     @nendo.replStr( " (procedure? car) " ).should == "true"
     @nendo.replStr( " (procedure? aFunc) " ).should == "true"
     @nendo.replStr( " (procedure? aMacro) " ).should == "false"
@@ -435,9 +464,9 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo.replStr( " (let ((a 11) (b 22))    (+ a b)) " ).should == "33"
     @nendo.replStr( " (let ((a 22)) (let ((b 33))   (+ a b))) " ).should == "55"
     @nendo.replStr( " (let ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
-    @nendo.replStr( " (if true   'T 'F)" ).should == "T"
+    @nendo.replStr( " (if true   't 'f)" ).should == "t"
     @nendo.replStr( " (if true   '(1) '(2))" ).should == "(1)"
-    @nendo.replStr( " (if false  'T 'F)" ).should == "F"
+    @nendo.replStr( " (if false  't 'f)" ).should == "f"
     @nendo.replStr( " (if false  '(1) '(2))" ).should == "(2)"
     @nendo.replStr( " (set! x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
     @nendo.replStr( " (set! x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"

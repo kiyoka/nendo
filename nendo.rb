@@ -264,8 +264,9 @@ class Reader
           readwhile( /[^\r\n]/ )
           str = ""
           T_COMMENT
-        when /[_a-zA-Z]/ # symbol
-          str += readwhile( /[_a-zA-Z0-9+*\/=!<>&|?%]/ )
+        when /[_a-z]/ # symbol
+          str += readwhile( /[_a-zA-Z0-9!?-]/ )
+          str.gsub( /[-]/, '_' )
           T_SYMBOL
         when /[*\/=!<>&|%]/ # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
@@ -283,6 +284,8 @@ class Reader
         when /["]/             # String
           str = LispString.new( readwhile( /[^"]/ )) ; readwhile( /["]/ )
           T_STRING
+        else
+          raise SyntaxError, sprintf( "unknown token for Nendo [%s]", str )
         end
       printf( "    token: [%s] : %s   (%s:L%d:C%d)\n", str, kind.to_s, @chReader.sourcefile, @chReader.lineno, @chReader.column ) if @debug
       @curtoken = Token.new( kind, str, @chReader.sourcefile, @chReader.lineno, @chReader.column )
@@ -449,14 +452,14 @@ module BuiltinFunctions
     end
   end
   
-  def _equal_P( a, b )
+  def _equal_QMARK( a, b )
     if a.class != b.class
       false
     elsif a.class == Cell
       if a.isNull and b.isNull
         true
       else
-        _equal_P( a.car, b.car ) and _equal_P( a.cdr, b.cdr )
+        _equal_QMARK( a.car, b.car ) and _equal_QMARK( a.cdr, b.cdr )
       end
     elsif a.class == Nil and b.class == Nil
       true
@@ -466,7 +469,7 @@ module BuiltinFunctions
   end
   
   def _plus( first, *rest )
-    raise TypeError if not (_number_P(first) or _string_P(first))
+    raise TypeError if not (_number_QMARK(first) or _string_QMARK(first))
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -477,7 +480,7 @@ module BuiltinFunctions
   end
   
   def _minus( first, *rest )
-    raise TypeError if not (_number_P(first) or _string_P(first))
+    raise TypeError if not (_number_QMARK(first) or _string_QMARK(first))
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -488,7 +491,7 @@ module BuiltinFunctions
   end
 
   def _multi( first, *rest )
-    raise TypeError if not _number_P(first)
+    raise TypeError if not _number_QMARK(first)
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -499,7 +502,7 @@ module BuiltinFunctions
   end
 
   def _div( first, *rest )
-    raise TypeError if not _number_P(first)
+    raise TypeError if not _number_QMARK(first)
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -510,7 +513,7 @@ module BuiltinFunctions
   end
 
   def _mod( first, *rest )
-    raise TypeError if not _number_P(first)
+    raise TypeError if not _number_QMARK(first)
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -549,7 +552,7 @@ module BuiltinFunctions
     Kernel::sprintf( format, *(rest[0].to_arr) )
   end
 
-  def _null_P( arg )
+  def _null_QMARK( arg )
     if Nil == arg.class
       true
     elsif Cell == arg.class
@@ -559,7 +562,7 @@ module BuiltinFunctions
     end
   end
   def _length(   arg )
-    if _null_P( arg )
+    if _null_QMARK( arg )
       0
     elsif arg.is_a? Cell
       arg.length
@@ -567,35 +570,35 @@ module BuiltinFunctions
       raise TypeError
     end
   end
-  def _list(    *args)      args[0] end
-  def _sort(     arg )      arg.to_arr.sort.to_list end
-  def _reverse(  arg )      arg.to_arr.reverse.to_list end
-  def _uniq(     arg )      arg.to_arr.uniq.to_list end
-  def _range(    num )      (0..num-1).map.to_list end
-  def _eq_P(      a,b )      a ==  b end
-  def _gt_P(      a,b )      a >   b end
-  def _ge_P(      a,b )      a >=  b end
-  def _lt_P(      a,b )      a <   b end
-  def _le_P(      a,b )      a <=  b end
-  def _eqv_P(     a,b )      a === b end
-  def _car(      cell )     cell.car end
-  def _cdr(      cell )     cell.cdr end
-  def _display(  arg  )     printer = Printer.new ; print printer._print( arg ) end
-  def _newline(       )     print "\n" end
-  def _procedure_P( arg )   ((Proc == arg.class) or (Method == arg.class)) end
-  def _macro_P( arg )       (LispMacro == arg.class) end
-  def _symbol_P(    arg )   (Symbol == arg.class) end
-  def _pair_P(      arg )   
-    if _null_P( arg )
+  def _list(    *args)           args[0] end
+  def _sort(     arg )           arg.to_arr.sort.to_list end
+  def _reverse(  arg )           arg.to_arr.reverse.to_list end
+  def _uniq(     arg )           arg.to_arr.uniq.to_list end
+  def _range(    num )           (0..num-1).map.to_list end
+  def _eq_QMARK(      a,b )      a ==  b end
+  def _gt_QMARK(      a,b )      a >   b end
+  def _ge_QMARK(      a,b )      a >=  b end
+  def _lt_QMARK(      a,b )      a <   b end
+  def _le_QMARK(      a,b )      a <=  b end
+  def _eqv_QMARK(     a,b )      a === b end
+  def _car(      cell )          cell.car end
+  def _cdr(      cell )          cell.cdr end
+  def _display(  arg  )          printer = Printer.new ; print printer._print( arg ) end
+  def _newline(       )          print "\n" end
+  def _procedure_QMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
+  def _macro_QMARK( arg )       (LispMacro == arg.class) end
+  def _symbol_QMARK(    arg )   (Symbol == arg.class) end
+  def _pair_QMARK(      arg )   
+    if _null_QMARK( arg )
       false
     else
       (Cell == arg.class)
     end
   end
-  def _number_P(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
-  def _string_P(   arg )    String == arg.class end
+  def _number_QMARK(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
+  def _string_QMARK(   arg )    String == arg.class end
   def _macroexpand1( arg )
-    if _pair_P( arg )
+    if _pair_QMARK( arg )
       macroexpand1( arg )
     else
       Cell.new
@@ -645,14 +648,14 @@ class Evaluator
 
   def toRubySymbol( name )
     name = name.to_s  if Symbol == name.class
-    '_' + name.gsub( /[?]/, '_P' ).gsub( /[!]/, '_E' )
+    '_' + name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' )
   end
 
   def toLispSymbol( name )
     name = name.to_s  if Symbol == name.class
     raise ArgumentError if '_' == name[0]
     name = name[1..-1]
-    name.gsub( /_P/, '?' ).gsub( /_E/, '!' )
+    name.gsub( /_QMARK/, '?' ).gsub( /_EMARK/, '!' )
   end
 
   def toRubyArgument( origname, pred, args )
@@ -961,7 +964,7 @@ class Evaluator
     converge = true
     begin
       newSexp  = macroexpand1( sexp )
-      converge = _equal_P( newSexp, sexp )
+      converge = _equal_QMARK( newSexp, sexp )
       sexp = newSexp
     end until converge
     sexp
