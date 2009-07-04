@@ -556,3 +556,26 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (apply + '(\"a\" \"b\" \"c\")) " ).should == "\"abc\""
   end
 end
+
+describe Nendo, "when use quasiquote macro " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " '(a b c) " ).should == "(a b c)"
+    @nendo.replStr( " `(a b c) " ).should == "(a b c)"
+    @nendo.replStr( " `(1 2 3) " ).should == "(1 2 3)"
+    @nendo.replStr( " (set! a 3) `(1 2 ,a) " ).should == "(1 2 3)"
+    @nendo.replStr( " (set! a 3) `(1 2 ,@(list a)) " ).should == "(1 2 3)"
+    @nendo.replStr( " (set! a 3) `(1 ,@(list 2 a)) " ).should == "(1 2 3)"
+    @nendo.replStr( " (set! a 11) `,a " ).should == "11"
+    @nendo.replStr( " (set! a 12) ``,a " ).should == "`,a"
+    @nendo.replStr( " `(list ,(+ 1 2) 4) " ).should == "(list 3 4)"
+    @nendo.replStr( " (let ((name 'a)) `(list ,name ',name)) " ).should == "(list a 'a)"
+    @nendo.replStr( " `(a `(b ,(+ 1 2) ,(foo ,(+ 1 3) d) e) f) " ).should == "(a `(b ,(+ 1 2) ,(foo 4 d) e) f)"
+    pending "dotted pair does not expanded quasiquote." do
+      @nendo.replStr( " `(( foo ,(- 10 3)) ,@(cdr '(c)) . ,(car '(cons))) " ).should == "((foo 7) . cons)"
+    end
+  end
+end

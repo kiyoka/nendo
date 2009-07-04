@@ -265,8 +265,7 @@ class Reader
           str = ""
           T_COMMENT
         when /[_a-z]/ # symbol
-          str += readwhile( /[_a-zA-Z0-9!?-]/ )
-          str.gsub( /[-]/, '_' )
+          str += readwhile( /[_a-zA-Z0-9!?-]/ ).gsub( /[-]/, '_' )
           T_SYMBOL
         when /[*\/=!<>&|%]/ # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )

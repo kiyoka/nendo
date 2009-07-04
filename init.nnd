@@ -55,18 +55,18 @@
 (define iota range)
 
 (macroexpand1
- '(define (append_reverse a b)
+ '(define (append-reverse a b)
     (if (pair? a)
-        (append_reverse (cdr a) (cons (car a) b))
+        (append-reverse (cdr a) (cons (car a) b))
         b)))
  
 
 (define (append a b)
-  (define (append_reverse a b)
+  (define (append-reverse a b)
     (if (pair? a)
-        (append_reverse (cdr a) (cons (car a) b))
+        (append-reverse (cdr a) (cons (car a) b))
         b))
-  (append_reverse (reverse a) b))
+  (append-reverse (reverse a) b))
 
 ;; ----------------------------------------
 ;; Utility functions
@@ -108,15 +108,15 @@
              elseblock
              '()))))
 
-    (define (cond_iter lst)
+    (define (cond-iter lst)
       (if (eq? 0 (length lst))
           '()
           (if (eq? 1 (length lst))
               (caseblock (car lst) '())
               (caseblock (car lst)
-                         (cond_iter (cdr lst))))))
+                         (cond-iter (cdr lst))))))
 
-    (cond_iter lst)))
+    (cond-iter lst)))
 
 (define let1
   (macro (var expr body)
@@ -125,7 +125,7 @@
 
 (define or
   (macro lst
-    (define (or_iter lst)
+    (define (or-iter lst)
       (cond
        ((eq? 0 (length lst))
         false)
@@ -136,12 +136,12 @@
        (else
         (let1 sym (gensym)
               (list 'let1 sym (car lst)
-                    (list 'if sym sym (or_iter (cdr lst))))))))
-    (or_iter lst)))
+                    (list 'if sym sym (or-iter (cdr lst))))))))
+    (or-iter lst)))
 
 (define and
   (macro lst
-    (define (and_iter lst)
+    (define (and-iter lst)
       (cond
        ((eq? 0 (length lst))
         true)
@@ -149,27 +149,27 @@
         (car lst))
        (else
         (list 'if (list 'not (list 'eq? 'false (car lst)))
-              (and_iter (cdr lst))
+              (and-iter (cdr lst))
               'false))))
-    (and_iter lst)))
+    (and-iter lst)))
 
 (define apply
   (macro (proc . args)
-    (define (strip_quote lst)
+    (define (strip-quote lst)
       (if (eq? 'quote (car lst))
           (cadr lst)
           lst))
-    (define (apply_iter lst)
+    (define (apply-iter lst)
       (cond
        ((eq? 0 (length lst))
         '())
        ((eq? 1 (length lst))
         (if (pair? (car lst))
-            (strip_quote (car lst))
+            (strip-quote (car lst))
             (error "not a proper list")))
        (else
-        (append (list (car lst)) (apply_iter (cdr lst))))))
-    (append (list proc) (apply_iter args))))
+        (append (list (car lst)) (apply-iter (cdr lst))))))
+    (append (list proc) (apply-iter args))))
 
 
 ;; The following quasiquote macro is due to Eric S. Tiedemann.
@@ -207,11 +207,11 @@
             (mcons form ''quasiquote (foo (+ level 1) (cdr form))))
            (else (if (zero? level)
                    (cond ((eq? (car form) 'unquote) (car (cdr form)))
-                         ((eq? (car form) 'unquote_splicing)
-                          (error "Unquote_splicing wasn't in a list:"
+                         ((eq? (car form) 'unquote-splicing)
+                          (error "Unquote-splicing wasn't in a list:"
                                  form))
                          ((and (pair? (car form))
-                               (eq? (car (car form)) 'unquote_splicing))
+                               (eq? (car (car form)) 'unquote-splicing))
                           (mappend form (car (cdr (car form)))
                                    (foo level (cdr form))))
                          (else (mcons form (foo level (car form))
@@ -219,8 +219,8 @@
                    (cond ((eq? (car form) 'unquote)
                           (mcons form ''unquote (foo (- level 1)
                                                      (cdr form))))
-                         ((eq? (car form) 'unquote_splicing)
-                          (mcons form ''unquote_splicing
+                         ((eq? (car form) 'unquote-splicing)
+                          (mcons form ''unquote-splicing
                                       (foo (- level 1) (cdr form))))
                          (else (mcons form (foo level (car form))
                                          (foo level (cdr form)))))))))
@@ -236,7 +236,7 @@
       (cons
        (pred (car lst))
        (map pred (cdr lst)))))
-(define foreach map)
+(define for-each map)
 
 (define (filter pred lst)
   (if (null? lst)
