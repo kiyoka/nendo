@@ -169,8 +169,7 @@
 ;;   Copyright 1988 by Eric S. Tiedemann; all rights reserved.
 ;;
 ;; Subsequently modified for initialize library for nendo: Kiyoka Nishiyama
-(define
- quasiquote
+(define quasiquote
  (macro (l)
    (define (mcons f l r)
      (if (and (pair? r)
@@ -218,6 +217,14 @@
                          (else (mcons form (foo level (car form))
                                          (foo level (cdr form)))))))))
    (foo 0 l)))
+
+(define unquote
+  (macro (lst)
+    (error "unquote appeared outside quasiquote")))
+
+(define unquote-splicing
+  (macro (lst)
+    (error "unquote-splicing appeared outside quasiquote")))
 
 
 (define when
