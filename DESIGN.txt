@@ -20,25 +20,25 @@ Samples in my mind:
       (f.close))
     => '(("a1" "a2" "a3") ("b1" "b2" "b3") ("c1" "c2" "c3"))
 
-  2. method call form
-    str is "a a a"
+  2. method call for self
+    (.read)                   will translate    (. self read)
+    (.open "file")            will translate    (. self open "file")
+    (.open "file" "w")        will translate    (. self open "file" "w")
+    (self.open "file" "w")    will translate    (. self open "file" "w")
+    (Kernel.open "file")      will translate    (. Kernel open "file" "w")
+    (Kernel.open "file" "w")  will translate    (. Kernel open "file" "w")
 
-    (str.split)               will translate    (split str)
-    (str.split.sort)          will translate    (sort (split str))
-    (str.split.sort.reverse)  will translate    (reverse (sort (split str)))
-
-  3. method call form
-    str is "a a a"
-
-    (str.chomp)               will translate    (chomp str)
+  3. new method
+    (Date.new)                will translate    (. Date new)
+    (Date.new.strftime "%X")  will translate    (. (. Date new) strftime "%X")
 
   4. method call form
-    arr is [ "a", "b", "c" ]
-    (arr.join "/")            will translate    (join arr "/")
+    (str.split)               will translate    (. str split)
+    (str.split.sort)          will translate    (. (. str split) sort)
+    (str.split.sort.reverse)  will translate    (. (. (. str split) sort) reverse)
 
-  5. method call form
-    (Array.new 1 2 3)         will translate    (. new Array 1 2 3)
-
+  5 illegal operation
+    (foo a.b)                 will be error
 
 
 How to translate:
