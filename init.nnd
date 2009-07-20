@@ -112,9 +112,10 @@
     (cond-iter lst)))
 
 (define let1
-  (macro (var expr body)
-    (list 'let (list (list var expr)) body)))
-
+  (macro (var expr . body)
+    (append
+     (list 'let (list (list var expr)))
+     body)))
 
 (define or
   (macro lst
