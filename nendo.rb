@@ -622,6 +622,7 @@ module BuiltinFunctions
   def _string_join( lst, delim )
     lst.to_a.map{ |x| x.car }.join( delim )
   end
+  def _require( arg )           Kernel::require( arg ) end
 end
 
 
@@ -670,6 +671,10 @@ class Evaluator
       name = '_' + name
     end
     name
+  end
+
+  def isRubyInterface( name )
+    name.to_s.match( /[.]/ )
   end
 
   def toLispSymbol( name )
@@ -728,16 +733,25 @@ class Evaluator
     when :error
       sprintf( 'begin raise RuntimeError, %s ; rescue => __e ;  __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end ', args.car.to_s, sourcefile, lineno )
     else
-      argStr  = args.map { |x| x.car.to_s }.join( " ,Cell.new(" )
-      argStr += args.map { |x| "" }.join( ")" )
-      if lambda_flag
-        "anonymouse"
-        sprintf( "callProcedure( 'anonymouse', %s, Cell.new( %s ))", funcname, argStr )
+      if (not lambda_flag) and isRubyInterface( funcname )
+        # Ruby method
+        #   1) convert arguments
+        argStr  = args.map { |x| x.car.to_s }.join( "," )
+        #   2) generate caller code part
+        sprintf( "%s( %s )", toRubySymbol( funcname ), argStr )
       else
-        origname = funcname.to_s
-        funcname = funcname.to_s
-        funcname = @alias[ funcname ] if @alias[ funcname ] 
-        sprintf( "callProcedure( '%s', %s, Cell.new( %s ))", origname, toRubySymbol( funcname ), argStr )
+        # Nendo function
+        argStr  = args.map { |x| x.car.to_s }.join( " ,Cell.new(" )
+        argStr += args.map { |x| "" }.join( ")" )
+        if lambda_flag
+          "anonymouse"
+          sprintf( "callProcedure( 'anonymouse', %s, Cell.new( %s ))", funcname, argStr )
+        else
+          origname = funcname.to_s
+          funcname = funcname.to_s
+          funcname = @alias[ funcname ] if @alias[ funcname ] 
+          sprintf( "callProcedure( '%s', %s, Cell.new( %s ))", origname, toRubySymbol( funcname ), argStr )
+        end
       end
     end
   end
@@ -854,7 +868,7 @@ class Evaluator
       when :true, :false, :nil  # reserved symbols
         str += sexp.to_s
       else
-        if sexp.to_s.match( /[.]/ )
+        if isRubyInterface( sexp )
           str += sprintf( ":\"%s\"", sexp.to_s )
         else
           str += sprintf( ":%s", sexp.to_s )
@@ -974,7 +988,10 @@ class Evaluator
         sym = sexp.car.to_s
         sym = @alias[ sym ]  if @alias[ sym ]
         sym = toRubySymbol( sym )
-        if sexp.car.class == Symbol and eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
+        if isRubyInterface( sym ) 
+          arr = sexp.map { |x| macroexpand_1( x.car ) }
+          arr.to_list( sexp.lastAtom )
+        elsif sexp.car.class == Symbol and eval( sprintf( "(defined? %s and LispMacro == %s.class)", sym,sym ), @binding )
           eval( sprintf( "@_macro = %s", sym ), @binding )
           callProcedure( sym, @_macro, sexp.cdr )
         else
