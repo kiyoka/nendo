@@ -74,6 +74,18 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
   end
 end
 
+describe Nendo, "Ruby' arity method rules are " do
+  it "should" do
+    Proc.new {}.arity.should == -1
+    Proc.new {||}.arity.should == 0
+    Proc.new {|a|}.arity.should == 1
+    Proc.new {|a,b|}.arity.should == 2
+    Proc.new {|a,b,c|}.arity.should == 3
+    Proc.new {|*a|}.arity.should == -1
+    Proc.new {|a,*b|}.arity.should == -2
+  end
+end
+
 describe Evaluator, "When use Evaluator's util methods" do
   before do
     @evaluator = Evaluator.new()
