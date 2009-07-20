@@ -613,5 +613,8 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.replStr( " (set! str \"string\") (. str size to_s) " ).should == "\"6\""
     @nendo.replStr( " (to-s str.size) " ).should == "\"6\""
     @nendo.replStr( " (to-s 'str.size) " ).should == "\"str.size\""
+    @nendo.replStr( " (require \"date\") " ).should == "true"
+    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%x\") " ).should == "\"01/01/00\""
+    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%s\") " ).should == "\"-62167392000\""
   end
 end
