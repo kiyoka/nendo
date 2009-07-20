@@ -260,6 +260,39 @@
 
 
 ;; ----------------------------------------
+;; for Ruby interop
+;; ----------------------------------------
+;; dot_operator
+(define dot-operator
+  (macro lst
+    (define (dot-operator-iter lst)
+      (cond
+       ((null? lst)
+        '())
+       ((pair? lst)
+        (if (eq? 'dot-operator (car lst))
+            (intern
+             (string-join
+              (map
+               (lambda (x)
+                 (if (pair? x)
+                     (to-s (dot-operator-iter x))
+                     (to-s x)))
+               (cdr lst))
+              "."))
+            (error "require dot-operator tree")))
+       (else
+        lst)))
+
+    (cond
+     ((eq? 0 (length lst))
+      (error ". operator requires argument"))
+     (else
+      ((dot-operator-iter
+        (cons 'dot-operator lst)))))))
+
+
+;; ----------------------------------------
 ;; List library functions
 ;; ----------------------------------------
 (define (last-pair x)

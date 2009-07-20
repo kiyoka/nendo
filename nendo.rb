@@ -257,17 +257,22 @@ class Reader
         when ')'
           T_RPAREN
         when '.'
-          T_DOT
+          str += readwhile( /[_a-zA-Z0-9!?.-]/ ).gsub( /[-]/, '_' )
+          if 1 == str.length
+            T_DOT
+          else
+            T_SYMBOL
+          end
         when /[\r\n]/
           T_LINEFEED
         when /;/
           readwhile( /[^\r\n]/ )
           str = ""
           T_COMMENT
-        when /[_a-z]/ # symbol
-          str += readwhile( /[_a-zA-Z0-9!?-]/ ).gsub( /[-]/, '_' )
+        when /[_a-zA-Z]/      # symbol
+          str += readwhile( /[_a-zA-Z0-9!?.-]/ ).gsub( /[-]/, '_' )
           T_SYMBOL
-        when /[*\/=!<>&|%]/ # symbol
+        when /[*\/=!<>&|%]/   # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
           T_SYMBOL
         when /[+-]/           # number
@@ -328,6 +333,8 @@ class Reader
       :unquote
     when T_UNQUOTE_SPLICING
       :unquote_splicing
+    when T_DOT
+      :dot_operator
     end
   end
 
@@ -351,8 +358,14 @@ class Reader
       when T_RPAREN
         break
       when T_DOT
-        token
-        lastAtom = atom()
+        if 0 == cells.length
+          # (. symbol1 symbol2 ... ) form
+          cells << Cell.new( atom() )
+        else
+          # ( symbol1 . symbol2 ... ) form
+          token
+          lastAtom = atom()
+        end
       when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
         cells << Cell.new( sexp() )
       else
@@ -601,8 +614,13 @@ module BuiltinFunctions
     if _pair_QMARK( arg )
       macroexpand_1( arg )
     else
-      Cell.new
+      arg
     end
+  end
+  def _to_s( arg )              arg.to_s    end
+  def _intern( arg )            arg.intern  end
+  def _string_join( lst, delim )
+    lst.to_a.map{ |x| x.car }.join( delim )
   end
 end
 
@@ -625,7 +643,6 @@ class Evaluator
                 '<'        => 'lt?',
                 '<='       => 'le?',
                 '==='      => 'eqv?',
-
     }
     # built-in functions
     @sym = Hash.new
@@ -648,7 +665,11 @@ class Evaluator
 
   def toRubySymbol( name )
     name = name.to_s  if Symbol == name.class
-    '_' + name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' )
+    name = name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' )
+    if not name.match( /^[A-Z]/ )
+      name = '_' + name
+    end
+    name
   end
 
   def toLispSymbol( name )
@@ -833,7 +854,11 @@ class Evaluator
       when :true, :false, :nil  # reserved symbols
         str += sexp.to_s
       else
-        str += sprintf( ":%s", sexp.to_s )
+        if sexp.to_s.match( /[.]/ )
+          str += sprintf( ":\"%s\"", sexp.to_s )
+        else
+          str += sprintf( ":%s", sexp.to_s )
+        end
       end
     when String
       str += sprintf( "\"%s\"", sexp )
@@ -997,6 +1022,8 @@ class Printer
         ","
       when :unquote_splicing
         ",@"
+      when :dot_operator
+        "."
       else
         false
       end

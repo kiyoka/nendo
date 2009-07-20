@@ -307,8 +307,8 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '((a)(b)(c)) " ).should == "((a) (b) (c))"
     @nendo.replStr( " 'a " ).should == "a"
     @nendo.replStr( " 'symbol " ).should == "symbol"
-    lambda { @nendo.replStr( " 'SYMBOL " ) }.should raise_error(NameError)
-    lambda { @nendo.replStr( " 'SyMbOl " ) }.should raise_error(NameError)
+    @nendo.replStr( " 'SYMBOL " ).should == "SYMBOL"
+    @nendo.replStr( " 'SyMbOl " ).should == "SyMbOl"
     @nendo.replStr( " ''a " ).should == "'a"
     @nendo.replStr( " '1 " ).should == "1"
     @nendo.replStr( " ''1 " ).should == "'1"
@@ -578,5 +578,28 @@ describe Nendo, "when use quasiquote macro " do
     pending "dotted pair does not expanded quasiquote." do
       @nendo.replStr( " `(( foo ,(- 10 3)) ,@(cdr '(c)) . ,(car '(cons))) " ).should == "((foo 7) . cons)"
     end
+  end
+end
+
+describe Nendo, "when use dot-operator (.) macro " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (macroexpand '(. a b)) " ).should == "a.b"
+    @nendo.replStr( " (macroexpand '(. a b c)) " ).should == "a.b.c"
+    @nendo.replStr( " (macroexpand '(. Kernel open)) " ).should == "Kernel.open"
+    @nendo.replStr( " (macroexpand '(. a size)) " ).should == "a.size"
+    @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).should == "a.size.to_s"
+    @nendo.replStr( " (macroexpand '(. (. a size) (. to_s to_i))) " ).should == "a.size.to_s.to_i"
+    @nendo.replStr( " (macroexpand '(. (. a size) to_s (. to_s to_i))) " ).should == "a.size.to_s.to_s.to_i"
+    @nendo.replStr( " (macroexpand '(. (. (. a size)))) " ).should == "a.size"
+    @nendo.replStr( " (set! str \"str\") str.size " ).should == "3"
+    @nendo.replStr( " (set! str \"str\") (. str size) " ).should == "3"
+    @nendo.replStr( " (set! str \"str\") (+ 1 (. str size)) " ).should == "4"
+    @nendo.replStr( " (set! str \"string\") (. str size to_s) " ).should == "\"6\""
+    @nendo.replStr( " (to-s str.size) " ).should == "\"6\""
+    @nendo.replStr( " (to-s 'str.size) " ).should == "\"str.size\""
   end
 end
