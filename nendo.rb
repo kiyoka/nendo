@@ -665,8 +665,8 @@ class Evaluator
 
   def toRubySymbol( name )
     name = name.to_s  if Symbol == name.class
-    name = name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' )
-    if not name.match( /^[A-Z]/ )
+    name = name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
+    unless name.match( /^[A-Z]/ )
       name = '_' + name
     end
     name
