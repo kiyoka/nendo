@@ -527,6 +527,7 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (let1 aaa 111 aaa)" ).should == "111"
     @nendo.replStr( " (let1 aaa (+ 2 3) aaa)" ).should == "5"
     @nendo.replStr( " (let1 aaa 333 (let1 bbb 444 (+ aaa bbb)))" ).should == "777"
+    @nendo.replStr( " (let1 aaa 333 (let1 bbb 444 (set! bbb 555) (+ aaa bbb)))" ).should == "888"
     @nendo.replStr( " (cond (true  1) (false 2)) " ).should == "1"
     @nendo.replStr( " (cond (false 1) (true  2)) " ).should == "2"
     @nendo.replStr( " (cond (true  1) (true  2)) " ).should == "1"
