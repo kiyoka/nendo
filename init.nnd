@@ -295,17 +295,17 @@
         (cons 'dot-operator lst)))))))
 
 (define (with-open pred . lst)
-  (let ((len (length lst)))
-    (let ((f (cond
-              ((= 1 len)
-               (Kernel.open (car lst)))
-              ((< 1 len)
-               (Kernel.open (car lst) (cadr lst)))
-              (else
-               (error "with-open requires 1 or 2 arguments")))))
-      (let ((result (pred f)))
-        (f.close)
-        result))))
+  (let1 len (length lst)
+        (let1 f (cond
+                 ((= 1 len)
+                  (Kernel.open (car lst)))
+                 ((< 1 len)
+                  (Kernel.open (car lst) (cadr lst)))
+                 (else
+                  (error "with-open requires 1 or 2 arguments")))
+              (let1 result (pred f)
+                    (f.close)
+                    result))))
 
 
 ;; ----------------------------------------
