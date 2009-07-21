@@ -278,10 +278,12 @@
                (lambda (x)
                  (if (pair? x)
                      (to-s (dot-operator-iter x))
-                     (to-s x)))
+                     (if (symbol? x)
+                         (to-s x)
+                         (error (sprintf "dot-operator requires symbol, but got %s" x)))))
                (cdr lst))
               "."))
-            (error "require dot-operator tree")))
+            (error "dot-operator requires symbol or (. symbol symbol) form.")))
        (else
         lst)))
 
