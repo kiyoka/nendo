@@ -549,7 +549,8 @@ module BuiltinFunctions
     if 0 == args[0].length
       Kernel::exit(0)
     else
-      Kernel::exit(args[0][0])
+      arr = args[0].to_arr
+      Kernel::exit(arr[0])
     end
   end
 
@@ -625,7 +626,23 @@ module BuiltinFunctions
     lst.to_a.map{ |x| x.car }.join( delim )
   end
   def _require( arg )           Kernel::require( arg ) end
+  def _read( *args )
+    lst = args[0].to_arr
+    io = if 0 == lst.length
+           STDIN
+         else
+           lst[0]
+         end
+    reader = Reader.new( io, "STDIN", false )
+    s = reader._read
+    if s[1] # EOF?
+      Cell.new
+    elsif Nil != s[0].class
+      s[0]
+    end
+  end
 end
+
 
 
 # Translate S expression to Ruby expression and Evaluation
