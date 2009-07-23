@@ -596,7 +596,9 @@ module BuiltinFunctions
   def _eqv_QMARK(     a,b )      a === b end
   def _car(      cell )          cell.car end
   def _cdr(      cell )          cell.cdr end
+  def _write(  arg  )            printer = Printer.new ; print printer._write( arg ) end
   def _display(  arg  )          printer = Printer.new ; print printer._print( arg ) end
+  def _print(  arg  )            self._display( arg )  ; self._newline end
   def _newline(       )          print "\n" end
   def _procedure_QMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
   def _macro_QMARK( arg )       (LispMacro == arg.class) end
@@ -1028,7 +1030,7 @@ class Printer
     @debug    = debug
   end
 
-  def _print( sexp, str = "" )
+  def __write( sexp, readable )
     getQuoteKeyword = lambda { |x|
       case x
       when :quote
@@ -1045,14 +1047,14 @@ class Printer
         false
       end
     }
-    if 0 == str.length and @debug 
+    if @debug 
       pp sexp
     end
     case sexp
     when Cell
-      arr = sexp.map { |x| _print( x.car ) }
+      arr = sexp.map { |x| __write( x.car, readable ) }
       lastAtom = sexp.lastAtom
-      lastAtom = _print( lastAtom )  if lastAtom
+      lastAtom = __write( lastAtom, readable )  if lastAtom
       keyword = getQuoteKeyword.call( sexp.car )
       if keyword
         keyword + arr[1..-1].join( " " ) + (lastAtom ? " . " + lastAtom : "")
@@ -1067,7 +1069,11 @@ class Printer
         sprintf( "%s", sexp.to_s )
       end
     when String
-      sprintf( "\"%s\"", sexp.to_s )
+      if readable
+        sprintf( "\"%s\"", sexp.to_s )
+      else
+        sexp.to_s
+      end
     when Nil
       "()"
     when nil
@@ -1076,6 +1082,14 @@ class Printer
       sprintf( "%s", sexp )
     end
   end
+
+  def _print( sexp )
+    self.__write( sexp, false )
+  end
+  def _write( sexp )
+    self.__write( sexp, true  )
+  end
+
 end
 
 
