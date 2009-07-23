@@ -596,9 +596,9 @@ module BuiltinFunctions
   def _eqv_QMARK(     a,b )      a === b end
   def _car(      cell )          cell.car end
   def _cdr(      cell )          cell.cdr end
-  def _write(  arg  )            printer = Printer.new ; print printer._write( arg ) end
-  def _display(  arg  )          printer = Printer.new ; print printer._print( arg ) end
-  def _print(  arg  )            self._display( arg )  ; self._newline end
+  def _write(  arg  )            printer = Printer.new ; print printer._write( arg ) ; arg end
+  def _display(  arg  )          printer = Printer.new ; print printer._print( arg ) ; arg end
+  def _print(  arg  )            self._display( arg )  ; self._newline() ; arg             end
   def _newline(       )          print "\n" end
   def _procedure_QMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
   def _macro_QMARK( arg )       (LispMacro == arg.class) end
