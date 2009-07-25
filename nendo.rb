@@ -190,7 +190,6 @@ class Reader
     @chReader   = CharReader.new( inport, sourcefile )
     @curtoken   = nil
     @debug      = debug
-    token # setup first token.
   end
 
   def reset
@@ -305,6 +304,9 @@ class Reader
   end
 
   def curtoken
+    if !@curtoken
+      self.token
+    end
     @curtoken
   end
 
@@ -430,16 +432,16 @@ class Reader
     end
   end
 
-  # return value is [ S-expression-tree, eof-flag ]
+  # return value is [ S-expression-tree, eof-flag, valid-sexp-flag ]
   def _read
     case curtoken.kind
     when T_EOF
-      [ Nil.new, true ]
+      [ Nil.new, true,  false ]
     when T_LINEFEED
       token
-      [ Nil.new, false ]
+      [ Nil.new, false, false ]
     else
-      [ sexp(),  false ]
+      [ sexp(),  false, true  ]
     end
   end
 end
@@ -634,15 +636,18 @@ module BuiltinFunctions
            lst[0]
          end
     reader = Reader.new( io, "STDIN", false )
-    s = reader._read
-    if s[1] # EOF?
-      Cell.new
-    elsif Nil != s[0].class
-      s[0]
-    end
+    ret = nil
+    begin
+      s = reader._read
+      ret = s[0]
+      if s[1] # EOF?
+        ret = Cell.new
+        break
+      end
+    end until s[2]
+    ret
   end
 end
-
 
 
 # Translate S expression to Ruby expression and Evaluation
@@ -1040,6 +1045,23 @@ class Evaluator
     printf( "          rubyExp=<<< %s >>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
   end
+
+  def _load( filename )
+    printer = Printer.new( @debug )
+    open( filename ) {|f|
+      reader = Reader.new( f, filename, false )
+      while true
+        lineno = reader.lineno
+        s = reader._read
+        if s[1] # EOF?
+          break
+        elsif Nil != s[0].class
+          printf( "\n          readExp=<<< %s >>>\n", printer._print(s[0]) ) if @debug
+          self.lispEval( s[0], reader.sourcefile, lineno )
+        end
+      end
+    }
+  end
 end
 
 class Printer
@@ -1113,31 +1135,16 @@ end
 class Nendo
   def initialize( debug_evaluator = false, debug_printer = false )
     @debug_evaluator = debug_evaluator
-    @evaluator    = Evaluator.new( debug_evaluator )
-    @printer      = Printer.new( debug_printer )
+    @evaluator       = Evaluator.new( debug_evaluator )
+    @debug_printer   = debug_printer
   end
   
   def loadInitFile
-    loadFile( "./init.nnd" )
-  end
-
-  def loadFile( filename )
-    open( filename ) {|f|
-      reader = Reader.new( f, filename, false )
-      while true
-        lineno = reader.lineno
-        s = reader._read
-        if s[1] # EOF?
-          break
-        elsif Nil != s[0].class
-          printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
-          @evaluator.lispEval( s[0], reader.sourcefile, lineno )
-        end
-      end
-    }
+    @evaluator._load( "./init.nnd" )
   end
 
   def repl
+    printer = Printer.new( @debug_printer )
     reader = nil
     print "nendo> "
     begin
@@ -1157,8 +1164,8 @@ class Nendo
         if s[1] # EOF?
           break
         elsif Nil != s[0].class
-          printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
-          print @printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
+          printf( "\n          readExp=<<< %s >>>\n", printer._print(s[0]) ) if @debug_evaluator
+          print printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
           print "\n" + "nendo> "
         end
       rescue => e
@@ -1170,6 +1177,7 @@ class Nendo
   end
 
   def replStr( str )
+    printer   = Printer.new( @debug_printer )
     sio       = StringIO.open( str )
     reader    = Reader.new( sio, "(string)", false )
     result    = nil
@@ -1179,8 +1187,8 @@ class Nendo
       if s[1] # EOF?
         break
       elsif Nil != s[0].class
-        printf( "\n          readExp=<<< %s >>>\n", @printer._print(s[0]) ) if @debug_evaluator
-        result = @printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno )) 
+        printf( "\n          readExp=<<< %s >>>\n", printer._print(s[0]) ) if @debug_evaluator
+        result = printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno )) 
       end
     end
     result
