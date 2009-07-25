@@ -1062,6 +1062,10 @@ class Evaluator
       end
     }
   end
+
+  def _eval( sexp )
+    self.lispEval( sexp, "dynamic S-expression ( no source )", 1 )
+  end
 end
 
 class Printer
