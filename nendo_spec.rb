@@ -108,6 +108,16 @@ describe Evaluator, "When use Evaluator's util methods" do
     @evaluator.toLispSymbol( "_a_b" ).should == "a_b"
     @evaluator.toLispSymbol( "_a_b_c" ).should == "a_b_c"
     @evaluator.toLispSymbol( "_A_B_C" ).should == "A_B_C"
+    @evaluator.toRubyValue( "a" ).should == "a"
+    @evaluator.toRubyValue( "b" ).should == "b"
+    @evaluator.toRubyValue( "true" ).should == "true"
+    @evaluator.toRubyValue( "nil" ).should == "nil"
+    @evaluator.toRubyValue( "false" ).should == "false"
+    @evaluator.toRubyValue( :a ).should == "a"
+    @evaluator.toRubyValue( :b ).should == "b"
+    @evaluator.toRubyValue( true ).should == "true"
+    @evaluator.toRubyValue( nil ).should == "nil"
+    @evaluator.toRubyValue( false ).should == "false"
   end
 end
 

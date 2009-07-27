@@ -318,7 +318,16 @@ class Reader
     when T_SYMBOL
       sym = cur.str.intern
       sym.setLispToken( cur )
-      sym
+      case sym
+      when :true
+        true
+      when :false
+        false
+      when :nil
+        nil
+      else
+        sym
+      end
     when T_NUM
       if cur.str.match( /[.]/ ) # floating point
         cur.str.to_f
@@ -688,6 +697,18 @@ class Evaluator
     sprintf( "__gensym__%d", @gensym_counter ).intern
   end
 
+  def toRubyValue( val )
+    if NilClass == val.class
+      "nil"
+    elsif TrueClass == val.class
+      val.to_s
+    elsif FalseClass == val.class
+      val.to_s
+    else
+      val.to_s
+    end
+  end
+
   def toRubySymbol( name )
     name = name.to_s  if Symbol == name.class
     name = name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
@@ -753,19 +774,19 @@ class Evaluator
   def execFunc( funcname, args, sourcefile, lineno, lambda_flag )
     case funcname
     when :set!   # `set!' special form
-      sprintf( "%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), args.cdr.car.to_s )
+      sprintf( "%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), toRubyValue( args.cdr.car ))
     when :error
-      sprintf( 'begin raise RuntimeError, %s ; rescue => __e ;  __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end ', args.car.to_s, sourcefile, lineno )
+      sprintf( 'begin raise RuntimeError, %s ; rescue => __e ;  __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end ', toRubyValue( args.car ), sourcefile, lineno )
     else
       if (not lambda_flag) and isRubyInterface( funcname )
         # Ruby method
         #   1) convert arguments
-        argStr  = args.map { |x| x.car.to_s }.join( "," )
+        argStr  = args.map { |x| toRubyValue( x.car ) }.join( "," )
         #   2) generate caller code part
         sprintf( "%s( %s )", toRubySymbol( funcname ), argStr )
       else
         # Nendo function
-        argStr  = args.map { |x| x.car.to_s }.join( " ,Cell.new(" )
+        argStr  = args.map { |x| toRubyValue( x.car ) }.join( " ,Cell.new(" )
         argStr += args.map { |x| "" }.join( ")" )
         if lambda_flag
           "anonymouse"
@@ -888,18 +909,15 @@ class Evaluator
         str += arr.map{ |e| ")" }.join
       end
     when Symbol
-      case sexp
-      when :true, :false, :nil  # reserved symbols
-        str += sexp.to_s
+      if isRubyInterface( sexp )
+        str += sprintf( ":\"%s\"", sexp.to_s )
       else
-        if isRubyInterface( sexp )
-          str += sprintf( ":\"%s\"", sexp.to_s )
-        else
-          str += sprintf( ":%s", sexp.to_s )
-        end
+        str += sprintf( ":%s", sexp.to_s )
       end
     when String
       str += sprintf( "\"%s\"", sexp )
+    when TrueClass, FalseClass, NilClass  # reserved symbols
+      str += toRubyValue( sexp )
     else
       str += sprintf( "%s", sexp )
     end
@@ -939,21 +957,18 @@ class Evaluator
     else
       case sexp
       when Symbol
-        case sexp
-        when :true , :false , :nil  # reserved symbols
-          str += sexp.to_s
-        else
-          sym = sexp.to_s
-          sym = @alias[ sym ]  if @alias[ sym ]
-          sym = toRubySymbol( sym )
-          str += sprintf( 'begin %s ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end', sym, sexp.sourcefile, sexp.lineno )
-        end
+        sym = sexp.to_s
+        sym = @alias[ sym ]  if @alias[ sym ]
+        sym = toRubySymbol( sym )
+        str += sprintf( 'begin %s ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end', sym, sexp.sourcefile, sexp.lineno )
       when Fixnum
         str += sexp.to_s
       when LispString
         str += sprintf( "\"%s\"", sexp )
       when Nil
         str += "Nil.new"
+      when TrueClass, FalseClass, NilClass  # reserved symbols
+        str += toRubyValue( sexp )
       else
         str += sexp.to_s
       end
