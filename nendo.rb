@@ -346,6 +346,8 @@ class Reader
       :unquote_splicing
     when T_DOT
       :dot_operator
+    else
+      raise "Error: Unknown token in atom()"
     end
   end
 
@@ -420,6 +422,7 @@ class Reader
     case curtoken.kind
     when T_LINEFEED
       token
+      sexp()
     when T_EOF
       print "Error: unbalanced paren(2)\n"
       raise ExceptionParen
