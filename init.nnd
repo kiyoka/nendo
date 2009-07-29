@@ -236,6 +236,17 @@
   (macro form
     `(if (not ,(car form)) (begin ,@(cdr form)))))
 
+(define while
+  (macro form
+    (let1 sym (gensym)
+      `(begin
+	 (define ,sym
+	   (lambda ()
+	     (if ,(car form)
+		 (begin ,@(cdr form)
+			(,sym)))))
+	 (,sym)))))
+
 
 ;; ----------------------------------------
 ;; Higher-order functions
