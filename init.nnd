@@ -247,6 +247,10 @@
 			(,sym)))))
 	 (,sym)))))
 
+(define until
+  (macro form
+    `(while (not ,(car form))
+       ,@(cdr form))))
 
 ;; ----------------------------------------
 ;; Higher-order functions
