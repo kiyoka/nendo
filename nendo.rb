@@ -16,6 +16,12 @@ class Nil
   def isDotted()  false    end
   def lastAtom()  nil      end
   def to_s()      ""       end
+  def car()
+    raise "Error: pair required, but got ()"
+  end
+  def cdr()
+    raise "Error: pair required, but got ()"
+  end
 end
 
 class LispString < String
@@ -715,7 +721,11 @@ class Evaluator
   def toRubySymbol( name )
     name = name.to_s  if Symbol == name.class
     name = name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
-    unless name.match( /^[A-Z]/ )
+    if name.match( /^[A-Z]/ )
+      # nothing to do
+    elsif name.match( /^[.]/ )
+      name = 'Kernel' + name
+    else
       name = '_' + name
     end
     name

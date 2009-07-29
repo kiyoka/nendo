@@ -305,6 +305,9 @@
     (cond
      ((eq? 0 (length lst))
       (error ". operator requires argument"))
+     ((and (eq? 1 (length lst))
+           (symbol? (car lst)))
+      (intern (+ "." (to-s (car lst)))))
      (else
       ((dot-operator-iter
         (cons 'dot-operator lst)))))))
