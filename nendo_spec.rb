@@ -570,8 +570,8 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (and true '(2) true) " ).should == "true"
     @nendo.replStr( " (and true true '(2)) " ).should == "(2)"
     @nendo.replStr( " (and true '(2) false) " ).should == "false"
-    @nendo.replStr( " (and 1 2 (print \"3\") (print \"4\") 5)" ).should == "5"
-    @nendo.replStr( " (and 1 2 false (print \"3\") (print \"4\") 5)" ).should == "false"
+    @nendo.replStr( " (define total 0) (and 1 2       (set! total (+ total 1)) (set! total (+ total 2)) 5)  total" ).should == "3"
+    @nendo.replStr( " (define total 1) (and 1 2 false (set! total (+ total 2)) (set! total (+ total 3)) 5)  total" ).should == "1"
     @nendo.replStr( " (apply + 100 '()) " ).should == "100"
     @nendo.replStr( " (apply + '(1 2)) " ).should == "3"
     @nendo.replStr( " (apply + 1 2 '(3)) " ).should == "6"
@@ -598,9 +598,7 @@ describe Nendo, "when use quasiquote macro " do
     @nendo.replStr( " `(list ,(+ 1 2) 4) " ).should == "(list 3 4)"
     @nendo.replStr( " (let ((name 'a)) `(list ,name ',name)) " ).should == "(list a 'a)"
     @nendo.replStr( " `(a `(b ,(+ 1 2) ,(foo ,(+ 1 3) d) e) f) " ).should == "(a `(b ,(+ 1 2) ,(foo 4 d) e) f)"
-    pending "dotted pair does not expanded quasiquote." do
-      @nendo.replStr( " `(( foo ,(- 10 3)) ,@(cdr '(c)) . ,(car '(cons))) " ).should == "((foo 7) . cons)"
-    end
+    @nendo.replStr( " `(( foo ,(- 10 3)) ,@(cdr '(c)) . ,(car '(cons))) " ).should == "((foo 7) . cons)"
   end
 end
 

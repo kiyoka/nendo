@@ -383,7 +383,7 @@ class Reader
         else
           # ( symbol1 . symbol2 ... ) form
           token
-          lastAtom = atom()
+          lastAtom = sexp()
         end
       when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
         cells << Cell.new( sexp() )
