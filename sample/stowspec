@@ -1,0 +1,44 @@
+#!/usr/local/bin/nendo
+;;-*- mode: nendo; syntax: scheme -*-;;
+
+
+;; Ruby's match conbinator
+;; regex is a string data ( not a regex object )
+;; call pred procedure with argument like ( $0-string  $1-string  $2-string  $3-string ... )
+(define (with-match str regex pred)
+  (let1 matchdata ((. str match) regex)
+    (if matchdata
+        (if pred
+            (pred
+             (matchdata.to_a.to_list))
+            (matchdata.to_a.to_list))
+        nil)))
+
+(define (get-placeinfo pwd homedir)
+  (let1 specdir (+ homedir "/stowspec")
+    (let ((m1 (with-match pwd (+ specdir "$") nil))
+          (m2 (with-match pwd (+ specdir "/([a-zA-Z].+)$") nil)))
+      (cond
+       ((eq? pwd homedir)
+        `(homedir ,homedir))
+       (m1
+        `(listdir ,(car m1)))
+       (m2
+        `(specdir ,(car m2) ,(cadr m2)))
+       (else
+        nil)))))
+  
+;; ( pwd . homedir )
+(define (get-curpath)
+  (cons
+   (Dir.pwd)
+   (ENV.fetch "HOME")))
+
+(define (main)
+  (let1 path (get-curpath)
+    (print (get-placeinfo (car path) (cdr path)))))
+
+(main)
+
+
+
