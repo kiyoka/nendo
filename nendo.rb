@@ -274,6 +274,10 @@ class Reader
           readwhile( /[^\r\n]/ )
           str = ""
           T_COMMENT
+        when /[#!]/
+          readwhile( /[^\r\n]/ )
+          str = ""
+          T_COMMENT
         when /[_a-zA-Z]/      # symbol
           str += readwhile( /[_a-zA-Z0-9!?.-]/ ).gsub( /[-]/, '_' )
           T_SYMBOL
@@ -1172,7 +1176,11 @@ class Nendo
   end
   
   def loadInitFile
-    @evaluator._load( "./init.nnd" )
+    @evaluator._load( File.dirname(__FILE__) + "/init.nnd" )
+  end
+
+  def load( path )
+    @evaluator._load( path )
   end
 
   def repl

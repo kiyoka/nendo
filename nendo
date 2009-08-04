@@ -4,13 +4,13 @@
 #  
 #
 #
-require 'nendo'
+require 'nendo/nendo'
 
 def main
   core = Nendo.new()
   core.loadInitFile
   if 0 < ARGV.length
-    core.loadFile( ARGV[0] )
+    core.load( ARGV[0] )
   else
     core.repl
   end
