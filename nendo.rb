@@ -645,6 +645,16 @@ module BuiltinFunctions
     end
   end
   def _to_s( arg )              arg.to_s    end
+  def _to_list( arg )
+    case arg
+    when Array
+      arg.to_list
+    when Cell
+      arg
+    else
+      raise TypeError
+    end
+  end
   def _intern( arg )            arg.intern  end
   def _string_join( lst, delim )
     lst.to_a.map{ |x| x.car }.join( delim )
