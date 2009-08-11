@@ -1,6 +1,7 @@
 #!/usr/local/bin/nendo
 ;;-*- mode: nendo; syntax: scheme -*-;;
 
+(define archive-file-pattern "([a-zA-Z].+)$")
 
 ;; Ruby's match conbinator
 ;; regex is a string data ( not a regex object )
@@ -17,7 +18,7 @@
 (define (get-placeinfo pwd homedir)
   (let1 specdir (+ homedir "/stowspec")
     (let ((m1 (with-match pwd (+ specdir "$") nil))
-          (m2 (with-match pwd (+ specdir "/([a-zA-Z].+)$") nil)))
+          (m2 (with-match pwd (+ specdir "/" archive-file-pattern) nil)))
       (cond
        ((eq? pwd homedir)
         `(homedir ,homedir))
@@ -34,11 +35,65 @@
    (Dir.pwd)
    (ENV.fetch "HOME")))
 
-(define (main)
+(define (display-help homedir)
+  (for-each
+   print
+   `(
+     "Usage:"
+     ""
+     )))
+
+(define (action-by-place)
   (let1 path (get-curpath)
-    (print (get-placeinfo (car path) (cdr path)))))
+    (let1 placeinfo (get-placeinfo (car path) (cdr path))
+      (cond
+       ((eq? 'specdir (car placeinfo))
+        (build-action 
+       ((eq? 'listdir (car placeinfo))
+        (for-each
+         print
+         (filter
+          (lambda (x)
+            (when (not (x.match "^[.]"))
+              x))
+          (to-list (Dir.entries (cadr placeinfo))))))
+       (else
+        (display-help (cdr path)))))))
 
-(main)
 
+(define (build-action cur filename tmppath)
+  ;; extract archive
+  (let1 command (sprintf "tar zxf %s" filename)
+    (.system (p command)))
+  ;; check archive
+  (let1 command "find . -name configure"
+    (.system (p command)))
 
+  ;; create specfile ( if needed )
+  ;; configure
+  ;; make
+  ;; make install
+  )
+
+(define (action-by-arg argv)
+  (let ((m1 (with-match (car argv) (+ "^http://.+/" archive-file-pattern) nil))
+        (m2 (with-match (car argv) archive-file-pattern nil)))
+    (let ((path     (get-curpath))
+          (url      (if m1 (car m1) nil))
+          (filename (if m1 (cadr m1) (car m2))))
+      (printf "url      = %s\n" url)
+      (printf "filename = %s\n" filename)
+      (if url
+          (error "Not implemented downloading feature.")
+          (build-action (car path) filename "/tmp")))))
+
+;;(action-by-arg '("a.tar.gz"))
+;;(action-by-arg '("http://www.example.com/a.tar.gz"))
+
+(define (main argv)
+  (if (eq? 0 (length argv))
+      (action-by-place)
+      (action-by-arg argv)))
+  
+(main (cdr ARGV.to_list))
 
