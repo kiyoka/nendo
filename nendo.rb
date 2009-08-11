@@ -279,7 +279,7 @@ class Reader
           str = ""
           T_COMMENT
         when /[_a-zA-Z]/      # symbol
-          str += readwhile( /[_a-zA-Z0-9!?.-]/ ).gsub( /[-]/, '_' )
+          str += readwhile( /[_a-zA-Z0-9!?*.-]/ ).gsub( /[-]/, '_' )
           T_SYMBOL
         when /[*\/=!<>&|%]/   # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
@@ -734,7 +734,7 @@ class Evaluator
 
   def toRubySymbol( name )
     name = name.to_s  if Symbol == name.class
-    name = name.gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
+    name = name.gsub( /[*]/, '_AMARK' ).gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
     if name.match( /^[A-Z]/ )
       # nothing to do
     elsif name.match( /^[.]/ )
@@ -753,7 +753,7 @@ class Evaluator
     name = name.to_s  if Symbol == name.class
     raise ArgumentError if '_' == name[0]
     name = name[1..-1]
-    name.gsub( /_QMARK/, '?' ).gsub( /_EMARK/, '!' )
+    name.gsub( /_AMARK/, '*' ).gsub( /_QMARK/, '?' ).gsub( /_EMARK/, '!' )
   end
 
   def toRubyArgument( origname, pred, args )
@@ -854,7 +854,10 @@ class Evaluator
   end
 
   def makeClosure( sym, args )
-    first   = args.car.cdr.car
+    first = args.car
+    if args.car.car == :quote
+      first   = args.car.cdr.car
+    end
     rest    = args.cdr
     argStr  = toRubyParameter( first )
     str = case sym
@@ -1108,6 +1111,10 @@ class Evaluator
   def _eval( sexp )
     self.lispEval( sexp, "dynamic S-expression ( no source )", 1 )
   end
+
+  def _enable_debug()
+    @debug = true
+  end
 end
 
 class Printer
@@ -1174,7 +1181,6 @@ class Printer
   def _write( sexp )
     self.__write( sexp, true  )
   end
-
 end
 
 
