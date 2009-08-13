@@ -604,6 +604,20 @@ describe Nendo, "when use quasiquote macro " do
   end
 end
 
+describe Nendo, "when use macros made by quasiquote. " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (case (length '(1      )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "one"
+    @nendo.replStr( " (case (length '(1 2    )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "two"
+    @nendo.replStr( " (case (length '(1 2 3  )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "else"
+    @nendo.replStr( " (case (length '(1 2 3 4)) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "else"
+    @nendo.replStr( " (case   100               ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "else"
+  end
+end
+
 describe Nendo, "when use dot-operator (.) macro " do
   before do
     @nendo = Nendo.new()

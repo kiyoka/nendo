@@ -276,6 +276,42 @@
 
 
 ;; ----------------------------------------
+;; other forms
+;; ----------------------------------------
+(define case
+  (macro (cond-exp . body)
+    (define (case-block val . elem)
+      (let1 block (car elem)
+        (let ((cond-vals (car block))
+              (body      (cdr block)))
+          (let1 v
+              (if (eq? 'else cond-vals)
+                  cond-vals
+                  (cons 'or
+                        (map
+                         (lambda (x)
+                           `(eq? ,x ,val))
+                         cond-vals)))
+            `((,v
+               ,@body))))))
+    
+    (define (case-iter val lst)
+      (cond
+       ((eq? 0 (length lst))
+        '())
+       ((eq? 1 (length lst))
+        (case-block val (car lst)))
+       (else
+        (append (case-block val (car lst))
+                (case-iter  val (cdr lst))))))
+
+    (let1 sym (gensym)
+      `(let1 ,sym ,cond-exp
+         (cond
+          ,@(case-iter sym body))))))
+
+
+;; ----------------------------------------
 ;; for Ruby interop
 ;; ----------------------------------------
 ;; dot_operator

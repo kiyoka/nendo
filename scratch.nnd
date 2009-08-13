@@ -157,47 +157,18 @@
 ((. Date new) 2)
 
 
-(define (case-block val . elem)
-  (let1 block (car elem)
-    (let ((cond-vals (if (pair? (car block))
-                         (car block)
-                         (list (car block))))
-          (body      (cdr block)))
-      (let1 v
-          (cons 'or
-                (map
-                 (lambda (x)
-                   `(eq? ,x ,val))
-                 cond-vals))
-        `((,v
-           ,@body))))))
-  
-(define (case-iter val lst)
-  (cond
-   ((eq? 0 (length lst))
-    '())
-   ((eq? 1 (length lst))
-    (case-block val (car lst)))
-   (else
-    (append (case-block val (car lst))
-            (case-iter  val (cdr lst))))))
-
-(define case
-  (macro (cond-exp . body)
-    (let1 sym (gensym)
-      `(let1 ,sym ,cond-exp
-         (cond
-          ,@(case-iter sym body))))))
-
 
 (macroexpand-1 '
- (case (length '(1 2 3))
-   (3
+ (case (length '(1 2 3 4))
+   ((3)
     33
     44)
    ((10 11)
     20
-    30)))
+    30)
+   (else
+    100
+    200)))
 
 (let1 __gensym__31 (length '(1 2 3))
   (cond
@@ -208,12 +179,15 @@
    
 
 (case (length '(1 2 3))
-  (3
+  ((3)
    33
    44)
   ((10 11)
    20
-   30))
+   30)
+  (else
+   100
+   200))
 
 
 ;;  (case-iter 1
