@@ -1,0 +1,211 @@
+;;-*- mode: nendo-mode; syntax: scheme -*-;;
+
+(macroexpand-1 '(define a "a"))
+(macroexpand-1 '(define (func arg) arg))
+(macroexpand-1 '(define (func a b) (list a b)))
+(macroexpand-1 '(define (func a . b) (list a b)))
+(macroexpand-1 '(define (func a b . c) (list a b c)))
+(macroexpand-1 '(define (func . lst) lst))
+(macroexpand-1
+ (macroexpand-1 '(define (append a b)
+                  (define (append_reverse a b)
+                    (if (pair? a)
+                        (append_reverse (cdr a) (cons (car a) b))
+                        b))
+                  (append_reverse (reverse a) b))))
+
+(map
+ (lambda (i)
+   (cond
+    ((eq? i 0)   "zero")
+    ((eq? i 1)   "one")
+    ((eq? i 2)   "two")
+    ((eq? i 3)   "three")
+    ((eq? i 4)   "four")
+    ((eq? i 5)   "five")
+    ((eq? i 6)   "six")
+    (else        "other...")))
+ '(1 3 6))
+
+
+(define txt2list 
+  (lambda (filename)
+    (let ((f (open filename)))
+      (let ((lines (f.readlines)))
+        (lines.to_list)))))
+
+(for-each
+ (lambda (x)
+   (print (+ "<<" (x.chomp) ">>\n")))
+ (txt2list "t.txt"))
+
+(set! macroAndLet (macro (x) (let ((a 1)) (list a x))))
+(macroexpand-1 '(macroAndLet 2))
+
+
+(set! inc (macro (x) (list 'set! x (list '+ '1 x))))
+(macroexpand-1 '(inc a))
+(set! a 2)
+(inc a)
+
+(set! twice (macro (x) (list 'begin x x)))
+(macroexpand-1 '(twice a))
+(macroexpand-1 '(twice (inc a)))
+
+'(twice 1)
+
+(twice (inc a))
+
+(set! swap (macro (a b) (list b a)))
+
+(inc (define mylist (lambda args args))
+
+(define funcAB (lambda ( a . b )  (list a b)))
+
+(define gensym_test
+  (macro ()
+    (list 'set! (gensym) 2)))
+
+(define let1
+  (macro (var expr body)
+    (list 'let (list (list var expr)) body)))
+
+(macroexpand-1 '(let1
+                 a
+                 (+ 1 2)
+                 (printf "%x" a)))
+
+ 
+
+(macroexpand-1 '(or true false))
+(macroexpand-1 '(or false true))
+(macroexpand-1 '(or true true))
+(macroexpand-1 '(or 1 2))
+(macroexpand-1 '(or false 2))
+(set! a 10)
+(set! a 11)
+(set! a 20)
+(macroexpand-1 '(or (eq? a 10) (eq? a 20)))
+
+
+(macroexpand-1 '(and true false))
+(macroexpand-1 '(and false true))
+(macroexpand-1 '(and true true))
+(macroexpand-1 '(and 1 2))
+(macroexpand-1 '(and false 2))
+(set! a 10)
+(set! a 11)
+(set! b 20)
+(set! b 21)
+(set! c 30)
+(macroexpand-1 '(and (eq? a 10) (eq? b 20)))
+(macroexpand-1 '(and (eq? a 10) (eq? b 20) (eq? c 30)))
+(macroexpand-1 '(and (eq? a 10) (eq? b 20) (eq? c 30) 40))
+(macroexpand-1 '(and false      (eq? b 20) (eq? c 30) 40))
+
+      
+
+(macroexpand '(apply + 1 2 (3)))
+(macroexpand '(apply + (1)))
+
+(apply + 1 2 '(3 4 5))
+
+(set! a 10)
+`a
+
+(filter
+ (lambda (x)
+   (symbol? x))
+ '(a b c "str"))
+
+
+(intern
+ (string-join '("a" "b" "c") "."))
+
+(macroexpand '(. a b))
+(macroexpand '(. a b c))
+(macroexpand '(. Kernel open))
+(macroexpand '(. a size))
+(macroexpand '(. (. a size) to_s))
+(macroexpand '(. (. a size) (. to_s to_i)))
+(macroexpand '(. (. a size) to_s (. to_s to_i)))
+(macroexpand '(. (. (. a size))))
+(macroexpand '(. . a a))
+
+
+
+
+;; problem
+(to-s 'a.size)
+
+(define str "string")
+(set! str.size 2)
+(+ 1 (. str size))
+
+(define f (Kernel.open "t.txt"))
+
+(for-each
+ (lambda (x)
+   (print (x.chomp)))
+ (f.readlines.to_list))
+
+(f.close)
+
+(require "Date")
+(let1 d (Date.new 0)
+      (d.strftime "%x"))
+((. Date new) 2)
+
+
+(begin
+  (define (case-block val . elem)
+    (let1 block (car elem)
+      (let ((cond-vals (if (pair? (car block))
+                           (car block)
+                           (list (car block))))
+            (body      (cdr block)))
+        (let1 v
+            (cons 'or
+                  (map
+                   (lambda (x)
+                     `(eq? ,x ,val))
+                   cond-vals))
+          `((,v
+             ,@body))))))
+  
+  (define (case-iter val lst)
+    (cond
+     ((eq? 0 (length lst))
+      '())
+     ((eq? 1 (length lst))
+      (case-block val (car lst)))
+     (else
+      (append (case-block val (car lst))
+              (case-iter  val (cdr lst))))))
+  
+  (define (case cond-exp body)
+    (let1 sym (gensym)
+      `(let1 ,sym ,cond-exp
+         (cond
+          ,(case-iter sym body)))))
+
+  (case (length '(1 2 3))
+    '(
+      (1
+       2
+       3)
+      ((10 11)
+       20
+       30))))
+
+  ;;  (case-iter 1
+;;    '(
+;;      (1
+;;       2
+;;       3)
+;;      ((10 11)
+;;       20
+;;       30)))
+             
+
+(enable-debug)
