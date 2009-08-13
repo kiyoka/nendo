@@ -157,48 +157,66 @@
 ((. Date new) 2)
 
 
-(begin
-  (define (case-block val . elem)
-    (let1 block (car elem)
-      (let ((cond-vals (if (pair? (car block))
-                           (car block)
-                           (list (car block))))
-            (body      (cdr block)))
-        (let1 v
-            (cons 'or
-                  (map
-                   (lambda (x)
-                     `(eq? ,x ,val))
-                   cond-vals))
-          `((,v
-             ,@body))))))
+(define (case-block val . elem)
+  (let1 block (car elem)
+    (let ((cond-vals (if (pair? (car block))
+                         (car block)
+                         (list (car block))))
+          (body      (cdr block)))
+      (let1 v
+          (cons 'or
+                (map
+                 (lambda (x)
+                   `(eq? ,x ,val))
+                 cond-vals))
+        `((,v
+           ,@body))))))
   
-  (define (case-iter val lst)
-    (cond
-     ((eq? 0 (length lst))
-      '())
-     ((eq? 1 (length lst))
-      (case-block val (car lst)))
-     (else
-      (append (case-block val (car lst))
-              (case-iter  val (cdr lst))))))
-  
-  (define (case cond-exp body)
+(define (case-iter val lst)
+  (cond
+   ((eq? 0 (length lst))
+    '())
+   ((eq? 1 (length lst))
+    (case-block val (car lst)))
+   (else
+    (append (case-block val (car lst))
+            (case-iter  val (cdr lst))))))
+
+(define case
+  (macro (cond-exp . body)
     (let1 sym (gensym)
       `(let1 ,sym ,cond-exp
          (cond
-          ,(case-iter sym body)))))
+          ,@(case-iter sym body))))))
 
-  (case (length '(1 2 3))
-    '(
-      (1
-       2
-       3)
-      ((10 11)
-       20
-       30))))
 
-  ;;  (case-iter 1
+(macroexpand-1 '
+ (case (length '(1 2 3))
+   (3
+    33
+    44)
+   ((10 11)
+    20
+    30)))
+
+(let1 __gensym__31 (length '(1 2 3))
+  (cond
+   ((or (eq? 3 __gensym__31))
+    33 44)
+   ((or (eq? 10 __gensym__31) (eq? 11 __gensym__31))
+    20 30)))
+   
+
+(case (length '(1 2 3))
+  (3
+   33
+   44)
+  ((10 11)
+   20
+   30))
+
+
+;;  (case-iter 1
 ;;    '(
 ;;      (1
 ;;       2
