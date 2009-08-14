@@ -939,11 +939,7 @@ class Evaluator
         str += arr.map{ |e| ")" }.join
       end
     when Symbol
-      if isRubyInterface( sexp )
-        str += sprintf( ":\"%s\"", sexp.to_s )
-      else
-        str += sprintf( ":%s", sexp.to_s )
-      end
+      str += sprintf( ":\"%s\"", sexp.to_s )
     when String
       str += sprintf( "\"%s\"", sexp )
     when TrueClass, FalseClass, NilClass  # reserved symbols

@@ -311,6 +311,22 @@
           ,@(case-iter sym body))))))
 
 
+(define let*
+  (macro (exps . body)
+    (define (let*-expand rest body)
+      (case (length rest)
+        ((0)
+         '())
+        ((1)
+         `(let (,(car rest))
+            ,@body))
+        (else
+         `(let (,(car rest))
+            ,(let*-expand (cdr rest) body)))))
+
+    (let*-expand exps body)))
+
+
 ;; ----------------------------------------
 ;; for Ruby interop
 ;; ----------------------------------------
