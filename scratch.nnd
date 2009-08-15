@@ -22,19 +22,73 @@
 ((. Date new) 2)
 
 
-;;  (case-iter 1
-;;    '(
-;;      (1
-;;       2
-;;       3)
-;;      ((10 11)
-;;       20
-;;       30)))
-             
 
 (enable-debug)
 
 
-(let* ((a 1)
-       (b (+ a 2)))
-  (cons a b))
+
+(define (feedto)
+  (error "=> (feedto) appeared outside cond or case."))
+
+(define econd
+  (macro lst
+    (define (case-block elem . elseblock)
+      (let ((condition (car elem))
+            (body      (cdr elem))
+            (tmpsym    (gensym)))
+        (display "CONDITION") (print condition)
+        (display "BODY")      (print body)
+        (display "TMPSYM")    (print tmpsym)
+        (list 'let (list (list tmpsym condition))
+              (append
+               (cons 'if
+                     (cond
+                      ((eq? 'feedto (car body))
+                       (list
+                        tmpsym
+                        (list (cadr body) tmpsym)))
+                      ((eq? 'else tmpsym)
+                       (list
+                        true
+                        (cons 'begin body)))
+                      (else
+                       (list
+                        tmpsym
+                        (cons 'begin body)))))
+               (if (< 0 (length elseblock))
+                   elseblock
+                   '())))))
+
+    (define (cond-iter lst)
+      (if (eq? 0 (length lst))
+          '()
+          (if (eq? 1 (length lst))
+              (case-block (car lst) '())
+              (case-block (car lst)
+                          (cond-iter (cdr lst))))))
+    
+    (cond-iter lst)))
+
+
+(macroexpand-1 '
+ (econd
+  ((eq? 1 1)
+   "<1 = 1>")
+  (1 => (lambda (x)
+          (+ "<" (to_s x) ">")))
+  (else
+   "<else>")))
+
+(econd
+ (111 => (lambda (x)
+         (+ "<" (to_s x) ">")))
+ ((eq? 1 1)
+  (print (+ 1 2))
+  (print (+ 3 10)))
+ (else
+  "<else>"))
+
+
+
+
+
