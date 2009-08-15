@@ -26,39 +26,31 @@
 (enable-debug)
 
 
-
-(define (feedto)
-  (error "=> (feedto) appeared outside cond or case."))
-
-(define econd
+(define cond
   (macro lst
     (define (case-block elem . elseblock)
-      (let ((condition (car elem))
+      (let ((condition (if (eq? 'else (car elem))
+                           true
+                           (car elem)))
             (body      (cdr elem))
             (tmpsym    (gensym)))
-        (display "CONDITION") (print condition)
-        (display "BODY")      (print body)
-        (display "TMPSYM")    (print tmpsym)
+        ;;(display "CONDITION") (print condition)
+        ;;(display "BODY")      (print body)
+        ;;(display "TMPSYM")    (print tmpsym)
         (list 'let (list (list tmpsym condition))
               (append
                (cons 'if
-                     (cond
-                      ((eq? 'feedto (car body))
-                       (list
-                        tmpsym
-                        (list (cadr body) tmpsym)))
-                      ((eq? 'else tmpsym)
-                       (list
-                        true
-                        (cons 'begin body)))
-                      (else
-                       (list
-                        tmpsym
-                        (cons 'begin body)))))
+                     (if (eq? 'feedto (car body))
+                         (list
+                          tmpsym
+                          (list (cadr body) tmpsym))
+                         (list
+                          condition
+                          (cons 'begin body))))
                (if (< 0 (length elseblock))
                    elseblock
                    '())))))
-
+    
     (define (cond-iter lst)
       (if (eq? 0 (length lst))
           '()
@@ -70,8 +62,9 @@
     (cond-iter lst)))
 
 
+
 (macroexpand-1 '
- (econd
+ (cond
   ((eq? 1 1)
    "<1 = 1>")
   (1 => (lambda (x)
@@ -79,10 +72,10 @@
   (else
    "<else>")))
 
-(econd
- (111 => (lambda (x)
-         (+ "<" (to_s x) ">")))
- ((eq? 1 1)
+(cond
+ (false => (lambda (x)
+           (+ "<" (to_s x) ">")))
+ (false ;; (eq? 1 1)
   (print (+ 1 2))
   (print (+ 3 10)))
  (else
