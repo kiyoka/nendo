@@ -303,7 +303,7 @@
                   (cons 'or
                         (map
                          (lambda (x)
-                           `(eq? ,x ,val))
+                           `(eqv? ,x ,val))
                          cond-vals)))
             `((,v
                ,@body))))))
@@ -381,9 +381,9 @@
   (let1 len (length lst)
     (let1 f (cond
              ((= 0 len)
-              (Kernel.open filename))
+              (.open filename))
              ((< 0 len)
-              (Kernel.open filename (car lst)))
+              (.open filename (car lst)))
              (else
               (error "with-open requires 2 or 3 arguments.")))
       (let1 result (pred f)

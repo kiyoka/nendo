@@ -111,7 +111,13 @@
           true)))
   true)
 
-;; TODO 
-;;  - Kernel.open  => .open
-;;  - eq? => eqv? in case macro
+(with-open "./sample/t.txt"
+           (lambda (f)
+             (for-each
+              (lambda (x)
+                (print x))
+              (f.readlines.to_list))))
 
+
+              
+             

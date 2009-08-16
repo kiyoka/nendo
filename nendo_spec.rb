@@ -545,6 +545,8 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (cond (true  1) (true  2)) " ).should == "1"
     @nendo.replStr( " (cond (false 1) (false 2)) " ).should == "nil"
     @nendo.replStr( " (cond (false 1) (false 2) (else 3)) " ).should == "3"
+    @nendo.replStr( " (cond ((- 10 9) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 2)) " ).should == "<1>"
+    @nendo.replStr( " (cond (true  1) ((- 10 8) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 3)) " ).should == "1"
     @nendo.replStr( " (or) " ).should == "false"
     @nendo.replStr( " (or true) " ).should == "true"
     @nendo.replStr( " (or false) " ).should == "false"
