@@ -26,7 +26,7 @@
 (enable-debug)
 
 
-(define cond
+(define econd
   (macro lst
     (define (case-block elem . elseblock)
       (let ((condition (if (eq? 'else (car elem))
@@ -37,20 +37,20 @@
         ;;(display "CONDITION") (print condition)
         ;;(display "BODY")      (print body)
         ;;(display "TMPSYM")    (print tmpsym)
-        (list 'let (list (list tmpsym condition))
-              (append
-               (cons 'if
-                     (if (eq? 'feedto (car body))
-                         (list
-                          tmpsym
-                          (list (cadr body) tmpsym))
-                         (list
-                          condition
-                          (cons 'begin body))))
-               (if (< 0 (length elseblock))
-                   elseblock
-                   '())))))
-    
+        (append
+         (if (eq? 'feedto (car body))
+             (cons 'if
+                   (list
+                    (list 'set! tmpsym condition)
+                    (list (cadr body) tmpsym)))
+             (cons 'if
+                   (list
+                    condition
+                    (cons 'begin body))))
+         (if (< 0 (length elseblock))
+             elseblock
+             '()))))
+
     (define (cond-iter lst)
       (if (eq? 0 (length lst))
           '()
@@ -62,26 +62,54 @@
     (cond-iter lst)))
 
 
+(macroexpand-1 '
+ (econd
+  (1 => (lambda (x)
+          (+ "<" (to_s x) ">")))))
 
 (macroexpand-1 '
- (cond
+ (econd
   ((eq? 1 1)
    "<1 = 1>")
-  (1 => (lambda (x)
-          (+ "<" (to_s x) ">")))
+  (100 => (lambda (x)
+            (+ "<" (to_s x) ">")))
   (else
    "<else>")))
 
-(cond
- (false => (lambda (x)
+
+(econd (true  1) (false 2))
+(econd (false 1) (false 2) (else 3))
+
+(econd
+ (100 => (lambda (x)
            (+ "<" (to_s x) ">")))
- (false ;; (eq? 1 1)
+ ((eq? 1 1)
   (print (+ 1 2))
   (print (+ 3 10)))
  (else
   "<else>"))
 
+true
+
+(macroexpand
+ '(define let*
+    (macro (exps . body)
+    (define (let*-expand rest body)
+      (case (length rest)
+        ((0)
+         '())
+        ((1)
+         `(let (,(car rest))
+            ,@body))
+        (else
+         `(let (,(car rest))
+            ,(let*-expand (cdr rest) body)))))
+    
+    (let*-expand exps body))))
 
 
-
-
+;; bug:  undefined method `cdr' for :b:Symbol
+(let
+    ((a (let ((b 2))
+          true)))
+  true)
