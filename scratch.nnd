@@ -26,7 +26,7 @@
 (enable-debug)
 
 
-(define econd
+(define cond
   (macro lst
     (define (case-block elem . elseblock)
       (let ((condition (if (eq? 'else (car elem))
@@ -63,12 +63,12 @@
 
 
 (macroexpand-1 '
- (econd
+ (cond
   (1 => (lambda (x)
           (+ "<" (to_s x) ">")))))
 
 (macroexpand-1 '
- (econd
+ (cond
   ((eq? 1 1)
    "<1 = 1>")
   (100 => (lambda (x)
@@ -77,10 +77,10 @@
    "<else>")))
 
 
-(econd (true  1) (false 2))
-(econd (false 1) (false 2) (else 3))
+(cond (true  1) (false 2))
+(cond (false 1) (false 2) (else 3))
 
-(econd
+(cond
  (100 => (lambda (x)
            (+ "<" (to_s x) ">")))
  ((eq? 1 1)
@@ -89,11 +89,8 @@
  (else
   "<else>"))
 
-true
-
-(macroexpand
- '(define let*
-    (macro (exps . body)
+(define let*
+  (macro (exps . body)
     (define (let*-expand rest body)
       (case (length rest)
         ((0)
@@ -105,7 +102,7 @@ true
          `(let (,(car rest))
             ,(let*-expand (cdr rest) body)))))
     
-    (let*-expand exps body))))
+    (let*-expand exps body)))
 
 
 ;; bug:  undefined method `cdr' for :b:Symbol
@@ -113,3 +110,8 @@ true
     ((a (let ((b 2))
           true)))
   true)
+
+;; TODO 
+;;  - Kernel.open  => .open
+;;  - eq? => eqv? in case macro
+

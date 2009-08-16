@@ -187,6 +187,7 @@ class Reader
   T_QUASIQUOTE          = :t_quasiquote
   T_UNQUOTE             = :t_unquote
   T_UNQUOTE_SPLICING    = :t_unquote_splicing
+  T_FEEDTO              = :t_feedto
   T_DOT                 = :t_dot
   T_LINEFEED            = :t_linefeed
   T_COMMENT             = :t_comment
@@ -283,7 +284,11 @@ class Reader
           T_SYMBOL
         when /[*\/=!<>&|%]/   # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
-          T_SYMBOL
+          if str.match( /^[=][>]$/ )
+            T_FEEDTO
+          else
+            T_SYMBOL
+          end
         when /[+-]/           # number
           str += readwhile( /[0-9.]/ )
           if 1 < str.length
@@ -356,6 +361,8 @@ class Reader
       :unquote_splicing
     when T_DOT
       :dot_operator
+    when T_FEEDTO
+      :feedto
     else
       raise "Error: Unknown token in atom()"
     end
@@ -374,8 +381,7 @@ class Reader
       when T_LINEFEED
         token # skipEnter
       when T_EOF
-        print "Error: unbalanced paren(1)\n"
-        raise ExceptionParen
+        raise SyntaxError, "Error: unbalanced paren(1)"
       when T_LPAREN
         cells << Cell.new( sexp() )
       when T_RPAREN
@@ -434,8 +440,7 @@ class Reader
       token
       sexp()
     when T_EOF
-      print "Error: unbalanced paren(2)\n"
-      raise ExceptionParen
+      raise SyntaxError, "Error: unbalanced paren(2)"
     when T_LPAREN
       skipEnter
       token # consume '('
@@ -444,8 +449,7 @@ class Reader
       token # consume ')'
       ret
     when T_RPAREN
-      print "Error: unbalanced paren(3)\n"
-      raise ExceptionParen
+      raise SyntaxError, "Error: unbalanced paren(3)"
     when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
       _atom = atom() ## "quote" symbol
       Cell.new( _atom, Cell.new( sexp() ))
@@ -1135,9 +1139,6 @@ class Printer
         false
       end
     }
-    if @debug 
-      pp sexp
-    end
     case sexp
     when Cell
       arr = sexp.map { |x| __write( x.car, readable ) }

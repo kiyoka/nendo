@@ -86,17 +86,30 @@
         (macroexpand newsexp)
         newsexp)))
 
+(define (feedto)
+  (error "=> (feedto) appeared outside cond or case."))
+
 (define cond
   (macro lst
-    (define (caseblock elem . elseblock)
-      (let ((condition (car elem))
-            (body      (cdr elem)))
+    (define (case-block elem . elseblock)
+      (let ((condition (if (eq? 'else (car elem))
+                           true
+                           (car elem)))
+            (body      (cdr elem))
+            (tmpsym    (gensym)))
+        ;;(display "CONDITION") (print condition)
+        ;;(display "BODY")      (print body)
+        ;;(display "TMPSYM")    (print tmpsym)
         (append
-         (list 'if
-               (if (eq? 'else condition)
-                   true
-                   condition)
-               (cons 'begin body))
+         (if (eq? 'feedto (car body))
+             (cons 'if
+                   (list
+                    (list 'set! tmpsym condition)
+                    (list (cadr body) tmpsym)))
+             (cons 'if
+                   (list
+                    condition
+                    (cons 'begin body))))
          (if (< 0 (length elseblock))
              elseblock
              '()))))
@@ -105,10 +118,10 @@
       (if (eq? 0 (length lst))
           '()
           (if (eq? 1 (length lst))
-              (caseblock (car lst) '())
-              (caseblock (car lst)
-                         (cond-iter (cdr lst))))))
-
+              (case-block (car lst) '())
+              (case-block (car lst)
+                          (cond-iter (cdr lst))))))
+    
     (cond-iter lst)))
 
 (define let1
@@ -366,16 +379,16 @@
 
 (define (with-open filename pred . lst)
   (let1 len (length lst)
-        (let1 f (cond
-                 ((= 0 len)
-                  (Kernel.open filename))
-                 ((< 0 len)
-                  (Kernel.open filename (car lst)))
-                 (else
-                  (error "with-open requires 2 or 3 arguments.")))
-              (let1 result (pred f)
-                    (f.close)
-                    result))))
+    (let1 f (cond
+             ((= 0 len)
+              (Kernel.open filename))
+             ((< 0 len)
+              (Kernel.open filename (car lst)))
+             (else
+              (error "with-open requires 2 or 3 arguments.")))
+      (let1 result (pred f)
+        (f.close)
+        result))))
 
 
 ;; ----------------------------------------
