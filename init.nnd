@@ -1,4 +1,4 @@
-;;-*- mode: scheme; syntax: scheme -*-;;
+;;-*- mode: nendo; syntax: scheme -*-;;
 
 ;; ----------------------------------------
 ;; define
@@ -76,6 +76,26 @@
      (foldr (lambda (a b) (if (< a b) a b)) (car lst) (cdr lst)))
 (define (succ x) (+ x 1))
 (define (pred x) (- x 1))
+(define (nth n lst)
+  (define (nth-iter n index lst)
+    (if (null? lst)
+        nil
+        (if (not (pair? lst))
+            (error "Error: nth got improper list.")
+            (if (eqv? n index)
+                (car lst)
+                (nth-iter n (+ index 1) (cdr lst))))))
+  (nth-iter n 0 lst))
+(define (first lst)    (nth  0 lst))
+(define (second lst)   (nth  1 lst))
+(define (third lst)    (nth  2 lst))
+(define (fourth lst)   (nth  3 lst))
+(define (fifth lst)    (nth  4 lst))
+(define (sixth lst)    (nth  5 lst))
+(define (seventh lst)  (nth  6 lst))
+(define (eighth lst)   (nth  7 lst))
+(define (ninth lst)    (nth  8 lst))
+(define (tenth lst)    (nth  9 lst))
 
 ;; ----------------------------------------
 ;; basic forms

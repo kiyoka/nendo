@@ -69,7 +69,7 @@ Editing commands are similar to those of 'scheme-mode'."
 
 
 
-(provide 'nendo)
+(provide 'nendo-mode)
 
 ;; Local variables:
 ;; mode: emacs-lisp
