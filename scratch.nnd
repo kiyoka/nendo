@@ -24,13 +24,22 @@
 
 (enable-debug)
 
+(exit)
+
 ;; bug:  undefined method `cdr' for :b:Symbol
 (let
     ((a (let ((b 2))
-          true)))
-  true)
+          (+ 100 b))))
+  a)
 
+(let  ((a (let ((b 2))   (+ 100 b))))  a)
 
+(macroexpand
+ '
+ (let
+     ((a (let ((b 2))
+           true)))
+   true))
 
 
 

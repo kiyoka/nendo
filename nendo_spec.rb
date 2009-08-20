@@ -486,6 +486,7 @@ describe Nendo, "when call replStr() with built-in special forms" do
     @nendo.replStr( " (let ((a 11) (b 22))    (+ a b)) " ).should == "33"
     @nendo.replStr( " (let ((a 22)) (let ((b 33))   (+ a b))) " ).should == "55"
     @nendo.replStr( " (let ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
+    @nendo.replStr( " (let  ((a (let ((b 2))   (+ 100 b))))  a) " ).should == "102"
     @nendo.replStr( " (if true   't 'f)" ).should == "t"
     @nendo.replStr( " (if true   '(1) '(2))" ).should == "(1)"
     @nendo.replStr( " (if false  't 'f)" ).should == "f"

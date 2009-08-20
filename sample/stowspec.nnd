@@ -57,7 +57,7 @@
               x))
           (to-list (Dir.entries (cadr placeinfo))))))
        (else
-        (display-help (cdr path)))))))
+        (display-help (cdr path)))))))))
 
 
 (define (build-action projname filename tmppath)
@@ -99,29 +99,35 @@
    (tgz-to-name "file.txt")))
 
 
+
 (define (action-by-arg argv)
   (let* ((m1 (regex-match (+ "^http://.+/" archive-file-pattern "$") (car argv)))
          (m2 (regex-match (+ "^" archive-file-pattern "$") (car argv)))
          (path     (get-curpath))
          (url      (if m1 (car m1) nil))
-         (filename (if m1 (cadr m1) (car m2)))
-         (projname (tgz-to-name filename))
-         (workdir  (sprintf "/tmp/%s" projname)))
-    (printf "url      = %s\n" url)
-    (printf "filename = %s\n" filename)
-    (printf "projname = %s\n" projname)
-    (printf "workdir  = %s\n" workdir)
-    (make-work-dir workdir)
-    (when url
-      (download-url url workdir))
-    (build-action projname filename workdir)))
+         (filename (if m2 (car m2) nil))
+         (projname (or (tgz-to-name filename) "")))
+    (if (or url filename)
+        (let1 workdir (sprintf "/tmp/%s" projname)
+          (printf "url      = %s\n" url)
+          (printf "filename = %s\n" filename)
+          (printf "projname = %s\n" projname)
+          (printf "workdir  = %s\n" workdir)
+          )
+        (print "Error: please specify url for argument."))))
 
+          
+;;      (make-work-dir workdir)
+;;          (when url
+;;            (download-url url workdir))
+;;          (build-action projname filename workdir))))))
 
 ;; test
 ;;(action-by-arg '("a.tar.gz"))
 ;;(action-by-arg '("http://www.example.com/a.tar.gz"))
 
 (define (main argv)
+  (print argv)
   (case (length argv)
     ((0)
      (action-by-place))
@@ -129,4 +135,3 @@
      (action-by-arg argv))))
   
 (main (cdr ARGV.to_list))
-

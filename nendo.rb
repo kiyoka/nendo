@@ -898,7 +898,7 @@ class Evaluator
     argvals = []
     if args.car.is_a? Nil
       # nothing to do
-      str = sprintf( "%s = lambda { || ", _name )
+      str = sprintf( "begin %s = lambda { || ", _name )
       rest = args.cdr
     else
       if :quote == args.car.car
@@ -912,11 +912,11 @@ class Evaluator
       argvals = args.car.map { |x|
         translate( x.car.cdr.car )
       }
-      str = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
+      str = sprintf( "begin %s = lambda { |%s| ", _name, argsyms.join( "," ))
     end
     ar = rest.map { |e|  translate( e.car ) }
-    str += ar.join( ";" ) + "}\n"
-    str += sprintf( "%s.call( %s )\n", _name, argvals.join( "," ))
+    str += ar.join( ";" ) + "} ; "
+    str += sprintf( "%s.call( %s ) end ", _name, argvals.join( "," ))
   end
 
   def apply( car, cdr, sourcefile, lineno, lambda_flag = false )
@@ -1016,6 +1016,7 @@ class Evaluator
   def letArgumentList( sexp )
     sexp.each { |arg|
       arg.car.car = Cell.new( :quote, Cell.new( arg.car.car ))
+      arg.car.cdr = quoting( arg.car.cdr )
     }
     sexp
   end
@@ -1086,6 +1087,9 @@ class Evaluator
   def lispEval( sexp, sourcefile, lineno )
     sexp = lispCompile( sexp )
     sexp = quoting( sexp );
+    if @debug
+      printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
+    end
     rubyExp = translate( sexp );
     printf( "          rubyExp=<<< %s >>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
