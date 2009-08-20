@@ -99,6 +99,19 @@
    (tgz-to-name "file.txt")))
 
 
+(define (get-script1 workdir url filename projname)
+  (let1 arc (if url
+                (sprintf "curl %s > %s/%s"       url workdir filename)
+                (sprintf "/bin/mv %s %s/%s" filename workdir filename))
+    (string-join
+     `(
+       ,(sprintf "mkdir -p %s" workdir)
+       ,arc
+       ,(sprintf "cd %s" workdir)
+       ,(sprintf "tar zxf %s" filename)
+       ,(sprintf "cd ./%s" projname)
+       "")
+     "\n")))
 
 (define (action-by-arg argv)
   (let* ((m1 (regex-match (+ "^http://.+/" archive-file-pattern "$") (car argv)))
@@ -113,14 +126,19 @@
           (printf "filename = %s\n" filename)
           (printf "projname = %s\n" projname)
           (printf "workdir  = %s\n" workdir)
-          )
-        (print "Error: please specify url for argument."))))
 
+          (print "---BEGIN---")
+          (display (get-script1 workdir url filename projname))
+          (print "---END---")
+          ;;(when url
+          ;;  (download-url url workdir))
+          ;;(build-action projname filename workdir)
+          )
+        (begin
+          (print "Error: please specify url for argument.")
+          (exit 1)))))
           
-;;      (make-work-dir workdir)
-;;          (when url
-;;            (download-url url workdir))
-;;          (build-action projname filename workdir))))))
+
 
 ;; test
 ;;(action-by-arg '("a.tar.gz"))
