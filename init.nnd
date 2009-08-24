@@ -97,6 +97,7 @@
 (define (ninth lst)    (nth  8 lst))
 (define (tenth lst)    (nth  9 lst))
 
+
 ;; ----------------------------------------
 ;; basic forms
 ;; ----------------------------------------
@@ -199,7 +200,7 @@
     (append (list proc) (apply-iter args))))
 
 
-;; The following quasiquote macro is due to Eric S. Tiedemann.
+;; The following quasiquote macro is due to Eric S. Tiedemann. ( Imported from TinyScheme )
 ;;   Copyright 1988 by Eric S. Tiedemann; all rights reserved.
 ;;
 ;; Subsequently modified for initialize library for nendo: Kiyoka Nishiyama
@@ -284,6 +285,41 @@
   (macro form
     `(while (not ,(car form))
        ,@(cdr form))))
+
+
+;; ----------------------------------------
+;; List utilities imported from TinyScheme
+;; ----------------------------------------
+;; generic-member 
+(define (generic-member cmp obj lst)
+  (cond
+    ((null? lst) false)
+    ((cmp obj (car lst)) lst)
+    (else (generic-member cmp obj (cdr lst)))))
+
+(define (memq obj lst)
+     (generic-member eq? obj lst))
+(define (memv obj lst)
+     (generic-member eqv? obj lst))
+(define (member obj lst)
+     (generic-member equal? obj lst))
+
+;; generic-assoc
+(define (generic-assoc cmp obj alst)
+     (cond
+          ((null? alst) false)
+          ((cmp obj (caar alst)) (car alst))
+          (else (generic-assoc cmp obj (cdr alst)))))
+
+(define (assq obj alst)
+     (generic-assoc eq? obj alst))
+(define (assv obj alst)
+     (generic-assoc eqv? obj alst))
+(define (assoc obj alst)
+     (generic-assoc equal? obj alst))
+
+(define (acons x y z) (cons (cons x y) z))
+
 
 ;; ----------------------------------------
 ;; Higher-order functions
