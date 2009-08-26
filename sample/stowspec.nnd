@@ -1,6 +1,9 @@
 ;;-*- mode: nendo; syntax: scheme -*-;;
 
 (define archive-file-pattern "([a-zA-Z].*)")
+(define stow-home   (File.expand_path "~/stowspec"))
+(define stow-target "/usr/local/stow")
+(define stow-temp   "/tmp")
 
 ;; `regex' is a string ( not a regex object )
 ;; returns ( $0-string  $1-string  $2-string  $3-string ... )
@@ -9,6 +12,7 @@
     (if matchdata
         (matchdata.to_a.to_list)
         nil)))
+
 ;; test
 ;;(regex-match "^[a-z]+$" "abc")
 ;;(regex-match "^([a-z]+)([0-9]+)$" "abc123")
@@ -29,7 +33,7 @@
         nil)))))
   
 ;; ( pwd . homedir )
-(define (get-curpath)
+(define (get-curpair)
   (cons
    (Dir.pwd)
    (ENV.fetch "HOME")))
@@ -42,8 +46,25 @@
      ""
      )))
 
+
+(define (get-envs)
+  (let1 in-project
+      (cond
+       ((regex-match (+ "^" stow-home "/" archive-file-pattern "$") (car (get-curpair)))
+        => (lambda (x)
+             (second x)))
+       (else
+        nil))
+    `(
+      (curpath     . ,(car (get-curpair)))
+      (stow-home   . ,stow-home)
+      (target      . ,stow-target)
+      (temp        . ,stow-temp)
+      (project     . ,in-project))))
+
+
 (define (action-by-place)
-  (let1 path (get-curpath)
+  (let1 path (get-curpair)
     (let1 placeinfo (get-placeinfo (car path) (cdr path))
       (cond
        ((eq? 'specdir (car placeinfo))
@@ -99,47 +120,69 @@
    (tgz-to-name "file.txt")))
 
 
-(define (get-script1 workdir url filename projname)
-  (let1 arc (if url
-                (sprintf "curl %s > %s/%s"       url workdir filename)
-                (sprintf "/bin/mv %s %s/%s" filename workdir filename))
-    (string-join
-     `(
-       ,(sprintf "mkdir -p %s" workdir)
-       ,arc
-       ,(sprintf "cd %s" workdir)
-       ,(sprintf "tar zxf %s" filename)
-       ,(sprintf "cd ./%s" projname)
-       "")
-     "\n")))
+(define (get-script workdir stowhome-path url filename projname)
+  (let* (
+         (projpath (+ stowhome-path "/" projname))
+         (arc (if url
+                  (sprintf "curl %s > %s/%s"       url projpath/filename)
+                  (sprintf "/bin/cp %s %s"         filename projpath))))
+    `(
+      (store . ,(string-join
+                 (list
+                  (sprintf "mkdir -p %s" projpath)
+                  arc
+                  (sprintf "cd %s" projpath)
+                  "")
+                 "\n"))
+      (build . ,(string-join
+                 (list
+                  (sprintf "mkdir -p %s" workdir)
+                  arc
+                  (sprintf "cd %s" workdir)
+                  (sprintf "tar zxf %s" filename)
+                  (sprintf "cd ./%s" projname)
+                  "")
+                 "\n"))
+      )))
+
+
+(define (exec-sh script)
+  (let1 tmpfile "/tmp/go.sh"
+    (with-open
+     tmpfile
+     (lambda (f)
+       (f.puts script))
+     "w")
+    (print "---BEGIN---")
+    (.system (+ "bash -x " tmpfile))
+    (print "---END---")))
+
 
 (define (action-by-arg argv)
-  (let* ((m1 (regex-match (+ "^http://.+/" archive-file-pattern "$") (car argv)))
-         (m2 (regex-match (+ "^" archive-file-pattern "$") (car argv)))
-         (path     (get-curpath))
-         (url      (if m1 (car m1) nil))
-         (filename (if m2 (car m2) nil))
-         (projname (or (tgz-to-name filename) "")))
-    (if (or url filename)
-        (let1 workdir (sprintf "/tmp/%s" projname)
-          (printf "url      = %s\n" url)
-          (printf "filename = %s\n" filename)
-          (printf "projname = %s\n" projname)
-          (printf "workdir  = %s\n" workdir)
-
-          (print "---BEGIN---")
-          (display (get-script1 workdir url filename projname))
-          (print "---END---")
+  (let1 envs (get-envs)
+    (let* ((m1 (regex-match (+ "^http://.+/" archive-file-pattern "$") (car argv)))
+           (m2 (regex-match (+ "^" archive-file-pattern "$") (car argv)))
+           (url      (if m1 (car m1) nil))
+           (filename (if m2 (car m2) nil))
+           (projname (or (tgz-to-name filename) "")))
+      (if (or url filename)
+          (let1 workdir (sprintf "%s/%s" (assq-ref 'temp envs) projname)
+            (printf "url      = %s\n" url)
+            (printf "filename = %s\n" filename)
+            (printf "projname = %s\n" projname)
+            (printf "workdir  = %s\n" workdir)
+            
+            (let1 sh (assq-ref
+                            'store 
+                            (get-script workdir (assq-ref 'stow-home envs) url filename projname))
+              (exec-sh sh)))
           ;;(when url
           ;;  (download-url url workdir))
           ;;(build-action projname filename workdir)
-          )
-        (begin
-          (print "Error: please specify url for argument.")
-          (exit 1)))))
+          (begin
+            (print "Error: please specify url by argument.")
+            (exit 1))))))
           
-
-
 ;; test
 ;;(action-by-arg '("a.tar.gz"))
 ;;(action-by-arg '("http://www.example.com/a.tar.gz"))
