@@ -320,6 +320,16 @@
 
 (define (acons x y z) (cons (cons x y) z))
 
+(define (assq-ref obj alst)
+  (cond  ((assq obj alst)  => cdr)
+         (else                nil)))
+(define (assv-ref obj alst)
+  (cond  ((assv obj alst)  => cdr)
+         (else                nil)))
+(define (assoc-ref obj alst)
+  (cond  ((assoc obj alst)  => cdr)
+         (else                nil)))
+
 
 ;; ----------------------------------------
 ;; Higher-order functions
