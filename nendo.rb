@@ -626,6 +626,7 @@ module BuiltinFunctions
   def _car(      cell )          cell.car end
   def _cdr(      cell )          cell.cdr end
   def _write(  arg  )            printer = Printer.new ; print printer._write( arg ) ; arg end
+  def _write_to_string(  arg  )  printer = Printer.new ; printer._write( arg )             end
   def _display(  arg  )          printer = Printer.new ; print printer._print( arg ) ; arg end
   def _print(  arg  )            self._display( arg )  ; self._newline() ; arg             end
   def _newline(       )          print "\n" end
@@ -763,18 +764,18 @@ class Evaluator
   def toRubyArgument( origname, pred, args )
     num = pred.arity
     if 0 == num
-      raise ArgumentError  if 0 != args.length
+      raise ArgumentError, sprintf( "at function `%s'", origname )  if 0 != args.length
       []
     elsif 0 < num
       if args.isNull
         [ Nil.new ]
       else
-        raise ArgumentError  if num != args.length
+        raise ArgumentError, sprintf( "at function `%s'", origname ) if num != args.length
         args.map { |x|  x.car }
       end
     else
       num = num.abs( )-1
-      raise ArgumentError  if num > args.length
+      raise ArgumentError, sprintf( "at function `%s'", origname )  if num > args.length
       params = []
       rest = []
       args.each_with_index { |x,i|

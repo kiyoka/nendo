@@ -18,26 +18,6 @@
 ;;(regex-match "^([a-z]+)([0-9]+)$" "abc123")
 
 
-(define (get-placeinfo pwd homedir)
-  (let1 specdir (+ homedir "/stowspec")
-    (let ((m1 (with-match pwd (+ specdir "$") nil))
-          (m2 (with-match pwd (+ specdir "/" archive-file-pattern) nil)))
-      (cond
-       ((eq? pwd homedir)
-        `(homedir ,homedir))
-       (m1
-        `(listdir ,(car m1)))
-       (m2
-        `(specdir ,(car m2) ,(cadr m2)))
-       (else
-        nil)))))
-  
-;; ( pwd . homedir )
-(define (get-curpair)
-  (cons
-   (Dir.pwd)
-   (ENV.fetch "HOME")))
-
 (define (display-help homedir)
   (for-each
    print
@@ -48,37 +28,56 @@
 
 
 (define (get-envs)
-  (let1 in-project
-      (cond
-       ((regex-match (+ "^" stow-home "/" archive-file-pattern "$") (car (get-curpair)))
-        => (lambda (x)
-             (second x)))
-       (else
-        nil))
+  (let* ((pwd (Dir.pwd))
+         (in-project
+          (cond
+           ((regex-match (+ "^" stow-home "/" archive-file-pattern "$") pwd)
+            => (lambda (x)
+                 (second x)))
+           (else
+            nil))))
     `(
-      (curpath     . ,(car (get-curpair)))
-      (stow-home   . ,stow-home)
-      (target      . ,stow-target)
-      (temp        . ,stow-temp)
-      (project     . ,in-project))))
+      (pwd         . ,pwd)                  ;; pwd
+      (home        . ,(ENV.fetch "HOME"))   ;; "/home/xxxx/"
+      (stow-home   . ,stow-home)            ;; "/home/xxxx/stowspec"
+      (target      . ,stow-target)          ;; "/usr/local/stow"
+      (temp        . ,stow-temp)            ;; "/tmp"
+      (project     . ,in-project)           ;; nil or "aaaa-1.2.3.tar.gz"
+      )))
 
 
-(define (action-by-place)
-  (let1 path (get-curpair)
-    (let1 placeinfo (get-placeinfo (car path) (cdr path))
-      (cond
-       ((eq? 'specdir (car placeinfo))
-        (build-action 
-       ((eq? 'listdir (car placeinfo))
-        (for-each
-         print
-         (filter
-          (lambda (x)
-            (when (not (x.match "^[.]"))
-              x))
-          (to-list (Dir.entries (cadr placeinfo))))))
-       (else
-        (display-help (cdr path)))))))))
+(define (get-placeinfo envs)
+  (let1 pwd (assq-ref 'pwd  envs)
+    (cond
+     ((eq? pwd
+           (assq-ref 'home envs))
+      `(homedir . ,(assq-ref 'home envs)))
+     ((eq? pwd
+           (assq-ref 'stow-home envs))
+      `(listdir . ,(assq-ref 'stow-home envs)))
+     ((assq 'project envs)
+      => (lambda (x)
+           `(specdir . ,(cdr x))))
+     (else
+      nil))))
+  
+(define (action-by-place envs)
+  (let1 placeinfo (get-placeinfo envs)
+    (cond
+     ((null? placeinfo)
+      (display-help "a"))
+     ((eq? 'specdir (car placeinfo))
+      (print "<specdir>"))
+     ((eq? 'listdir (car placeinfo))
+      (for-each
+       print
+       (filter
+        (lambda (x)
+          (when (not (x.match "^[.]"))
+            x))
+        (to-list (Dir.entries (cdr placeinfo))))))
+     (else
+      (display-help (cdr path))))))
 
 
 (define (build-action projname filename tmppath)
@@ -112,7 +111,7 @@
     nil)))
 
 ;; test
-(when false
+(when true
   (list
    (tgz-to-name "abc-1.2.3.tar.gz")
    (tgz-to-name "abc-1.2.3.tar.bz2")
@@ -158,41 +157,47 @@
     (print "---END---")))
 
 
-(define (action-by-arg argv)
-  (let1 envs (get-envs)
-    (let* ((m1 (regex-match (+ "^http://.+/" archive-file-pattern "$") (car argv)))
-           (m2 (regex-match (+ "^" archive-file-pattern "$") (car argv)))
-           (url      (if m1 (car m1) nil))
-           (filename (if m2 (car m2) nil))
-           (projname (or (tgz-to-name filename) "")))
-      (if (or url filename)
-          (let1 workdir (sprintf "%s/%s" (assq-ref 'temp envs) projname)
-            (printf "url      = %s\n" url)
-            (printf "filename = %s\n" filename)
-            (printf "projname = %s\n" projname)
-            (printf "workdir  = %s\n" workdir)
-            
-            (let1 sh (assq-ref
-                            'store 
-                            (get-script workdir (assq-ref 'stow-home envs) url filename projname))
-              (exec-sh sh)))
-          ;;(when url
-          ;;  (download-url url workdir))
-          ;;(build-action projname filename workdir)
-          (begin
-            (print "Error: please specify url by argument.")
-            (exit 1))))))
+(define (action-by-arg envs argv)
+  (let* ((m1 (regex-match (+ "^http://.+/" archive-file-pattern "$") (car argv)))
+         (m2 (regex-match (+ "^" archive-file-pattern "$") (car argv)))
+         (url      (if m1 (car m1) nil))
+         (filename (if m2 (car m2) nil))
+         (projname (or (tgz-to-name filename) ""))
+         (projpath (+ (assq-ref 'stow-home envs) "/" projname)))
+    (if (or url filename)
+        (let1 workdir (sprintf "%s/%s" (assq-ref 'temp envs) projname)
+          (printf "url      = %s\n" url)
+          (printf "filename = %s\n" filename)
+          (printf "projname = %s\n" projname)
+          (printf "workdir  = %s\n" workdir)
+          (let1 sh (assq-ref
+                    'store 
+                    (get-script workdir (assq-ref 'stow-home envs) url filename projname))
+            (exec-sh sh))
+          (let1 filename (+ projpath "/specfile")
+            (printf "specfile = %s\n" filename)
+            (with-open filename
+                       (lambda (f)
+                         (f.puts (write-to-string envs)))
+                       "w"))
+          )
+        ;;(when url
+        ;;  (download-url url workdir))
+        ;;(build-action projname filename workdir)
+        (begin
+          (print "Error: please specify url by argument.")
+          (exit 1)))))
           
 ;; test
 ;;(action-by-arg '("a.tar.gz"))
 ;;(action-by-arg '("http://www.example.com/a.tar.gz"))
 
 (define (main argv)
-  (print argv)
-  (case (length argv)
-    ((0)
-     (action-by-place))
-    (else
-     (action-by-arg argv))))
+  (let1 envs (get-envs)
+    (case (length argv)
+      ((0)
+       (action-by-place envs))
+      (else
+       (action-by-arg   envs argv)))))
   
 (main (cdr ARGV.to_list))
