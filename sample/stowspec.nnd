@@ -61,11 +61,12 @@
      (else
       nil))))
   
+
 (define (action-by-place envs)
   (let1 placeinfo (get-placeinfo envs)
     (cond
      ((null? placeinfo)
-      (display-help "a"))
+      (display-help "placeinfo is null"))
      ((eq? 'specdir (car placeinfo))
       (print "<specdir>"))
      ((eq? 'listdir (car placeinfo))
@@ -78,27 +79,6 @@
         (to-list (Dir.entries (cdr placeinfo))))))
      (else
       (display-help (cdr path))))))
-
-
-(define (build-action projname filename tmppath)
-  (let1 shfile (+ tmppath "/go.sh")
-    (with-open shfile
-               (lambda (f)
-                 (for-each
-                  (lambda (x)
-                    (f.puts x))
-                  `(
-                    ,(sprintf "tar zxf %s" filename)
-                    ,(sprintf "find . -name configure" filename)
-                    "if $? == 0 ; then"
-                    "  echo Error: configure was not found on this software."
-                    "  exit 1"
-                    "fi"
-                    ;; create specfile ( if needed )
-                    ;; configure
-                    ;; make
-                    ;; make install
-                    ))))))
 
 
 (define (tgz-to-name tgz)
@@ -119,7 +99,7 @@
    (tgz-to-name "file.txt")))
 
 
-(define (get-script workdir stowhome-path url filename projname)
+(define (gen-script workdir stowhome-path url filename projname)
   (let* (
          (projpath (+ stowhome-path "/" projname))
          (arc (if url
@@ -172,13 +152,16 @@
           (printf "workdir  = %s\n" workdir)
           (let1 sh (assq-ref
                     'store 
-                    (get-script workdir (assq-ref 'stow-home envs) url filename projname))
+                    (gen-script workdir (assq-ref 'stow-home envs) url filename projname))
             (exec-sh sh))
           (let1 filename (+ projpath "/specfile")
-            (printf "specfile = %s\n" filename)
+            (printf "Info: specfile = %s\n" filename)
             (with-open filename
                        (lambda (f)
-                         (f.puts (write-to-string envs)))
+                         (f.puts (write-to-string
+                                  `((conf    . ,(sprintf "configure --prefix=%s " (assq-ref 'target envs)))
+                                    (make    . "make")
+                                    (install . "make install")))))
                        "w"))
           )
         ;;(when url
