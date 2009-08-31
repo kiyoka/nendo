@@ -32,8 +32,7 @@
          (in-project
           (cond
            ((regex-match (+ "^" stow-home "/" archive-file-pattern "$") pwd)
-            => (lambda (x)
-                 (second x)))
+            => second)
            (else
             nil))))
     `(
@@ -84,9 +83,7 @@
 (define (tgz-to-name tgz)
   (cond
    ((regex-match (+ "^" archive-file-pattern "(.tar.gz|.tgz|.tar.bz2)$") tgz)
-    =>
-    (lambda (m)
-      (second m)))
+    => second)
    (else
     nil)))
 
