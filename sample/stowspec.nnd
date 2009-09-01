@@ -101,6 +101,12 @@
                   (assq-ref 'install    spec)
                   "")
                  "\n"))
+      (stowspec . ,(string-join
+                    (list
+                     (sprintf "cd %s" projpath)
+                     "stowspec"
+                     "")
+                    "\n"))
       )))
 
 
@@ -170,13 +176,12 @@
           (printf "filename = %s\n" filename)
           (printf "projname = %s\n" projname)
           (printf "workdir  = %s\n" workdir)
-          (let1 sh (assq-ref
-                    'store 
-                    (gen-script workdir (assq-ref 'stow-home envs) url filename projname '()))
-            (exec-sh sh))
-          (let1 _specfile (+ projpath "/specfile")
-            (printf "Info: specfile = %s\n" _specfile)
-            (with-open _specfile
+          (let* ((scripts  (gen-script workdir (assq-ref 'stow-home envs) url filename projname '()))
+                 (specfile (+ projpath "/specfile")))
+            (exec-sh (assq-ref 'store scripts))
+            (printf "Info: specfile = %s\n" specfile)
+            (printf "cd %s\n" projpath)
+            (with-open specfile
                        (lambda (f)
                          (f.puts ";;-*- mode: scheme; syntax: scheme -*-;;")
                          (f.puts "(")
@@ -188,13 +193,10 @@
                             (install   . "make install")
                             (arc       . ,filename)
                             (url       . ,url)
-                            (projname  . ,projname)))
+                                   (projname  . ,projname)))
                          (f.puts ")"))
-                       "w"))
-          )
-        ;;(when url
-        ;;  (download-url url workdir))
-        ;;(build-action projname filename workdir)
+                       "w")
+            (exec-sh (assq-ref 'stowspec scripts))))
         (begin
           (print "Error: please specify url by argument.")
           (exit 1)))))
