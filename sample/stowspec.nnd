@@ -18,6 +18,19 @@
 ;;(regex-match "^([a-z]+)([0-9]+)$" "abc123")
 
 
+(define (exec-sh script)
+  (let1 tmpfile "/tmp/go.sh"
+    (with-open
+     tmpfile
+     (lambda (f)
+       (f.puts script))
+     "w")
+    (print "---BEGIN---")
+    (display script)
+    (.system (+ "bash " tmpfile))
+    (print "---END---")))
+
+
 (define (display-help homedir)
   (for-each
    print
@@ -65,7 +78,7 @@
   (let* (
          (projpath (+ stowhome-path "/" projname))
          (fetch (if url
-                    (sprintf "curl %s > %s/%s"       url projpath filename)
+                    (sprintf "wget -O %s/%s %s"      projpath filename url)
                     (sprintf "/bin/cp %s %s"         filename projpath))))
     `(
       (store . ,(string-join
@@ -82,9 +95,10 @@
                   (sprintf "/bin/cp -f %s %s" filename workdir)
                   (sprintf "cd %s" workdir)
                   (sprintf "tar zxf %s" filename)
-                  (sprintf "cd ./%s" projname)
-                  (assq-ref 'conf  spec)
-                  (assq-ref 'make  spec)
+                  (sprintf "cd ./%s"    projname)
+                  (assq-ref 'conf       spec)
+                  (assq-ref 'make       spec)
+                  (assq-ref 'install    spec)
                   "")
                  "\n"))
       )))
@@ -142,18 +156,6 @@
    ))
 
 
-(define (exec-sh script)
-  (let1 tmpfile "/tmp/go.sh"
-    (with-open
-     tmpfile
-     (lambda (f)
-       (f.puts script))
-     "w")
-    (print "---BEGIN---")
-    (.system (+ "bash -x " tmpfile))
-    (print "---END---")))
-
-
 (define (action-by-arg envs argv)
   (let* ((m1 (regex-match (+ "^http://.+/" archive-file-pattern "$") (car argv)))
          (m2 (regex-match (+ "^" archive-file-pattern "$") (car argv)))
@@ -176,12 +178,18 @@
             (printf "Info: specfile = %s\n" _specfile)
             (with-open _specfile
                        (lambda (f)
-                         (f.puts (write-to-string
-                                  `((conf      . ,(sprintf "./configure --prefix=%s " (assq-ref 'target envs)))
-                                    (make      . "make")
-                                    (install   . "make install")
-                                    (arc       . ,filename)
-                                    (projname  . ,projname)))))
+                         (f.puts ";;-*- mode: scheme; syntax: scheme -*-;;")
+                         (f.puts "(")
+                         (for-each
+                          (lambda (x)
+                            (f.puts (+ " " (write-to-string x))))
+                          `((conf      . ,(sprintf "./configure --prefix=%s/%s " (assq-ref 'target envs) projname))
+                            (make      . "make")
+                            (install   . "make install")
+                            (arc       . ,filename)
+                            (url       . ,url)
+                            (projname  . ,projname)))
+                         (f.puts ")"))
                        "w"))
           )
         ;;(when url
