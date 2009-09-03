@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+# -*- encoding: utf-8 -*-
 require 'nendo'
 
 describe Cell, "when initialized as '()" do
@@ -74,9 +74,9 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
   end
 end
 
-describe Nendo, "Ruby' arity method rules are " do
+describe Nendo, "Ruby's arity method rules " do
   it "should" do
-    Proc.new {}.arity.should == -1
+    Proc.new {}.arity.should <= 0
     Proc.new {||}.arity.should == 0
     Proc.new {|a|}.arity.should == 1
     Proc.new {|a,b|}.arity.should == 2
@@ -663,7 +663,7 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.replStr( " (set! str \"string\") (. str size to_s) " ).should == "6"
     @nendo.replStr( " (to-s str.size) " ).should == "6"
     @nendo.replStr( " (to-s 'str.size) " ).should == "str.size"
-    @nendo.replStr( " (require \"date\") " ).should == "true"
+    @nendo.replStr( " (require \"date\") " ).should == "false"
     @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%x\") " ).should == "01/01/00"
     @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%s\") " ).should == "-62167392000"
   end
