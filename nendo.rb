@@ -740,15 +740,20 @@ class Evaluator
 
   def toRubySymbol( name )
     name = name.to_s  if Symbol == name.class
-    name = name.gsub( /[*]/, '_AMARK' ).gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
-    if name.match( /^[A-Z]/ )
-      # nothing to do
-    elsif name.match( /^[.]/ )
-      name = 'Kernel' + name
+    if 0 == name.length
+      ""
     else
-      name = '_' + name
+      arr = name.split( /[.]/ )
+      arr[0] = arr[0].gsub( /[*]/, '_AMARK' ).gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
+      if arr[0].match( /^[A-Z]/ )
+        # nothing to do
+      elsif arr[0] == ""
+        arr[0] = 'Kernel'
+      else
+        arr[0] = '_' + arr[0]
+      end
+      arr.join( "." )
     end
-    name
   end
 
   def isRubyInterface( name )

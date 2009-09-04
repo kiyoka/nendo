@@ -34,4 +34,7 @@
 ;; bug:  undefined method `exist_QMARK' for File:Class
 (File.exist? "./nendo.rb")
 
+(set! a 1)
+(a.is_a? Fixnum)
+(a.is_a? String)
 
