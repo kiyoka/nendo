@@ -117,11 +117,13 @@
      ((null? placeinfo)
       (display-help "placeinfo is null"))
      ((eq? 'specdir (car placeinfo))
-      (let1 spec (with-open "./specfile"
-                            (lambda (f)
-                              (read f)))
-        (if (not spec)
-            (error "./specfile does not exist...")
+      (if (not (File.exist? "./specfile"))
+          (begin
+            (print "Error: ./specfile does not exist...")
+            (exit 1))
+          (let1 spec (with-open "./specfile"
+                                (lambda (f)
+                                  (read f)))
             (exec-sh
              (assq-ref 'build (gen-script
                                (assq-ref 'temp envs)
