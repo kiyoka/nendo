@@ -617,7 +617,7 @@ module BuiltinFunctions
   def _sort(     arg )           arg.to_arr.sort.to_list end
   def _reverse(  arg )           arg.to_arr.reverse.to_list end
   def _uniq(     arg )           arg.to_arr.uniq.to_list end
-  def _range(    num )           (0..num-1).map.to_list end
+  def _range(    num )           (0..num-1).to_a.to_list end
   def _eq_QMARK(      a,b )      a ==  b end
   def _gt_QMARK(      a,b )      a >   b end
   def _ge_QMARK(      a,b )      a >=  b end
@@ -718,6 +718,16 @@ class Evaluator
       sprintf( "%s = @sym[ '%s' ] ", name, name )
     }.join( " ; " )
     eval( rubyExp, @binding )
+
+    # initialize buildin functions as Proc objects
+    rubyExp = self.methods.select { |x|
+      x.to_s.match( /^_/ )
+    }.map { |name|
+      sprintf( "%s = self.method( :%s ).to_proc", name, name )
+    }.join( " ; " )
+    eval( rubyExp, @binding )
+
+    # reset gensym counter
     @gensym_counter = 0
   end
 
@@ -762,7 +772,7 @@ class Evaluator
 
   def toLispSymbol( name )
     name = name.to_s  if Symbol == name.class
-    raise ArgumentError if '_' == name[0]
+    raise ArgumentError if not ('_' == name[0])
     name = name[1..-1]
     name.gsub( /_AMARK/, '*' ).gsub( /_QMARK/, '?' ).gsub( /_EMARK/, '!' )
   end
