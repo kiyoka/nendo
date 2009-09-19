@@ -5,6 +5,7 @@ true; exec /usr/local/bin/nendo "$0"
 (define archive-file-pattern "([a-zA-Z].*)")
 (define stow-home   (File.expand_path "~/stowspec"))
 (define stow-target "/usr/local/stow")
+(define stow-bin    "/usr/local/bin")
 (define stow-temp   "/tmp/stowspec")
 
 ;; `regex' is a string ( not a regex object )
@@ -38,7 +39,9 @@ true; exec /usr/local/bin/nendo "$0"
    print
    `(
      "Usage:"
-     ""
+     "  stowspec URL"
+     "     or "
+     "  stowspec filename.tar.gz"
      )))
 
 
@@ -55,6 +58,7 @@ true; exec /usr/local/bin/nendo "$0"
       (home        . ,(ENV.fetch "HOME"))   ;; "/home/xxxx/"
       (stow-home   . ,stow-home)            ;; "/home/xxxx/stowspec"
       (target      . ,stow-target)          ;; "/usr/local/stow"
+      (bin         . ,stow-bin)             ;; "/usr/local/bin"
       (temp        . ,stow-temp)            ;; "/tmp/stowspec"
       (project     . ,in-project)           ;; nil or "aaaa-1.2.3.tar.gz"
       )))
@@ -63,17 +67,11 @@ true; exec /usr/local/bin/nendo "$0"
 (define (get-placeinfo envs)
   (let1 pwd (assq-ref 'pwd  envs)
     (cond
-     ((eq? pwd
-           (assq-ref 'home envs))
-      `(homedir . ,(assq-ref 'home envs)))
-     ((eq? pwd
-           (assq-ref 'stow-home envs))
-      `(listdir . ,(assq-ref 'stow-home envs)))
-     ((assq 'project envs)
+     ((assq-ref 'project envs)
       => (lambda (x)
-           `(specdir . ,(cdr x))))
+           `(specdir . x)))
      (else
-      nil))))
+      `(other . "")))))
   
 
 (define (gen-script workdir stowhome-path url filename projname spec)
@@ -112,12 +110,61 @@ true; exec /usr/local/bin/nendo "$0"
       )))
 
 
+(define (get-dir-entries path)
+  (filter-map
+   (lambda (x)
+     (not (or (x.match "[/]?[.]$")
+              (x.match "[/]?[.][.]$")
+              (x.match "^[.]"))))
+   (to-list (Dir.entries path))))
+
+;;(get-dir-entries "/usr/local/stow")
+
+;; check installed binary file by stow.
+(define (binary-installed? envs projname)
+  (if (not projname)
+      false
+      (let* ((bin-path (assq-ref 'bin envs))
+             (bin-list
+              (map
+               (lambda (x)
+                 (+ bin-path "/" x))
+               (get-dir-entries bin-path))))
+        (let1 linklist
+            (filter
+             (lambda (x)
+               (when (File.symlink? x)
+                 (File.readlink x)))
+             bin-list)
+          ;; checking installed file counts.
+          (< 0 (length
+                (filter-map
+                 (lambda (x)
+                   (regex-match projname x))
+                 linklist)))))))
+
+
+(define (get-stowed-list envs)
+  (let* ((projs  (get-dir-entries (assq-ref 'stow-home envs)))
+         (stowed (get-dir-entries (assq-ref 'target envs)))
+         (all    (uniq (sort (append projs stowed)))))
+    (map
+     (lambda (x)
+       (cons x
+             (list
+              (if (binary-installed? envs x) 'i false)
+              (if (memv x stowed) 's false)
+              (if (memv x projs ) 'p false))))
+     all)))
+
+(when false
+  (get-stowed-list
+   '((pwd . "/Volumes/CaseSensitive/kiyoka/work/github/nendo/sample") (home . "/Users/kiyoka") (stow_home . "/Users/kiyoka/stowspec") (target . "/usr/local/stow") (bin . "/usr/local/bin") (temp . "/tmp/stowspec") (project))))
+
 
 (define (action-by-place envs)
   (let1 placeinfo (get-placeinfo envs)
     (cond
-     ((null? placeinfo)
-      (display-help "placeinfo is null"))
      ((eq? 'specdir (car placeinfo))
       (if (not (File.exist? "./specfile"))
           (begin
@@ -134,16 +181,24 @@ true; exec /usr/local/bin/nendo "$0"
                                (assq-ref 'arc spec)
                                (assq-ref 'projname spec)
                                spec))))))
-     ((eq? 'listdir (car placeinfo))
-      (for-each
-       print
-       (filter
-        (lambda (x)
-          (when (not (x.match "^[.]"))
-            (+ "cd "x)))
-        (to-list (Dir.entries (cdr placeinfo))))))
      (else
-      (display-help (cdr path))))))
+      (define (ox bool-val)
+        (if bool-val "O" "-"))
+      (let1 _format "%-25s %10s %10s %10s"
+        (print
+         (string-join
+          (cons
+           (sprintf _format "        <name>" "<installed>" "<stowed>" "<source>")
+           (map
+            (lambda (x)
+              (sprintf _format
+                       (+ " " (first x))
+                       (ox (second x))
+                       (ox (third x))
+                       (ox (fourth x))))
+            (get-stowed-list envs)))
+          "\n"))))
+     )))
 
 
 (define (tgz-to-name tgz)
@@ -156,7 +211,7 @@ true; exec /usr/local/bin/nendo "$0"
     nil)))
 
 ;; test
-(when true
+(when false
   (list
    (tgz-to-name "abc-1.2.3.tar.gz")
    (tgz-to-name "abc-1.2.3.tar.bz2")
@@ -218,8 +273,3 @@ true; exec /usr/local/bin/nendo "$0"
        (action-by-arg   envs argv)))))
   
 (main (cdr ARGV.to_list))
-
-
-
-
-
