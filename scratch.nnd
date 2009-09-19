@@ -32,16 +32,35 @@
                 (3 . "three")))
 
 
+
+;; original map
+(define (map pred lst)
+  (printf "omap pred.id=")
+  (print pred.id)
+  (if (null? lst)
+      '()
+      (cons
+       (pred (car lst))
+       (map pred (cdr lst)))))
+
+(map
+ print
+ '(
+   (1 2 3)
+   (4 5 6)))
+
+
 ;; bug: can't execute nested map
 (map
  (lambda (x)
    (print x)
    (map
     (lambda (y)
-      (printf "inner loop=%s\n" y))
+      (print "inner loop=")
+      (print y))
     x))
  '(
    (1 2 3)
    (4 5 6)))
-   
+
    
