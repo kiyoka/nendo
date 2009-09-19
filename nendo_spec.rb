@@ -74,7 +74,7 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
   end
 end
 
-describe Nendo, "Ruby's arity method rules " do
+describe Nendo, "Ruby's arity rules " do
   it "should" do
     Proc.new {}.arity.should <= 0
     Proc.new {||}.arity.should == 0
@@ -83,6 +83,18 @@ describe Nendo, "Ruby's arity method rules " do
     Proc.new {|a,b,c|}.arity.should == 3
     Proc.new {|*a|}.arity.should == -1
     Proc.new {|a,*b|}.arity.should == -2
+  end
+end
+
+describe Nendo, "Ruby's lexical closure " do
+  it "should" do
+    lambda1 = lambda { |val|
+      val = 'a'
+      lambda2 = lambda { |val| val }
+      lambda2.call( 'X' )
+      val
+    }
+    lambda1.call( 'A' ).should == 'a'
   end
 end
 
