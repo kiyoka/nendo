@@ -31,3 +31,17 @@
                 (2 . "two")
                 (3 . "three")))
 
+
+;; bug: can't execute nested map
+(map
+ (lambda (x)
+   (print x)
+   (map
+    (lambda (y)
+      (printf "inner loop=%s\n" y))
+    x))
+ '(
+   (1 2 3)
+   (4 5 6)))
+   
+   
