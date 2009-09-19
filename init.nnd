@@ -345,13 +345,21 @@
 (define (filter pred lst)
   (if (null? lst)
       '()
-      (let ((result  (pred (car lst))))
+      (let1 result (pred (car lst))
         (if result
             (cons
              result
              (filter pred (cdr lst)))
             (filter pred (cdr lst))))))
 
+(define (filter-map pred lst)
+  (if (null? lst)
+      '()
+      (if (pred (car lst))
+          (cons
+           (car lst)
+           (filter-map pred (cdr lst)))
+          (filter-map pred (cdr lst)))))
 
 
 ;; ----------------------------------------

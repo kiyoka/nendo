@@ -603,6 +603,17 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (apply + 1 2 '(3 4)) " ).should == "10"
     @nendo.replStr( " (apply + 1 2 3 '(4)) " ).should == "10"
     @nendo.replStr( " (apply + '(\"a\" \"b\" \"c\")) " ).should == "abc"
+    @nendo.replStr( " (map (lambda (x) (* x 2)) '(1 2 3)) " ).should == "(2 4 6)"
+    @nendo.replStr( " (map (lambda (x) (+ x 1)) '(1 2 3)) " ).should == "(2 3 4)"
+    @nendo.replStr( " (for-each (lambda (x) (* x 2)) '(1 2 3)) " ).should == "(2 4 6)"
+    @nendo.replStr( " (for-each (lambda (x) (+ x 1)) '(1 2 3)) " ).should == "(2 3 4)"
+    @nendo.replStr( " (filter (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
+    @nendo.replStr( " (filter (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(true)"
+    @nendo.replStr( " (filter (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(true true)"
+    @nendo.replStr( " (filter (lambda (x) (if (= x 2) (* x 100)))   '(1 2 3)) " ).should == "(200)"
+    @nendo.replStr( " (filter-map (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
+    @nendo.replStr( " (filter-map (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(2)"
+    @nendo.replStr( " (filter-map (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(1 3)"
   end
 end
 
