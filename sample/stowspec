@@ -1,6 +1,6 @@
 #!/bin/sh
 true; #-*- mode: nendo; syntax: scheme -*-;;
-true; exec /usr/local/bin/nendo "$0"
+true; exec /usr/local/bin/nendo $0 $*
 
 (define archive-file-pattern "([a-zA-Z].*)")
 (define stow-home   (File.expand_path "~/stowspec"))
