@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
-require 'nendo/nendo'
+require 'nendo'
 
 describe Cell, "when initialized as '()" do
   before do

@@ -13,3 +13,7 @@ begin
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
+
+task :spec do
+  sh "ruby -I ./lib /usr/local/bin/spec nendo_spec.rb"
+end
