@@ -2,10 +2,21 @@
 
 ;; problem
 (to-s 'a.size)
+1
+(print "11\n22")
 
 (define str "string")
 (set! str.size 2)
 (+ 1 (. str size))
+'(1 2 3)
+
+(begin
+  (print "1")
+  (print "2")
+  '(3 4 5))
+
+
+
 
 (define f (Kernel.open "t.txt"))
 
@@ -23,6 +34,7 @@
 
 
 (enable-debug)
+(disable-debug)
 
 (exit)
 

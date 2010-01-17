@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{nendo}
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2010-01-14}
+  s.date = %q{2010-01-16}
   s.default_executable = %q{nendo}
   s.description = %q{Nendo is a programming language written in Ruby.}
   s.email = %q{kiyoka@sumibi.org}

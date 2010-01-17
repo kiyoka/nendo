@@ -16,19 +16,27 @@
   :link '(url-link "http://oldtype.sumibi.org/show-page/Nendo"))
 
 
+(defvar nendo-result-buffer '())
+
 (defun nendo-watch-for-eval-result (string)
-  (let ((lines 
+  (let ((lines
 	 (split-string string "[\r\n]")))
-    (when (< 1 (length lines))
-      (let ((result-string
-	     (mapconcat (function (lambda (x) x))
-			(reverse
-			 (cdr
-			  (reverse
-			   lines)))
-			"\n")))
-	(when (not (get-buffer-window-list "*scheme*" t t))
-	  (message "%s" result-string))))))
+    (mapcar
+     (lambda (x) 
+       (cond 
+	((string= "nendo> " x)
+	 (progn
+	   ;;(when (not (get-buffer-window-list "*scheme*" t t))
+	   (message "%s"  (mapconcat
+			   (lambda (e) e)
+			   (reverse nendo-result-buffer)
+			   "\n"))
+	   (setq nendo-result-buffer '())))
+	((< 0 (length x))
+	 (push x nendo-result-buffer))
+	(t
+	 nil)))
+     lines)))
 
 
 (define-derived-mode nendo-mode scheme-mode "Nendo mode"
