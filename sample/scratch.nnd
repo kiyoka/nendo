@@ -1,60 +1,9 @@
 ;;-*- mode: nendo; syntax: scheme -*-;;
 
-;; problem
-(to-s 'a.size)
-1
-(print "11\n22")
-
-(define str "string")
-(set! str.size 2)
-(+ 1 (. str size))
-'(1 2 3)
-
-(begin
-  (print "1")
-  (print "2")
-  '(3 4 5))
-
-
-
-
-(define f (Kernel.open "t.txt"))
-
-(for-each
- (lambda (x)
-   (print (x.chomp)))
- (f.readlines.to_list))
-
-(f.close)
-
-(require "Date")
-(let1 d (Date.new 0)
-      (d.strftime "%x"))
-((. Date new) 2)
-
-
-(enable-debug)
-(disable-debug)
-
+;; -----------------
+(enable-idebug)
+(disable-idebug)
 (exit)
-
-(assoc '(1 2) '(
-                ((1 2) . "one")
-                (2 . "two")
-                (3 . "three")))
+;; -----------------
 
 
-;; bug: can't execute nested map
-(map
- (lambda (x)
-   (print x)
-   (map
-    (lambda (y)
-      (print "inner loop=")
-      (print y))
-    x))
- '(
-   (1 2 3)
-   (4 5 6)))
-
-   
