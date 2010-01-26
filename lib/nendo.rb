@@ -753,8 +753,8 @@ class Evaluator
     if 0 == name.length
       ""
     else
-      arr = name.split( /[.]/ )
-      arr[0] = arr[0].gsub( /[*]/, '_AMARK' ).gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' ).gsub( /["]/, '' )
+      arr = name.gsub( /["]/, '' ).split( /[.]/ )
+      arr[0] = arr[0].gsub( /[*]/, '_AMARK' ).gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' )
       if arr[0].match( /^[A-Z]/ )
         # nothing to do
       elsif arr[0] == ""
@@ -1135,6 +1135,9 @@ class Evaluator
 
   def _enable_debug()
     @debug = true
+  end
+  def _disable_debug()
+    @debug = false
   end
 end
 
