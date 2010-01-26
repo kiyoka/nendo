@@ -1133,10 +1133,10 @@ class Evaluator
     self.lispEval( sexp, "dynamic S-expression ( no source )", 1 )
   end
 
-  def _enable_debug()
+  def _enable_idebug()
     @debug = true
   end
-  def _disable_debug()
+  def _disable_idebug()
     @debug = false
   end
 end
