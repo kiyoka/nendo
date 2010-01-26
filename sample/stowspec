@@ -166,6 +166,9 @@ true; exec /usr/local/bin/nendo $0 $*
   (let1 placeinfo (get-placeinfo envs)
     (cond
      ((eq? 'specdir (car placeinfo))
+      ;; ----------
+      ;; build!
+      ;; ----------
       (if (not (File.exist? "./specfile"))
           (begin
             (print "Error: ./specfile does not exist...")
@@ -182,6 +185,9 @@ true; exec /usr/local/bin/nendo $0 $*
                                (assq-ref 'projname spec)
                                spec))))))
      (else
+      ;; ----------
+      ;; show current stowed status
+      ;; ----------
       (define (ox bool-val)
         (if bool-val "O" "-"))
       (let1 _format "%-25s %10s %10s %10s"
