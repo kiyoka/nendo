@@ -636,6 +636,28 @@ describe Nendo, "when call functions in init.nnd " do
   end
 end
 
+describe Nendo, "when toplevel variable was overwritten " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (define a 1) a" ).should == "1"
+    lambda { @nendo.replStr( " (define (c-func) (+ a b)) (c-func)" ) }.should   raise_error( NameError )
+    @nendo.replStr( " (define b 2) b" ).should == "2"
+    @nendo.replStr( " (c-func) " ).should == "3"
+    @nendo.replStr( " (define b 20) " ).should == "20"
+    @nendo.replStr( " (c-func) " ).should == "21"
+
+    @nendo.replStr( " (define (a-func) 10) (a-func)" ).should == "10"
+    lambda { @nendo.replStr( " (define (c-func) (* (a-func) (b-func))) (c-func)" ) }.should   raise_error( NameError )
+    @nendo.replStr( " (define (b-func) 20)  (b-func)" ).should == "20"
+    @nendo.replStr( " (c-func) " ).should == "200"
+    @nendo.replStr( " (define (b-func) 200) (b-func)" ).should == "200"
+    @nendo.replStr( " (c-func) " ).should == "2000"
+  end
+end
+
 describe Nendo, "when use quasiquote macro " do
   before do
     @nendo = Nendo.new()
