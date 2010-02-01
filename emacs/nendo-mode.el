@@ -25,8 +25,7 @@
      (lambda (x) 
        (cond 
 	((string= "nendo> " x)
-	 (progn
-	   ;;(when (not (get-buffer-window-list "*scheme*" t t))
+	 (when (not (get-buffer-window-list "*scheme*" t t))
 	   (message "%s"  (mapconcat
 			   (lambda (e) e)
 			   (reverse nendo-result-buffer)
