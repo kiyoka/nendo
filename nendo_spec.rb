@@ -98,6 +98,13 @@ describe Nendo, "Ruby's lexical closure " do
   end
 end
 
+describe Nendo, "Ruby's undefined instance variable " do
+  it "should" do
+    @undefined_variable.should be_nil
+    defined?( @undefined_variable ).should be_nil
+  end
+end
+
 describe Evaluator, "When use Evaluator's util methods" do
   before do
     @evaluator = Evaluator.new()
