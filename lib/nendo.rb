@@ -665,7 +665,10 @@ module BuiltinFunctions
   def _string_join( lst, delim )
     lst.to_a.map{ |x| x.car }.join( delim )
   end
-  def _require( arg )           Kernel::require( arg ) end
+  def _require( arg )
+    Kernel::require( arg )
+    false
+  end
   def _read( *args )
     lst = args[0].to_arr
     io = if 0 == lst.length
