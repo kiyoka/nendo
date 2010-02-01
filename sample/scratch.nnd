@@ -3,7 +3,23 @@
 ;; -----------------
 (enable-idebug)
 (disable-idebug)
-(exit)
 ;; -----------------
 
+;; global function define bug
+(define (a-func) 1)
+(a-func)
+
+(define (c-func)
+  (+ (a-func) (b-func)))
+
+(c-func)
+
+(define (b-func) 2)
+(b-func)
+
+(c-func)
+
+(define (b-func) 22)
+
+(c-func)
 
