@@ -475,24 +475,21 @@
 
 
 ;; ----------------------------------------
-;; Utility function for testing
+;; Utility function for testing and debugging
 ;; ----------------------------------------
-;; pass through the argument value as return value.
-(define (pass x) x)
-
-;; ruby's p like function.
-(define (p x)
-  (printf "%s\n" x)
-  x)
-
 ;; Gauche's #?= like debug print function
-(define debug-print-length 80)
-(define (debug-print x)
-  (let1 buffer (sprintf "%s" x)
-    (if (< debug-print-length buffer.length)
-        (let1 n debug-print-length.to_s
-          (printf (+ "%" n "." n "s\n") buffer))
-        (print buffer)))
-  x)
-;; alias name of debug-print
-(define dp debug-print)
+(define debug-print-length 63)
+(define (debug-print-output-func str)  ;; default output func
+  (STDERR.print str))
+(define (debug-print val sourcefile lineno sourcesexp)
+  (define (limit-length x)
+    (+
+     (if (< debug-print-length x.length)
+         (let1 n debug-print-length.to_s
+           (sprintf (+ "%" n "." n "s") x))
+         x)
+     "\n"))
+  (let1 disp-val    (write-to-string val)
+    (debug-print-output-func (limit-length (sprintf "#?=%s:%s:%s" sourcefile lineno (write-to-string sourcesexp))))
+    (debug-print-output-func (limit-length (sprintf "#?-    %s"   disp-val)))
+    val))

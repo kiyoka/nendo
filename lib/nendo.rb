@@ -192,6 +192,7 @@ class Reader
   T_DOT                 = :t_dot
   T_LINEFEED            = :t_linefeed
   T_COMMENT             = :t_comment
+  T_DEBUG_PRINT         = :t_debug_print
 
   # inport is IO class
   def initialize( inport, sourcefile, debug = false )
@@ -276,10 +277,20 @@ class Reader
           readwhile( /[^\r\n]/ )
           str = ""
           T_COMMENT
-        when /[#!]/
-          readwhile( /[^\r\n]/ )
-          str = ""
-          T_COMMENT
+        when /[#]/
+          keyword = readwhile( /[?=!]/ )
+          case keyword
+          when /[?=]/
+            str = ""
+            T_DEBUG_PRINT
+          when /[!]/
+            readwhile( /[^\r\n]/ )
+            str = ""
+            T_COMMENT
+          else
+            str += readwhile( /[^ \t\r\n]/ )
+            raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
+          end
         when /[_a-zA-Z]/      # symbol
           str += readwhile( /[_a-zA-Z0-9!?*.-]/ ).gsub( /[-]/, '_' )
           T_SYMBOL
@@ -305,7 +316,7 @@ class Reader
           T_STRING
         else
           str += readwhile( /[^ \t\r\n]/ )
-          raise NameError, sprintf( "unknown token for Nendo [%s]", str )
+          raise NameError, sprintf( "Error: unknown token for Nendo [%s]", str )
         end
       printf( "    token: [%s] : %s   (%s:L%d:C%d)\n", str, kind.to_s, @chReader.sourcefile, @chReader.lineno, @chReader.column ) if @debug
       @curtoken = Token.new( kind, str, @chReader.sourcefile, @chReader.lineno, @chReader.column )
@@ -364,6 +375,8 @@ class Reader
       :dot_operator
     when T_FEEDTO
       :feedto
+    when T_DEBUG_PRINT
+      "debug-print".intern
     else
       raise "Error: Unknown token in atom()"
     end
@@ -396,7 +409,7 @@ class Reader
           token
           lastAtom = sexp()
         end
-      when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
+      when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING, T_DEBUG_PRINT
         cells << Cell.new( sexp() )
       else
         if lastAtom
@@ -454,6 +467,10 @@ class Reader
     when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
       _atom = atom() ## "quote" symbol
       Cell.new( _atom, Cell.new( sexp() ))
+    when T_DEBUG_PRINT
+      _atom = atom() ## "debug-print" symbol
+      child = sexp() 
+      [_atom, child, LispString.new( curtoken.sourcefile ), curtoken.lineno, Cell.new( :quote, Cell.new( child )) ].to_list
     else
       atom()
     end
@@ -775,26 +792,27 @@ class Evaluator
 
   def toLispSymbol( name )
     name = name.to_s  if Symbol == name.class
-    raise ArgumentError if not ('_' == name[0])
+    raise ArgumentError, sprintf( "Error: `%s' is not a lisp symbol", name ) if not ('_' == name[0])
     name = name[1..-1]
     name.gsub( /_AMARK/, '*' ).gsub( /_QMARK/, '?' ).gsub( /_EMARK/, '!' )
   end
 
   def toRubyArgument( origname, pred, args )
+    argument_error_message = sprintf( "Error: wrong number of arguments for closure `%s'", origname )
     num = pred.arity
     if 0 == num
-      raise ArgumentError, sprintf( "at function `%s'", origname )  if 0 != args.length
+      raise ArgumentError, argument_error_message if 0 != args.length
       []
     elsif 0 < num
       if args.isNull
         [ Nil.new ]
       else
-        raise ArgumentError, sprintf( "at function `%s'", origname ) if num != args.length
+        raise ArgumentError, argument_error_message if num != args.length
         args.map { |x|  x.car }
       end
     else
       num = num.abs( )-1
-      raise ArgumentError, sprintf( "at function `%s'", origname )  if num > args.length
+      raise ArgumentError, argument_error_message if num > args.length
       params = []
       rest = []
       args.each_with_index { |x,i|
@@ -993,7 +1011,7 @@ class Evaluator
       sprintf( 'begin %s; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end',
                expression, sourcefile, lineno )
     else
-      sprintf( 'begin if (defined?(%s) == \'local-variable\') then %s elsif (self.instance_variables.include?(:@%s)) then @%s else raise NameError.new( "undefined variable %s", "%s" ) end  ; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end',
+      sprintf( 'begin if (defined?(%s) == \'local-variable\') then %s elsif (self.instance_variables.include?(:@%s)) then @%s else raise NameError.new( "Error: undefined variable %s", "%s" ) end  ; rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end',
                variable_sym, expression, variable_sym, expression, variable_sym, variable_sym, sourcefile, lineno )
     end
   end
@@ -1005,8 +1023,7 @@ class Evaluator
       if :quote == sexp.car
         genQuote( sexp.cdr.car )
       elsif sexp.isDotted
-        print "Error: can't eval dotted pair"
-        raise NameError
+        raise NameError, "Error: can't eval dotted pair."
       elsif sexp.isNull
         str += "Cell.new()"
       elsif Cell == sexp.car.class

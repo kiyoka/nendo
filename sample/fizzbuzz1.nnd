@@ -1,4 +1,6 @@
-;;-*- mode: gauche; syntax: scheme -*-;;
+#!/bin/sh
+true; #-*- mode: nendo; syntax: scheme -*-;;
+true; exec /usr/local/bin/nendo $0 $*
 
 ;; FizzBuzz write in Nendo
 (define (fizzbuzz max)

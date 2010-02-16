@@ -3,23 +3,31 @@
 ;; -----------------
 (enable-idebug)
 (disable-idebug)
+(exit)
 ;; -----------------
+#?=1
 
-;; global function define bug
-(define (a-func) 1)
-(a-func)
+(define (func arg1 arg2)
+  (+ arg1 arg2))
 
-(define (c-func)
-  (+ (a-func) (b-func)))
+(func 1 2 3)
+(func 1 2)
+(func 1)
 
-(c-func)
+(begin
+  (map
+   (lambda (x)
+     #?=(* x 2))
+   #?=(iota 10)))
 
-(define (b-func) 2)
-(b-func)
+#-----------------------
 
-(c-func)
+#?=2
 
-(define (b-func) 22)
-
-(c-func)
+(begin
+  #?=
+  (+
+   1
+   2
+   3))
 
