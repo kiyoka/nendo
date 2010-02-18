@@ -4,30 +4,25 @@
 (enable-idebug)
 (disable-idebug)
 (exit)
+
+
+
+
 ;; -----------------
-#?=1
+;; customizing debug-print
+;; -----------------
+(define string-buffer "")
+(define (debug-print-output-func str)
+  (begin
+    (printf "[%s]\n" string-buffer.class)
+    (printf "[%s]\n" str.class)
+    (set! string-buffer (+ string-buffer str))))
 
-(define (func arg1 arg2)
-  (+ arg1 arg2))
 
-(func 1 2 3)
-(func 1 2)
-(func 1)
-
-(begin
-  (map
-   (lambda (x)
-     #?=(* x 2))
-   #?=(iota 10)))
-
-#-----------------------
-
-#?=2
+(define (debug-print-output-func str)
+  (printf "[%s]\n" str.class))
 
 (begin
-  #?=
-  (+
-   1
-   2
-   3))
+  #?=1)
 
+(print string-buffer)
