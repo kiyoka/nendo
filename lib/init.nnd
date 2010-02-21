@@ -3,13 +3,13 @@
 ;; ----------------------------------------
 ;; define
 ;; ----------------------------------------
-(set! define
+(define-internal define
       (macro (arg . body)
         (if (not (pair? arg))
-            (cons 'set!
+            (cons 'define-internal
                   (cons arg
                         body))
-            (cons 'set!
+            (cons 'define-internal
                   (cons (car arg)
                         (list
                          (cons 'lambda

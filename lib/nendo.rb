@@ -842,7 +842,7 @@ class Evaluator
 
   def execFunc( funcname, args, sourcefile, lineno, level, lambda_flag )
     case funcname
-    when :set!   # `set!' special form
+    when :define_internal, :set!   # `define-internal' special form
       if 0 == level
         sprintf( "@%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), toRubyValue( args.cdr.car ))
       else
@@ -1087,7 +1087,7 @@ class Evaluator
     when Cell
       if :quote == sexp.car or :quasiquote == sexp.car 
         sexp
-      elsif :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
+      elsif :define_internal == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
         sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
         sexp.cdr.cdr = quoting( sexp.cdr.cdr )
         sexp
