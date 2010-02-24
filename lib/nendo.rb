@@ -842,15 +842,16 @@ class Evaluator
   end
 
   # for code generation of Ruby's argument values
+  # in case:  str = ","
   # [1,"2",3] => [ 
   #                [ 1,  ","]
   #                ["2", ","]
-  #                [3]
+  #                [ 3 ]
   #              ]
-  def separateWithComma( arr )
-    commas = []
-    (arr.length-1).times {|n| commas << "," }
-    arr.zip( commas ).map{ |x|
+  def separateWith( arr, str )
+    seps = []
+    (arr.length-1).times {|n| seps << str }
+    arr.zip( seps ).map{ |x|
       x.select { |elem| elem }
     }
   end
@@ -878,13 +879,7 @@ class Evaluator
         if 0 == args.length
           arr = [ "Cell.new(" ]
         else
-          arr =  args.map.with_index { |x,i|
-            if args.length-1 == i
-              [ x.car ]
-            else
-              [ x.car, ",Cell.new(" ]
-            end
-          }
+          arr = separateWith( args.map.with_index { |x,i| x.car }, ",Cell.new(" )
           arr[0].unshift( "Cell.new(" )
         end
         if lambda_flag
@@ -989,12 +984,9 @@ class Evaluator
         toRubySymbol( x.car.car.cdr.car.to_s )
       }
       argvals = args.car.map.with_index { |x,i|
-        if i < args.car.length-1
-          [translate( x.car.cdr.car, level )] + [","]
-        else
-          [translate( x.car.cdr.car, level )]
-        end
+        translate( x.car.cdr.car, level )
       }
+      argvals = separateWith( argvals, "," )
       lambda_head = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
     end
     ["begin",
@@ -1045,14 +1037,14 @@ class Evaluator
     variable_sym = sym.split( /[.]/ )[0]
     expression = if translatedArr
                    [sprintf( "%s(", sym ),
-                    separateWithComma( translatedArr ),
+                    separateWith( translatedArr, "," ),
                     sprintf( "  )" )]
                  else
                    [sprintf( "%s", sym )]
                  end
     expression2 = if translatedArr
                     [sprintf( "@%s(", sym ),
-                     separateWithComma( translatedArr ),
+                     separateWith( translatedArr, "," ),
                      sprintf( "  )" )]
                   else
                     [sprintf( "@%s", sym )]
@@ -1226,7 +1218,7 @@ class Evaluator
       printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
     end
     arr = [ translate( sexp, 0 ) ]
-    rubyExp = ppRubyExp( 0, arr ).flatten.join( "" )
+    rubyExp = ppRubyExp( 0, arr ).flatten.join
     printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
   end
