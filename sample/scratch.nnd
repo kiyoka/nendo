@@ -5,7 +5,64 @@
 (disable-idebug)
 (exit)
 
+(if true 1 2)
 
+(let ((a 1))
+  (print a))
+
+(let ((a
+       (let ((b 2))
+         (+ 100 b))))
+  a)
+
+(let ((a 11) (b 22))
+  (+ a b))
+
+(define-internal caar
+  (lambda (x)
+    (car
+     (car x))))
+
+(define-internal define
+  (macro (arg . body)
+    (cons 'define-internal
+          (cons (car arg)
+                (list
+                 (cons 'lambda
+                       (cons  (cdr arg)
+                              body)))))))
+
+
+(define_internal
+  'cond
+  (macro 'lst
+    (define_internal
+      'case_block
+      (lambda '(elem . elseblock)
+        (let (('condition (if (eq? 'else (car elem))
+                              true
+                              (car elem)))
+              ('body (cdr elem))
+              ('tmpsym (gensym)))
+          (append
+           (if (eq? 'feedto (car body))
+               (cons 'if (list (list 'set! tmpsym condition) (list (cadr body) tmpsym)))
+               (cons 'if (list condition (cons 'begin body)))) (if (< 0 (length elseblock)) elseblock '())))))
+    (define_internal 'cond_iter
+      (lambda '(lst)
+        (if (eq? 0 (length lst))
+            '()
+            (if (eq? 1 (length lst))
+                (case_block (car lst) '())
+                (case_block (car lst) (cond_iter (cdr lst)))))))
+    (cond_iter lst)))
+
+
+(let ((a (+ 1))
+      (b (+ 2))
+      (c (+ 3)))
+  (+ a b c))
+       
 
 
 ;; -----------------

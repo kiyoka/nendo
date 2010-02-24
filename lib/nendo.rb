@@ -712,6 +712,7 @@ end
 class Evaluator
   include BuiltinFunctions
   def initialize( debug = false )
+    @indent  = "  "
     @binding = binding
     @debug   = debug
     @alias   = {'+'        => 'plus',
@@ -840,13 +841,28 @@ class Evaluator
     pred.call( *rubyArgument )
   end
 
+  # for code generation of Ruby's argument values
+  # [1,"2",3] => [ 
+  #                [ 1,  ","]
+  #                ["2", ","]
+  #                [3]
+  #              ]
+  def separateWithComma( arr )
+    commas = []
+    (arr.length-1).times {|n| commas << "," }
+    arr.zip( commas ).map{ |x|
+      x.select { |elem| elem }
+    }
+  end
+
   def execFunc( funcname, args, sourcefile, lineno, level, lambda_flag )
     case funcname
     when :define_internal, :set!   # `define-internal' special form
+      ar = args.cdr.map { |x| x.car }
       if 0 == level
-        sprintf( "@%s = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), toRubyValue( args.cdr.car ))
+        [ sprintf( "@%s = ", toRubySymbol( args.car.to_s.sub( /^:/, "" ))), ar ]
       else
-        sprintf( "%s  = %s", toRubySymbol( args.car.to_s.sub( /^:/, "" )), toRubyValue( args.cdr.car ))
+        [ sprintf( "%s  = ", toRubySymbol( args.car.to_s.sub( /^:/, "" ))), ar ]
       end
     when :error
       sprintf( 'begin raise RuntimeError, %s ; rescue => __e ;  __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end ', toRubyValue( args.car ), sourcefile, lineno )
@@ -854,25 +870,37 @@ class Evaluator
       if (not lambda_flag) and isRubyInterface( funcname )
         # Ruby method
         #   1) convert arguments
-        argStr  = args.map { |x| toRubyValue( x.car ) }.join( "," )
+        translatedArr  = args.map { |x| x.car }
         #   2) generate caller code part
-        lispSymbolReference( toRubySymbol( funcname ), argStr, sourcefile, lineno )
+        lispSymbolReference( toRubySymbol( funcname ), translatedArr, sourcefile, lineno )
       else
         # Nendo function
-        argStr  = args.map { |x| toRubyValue( x.car ) }.join( " ,Cell.new(" )
-        argStr += args.map { |x| "" }.join( ")" )
+        if 0 == args.length
+          arr = [ "Cell.new(" ]
+        else
+          arr =  args.map.with_index { |x,i|
+            if args.length-1 == i
+              [ x.car ]
+            else
+              [ x.car, ",Cell.new(" ]
+            end
+          }
+          arr[0].unshift( "Cell.new(" )
+        end
         if lambda_flag
-          "anonymouse"
-          sprintf( "callProcedure( 'anonymouse', %s, Cell.new( %s ))", funcname, argStr )
+          [sprintf( "callProcedure( 'anonymouse', " ),
+           [ funcname ] + [ "," ],
+           arr,
+           sprintf( "             )" ) + arr.map { |n| ")" }.join]
         else
           origname = funcname.to_s
           funcname = funcname.to_s
           funcname = @alias[ funcname ] if @alias[ funcname ] 
           sym      = toRubySymbol( funcname )
-          sprintf( "callProcedure( '%s', %s, Cell.new( %s ))",
-                   origname,
-                   lispSymbolReference( sym, nil, sourcefile, lineno ),
-                   argStr )
+          [sprintf( "callProcedure( '%s',", origname ),
+           [lispSymbolReference( sym, nil, sourcefile, lineno )] + [","],
+           arr,
+           sprintf( "             )" ) + arr.map { |n| ")" }.join]
         end
       end
     end
@@ -882,7 +910,7 @@ class Evaluator
     ar = args.map { |e|
       translate( e.car, level )
     }
-    "begin " + ar.join( ";" ) + " end"
+    ["begin", ar, "end"]
   end
 
   def toRubyParameter( argform )
@@ -914,14 +942,14 @@ class Evaluator
           when :macro
             sprintf( "LispMacro.new { %s ", argStr )
           when :lambda
-            sprintf( "     Proc.new { %s ", argStr )
+            sprintf( "Proc.new { %s ", argStr )
           else
             raise "Error: makeClosure: unknown symbol type " + sym
           end
     ar = rest.map { |e|
       translate( e.car, level+1 )
     }
-    str += ar.join( ";" ) + "}"
+    [ str, ar, "}" ]
   end
 
   def makeIf( args, level )
@@ -932,19 +960,24 @@ class Evaluator
       _else    = translate( args.cdr.cdr.car, level )
     end
     if _else
-      str = sprintf( "if ( %s ) then %s else %s end ", _condition, _then, _else )
+      ["if ( ", _condition, " ) then", 
+       [ _then ],
+       "else",
+       [ _else ],
+       "end"]
     else
-      str = sprintf( "if ( %s ) then %s end ", _condition, _then )
+      ["if ( ", _condition, " ) then", 
+       [ _then ],
+       "end"]
     end
   end
 
   def makeLet( args, level )
     _name = "___lambda"
-    str = ""
     argvals = []
     if args.car.is_a? Nil
       # nothing to do
-      str = sprintf( "begin %s = lambda { || ", _name )
+      lambda_head = sprintf( "%s = lambda { || ", _name )
       rest = args.cdr
     else
       if :quote == args.car.car
@@ -955,14 +988,22 @@ class Evaluator
       argsyms = args.car.map { |x|
         toRubySymbol( x.car.car.cdr.car.to_s )
       }
-      argvals = args.car.map { |x|
-        translate( x.car.cdr.car, level )
+      argvals = args.car.map.with_index { |x,i|
+        if i < args.car.length-1
+          [translate( x.car.cdr.car, level )] + [","]
+        else
+          [translate( x.car.cdr.car, level )]
+        end
       }
-      str = sprintf( "begin %s = lambda { |%s| ", _name, argsyms.join( "," ))
+      lambda_head = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
     end
-    ar = rest.map { |e|  translate( e.car, level+1 ) }
-    str += ar.join( ";" ) + "} ; "
-    str += sprintf( "%s.call( %s ) end ", _name, argvals.join( "," ))
+    ["begin",
+     [lambda_head,
+      rest.map { |e|  translate( e.car, level+1 ) },
+      sprintf( "} ; %s.call(", _name ),
+      argvals,
+      sprintf( "           )")],
+     "end"]
   end
 
   def apply( car, cdr, sourcefile, lineno, level, lambda_flag = false )
@@ -983,7 +1024,7 @@ class Evaluator
       else
         arr = sexp.map { |x| genQuote( x.car ) }
         str += "Cell.new("
-        str += arr.join( " ,Cell.new(" )
+        str += arr.join( ",Cell.new(" )
         lastAtom = sexp.lastAtom
         str += "," + genQuote( lastAtom )  if lastAtom
         str += arr.map{ |e| ")" }.join
@@ -1000,24 +1041,41 @@ class Evaluator
     str
   end
 
-  def lispSymbolReference( sym, argStr, sourcefile, lineno )
+  def lispSymbolReference( sym, translatedArr, sourcefile, lineno )
     variable_sym = sym.split( /[.]/ )[0]
-    expression = if argStr
-                   sprintf( "%s(%s)", sym, argStr )
+    expression = if translatedArr
+                   [sprintf( "%s(", sym ),
+                    separateWithComma( translatedArr ),
+                    sprintf( "  )" )]
                  else
-                   sprintf( "%s", sym )
+                   [sprintf( "%s", sym )]
                  end
+    expression2 = if translatedArr
+                    [sprintf( "@%s(", sym ),
+                     separateWithComma( translatedArr ),
+                     sprintf( "  )" )]
+                  else
+                    [sprintf( "@%s", sym )]
+                  end
     if variable_sym.match( /^[A-Z]/ )
-      sprintf( 'begin %s; rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end',
-               expression, sourcefile, lineno )
+      ["begin",
+       [expression,
+        sprintf( 'rescue NameError => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )],
+       "end"]
     else
-      sprintf( 'begin if (defined?(%s) == \'local-variable\') then %s elsif (self.instance_variables.include?(:@%s)) then @%s else raise NameError.new( "Error: undefined variable %s", "%s" ) end  ; rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end',
-               variable_sym, expression, variable_sym, expression, variable_sym, variable_sym, sourcefile, lineno )
+      ["begin",
+       [sprintf( 'if (defined?(%s) == \'local-variable\') then', variable_sym ),
+        expression,
+        sprintf( 'elsif (self.instance_variables.include?(:@%s)) then', variable_sym ),
+        expression2,
+        sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end  ; rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', variable_sym, variable_sym, sourcefile, lineno )],
+       "end"]
     end
   end
 
+  # Lisp->Ruby translater
+  #    - level is closure nest level
   def translate( sexp, level )
-    str = ""
     case sexp
     when Cell
       if :quote == sexp.car
@@ -1025,25 +1083,25 @@ class Evaluator
       elsif sexp.isDotted
         raise NameError, "Error: can't eval dotted pair."
       elsif sexp.isNull
-        str += "Cell.new()"
+        [ "Cell.new()" ]
       elsif Cell == sexp.car.class
         if :lambda == sexp.car.car
-          str += self.apply( translate( sexp.car, level ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, level, true )
+          self.apply( translate( sexp.car, level ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, level, true )
         else
-          str += translate( sexp.car, level )
+          translate( sexp.car, level )
         end
       elsif :begin == sexp.car
-        str += self.makeBegin( sexp.cdr, level )
+        self.makeBegin( sexp.cdr, level )
       elsif :lambda == sexp.car
-        str += self.makeClosure( :lambda, sexp.cdr, level )
+        self.makeClosure( :lambda, sexp.cdr, level )
       elsif :macro == sexp.car
-        str += self.makeClosure( :macro, sexp.cdr, level )
+        self.makeClosure( :macro, sexp.cdr, level )
       elsif :if == sexp.car
-        str += self.makeIf( sexp.cdr,    level )
+        self.makeIf( sexp.cdr,    level )
       elsif :let == sexp.car
-        str += self.makeLet( sexp.cdr,   level )
+        self.makeLet( sexp.cdr,   level )
       else
-        str += self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, level )
+        self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, level )
       end
     else
       case sexp
@@ -1051,17 +1109,17 @@ class Evaluator
         sym = sexp.to_s
         sym = @alias[ sym ]  if @alias[ sym ]
         sym = toRubySymbol( sym )
-        str += lispSymbolReference( sym, nil, sexp.sourcefile, sexp.lineno )
+        lispSymbolReference( sym, nil, sexp.sourcefile, sexp.lineno )
       when Fixnum
-        str += sexp.to_s
+        sexp.to_s
       when LispString
-        str += sprintf( "\"%s\"", sexp )
+        sprintf( "\"%s\"", sexp )
       when Nil
-        str += "Nil.new"
+        "Nil.new"
       when TrueClass, FalseClass, NilClass  # reserved symbols
-        str += toRubyValue( sexp )
+        toRubyValue( sexp )
       else
-        str += sexp.to_s
+        sexp.to_s
       end
     end
   end
@@ -1145,14 +1203,31 @@ class Evaluator
     sexp
   end
 
+  def ppRubyExp( level, exp )
+    indent = @indent * level
+    exp.map { |x|
+      if Array == x.class
+        ppRubyExp( level+1, x )
+      else
+        str = sprintf( "%s", x )
+        if str.match( /^[,]/ )
+          sprintf( "%s%s", indent, str )
+        else
+          sprintf( "\n%s%s", indent, str )
+        end
+      end
+    }
+  end
+
   def lispEval( sexp, sourcefile, lineno )
     sexp = lispCompile( sexp )
     sexp = quoting( sexp );
     if @debug
       printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
     end
-    rubyExp = translate( sexp, 0 );
-    printf( "          rubyExp=<<< %s >>>\n", rubyExp ) if @debug
+    arr = [ translate( sexp, 0 ) ]
+    rubyExp = ppRubyExp( 0, arr ).flatten.join( "" )
+    printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
   end
 
