@@ -970,16 +970,15 @@ class Evaluator
   def makeLet( args, level )
     _name = "___lambda"
     argvals = []
+    rest = args.cdr
     if args.car.is_a? Nil
       # nothing to do
       lambda_head = sprintf( "%s = lambda { || ", _name )
-      rest = args.cdr
     else
       if :quote == args.car.car
         _name = args.car.cdr.car.to_s
         args = args.cdr
       end
-      rest = args.cdr
       argsyms = args.car.map { |x|
         toRubySymbol( x.car.car.cdr.car.to_s )
       }
@@ -994,6 +993,33 @@ class Evaluator
       rest.map { |e|  translate( e.car, level+1 ) },
       sprintf( "} ; %s.call(", _name ),
       argvals,
+      sprintf( "           )")],
+     "end"]
+  end
+
+  def makeLetrec( args, level )
+    _name = "___lambda"
+    argvals = []
+    argsyms = []
+    rest = args.cdr
+    if args.car.is_a? Nil
+      # nothing to do
+      lambda_head = sprintf( "%s = lambda { || ", _name )
+    else
+      argsyms = args.car.map { |x|
+        toRubySymbol( x.car.car.cdr.car.to_s )
+      }
+      argvals = args.car.map { |x|
+        translate( x.car.cdr.car, level+1 )
+      }
+      lambda_head = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
+    end
+    ["begin",
+     [lambda_head,
+      argsyms.zip( argvals ).map { |x| [ x[0], " = ", x[1] ] },
+      rest.map { |e|  translate( e.car, level+1 ) },
+      sprintf( "} ; %s.call(", _name ),
+      argsyms.map { |x| "nil" }.join( "," ),
       sprintf( "           )")],
      "end"]
   end
@@ -1092,6 +1118,8 @@ class Evaluator
         self.makeIf( sexp.cdr,    level )
       elsif :let == sexp.car
         self.makeLet( sexp.cdr,   level )
+      elsif :letrec == sexp.car
+        self.makeLetrec( sexp.cdr,   level )
       else
         self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, level )
       end
@@ -1152,6 +1180,15 @@ class Evaluator
                                        quoting( sexp.cdr.cdr.cdr ))
         end
         sexp
+      elsif :letrec == sexp.car
+        case sexp.cdr.car
+        when Cell        # letrec
+          sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
+                                       quoting( sexp.cdr.cdr ))
+        when Symbol      # named letrec is illegal
+          raise SyntaxError, "Error: named letrec is not a illegal form"
+        end
+        sexp
       else
         Cell.new( quoting( sexp.car ), quoting( sexp.cdr ))
       end
@@ -1202,7 +1239,7 @@ class Evaluator
         ppRubyExp( level+1, x )
       else
         str = sprintf( "%s", x )
-        if str.match( /^[,]/ )
+        if str.match( /^[,]/ ) or str.match( /^ = / )
           sprintf( "%s%s", indent, str )
         else
           sprintf( "\n%s%s", indent, str )
