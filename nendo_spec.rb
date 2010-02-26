@@ -289,17 +289,21 @@ describe Nendo, "when call replStr() with `/' function" do
   end
   it "should" do
     @nendo.replStr( " (/ 1) " ).should == "1"
-    @nendo.replStr( " (/ 1.1) " ).should == (1/1.1).to_s
+    @nendo.replStr( " (/ 1.1) " ).should ==
+      (1/1.1).to_s
     @nendo.replStr( " (/ 2 1) " ).should == "2"
     @nendo.replStr( " (/ 2 2) " ).should == "1"
     @nendo.replStr( " (/ 2 2.0) " ).should == "1.0"
     @nendo.replStr( " (/ 2 5.0) " ).should == "0.4"
     @nendo.replStr( " (/ 10.0 2 2 2 2 2 2 2 2 2 2) " ).should == "0.009765625"
     @nendo.replStr( " (/ 100 (/ 100 10) 10) " ).should == "1"
-    @nendo.replStr( " (/ 1 1.11) " ).should == (1/1.11).to_s
-    @nendo.replStr( " (/ 1.3 1.1) " ).should == (1.3/1.1).to_s
+    @nendo.replStr( " (/ 1 1.11) " ).should ==
+      (1/1.11).to_s
+    @nendo.replStr( " (/ 1.3 1.1) " ).should ==
+      (1.3/1.1).to_s
     @nendo.replStr( " (/ 1 '() ) " ).should == "1"
-    @nendo.replStr( " (/ 1.1 '() ) " ).should == (1/1.1).to_s
+    @nendo.replStr( " (/ 1.1 '() ) " ).should ==
+      (1/1.1).to_s
     lambda { @nendo.replStr( " (/) " ) }.should             raise_error(ArgumentError)
     lambda { @nendo.replStr( " (/ '() ) " ) }.should        raise_error(ArgumentError)
     lambda { @nendo.replStr( " (/ 1.1 \"a\" ) " ) }.should  raise_error(TypeError)
