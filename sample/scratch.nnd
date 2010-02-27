@@ -7,29 +7,27 @@
 
 (if true 1 2)
 
+(define a 1)
 
-(let ((a 1))
-  (print a))
+(define-internal a 1)
 
+(define-internal func1
+  (lambda ()
+    (define-internal a "A")
+    (define-internal b "B")))
+    
+(define-internal func1
+  (lambda ()
+    (define-internal func2
+      (lambda ()
+        (print "func2")))
+    (print "func1")
+    (func2)))
 
-(letrec ((a 1))
-  (print a))
+    
+    
+           
 
-
-(let ((a 11)
-      (b 22))
-  (+ a b))
-
-
-(letrec ((a 11)
-      (b 22))
-  (+ a b))
-
-
-(letrec ((a (+ 1))
-         (b (+ 2))
-         (c (+ 3)))
-  (+ a b c))
 
 
 (letrec (
