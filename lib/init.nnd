@@ -55,11 +55,12 @@
 (define iota range)
 
 (define (append a b)
-  (define (append-reverse a b)
-    (if (pair? a)
-        (append-reverse (cdr a) (cons (car a) b))
-        b))
-  (append-reverse (reverse a) b))
+  (letrec ((append-reverse
+            (lambda (a b)
+              (if (pair? a)
+                  (append-reverse (cdr a) (cons (car a) b))
+                  b))))
+    (append-reverse (reverse a) b)))
 
 ;; ----------------------------------------
 ;; Utility functions
@@ -77,15 +78,16 @@
 (define (succ x) (+ x 1))
 (define (pred x) (- x 1))
 (define (nth n lst)
-  (define (nth-iter n index lst)
-    (if (null? lst)
-        nil
-        (if (not (pair? lst))
-            (error "Error: nth got improper list.")
-            (if (eqv? n index)
-                (car lst)
-                (nth-iter n (+ index 1) (cdr lst))))))
-  (nth-iter n 0 lst))
+  (letrec ((nth-iter
+            (lambda (n index lst)
+              (if (null? lst)
+                  nil
+                  (if (not (pair? lst))
+                      (error "Error: nth got improper list.")
+                      (if (eqv? n index)
+                          (car lst)
+                          (nth-iter n (+ index 1) (cdr lst))))))))
+    (nth-iter n 0 lst)))
 (define (first lst)    (nth  0 lst))
 (define (second lst)   (nth  1 lst))
 (define (third lst)    (nth  2 lst))
@@ -112,38 +114,38 @@
 
 (define cond
   (macro lst
-    (define (case-block elem . elseblock)
-      (let ((condition (if (eq? 'else (car elem))
-                           true
-                           (car elem)))
-            (body      (cdr elem))
-            (tmpsym    (gensym)))
-        ;;(display "CONDITION") (print condition)
-        ;;(display "BODY")      (print body)
-        ;;(display "TMPSYM")    (print tmpsym)
-        (append
-         (if (eq? 'feedto (car body))
-             (cons 'if
-                   (list
-                    (list 'set! tmpsym condition)
-                    (list (cadr body) tmpsym)))
-             (cons 'if
-                   (list
-                    condition
-                    (cons 'begin body))))
-         (if (< 0 (length elseblock))
-             elseblock
-             '()))))
-
-    (define (cond-iter lst)
-      (if (eq? 0 (length lst))
-          '()
-          (if (eq? 1 (length lst))
-              (case-block (car lst) '())
-              (case-block (car lst)
-                          (cond-iter (cdr lst))))))
-    
-    (cond-iter lst)))
+    (letrec ((case-block
+              (lambda (elem . elseblock)
+                (let ((condition (if (eq? 'else (car elem))
+                                     true
+                                     (car elem)))
+                      (body      (cdr elem))
+                      (tmpsym    (gensym)))
+                  ;;(display "CONDITION") (print condition)
+                  ;;(display "BODY")      (print body)
+                  ;;(display "TMPSYM")    (print tmpsym)
+                  (append
+                   (if (eq? 'feedto (car body))
+                       (cons 'if
+                             (list
+                              (list 'set! tmpsym condition)
+                              (list (cadr body) tmpsym)))
+                       (cons 'if
+                             (list
+                              condition
+                              (cons 'begin body))))
+                   (if (< 0 (length elseblock))
+                       elseblock
+                       '())))))
+             (cond-iter
+              (lambda (lst)
+                (if (eq? 0 (length lst))
+                    '()
+                    (if (eq? 1 (length lst))
+                        (case-block (car lst) '())
+                        (case-block (car lst)
+                                    (cond-iter (cdr lst))))))))
+      (cond-iter lst))))
 
 (define let1
   (macro (var expr . body)
@@ -153,51 +155,55 @@
 
 (define or
   (macro lst
-    (define (or-iter lst)
-      (cond
-       ((eq? 0 (length lst))
-        false)
-       ((eq? 1 (length lst))
-        (let1 sym (gensym)
-              (list 'let1 sym (car lst)
-                    (list 'if sym sym false))))
-       (else
-        (let1 sym (gensym)
-              (list 'let1 sym (car lst)
-                    (list 'if sym sym (or-iter (cdr lst))))))))
-    (or-iter lst)))
+    (letrec ((or-iter
+              (lambda (lst)
+                (cond
+                 ((eq? 0 (length lst))
+                  false)
+                 ((eq? 1 (length lst))
+                  (let1 sym (gensym)
+                    (list 'let1 sym (car lst)
+                          (list 'if sym sym false))))
+                 (else
+                  (let1 sym (gensym)
+                    (list 'let1 sym (car lst)
+                          (list 'if sym sym (or-iter (cdr lst))))))))))
+      (or-iter lst))))
 
 (define and
   (macro lst
-    (define (and-iter lst)
-      (cond
-       ((eq? 0 (length lst))
-        true)
-       ((eq? 1 (length lst))
-        (car lst))
-       (else
-        (list 'if (list 'not (list 'eq? 'false (car lst)))
-              (and-iter (cdr lst))
-              'false))))
-    (and-iter lst)))
+    (letrec ((and-iter
+              (lambda (lst)
+                (cond
+                 ((eq? 0 (length lst))
+                  true)
+                 ((eq? 1 (length lst))
+                  (car lst))
+                 (else
+                  (list 'if (list 'not (list 'eq? 'false (car lst)))
+                        (and-iter (cdr lst))
+                        'false))))))
+      (and-iter lst))))
 
 (define apply
   (macro (proc . args)
-    (define (strip-quote lst)
-      (if (eq? 'quote (car lst))
-          (cadr lst)
-          lst))
-    (define (apply-iter lst)
-      (cond
-       ((eq? 0 (length lst))
-        '())
-       ((eq? 1 (length lst))
-        (if (pair? (car lst))
-            (strip-quote (car lst))
-            (error "not a proper list")))
-       (else
-        (append (list (car lst)) (apply-iter (cdr lst))))))
-    (append (list proc) (apply-iter args))))
+    (letrec ((strip-quote
+              (lambda (lst)
+                (if (eq? 'quote (car lst))
+                    (cadr lst)
+                    lst)))
+             (apply-iter
+              (lambda (lst)
+                (cond
+                 ((eq? 0 (length lst))
+                  '())
+                 ((eq? 1 (length lst))
+                  (if (pair? (car lst))
+                      (strip-quote (car lst))
+                      (error "not a proper list")))
+                 (else
+                  (append (list (car lst)) (apply-iter (cdr lst))))))))
+      (append (list proc) (apply-iter args)))))
 
 
 ;; The following quasiquote macro is due to Eric S. Tiedemann. ( Imported from TinyScheme )
@@ -206,52 +212,56 @@
 ;; Subsequently modified for initialize library for nendo: Kiyoka Nishiyama
 (define quasiquote
  (macro (l)
-   (define (mcons f l r)
-     (if (and (pair? r)
-              (eq? (car r) 'quote)
-              (eq? (car (cdr r)) (cdr f))
-              (pair? l)
-              (eq? (car l) 'quote)
-              (eq? (car (cdr l)) (car f)))
-         (if (or (procedure? f) (number? f) (string? f))
-               f
-               (list 'quote f))
-         (list 'cons l r)))
-   (define (mappend f l r)
-     (if (or (null? (cdr f))
-             (and (pair? r)
-                  (eq? (car r) 'quote)
-                  (eq? (car (cdr r)) '())))
-         l
-         (list 'append l r)))
-   (define (foo level form)
-     (cond ((not (pair? form))
-               (if (or (procedure? form) (number? form) (string? form))
-                    form
-                    (list 'quote form))
-               )
-           ((eq? 'quasiquote (car form))
-            (mcons form ''quasiquote (foo (+ level 1) (cdr form))))
-           (else (if (zero? level)
-                   (cond ((eq? (car form) 'unquote) (car (cdr form)))
-                         ((eq? (car form) 'unquote-splicing)
-                          (error "Unquote-splicing wasn't in a list:"
-                                 form))
-                         ((and (pair? (car form))
-                               (eq? (car (car form)) 'unquote-splicing))
-                          (mappend form (car (cdr (car form)))
-                                   (foo level (cdr form))))
-                         (else (mcons form (foo level (car form))
-                                         (foo level (cdr form)))))
-                   (cond ((eq? (car form) 'unquote)
-                          (mcons form ''unquote (foo (- level 1)
-                                                     (cdr form))))
-                         ((eq? (car form) 'unquote-splicing)
-                          (mcons form ''unquote-splicing
-                                      (foo (- level 1) (cdr form))))
-                         (else (mcons form (foo level (car form))
-                                         (foo level (cdr form)))))))))
-   (foo 0 l)))
+   (letrec ((mcons
+             (lambda (f l r)
+               (if (and (pair? r)
+                        (eq? (car r) 'quote)
+                        (eq? (car (cdr r)) (cdr f))
+                        (pair? l)
+                        (eq? (car l) 'quote)
+                        (eq? (car (cdr l)) (car f)))
+                   (if (or (procedure? f) (number? f) (string? f))
+                       f
+                       (list 'quote f))
+                   (list 'cons l r))))
+            
+            (mappend
+             (lambda (f l r)
+               (if (or (null? (cdr f))
+                       (and (pair? r)
+                            (eq? (car r) 'quote)
+                            (eq? (car (cdr r)) '())))
+                   l
+                   (list 'append l r))))
+            (foo
+             (lambda (level form)
+               (cond ((not (pair? form))
+                      (if (or (procedure? form) (number? form) (string? form))
+                          form
+                          (list 'quote form))
+                      )
+                     ((eq? 'quasiquote (car form))
+                      (mcons form ''quasiquote (foo (+ level 1) (cdr form))))
+                     (else (if (zero? level)
+                               (cond ((eq? (car form) 'unquote) (car (cdr form)))
+                                     ((eq? (car form) 'unquote-splicing)
+                                      (error "Unquote-splicing wasn't in a list:"
+                                             form))
+                                     ((and (pair? (car form))
+                                           (eq? (car (car form)) 'unquote-splicing))
+                                      (mappend form (car (cdr (car form)))
+                                               (foo level (cdr form))))
+                                     (else (mcons form (foo level (car form))
+                                                  (foo level (cdr form)))))
+                               (cond ((eq? (car form) 'unquote)
+                                      (mcons form ''unquote (foo (- level 1)
+                                                                 (cdr form))))
+                                     ((eq? (car form) 'unquote-splicing)
+                                      (mcons form ''unquote-splicing
+                                             (foo (- level 1) (cdr form))))
+                                     (else (mcons form (foo level (car form))
+                                                  (foo level (cdr form)))))))))))
+     (foo 0 l))))
 
 (define unquote
   (macro (lst)
@@ -367,51 +377,54 @@
 ;; ----------------------------------------
 (define case
   (macro (cond-exp . body)
-    (define (case-block val . elem)
-      (let1 block (car elem)
-        (let ((cond-vals (car block))
-              (body      (cdr block)))
-          (let1 v
-              (if (eq? 'else cond-vals)
-                  cond-vals
-                  (cons 'or
-                        (map
-                         (lambda (x)
-                           `(eqv? ,x ,val))
-                         cond-vals)))
-            `((,v
-               ,@body))))))
+    (letrec ((case-block
+              (lambda (val . elem)
+                (let1 block (car elem)
+                  (let ((cond-vals (car block))
+                        (body      (cdr block)))
+                    (let1 v
+                        (if (eq? 'else cond-vals)
+                            cond-vals
+                            (cons 'or
+                                  (map
+                                   (lambda (x)
+                                     `(eqv? ,x ,val))
+                                   cond-vals)))
+                      `((,v
+                         ,@body)))))))
     
-    (define (case-iter val lst)
-      (cond
-       ((eq? 0 (length lst))
-        '())
-       ((eq? 1 (length lst))
-        (case-block val (car lst)))
-       (else
-        (append (case-block val (car lst))
-                (case-iter  val (cdr lst))))))
+             (case-iter
+              (lambda (val lst)
+                (cond
+                 ((eq? 0 (length lst))
+                  '())
+                 ((eq? 1 (length lst))
+                  (case-block val (car lst)))
+                 (else
+                  (append (case-block val (car lst))
+                          (case-iter  val (cdr lst))))))))
 
-    (let1 sym (gensym)
-      `(let1 ,sym ,cond-exp
-         (cond
-          ,@(case-iter sym body))))))
+      (let1 sym (gensym)
+        `(let1 ,sym ,cond-exp
+           (cond
+            ,@(case-iter sym body)))))))
 
 
 (define let*
   (macro (exps . body)
-    (define (let*-expand rest body)
-      (case (length rest)
-        ((0)
-         '())
-        ((1)
-         `(let (,(car rest))
-            ,@body))
-        (else
-         `(let (,(car rest))
-            ,(let*-expand (cdr rest) body)))))
+    (letrec ((let*-expand
+              (lambda (rest body)
+                (case (length rest)
+                  ((0)
+                   '())
+                  ((1)
+                   `(let (,(car rest))
+                      ,@body))
+                  (else
+                   `(let (,(car rest))
+                      ,(let*-expand (cdr rest) body)))))))
 
-    (let*-expand exps body)))
+      (let*-expand exps body))))
 
 
 ;; ----------------------------------------
@@ -420,36 +433,37 @@
 ;; dot_operator
 (define dot-operator
   (macro lst
-    (define (dot-operator-iter lst)
-      (cond
-       ((null? lst)
-        '())
-       ((pair? lst)
-        (if (eq? 'dot-operator (car lst))
-            (intern
-             (string-join
-              (map
-               (lambda (x)
-                 (if (pair? x)
-                     (to-s (dot-operator-iter x))
-                     (if (symbol? x)
-                         (to-s x)
-                         (error (sprintf "dot-operator requires symbol, but got %s" x)))))
-               (cdr lst))
-              "."))
-            (error "dot-operator requires symbol or (. symbol symbol) form.")))
-       (else
-        lst)))
+    (letrec ((dot-operator-iter
+              (lambda (lst)
+                (cond
+                 ((null? lst)
+                  '())
+                 ((pair? lst)
+                  (if (eq? 'dot-operator (car lst))
+                      (intern
+                       (string-join
+                        (map
+                         (lambda (x)
+                           (if (pair? x)
+                               (to-s (dot-operator-iter x))
+                               (if (symbol? x)
+                                   (to-s x)
+                                   (error (sprintf "dot-operator requires symbol, but got %s" x)))))
+                         (cdr lst))
+                        "."))
+                      (error "dot-operator requires symbol or (. symbol symbol) form.")))
+                 (else
+                  lst)))))
 
-    (cond
-     ((eq? 0 (length lst))
-      (error ". operator requires argument"))
-     ((and (eq? 1 (length lst))
-           (symbol? (car lst)))
-      (intern (+ "." (to-s (car lst)))))
-     (else
-      ((dot-operator-iter
-        (cons 'dot-operator lst)))))))
+      (cond
+       ((eq? 0 (length lst))
+        (error ". operator requires argument"))
+       ((and (eq? 1 (length lst))
+             (symbol? (car lst)))
+        (intern (+ "." (to-s (car lst)))))
+       (else
+        ((dot-operator-iter
+          (cons 'dot-operator lst))))))))
 
 (define (with-open filename pred . lst)
   (let1 len (length lst)
@@ -482,14 +496,15 @@
 (define (debug-print-output-func str)  ;; default output func
   (STDERR.print str))
 (define (debug-print val sourcefile lineno sourcesexp)
-  (define (limit-length x)
-    (+
-     (if (< debug-print-length x.length)
-         (let1 n debug-print-length.to_s
-           (sprintf (+ "%" n "." n "s") x))
-         x)
-     "\n"))
-  (let1 disp-val    (write-to-string val)
-    (debug-print-output-func (limit-length (sprintf "#?=%s:%s:%s" sourcefile lineno (write-to-string sourcesexp))))
-    (debug-print-output-func (limit-length (sprintf "#?-    %s"   disp-val)))
-    val))
+  (letrec ((limit-length
+            (lambda (x)
+              (+
+               (if (< debug-print-length x.length)
+                   (let1 n debug-print-length.to_s
+                     (sprintf (+ "%" n "." n "s...") x))
+                   x)
+               "\n"))))
+    (let1 disp-val    (write-to-string val)
+      (debug-print-output-func (limit-length (sprintf "#?=%s:%s:%s" sourcefile lineno (write-to-string sourcesexp))))
+      (debug-print-output-func (limit-length (sprintf "#?-    %s"   disp-val)))
+      val)))

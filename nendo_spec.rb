@@ -534,6 +534,35 @@ describe Nendo, "when call replStr() with built-in special forms" do
   end
 end
 
+describe Nendo, "when call replStr() with global and lexical scope variable" do
+  before do
+    @nendo = Nendo.new()
+  end
+  it "should" do
+    @nendo.replStr( " (define-internal var 111) " ).should == "111"
+    @nendo.replStr( " (let ((var 222)) var) " ).should == "222"
+    @nendo.replStr( " (let ((var 222)) (set! var 333) var) " ).should == "333"
+    @nendo.replStr( " (let ((var 222)) (set! var 333)) var " ).should == "111"
+    @nendo.replStr( " (define-internal global1 \"G\") " ).should == "G"
+    @nendo.replStr( " " +
+                    "(let ((local1 \"L\")" +
+                    "      (local2 \"L\"))" +
+                    "  (set! global1 (+ global1 \"lobal1\"))" +
+                    "  (set! local1  (+ local1   \"ocal1\"))" +
+                    "  (set! local2  (+ local2   \"ocal2\"))" +
+                    "  (list global1" +
+                    "        local1" +
+                    "        local2" +
+                    "        (let ((local1 \"A\")" +
+                    "              (local2 \"B\"))" +
+                    "          (set! local1  (+ local1   \"a\"))" +
+                    "          (set! local2  (+ local2   \"b\"))" +
+                    "          (list local1 local2" +
+                    "                (let ((local1 \"CCC\"))" +
+                    "                  (list global1 local1 local2))))))" ).should == "(Global1 Local1 Local2 (Aa Bb (Global1 CCC Bb)))"
+  end
+end
+
 describe Nendo, "when call replStr() with macroexpand-1 function" do
   before do
     @nendo = Nendo.new()

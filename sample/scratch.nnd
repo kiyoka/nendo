@@ -7,7 +7,55 @@
 
 (if true 1 2)
 
-(define a 1)
+(define-internal a 1)
+(set! a "abc")
+a.length
+
+(define-internal global1 0)
+(define-internal local1  -100)
+(define-internal local2  -200)
+(let ((local1 1))
+  (let ((local2 2))
+    (set! global1 1000)
+    (set! local1  100)
+    (set! local2  200)
+    #?=global1
+    #?=local1
+    #?=local2)
+  (set! local1 101)
+  #?=local1
+  (let ((local1 1111))
+    #?=local1))
+
+
+(define-internal var 111)
+(let ((var 222))
+  var)
+var
+  
+
+
+(define-internal global1 "G")
+(let ((local1 "L")
+      (local2 "L"))
+  (set! global1 (+ global1 "lobal1"))
+  (set! local1  (+ local1   "ocal1"))
+  (set! local2  (+ local2   "ocal2"))
+  (list global1
+        local1
+        local2
+        (let ((local1 "A")
+              (local2 "B"))
+          (set! local1  (+ local1   "a"))
+          (set! local2  (+ local2   "b"))
+          (list local1 local2
+                (let ((local1 "CCC"))
+                  (list global1 local1 local2))))))
+
+(letrec ((b 1))
+  #?=b)
+
+
 
 (define-internal a 1)
 
@@ -24,8 +72,9 @@
     (print "func1")
     (func2)))
 
-    
-    
+(let1 d (Date.new 0)
+  (list (d.strftime "%x")
+        (d.strftime "%s")))
            
 
 
@@ -36,6 +85,10 @@
          )
   (list (func2) (func1)))
 
+
+(require "date")
+(define d (Date.new 0))
+(d.strftime "%x")
 
 ;; -----------------
 ;; customizing debug-print
