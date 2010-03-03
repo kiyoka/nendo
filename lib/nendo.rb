@@ -468,9 +468,11 @@ class Reader
       _atom = atom() ## "quote" symbol
       Cell.new( _atom, Cell.new( sexp() ))
     when T_DEBUG_PRINT
+      file   = curtoken.sourcefile
+      lineno = curtoken.lineno
       _atom = atom() ## "debug-print" symbol
       child = sexp() 
-      [_atom, child, LispString.new( curtoken.sourcefile ), curtoken.lineno, Cell.new( :quote, Cell.new( child )) ].to_list
+      [_atom, child, LispString.new( file ), lineno, Cell.new( :quote, Cell.new( child )) ].to_list
     else
       atom()
     end
