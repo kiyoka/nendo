@@ -65,6 +65,7 @@
 ;; ----------------------------------------
 ;; Utility functions
 ;; ----------------------------------------
+(define list? pair?)
 (define (even? n) (= (% n 2) 0))
 (define (odd? n) (not (= (% n 2) 0)))
 (define (zero? n) (= n 0))
@@ -98,7 +99,6 @@
 (define (eighth lst)   (nth  7 lst))
 (define (ninth lst)    (nth  8 lst))
 (define (tenth lst)    (nth  9 lst))
-
 
 ;; ----------------------------------------
 ;; basic forms
@@ -355,21 +355,13 @@
 (define (filter pred lst)
   (if (null? lst)
       '()
-      (let1 result (pred (car lst))
-        (if result
-            (cons
-             result
-             (filter pred (cdr lst)))
-            (filter pred (cdr lst))))))
-
-(define (filter-map pred lst)
-  (if (null? lst)
-      '()
       (if (pred (car lst))
           (cons
            (car lst)
-           (filter-map pred (cdr lst)))
-          (filter-map pred (cdr lst)))))
+           (filter pred (cdr lst)))
+          (filter pred (cdr lst)))))
+
+(define filter-map filter)
 
 
 ;; ----------------------------------------
@@ -501,10 +493,55 @@
               (+
                (if (< debug-print-length x.length)
                    (let1 n debug-print-length.to_s
-                     (sprintf (+ "%" n "." n "s...") x))
+                     (sprintf (+ "%" n "." n "s ...") x))
                    x)
                "\n"))))
     (let1 disp-val    (write-to-string val)
       (debug-print-output-func (limit-length (sprintf "#?=%s:%s:%s" sourcefile lineno (write-to-string sourcesexp))))
       (debug-print-output-func (limit-length (sprintf "#?-    %s"   disp-val)))
       val)))
+
+
+;;
+;; imported from this URL ( written by bizen )
+;;    http://practical-scheme.net/wiliki/wiliki.cgi?Gauche%3APrettyPrint
+;; 
+;; Subsequently modified for initialize library for nendo: Kiyoka Nishiyama
+(define (pretty-print s)
+  (letrec ((do-indent
+            (lambda (level)
+              (for-each
+               (lambda (x)
+                 (display " "))
+               (range level))))
+           (pp-parenl
+            (lambda ()
+              (display "(")))
+           (pp-parenr
+            (lambda ()
+              (display ")")))
+           (pp-atom
+            (lambda (e prefix)
+              (when prefix (display " "))
+              (write e)))
+           (pp-list
+            (lambda (s level prefix)
+              (and prefix (do-indent level))
+              (pp-parenl)
+              (letrec ((loop
+                        (lambda (_s _prefix)
+                          (let ((s _s)
+                                (prefix _prefix))
+                            (if (null? s)
+                                (pp-parenr)
+                                (let1 e (car s)
+                                  (if (list? e)
+                                      (begin (and prefix (print ""))
+                                             (pp-list e (+ level 1) prefix))
+                                      (pp-atom e prefix))
+                                  (loop (cdr s) true)))))))
+                (loop s false)))))
+    (if (list? s)
+        (pp-list s 0 false)
+        (write s))
+    (print "")))
