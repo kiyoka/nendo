@@ -5,106 +5,65 @@
 (disable-idebug)
 (exit)
 
-(if true 1 2)
+(define sample0 0)
 
-(define-internal a 1)
-(set! a "abc")
-a.length
+(define sample1
+  '(define-internal toplevel
+     (lambda ()
+       (define-internal localfunc1
+         (lambda (x) x))
+       (define-internal localfunc2
+         (lambda (x) x)))))
+         
 
-(define-internal global1 0)
-(define-internal local1  -100)
-(define-internal local2  -200)
-(let ((local1 1))
-  (let ((local2 2))
-    (set! global1 1000)
-    (set! local1  100)
-    (set! local2  200)
-    #?=global1
-    #?=local1
-    #?=local2)
-  (set! local1 101)
-  #?=local1
-  (let ((local1 1111))
-    #?=local1))
+(define sample2
+  '(define (toplevel)
+     (define a 1)
+     (define (localfunc (x))
+       x)
+     (print (localfunc 100))))
 
 
-(define-internal var 111)
-(let ((var 222))
-  var)
-var
-  
+;; -----------------
+;; compile: internal-defines to letrec
+;; -----------------
+(define (compile-to-letrec sexp)
+  #?=sexp
+  )
 
+(define (find-lambda sexp level)
+  (cond
+   ((null? sexp)
+    '())
+   ((not (pair? sexp))
+    sexp)
+   ((pair? sexp)
+    (if (eq? 'lambda (car sexp))
+        (begin
+          #?=sexp
+          (if (= 0 level)
+              (list
+               'lambda
+               (cadr sexp)
+               (find-lambda (cddr sexp) (+ level 1)))
+              (list
+               'lambda
+               (cadr sexp)
+               (compile-to-letrec (cddr sexp))))))
+    (cons
+     (find-lambda (car sexp) level)
+     (find-lambda (cdr sexp) level)))))
 
-(define-internal global1 "G")
-(let ((local1 "L")
-      (local2 "L"))
-  (set! global1 (+ global1 "lobal1"))
-  (set! local1  (+ local1   "ocal1"))
-  (set! local2  (+ local2   "ocal2"))
-  (list global1
-        local1
-        local2
-        (let ((local1 "A")
-              (local2 "B"))
-          (set! local1  (+ local1   "a"))
-          (set! local2  (+ local2   "b"))
-          (list local1 local2
-                (let ((local1 "CCC"))
-                  (list global1 local1 local2))))))
-
-(letrec ((b 1))
-  #?=b)
-
-
-
-(define-internal a 1)
-
-(define-internal func1
-  (lambda ()
-    (define-internal a "A")
-    (define-internal b "B")))
-    
-(define-internal func1
-  (lambda ()
-    (define-internal func2
-      (lambda ()
-        (print "func2")))
-    (print "func1")
-    (func2)))
-
-(let1 d (Date.new 0)
-  (list (d.strftime "%x")
-        (d.strftime "%s")))
-           
-
-
-
-(letrec (
-         (func2 (lambda (x) (* 2 (func1))))
-         (func1 (lambda (x) 13))
-         )
-  (list (func2) (func1)))
-
-
-(require "date")
-(define d (Date.new 0))
-(d.strftime "%x")
+(find-lambda sample1 0)
 
 ;; -----------------
 ;; customizing debug-print
 ;; -----------------
 (define string-buffer "")
 (define (debug-print-output-func str)
-  (begin
-    (printf "[%s]\n" string-buffer.class)
-    (printf "[%s]\n" str.class)
-    (set! string-buffer (+ string-buffer str))))
-
-
-(define (debug-print-output-func str)
-  (printf "[%s]\n" str.class))
+  (set! string-buffer (+ string-buffer str))
+  (print string-buffer))
 
 (begin
   #?=1)
 
-(print string-buffer)
