@@ -361,7 +361,16 @@
            (filter pred (cdr lst)))
           (filter pred (cdr lst)))))
 
-(define filter-map filter)
+
+(define (filter-map pred lst)
+  (if (null? lst)
+      '()
+      (let1 result (pred (car lst))
+        (if result
+            (cons
+             result
+             (filter-map pred (cdr lst)))
+            (filter-map pred (cdr lst))))))
 
 
 ;; ----------------------------------------
