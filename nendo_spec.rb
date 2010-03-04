@@ -572,8 +572,14 @@ describe Nendo, "when call replStr() with macroexpand-1 function" do
     @nendo.replStr( " (set! inc (macro (x) (list 'set! x (list '+ x 1))))  (macroexpand-1 '(inc a)) " ).should == "(set! a (+ a 1))"
     @nendo.replStr( " (set! a 10) (inc a) " ).should == "11"
     @nendo.replStr( " (set! a 10) (inc a) (inc a)" ).should == "12"
-    @nendo.replStr( " (macroexpand-1 '(twice (twice (inc a))))" ).should == "(begin (twice (inc a)) (twice (inc a)))"
-    @nendo.replStr( " (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))" ).should == "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
+    @nendo.replStr( " (macroexpand-1 '(twice (twice (inc a))))" ).should ==
+      "(begin (twice (inc a)) (twice (inc a)))"
+    @nendo.replStr( " (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))" ).should ==
+      "(begin (begin (inc a) (inc a)) (twice (inc a)))"
+    @nendo.replStr( " (macroexpand-1 (macroexpand-1 (macroexpand-1 '(twice (twice (inc a))))))" ).should ==
+      "(begin (begin (set! a (+ a 1)) (inc a)) (twice (inc a)))"
+    @nendo.replStr( " (macroexpand-1 (macroexpand-1 (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))))" ).should ==
+      "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (twice (inc a)))"
     @nendo.replStr( " (set! a 10) (twice (twice (inc a)))" ).should == "14"
   end
 end

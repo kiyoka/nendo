@@ -1203,7 +1203,19 @@ class Evaluator
     end
   end
 
-  def macroexpand_1( sexp )
+  def macroexpand_1_check( sexp )
+    if not @expand_flag
+      sexp
+    else
+      newSexp = macroexpand_1_sub( sexp )
+      if not _equal_QMARK( newSexp, sexp )
+        @expand_flag = false
+      end
+      newSexp
+    end
+  end
+
+  def macroexpand_1_sub( sexp )
     case sexp
     when Cell
       if :quote == sexp.car
@@ -1213,13 +1225,25 @@ class Evaluator
         sym = @alias[ sym ]  if @alias[ sym ]
         sym = toRubySymbol( sym )
         if isRubyInterface( sym ) 
-          arr = sexp.map { |x| macroexpand_1( x.car ) }
+          arr = sexp.map { |x| macroexpand_1_check( x.car ) }
           arr.to_list( sexp.lastAtom )
         elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
           eval( sprintf( "@__macro = @%s", sym ), @binding )
-          callProcedure( sym, @__macro, sexp.cdr )
+          newSexp = callProcedure( sym, @__macro, sexp.cdr )
+          if _equal_QMARK( newSexp, sexp )
+            sexp.cdr = sexp.cdr.map { |x|
+              if x.car.is_a? Cell
+                macroexpand_1_check( x.car )
+              else
+                x.car
+              end
+            }.to_list
+            sexp
+          else
+            newSexp
+          end
         else
-          arr = sexp.map { |x| macroexpand_1( x.car ) }
+          arr = sexp.map { |x| macroexpand_1_check( x.car ) }
           arr.to_list( sexp.lastAtom )
         end
       end
@@ -1227,7 +1251,12 @@ class Evaluator
       sexp
     end
   end
-
+  
+  def macroexpand_1( sexp )
+    @expand_flag = true
+    macroexpand_1_check( sexp )
+  end
+  
   def lispCompile( sexp )
     converge = true
     begin
@@ -1237,7 +1266,7 @@ class Evaluator
     end until converge
     sexp
   end
-
+  
   def ppRubyExp( level, exp )
     indent = @indent * level
     exp.map { |x|
