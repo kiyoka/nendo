@@ -5,6 +5,15 @@
 (disable-idebug)
 (exit)
 
+(define (func x)
+  (print x))
+
+(cond
+ ((eq? 1 1)
+  (print 1))
+ (else
+  (print 2)))
+
 (define sample0 0)
 
 (define sample1

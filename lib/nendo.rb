@@ -860,7 +860,7 @@ class Evaluator
 
   def execFunc( funcname, args, sourcefile, lineno, locals, lambda_flag )
     case funcname
-    when :define_internal, :set!   # `define-internal' special form
+    when :define, :set!   # `define' special form
       ar = args.cdr.map { |x| x.car }
       variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
       global_cap = locals.flatten.include?( variable_sym ) ? nil : "@"
@@ -1171,7 +1171,7 @@ class Evaluator
     when Cell
       if :quote == sexp.car or :quasiquote == sexp.car 
         sexp
-      elsif :define_internal == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
+      elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
         sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
         sexp.cdr.cdr = quoting( sexp.cdr.cdr )
         sexp
@@ -1224,27 +1224,23 @@ class Evaluator
         sym = sexp.car.to_s
         sym = @alias[ sym ]  if @alias[ sym ]
         sym = toRubySymbol( sym )
-        if isRubyInterface( sym ) 
-          arr = sexp.map { |x| macroexpand_1_check( x.car ) }
-          arr.to_list( sexp.lastAtom )
+        newSexp = sexp
+        if isRubyInterface( sym )
+          # do nothing
         elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
           eval( sprintf( "@__macro = @%s", sym ), @binding )
           newSexp = callProcedure( sym, @__macro, sexp.cdr )
-          if _equal_QMARK( newSexp, sexp )
-            sexp.cdr = sexp.cdr.map { |x|
-              if x.car.is_a? Cell
-                macroexpand_1_check( x.car )
-              else
-                x.car
-              end
-            }.to_list
-            sexp
-          else
-            newSexp
-          end
+        end
+        if _equal_QMARK( newSexp, sexp )
+          sexp.map { |x|
+            if x.car.is_a? Cell
+              macroexpand_1_check( x.car )
+            else
+              x.car
+            end
+          }.to_list( sexp.lastAtom )
         else
-          arr = sexp.map { |x| macroexpand_1_check( x.car ) }
-          arr.to_list( sexp.lastAtom )
+          newSexp
         end
       end
     else

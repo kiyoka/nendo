@@ -392,12 +392,12 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (list '(a) '((b c))) " ).should == "((a) ((b c)))"
     @nendo.replStr( " (list) " ).should == "()"
     @nendo.replStr( " (list 1) " ).should == "(1)"
-    @nendo.replStr( " (define-internal aFunc (lambda (x) x)) true" ).should == "true"
-    @nendo.replStr( " (define-internal aMacro (macro (x) x)) true" ).should == "true"
-    @nendo.replStr( " (define-internal a! 123) a!" ).should == "123"
-    @nendo.replStr( " (define-internal b? 321) b?" ).should == "321"
-    @nendo.replStr( " (define-internal a-b 1234) a-b" ).should == "1234"
-    @nendo.replStr( " (define-internal start-end!? 4321) start-end!?" ).should == "4321"
+    @nendo.replStr( " (define aFunc (lambda (x) x)) true" ).should == "true"
+    @nendo.replStr( " (define aMacro (macro (x) x)) true" ).should == "true"
+    @nendo.replStr( " (define a! 123) a!" ).should == "123"
+    @nendo.replStr( " (define b? 321) b?" ).should == "321"
+    @nendo.replStr( " (define a-b 1234) a-b" ).should == "1234"
+    @nendo.replStr( " (define start-end!? 4321) start-end!?" ).should == "4321"
     @nendo.replStr( " (procedure? car) " ).should == "true"
     @nendo.replStr( " (procedure? aFunc) " ).should == "true"
     @nendo.replStr( " (procedure? aMacro) " ).should == "false"
@@ -466,18 +466,18 @@ describe Nendo, "when call replStr() with variable modifications" do
     @nendo = Nendo.new()
   end
   it "should" do
-    @nendo.replStr( " (define-internal x 1)     x " ).should == "1"
-    @nendo.replStr( " (define-internal x 2)     x " ).should == "2"
-    @nendo.replStr( " (define-internal x 100)   x " ).should == "100"
-    @nendo.replStr( " (define-internal x true)  x " ).should == "true"
-    @nendo.replStr( " (define-internal x false) x " ).should == "false"
-    @nendo.replStr( " (define-internal x nil) x " ).should   == "nil"
-    @nendo.replStr( " (define-internal x '()) x " ).should   == "()"
-    @nendo.replStr( " (define-internal x '(1)) x " ).should   == "(1)"
-    @nendo.replStr( " (define-internal x (+ 1 2 3)) x " ).should   == "6"
-    @nendo.replStr( " (define-internal x (sprintf \"$%02X\" 17))    x  x  x " ).should   == "$11"
+    @nendo.replStr( " (define x 1)     x " ).should == "1"
+    @nendo.replStr( " (define x 2)     x " ).should == "2"
+    @nendo.replStr( " (define x 100)   x " ).should == "100"
+    @nendo.replStr( " (define x true)  x " ).should == "true"
+    @nendo.replStr( " (define x false) x " ).should == "false"
+    @nendo.replStr( " (define x nil) x " ).should   == "nil"
+    @nendo.replStr( " (define x '()) x " ).should   == "()"
+    @nendo.replStr( " (define x '(1)) x " ).should   == "(1)"
+    @nendo.replStr( " (define x (+ 1 2 3)) x " ).should   == "6"
+    @nendo.replStr( " (define x (sprintf \"$%02X\" 17))    x  x  x " ).should   == "$11"
     @nendo.replStr( " 1 2 3 " ).should   == "3"
-    @nendo.replStr( " (define-internal x 3.14)  (set! x (* x 2))          x " ).should   == "6.28"
+    @nendo.replStr( " (define x 3.14)  (set! x (* x 2))          x " ).should   == "6.28"
     @nendo.replStr( " 1 \n 2 \n 3 \n " ).should   == "3"
   end
 end
@@ -539,11 +539,11 @@ describe Nendo, "when call replStr() with global and lexical scope variable" do
     @nendo = Nendo.new()
   end
   it "should" do
-    @nendo.replStr( " (define-internal var 111) " ).should == "111"
+    @nendo.replStr( " (define var 111) " ).should == "111"
     @nendo.replStr( " (let ((var 222)) var) " ).should == "222"
     @nendo.replStr( " (let ((var 222)) (set! var 333) var) " ).should == "333"
     @nendo.replStr( " (let ((var 222)) (set! var 333)) var " ).should == "111"
-    @nendo.replStr( " (define-internal global1 \"G\") " ).should == "G"
+    @nendo.replStr( " (define global1 \"G\") " ).should == "G"
     @nendo.replStr( " " +
                     "(let ((local1 \"L\")" +
                     "      (local2 \"L\"))" +
