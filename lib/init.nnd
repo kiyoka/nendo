@@ -6,9 +6,11 @@
 (define define
       (macro (arg . body)
         (if (not (pair? arg))
+            ;; (define var body)
             (cons 'define
                   (cons arg
                         body))
+            ;; (define (func arg...) body)
             (cons 'define
                   (cons (car arg)
                         (list
