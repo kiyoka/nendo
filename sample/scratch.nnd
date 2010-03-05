@@ -5,84 +5,33 @@
   (enable-idebug)
   (define debug-print-length 120))
 
-(macroexpand '
- (let1 v
-     (map
-      (lambda (x) x)
-      '(1 2 3))
-   v))
-
-(macroexpand '
- (cond ((- 10 9) => (lambda (x) (+ "<" (to_s x) ">"))) (else 2)))
 
 
-(define lambda
-  (macro src
-    (cond
-     ((not (list? (cadr src)))
-      `(lambda ,@src))
-     (else
-      (let1 body (cdr src)
-        (if (not (list? (car body)))
-            src
-            (let ((defs
-                    (filter
-                     (lambda (x)
-                       (eq? 'define (car x)))
-                     body))
-                  (rest
-                   (filter
-                    (lambda (x)
-                      (not (eq? 'define (car x))))
-                    body)))
-              (if (< 0 (length defs))
-                  `(lambda
-                       ,(car src)
-                     (letrec
-                         ,(map
-                           (lambda (x)
-                             (list
-                              (cadr x)
-                              (caddr x)))
-                           defs)
-                       ,@rest))
-                  ;; found no `define-internal' form
-                  `(lambda ,@src)))))))))
 
-(macroexpand-1
- '(lambda (x) x))
-
-(pretty-print
- (macroexpand-1
-  '(lambda
-       (x)
-     (define a (lambda (aa) aa))
-     (define b (lambda (bb) bb))
-     (define c 3)
-     (print a)
-     (print b))))
-
-(pretty-print
- (macroexpand-1
-  '(lambda
-       (x)
-     (print a)
-     (print b))))
-
-
-  
-    
-        
-
-
-;; -----------------
-;; customizing debug-print
-;; -----------------
-(define string-buffer "")
-(define (debug-print-output-func str)
-  (set! string-buffer (+ string-buffer str))
-  (print string-buffer))
-
-(begin
-  #?=1)
-
+(define (pretty-print-sexp s)
+  (define (do-indent level)
+    (dotimes (_ level) (write-char #\space)))
+  (define (pp-parenl)
+    (write-char #\())
+  (define (pp-parenr)
+    (write-char #\)))
+  (define (pp-atom e prefix)
+    (when prefix (write-char #\space))
+    (write e))
+  (define (pp-list s level prefix)
+    (and prefix (do-indent level))
+    (pp-parenl)
+    (let loop ((s s)
+               (prefix #f))
+      (if (null? s)
+          (pp-parenr)
+          (let1 e (car s)
+            (if (list? e)
+                (begin (and prefix (newline))
+                       (pp-list e (+ level 1) prefix))
+                (pp-atom e prefix))
+            (loop (cdr s) #t)))))
+  (if (list? s)
+      (pp-list s 0 #f)
+      (write s))
+  (newline))
