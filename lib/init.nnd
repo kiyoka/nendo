@@ -296,6 +296,26 @@
     `(while (not ,(car form))
        ,@(cdr form))))
 
+;; named let supporting
+(define let
+  (macro lst
+    (if (symbol? (car lst))
+        ;; named let
+        `(letrec ((,(first lst)
+                   (lambda ,(map
+                             (lambda (x)
+                               (first x))
+                             (second lst))
+                     ,(third lst))))
+           (,(first lst)
+            ,@(map
+               (lambda (x)
+                 (second x))
+               (second lst))))
+           
+        ;; don't touch
+        `(let ,@lst))))
+
 
 ;; ----------------------------------------
 ;; List utilities imported from TinyScheme

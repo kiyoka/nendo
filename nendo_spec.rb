@@ -745,6 +745,31 @@ describe Nendo, "when use macros made by quasiquote. " do
   end
 end
 
+describe Nendo, "when use macros expands some syntax. " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( "" +
+                    "  (let1 total 0" +
+                    "    (let loop ((cnt 10))" +
+                    "      (if (< 0 cnt)" +
+                    "          (begin" +
+                    "            (set! total (+ total cnt))" +
+                    "            (loop (- cnt 1)))))" +
+                    "    total)" +
+                    "" ).should == "55"
+    @nendo.replStr( "" +
+                    "(let label ((a 2)" +
+                    "            (b 3))" +
+                    "  (if (<= 9 (+ a b))" +
+                    "      (* a b)" +
+                    "      (label 4 5)))" +
+                    "" ).should == "20"
+  end
+end
+
 describe Nendo, "when use dot-operator (.) macro " do
   before do
     @nendo = Nendo.new()

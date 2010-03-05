@@ -2,68 +2,57 @@
 
 ;; -----------------
 (enable-idebug)
-(disable-idebug)
-(exit)
-
-(define (func x)
-  (print x))
-
-(cond
- ((eq? 1 1)
-  (print 1))
- (else
-  (print 2)))
-
-(define sample0 0)
-
-(define sample1
-  '(define-internal toplevel
-     (lambda ()
-       (define-internal localfunc1
-         (lambda (x) x))
-       (define-internal localfunc2
-         (lambda (x) x)))))
-         
-
-(define sample2
-  '(define (toplevel)
-     (define a 1)
-     (define (localfunc (x))
-       x)
-     (print (localfunc 100))))
-
 
 ;; -----------------
-;; compile: internal-defines to letrec
+;; compile: named let
 ;; -----------------
-(define (compile-to-letrec sexp)
-  #?=sexp
-  )
+(define let
+  (macro lst
+    (if (symbol? (car lst))
+        ;; named let
+        `(letrec ((,(first lst)
+                   (lambda ,(map
+                             (lambda (x)
+                               (first x))
+                             (second lst))
+                     ,(third lst))))
+           (,(first lst)
+            ,@(map
+               (lambda (x)
+                 (second x))
+               (second lst))))
+           
+        ;; don't touch
+        `(let ,@lst))))
 
-(define (find-lambda sexp level)
-  (cond
-   ((null? sexp)
-    '())
-   ((not (pair? sexp))
-    sexp)
-   ((pair? sexp)
-    (if (eq? 'lambda (car sexp))
-        (begin
-          #?=sexp
-          (if (= 0 level)
-              (list
-               'lambda
-               (cadr sexp)
-               (find-lambda (cddr sexp) (+ level 1)))
-              (list
-               'lambda
-               (cadr sexp)
-               (compile-to-letrec (cddr sexp))))))
-    (cons
-     (find-lambda (car sexp) level)
-     (find-lambda (cdr sexp) level)))))
+(pretty-print
+ (macroexpand
+  '
+  (let1 total 0
+    (let loop ((cnt 10))
+      (if (< 0 cnt)
+          (begin
+            (set! total (+ total cnt))
+            (loop (- cnt 1)))))
+    total)))
 
-(find-lambda sample1 0)
+(let label ((a 2)
+            (b 3))
+  (if (<= 9 (+ a b))
+      (* a b)
+      (label 4 5)))
+  
+(apply + (range 11))
+(apply + '("a" "b" "c"))
+(let1 a (car (range 1))
+  a.class)
+
+(let ((a 2)
+      (b 4))
+  (begin
+    (list (+ a b)
+          (* a b))))
+
 
 ;; -----------------
 ;; customizing debug-print
