@@ -553,18 +553,17 @@
 (define (debug-print-output-func str)  ;; default output func
   (STDERR.print str))
 (define (debug-print val sourcefile lineno sourcesexp)
-  (letrec ((limit-length
-            (lambda (x)
-              (+
-               (if (< debug-print-length x.length)
-                   (let1 n debug-print-length.to_s
-                     (sprintf (+ "%" n "." n "s ...") x))
-                   x)
-               "\n"))))
-    (let1 disp-val    (write-to-string val)
-      (debug-print-output-func (limit-length (sprintf "#?=%s:%s:%s" sourcefile lineno (write-to-string sourcesexp))))
-      (debug-print-output-func (limit-length (sprintf "#?-    %s"   disp-val)))
-      val)))
+  (define (limit-length x)
+    (+
+     (if (< debug-print-length x.length)
+         (let1 n debug-print-length.to_s
+               (sprintf (+ "%" n "." n "s ...") x))
+         x)
+     "\n"))
+  (let1 disp-val    (write-to-string val)
+        (debug-print-output-func (limit-length (sprintf "#?=%s:%s:%s" sourcefile lineno (write-to-string sourcesexp))))
+        (debug-print-output-func (limit-length (sprintf "#?-    %s"   disp-val)))
+        val))
 
 
 ;;
