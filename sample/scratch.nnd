@@ -1,18 +1,28 @@
 ;;-*- mode: nendo; syntax: scheme -*-;;
 
 ;; -----------------
-(enable-idebug)
-(define debug-print-length 120)
+(begin
+  (enable-idebug)
+  (define debug-print-length 120))
 
-(define lambda-func
-  (lambda src
-    #?=src
+(macroexpand '
+ (let1 v
+     (map
+      (lambda (x) x)
+      '(1 2 3))
+   v))
+
+(macroexpand '
+ (cond ((- 10 9) => (lambda (x) (+ "<" (to_s x) ">"))) (else 2)))
+
+
+(define lambda
+  (macro src
     (cond
      ((not (list? (cadr src)))
       `(lambda ,@src))
      (else
       (let1 body (cdr src)
-        #?=body
         (if (not (list? (car body)))
             src
             (let ((defs
@@ -39,23 +49,25 @@
                   ;; found no `define-internal' form
                   `(lambda ,@src)))))))))
 
-(lambda-func
- '(x) 'x)
+(macroexpand-1
+ '(lambda (x) x))
 
 (pretty-print
- (lambda-func
-  '(x)
-  '(define a (lambda (aa) aa))
-  '(define b (lambda (bb) bb))
-  '(define c 3)
-  '(print a)
-  '(print b)))
+ (macroexpand-1
+  '(lambda
+       (x)
+     (define a (lambda (aa) aa))
+     (define b (lambda (bb) bb))
+     (define c 3)
+     (print a)
+     (print b))))
 
 (pretty-print
- (lambda-func
-  '(x)
-  '(print a)
-  '(print b)))
+ (macroexpand-1
+  '(lambda
+       (x)
+     (print a)
+     (print b))))
 
 
   

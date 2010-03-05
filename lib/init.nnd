@@ -393,6 +393,38 @@
             (filter-map pred (cdr lst))))))
 
 
+(define lambda
+  (macro src
+    (if (not (list? (cadr src)))
+        `(lambda ,@src)
+        (let1 body (cdr src)
+          (if (not (list? (car body)))
+              `(lambda ,@src)
+              (let ((defs
+                      (filter
+                       (lambda (x)
+                         (eq? 'define (car x)))
+                       body))
+                    (rest
+                     (filter
+                      (lambda (x)
+                        (not (eq? 'define (car x))))
+                      body)))
+                (if (< 0 (length defs))
+                    `(lambda
+                         ,(car src)
+                       (letrec
+                           ,(map
+                             (lambda (x)
+                               (list
+                                (cadr x)
+                                (caddr x)))
+                             defs)
+                         ,@rest))
+                    ;; found no `define-internal' form
+                    `(lambda ,@src))))))))
+
+
 ;; ----------------------------------------
 ;; other forms
 ;; ----------------------------------------
