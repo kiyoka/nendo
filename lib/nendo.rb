@@ -278,7 +278,7 @@ class Reader
           str = ""
           T_COMMENT
         when /[#]/
-          keyword = readwhile( /[?=!]/ )
+          keyword = readwhile( /[?=!tf]/ )
           case keyword
           when /[?=]/
             str = ""
@@ -287,6 +287,12 @@ class Reader
             readwhile( /[^\r\n]/ )
             str = ""
             T_COMMENT
+          when "t"
+            str = "true"
+            T_SYMBOL
+          when "f"
+            str = "false"
+            T_SYMBOL
           else
             str += readwhile( /[^ \t\r\n]/ )
             raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )

@@ -403,12 +403,14 @@
               (let ((defs
                       (filter
                        (lambda (x)
-                         (eq? 'define (car x)))
+                         (and (eq? 'define (car x))
+                              (symbol? (cadr x))))
                        body))
                     (rest
                      (filter
                       (lambda (x)
-                        (not (eq? 'define (car x))))
+                        (not (and (eq? 'define (car x))
+                                  (symbol? (cadr x)))))
                       body)))
                 (if (< 0 (length defs))
                     `(lambda
@@ -569,40 +571,29 @@
 ;; 
 ;; Subsequently modified for initialize library for nendo: Kiyoka Nishiyama
 (define (pretty-print s)
-  (letrec ((do-indent
-            (lambda (level)
-              (for-each
-               (lambda (x)
-                 (display " "))
-               (range level))))
-           (pp-parenl
-            (lambda ()
-              (display "(")))
-           (pp-parenr
-            (lambda ()
-              (display ")")))
-           (pp-atom
-            (lambda (e prefix)
-              (when prefix (display " "))
-              (write e)))
-           (pp-list
-            (lambda (s level prefix)
-              (and prefix (do-indent level))
-              (pp-parenl)
-              (letrec ((loop
-                        (lambda (_s _prefix)
-                          (let ((s _s)
-                                (prefix _prefix))
-                            (if (null? s)
-                                (pp-parenr)
-                                (let1 e (car s)
-                                  (if (list? e)
-                                      (begin (and prefix (print ""))
-                                             (pp-list e (+ level 1) prefix))
-                                      (pp-atom e prefix))
-                                  (loop (cdr s) true)))))))
-                (loop s false)))))
-    (if (list? s)
-        (pp-list s 0 false)
-        (write s))
-    (print "")))
+  (define (do-indent level)
+    (for-each (lambda (x) (display " ")) (range level)))
+  (define (pp-parenl)
+    (display "("))
+  (define (pp-parenr)
+    (display ")"))
+  (define (pp-atom e prefix)
+    (when prefix (display " "))
+    (write e))
+  (define (pp-list s level prefix)
+    (and prefix (do-indent level))
+    (pp-parenl)
+    (let loop ((s s)
+               (prefix #f))
+      (if (null? s)
+          (pp-parenr)
+          (let1 e (car s)
+            (if (list? e)
+                (begin (and prefix (newline))
+                       (pp-list e (+ level 1) prefix))
+                (pp-atom e prefix))
+            (loop (cdr s) #t)))))
+  (if (list? s)
+      (pp-list s 0 #f)
+      (write s))
+  (newline))
