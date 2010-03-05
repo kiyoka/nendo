@@ -979,10 +979,6 @@ class Evaluator
       # nothing to do
       lambda_head = sprintf( "%s = lambda { || ", _name )
     else
-      if :quote == args.car.car
-        _name = args.car.cdr.car.to_s
-        args = args.cdr
-      end
       argsyms = args.car.map { |x|
         toRubySymbol( x.car.car.cdr.car.to_s )
       }
