@@ -11,12 +11,17 @@
                   (cons arg
                         body))
             ;; (define (func arg...) body)
-            (cons 'define
-                  (cons (car arg)
-                        (list
-                         (cons 'lambda
-                               (cons  (cdr arg)
-                                      body))))))))
+            (begin
+              (if (pair? (cdr arg))
+                  (if (pair? (car (cdr arg)))
+                      (error "Error: define syntax error.")))
+              (cons 'define
+                    (cons (car arg)
+                          (list
+                           (cons 'lambda
+                                 (cons  (cdr arg)
+                                        body)))))))))
+
 
 ;; ----------------------------------------
 ;; car and cdr functions
