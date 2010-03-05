@@ -2,56 +2,65 @@
 
 ;; -----------------
 (enable-idebug)
+(define debug-print-length 120)
 
-;; -----------------
-;; compile: named let
-;; -----------------
-(define let
-  (macro lst
-    (if (symbol? (car lst))
-        ;; named let
-        `(letrec ((,(first lst)
-                   (lambda ,(map
-                             (lambda (x)
-                               (first x))
-                             (second lst))
-                     ,(third lst))))
-           (,(first lst)
-            ,@(map
-               (lambda (x)
-                 (second x))
-               (second lst))))
-           
-        ;; don't touch
-        `(let ,@lst))))
+(define lambda-func
+  (lambda src
+    #?=src
+    (cond
+     ((not (list? (cadr src)))
+      `(lambda ,@src))
+     (else
+      (let1 body (cdr src)
+        #?=body
+        (if (not (list? (car body)))
+            src
+            (let ((defs
+                    (filter
+                     (lambda (x)
+                       (eq? 'define (car x)))
+                     body))
+                  (rest
+                   (filter
+                    (lambda (x)
+                      (not (eq? 'define (car x))))
+                    body)))
+              (if (< 0 (length defs))
+                  `(lambda
+                       ,(car src)
+                     (letrec
+                         ,(map
+                           (lambda (x)
+                             (list
+                              (cadr x)
+                              (caddr x)))
+                           defs)
+                       ,@rest))
+                  ;; found no `define-internal' form
+                  `(lambda ,@src)))))))))
+
+(lambda-func
+ '(x) 'x)
 
 (pretty-print
- (macroexpand
-  '
-  (let1 total 0
-    (let loop ((cnt 10))
-      (if (< 0 cnt)
-          (begin
-            (set! total (+ total cnt))
-            (loop (- cnt 1)))))
-    total)))
+ (lambda-func
+  '(x)
+  '(define a (lambda (aa) aa))
+  '(define b (lambda (bb) bb))
+  '(define c 3)
+  '(print a)
+  '(print b)))
 
-(let label ((a 2)
-            (b 3))
-  (if (<= 9 (+ a b))
-      (* a b)
-      (label 4 5)))
+(pretty-print
+ (lambda-func
+  '(x)
+  '(print a)
+  '(print b)))
+
+
   
-(apply + (range 11))
-(apply + '("a" "b" "c"))
-(let1 a (car (range 1))
-  a.class)
-
-(let ((a 2)
-      (b 4))
-  (begin
-    (list (+ a b)
-          (* a b))))
+    
+        
 
 
 ;; -----------------
