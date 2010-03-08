@@ -192,25 +192,13 @@
                         'false))))))
       (and-iter lst))))
 
-(define apply
-  (macro (proc . args)
-    (letrec ((strip-quote
-              (lambda (lst)
-                (if (eq? 'quote (car lst))
-                    (cadr lst)
-                    lst)))
-             (apply-iter
-              (lambda (lst)
-                (cond
-                 ((eq? 0 (length lst))
-                  '())
-                 ((eq? 1 (length lst))
-                  (if (pair? (car lst))
-                      (strip-quote (car lst))
-                      (error "not a proper list")))
-                 (else
-                  (append (list (car lst)) (apply-iter (cdr lst))))))))
-      (append (list proc) (apply-iter args)))))
+
+(define (apply proc . args)
+  (if (null? args)
+      (proc)
+      ((lambda (lol)
+         (apply1 proc (append (reverse (cdr lol)) (car lol))))
+       (reverse args))))
 
 
 ;; The following quasiquote macro is due to Eric S. Tiedemann. ( Imported from TinyScheme )

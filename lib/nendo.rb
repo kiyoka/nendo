@@ -713,6 +713,10 @@ module BuiltinFunctions
     end until s[2]
     ret
   end
+
+  def _apply1( first, arg )
+    callProcedure( "(apply1 genereate func)", first, arg )
+  end
 end
 
 
