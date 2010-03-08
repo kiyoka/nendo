@@ -1,0 +1,12 @@
+#!/bin/sh
+true; #-*- mode: nendo; syntax: scheme -*-;;
+true; exec /usr/local/bin/nendo $0 $*
+
+;; fact
+(define (fact n)
+  (if (zero? n)
+      1
+      (* n #?=(fact (- n 1)))))
+
+(fact 5)
+
