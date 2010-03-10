@@ -1,7 +1,7 @@
 ;;
 ;; Nendo-mode for Emacs
 ;;
-;;  Copyright (c) 2008 Kiyoka Nishiyama
+;;  Copyright (c) 2010 Kiyoka Nishiyama
 ;;
 ;;
 
