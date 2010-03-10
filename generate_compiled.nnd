@@ -1,0 +1,13 @@
+#!/bin/sh
+true; #-*- mode: nendo; syntax: scheme -*-;;
+true; exec /usr/local/bin/nendo $0 $*
+
+(let1 drop-last (lambda (lst)
+                  (reverse
+                   (cdr (reverse lst))))
+  (for-each
+   (lambda (x)
+     (print "#------------------------------")
+     (print x))
+   (drop-last
+    (get-compiled-code))))

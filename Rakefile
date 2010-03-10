@@ -17,3 +17,9 @@ end
 task :spec do
   sh "ruby -I ./lib /usr/local/bin/spec nendo_spec.rb"
 end
+
+task :compile do
+  sh "/bin/rm -f ./lib/init.nndc*"
+  sh "time ruby -I ./lib ./bin/nendo generate_compiled.nnd > ./lib/init.nndc.tmp"
+  sh "/bin/mv -f ./lib/init.nndc.tmp ./lib/init.nndc"
+end

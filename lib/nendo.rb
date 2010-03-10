@@ -770,6 +770,9 @@ class Evaluator
 
     # reset gensym counter
     @gensym_counter = 0
+
+    # compiled ruby code
+    @compiled_code = []
   end
 
   def _gensym( )
@@ -1306,6 +1309,7 @@ class Evaluator
     end
     arr = [ translate( sexp, [] ) ]
     rubyExp = ppRubyExp( 0, arr ).flatten.join
+    @compiled_code << rubyExp
     printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
   end
@@ -1325,6 +1329,17 @@ class Evaluator
         end
       end
     }
+  end
+
+  def _loadCompiledCode( filename )
+    open( filename ) { |f|
+      rubyExp = f.read
+      eval( rubyExp, @binding )
+    }
+  end
+
+  def _get_compiled_code()
+    @compiled_code.to_list
   end
 
   def _eval( sexp )
@@ -1410,8 +1425,18 @@ class Nendo
     @debug_printer   = debug_printer
   end
   
-  def loadInitFile
-    @evaluator._load( File.dirname(__FILE__) + "/init.nnd" )
+  def loadInitFile( use_compiled = true )
+    done = false
+    if use_compiled 
+      compiled_file = File.dirname(__FILE__) + "/init.nndc"
+      if File.exist?( compiled_file )
+        @evaluator._loadCompiledCode( compiled_file )
+        done = true
+      end
+    end
+    unless done
+      @evaluator._load( File.dirname(__FILE__) + "/init.nnd" )
+    end
   end
 
   def load( path )
