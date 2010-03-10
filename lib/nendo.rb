@@ -717,6 +717,14 @@ module BuiltinFunctions
   def _apply1( first, arg )
     callProcedure( "(apply1 genereate func)", first, arg )
   end
+
+  def _global_variables
+    self.instance_variables.select { |x|
+      x.match( /^[@]_[a-zA-Z]/ )
+    }.map{ |name| 
+      self.toLispSymbol( name[1..-1] ).intern
+    }.to_list
+  end
 end
 
 
@@ -1182,14 +1190,19 @@ class Evaluator
         sexp.cdr.cdr = quoting( sexp.cdr.cdr )
         sexp
       elsif :let == sexp.car
-        case sexp.cdr.car
-        when Cell        # let
-          sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
-                               quoting( sexp.cdr.cdr ))
-        when Symbol      # named let
-          sexp.cdr.car     = Cell.new( :quote, Cell.new( sexp.cdr.car ))
-          sexp.cdr.cdr     = Cell.new( letArgumentList( sexp.cdr.cdr.car ),
-                                       quoting( sexp.cdr.cdr.cdr ))
+        if _null_QMARK( sexp.cdr )
+          # do nothing
+          p "kiyoka1"
+        else
+          case sexp.cdr.car
+          when Cell        # let
+            sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
+                                         quoting( sexp.cdr.cdr ))
+          when Symbol      # named let
+            sexp.cdr.car     = Cell.new( :quote, Cell.new( sexp.cdr.car ))
+            sexp.cdr.cdr     = Cell.new( letArgumentList( sexp.cdr.cdr.car ),
+                                         quoting( sexp.cdr.cdr.cdr ))
+          end
         end
         sexp
       elsif :letrec == sexp.car
