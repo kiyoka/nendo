@@ -298,7 +298,7 @@ class Reader
             raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
           end
         when /[_a-zA-Z]/      # symbol
-          str += readwhile( /[_a-zA-Z0-9!?*.-]/ ).gsub( /[-]/, '_' )
+          str += readwhile( /[_a-zA-Z0-9!?*.:-]/ ).gsub( /[-]/, '_' )
           T_SYMBOL
         when /[*\/=!<>&|%]/   # symbol
           str += readwhile( /[+*\/=!<>&|?%-]/ )
