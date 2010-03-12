@@ -8,7 +8,7 @@ begin
     gemspec.email = "kiyoka@sumibi.org"
     gemspec.homepage = "http://github.com/kiyoka/nendo"
     gemspec.authors = ["Kiyoka Nishiyama"]
-    gemspec.files = FileList['lib/**/*.rb', 'lib/*.nnd', 'bin/*'].to_a
+    gemspec.files = FileList['lib/**/*.rb', 'lib/*.nnd', 'lib/*.nndc', 'bin/*', 'sample/*.nnd', 'emacs/*.el'].to_a
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
