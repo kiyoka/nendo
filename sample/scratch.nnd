@@ -3,38 +3,3 @@
 ;; -----------------
 (enable-idebug)
 (define debug-print-length 256)
-
-
-;; ----------------------------------------
-;; Utility function for testing and debugging
-;; ----------------------------------------
-;; Gauche's #?= like debug print function
-(define debug-print-length 63)
-(define (debug-print-output-func str)  ;; default output func
-  (STDERR.print str))
-(define (debug-limit-length x)
-  (+
-   (if (< debug-print-length x.length)
-       (let1 n debug-print-length.to_s
-         (sprintf (+ "%" n "." n "s ...") x))
-       x)
-   "\n"))
-
-(define debug-print
-  (macro (_form sourcefile lineno sourcesexp)
-    (let1 val (gensym)
-      `(let ((,val nil))
-         (debug-print-output-func (debug-limit-length (sprintf "#?=%s:%s:%s" ,sourcefile ,lineno (write-to-string ,sourcesexp))))
-         (set! ,val ,_form)
-         (debug-print-output-func (debug-limit-length (sprintf "#?-    %s"   ,val)))
-         ,val))))
-
-(macroexpand
- '(begin
-    #?=(+ 1 2)))
-
-(begin
-    #?=(+ 1 2))
-
-
-
