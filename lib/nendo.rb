@@ -1156,7 +1156,7 @@ class Evaluator
         lispSymbolReference( sym, locals, nil, sexp.sourcefile, sexp.lineno )
       when Fixnum
         sexp.to_s
-      when LispString
+      when String
         sprintf( "\"%s\"", sexp )
       when Nil
         "Nil.new"
@@ -1465,8 +1465,8 @@ class Nendo
         if s[1] # EOF?
           break
         elsif Nil != s[0].class
-          printf( "\n          readExp=<<< %s >>>\n", printer._print(s[0]) ) if @debug_evaluator
-          print printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
+          printf( "\n          readExp=<<< %s >>>\n", printer._write(s[0]) ) if @debug_evaluator
+          print printer._write( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
           print "\n" + "nendo> "
         end
       rescue => e
@@ -1488,8 +1488,8 @@ class Nendo
       if s[1] # EOF?
         break
       elsif Nil != s[0].class
-        printf( "\n          readExp=<<< %s >>>\n", printer._print(s[0]) ) if @debug_evaluator
-        result = printer._print( @evaluator.lispEval( s[0], reader.sourcefile, lineno )) 
+        printf( "\n          readExp=<<< %s >>>\n", printer._write(s[0]) ) if @debug_evaluator
+        result = printer._write( @evaluator.lispEval( s[0], reader.sourcefile, lineno )) 
       end
     end
     result

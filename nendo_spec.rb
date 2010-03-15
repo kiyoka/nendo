@@ -152,10 +152,10 @@ describe Nendo, "when call replStr() with literals" do
     @nendo.replStr( " 100000 " ).should == "100000"
     @nendo.replStr( " 1.1 " ).should == "1.1"
     @nendo.replStr( " 1.0 " ).should == "1.0"
-    @nendo.replStr( " \"a\" " ).should == "a"
-    @nendo.replStr( " \"日本語\" " ).should == "日本語"
-    @nendo.replStr( " \"\n\" " ).should == "\n"
-    @nendo.replStr( " \"a\" " ).should == "a"
+    @nendo.replStr( ' "a" ' ).should == '"a"'
+    @nendo.replStr( ' "日本語" ' ).should == '"日本語"'
+    @nendo.replStr( ' "\n" ').should == "\"\n\""
+    @nendo.replStr( ' "a" ' ).should == '"a"'
     @nendo.replStr( " true " ).should == "true"
     @nendo.replStr( " false " ).should == "false"
     @nendo.replStr( " nil " ).should == "nil"
@@ -232,7 +232,7 @@ describe Nendo, "when call replStr() with `+' function" do
     @nendo.replStr( " (+ 1 (+ 2 (+ 3 (+ 4 (+ 5))))) " ).should == "15"
     @nendo.replStr( " (+ 1   1.1) " ).should == "2.1"
     @nendo.replStr( " (+ 1.1 1.2) " ).should == "2.3"
-    @nendo.replStr( " (+ \"a\" \"B\" \"c\" ) " ).should == "aBc"
+    @nendo.replStr( " (+ \"a\" \"B\" \"c\" ) " ).should == '"aBc"'
     @nendo.replStr( " (+ 1 '() ) " ).should == "1"
     @nendo.replStr( " (+ 1.1 '() ) " ).should == "1.1"
     lambda { @nendo.replStr( " (+) " ) }.should              raise_error(ArgumentError)
@@ -351,10 +351,10 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '('a)" ).should == "('a)"
     @nendo.replStr( " '(''a)" ).should == "(''a)"
     @nendo.replStr( " '('a 'b 'c)" ).should == "('a 'b 'c)"
-    @nendo.replStr( " '(\"str\") " ).should == "(str)"
-    @nendo.replStr( " '(\"str\" . 1) " ).should == "(str . 1)"
-    @nendo.replStr( " '(1 . \"str\") " ).should == "(1 . str)"
-    @nendo.replStr( " '(1 2 . \"str\") " ).should == "(1 2 . str)"
+    @nendo.replStr( ' \'("str") ' ).should == '("str")'
+    @nendo.replStr( ' \'("str" . 1) ' ).should == '("str" . 1)'
+    @nendo.replStr( ' \'(1 . "str") ' ).should == '(1 . "str")'
+    @nendo.replStr( ' \'(1 2 . "str") ' ).should == '(1 2 . "str")'
     @nendo.replStr( " '((a)(b)(c)) " ).should == "((a) (b) (c))"
     @nendo.replStr( " 'a " ).should == "a"
     @nendo.replStr( " 'symbol " ).should == "symbol"
@@ -478,7 +478,7 @@ describe Nendo, "when call replStr() with variable modifications" do
     @nendo.replStr( " (define x '()) x " ).should   == "()"
     @nendo.replStr( " (define x '(1)) x " ).should   == "(1)"
     @nendo.replStr( " (define x (+ 1 2 3)) x " ).should   == "6"
-    @nendo.replStr( " (define x (sprintf \"$%02X\" 17))    x  x  x " ).should   == "$11"
+    @nendo.replStr( " (define x (sprintf \"$%02X\" 17))    x  x  x " ).should   == '"$11"'
     @nendo.replStr( " 1 2 3 " ).should   == "3"
     @nendo.replStr( " (define x 3.14)  (set! x (* x 2))          x " ).should   == "6.28"
     @nendo.replStr( " 1 \n 2 \n 3 \n " ).should   == "3"
@@ -546,7 +546,7 @@ describe Nendo, "when call replStr() with global and lexical scope variable" do
     @nendo.replStr( " (let ((var 222)) var) " ).should == "222"
     @nendo.replStr( " (let ((var 222)) (set! var 333) var) " ).should == "333"
     @nendo.replStr( " (let ((var 222)) (set! var 333)) var " ).should == "111"
-    @nendo.replStr( " (define global1 \"G\") " ).should == "G"
+    @nendo.replStr( " (define global1 \"G\") " ).should == '"G"'
     @nendo.replStr( " " +
                     "(let ((local1 \"L\")" +
                     "      (local2 \"L\"))" +
@@ -562,7 +562,7 @@ describe Nendo, "when call replStr() with global and lexical scope variable" do
                     "          (set! local2  (+ local2   \"b\"))" +
                     "          (list local1 local2" +
                     "                (let ((local1 \"CCC\"))" +
-                    "                  (list global1 local1 local2))))))" ).should == "(Global1 Local1 Local2 (Aa Bb (Global1 CCC Bb)))"
+                    "                  (list global1 local1 local2))))))" ).should == '("Global1" "Local1" "Local2" ("Aa" "Bb" ("Global1" "CCC" "Bb")))'
   end
 end
 
@@ -635,7 +635,7 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (cond (true  1) (true  2)) " ).should == "1"
     @nendo.replStr( " (cond (false 1) (false 2)) " ).should == "nil"
     @nendo.replStr( " (cond (false 1) (false 2) (else 3)) " ).should == "3"
-    @nendo.replStr( " (cond ((- 10 9) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 2)) " ).should == "<1>"
+    @nendo.replStr( " (cond ((- 10 9) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 2)) " ).should == '"<1>"'
     @nendo.replStr( " (cond (true  1) ((- 10 8) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 3)) " ).should == "1"
     @nendo.replStr( " (or) " ).should == "false"
     @nendo.replStr( " (or true) " ).should == "true"
@@ -671,7 +671,7 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (apply + 1 2 '(3)) " ).should == "6"
     @nendo.replStr( " (apply + 1 2 '(3 4)) " ).should == "10"
     @nendo.replStr( " (apply + 1 2 3 '(4)) " ).should == "10"
-    @nendo.replStr( " (apply + '(\"a\" \"b\" \"c\")) " ).should == "abc"
+    @nendo.replStr( ' (apply + \'("a" "b" "c")) ' ).should == '"abc"'
     @nendo.replStr( " (apply + (range 11)) " ).should == "55"
     @nendo.replStr( " (apply + (map (lambda (x) (+ x 1)) (range 10))) " ).should == "55"
     @nendo.replStr( " (apply + (append (range 11) '(100))) " ).should == "155"
@@ -740,11 +740,11 @@ describe Nendo, "when use macros made by quasiquote. " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.replStr( " (case (length '(1      )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "one"
-    @nendo.replStr( " (case (length '(1 2    )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "two"
-    @nendo.replStr( " (case (length '(1 2 3  )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "else"
-    @nendo.replStr( " (case (length '(1 2 3 4)) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "else"
-    @nendo.replStr( " (case   100               ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == "else"
+    @nendo.replStr( " (case (length '(1      )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"one"'
+    @nendo.replStr( " (case (length '(1 2    )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"two"'
+    @nendo.replStr( " (case (length '(1 2 3  )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"else"'
+    @nendo.replStr( " (case (length '(1 2 3 4)) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"else"'
+    @nendo.replStr( " (case   100               ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"else"'
     @nendo.replStr( " (let* ((a 1)   (b (+ a 2)))  (cons a b)) " ).should == "(1 . 3)"
     @nendo.replStr( " (let* ((a 10)  (b (* a 2)))  (cons a b)) " ).should == "(10 . 20)"
     @nendo.replStr( " (let* ((a 10)  (b (* a 2)) (c (* b 3)))  (list a b c)) " ).should == "(10 20 60)"
@@ -795,15 +795,15 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.replStr( " (set! str \"str\") str.size " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (. str size) " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (+ 1 (. str size)) " ).should == "4"
-    @nendo.replStr( " (set! str \"string\") (. str size to_s) " ).should == "6"
-    @nendo.replStr( " (to-s str.size) " ).should == "6"
-    @nendo.replStr( " (to-s 'str.size) " ).should == "str.size"
+    @nendo.replStr( " (set! str \"string\") (. str size to_s) " ).should == '"6"'
+    @nendo.replStr( " (to-s str.size) " ).should == '"6"'
+    @nendo.replStr( " (to-s 'str.size) " ).should == '"str.size"'
     @nendo.replStr( " (require \"date\") " ).should == "false"
-    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%x\") " ).should == "01/01/00"
-    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%s\") " ).should == "-62167392000"
+    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%x\") " ).should == '"01/01/00"'
+    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%s\") " ).should == '"-62167392000"'
     @nendo.replStr( " (require \"digest/md5\") " ).should == "false"
-    @nendo.replStr( " (Digest::MD5.hexdigest \"abc\") " ).should ==           "900150983cd24fb0d6963f7d28e17f72"
-    @nendo.replStr( " (Digest::MD5.hexdigest \"source text\") " ).should ==   "20f79a1416626eeacc0bd9a8db87faa2"
+    @nendo.replStr( " (Digest::MD5.hexdigest \"abc\") " ).should ==           '"900150983cd24fb0d6963f7d28e17f72"'
+    @nendo.replStr( " (Digest::MD5.hexdigest \"source text\") " ).should ==   '"20f79a1416626eeacc0bd9a8db87faa2"'
     @nendo.replStr( " (define a 1) (a.is_a? Fixnum) " ).should ==     "true"
     @nendo.replStr( " (define a 1) (a.is_a? Float) " ).should ==      "false"
     @nendo.replStr( " (define a 1) (a.is_a? String) " ).should ==     "false"

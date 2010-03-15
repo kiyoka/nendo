@@ -8,5 +8,7 @@ true; exec /usr/local/bin/nendo $0 $*
       1
       (* n #?=(fact (- n 1)))))
 
-(fact 5)
+(print (fact (to-i (second ARGV.to_list))))
+
+
 

@@ -19,6 +19,7 @@
          (sprintf (+ "%" n "." n "s ...") x))
        x)
    "\n"))
+
 (define debug-print
   (macro (_form sourcefile lineno sourcesexp)
     (let1 val (gensym)
@@ -27,4 +28,13 @@
          (set! ,val ,_form)
          (debug-print-output-func (debug-limit-length (sprintf "#?-    %s"   ,val)))
          ,val))))
+
+(macroexpand
+ '(begin
+    #?=(+ 1 2)))
+
+(begin
+    #?=(+ 1 2))
+
+
 
