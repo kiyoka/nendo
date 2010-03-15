@@ -26,6 +26,13 @@ class Nil
 end
 
 class LispString < String
+  def LispString.escape( str )
+    if str.is_a? String
+      str.gsub( /["]/, "\\\"" )
+    else
+      raise TypeError
+    end
+  end
 end
 
 class LispMacro < Proc
@@ -240,6 +247,32 @@ class Reader
     ret
   end
 
+  def readstring()
+    ret = ""
+    while true
+      ch = @chReader.getc
+      #printf( "      readstring: [%s]\n", ch )
+      if !ch # eof?
+        break
+      end
+      if ch.chr.match( /[\\]/ )
+        ch2 = @chReader.getc
+        if ch2.chr == "\""    #  \"  reduce to "  
+          ret += "\""
+        else
+          ret += ch.chr
+          ret += ch2.chr
+        end
+      elsif ch.chr.match( /[^"]/ )
+        ret += ch.chr
+      else
+        @chReader.ungetc( ch )
+        break
+      end
+    end
+    ret
+  end
+
   def tokenWithComment
     skipspace
     ch = @chReader.getc
@@ -318,7 +351,8 @@ class Reader
           str += readwhile( /[0-9.]/ )
           T_NUM
         when /["]/             # String
-          str = LispString.new( readwhile( /[^"]/ )) ; readwhile( /["]/ )
+          str =  LispString.new( readstring() )
+          readwhile( /["]/ )
           T_STRING
         else
           str += readwhile( /[^ \t\r\n]/ )
@@ -1071,7 +1105,7 @@ class Evaluator
     when Symbol
       str += sprintf( ":\"%s\"", sexp.to_s )
     when String
-      str += sprintf( "\"%s\"", sexp )
+      str += sprintf( "\"%s\"", LispString.escape( sexp ))
     when TrueClass, FalseClass, NilClass  # reserved symbols
       str += toRubyValue( sexp )
     else
@@ -1157,7 +1191,7 @@ class Evaluator
       when Fixnum
         sexp.to_s
       when String
-        sprintf( "\"%s\"", sexp )
+        sprintf( "\"%s\"", LispString.escape( sexp ))
       when Nil
         "Nil.new"
       when TrueClass, FalseClass, NilClass  # reserved symbols
@@ -1397,7 +1431,7 @@ class Printer
       end
     when String
       if readable
-        sprintf( "\"%s\"", sexp.to_s )
+        sprintf( "\"%s\"", LispString.escape( sexp.to_s ))
       else
         sexp.to_s
       end

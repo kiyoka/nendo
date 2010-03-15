@@ -156,6 +156,8 @@ describe Nendo, "when call replStr() with literals" do
     @nendo.replStr( ' "日本語" ' ).should == '"日本語"'
     @nendo.replStr( ' "\n" ').should == "\"\n\""
     @nendo.replStr( ' "a" ' ).should == '"a"'
+    @nendo.replStr( ' "a\"b" ' ).should == '"a\"b"'
+    @nendo.replStr( ' "日\"本\"語" ' ).should == '"日\"本\"語"'
     @nendo.replStr( " true " ).should == "true"
     @nendo.replStr( " false " ).should == "false"
     @nendo.replStr( " nil " ).should == "nil"

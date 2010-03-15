@@ -557,7 +557,7 @@
   (macro (_form sourcefile lineno sourcesexp)
     (let1 val (gensym)
       `(let ((,val nil))
-         (debug-print-output-func (debug-limit-length (sprintf "#?=%s:%s:%s" ,sourcefile ,lineno (write-to-string ,sourcesexp))))
+         (debug-print-output-func (debug-limit-length (sprintf "#?=\"%s\":%s:%s" ,sourcefile ,lineno (write-to-string ,sourcesexp))))
          (set! ,val ,_form)
          (debug-print-output-func (debug-limit-length (sprintf "#?-    %s"   ,val)))
          ,val))))
