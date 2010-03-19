@@ -711,6 +711,7 @@ module BuiltinFunctions
   end
   def _to_s( arg )              arg.to_s    end
   def _to_i( arg )              arg.to_i    end
+  def _nil_QMARK(   arg )       arg.nil?    end
   def _to_list( arg )
     case arg
     when Array
