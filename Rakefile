@@ -1,3 +1,16 @@
+#  Rakefile for Nendo
+#
+#
+# Release Engineering
+#   1. edit the VERSION.yml file
+#   2. rake compile
+#   3. rake spec
+#   4. rake gemspec
+#   5. rake build
+#      to generate nendo-x.x.x.gem
+#   6. install nendo-x.x.x.gem to clean environment and test
+#   7. gem push pkg/nendo-x.x.x.gem
+
 require 'rake'
 begin
   require 'jeweler'
