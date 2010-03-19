@@ -559,8 +559,9 @@
       `(let ((,val nil))
          (debug-print-output-func (debug-limit-length (sprintf "#?=\"%s\":%s:%s" ,sourcefile ,lineno (write-to-string ,sourcesexp))))
          (set! ,val ,_form)
-         (debug-print-output-func (debug-limit-length (sprintf "#?-    %s"   ,val)))
+         (debug-print-output-func (debug-limit-length (+       "#?-    " (write-to-string ,val))))
          ,val))))
+
 
 ;;
 ;; imported from this URL ( written by bizen )
