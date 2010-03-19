@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# Nendo:   "Principle of Least Surprise (for Rubyist)"
+# Nendo:   "Nendo is a diarect of Lisp."
 #  
 #
 #
