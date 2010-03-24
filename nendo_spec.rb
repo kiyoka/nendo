@@ -113,20 +113,38 @@ describe Evaluator, "When use Evaluator's util methods" do
     @evaluator.toRubySymbol( "a" ).should == "_a"
     @evaluator.toRubySymbol( "a_b_c" ).should == "_a_b_c"
     @evaluator.toRubySymbol( "_a_b_c_" ).should == "__a_b_c_"
-    @evaluator.toRubySymbol( "a?" ).should == "_a_QMARK"
-    @evaluator.toRubySymbol( "a!" ).should == "_a_EMARK"
-    @evaluator.toRubySymbol( "a?b" ).should == "_a_QMARKb"
-    @evaluator.toRubySymbol( "a!b" ).should == "_a_EMARKb"
-    @evaluator.toRubySymbol( "a-b" ).should == "_a_b"
-    @evaluator.toRubySymbol( "a-b-c" ).should == "_a_b_c"
-    @evaluator.toRubySymbol( "-a-b-c" ).should == "__a_b_c"
-    @evaluator.toRubySymbol( "-a-!-b" ).should == "__a__EMARK_b"
-    @evaluator.toRubySymbol( "-a-!-?b" ).should == "__a__EMARK__QMARKb"
+    @evaluator.toRubySymbol( '!' ).should == '__EXMARK'
+    @evaluator.toRubySymbol( '$' ).should == '__DOMARK'
+    @evaluator.toRubySymbol( '%' ).should == '__PAMARK'
+    @evaluator.toRubySymbol( '&' ).should == '__ANMARK'
+    @evaluator.toRubySymbol( '*' ).should == '__ASMARK'
+    @evaluator.toRubySymbol( '+' ).should == '__PLMARK'
+    @evaluator.toRubySymbol( '-' ).should == '__MIMARK'
+    @evaluator.toRubySymbol( '/' ).should == '__SLMARK'
+    @evaluator.toRubySymbol( ':' ).should == '_:'
+    @evaluator.toRubySymbol( '<' ).should == '__LTMARK'
+    @evaluator.toRubySymbol( '=' ).should == '__EQMARK'
+    @evaluator.toRubySymbol( '>' ).should == '__GTMARK'
+    @evaluator.toRubySymbol( '?' ).should == '__QUMARK'
+    @evaluator.toRubySymbol( '@' ).should == '__ATMARK'
+    @evaluator.toRubySymbol( '^' ).should == '__NKMARK'
+    @evaluator.toRubySymbol( "_" ).should == "__"
+    @evaluator.toRubySymbol( '~' ).should == '__CHMARK'
+    @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
+    @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
+    @evaluator.toRubySymbol( "a!" ).should == "_a_EXMARK"
+    @evaluator.toRubySymbol( "a?b" ).should == "_a_QUMARKb"
+    @evaluator.toRubySymbol( "a!b" ).should == "_a_EXMARKb"
+    @evaluator.toRubySymbol( "a-b" ).should == "_a_MIMARKb"
+    @evaluator.toRubySymbol( "a-b-c" ).should == "_a_MIMARKb_MIMARKc"
+    @evaluator.toRubySymbol( "-a-b-c" ).should == "__MIMARKa_MIMARKb_MIMARKc"
+    @evaluator.toRubySymbol( "-a-!-b" ).should == "__MIMARKa_MIMARK_EXMARK_MIMARKb"
+    @evaluator.toRubySymbol( "-a-!-?b" ).should == "__MIMARKa_MIMARK_EXMARK_MIMARK_QUMARKb"
     @evaluator.toRubySymbol( "a.b" ).should == "_a.b"
     @evaluator.toRubySymbol( "aa.bb" ).should == "_aa.bb"
     @evaluator.toRubySymbol( "aa.bb.cc" ).should == "_aa.bb.cc"
-    @evaluator.toLispSymbol( "_a_QMARK" ).should == "a?"
-    @evaluator.toLispSymbol( "_a_EMARK" ).should == "a!"
+    @evaluator.toLispSymbol( "_a_QUMARK" ).should == "a?"
+    @evaluator.toLispSymbol( "_a_EXMARK" ).should == "a!"
     @evaluator.toLispSymbol( "_a_b" ).should == "a_b"
     @evaluator.toLispSymbol( "_a_b_c" ).should == "a_b_c"
     @evaluator.toLispSymbol( "_A_B_C" ).should == "A_B_C"
@@ -175,6 +193,11 @@ describe Nendo, "when call replStr() with comparative operators" do
     @nendo.replStr( " (= 1 2) " ).should == "false"
     @nendo.replStr( " (eq? 1 1) " ).should == "true"
     @nendo.replStr( " (eq? 1 2) " ).should == "false"
+    @nendo.replStr( " (eq? 'a 'a) " ).should == "true"
+    @nendo.replStr( " (eq? 'b 'b) " ).should == "true"
+    @nendo.replStr( " (eq? 'a-b 'a-b) " ).should == "true"
+    @nendo.replStr( " (eq? 'a_b 'a-b) " ).should == "false"
+    @nendo.replStr( " (eq? 'a-b 'a_b) " ).should == "false"
     @nendo.replStr( " (< 1 1) " ).should == "false"
     @nendo.replStr( " (< 1 2) " ).should == "true"
     @nendo.replStr( " (> 1 1) " ).should == "false"
@@ -397,6 +420,34 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (list '(a) '((b c))) " ).should == "((a) ((b c)))"
     @nendo.replStr( " (list) " ).should == "()"
     @nendo.replStr( " (list 1) " ).should == "(1)"
+    @nendo.replStr( " (define !a 10) !a" ).should == "10"
+    @nendo.replStr( " (define $a 11) $a" ).should == "11"
+    @nendo.replStr( " (define %a 12) %a" ).should == "12"
+    @nendo.replStr( " (define &a 13) &a" ).should == "13"
+    @nendo.replStr( " (define *a 14) *a" ).should == "14"
+    @nendo.replStr( " (define +a 15) +a" ).should == "15"
+    @nendo.replStr( " (define -a 16) -a" ).should == "16"
+    @nendo.replStr( " (define /a 17) /a" ).should == "17"
+    @nendo.replStr( " (define <a 18) <a" ).should == "18"
+    @nendo.replStr( " (define =a 19) =a" ).should == "19"
+    @nendo.replStr( " (define ?a 20) ?a" ).should == "20"
+    @nendo.replStr( " (define @a 21) @a" ).should == "21"
+    @nendo.replStr( " (define ^a 22) ^a" ).should == "22"
+    @nendo.replStr( " (define ~a 23) ~a" ).should == "23"
+    @nendo.replStr( " (define a! 30) a!" ).should == "30"
+    @nendo.replStr( " (define a$ 31) a$" ).should == "31"
+    @nendo.replStr( " (define a% 32) a%" ).should == "32"
+    @nendo.replStr( " (define a& 33) a&" ).should == "33"
+    @nendo.replStr( " (define a* 34) a*" ).should == "34"
+    @nendo.replStr( " (define a+ 35) a+" ).should == "35"
+    @nendo.replStr( " (define a- 36) a-" ).should == "36"
+    @nendo.replStr( " (define a/ 37) a/" ).should == "37"
+    @nendo.replStr( " (define a< 38) a<" ).should == "38"
+    @nendo.replStr( " (define a= 39) a=" ).should == "39"
+    @nendo.replStr( " (define a? 40) a?" ).should == "40"
+    @nendo.replStr( " (define a@ 41) a@" ).should == "41"
+    @nendo.replStr( " (define a^ 42) a^" ).should == "42"
+    @nendo.replStr( " (define a~ 43) a~" ).should == "43"
     @nendo.replStr( " (define aFunc (lambda (x) x)) true" ).should == "true"
     @nendo.replStr( " (define aMacro (macro (x) x)) true" ).should == "true"
     @nendo.replStr( " (define a! 123) a!" ).should == "123"

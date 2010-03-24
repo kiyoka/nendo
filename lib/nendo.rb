@@ -298,7 +298,7 @@ class Reader
         when ')'
           T_RPAREN
         when '.'
-          str += readwhile( /[_a-zA-Z0-9!?.-]/ ).gsub( /[-]/, '_' )
+          str += readwhile( /[_a-zA-Z0-9!?.]/ )
           if 1 == str.length
             T_DOT
           else
@@ -330,19 +330,11 @@ class Reader
             str += readwhile( /[^ \t\r\n]/ )
             raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
           end
-        when /[_a-zA-Z]/      # symbol
-          str += readwhile( /[_a-zA-Z0-9!?*.:-]/ ).gsub( /[-]/, '_' )
-          T_SYMBOL
-        when /[*\/=!<>&|%]/   # symbol
-          str += readwhile( /[+*\/=!<>&|?%-]/ )
+        when /[_a-zA-Z!$%&*+\/:<=>?@^~-]/      # symbol
+          str += readwhile( /[0-9._a-zA-Z!$%&*+\/:<=>?@^~-]/ )
           if str.match( /^[=][>]$/ )
             T_FEEDTO
-          else
-            T_SYMBOL
-          end
-        when /[+-]/           # number
-          str += readwhile( /[0-9.]/ )
-          if 1 < str.length
+          elsif str.match( /^[+-][0-9.]+$/ )
             T_NUM
           else
             T_SYMBOL
@@ -410,9 +402,9 @@ class Reader
     when T_UNQUOTE
       :unquote
     when T_UNQUOTE_SPLICING
-      :unquote_splicing
+      :"unquote-splicing"
     when T_DOT
-      :dot_operator
+      :"dot-operator"
     when T_FEEDTO
       :feedto
     when T_DEBUG_PRINT
@@ -553,14 +545,14 @@ module BuiltinFunctions
     end
   end
   
-  def _equal_QMARK( a, b )
+  def _equal_QUMARK( a, b )
     if a.class != b.class
       false
     elsif a.class == Cell
       if a.isNull and b.isNull
         true
       else
-        _equal_QMARK( a.car, b.car ) and _equal_QMARK( a.cdr, b.cdr )
+        _equal_QUMARK( a.car, b.car ) and _equal_QUMARK( a.cdr, b.cdr )
       end
     elsif a.class == Nil and b.class == Nil
       true
@@ -569,8 +561,8 @@ module BuiltinFunctions
     end
   end
   
-  def _plus( first, *rest )
-    raise TypeError if not (_number_QMARK(first) or _string_QMARK(first))
+  def __PLMARK( first, *rest )
+    raise TypeError if not (_number_QUMARK(first) or _string_QUMARK(first))
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -580,8 +572,8 @@ module BuiltinFunctions
     end
   end
   
-  def _minus( first, *rest )
-    raise TypeError if not (_number_QMARK(first) or _string_QMARK(first))
+  def __MIMARK( first, *rest )
+    raise TypeError if not (_number_QUMARK(first) or _string_QUMARK(first))
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -591,8 +583,8 @@ module BuiltinFunctions
     end
   end
 
-  def _multi( first, *rest )
-    raise TypeError if not _number_QMARK(first)
+  def __ASMARK( first, *rest )
+    raise TypeError if not _number_QUMARK(first)
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -602,8 +594,8 @@ module BuiltinFunctions
     end
   end
 
-  def _div( first, *rest )
-    raise TypeError if not _number_QMARK(first)
+  def __SLMARK( first, *rest )
+    raise TypeError if not _number_QUMARK(first)
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -613,8 +605,8 @@ module BuiltinFunctions
     end
   end
 
-  def _mod( first, *rest )
-    raise TypeError if not _number_QMARK(first)
+  def __PAMARK( first, *rest )
+    raise TypeError if not _number_QUMARK(first)
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
@@ -654,7 +646,7 @@ module BuiltinFunctions
     Kernel::sprintf( format, *(rest[0].to_arr) )
   end
 
-  def _null_QMARK( arg )
+  def _null_QUMARK( arg )
     if Nil == arg.class
       true
     elsif Cell == arg.class
@@ -664,7 +656,7 @@ module BuiltinFunctions
     end
   end
   def _length(   arg )
-    if _null_QMARK( arg )
+    if _null_QUMARK( arg )
       0
     elsif arg.is_a? Cell
       arg.length
@@ -677,42 +669,51 @@ module BuiltinFunctions
   def _reverse(  arg )           arg.to_arr.reverse.to_list end
   def _uniq(     arg )           arg.to_arr.uniq.to_list end
   def _range(    num )           (0..num-1).to_a.to_list end
-  def _eq_QMARK(      a,b )      a ==  b end
-  def _gt_QMARK(      a,b )      a >   b end
-  def _ge_QMARK(      a,b )      a >=  b end
-  def _lt_QMARK(      a,b )      a <   b end
-  def _le_QMARK(      a,b )      a <=  b end
-  def _eqv_QMARK(     a,b )      a === b end
+  def __EQMARK(      a,b )        a ==  b end
+  def __GTMARK(      a,b )        a >   b end
+  def __GTMARK_EQMARK(      a,b ) a >=  b end
+  def __LTMARK(      a,b )        a <   b end
+  def __LTMARK_EQMARK(      a,b ) a <=  b end
+  def _eqv_QUMARK(     a,b )      a === b end
+  def _eq_QUMARK(      a,b )      a ==  b end
+  def _gt_QUMARK(      a,b )      a >   b end
+  def _ge_QUMARK(      a,b )      a >=  b end
+  def _lt_QUMARK(      a,b )      a <   b end
+  def _le_QUMARK(      a,b )      a <=  b end
+  def _eqv_QUMARK(     a,b )      a === b end
   def _car(      cell )          cell.car end
   def _cdr(      cell )          cell.cdr end
   def _write(  arg  )            printer = Printer.new ; print printer._write( arg ) ; arg end
-  def _write_to_string(  arg  )  printer = Printer.new ; printer._write( arg )             end
+  def _write_MIMARKto_MIMARKstring(  arg  )  printer = Printer.new ; printer._write( arg )             end
   def _display(  arg  )          printer = Printer.new ; print printer._print( arg ) ; arg end
   def _print(  arg  )            self._display( arg )  ; self._newline() ; arg             end
   def _newline(       )          print "\n" end
-  def _procedure_QMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
-  def _macro_QMARK( arg )       (LispMacro == arg.class) end
-  def _symbol_QMARK(    arg )   (Symbol == arg.class) end
-  def _pair_QMARK(      arg )   
-    if _null_QMARK( arg )
+  def _procedure_QUMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
+  def _macro_QUMARK( arg )       (LispMacro == arg.class) end
+  def _symbol_QUMARK(    arg )   (Symbol == arg.class) end
+  def _pair_QUMARK(      arg )   
+    if _null_QUMARK( arg )
       false
     else
       (Cell == arg.class)
     end
   end
-  def _number_QMARK(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
-  def _string_QMARK(   arg )    String == arg.class end
-  def _macroexpand_1( arg )
-    if _pair_QMARK( arg )
+  def _number_QUMARK(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
+  def _string_QUMARK(   arg )    String == arg.class end
+  def _macroexpand_MIMARK1( arg )
+    if _pair_QUMARK( arg )
       macroexpand_1( arg )
     else
       arg
     end
   end
-  def _to_s( arg )              arg.to_s    end
-  def _to_i( arg )              arg.to_i    end
-  def _nil_QMARK(   arg )       arg.nil?    end
-  def _to_list( arg )
+  def _to_s( arg )                    _to_MIMARKs( arg ) end
+  def _to_MIMARKs( arg )              arg.to_s    end
+  def _to_i( arg )                    _to_MIMARKi( arg ) end
+  def _to_MIMARKi( arg )              arg.to_i    end
+  def _nil_QUMARK(   arg )            arg.nil?    end
+  def _to_list( arg )                 _to_MIMARKlist( arg ) end
+  def _to_MIMARKlist( arg )
     case arg
     when Array
       arg.to_list
@@ -723,7 +724,7 @@ module BuiltinFunctions
     end
   end
   def _intern( arg )            arg.intern  end
-  def _string_join( lst, delim )
+  def _string_MIMARKjoin( lst, delim )
     lst.to_a.map{ |x| x.car }.join( delim )
   end
   def _require( arg )
@@ -754,7 +755,7 @@ module BuiltinFunctions
     callProcedure( "(apply1 genereate func)", first, arg )
   end
 
-  def _global_variables
+  def _global_MIMARKvariables
     self.instance_variables.select { |x|
       x.match( /^[@]_[a-zA-Z]/ )
     }.map{ |name| 
@@ -771,30 +772,34 @@ class Evaluator
     @indent  = "  "
     @binding = binding
     @debug   = debug
-    @alias   = {'+'        => 'plus',
-                '-'        => 'minus',
-                '*'        => 'multi',
-                '/'        => 'div',
-                '%'        => 'mod',
-                '='        => 'eq?',
-                '=='       => 'eq?',
-                '>'        => 'gt?',
-                '>='       => 'ge?',
-                '<'        => 'lt?',
-                '<='       => 'le?',
-                '==='      => 'eqv?',
+    @char_table_lisp_to_ruby = {
+      # list     (! $ % & * + - . / : < = > ? @ ^ _ ~)
+      '!' => '_EXMARK',
+      '$' => '_DOMARK',
+      '%' => '_PAMARK',
+      '&' => '_ANMARK',
+      '*' => '_ASMARK',
+      '+' => '_PLMARK',
+      '-' => '_MIMARK',
+      # '.'
+      '/' => '_SLMARK',
+      # ':'
+      '<' => '_LTMARK',
+      '=' => '_EQMARK',
+      '>' => '_GTMARK',
+      '?' => '_QUMARK',
+      '@' => '_ATMARK',
+      '^' => '_NKMARK',
+      # '_'
+      '~' => '_CHMARK',
     }
-    # built-in functions
-    @sym = Hash.new
-    self.methods.grep( /^_/ ) { |rubySymbol|
-      @sym[ rubySymbol ] = self.method( rubySymbol )
-    }
+    @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
-    # initialize global symbols
-    rubyExp = @sym.keys.map { |name|
-      sprintf( "@%s = @sym[ '%s' ] ", name, name )
-    }.join( " ; " )
-    eval( rubyExp, @binding )
+    # built-in functions
+    self.methods.grep( /^_/ ) { |rubySymbol|
+      @___tmp = self.method( rubySymbol )
+      eval( sprintf( "@%s = @___tmp", rubySymbol ), @binding )
+    }
 
     # initialize buildin functions as Proc objects
     rubyExp = self.methods.select { |x|
@@ -834,7 +839,9 @@ class Evaluator
       ""
     else
       arr = name.gsub( /["]/, '' ).split( /[.]/ )
-      arr[0] = arr[0].gsub( /[*]/, '_AMARK' ).gsub( /[?]/, '_QMARK' ).gsub( /[!]/, '_EMARK' ).gsub( /[-]/, '_' )
+      @char_table_lisp_to_ruby.each_pair { |key,val|
+        arr[0] = arr[0].gsub( Regexp.new( Regexp.escape( key )), val )
+      }
       if arr[0].match( /^[A-Z]/ )
         # nothing to do
       elsif arr[0] == ""
@@ -854,7 +861,10 @@ class Evaluator
     name = name.to_s  if Symbol == name.class
     raise ArgumentError, sprintf( "Error: `%s' is not a lisp symbol", name ) if not ('_' == name[0])
     name = name[1..-1]
-    name.gsub( /_AMARK/, '*' ).gsub( /_QMARK/, '?' ).gsub( /_EMARK/, '!' )
+    @char_table_ruby_to_lisp.each_pair { |key,val|
+      name = name.gsub( Regexp.new( key ), val )
+    }
+    name
   end
 
   def toRubyArgument( origname, pred, args )
@@ -947,7 +957,6 @@ class Evaluator
         else
           origname = funcname.to_s
           funcname = funcname.to_s
-          funcname = @alias[ funcname ] if @alias[ funcname ] 
           sym      = toRubySymbol( funcname )
           [sprintf( "callProcedure( '%s',", origname ),
            [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
@@ -1186,7 +1195,6 @@ class Evaluator
       case sexp
       when Symbol
         sym = sexp.to_s
-        sym = @alias[ sym ]  if @alias[ sym ]
         sym = toRubySymbol( sym )
         lispSymbolReference( sym, locals, nil, sexp.sourcefile, sexp.lineno )
       when Fixnum
@@ -1229,7 +1237,7 @@ class Evaluator
         sexp.cdr.cdr = quoting( sexp.cdr.cdr )
         sexp
       elsif :let == sexp.car
-        if _null_QMARK( sexp.cdr )
+        if _null_QUMARK( sexp.cdr )
           # do nothing
           p "kiyoka1"
         else
@@ -1266,7 +1274,7 @@ class Evaluator
       sexp
     else
       newSexp = macroexpand_1_sub( sexp )
-      if not _equal_QMARK( newSexp, sexp )
+      if not _equal_QUMARK( newSexp, sexp )
         @expand_flag = false
       end
       newSexp
@@ -1280,7 +1288,6 @@ class Evaluator
         sexp
       else
         sym = sexp.car.to_s
-        sym = @alias[ sym ]  if @alias[ sym ]
         sym = toRubySymbol( sym )
         newSexp = sexp
         if isRubyInterface( sym )
@@ -1289,7 +1296,7 @@ class Evaluator
           eval( sprintf( "@__macro = @%s", sym ), @binding )
           newSexp = callProcedure( sym, @__macro, sexp.cdr )
         end
-        if _equal_QMARK( newSexp, sexp )
+        if _equal_QUMARK( newSexp, sexp )
           sexp.map { |x|
             if x.car.is_a? Cell
               macroexpand_1_check( x.car )
@@ -1315,7 +1322,7 @@ class Evaluator
     converge = true
     begin
       newSexp  = macroexpand_1( sexp )
-      converge = _equal_QMARK( newSexp, sexp )
+      converge = _equal_QUMARK( newSexp, sexp )
       sexp = newSexp
     end until converge
     sexp
@@ -1374,7 +1381,7 @@ class Evaluator
     }
   end
 
-  def _get_compiled_code()
+  def _get_MIMARKcompiled_MIMARKcode()
     @compiled_code.to_list
   end
 
@@ -1382,10 +1389,10 @@ class Evaluator
     self.lispEval( sexp, "dynamic S-expression ( no source )", 1 )
   end
 
-  def _enable_idebug()
+  def _enable_MIMARKidebug()
     @debug = true
   end
-  def _disable_idebug()
+  def _disable_MIMARKidebug()
     @debug = false
   end
 end
@@ -1404,9 +1411,9 @@ class Printer
         "`"
       when :unquote
         ","
-      when :unquote_splicing
+      when :"unquote-splicing"
         ",@"
-      when :dot_operator
+      when :"dot-operator"
         "."
       else
         false

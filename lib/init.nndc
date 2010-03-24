@@ -13,9 +13,9 @@
                 Cell.new(
                   callProcedure( 'pair?',
                       begin
-                        if (self.instance_variables.include?(:@_pair_QMARK)) then
-                          @_pair_QMARK
-                        else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                        if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                          @_pair_QUMARK
+                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:16"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
@@ -58,9 +58,9 @@
                   if ( 
                     callProcedure( 'pair?',
                         begin
-                          if (self.instance_variables.include?(:@_pair_QMARK)) then
-                            @_pair_QMARK
-                          else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                          if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                            @_pair_QUMARK
+                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:16"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
@@ -82,9 +82,9 @@
                       if ( 
                         callProcedure( 'pair?',
                             begin
-                              if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                @_pair_QMARK
-                              else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                              if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                @_pair_QUMARK
+                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:16"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -1325,15 +1325,15 @@
   @_append = 
       Proc.new { |_a,_b| 
           begin
-            ___lambda = lambda { |_append_reverse| 
-                _append_reverse                 = 
+            ___lambda = lambda { |_append_MIMARKreverse| 
+                _append_MIMARKreverse                 = 
                   Proc.new { |_a,_b| 
                       if ( 
                         callProcedure( 'pair?',
                             begin
-                              if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                @_pair_QMARK
-                              else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                              if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                @_pair_QUMARK
+                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:67"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -1343,9 +1343,9 @@
                               end
                                      ))
                        ) then
-                          callProcedure( 'append_reverse',
+                          callProcedure( 'append-reverse',
                               begin
-                                  _append_reverse
+                                  _append_MIMARKreverse
                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:70"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
@@ -1396,9 +1396,9 @@
                           end
                       end
                   }
-                callProcedure( 'append_reverse',
+                callProcedure( 'append-reverse',
                     begin
-                        _append_reverse
+                        _append_MIMARKreverse
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:70"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
@@ -1427,30 +1427,30 @@
       }
 #------------------------------
 
-  @_list_QMARK = 
+  @_list_QUMARK = 
       begin
-        if (self.instance_variables.include?(:@_pair_QMARK)) then
-          @_pair_QMARK
-        else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+        if (self.instance_variables.include?(:@_pair_QUMARK)) then
+          @_pair_QUMARK
+        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:75"] + __e.backtrace ) ; raise __e
       end
 #------------------------------
 
-  @_even_QMARK = 
+  @_even_QUMARK = 
       Proc.new { |_n| 
           callProcedure( '=',
               begin
-                if (self.instance_variables.include?(:@_eq_QMARK)) then
-                  @_eq_QMARK
-                else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                if (self.instance_variables.include?(:@__EQMARK)) then
+                  @__EQMARK
+                else raise NameError.new( "Error: undefined variable __EQMARK", "__EQMARK" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:76"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 callProcedure( '%',
                     begin
-                      if (self.instance_variables.include?(:@_mod)) then
-                        @_mod
-                      else raise NameError.new( "Error: undefined variable _mod", "_mod" ) end
+                      if (self.instance_variables.include?(:@__PAMARK)) then
+                        @__PAMARK
+                      else raise NameError.new( "Error: undefined variable __PAMARK", "__PAMARK" ) end
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:76"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
@@ -1465,7 +1465,7 @@
       }
 #------------------------------
 
-  @_odd_QMARK = 
+  @_odd_QUMARK = 
       Proc.new { |_n| 
           callProcedure( 'not',
               begin
@@ -1477,17 +1477,17 @@
               Cell.new(
                 callProcedure( '=',
                     begin
-                      if (self.instance_variables.include?(:@_eq_QMARK)) then
-                        @_eq_QMARK
-                      else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                      if (self.instance_variables.include?(:@__EQMARK)) then
+                        @__EQMARK
+                      else raise NameError.new( "Error: undefined variable __EQMARK", "__EQMARK" ) end
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:77"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
                       callProcedure( '%',
                           begin
-                            if (self.instance_variables.include?(:@_mod)) then
-                              @_mod
-                            else raise NameError.new( "Error: undefined variable _mod", "_mod" ) end
+                            if (self.instance_variables.include?(:@__PAMARK)) then
+                              @__PAMARK
+                            else raise NameError.new( "Error: undefined variable __PAMARK", "__PAMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:77"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
@@ -1503,13 +1503,13 @@
       }
 #------------------------------
 
-  @_zero_QMARK = 
+  @_zero_QUMARK = 
       Proc.new { |_n| 
           callProcedure( '=',
               begin
-                if (self.instance_variables.include?(:@_eq_QMARK)) then
-                  @_eq_QMARK
-                else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                if (self.instance_variables.include?(:@__EQMARK)) then
+                  @__EQMARK
+                else raise NameError.new( "Error: undefined variable __EQMARK", "__EQMARK" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:78"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
@@ -1522,13 +1522,13 @@
       }
 #------------------------------
 
-  @_positive_QMARK = 
+  @_positive_QUMARK = 
       Proc.new { |_n| 
           callProcedure( '>',
               begin
-                if (self.instance_variables.include?(:@_gt_QMARK)) then
-                  @_gt_QMARK
-                else raise NameError.new( "Error: undefined variable _gt_QMARK", "_gt_QMARK" ) end
+                if (self.instance_variables.include?(:@__GTMARK)) then
+                  @__GTMARK
+                else raise NameError.new( "Error: undefined variable __GTMARK", "__GTMARK" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:79"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
@@ -1541,13 +1541,13 @@
       }
 #------------------------------
 
-  @_negative_QMARK = 
+  @_negative_QUMARK = 
       Proc.new { |_n| 
           callProcedure( '<',
               begin
-                if (self.instance_variables.include?(:@_lt_QMARK)) then
-                  @_lt_QMARK
-                else raise NameError.new( "Error: undefined variable _lt_QMARK", "_lt_QMARK" ) end
+                if (self.instance_variables.include?(:@__LTMARK)) then
+                  @__LTMARK
+                else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:80"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
@@ -1565,9 +1565,9 @@
           if ( 
             callProcedure( '>=',
                 begin
-                  if (self.instance_variables.include?(:@_ge_QMARK)) then
-                    @_ge_QMARK
-                  else raise NameError.new( "Error: undefined variable _ge_QMARK", "_ge_QMARK" ) end
+                  if (self.instance_variables.include?(:@__GTMARK_EQMARK)) then
+                    @__GTMARK_EQMARK
+                  else raise NameError.new( "Error: undefined variable __GTMARK_EQMARK", "__GTMARK_EQMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:81"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -1585,9 +1585,9 @@
           else
               callProcedure( '-',
                   begin
-                    if (self.instance_variables.include?(:@_minus)) then
-                      @_minus
-                    else raise NameError.new( "Error: undefined variable _minus", "_minus" ) end
+                    if (self.instance_variables.include?(:@__MIMARK)) then
+                      @__MIMARK
+                    else raise NameError.new( "Error: undefined variable __MIMARK", "__MIMARK" ) end
                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:81"] + __e.backtrace ) ; raise __e
                   end                ,
                   Cell.new(
@@ -1614,9 +1614,9 @@
                     if ( 
                       callProcedure( '>',
                           begin
-                            if (self.instance_variables.include?(:@_gt_QMARK)) then
-                              @_gt_QMARK
-                            else raise NameError.new( "Error: undefined variable _gt_QMARK", "_gt_QMARK" ) end
+                            if (self.instance_variables.include?(:@__GTMARK)) then
+                              @__GTMARK
+                            else raise NameError.new( "Error: undefined variable __GTMARK", "__GTMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:83"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
@@ -1685,9 +1685,9 @@
                     if ( 
                       callProcedure( '<',
                           begin
-                            if (self.instance_variables.include?(:@_lt_QMARK)) then
-                              @_lt_QMARK
-                            else raise NameError.new( "Error: undefined variable _lt_QMARK", "_lt_QMARK" ) end
+                            if (self.instance_variables.include?(:@__LTMARK)) then
+                              @__LTMARK
+                            else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:85"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
@@ -1746,9 +1746,9 @@
       Proc.new { |_x| 
           callProcedure( '+',
               begin
-                if (self.instance_variables.include?(:@_plus)) then
-                  @_plus
-                else raise NameError.new( "Error: undefined variable _plus", "_plus" ) end
+                if (self.instance_variables.include?(:@__PLMARK)) then
+                  @__PLMARK
+                else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:86"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
@@ -1765,9 +1765,9 @@
       Proc.new { |_x| 
           callProcedure( '-',
               begin
-                if (self.instance_variables.include?(:@_minus)) then
-                  @_minus
-                else raise NameError.new( "Error: undefined variable _minus", "_minus" ) end
+                if (self.instance_variables.include?(:@__MIMARK)) then
+                  @__MIMARK
+                else raise NameError.new( "Error: undefined variable __MIMARK", "__MIMARK" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:87"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
@@ -1783,15 +1783,15 @@
   @_nth = 
       Proc.new { |_n,_lst| 
           begin
-            ___lambda = lambda { |_nth_iter| 
-                _nth_iter                 = 
+            ___lambda = lambda { |_nth_MIMARKiter| 
+                _nth_MIMARKiter                 = 
                   Proc.new { |_n,_index,_lst| 
                       if ( 
                         callProcedure( 'null?',
                             begin
-                              if (self.instance_variables.include?(:@_null_QMARK)) then
-                                @_null_QMARK
-                              else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                              if (self.instance_variables.include?(:@_null_QUMARK)) then
+                                @_null_QUMARK
+                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:91"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -1814,9 +1814,9 @@
                                 Cell.new(
                                   callProcedure( 'pair?',
                                       begin
-                                        if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                          @_pair_QMARK
-                                        else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                        if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                          @_pair_QUMARK
+                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:93"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
@@ -1832,9 +1832,9 @@
                               if ( 
                                 callProcedure( 'eqv?',
                                     begin
-                                      if (self.instance_variables.include?(:@_eqv_QMARK)) then
-                                        @_eqv_QMARK
-                                      else raise NameError.new( "Error: undefined variable _eqv_QMARK", "_eqv_QMARK" ) end
+                                      if (self.instance_variables.include?(:@_eqv_QUMARK)) then
+                                        @_eqv_QUMARK
+                                      else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:95"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
@@ -1862,9 +1862,9 @@
                                         end
                                                ))
                               else
-                                  callProcedure( 'nth_iter',
+                                  callProcedure( 'nth-iter',
                                       begin
-                                          _nth_iter
+                                          _nth_MIMARKiter
                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:98"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
@@ -1874,9 +1874,9 @@
                                         end                                      ,Cell.new(
                                         callProcedure( '+',
                                             begin
-                                              if (self.instance_variables.include?(:@_plus)) then
-                                                @_plus
-                                              else raise NameError.new( "Error: undefined variable _plus", "_plus" ) end
+                                              if (self.instance_variables.include?(:@__PLMARK)) then
+                                                @__PLMARK
+                                              else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:97"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
@@ -1904,9 +1904,9 @@
                           end
                       end
                   }
-                callProcedure( 'nth_iter',
+                callProcedure( 'nth-iter',
                     begin
-                        _nth_iter
+                        _nth_MIMARKiter
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:98"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
@@ -2132,9 +2132,9 @@
                       Cell.new(
                         callProcedure( 'equal?',
                             begin
-                              if (self.instance_variables.include?(:@_equal_QMARK)) then
-                                @_equal_QMARK
-                              else raise NameError.new( "Error: undefined variable _equal_QMARK", "_equal_QMARK" ) end
+                              if (self.instance_variables.include?(:@_equal_QUMARK)) then
+                                @_equal_QUMARK
+                              else raise NameError.new( "Error: undefined variable _equal_QUMARK", "_equal_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:115"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -2169,11 +2169,11 @@
                     end
                 end
             } ; ___lambda.call(
-                  callProcedure( 'macroexpand_1',
+                  callProcedure( 'macroexpand-1',
                       begin
-                        if (self.instance_variables.include?(:@_macroexpand_1)) then
-                          @_macroexpand_1
-                        else raise NameError.new( "Error: undefined variable _macroexpand_1", "_macroexpand_1" ) end
+                        if (self.instance_variables.include?(:@_macroexpand_MIMARK1)) then
+                          @_macroexpand_MIMARK1
+                        else raise NameError.new( "Error: undefined variable _macroexpand_MIMARK1", "_macroexpand_MIMARK1" ) end
                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:114"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
@@ -2196,8 +2196,8 @@
   @_cond = 
       LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
           begin
-            ___lambda = lambda { |_case_block,_cond_iter| 
-                _case_block                 = 
+            ___lambda = lambda { |_case_MIMARKblock,_cond_MIMARKiter| 
+                _case_MIMARKblock                 = 
                   Proc.new { |_elem,*__rest__| _elseblock = __rest__[0] ;  
                       begin
                         ___lambda = lambda { |_condition,_body,_tmpsym| 
@@ -2212,9 +2212,9 @@
                                   if ( 
                                     callProcedure( 'eq?',
                                         begin
-                                          if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                            @_eq_QMARK
-                                          else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                          if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                            @_eq_QUMARK
+                                          else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:151"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
@@ -2339,9 +2339,9 @@
                                   if ( 
                                     callProcedure( '<',
                                         begin
-                                          if (self.instance_variables.include?(:@_lt_QMARK)) then
-                                            @_lt_QMARK
-                                          else raise NameError.new( "Error: undefined variable _lt_QMARK", "_lt_QMARK" ) end
+                                          if (self.instance_variables.include?(:@__LTMARK)) then
+                                            @__LTMARK
+                                          else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:144"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
@@ -2373,9 +2373,9 @@
                               if ( 
                                 callProcedure( 'eq?',
                                     begin
-                                      if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                        @_eq_QMARK
-                                      else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                      if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                        @_eq_QUMARK
+                                      else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:151"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
@@ -2436,14 +2436,14 @@
                                    )
                       end
                   }
-                _cond_iter                 = 
+                _cond_MIMARKiter                 = 
                   Proc.new { |_lst| 
                       if ( 
                         callProcedure( 'eq?',
                             begin
-                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                @_eq_QMARK
-                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                @_eq_QUMARK
+                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:151"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -2468,9 +2468,9 @@
                           if ( 
                             callProcedure( 'eq?',
                                 begin
-                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                    @_eq_QMARK
-                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                    @_eq_QUMARK
+                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:151"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -2490,9 +2490,9 @@
                                                ))
                                          )))
                            ) then
-                              callProcedure( 'case_block',
+                              callProcedure( 'case-block',
                                   begin
-                                      _case_block
+                                      _case_MIMARKblock
                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:153"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
@@ -2512,9 +2512,9 @@
                                   Nil.new
                                            )))
                           else
-                              callProcedure( 'case_block',
+                              callProcedure( 'case-block',
                                   begin
-                                      _case_block
+                                      _case_MIMARKblock
                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:153"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
@@ -2531,9 +2531,9 @@
                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:155"] + __e.backtrace ) ; raise __e
                                           end
                                                  ))                                  ,Cell.new(
-                                    callProcedure( 'cond_iter',
+                                    callProcedure( 'cond-iter',
                                         begin
-                                            _cond_iter
+                                            _cond_MIMARKiter
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:155"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
@@ -2555,9 +2555,9 @@
                           end
                       end
                   }
-                callProcedure( 'cond_iter',
+                callProcedure( 'cond-iter',
                     begin
-                        _cond_iter
+                        _cond_MIMARKiter
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:155"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
@@ -2630,15 +2630,15 @@
   @_or = 
       LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
           begin
-            ___lambda = lambda { |_or_iter| 
-                _or_iter                 = 
+            ___lambda = lambda { |_or_MIMARKiter| 
+                _or_MIMARKiter                 = 
                   Proc.new { |_lst| 
                       if ( 
                         callProcedure( 'eq?',
                             begin
-                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                @_eq_QMARK
-                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                @_eq_QUMARK
+                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:170"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -2665,9 +2665,9 @@
                           if ( 
                             callProcedure( 'eq?',
                                 begin
-                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                    @_eq_QMARK
-                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                    @_eq_QUMARK
+                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:170"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -2799,9 +2799,9 @@
                                                             _sym
                                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:177"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,Cell.new(
-                                                        callProcedure( 'or_iter',
+                                                        callProcedure( 'or-iter',
                                                             begin
-                                                                _or_iter
+                                                                _or_MIMARKiter
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:178"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
@@ -2838,9 +2838,9 @@
                           end
                       end
                   }
-                callProcedure( 'or_iter',
+                callProcedure( 'or-iter',
                     begin
-                        _or_iter
+                        _or_MIMARKiter
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:178"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
@@ -2859,15 +2859,15 @@
   @_and = 
       LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
           begin
-            ___lambda = lambda { |_and_iter| 
-                _and_iter                 = 
+            ___lambda = lambda { |_and_MIMARKiter| 
+                _and_MIMARKiter                 = 
                   Proc.new { |_lst| 
                       if ( 
                         callProcedure( 'eq?',
                             begin
-                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                @_eq_QMARK
-                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                @_eq_QUMARK
+                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:190"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -2894,9 +2894,9 @@
                           if ( 
                             callProcedure( 'eq?',
                                 begin
-                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                    @_eq_QMARK
-                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                    @_eq_QUMARK
+                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:190"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -2979,9 +2979,9 @@
                                                                      ))
                                                                ))))
                                                          )))                                          ,Cell.new(
-                                            callProcedure( 'and_iter',
+                                            callProcedure( 'and-iter',
                                                 begin
-                                                    _and_iter
+                                                    _and_MIMARKiter
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:193"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
@@ -3006,9 +3006,9 @@
                           end
                       end
                   }
-                callProcedure( 'and_iter',
+                callProcedure( 'and-iter',
                     begin
-                        _and_iter
+                        _and_MIMARKiter
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:193"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
@@ -3029,9 +3029,9 @@
           if ( 
             callProcedure( 'null?',
                 begin
-                  if (self.instance_variables.include?(:@_null_QMARK)) then
-                    @_null_QMARK
-                  else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                  if (self.instance_variables.include?(:@_null_QUMARK)) then
+                    @_null_QUMARK
+                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:197"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -3146,18 +3146,18 @@
                               Cell.new(
                                 callProcedure( 'eq?',
                                     begin
-                                      if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                        @_eq_QMARK
-                                      else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                      if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                        @_eq_QUMARK
+                                      else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     false                                    ,Cell.new(
                                       callProcedure( 'pair?',
                                           begin
-                                            if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                              @_pair_QMARK
-                                            else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                            if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                              @_pair_QUMARK
+                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:245"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
@@ -3180,18 +3180,18 @@
                                   Cell.new(
                                     callProcedure( 'eq?',
                                         begin
-                                          if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                            @_eq_QMARK
-                                          else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                          if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                            @_eq_QUMARK
+                                          else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                         false                                        ,Cell.new(
                                           callProcedure( 'eq?',
                                               begin
-                                                if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                  @_eq_QMARK
-                                                else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                  @_eq_QUMARK
+                                                else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
@@ -3224,18 +3224,18 @@
                                       Cell.new(
                                         callProcedure( 'eq?',
                                             begin
-                                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                @_eq_QMARK
-                                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                @_eq_QUMARK
+                                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                             false                                            ,Cell.new(
                                               callProcedure( 'eq?',
                                                   begin
-                                                    if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                      @_eq_QMARK
-                                                    else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                    if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                      @_eq_QUMARK
+                                                    else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
@@ -3289,18 +3289,18 @@
                                           Cell.new(
                                             callProcedure( 'eq?',
                                                 begin
-                                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                    @_eq_QMARK
-                                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                    @_eq_QUMARK
+                                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                 false                                                ,Cell.new(
                                                   callProcedure( 'pair?',
                                                       begin
-                                                        if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                                          @_pair_QMARK
-                                                        else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                                        if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                                          @_pair_QUMARK
+                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:245"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
@@ -3323,18 +3323,18 @@
                                               Cell.new(
                                                 callProcedure( 'eq?',
                                                     begin
-                                                      if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                        @_eq_QMARK
-                                                      else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                      if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                        @_eq_QUMARK
+                                                      else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                     false                                                    ,Cell.new(
                                                       callProcedure( 'eq?',
                                                           begin
-                                                            if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                              @_eq_QMARK
-                                                            else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                            if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                              @_eq_QUMARK
+                                                            else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
@@ -3358,9 +3358,9 @@
                                          ) then
                                             callProcedure( 'eq?',
                                                 begin
-                                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                    @_eq_QMARK
-                                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                    @_eq_QUMARK
+                                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
@@ -3461,9 +3461,9 @@
                                                   } ; ___lambda.call(
                                                         callProcedure( 'string?',
                                                             begin
-                                                              if (self.instance_variables.include?(:@_string_QMARK)) then
-                                                                @_string_QMARK
-                                                              else raise NameError.new( "Error: undefined variable _string_QMARK", "_string_QMARK" ) end
+                                                              if (self.instance_variables.include?(:@_string_QUMARK)) then
+                                                                @_string_QUMARK
+                                                              else raise NameError.new( "Error: undefined variable _string_QUMARK", "_string_QUMARK" ) end
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:234"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
@@ -3478,9 +3478,9 @@
                                         } ; ___lambda.call(
                                               callProcedure( 'number?',
                                                   begin
-                                                    if (self.instance_variables.include?(:@_number_QMARK)) then
-                                                      @_number_QMARK
-                                                    else raise NameError.new( "Error: undefined variable _number_QMARK", "_number_QMARK" ) end
+                                                    if (self.instance_variables.include?(:@_number_QUMARK)) then
+                                                      @_number_QUMARK
+                                                    else raise NameError.new( "Error: undefined variable _number_QUMARK", "_number_QUMARK" ) end
                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:234"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
@@ -3495,9 +3495,9 @@
                               } ; ___lambda.call(
                                     callProcedure( 'procedure?',
                                         begin
-                                          if (self.instance_variables.include?(:@_procedure_QMARK)) then
-                                            @_procedure_QMARK
-                                          else raise NameError.new( "Error: undefined variable _procedure_QMARK", "_procedure_QMARK" ) end
+                                          if (self.instance_variables.include?(:@_procedure_QUMARK)) then
+                                            @_procedure_QUMARK
+                                          else raise NameError.new( "Error: undefined variable _procedure_QUMARK", "_procedure_QUMARK" ) end
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:234"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
@@ -3593,18 +3593,18 @@
                                                 Cell.new(
                                                   callProcedure( 'eq?',
                                                       begin
-                                                        if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                          @_eq_QMARK
-                                                        else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                        if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                          @_eq_QUMARK
+                                                        else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                       false                                                      ,Cell.new(
                                                         callProcedure( 'pair?',
                                                             begin
-                                                              if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                                                @_pair_QMARK
-                                                              else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                                              if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                                                @_pair_QUMARK
+                                                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:245"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
@@ -3627,18 +3627,18 @@
                                                     Cell.new(
                                                       callProcedure( 'eq?',
                                                           begin
-                                                            if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                              @_eq_QMARK
-                                                            else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                            if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                              @_eq_QUMARK
+                                                            else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                           false                                                          ,Cell.new(
                                                             callProcedure( 'eq?',
                                                                 begin
-                                                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                                    @_eq_QMARK
-                                                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                                    @_eq_QUMARK
+                                                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
@@ -3662,9 +3662,9 @@
                                                ) then
                                                   callProcedure( 'eq?',
                                                       begin
-                                                        if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                          @_eq_QMARK
-                                                        else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                        if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                          @_eq_QUMARK
+                                                        else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
@@ -3704,9 +3704,9 @@
                           } ; ___lambda.call(
                                 callProcedure( 'null?',
                                     begin
-                                      if (self.instance_variables.include?(:@_null_QMARK)) then
-                                        @_null_QMARK
-                                      else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                                      if (self.instance_variables.include?(:@_null_QUMARK)) then
+                                        @_null_QUMARK
+                                      else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:225"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
@@ -3765,9 +3765,9 @@
                             Cell.new(
                               callProcedure( 'pair?',
                                   begin
-                                    if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                      @_pair_QMARK
-                                    else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                    if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                      @_pair_QUMARK
+                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:245"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
@@ -3824,9 +3824,9 @@
                                                       } ; ___lambda.call(
                                                             callProcedure( 'string?',
                                                                 begin
-                                                                  if (self.instance_variables.include?(:@_string_QMARK)) then
-                                                                    @_string_QMARK
-                                                                  else raise NameError.new( "Error: undefined variable _string_QMARK", "_string_QMARK" ) end
+                                                                  if (self.instance_variables.include?(:@_string_QUMARK)) then
+                                                                    @_string_QUMARK
+                                                                  else raise NameError.new( "Error: undefined variable _string_QUMARK", "_string_QUMARK" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:234"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
@@ -3841,9 +3841,9 @@
                                             } ; ___lambda.call(
                                                   callProcedure( 'number?',
                                                       begin
-                                                        if (self.instance_variables.include?(:@_number_QMARK)) then
-                                                          @_number_QMARK
-                                                        else raise NameError.new( "Error: undefined variable _number_QMARK", "_number_QMARK" ) end
+                                                        if (self.instance_variables.include?(:@_number_QUMARK)) then
+                                                          @_number_QUMARK
+                                                        else raise NameError.new( "Error: undefined variable _number_QUMARK", "_number_QUMARK" ) end
                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:234"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
@@ -3858,9 +3858,9 @@
                                   } ; ___lambda.call(
                                         callProcedure( 'procedure?',
                                             begin
-                                              if (self.instance_variables.include?(:@_procedure_QMARK)) then
-                                                @_procedure_QMARK
-                                              else raise NameError.new( "Error: undefined variable _procedure_QMARK", "_procedure_QMARK" ) end
+                                              if (self.instance_variables.include?(:@_procedure_QUMARK)) then
+                                                @_procedure_QUMARK
+                                              else raise NameError.new( "Error: undefined variable _procedure_QUMARK", "_procedure_QUMARK" ) end
                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:234"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
@@ -3897,9 +3897,9 @@
                           if ( 
                             callProcedure( 'eq?',
                                 begin
-                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                    @_eq_QMARK
-                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                    @_eq_QUMARK
+                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -3939,9 +3939,9 @@
                                             Cell.new(
                                               callProcedure( '+',
                                                   begin
-                                                    if (self.instance_variables.include?(:@_plus)) then
-                                                      @_plus
-                                                    else raise NameError.new( "Error: undefined variable _plus", "_plus" ) end
+                                                    if (self.instance_variables.include?(:@__PLMARK)) then
+                                                      @__PLMARK
+                                                    else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:239"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
@@ -3975,9 +3975,9 @@
                                       if ( 
                                         callProcedure( 'zero?',
                                             begin
-                                              if (self.instance_variables.include?(:@_zero_QMARK)) then
-                                                @_zero_QMARK
-                                              else raise NameError.new( "Error: undefined variable _zero_QMARK", "_zero_QMARK" ) end
+                                              if (self.instance_variables.include?(:@_zero_QUMARK)) then
+                                                @_zero_QUMARK
+                                              else raise NameError.new( "Error: undefined variable _zero_QUMARK", "_zero_QUMARK" ) end
                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:240"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
@@ -3990,9 +3990,9 @@
                                           if ( 
                                             callProcedure( 'eq?',
                                                 begin
-                                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                    @_eq_QMARK
-                                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                    @_eq_QUMARK
+                                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
@@ -4040,9 +4040,9 @@
                                               if ( 
                                                 callProcedure( 'eq?',
                                                     begin
-                                                      if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                        @_eq_QMARK
-                                                      else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                      if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                        @_eq_QUMARK
+                                                      else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
@@ -4059,7 +4059,7 @@
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:258"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    ))                                                    ,Cell.new(
-                                                    :"unquote_splicing"
+                                                    :"unquote-splicing"
                                                              )))
                                                ) then
                                                   begin
@@ -4078,18 +4078,18 @@
                                                           Cell.new(
                                                             callProcedure( 'eq?',
                                                                 begin
-                                                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                                    @_eq_QMARK
-                                                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                                    @_eq_QUMARK
+                                                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                 false                                                                ,Cell.new(
                                                                   callProcedure( 'pair?',
                                                                       begin
-                                                                        if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                                                          @_pair_QMARK
-                                                                        else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                                                        if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                                                          @_pair_QUMARK
+                                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:245"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
@@ -4112,9 +4112,9 @@
                                                      ) then
                                                         callProcedure( 'eq?',
                                                             begin
-                                                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                                @_eq_QMARK
-                                                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                                @_eq_QUMARK
+                                                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
@@ -4140,7 +4140,7 @@
                                                                           end
                                                                                  ))
                                                                            ))                                                            ,Cell.new(
-                                                            :"unquote_splicing"
+                                                            :"unquote-splicing"
                                                                      )))
                                                     else
                                                       false
@@ -4287,9 +4287,9 @@
                                           if ( 
                                             callProcedure( 'eq?',
                                                 begin
-                                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                    @_eq_QMARK
-                                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                    @_eq_QUMARK
+                                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
@@ -4329,9 +4329,9 @@
                                                             Cell.new(
                                                               callProcedure( '-',
                                                                   begin
-                                                                    if (self.instance_variables.include?(:@_minus)) then
-                                                                      @_minus
-                                                                    else raise NameError.new( "Error: undefined variable _minus", "_minus" ) end
+                                                                    if (self.instance_variables.include?(:@__MIMARK)) then
+                                                                      @__MIMARK
+                                                                    else raise NameError.new( "Error: undefined variable __MIMARK", "__MIMARK" ) end
                                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:256"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
@@ -4361,9 +4361,9 @@
                                               if ( 
                                                 callProcedure( 'eq?',
                                                     begin
-                                                      if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                        @_eq_QMARK
-                                                      else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                      if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                        @_eq_QUMARK
+                                                      else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:254"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
@@ -4380,7 +4380,7 @@
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:258"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    ))                                                    ,Cell.new(
-                                                    :"unquote_splicing"
+                                                    :"unquote-splicing"
                                                              )))
                                                ) then
                                                   begin
@@ -4394,7 +4394,7 @@
                                                                 _form
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:258"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,Cell.new(
-                                                          Cell.new(:"quote",Cell.new(:"unquote_splicing"))                                                          ,Cell.new(
+                                                          Cell.new(:"quote",Cell.new(:"unquote-splicing"))                                                          ,Cell.new(
                                                             callProcedure( 'foo',
                                                                 begin
                                                                     _foo
@@ -4403,9 +4403,9 @@
                                                                 Cell.new(
                                                                   callProcedure( '-',
                                                                       begin
-                                                                        if (self.instance_variables.include?(:@_minus)) then
-                                                                          @_minus
-                                                                        else raise NameError.new( "Error: undefined variable _minus", "_minus" ) end
+                                                                        if (self.instance_variables.include?(:@__MIMARK)) then
+                                                                          @__MIMARK
+                                                                        else raise NameError.new( "Error: undefined variable __MIMARK", "__MIMARK" ) end
                                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:256"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
@@ -4530,7 +4530,7 @@
       }
 #------------------------------
 
-  @_unquote_splicing = 
+  @_unquote_MIMARKsplicing = 
       LispMacro.new { |_lst| 
         begin raise RuntimeError, "unquote-splicing appeared outside quasiquote" ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:267"] + __e.backtrace ) ; raise __e ; end 
       }
@@ -4994,9 +4994,9 @@
           if ( 
             callProcedure( 'symbol?',
                 begin
-                  if (self.instance_variables.include?(:@_symbol_QMARK)) then
-                    @_symbol_QMARK
-                  else raise NameError.new( "Error: undefined variable _symbol_QMARK", "_symbol_QMARK" ) end
+                  if (self.instance_variables.include?(:@_symbol_QUMARK)) then
+                    @_symbol_QUMARK
+                  else raise NameError.new( "Error: undefined variable _symbol_QUMARK", "_symbol_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:297"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -5243,14 +5243,14 @@
       }
 #------------------------------
 
-  @_generic_member = 
+  @_generic_MIMARKmember = 
       Proc.new { |_cmp,_obj,_lst| 
           if ( 
             callProcedure( 'null?',
                 begin
-                  if (self.instance_variables.include?(:@_null_QMARK)) then
-                    @_null_QMARK
-                  else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                  if (self.instance_variables.include?(:@_null_QUMARK)) then
+                    @_null_QUMARK
+                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:321"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -5301,11 +5301,11 @@
                   true
                    ) then
                       begin
-                          callProcedure( 'generic_member',
+                          callProcedure( 'generic-member',
                               begin
-                                if (self.instance_variables.include?(:@_generic_member)) then
-                                  @_generic_member
-                                else raise NameError.new( "Error: undefined variable _generic_member", "_generic_member" ) end
+                                if (self.instance_variables.include?(:@_generic_MIMARKmember)) then
+                                  @_generic_MIMARKmember
+                                else raise NameError.new( "Error: undefined variable _generic_MIMARKmember", "_generic_MIMARKmember" ) end
                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:323"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
@@ -5340,18 +5340,18 @@
 
   @_memq = 
       Proc.new { |_obj,_lst| 
-          callProcedure( 'generic_member',
+          callProcedure( 'generic-member',
               begin
-                if (self.instance_variables.include?(:@_generic_member)) then
-                  @_generic_member
-                else raise NameError.new( "Error: undefined variable _generic_member", "_generic_member" ) end
+                if (self.instance_variables.include?(:@_generic_MIMARKmember)) then
+                  @_generic_MIMARKmember
+                else raise NameError.new( "Error: undefined variable _generic_MIMARKmember", "_generic_MIMARKmember" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:326"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 begin
-                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                    @_eq_QMARK
-                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                    @_eq_QUMARK
+                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:326"] + __e.backtrace ) ; raise __e
                 end              ,Cell.new(
                 begin
@@ -5368,18 +5368,18 @@
 
   @_memv = 
       Proc.new { |_obj,_lst| 
-          callProcedure( 'generic_member',
+          callProcedure( 'generic-member',
               begin
-                if (self.instance_variables.include?(:@_generic_member)) then
-                  @_generic_member
-                else raise NameError.new( "Error: undefined variable _generic_member", "_generic_member" ) end
+                if (self.instance_variables.include?(:@_generic_MIMARKmember)) then
+                  @_generic_MIMARKmember
+                else raise NameError.new( "Error: undefined variable _generic_MIMARKmember", "_generic_MIMARKmember" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:328"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 begin
-                  if (self.instance_variables.include?(:@_eqv_QMARK)) then
-                    @_eqv_QMARK
-                  else raise NameError.new( "Error: undefined variable _eqv_QMARK", "_eqv_QMARK" ) end
+                  if (self.instance_variables.include?(:@_eqv_QUMARK)) then
+                    @_eqv_QUMARK
+                  else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:328"] + __e.backtrace ) ; raise __e
                 end              ,Cell.new(
                 begin
@@ -5396,18 +5396,18 @@
 
   @_member = 
       Proc.new { |_obj,_lst| 
-          callProcedure( 'generic_member',
+          callProcedure( 'generic-member',
               begin
-                if (self.instance_variables.include?(:@_generic_member)) then
-                  @_generic_member
-                else raise NameError.new( "Error: undefined variable _generic_member", "_generic_member" ) end
+                if (self.instance_variables.include?(:@_generic_MIMARKmember)) then
+                  @_generic_MIMARKmember
+                else raise NameError.new( "Error: undefined variable _generic_MIMARKmember", "_generic_MIMARKmember" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:330"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 begin
-                  if (self.instance_variables.include?(:@_equal_QMARK)) then
-                    @_equal_QMARK
-                  else raise NameError.new( "Error: undefined variable _equal_QMARK", "_equal_QMARK" ) end
+                  if (self.instance_variables.include?(:@_equal_QUMARK)) then
+                    @_equal_QUMARK
+                  else raise NameError.new( "Error: undefined variable _equal_QUMARK", "_equal_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:330"] + __e.backtrace ) ; raise __e
                 end              ,Cell.new(
                 begin
@@ -5422,14 +5422,14 @@
       }
 #------------------------------
 
-  @_generic_assoc = 
+  @_generic_MIMARKassoc = 
       Proc.new { |_cmp,_obj,_alst| 
           if ( 
             callProcedure( 'null?',
                 begin
-                  if (self.instance_variables.include?(:@_null_QMARK)) then
-                    @_null_QMARK
-                  else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                  if (self.instance_variables.include?(:@_null_QUMARK)) then
+                    @_null_QUMARK
+                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:335"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -5489,11 +5489,11 @@
                   true
                    ) then
                       begin
-                          callProcedure( 'generic_assoc',
+                          callProcedure( 'generic-assoc',
                               begin
-                                if (self.instance_variables.include?(:@_generic_assoc)) then
-                                  @_generic_assoc
-                                else raise NameError.new( "Error: undefined variable _generic_assoc", "_generic_assoc" ) end
+                                if (self.instance_variables.include?(:@_generic_MIMARKassoc)) then
+                                  @_generic_MIMARKassoc
+                                else raise NameError.new( "Error: undefined variable _generic_MIMARKassoc", "_generic_MIMARKassoc" ) end
                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:337"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
@@ -5528,18 +5528,18 @@
 
   @_assq = 
       Proc.new { |_obj,_alst| 
-          callProcedure( 'generic_assoc',
+          callProcedure( 'generic-assoc',
               begin
-                if (self.instance_variables.include?(:@_generic_assoc)) then
-                  @_generic_assoc
-                else raise NameError.new( "Error: undefined variable _generic_assoc", "_generic_assoc" ) end
+                if (self.instance_variables.include?(:@_generic_MIMARKassoc)) then
+                  @_generic_MIMARKassoc
+                else raise NameError.new( "Error: undefined variable _generic_MIMARKassoc", "_generic_MIMARKassoc" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:340"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 begin
-                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                    @_eq_QMARK
-                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                    @_eq_QUMARK
+                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:340"] + __e.backtrace ) ; raise __e
                 end              ,Cell.new(
                 begin
@@ -5556,18 +5556,18 @@
 
   @_assv = 
       Proc.new { |_obj,_alst| 
-          callProcedure( 'generic_assoc',
+          callProcedure( 'generic-assoc',
               begin
-                if (self.instance_variables.include?(:@_generic_assoc)) then
-                  @_generic_assoc
-                else raise NameError.new( "Error: undefined variable _generic_assoc", "_generic_assoc" ) end
+                if (self.instance_variables.include?(:@_generic_MIMARKassoc)) then
+                  @_generic_MIMARKassoc
+                else raise NameError.new( "Error: undefined variable _generic_MIMARKassoc", "_generic_MIMARKassoc" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:342"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 begin
-                  if (self.instance_variables.include?(:@_eqv_QMARK)) then
-                    @_eqv_QMARK
-                  else raise NameError.new( "Error: undefined variable _eqv_QMARK", "_eqv_QMARK" ) end
+                  if (self.instance_variables.include?(:@_eqv_QUMARK)) then
+                    @_eqv_QUMARK
+                  else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:342"] + __e.backtrace ) ; raise __e
                 end              ,Cell.new(
                 begin
@@ -5584,18 +5584,18 @@
 
   @_assoc = 
       Proc.new { |_obj,_alst| 
-          callProcedure( 'generic_assoc',
+          callProcedure( 'generic-assoc',
               begin
-                if (self.instance_variables.include?(:@_generic_assoc)) then
-                  @_generic_assoc
-                else raise NameError.new( "Error: undefined variable _generic_assoc", "_generic_assoc" ) end
+                if (self.instance_variables.include?(:@_generic_MIMARKassoc)) then
+                  @_generic_MIMARKassoc
+                else raise NameError.new( "Error: undefined variable _generic_MIMARKassoc", "_generic_MIMARKassoc" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:344"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 begin
-                  if (self.instance_variables.include?(:@_equal_QMARK)) then
-                    @_equal_QMARK
-                  else raise NameError.new( "Error: undefined variable _equal_QMARK", "_equal_QMARK" ) end
+                  if (self.instance_variables.include?(:@_equal_QUMARK)) then
+                    @_equal_QUMARK
+                  else raise NameError.new( "Error: undefined variable _equal_QUMARK", "_equal_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:344"] + __e.backtrace ) ; raise __e
                 end              ,Cell.new(
                 begin
@@ -5645,7 +5645,7 @@
       }
 #------------------------------
 
-  @_assq_ref = 
+  @_assq_MIMARKref = 
       Proc.new { |_obj,_alst| 
           if ( 
             @___gensym__32 = 
@@ -5694,7 +5694,7 @@
       }
 #------------------------------
 
-  @_assv_ref = 
+  @_assv_MIMARKref = 
       Proc.new { |_obj,_alst| 
           if ( 
             @___gensym__34 = 
@@ -5743,7 +5743,7 @@
       }
 #------------------------------
 
-  @_assoc_ref = 
+  @_assoc_MIMARKref = 
       Proc.new { |_obj,_alst| 
           if ( 
             @___gensym__36 = 
@@ -5797,9 +5797,9 @@
           if ( 
             callProcedure( 'null?',
                 begin
-                  if (self.instance_variables.include?(:@_null_QMARK)) then
-                    @_null_QMARK
-                  else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                  if (self.instance_variables.include?(:@_null_QUMARK)) then
+                    @_null_QUMARK
+                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:363"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -5870,7 +5870,7 @@
       }
 #------------------------------
 
-  @_for_each = 
+  @_for_MIMARKeach = 
       begin
         if (self.instance_variables.include?(:@_map)) then
           @_map
@@ -5884,9 +5884,9 @@
           if ( 
             callProcedure( 'null?',
                 begin
-                  if (self.instance_variables.include?(:@_null_QMARK)) then
-                    @_null_QMARK
-                  else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                  if (self.instance_variables.include?(:@_null_QUMARK)) then
+                    @_null_QUMARK
+                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:371"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -6000,14 +6000,14 @@
       }
 #------------------------------
 
-  @_filter_map = 
+  @_filter_MIMARKmap = 
       Proc.new { |_pred,_lst| 
           if ( 
             callProcedure( 'null?',
                 begin
-                  if (self.instance_variables.include?(:@_null_QMARK)) then
-                    @_null_QMARK
-                  else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                  if (self.instance_variables.include?(:@_null_QUMARK)) then
+                    @_null_QUMARK
+                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:381"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -6039,11 +6039,11 @@
                                   _result
                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:386"] + __e.backtrace ) ; raise __e
                               end                            ,Cell.new(
-                              callProcedure( 'filter_map',
+                              callProcedure( 'filter-map',
                                   begin
-                                    if (self.instance_variables.include?(:@_filter_map)) then
-                                      @_filter_map
-                                    else raise NameError.new( "Error: undefined variable _filter_map", "_filter_map" ) end
+                                    if (self.instance_variables.include?(:@_filter_MIMARKmap)) then
+                                      @_filter_MIMARKmap
+                                    else raise NameError.new( "Error: undefined variable _filter_MIMARKmap", "_filter_MIMARKmap" ) end
                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:388"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
@@ -6067,11 +6067,11 @@
                                            )))
                                      )))
                     else
-                        callProcedure( 'filter_map',
+                        callProcedure( 'filter-map',
                             begin
-                              if (self.instance_variables.include?(:@_filter_map)) then
-                                @_filter_map
-                              else raise NameError.new( "Error: undefined variable _filter_map", "_filter_map" ) end
+                              if (self.instance_variables.include?(:@_filter_MIMARKmap)) then
+                                @_filter_MIMARKmap
+                              else raise NameError.new( "Error: undefined variable _filter_MIMARKmap", "_filter_MIMARKmap" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:388"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -6134,9 +6134,9 @@
                 Cell.new(
                   callProcedure( 'list?',
                       begin
-                        if (self.instance_variables.include?(:@_list_QMARK)) then
-                          @_list_QMARK
-                        else raise NameError.new( "Error: undefined variable _list_QMARK", "_list_QMARK" ) end
+                        if (self.instance_variables.include?(:@_list_QUMARK)) then
+                          @_list_QUMARK
+                        else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:396"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
@@ -6184,9 +6184,9 @@
                           Cell.new(
                             callProcedure( 'list?',
                                 begin
-                                  if (self.instance_variables.include?(:@_list_QMARK)) then
-                                    @_list_QMARK
-                                  else raise NameError.new( "Error: undefined variable _list_QMARK", "_list_QMARK" ) end
+                                  if (self.instance_variables.include?(:@_list_QUMARK)) then
+                                    @_list_QUMARK
+                                  else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:396"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -6226,9 +6226,9 @@
                               if ( 
                                 callProcedure( '<',
                                     begin
-                                      if (self.instance_variables.include?(:@_lt_QMARK)) then
-                                        @_lt_QMARK
-                                      else raise NameError.new( "Error: undefined variable _lt_QMARK", "_lt_QMARK" ) end
+                                      if (self.instance_variables.include?(:@__LTMARK)) then
+                                        @__LTMARK
+                                      else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:410"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
@@ -6400,18 +6400,18 @@
                                                 Cell.new(
                                                   callProcedure( 'eq?',
                                                       begin
-                                                        if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                          @_eq_QMARK
-                                                        else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                        if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                          @_eq_QUMARK
+                                                        else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:407"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                       false                                                      ,Cell.new(
                                                         callProcedure( 'eq?',
                                                             begin
-                                                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                                @_eq_QMARK
-                                                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                                @_eq_QUMARK
+                                                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:407"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
@@ -6435,9 +6435,9 @@
                                            ) then
                                               callProcedure( 'symbol?',
                                                   begin
-                                                    if (self.instance_variables.include?(:@_symbol_QMARK)) then
-                                                      @_symbol_QMARK
-                                                    else raise NameError.new( "Error: undefined variable _symbol_QMARK", "_symbol_QMARK" ) end
+                                                    if (self.instance_variables.include?(:@_symbol_QUMARK)) then
+                                                      @_symbol_QUMARK
+                                                    else raise NameError.new( "Error: undefined variable _symbol_QUMARK", "_symbol_QUMARK" ) end
                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:408"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
@@ -6492,18 +6492,18 @@
                                                       Cell.new(
                                                         callProcedure( 'eq?',
                                                             begin
-                                                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                                @_eq_QMARK
-                                                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                                @_eq_QUMARK
+                                                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:407"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                             false                                                            ,Cell.new(
                                                               callProcedure( 'eq?',
                                                                   begin
-                                                                    if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                                      @_eq_QMARK
-                                                                    else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                                    if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                                      @_eq_QUMARK
+                                                                    else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:407"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
@@ -6527,9 +6527,9 @@
                                                  ) then
                                                     callProcedure( 'symbol?',
                                                         begin
-                                                          if (self.instance_variables.include?(:@_symbol_QMARK)) then
-                                                            @_symbol_QMARK
-                                                          else raise NameError.new( "Error: undefined variable _symbol_QMARK", "_symbol_QMARK" ) end
+                                                          if (self.instance_variables.include?(:@_symbol_QUMARK)) then
+                                                            @_symbol_QUMARK
+                                                          else raise NameError.new( "Error: undefined variable _symbol_QUMARK", "_symbol_QUMARK" ) end
                                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:408"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
@@ -6581,15 +6581,15 @@
 #------------------------------
 
   @_case = 
-      LispMacro.new { |_cond_exp,*__rest__| _body = __rest__[0] ;  
+      LispMacro.new { |_cond_MIMARKexp,*__rest__| _body = __rest__[0] ;  
           begin
-            ___lambda = lambda { |_case_block,_case_iter| 
-                _case_block                 = 
+            ___lambda = lambda { |_case_MIMARKblock,_case_MIMARKiter| 
+                _case_MIMARKblock                 = 
                   Proc.new { |_val,*__rest__| _elem = __rest__[0] ;  
                       begin
                         ___lambda = lambda { |_block| 
                             begin
-                              ___lambda = lambda { |_cond_vals,_body| 
+                              ___lambda = lambda { |_cond_MIMARKvals,_body| 
                                   begin
                                     ___lambda = lambda { |_v| 
                                         callProcedure( 'cons',
@@ -6623,21 +6623,21 @@
                                           if ( 
                                             callProcedure( 'eq?',
                                                 begin
-                                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                    @_eq_QMARK
-                                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                    @_eq_QUMARK
+                                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:451"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                 :"else"                                                ,Cell.new(
                                                   begin
-                                                      _cond_vals
+                                                      _cond_MIMARKvals
                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:442"] + __e.backtrace ) ; raise __e
                                                   end
                                                          )))
                                            ) then
                                               begin
-                                                  _cond_vals
+                                                  _cond_MIMARKvals
                                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:442"] + __e.backtrace ) ; raise __e
                                               end
                                           else
@@ -6698,7 +6698,7 @@
                                                                            )))
                                                           }                                                        ,Cell.new(
                                                           begin
-                                                              _cond_vals
+                                                              _cond_MIMARKvals
                                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:442"] + __e.backtrace ) ; raise __e
                                                           end
                                                                  )))
@@ -6752,14 +6752,14 @@
                                    )
                       end
                   }
-                _case_iter                 = 
+                _case_MIMARKiter                 = 
                   Proc.new { |_val,_lst| 
                       if ( 
                         callProcedure( 'eq?',
                             begin
-                              if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                @_eq_QMARK
-                              else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                              if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                @_eq_QUMARK
+                              else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:451"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -6786,9 +6786,9 @@
                           if ( 
                             callProcedure( 'eq?',
                                 begin
-                                  if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                    @_eq_QMARK
-                                  else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                  if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                    @_eq_QUMARK
+                                  else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:451"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -6809,9 +6809,9 @@
                                          )))
                            ) then
                               begin
-                                  callProcedure( 'case_block',
+                                  callProcedure( 'case-block',
                                       begin
-                                          _case_block
+                                          _case_MIMARKblock
                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:454"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
@@ -6847,9 +6847,9 @@
                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:454"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
-                                            callProcedure( 'case_block',
+                                            callProcedure( 'case-block',
                                                 begin
-                                                    _case_block
+                                                    _case_MIMARKblock
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:454"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
@@ -6871,9 +6871,9 @@
                                                         end
                                                                ))
                                                          )))                                          ,Cell.new(
-                                            callProcedure( 'case_iter',
+                                            callProcedure( 'case-iter',
                                                 begin
-                                                    _case_iter
+                                                    _case_MIMARKiter
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:460"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
@@ -6933,7 +6933,7 @@
                                       end                                    ,
                                       Cell.new(
                                         begin
-                                            _cond_exp
+                                            _cond_MIMARKexp
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:458"] + __e.backtrace ) ; raise __e
                                         end                                      ,Cell.new(
                                         callProcedure( 'cons',
@@ -6953,9 +6953,9 @@
                                                   end                                                ,
                                                   Cell.new(
                                                   :"cond"                                                  ,Cell.new(
-                                                    callProcedure( 'case_iter',
+                                                    callProcedure( 'case-iter',
                                                         begin
-                                                            _case_iter
+                                                            _case_MIMARKiter
                                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:460"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
@@ -6993,11 +6993,11 @@
       }
 #------------------------------
 
-  @_let_AMARK = 
+  @_let_ASMARK = 
       LispMacro.new { |_exps,*__rest__| _body = __rest__[0] ;  
           begin
-            ___lambda = lambda { |_let_AMARK_expand| 
-                _let_AMARK_expand                 = 
+            ___lambda = lambda { |_let_ASMARK_MIMARKexpand| 
+                _let_ASMARK_MIMARKexpand                 = 
                   Proc.new { |_rest,_body| 
                       begin
                         ___lambda = lambda { |___gensym__40| 
@@ -7020,9 +7020,9 @@
                                 } ; ___lambda.call(
                                       callProcedure( 'eqv?',
                                           begin
-                                            if (self.instance_variables.include?(:@_eqv_QMARK)) then
-                                              @_eqv_QMARK
-                                            else raise NameError.new( "Error: undefined variable _eqv_QMARK", "_eqv_QMARK" ) end
+                                            if (self.instance_variables.include?(:@_eqv_QUMARK)) then
+                                              @_eqv_QUMARK
+                                            else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:441"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
@@ -7058,9 +7058,9 @@
                                     } ; ___lambda.call(
                                           callProcedure( 'eqv?',
                                               begin
-                                                if (self.instance_variables.include?(:@_eqv_QMARK)) then
-                                                  @_eqv_QMARK
-                                                else raise NameError.new( "Error: undefined variable _eqv_QMARK", "_eqv_QMARK" ) end
+                                                if (self.instance_variables.include?(:@_eqv_QUMARK)) then
+                                                  @_eqv_QUMARK
+                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:441"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
@@ -7174,9 +7174,9 @@
                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
-                                                              callProcedure( 'let*_expand',
+                                                              callProcedure( 'let*-expand',
                                                                   begin
-                                                                      _let_AMARK_expand
+                                                                      _let_ASMARK_MIMARKexpand
                                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:477"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
@@ -7223,9 +7223,9 @@
                                    )
                       end
                   }
-                callProcedure( 'let*_expand',
+                callProcedure( 'let*-expand',
                     begin
-                        _let_AMARK_expand
+                        _let_ASMARK_MIMARKexpand
                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:477"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
@@ -7245,18 +7245,18 @@
       }
 #------------------------------
 
-  @_dot_operator = 
+  @_dot_MIMARKoperator = 
       LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
           begin
-            ___lambda = lambda { |_dot_operator_iter| 
-                _dot_operator_iter                 = 
+            ___lambda = lambda { |_dot_MIMARKoperator_MIMARKiter| 
+                _dot_MIMARKoperator_MIMARKiter                 = 
                   Proc.new { |_lst| 
                       if ( 
                         callProcedure( 'null?',
                             begin
-                              if (self.instance_variables.include?(:@_null_QMARK)) then
-                                @_null_QMARK
-                              else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                              if (self.instance_variables.include?(:@_null_QUMARK)) then
+                                @_null_QUMARK
+                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:489"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
@@ -7273,9 +7273,9 @@
                           if ( 
                             callProcedure( 'pair?',
                                 begin
-                                  if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                    @_pair_QMARK
-                                  else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                  if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                    @_pair_QUMARK
+                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:497"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -7289,13 +7289,13 @@
                                   if ( 
                                     callProcedure( 'eq?',
                                         begin
-                                          if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                            @_eq_QMARK
-                                          else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                          if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                            @_eq_QUMARK
+                                          else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:511"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
-                                        :"dot_operator"                                        ,Cell.new(
+                                        :"dot-operator"                                        ,Cell.new(
                                           callProcedure( 'car',
                                               begin
                                                 if (self.instance_variables.include?(:@_car)) then
@@ -7319,11 +7319,11 @@
                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:513"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
-                                            callProcedure( 'string_join',
+                                            callProcedure( 'string-join',
                                                 begin
-                                                  if (self.instance_variables.include?(:@_string_join)) then
-                                                    @_string_join
-                                                  else raise NameError.new( "Error: undefined variable _string_join", "_string_join" ) end
+                                                  if (self.instance_variables.include?(:@_string_MIMARKjoin)) then
+                                                    @_string_MIMARKjoin
+                                                  else raise NameError.new( "Error: undefined variable _string_MIMARKjoin", "_string_MIMARKjoin" ) end
                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:494"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
@@ -7339,9 +7339,9 @@
                                                             if ( 
                                                               callProcedure( 'pair?',
                                                                   begin
-                                                                    if (self.instance_variables.include?(:@_pair_QMARK)) then
-                                                                      @_pair_QMARK
-                                                                    else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                                                                    if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                                                                      @_pair_QUMARK
+                                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:497"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
@@ -7351,17 +7351,17 @@
                                                                     end
                                                                            ))
                                                              ) then
-                                                                callProcedure( 'to_s',
+                                                                callProcedure( 'to-s',
                                                                     begin
-                                                                      if (self.instance_variables.include?(:@_to_s)) then
-                                                                        @_to_s
-                                                                      else raise NameError.new( "Error: undefined variable _to_s", "_to_s" ) end
+                                                                      if (self.instance_variables.include?(:@_to_MIMARKs)) then
+                                                                        @_to_MIMARKs
+                                                                      else raise NameError.new( "Error: undefined variable _to_MIMARKs", "_to_MIMARKs" ) end
                                                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:513"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
-                                                                      callProcedure( 'dot_operator_iter',
+                                                                      callProcedure( 'dot-operator-iter',
                                                                           begin
-                                                                              _dot_operator_iter
+                                                                              _dot_MIMARKoperator_MIMARKiter
                                                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:515"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
@@ -7375,9 +7375,9 @@
                                                                 if ( 
                                                                   callProcedure( 'symbol?',
                                                                       begin
-                                                                        if (self.instance_variables.include?(:@_symbol_QMARK)) then
-                                                                          @_symbol_QMARK
-                                                                        else raise NameError.new( "Error: undefined variable _symbol_QMARK", "_symbol_QMARK" ) end
+                                                                        if (self.instance_variables.include?(:@_symbol_QUMARK)) then
+                                                                          @_symbol_QUMARK
+                                                                        else raise NameError.new( "Error: undefined variable _symbol_QUMARK", "_symbol_QUMARK" ) end
                                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:512"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
@@ -7387,11 +7387,11 @@
                                                                         end
                                                                                ))
                                                                  ) then
-                                                                    callProcedure( 'to_s',
+                                                                    callProcedure( 'to-s',
                                                                         begin
-                                                                          if (self.instance_variables.include?(:@_to_s)) then
-                                                                            @_to_s
-                                                                          else raise NameError.new( "Error: undefined variable _to_s", "_to_s" ) end
+                                                                          if (self.instance_variables.include?(:@_to_MIMARKs)) then
+                                                                            @_to_MIMARKs
+                                                                          else raise NameError.new( "Error: undefined variable _to_MIMARKs", "_to_MIMARKs" ) end
                                                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:513"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
@@ -7443,9 +7443,9 @@
                 if ( 
                   callProcedure( 'eq?',
                       begin
-                        if (self.instance_variables.include?(:@_eq_QMARK)) then
-                          @_eq_QMARK
-                        else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                        if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                          @_eq_QUMARK
+                        else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:511"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
@@ -7481,18 +7481,18 @@
                             Cell.new(
                               callProcedure( 'eq?',
                                   begin
-                                    if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                      @_eq_QMARK
-                                    else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                    if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                      @_eq_QUMARK
+                                    else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:511"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                   false                                  ,Cell.new(
                                     callProcedure( 'eq?',
                                         begin
-                                          if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                            @_eq_QMARK
-                                          else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                          if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                            @_eq_QUMARK
+                                          else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:511"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
@@ -7516,9 +7516,9 @@
                        ) then
                           callProcedure( 'symbol?',
                               begin
-                                if (self.instance_variables.include?(:@_symbol_QMARK)) then
-                                  @_symbol_QMARK
-                                else raise NameError.new( "Error: undefined variable _symbol_QMARK", "_symbol_QMARK" ) end
+                                if (self.instance_variables.include?(:@_symbol_QUMARK)) then
+                                  @_symbol_QUMARK
+                                else raise NameError.new( "Error: undefined variable _symbol_QUMARK", "_symbol_QUMARK" ) end
                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:512"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
@@ -7551,18 +7551,18 @@
                                 Cell.new(
                                   callProcedure( '+',
                                       begin
-                                        if (self.instance_variables.include?(:@_plus)) then
-                                          @_plus
-                                        else raise NameError.new( "Error: undefined variable _plus", "_plus" ) end
+                                        if (self.instance_variables.include?(:@__PLMARK)) then
+                                          @__PLMARK
+                                        else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:513"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                       "."                                      ,Cell.new(
-                                        callProcedure( 'to_s',
+                                        callProcedure( 'to-s',
                                             begin
-                                              if (self.instance_variables.include?(:@_to_s)) then
-                                                @_to_s
-                                              else raise NameError.new( "Error: undefined variable _to_s", "_to_s" ) end
+                                              if (self.instance_variables.include?(:@_to_MIMARKs)) then
+                                                @_to_MIMARKs
+                                              else raise NameError.new( "Error: undefined variable _to_MIMARKs", "_to_MIMARKs" ) end
                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:513"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
@@ -7588,9 +7588,9 @@
                         true
                          ) then
                             begin
-                                callProcedure( 'dot_operator_iter',
+                                callProcedure( 'dot-operator-iter',
                                     begin
-                                        _dot_operator_iter
+                                        _dot_MIMARKoperator_MIMARKiter
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:515"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
@@ -7602,7 +7602,7 @@
                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
-                                          :"dot_operator"                                          ,Cell.new(
+                                          :"dot-operator"                                          ,Cell.new(
                                             begin
                                                 _lst
                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
@@ -7620,7 +7620,7 @@
       }
 #------------------------------
 
-  @_with_open = 
+  @_with_MIMARKopen = 
       Proc.new { |_filename,_pred,*__rest__| _lst = __rest__[0] ;  
           begin
             ___lambda = lambda { |_len| 
@@ -7655,9 +7655,9 @@
                         if ( 
                           callProcedure( '=',
                               begin
-                                if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                  @_eq_QMARK
-                                else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                if (self.instance_variables.include?(:@__EQMARK)) then
+                                  @__EQMARK
+                                else raise NameError.new( "Error: undefined variable __EQMARK", "__EQMARK" ) end
                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:521"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
@@ -7683,9 +7683,9 @@
                             if ( 
                               callProcedure( '<',
                                   begin
-                                    if (self.instance_variables.include?(:@_lt_QMARK)) then
-                                      @_lt_QMARK
-                                    else raise NameError.new( "Error: undefined variable _lt_QMARK", "_lt_QMARK" ) end
+                                    if (self.instance_variables.include?(:@__LTMARK)) then
+                                      @__LTMARK
+                                    else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:523"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
@@ -7751,14 +7751,14 @@
       }
 #------------------------------
 
-  @_last_pair = 
+  @_last_MIMARKpair = 
       Proc.new { |_x| 
           if ( 
             callProcedure( 'pair?',
                 begin
-                  if (self.instance_variables.include?(:@_pair_QMARK)) then
-                    @_pair_QMARK
-                  else raise NameError.new( "Error: undefined variable _pair_QMARK", "_pair_QMARK" ) end
+                  if (self.instance_variables.include?(:@_pair_QUMARK)) then
+                    @_pair_QUMARK
+                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:536"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
@@ -7777,11 +7777,11 @@
                                ))
                          ))
            ) then
-              callProcedure( 'last_pair',
+              callProcedure( 'last-pair',
                   begin
-                    if (self.instance_variables.include?(:@_last_pair)) then
-                      @_last_pair
-                    else raise NameError.new( "Error: undefined variable _last_pair", "_last_pair" ) end
+                    if (self.instance_variables.include?(:@_last_MIMARKpair)) then
+                      @_last_MIMARKpair
+                    else raise NameError.new( "Error: undefined variable _last_MIMARKpair", "_last_MIMARKpair" ) end
                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                   end                ,
                   Cell.new(
@@ -7808,11 +7808,11 @@
       }
 #------------------------------
 
-  @_debug_print_length = 
+  @_debug_MIMARKprint_MIMARKlength = 
     63
 #------------------------------
 
-  @_debug_print_output_func = 
+  @_debug_MIMARKprint_MIMARKoutput_MIMARKfunc = 
       Proc.new { |_str| 
           begin
               STDERR.print(
@@ -7826,29 +7826,29 @@
       }
 #------------------------------
 
-  @_debug_limit_length = 
+  @_debug_MIMARKlimit_MIMARKlength = 
       Proc.new { |_x| 
           callProcedure( '+',
               begin
-                if (self.instance_variables.include?(:@_plus)) then
-                  @_plus
-                else raise NameError.new( "Error: undefined variable _plus", "_plus" ) end
+                if (self.instance_variables.include?(:@__PLMARK)) then
+                  @__PLMARK
+                else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:552"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 if ( 
                   callProcedure( '<',
                       begin
-                        if (self.instance_variables.include?(:@_lt_QMARK)) then
-                          @_lt_QMARK
-                        else raise NameError.new( "Error: undefined variable _lt_QMARK", "_lt_QMARK" ) end
+                        if (self.instance_variables.include?(:@__LTMARK)) then
+                          @__LTMARK
+                        else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:550"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
-                          if (self.instance_variables.include?(:@_debug_print_length)) then
-                            @_debug_print_length
-                          else raise NameError.new( "Error: undefined variable _debug_print_length", "_debug_print_length" ) end
+                          if (self.instance_variables.include?(:@_debug_MIMARKprint_MIMARKlength)) then
+                            @_debug_MIMARKprint_MIMARKlength
+                          else raise NameError.new( "Error: undefined variable _debug_MIMARKprint_MIMARKlength", "_debug_MIMARKprint_MIMARKlength" ) end
                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:550"] + __e.backtrace ) ; raise __e
                         end                      ,Cell.new(
                         begin
@@ -7869,9 +7869,9 @@
                               Cell.new(
                                 callProcedure( '+',
                                     begin
-                                      if (self.instance_variables.include?(:@_plus)) then
-                                        @_plus
-                                      else raise NameError.new( "Error: undefined variable _plus", "_plus" ) end
+                                      if (self.instance_variables.include?(:@__PLMARK)) then
+                                        @__PLMARK
+                                      else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:552"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
@@ -7894,9 +7894,9 @@
                                        )))
                       } ; ___lambda.call(
                             begin
-                              if (self.instance_variables.include?(:@_debug_print_length)) then
-                                @_debug_print_length.to_s
-                              else raise NameError.new( "Error: undefined variable _debug_print_length", "_debug_print_length" ) end
+                              if (self.instance_variables.include?(:@_debug_MIMARKprint_MIMARKlength)) then
+                                @_debug_MIMARKprint_MIMARKlength.to_s
+                              else raise NameError.new( "Error: undefined variable _debug_MIMARKprint_MIMARKlength", "_debug_MIMARKprint_MIMARKlength" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:551"] + __e.backtrace ) ; raise __e
                             end
                                  )
@@ -7912,7 +7912,7 @@
       }
 #------------------------------
 
-  @_debug_print = 
+  @_debug_MIMARKprint = 
       LispMacro.new { |__form,_sourcefile,_lineno,_sourcesexp| 
           begin
             ___lambda = lambda { |_val| 
@@ -7973,7 +7973,7 @@
                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
-                                      :"debug_print_output_func"                                      ,Cell.new(
+                                      :"debug-print-output-func"                                      ,Cell.new(
                                         callProcedure( 'cons',
                                             begin
                                               if (self.instance_variables.include?(:@_cons)) then
@@ -7990,7 +7990,7 @@
                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
-                                                  :"debug_limit_length"                                                  ,Cell.new(
+                                                  :"debug-limit-length"                                                  ,Cell.new(
                                                     callProcedure( 'cons',
                                                         begin
                                                           if (self.instance_variables.include?(:@_cons)) then
@@ -8057,7 +8057,7 @@
                                                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
                                                                                             Cell.new(
-                                                                                            :"write_to_string"                                                                                            ,Cell.new(
+                                                                                            :"write-to-string"                                                                                            ,Cell.new(
                                                                                               callProcedure( 'cons',
                                                                                                   begin
                                                                                                     if (self.instance_variables.include?(:@_cons)) then
@@ -8146,7 +8146,7 @@
                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
-                                                  :"debug_print_output_func"                                                  ,Cell.new(
+                                                  :"debug-print-output-func"                                                  ,Cell.new(
                                                     callProcedure( 'cons',
                                                         begin
                                                           if (self.instance_variables.include?(:@_cons)) then
@@ -8163,7 +8163,7 @@
                                                                 rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
-                                                              :"debug_limit_length"                                                              ,Cell.new(
+                                                              :"debug-limit-length"                                                              ,Cell.new(
                                                                 callProcedure( 'cons',
                                                                     begin
                                                                       if (self.instance_variables.include?(:@_cons)) then
@@ -8206,7 +8206,7 @@
                                                                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
                                                                                             Cell.new(
-                                                                                            :"write_to_string"                                                                                            ,Cell.new(
+                                                                                            :"write-to-string"                                                                                            ,Cell.new(
                                                                                               callProcedure( 'cons',
                                                                                                   begin
                                                                                                     if (self.instance_variables.include?(:@_cons)) then
@@ -8266,17 +8266,17 @@
       }
 #------------------------------
 
-  @_pretty_print = 
+  @_pretty_MIMARKprint = 
       Proc.new { |_s| 
           begin
-            ___lambda = lambda { |_do_indent| 
-                _do_indent                 = 
+            ___lambda = lambda { |_do_MIMARKindent| 
+                _do_MIMARKindent                 = 
                   Proc.new { |_level| 
-                      callProcedure( 'for_each',
+                      callProcedure( 'for-each',
                           begin
-                            if (self.instance_variables.include?(:@_for_each)) then
-                              @_for_each
-                            else raise NameError.new( "Error: undefined variable _for_each", "_for_each" ) end
+                            if (self.instance_variables.include?(:@_for_MIMARKeach)) then
+                              @_for_MIMARKeach
+                            else raise NameError.new( "Error: undefined variable _for_MIMARKeach", "_for_MIMARKeach" ) end
                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:573"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
@@ -8307,7 +8307,7 @@
                                          ))
                                    )))
                   }
-                @_pp_parenl = 
+                @_pp_MIMARKparenl = 
                     Proc.new { || 
                         callProcedure( 'display',
                             begin
@@ -8320,7 +8320,7 @@
                             "("
                                      ))
                     }
-                @_pp_parenr = 
+                @_pp_MIMARKparenr = 
                     Proc.new { || 
                         callProcedure( 'display',
                             begin
@@ -8333,7 +8333,7 @@
                             ")"
                                      ))
                     }
-                @_pp_atom = 
+                @_pp_MIMARKatom = 
                     Proc.new { |_e,_prefix| 
                         if ( 
                           begin
@@ -8368,7 +8368,7 @@
                               end
                                      ))
                     }
-                @_pp_list = 
+                @_pp_MIMARKlist = 
                     Proc.new { |_s,_level,_prefix| 
                         if ( 
                           callProcedure( 'not',
@@ -8381,9 +8381,9 @@
                               Cell.new(
                                 callProcedure( 'eq?',
                                     begin
-                                      if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                        @_eq_QMARK
-                                      else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                      if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                        @_eq_QUMARK
+                                      else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:511"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
@@ -8395,9 +8395,9 @@
                                              )))
                                        ))
                          ) then
-                            callProcedure( 'do_indent',
+                            callProcedure( 'do-indent',
                                 begin
-                                    _do_indent
+                                    _do_MIMARKindent
                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:582"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
@@ -8409,11 +8409,11 @@
                         else
                           false
                         end
-                        callProcedure( 'pp_parenl',
+                        callProcedure( 'pp-parenl',
                             begin
-                              if (self.instance_variables.include?(:@_pp_parenl)) then
-                                @_pp_parenl
-                              else raise NameError.new( "Error: undefined variable _pp_parenl", "_pp_parenl" ) end
+                              if (self.instance_variables.include?(:@_pp_MIMARKparenl)) then
+                                @_pp_MIMARKparenl
+                              else raise NameError.new( "Error: undefined variable _pp_MIMARKparenl", "_pp_MIMARKparenl" ) end
                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:583"] + __e.backtrace ) ; raise __e
                             end                          ,
                           Cell.new(
@@ -8425,9 +8425,9 @@
                                     if ( 
                                       callProcedure( 'null?',
                                           begin
-                                            if (self.instance_variables.include?(:@_null_QMARK)) then
-                                              @_null_QMARK
-                                            else raise NameError.new( "Error: undefined variable _null_QMARK", "_null_QMARK" ) end
+                                            if (self.instance_variables.include?(:@_null_QUMARK)) then
+                                              @_null_QUMARK
+                                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:586"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
@@ -8437,11 +8437,11 @@
                                             end
                                                    ))
                                      ) then
-                                        callProcedure( 'pp_parenr',
+                                        callProcedure( 'pp-parenr',
                                             begin
-                                              if (self.instance_variables.include?(:@_pp_parenr)) then
-                                                @_pp_parenr
-                                              else raise NameError.new( "Error: undefined variable _pp_parenr", "_pp_parenr" ) end
+                                              if (self.instance_variables.include?(:@_pp_MIMARKparenr)) then
+                                                @_pp_MIMARKparenr
+                                              else raise NameError.new( "Error: undefined variable _pp_MIMARKparenr", "_pp_MIMARKparenr" ) end
                                               rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:587"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                           Cell.new(
@@ -8452,9 +8452,9 @@
                                               if ( 
                                                 callProcedure( 'list?',
                                                     begin
-                                                      if (self.instance_variables.include?(:@_list_QMARK)) then
-                                                        @_list_QMARK
-                                                      else raise NameError.new( "Error: undefined variable _list_QMARK", "_list_QMARK" ) end
+                                                      if (self.instance_variables.include?(:@_list_QUMARK)) then
+                                                        @_list_QUMARK
+                                                      else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
                                                       rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:594"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
@@ -8476,9 +8476,9 @@
                                                             Cell.new(
                                                               callProcedure( 'eq?',
                                                                   begin
-                                                                    if (self.instance_variables.include?(:@_eq_QMARK)) then
-                                                                      @_eq_QMARK
-                                                                    else raise NameError.new( "Error: undefined variable _eq_QMARK", "_eq_QMARK" ) end
+                                                                    if (self.instance_variables.include?(:@_eq_QUMARK)) then
+                                                                      @_eq_QUMARK
+                                                                    else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                                     rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:511"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
@@ -8502,11 +8502,11 @@
                                                       else
                                                         false
                                                       end
-                                                      callProcedure( 'pp_list',
+                                                      callProcedure( 'pp-list',
                                                           begin
-                                                            if (self.instance_variables.include?(:@_pp_list)) then
-                                                              @_pp_list
-                                                            else raise NameError.new( "Error: undefined variable _pp_list", "_pp_list" ) end
+                                                            if (self.instance_variables.include?(:@_pp_MIMARKlist)) then
+                                                              @_pp_MIMARKlist
+                                                            else raise NameError.new( "Error: undefined variable _pp_MIMARKlist", "_pp_MIMARKlist" ) end
                                                             rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:595"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
@@ -8516,9 +8516,9 @@
                                                             end                                                          ,Cell.new(
                                                             callProcedure( '+',
                                                                 begin
-                                                                  if (self.instance_variables.include?(:@_plus)) then
-                                                                    @_plus
-                                                                  else raise NameError.new( "Error: undefined variable _plus", "_plus" ) end
+                                                                  if (self.instance_variables.include?(:@__PLMARK)) then
+                                                                    @__PLMARK
+                                                                  else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:591"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
@@ -8535,11 +8535,11 @@
                                                                    ))))
                                                   end
                                               else
-                                                  callProcedure( 'pp_atom',
+                                                  callProcedure( 'pp-atom',
                                                       begin
-                                                        if (self.instance_variables.include?(:@_pp_atom)) then
-                                                          @_pp_atom
-                                                        else raise NameError.new( "Error: undefined variable _pp_atom", "_pp_atom" ) end
+                                                        if (self.instance_variables.include?(:@_pp_MIMARKatom)) then
+                                                          @_pp_MIMARKatom
+                                                        else raise NameError.new( "Error: undefined variable _pp_MIMARKatom", "_pp_MIMARKatom" ) end
                                                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:592"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
@@ -8612,9 +8612,9 @@
                 if ( 
                   callProcedure( 'list?',
                       begin
-                        if (self.instance_variables.include?(:@_list_QMARK)) then
-                          @_list_QMARK
-                        else raise NameError.new( "Error: undefined variable _list_QMARK", "_list_QMARK" ) end
+                        if (self.instance_variables.include?(:@_list_QUMARK)) then
+                          @_list_QUMARK
+                        else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
                         rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:594"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
@@ -8624,11 +8624,11 @@
                         end
                                ))
                  ) then
-                    callProcedure( 'pp_list',
+                    callProcedure( 'pp-list',
                         begin
-                          if (self.instance_variables.include?(:@_pp_list)) then
-                            @_pp_list
-                          else raise NameError.new( "Error: undefined variable _pp_list", "_pp_list" ) end
+                          if (self.instance_variables.include?(:@_pp_MIMARKlist)) then
+                            @_pp_MIMARKlist
+                          else raise NameError.new( "Error: undefined variable _pp_MIMARKlist", "_pp_MIMARKlist" ) end
                           rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:595"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
