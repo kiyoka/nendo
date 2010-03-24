@@ -113,23 +113,24 @@ describe Evaluator, "When use Evaluator's util methods" do
     @evaluator.toRubySymbol( "a" ).should == "_a"
     @evaluator.toRubySymbol( "a_b_c" ).should == "_a_b_c"
     @evaluator.toRubySymbol( "_a_b_c_" ).should == "__a_b_c_"
-    @evaluator.toRubySymbol( '!' ).should == '__EXMARK'
-    @evaluator.toRubySymbol( '$' ).should == '__DOMARK'
-    @evaluator.toRubySymbol( '%' ).should == '__PAMARK'
-    @evaluator.toRubySymbol( '&' ).should == '__ANMARK'
-    @evaluator.toRubySymbol( '*' ).should == '__ASMARK'
-    @evaluator.toRubySymbol( '+' ).should == '__PLMARK'
-    @evaluator.toRubySymbol( '-' ).should == '__MIMARK'
-    @evaluator.toRubySymbol( '/' ).should == '__SLMARK'
-    @evaluator.toRubySymbol( ':' ).should == '_:'
-    @evaluator.toRubySymbol( '<' ).should == '__LTMARK'
-    @evaluator.toRubySymbol( '=' ).should == '__EQMARK'
-    @evaluator.toRubySymbol( '>' ).should == '__GTMARK'
-    @evaluator.toRubySymbol( '?' ).should == '__QUMARK'
-    @evaluator.toRubySymbol( '@' ).should == '__ATMARK'
-    @evaluator.toRubySymbol( '^' ).should == '__NKMARK'
-    @evaluator.toRubySymbol( "_" ).should == "__"
-    @evaluator.toRubySymbol( '~' ).should == '__CHMARK'
+    @evaluator.toRubySymbol( '!' ).should  == '__EXMARK'
+    @evaluator.toRubySymbol( '$' ).should  == '__DOMARK'
+    @evaluator.toRubySymbol( '%' ).should  == '__PAMARK'
+    @evaluator.toRubySymbol( '&' ).should  == '__ANMARK'
+    @evaluator.toRubySymbol( '*' ).should  == '__ASMARK'
+    @evaluator.toRubySymbol( '+' ).should  == '__PLMARK'
+    @evaluator.toRubySymbol( '-' ).should  == '__MIMARK'
+    @evaluator.toRubySymbol( '/' ).should  == '__SLMARK'
+    @evaluator.toRubySymbol( ':' ).should  == '__COMARK'
+    @evaluator.toRubySymbol( '::' ).should == '_::'
+    @evaluator.toRubySymbol( '<' ).should  == '__LTMARK'
+    @evaluator.toRubySymbol( '=' ).should  == '__EQMARK'
+    @evaluator.toRubySymbol( '>' ).should  == '__GTMARK'
+    @evaluator.toRubySymbol( '?' ).should  == '__QUMARK'
+    @evaluator.toRubySymbol( '@' ).should  == '__ATMARK'
+    @evaluator.toRubySymbol( '^' ).should  == '__NKMARK'
+    @evaluator.toRubySymbol( "_" ).should  == "__"
+    @evaluator.toRubySymbol( '~' ).should  == '__CHMARK'
     @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
     @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
     @evaluator.toRubySymbol( "a!" ).should == "_a_EXMARK"

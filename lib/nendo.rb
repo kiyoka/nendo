@@ -783,7 +783,7 @@ class Evaluator
       '-' => '_MIMARK',
       # '.'
       '/' => '_SLMARK',
-      # ':'
+      ':' => '_COMARK',
       '<' => '_LTMARK',
       '=' => '_EQMARK',
       '>' => '_GTMARK',
@@ -839,9 +839,12 @@ class Evaluator
       ""
     else
       arr = name.gsub( /["]/, '' ).split( /[.]/ )
+      tmp = arr[0]
+      tmp.gsub!( /[:][:]/, "  " ) # save '::'
       @char_table_lisp_to_ruby.each_pair { |key,val|
-        arr[0] = arr[0].gsub( Regexp.new( Regexp.escape( key )), val )
+        tmp.gsub!( Regexp.new( Regexp.escape( key )), val )
       }
+      arr[0] = tmp.gsub( /[ ][ ]/, "::" )
       if arr[0].match( /^[A-Z]/ )
         # nothing to do
       elsif arr[0] == ""
