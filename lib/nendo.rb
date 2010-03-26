@@ -293,9 +293,9 @@ class Reader
           else
             T_UNQUOTE_SPLICING
           end
-        when '('
+        when '(', '['
           T_LPAREN
-        when ')'
+        when ')', ']'
           T_RPAREN
         when '.'
           str += readwhile( /[_a-zA-Z0-9!?.]/ )
