@@ -494,6 +494,12 @@
         (apply consumer (values-values v))
         (consumer v))))
 
+;; srfi-8
+(define receive
+  (macro (vars expr . body)
+    `(call-with-values
+         (lambda () ,expr)
+       (lambda ,vars ,@body))))
 
 ;; ----------------------------------------
 ;; for Ruby interop

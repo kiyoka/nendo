@@ -7409,6 +7409,101 @@
       }
 #------------------------------
 
+  @_receive = 
+      LispMacro.new { |_vars,_expr,*__rest__| _body = __rest__[0] ;  
+          callProcedure( 'cons',
+              begin
+                if (self.instance_variables.include?(:@_cons)) then
+                  @_cons
+                else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+              end            ,
+              Cell.new(
+              :"call-with-values"              ,Cell.new(
+                callProcedure( 'cons',
+                    begin
+                      if (self.instance_variables.include?(:@_cons)) then
+                        @_cons
+                      else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+                    end                  ,
+                    Cell.new(
+                      callProcedure( 'cons',
+                          begin
+                            if (self.instance_variables.include?(:@_cons)) then
+                              @_cons
+                            else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+                          end                        ,
+                          Cell.new(
+                          :"lambda"                          ,Cell.new(
+                            callProcedure( 'cons',
+                                begin
+                                  if (self.instance_variables.include?(:@_cons)) then
+                                    @_cons
+                                  else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                                Cell.new(
+                                Nil.new                                ,Cell.new(
+                                  callProcedure( 'cons',
+                                      begin
+                                        if (self.instance_variables.include?(:@_cons)) then
+                                          @_cons
+                                        else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+                                      end                                    ,
+                                      Cell.new(
+                                        begin
+                                            _expr
+                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:501"] + __e.backtrace ) ; raise __e
+                                        end                                      ,Cell.new(
+                                      
+                                               )))
+                                         )))
+                                   )))                    ,Cell.new(
+                      callProcedure( 'cons',
+                          begin
+                            if (self.instance_variables.include?(:@_cons)) then
+                              @_cons
+                            else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+                          end                        ,
+                          Cell.new(
+                            callProcedure( 'cons',
+                                begin
+                                  if (self.instance_variables.include?(:@_cons)) then
+                                    @_cons
+                                  else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                                Cell.new(
+                                :"lambda"                                ,Cell.new(
+                                  callProcedure( 'cons',
+                                      begin
+                                        if (self.instance_variables.include?(:@_cons)) then
+                                          @_cons
+                                        else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:438"] + __e.backtrace ) ; raise __e
+                                      end                                    ,
+                                      Cell.new(
+                                        begin
+                                            _vars
+                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:502"] + __e.backtrace ) ; raise __e
+                                        end                                      ,Cell.new(
+                                        begin
+                                            _body
+                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:502"] + __e.backtrace ) ; raise __e
+                                        end
+                                               )))
+                                         )))                          ,Cell.new(
+                          
+                                   )))
+                             )))
+                       )))
+      }
+#------------------------------
+
   @_dot_MIMARKoperator = 
       LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
           begin
@@ -7421,12 +7516,12 @@
                               if (self.instance_variables.include?(:@_null_QUMARK)) then
                                 @_null_QUMARK
                               else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:507"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:513"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _lst
-                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                               end
                                      ))
                        ) then
@@ -7440,12 +7535,12 @@
                                   if (self.instance_variables.include?(:@_pair_QUMARK)) then
                                     @_pair_QUMARK
                                   else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:515"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:521"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   begin
                                       _lst
-                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                   end
                                          ))
                            ) then
@@ -7456,7 +7551,7 @@
                                           if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                             @_eq_QUMARK
                                           else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                         :"dot-operator"                                        ,Cell.new(
@@ -7465,12 +7560,12 @@
                                                 if (self.instance_variables.include?(:@_car)) then
                                                   @_car
                                                 else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 begin
                                                     _lst
-                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                 end
                                                        ))
                                                  )))
@@ -7480,7 +7575,7 @@
                                             if (self.instance_variables.include?(:@_intern)) then
                                               @_intern
                                             else raise NameError.new( "Error: undefined variable _intern", "_intern" ) end
-                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             callProcedure( 'string-join',
@@ -7488,7 +7583,7 @@
                                                   if (self.instance_variables.include?(:@_string_MIMARKjoin)) then
                                                     @_string_MIMARKjoin
                                                   else raise NameError.new( "Error: undefined variable _string_MIMARKjoin", "_string_MIMARKjoin" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:512"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:518"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   callProcedure( 'map',
@@ -7496,7 +7591,7 @@
                                                         if (self.instance_variables.include?(:@_map)) then
                                                           @_map
                                                         else raise NameError.new( "Error: undefined variable _map", "_map" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:513"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:519"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         Proc.new { |_x| 
@@ -7506,12 +7601,12 @@
                                                                     if (self.instance_variables.include?(:@_pair_QUMARK)) then
                                                                       @_pair_QUMARK
                                                                     else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:515"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:521"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                     begin
                                                                         _x
-                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:519"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:525"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            ))
                                                              ) then
@@ -7520,18 +7615,18 @@
                                                                       if (self.instance_variables.include?(:@_to_MIMARKs)) then
                                                                         @_to_MIMARKs
                                                                       else raise NameError.new( "Error: undefined variable _to_MIMARKs", "_to_MIMARKs" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       callProcedure( 'dot-operator-iter',
                                                                           begin
                                                                               _dot_MIMARKoperator_MIMARKiter
-                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:533"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:539"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                             begin
                                                                                 _x
-                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:519"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:525"] + __e.backtrace ) ; raise __e
                                                                             end
                                                                                    ))
                                                                              ))
@@ -7542,12 +7637,12 @@
                                                                         if (self.instance_variables.include?(:@_symbol_QUMARK)) then
                                                                           @_symbol_QUMARK
                                                                         else raise NameError.new( "Error: undefined variable _symbol_QUMARK", "_symbol_QUMARK" ) end
-                                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:530"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:536"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
                                                                         begin
                                                                             _x
-                                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:519"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:525"] + __e.backtrace ) ; raise __e
                                                                         end
                                                                                ))
                                                                  ) then
@@ -7556,16 +7651,16 @@
                                                                           if (self.instance_variables.include?(:@_to_MIMARKs)) then
                                                                             @_to_MIMARKs
                                                                           else raise NameError.new( "Error: undefined variable _to_MIMARKs", "_to_MIMARKs" ) end
-                                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
                                                                           begin
                                                                               _x
-                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:519"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:525"] + __e.backtrace ) ; raise __e
                                                                           end
                                                                                  ))
                                                                 else
-                                                                  begin raise RuntimeError, ["callProcedure( 'sprintf',", [["begin", ["if (self.instance_variables.include?(:@_sprintf)) then", ["@_sprintf"], "else raise NameError.new( \"Error: undefined variable _sprintf\", \"_sprintf\" ) end", "rescue => __e ; __e.set_backtrace( [\"/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:519\"] + __e.backtrace ) ; raise __e"], "end"], ","], [["Cell.new(", "\"dot-operator requires symbol, but got %s\"", ",Cell.new("], [["begin", [["_x"], "rescue => __e ; __e.set_backtrace( [\"/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:519\"] + __e.backtrace ) ; raise __e"], "end"]]], "             )))"] ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:528"] + __e.backtrace ) ; raise __e ; end 
+                                                                  begin raise RuntimeError, ["callProcedure( 'sprintf',", [["begin", ["if (self.instance_variables.include?(:@_sprintf)) then", ["@_sprintf"], "else raise NameError.new( \"Error: undefined variable _sprintf\", \"_sprintf\" ) end", "rescue => __e ; __e.set_backtrace( [\"/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:525\"] + __e.backtrace ) ; raise __e"], "end"], ","], [["Cell.new(", "\"dot-operator requires symbol, but got %s\"", ",Cell.new("], [["begin", [["_x"], "rescue => __e ; __e.set_backtrace( [\"/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:525\"] + __e.backtrace ) ; raise __e"], "end"]]], "             )))"] ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e ; end 
                                                                 end
                                                             end
                                                         }                                                      ,Cell.new(
@@ -7574,12 +7669,12 @@
                                                               if (self.instance_variables.include?(:@_cdr)) then
                                                                 @_cdr
                                                               else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:520"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:526"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                               begin
                                                                   _lst
-                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                               end
                                                                      ))
                                                                )))                                                ,Cell.new(
@@ -7587,7 +7682,7 @@
                                                          )))
                                                    ))
                                   else
-                                    begin raise RuntimeError, "dot-operator requires symbol or (. symbol symbol) form." ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:528"] + __e.backtrace ) ; raise __e ; end 
+                                    begin raise RuntimeError, "dot-operator requires symbol or (. symbol symbol) form." ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e ; end 
                                   end
                               end
                           else
@@ -7597,7 +7692,7 @@
                                   begin
                                       begin
                                           _lst
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                       end
                                   end
                               end
@@ -7610,7 +7705,7 @@
                         if (self.instance_variables.include?(:@_eq_QUMARK)) then
                           @_eq_QUMARK
                         else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                       0                      ,Cell.new(
@@ -7619,18 +7714,18 @@
                               if (self.instance_variables.include?(:@_length)) then
                                 @_length
                               else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _lst
-                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                               end
                                      ))
                                )))
                  ) then
                     begin
-                      begin raise RuntimeError, ". operator requires argument" ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:528"] + __e.backtrace ) ; raise __e ; end 
+                      begin raise RuntimeError, ". operator requires argument" ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e ; end 
                     end
                 else
                     if ( 
@@ -7648,7 +7743,7 @@
                                     if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                       @_eq_QUMARK
                                     else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                   false                                  ,Cell.new(
@@ -7657,7 +7752,7 @@
                                           if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                             @_eq_QUMARK
                                           else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                         1                                        ,Cell.new(
@@ -7666,12 +7761,12 @@
                                                 if (self.instance_variables.include?(:@_length)) then
                                                   @_length
                                                 else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 begin
                                                     _lst
-                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                 end
                                                        ))
                                                  )))
@@ -7683,7 +7778,7 @@
                                 if (self.instance_variables.include?(:@_symbol_QUMARK)) then
                                   @_symbol_QUMARK
                                 else raise NameError.new( "Error: undefined variable _symbol_QUMARK", "_symbol_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:530"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:536"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                                 callProcedure( 'car',
@@ -7691,12 +7786,12 @@
                                       if (self.instance_variables.include?(:@_car)) then
                                         @_car
                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                       begin
                                           _lst
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                       end
                                              ))
                                        ))
@@ -7710,7 +7805,7 @@
                                   if (self.instance_variables.include?(:@_intern)) then
                                     @_intern
                                   else raise NameError.new( "Error: undefined variable _intern", "_intern" ) end
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   callProcedure( '+',
@@ -7718,7 +7813,7 @@
                                         if (self.instance_variables.include?(:@__PLMARK)) then
                                           @__PLMARK
                                         else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                       "."                                      ,Cell.new(
@@ -7727,7 +7822,7 @@
                                               if (self.instance_variables.include?(:@_to_MIMARKs)) then
                                                 @_to_MIMARKs
                                               else raise NameError.new( "Error: undefined variable _to_MIMARKs", "_to_MIMARKs" ) end
-                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               callProcedure( 'car',
@@ -7735,12 +7830,12 @@
                                                     if (self.instance_variables.include?(:@_car)) then
                                                       @_car
                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:531"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _lst
-                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                     end
                                                            ))
                                                      ))
@@ -7755,7 +7850,7 @@
                                 callProcedure( 'dot-operator-iter',
                                     begin
                                         _dot_MIMARKoperator_MIMARKiter
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:533"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:539"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                       callProcedure( 'cons',
@@ -7763,13 +7858,13 @@
                                             if (self.instance_variables.include?(:@_cons)) then
                                               @_cons
                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                           :"dot-operator"                                          ,Cell.new(
                                             begin
                                                 _lst
-                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                             end
                                                    )))
                                              ))
@@ -7795,22 +7890,22 @@
                             begin
                                 _f.close(
                                   )
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:546"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:552"] + __e.backtrace ) ; raise __e
                             end
                             begin
                                 _result
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:547"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:553"] + __e.backtrace ) ; raise __e
                             end
                         } ; ___lambda.call(
                               callProcedure( 'pred',
                                   begin
                                       _pred
-                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:545"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:551"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     begin
                                         _f
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:545"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:551"] + __e.backtrace ) ; raise __e
                                     end
                                            ))
                                    )
@@ -7822,13 +7917,13 @@
                                 if (self.instance_variables.include?(:@__EQMARK)) then
                                   @__EQMARK
                                 else raise NameError.new( "Error: undefined variable __EQMARK", "__EQMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:539"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:545"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                               0                              ,Cell.new(
                                 begin
                                     _len
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:541"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:547"] + __e.backtrace ) ; raise __e
                                 end
                                        )))
                          ) then
@@ -7837,10 +7932,10 @@
                                     Kernel.open(
                                           begin
                                               _filename
-                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:542"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:548"] + __e.backtrace ) ; raise __e
                                           end
                                       )
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:542"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:548"] + __e.backtrace ) ; raise __e
                                 end
                             end
                         else
@@ -7850,13 +7945,13 @@
                                     if (self.instance_variables.include?(:@__LTMARK)) then
                                       @__LTMARK
                                     else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:541"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:547"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                   0                                  ,Cell.new(
                                     begin
                                         _len
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:541"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:547"] + __e.backtrace ) ; raise __e
                                     end
                                            )))
                              ) then
@@ -7865,23 +7960,23 @@
                                         Kernel.open(
                                               begin
                                                   _filename
-                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:542"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:548"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               callProcedure( 'car',
                                                   begin
                                                     if (self.instance_variables.include?(:@_car)) then
                                                       @_car
                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:542"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:548"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _lst
-                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:542"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:548"] + __e.backtrace ) ; raise __e
                                                     end
                                                            ))
                                           )
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:542"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:548"] + __e.backtrace ) ; raise __e
                                     end
                                 end
                             else
@@ -7889,7 +7984,7 @@
                                 true
                                  ) then
                                     begin
-                                      begin raise RuntimeError, "with-open requires 2 or 3 arguments." ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:544"] + __e.backtrace ) ; raise __e ; end 
+                                      begin raise RuntimeError, "with-open requires 2 or 3 arguments." ; rescue => __e ;  __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:550"] + __e.backtrace ) ; raise __e ; end 
                                     end
                                 end
                             end
@@ -7902,12 +7997,12 @@
                         if (self.instance_variables.include?(:@_length)) then
                           @_length
                         else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:537"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:543"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
                             _lst
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:542"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:548"] + __e.backtrace ) ; raise __e
                         end
                                ))
                        )
@@ -7923,7 +8018,7 @@
                   if (self.instance_variables.include?(:@_pair_QUMARK)) then
                     @_pair_QUMARK
                   else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:554"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:560"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                   callProcedure( 'cdr',
@@ -7931,12 +8026,12 @@
                         if (self.instance_variables.include?(:@_cdr)) then
                           @_cdr
                         else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:555"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:561"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
                             _x
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:556"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:562"] + __e.backtrace ) ; raise __e
                         end
                                ))
                          ))
@@ -7946,7 +8041,7 @@
                     if (self.instance_variables.include?(:@_last_MIMARKpair)) then
                       @_last_MIMARKpair
                     else raise NameError.new( "Error: undefined variable _last_MIMARKpair", "_last_MIMARKpair" ) end
-                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:555"] + __e.backtrace ) ; raise __e
+                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:561"] + __e.backtrace ) ; raise __e
                   end                ,
                   Cell.new(
                     callProcedure( 'cdr',
@@ -7954,19 +8049,19 @@
                           if (self.instance_variables.include?(:@_cdr)) then
                             @_cdr
                           else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:555"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:561"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
                           begin
                               _x
-                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:556"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:562"] + __e.backtrace ) ; raise __e
                           end
                                  ))
                            ))
           else
               begin
                   _x
-                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:556"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:562"] + __e.backtrace ) ; raise __e
               end
           end
       }
@@ -7982,10 +8077,10 @@
               STDERR.print(
                     begin
                         _str
-                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:565"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:571"] + __e.backtrace ) ; raise __e
                     end
                 )
-            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:565"] + __e.backtrace ) ; raise __e
+            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:571"] + __e.backtrace ) ; raise __e
           end
       }
 #------------------------------
@@ -7997,7 +8092,7 @@
                 if (self.instance_variables.include?(:@__PLMARK)) then
                   @__PLMARK
                 else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:570"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:576"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 if ( 
@@ -8006,18 +8101,18 @@
                         if (self.instance_variables.include?(:@__LTMARK)) then
                           @__LTMARK
                         else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:568"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:574"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
                           if (self.instance_variables.include?(:@_debug_MIMARKprint_MIMARKlength)) then
                             @_debug_MIMARKprint_MIMARKlength
                           else raise NameError.new( "Error: undefined variable _debug_MIMARKprint_MIMARKlength", "_debug_MIMARKprint_MIMARKlength" ) end
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:568"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:574"] + __e.backtrace ) ; raise __e
                         end                      ,Cell.new(
                         begin
                             _x.length
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:568"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:574"] + __e.backtrace ) ; raise __e
                         end
                                )))
                  ) then
@@ -8028,7 +8123,7 @@
                                 if (self.instance_variables.include?(:@_sprintf)) then
                                   @_sprintf
                                 else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:570"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:576"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                                 callProcedure( '+',
@@ -8036,24 +8131,24 @@
                                       if (self.instance_variables.include?(:@__PLMARK)) then
                                         @__PLMARK
                                       else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:570"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:576"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     "%"                                    ,Cell.new(
                                       begin
                                           _n
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:570"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:576"] + __e.backtrace ) ; raise __e
                                       end                                    ,Cell.new(
                                     "."                                    ,Cell.new(
                                       begin
                                           _n
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:570"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:576"] + __e.backtrace ) ; raise __e
                                       end                                    ,Cell.new(
                                     "s ..."
                                              ))))))                              ,Cell.new(
                                 begin
                                     _x
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:571"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:577"] + __e.backtrace ) ; raise __e
                                 end
                                        )))
                       } ; ___lambda.call(
@@ -8061,14 +8156,14 @@
                               if (self.instance_variables.include?(:@_debug_MIMARKprint_MIMARKlength)) then
                                 @_debug_MIMARKprint_MIMARKlength.to_s
                               else raise NameError.new( "Error: undefined variable _debug_MIMARKprint_MIMARKlength", "_debug_MIMARKprint_MIMARKlength" ) end
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:569"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:575"] + __e.backtrace ) ; raise __e
                             end
                                  )
                     end
                 else
                     begin
                         _x
-                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:571"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:577"] + __e.backtrace ) ; raise __e
                     end
                 end              ,Cell.new(
               "\n"
@@ -8085,7 +8180,7 @@
                       if (self.instance_variables.include?(:@_cons)) then
                         @_cons
                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                     end                  ,
                     Cell.new(
                     :"let"                    ,Cell.new(
@@ -8094,7 +8189,7 @@
                             if (self.instance_variables.include?(:@_cons)) then
                               @_cons
                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             callProcedure( 'cons',
@@ -8102,7 +8197,7 @@
                                   if (self.instance_variables.include?(:@_cons)) then
                                     @_cons
                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   callProcedure( 'cons',
@@ -8110,12 +8205,12 @@
                                         if (self.instance_variables.include?(:@_cons)) then
                                           @_cons
                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                         begin
                                             _val
-                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:581"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:587"] + __e.backtrace ) ; raise __e
                                         end                                      ,Cell.new(
                                       Cell.new(nil)
                                                )))                                ,Cell.new(
@@ -8126,7 +8221,7 @@
                                   if (self.instance_variables.include?(:@_cons)) then
                                     @_cons
                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   callProcedure( 'cons',
@@ -8134,7 +8229,7 @@
                                         if (self.instance_variables.include?(:@_cons)) then
                                           @_cons
                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                       :"debug-print-output-func"                                      ,Cell.new(
@@ -8143,7 +8238,7 @@
                                               if (self.instance_variables.include?(:@_cons)) then
                                                 @_cons
                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               callProcedure( 'cons',
@@ -8151,7 +8246,7 @@
                                                     if (self.instance_variables.include?(:@_cons)) then
                                                       @_cons
                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                   :"debug-limit-length"                                                  ,Cell.new(
@@ -8160,7 +8255,7 @@
                                                           if (self.instance_variables.include?(:@_cons)) then
                                                             @_cons
                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           callProcedure( 'cons',
@@ -8168,7 +8263,7 @@
                                                                 if (self.instance_variables.include?(:@_cons)) then
                                                                   @_cons
                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                               :"sprintf"                                                              ,Cell.new(
@@ -8177,7 +8272,7 @@
                                                                       if (self.instance_variables.include?(:@_cons)) then
                                                                         @_cons
                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                     "#?=\"%s\":%s:%s"                                                                    ,Cell.new(
@@ -8186,31 +8281,31 @@
                                                                             if (self.instance_variables.include?(:@_cons)) then
                                                                               @_cons
                                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                             begin
                                                                                 _sourcefile
-                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:578"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:584"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,Cell.new(
                                                                             callProcedure( 'cons',
                                                                                 begin
                                                                                   if (self.instance_variables.include?(:@_cons)) then
                                                                                     @_cons
                                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
                                                                                   begin
                                                                                       _lineno
-                                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:578"] + __e.backtrace ) ; raise __e
+                                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:584"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,Cell.new(
                                                                                   callProcedure( 'cons',
                                                                                       begin
                                                                                         if (self.instance_variables.include?(:@_cons)) then
                                                                                           @_cons
                                                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                       end                                                                                    ,
                                                                                       Cell.new(
                                                                                         callProcedure( 'cons',
@@ -8218,7 +8313,7 @@
                                                                                               if (self.instance_variables.include?(:@_cons)) then
                                                                                                 @_cons
                                                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
                                                                                             Cell.new(
                                                                                             :"write-to-string"                                                                                            ,Cell.new(
@@ -8227,12 +8322,12 @@
                                                                                                     if (self.instance_variables.include?(:@_cons)) then
                                                                                                       @_cons
                                                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                                   end                                                                                                ,
                                                                                                   Cell.new(
                                                                                                     begin
                                                                                                         _sourcesexp
-                                                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:578"] + __e.backtrace ) ; raise __e
+                                                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:584"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,Cell.new(
                                                                                                   
                                                                                                            )))
@@ -8254,7 +8349,7 @@
                                         if (self.instance_variables.include?(:@_cons)) then
                                           @_cons
                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                         callProcedure( 'cons',
@@ -8262,7 +8357,7 @@
                                               if (self.instance_variables.include?(:@_cons)) then
                                                 @_cons
                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                             :"set!"                                            ,Cell.new(
@@ -8271,24 +8366,24 @@
                                                     if (self.instance_variables.include?(:@_cons)) then
                                                       @_cons
                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _val
-                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:581"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:587"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,Cell.new(
                                                     callProcedure( 'cons',
                                                         begin
                                                           if (self.instance_variables.include?(:@_cons)) then
                                                             @_cons
                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           begin
                                                               __form
-                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:579"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:585"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,Cell.new(
                                                         
                                                                  )))
@@ -8299,7 +8394,7 @@
                                               if (self.instance_variables.include?(:@_cons)) then
                                                 @_cons
                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               callProcedure( 'cons',
@@ -8307,7 +8402,7 @@
                                                     if (self.instance_variables.include?(:@_cons)) then
                                                       @_cons
                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                   :"debug-print-output-func"                                                  ,Cell.new(
@@ -8316,7 +8411,7 @@
                                                           if (self.instance_variables.include?(:@_cons)) then
                                                             @_cons
                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           callProcedure( 'cons',
@@ -8324,7 +8419,7 @@
                                                                 if (self.instance_variables.include?(:@_cons)) then
                                                                   @_cons
                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                               :"debug-limit-length"                                                              ,Cell.new(
@@ -8333,7 +8428,7 @@
                                                                       if (self.instance_variables.include?(:@_cons)) then
                                                                         @_cons
                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       callProcedure( 'cons',
@@ -8341,7 +8436,7 @@
                                                                             if (self.instance_variables.include?(:@_cons)) then
                                                                               @_cons
                                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                           :"+"                                                                          ,Cell.new(
@@ -8350,7 +8445,7 @@
                                                                                   if (self.instance_variables.include?(:@_cons)) then
                                                                                     @_cons
                                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
                                                                                 "#?-    "                                                                                ,Cell.new(
@@ -8359,7 +8454,7 @@
                                                                                         if (self.instance_variables.include?(:@_cons)) then
                                                                                           @_cons
                                                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                       end                                                                                    ,
                                                                                       Cell.new(
                                                                                         callProcedure( 'cons',
@@ -8367,7 +8462,7 @@
                                                                                               if (self.instance_variables.include?(:@_cons)) then
                                                                                                 @_cons
                                                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
                                                                                             Cell.new(
                                                                                             :"write-to-string"                                                                                            ,Cell.new(
@@ -8376,12 +8471,12 @@
                                                                                                     if (self.instance_variables.include?(:@_cons)) then
                                                                                                       @_cons
                                                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                                                                   end                                                                                                ,
                                                                                                   Cell.new(
                                                                                                     begin
                                                                                                         _val
-                                                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:581"] + __e.backtrace ) ; raise __e
+                                                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:587"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,Cell.new(
                                                                                                   
                                                                                                            )))
@@ -8401,12 +8496,12 @@
                                                     if (self.instance_variables.include?(:@_cons)) then
                                                       @_cons
                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:534"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:540"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _val
-                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:581"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:587"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,Cell.new(
                                                   
                                                            )))
@@ -8421,7 +8516,7 @@
                         if (self.instance_variables.include?(:@_gensym)) then
                           @_gensym
                         else raise NameError.new( "Error: undefined variable _gensym", "_gensym" ) end
-                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:576"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:582"] + __e.backtrace ) ; raise __e
                       end                    ,
                     Cell.new(
                                ))
@@ -8441,7 +8536,7 @@
                             if (self.instance_variables.include?(:@_for_MIMARKeach)) then
                               @_for_MIMARKeach
                             else raise NameError.new( "Error: undefined variable _for_MIMARKeach", "_for_MIMARKeach" ) end
-                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:591"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:597"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             Proc.new { |_x| 
@@ -8450,7 +8545,7 @@
                                       if (self.instance_variables.include?(:@_display)) then
                                         @_display
                                       else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:597"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:603"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     " "
@@ -8461,12 +8556,12 @@
                                   if (self.instance_variables.include?(:@_range)) then
                                     @_range
                                   else raise NameError.new( "Error: undefined variable _range", "_range" ) end
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:591"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:597"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   begin
                                       _level
-                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:609"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:615"] + __e.backtrace ) ; raise __e
                                   end
                                          ))
                                    )))
@@ -8478,7 +8573,7 @@
                               if (self.instance_variables.include?(:@_display)) then
                                 @_display
                               else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:597"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:603"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                             "("
@@ -8491,7 +8586,7 @@
                               if (self.instance_variables.include?(:@_display)) then
                                 @_display
                               else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:597"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:603"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                             ")"
@@ -8502,7 +8597,7 @@
                         if ( 
                           begin
                               _prefix
-                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                           end
                          ) then
                             begin
@@ -8511,7 +8606,7 @@
                                       if (self.instance_variables.include?(:@_display)) then
                                         @_display
                                       else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:597"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:603"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     " "
@@ -8523,12 +8618,12 @@
                               if (self.instance_variables.include?(:@_write)) then
                                 @_write
                               else raise NameError.new( "Error: undefined variable _write", "_write" ) end
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _e
-                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                               end
                                      ))
                     }
@@ -8548,13 +8643,13 @@
                                       if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                         @_eq_QUMARK
                                       else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     false                                    ,Cell.new(
                                       begin
                                           _prefix
-                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                       end
                                              )))
                                        ))
@@ -8562,12 +8657,12 @@
                             callProcedure( 'do-indent',
                                 begin
                                     _do_MIMARKindent
-                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:600"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:606"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   begin
                                       _level
-                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:609"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:615"] + __e.backtrace ) ; raise __e
                                   end
                                          ))
                         else
@@ -8578,7 +8673,7 @@
                               if (self.instance_variables.include?(:@_pp_MIMARKparenl)) then
                                 @_pp_MIMARKparenl
                               else raise NameError.new( "Error: undefined variable _pp_MIMARKparenl", "_pp_MIMARKparenl" ) end
-                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:601"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:607"] + __e.backtrace ) ; raise __e
                             end                          ,
                           Cell.new(
                                      ))
@@ -8592,12 +8687,12 @@
                                             if (self.instance_variables.include?(:@_null_QUMARK)) then
                                               @_null_QUMARK
                                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:604"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             begin
                                                 _s
-                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                                             end
                                                    ))
                                      ) then
@@ -8606,7 +8701,7 @@
                                               if (self.instance_variables.include?(:@_pp_MIMARKparenr)) then
                                                 @_pp_MIMARKparenr
                                               else raise NameError.new( "Error: undefined variable _pp_MIMARKparenr", "_pp_MIMARKparenr" ) end
-                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:611"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                           Cell.new(
                                                      ))
@@ -8619,12 +8714,12 @@
                                                       if (self.instance_variables.include?(:@_list_QUMARK)) then
                                                         @_list_QUMARK
                                                       else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:612"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:618"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       begin
                                                           _e
-                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))
                                                ) then
@@ -8643,13 +8738,13 @@
                                                                     if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                                                       @_eq_QUMARK
                                                                     else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:529"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:535"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                   false                                                                  ,Cell.new(
                                                                     begin
                                                                         _prefix
-                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            )))
                                                                      ))
@@ -8659,7 +8754,7 @@
                                                                 if (self.instance_variables.include?(:@_newline)) then
                                                                   @_newline
                                                                 else raise NameError.new( "Error: undefined variable _newline", "_newline" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:615"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:621"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                             Cell.new(
                                                                        ))
@@ -8671,30 +8766,30 @@
                                                             if (self.instance_variables.include?(:@_pp_MIMARKlist)) then
                                                               @_pp_MIMARKlist
                                                             else raise NameError.new( "Error: undefined variable _pp_MIMARKlist", "_pp_MIMARKlist" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:613"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:619"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                             begin
                                                                 _e
-                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,Cell.new(
                                                             callProcedure( '+',
                                                                 begin
                                                                   if (self.instance_variables.include?(:@__PLMARK)) then
                                                                     @__PLMARK
                                                                   else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:609"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:615"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                   begin
                                                                       _level
-                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:609"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:615"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,Cell.new(
                                                                 1
                                                                          )))                                                          ,Cell.new(
                                                             begin
                                                                 _prefix
-                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    ))))
                                                   end
@@ -8704,23 +8799,23 @@
                                                         if (self.instance_variables.include?(:@_pp_MIMARKatom)) then
                                                           @_pp_MIMARKatom
                                                         else raise NameError.new( "Error: undefined variable _pp_MIMARKatom", "_pp_MIMARKatom" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         begin
                                                             _e
-                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,Cell.new(
                                                         begin
                                                             _prefix
-                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:610"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:616"] + __e.backtrace ) ; raise __e
                                                         end
                                                                )))
                                               end
                                               callProcedure( 'loop',
                                                   begin
                                                       _loop
-                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:611"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:617"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     callProcedure( 'cdr',
@@ -8728,12 +8823,12 @@
                                                           if (self.instance_variables.include?(:@_cdr)) then
                                                             @_cdr
                                                           else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:611"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:617"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           begin
                                                               _s
-                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                                                           end
                                                                  ))                                                  ,Cell.new(
                                                   true
@@ -8744,12 +8839,12 @@
                                                       if (self.instance_variables.include?(:@_car)) then
                                                         @_car
                                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:606"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       begin
                                                           _s
-                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))
                                                      )
@@ -8759,12 +8854,12 @@
                               callProcedure( 'loop',
                                   begin
                                       _loop
-                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:611"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:617"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     begin
                                         _s
-                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                                     end                                  ,Cell.new(
                                   false
                                            )))
@@ -8779,12 +8874,12 @@
                         if (self.instance_variables.include?(:@_list_QUMARK)) then
                           @_list_QUMARK
                         else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:612"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:618"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
                             _s
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                         end
                                ))
                  ) then
@@ -8793,12 +8888,12 @@
                           if (self.instance_variables.include?(:@_pp_MIMARKlist)) then
                             @_pp_MIMARKlist
                           else raise NameError.new( "Error: undefined variable _pp_MIMARKlist", "_pp_MIMARKlist" ) end
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:613"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:619"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
                           begin
                               _s
-                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                           end                        ,Cell.new(
                         0                        ,Cell.new(
                         false
@@ -8809,12 +8904,12 @@
                           if (self.instance_variables.include?(:@_write)) then
                             @_write
                           else raise NameError.new( "Error: undefined variable _write", "_write" ) end
-                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
                           begin
                               _s
-                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:614"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                           end
                                  ))
                 end
@@ -8823,7 +8918,7 @@
                       if (self.instance_variables.include?(:@_newline)) then
                         @_newline
                       else raise NameError.new( "Error: undefined variable _newline", "_newline" ) end
-                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:615"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["/Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/init.nnd:621"] + __e.backtrace ) ; raise __e
                     end                  ,
                   Cell.new(
                              ))

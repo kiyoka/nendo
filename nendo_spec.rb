@@ -783,7 +783,26 @@ describe Nendo, "when use values " do
                     " (call-with-values" +
                     "     (lambda () (values 1 2)) " +
                     "   cons)" ).should == "(1 . 2)"
+    @nendo.replStr( "" +
+                    " (call-with-values" +
+                    "     (lambda () (values 10)) " +
+                    "   list)" ).should == "(10)"
+    @nendo.replStr( "" +
+                    " (call-with-values" +
+                    "     (lambda () (values)) " +
+                    "   list)" ).should == "()"
     @nendo.replStr( " (call-with-values * -) " ).should == "-1"
+    @nendo.replStr( " (receive (a)       (values)           (list a))       " ).should == "()"
+    @nendo.replStr( " (receive (a)       (values 10)        (list a))       " ).should == "(10)"
+    @nendo.replStr( " (receive (a b)     (values 10 20)     (list a b))     " ).should == "(10 20)"
+    @nendo.replStr( " (receive (a b c)   (values 10 20 30)  (list a b c))   " ).should == "(10 20 30)"
+    @nendo.replStr( " (receive (a . b)   (values 10)        (list a b))     " ).should == "(10 ())"
+    @nendo.replStr( " (receive (a . b)   (values 10 20)     (list a b))     " ).should == "(10 (20))"
+    @nendo.replStr( " (receive (a . b)   (values 10 20 30)  (list a b))     " ).should == "(10 (20 30))"
+    @nendo.replStr( " (receive all       (values)           all)            " ).should == "()"
+    @nendo.replStr( " (receive all       (values 10)        all)            " ).should == "(10)"
+    @nendo.replStr( " (receive all       (values 10 20)     all)            " ).should == "(10 20)"
+    @nendo.replStr( " (receive all       (values 10 20 30)  all)            " ).should == "(10 20 30)"
   end
 end
 
