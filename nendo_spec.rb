@@ -258,12 +258,13 @@ describe Nendo, "when call replStr() with `+' function" do
     @nendo.replStr( " (+ 1 (+ 2 (+ 3 (+ 4 (+ 5))))) " ).should == "15"
     @nendo.replStr( " (+ 1   1.1) " ).should == "2.1"
     @nendo.replStr( " (+ 1.1 1.2) " ).should == "2.3"
+    @nendo.replStr( " (+ \"a\" ) " ).should == '"a"'
     @nendo.replStr( " (+ \"a\" \"B\" \"c\" ) " ).should == '"aBc"'
-    @nendo.replStr( " (+ 1 '() ) " ).should == "1"
-    @nendo.replStr( " (+ 1.1 '() ) " ).should == "1.1"
-    lambda { @nendo.replStr( " (+) " ) }.should              raise_error(ArgumentError)
+    @nendo.replStr( " (+) " ).should == "0"
+    @nendo.replStr( " (+ '()) " ).should == "0"
+    lambda { @nendo.replStr( " (+ 1 '() ) " ) }.should       raise_error(TypeError)
+    lambda { @nendo.replStr( " (+ 1.1 '() ) " ) }.should     raise_error(TypeError)
     lambda { @nendo.replStr( " (+ '(1) ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.replStr( " (+ '() ) " ) }.should         raise_error(ArgumentError)
     lambda { @nendo.replStr( " (+ 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
     lambda { @nendo.replStr( " (+ \"a\" 1) " ) }.should      raise_error(TypeError)
     lambda { @nendo.replStr( " (+ \"a\" 1.1) " ) }.should    raise_error(TypeError)
@@ -303,12 +304,14 @@ describe Nendo, "when call replStr() with `*' function" do
     @nendo.replStr( " (* 100 (* 10 10 10)) " ).should == "100000"
     @nendo.replStr( " (* 1.1 1) " ).should == "1.1"
     @nendo.replStr( " (* 1.3 1.1) " ).should == (1.3*1.1).to_s
-    @nendo.replStr( " (* 1 '() ) " ).should == "1"
-    @nendo.replStr( " (* 1.1 '() ) " ).should == "1.1"
-    lambda { @nendo.replStr( " (*) " ) }.should              raise_error(ArgumentError)
+    @nendo.replStr( " (*) " ).should == "1"
+    @nendo.replStr( " (* '()) " ).should == "1"
+    lambda { @nendo.replStr( " (* 1 '() ) " ) }.should       raise_error(TypeError)
+    lambda { @nendo.replStr( " (* 1.1 '() ) " ) }.should     raise_error(TypeError)
     lambda { @nendo.replStr( " (* '(1) ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.replStr( " (* '() ) " ) }.should         raise_error(ArgumentError)
     lambda { @nendo.replStr( " (* 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+    lambda { @nendo.replStr( " (* \"a\" 1) " ) }.should      raise_error(TypeError)
+    lambda { @nendo.replStr( " (* \"a\" 1.1) " ) }.should    raise_error(TypeError)
   end
 end
 
@@ -748,6 +751,39 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (filter-map (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(true true)"
     @nendo.replStr( " (filter-map (lambda (x) (if (= x 2) (* x 10) false)) '(1 2 3)) " ).should == "(20)"
     @nendo.replStr( " (filter-map (lambda (x) (if (not (= x 2)) (* x 10) false)) '(1 2 3)) " ).should == "(10 30)"
+  end
+end
+
+describe Nendo, "when use values " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (values? (make-values '())) " ).should == "true"
+    lambda { @nendo.replStr( " (make-values '(1))) " ) }.should        raise_error(ArgumentError)
+    @nendo.replStr( " (values? (make-values '(1 2))) " ).should == "true"
+    @nendo.replStr( " (values? (make-values '(1 2 3))) " ).should == "true"
+    @nendo.replStr( " (values? (values)) " ).should == "true"
+    @nendo.replStr( " (values? (values 1)) " ).should == "false"
+    @nendo.replStr( " (values 1) " ).should == "1"
+    @nendo.replStr( " (values? (values 1 2)) " ).should == "true"
+    @nendo.replStr( " (values? (values 1 2 3)) " ).should == "true"
+    @nendo.replStr( " (values? (values '(a) \"b\" '(\"C\"))) " ).should == "true"
+    @nendo.replStr( " (values-values (values)) " ).should == "()"
+    lambda { @nendo.replStr( " (values-values (values 1)) " ) }.should     raise_error(ArgumentError)
+    @nendo.replStr( " (values-values (values 1 2)) " ).should == "(1 2)"
+    @nendo.replStr( " (values-values (values 1 2 3)) " ).should == "(1 2 3)"
+    @nendo.replStr( " (values-values (values '(a) \"b\" '(\"C\"))) " ).should == '((a) "b" ("C"))'
+    @nendo.replStr( "" +
+                    " (call-with-values" +
+                    "     (lambda () (values 4 5)) " +
+                    "   (lambda (a b) b))" ).should == "5"
+    @nendo.replStr( "" +
+                    " (call-with-values" +
+                    "     (lambda () (values 1 2)) " +
+                    "   cons)" ).should == "(1 . 2)"
+    @nendo.replStr( " (call-with-values * -) " ).should == "-1"
   end
 end
 

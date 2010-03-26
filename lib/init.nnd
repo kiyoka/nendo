@@ -478,6 +478,24 @@
 
 
 ;; ----------------------------------------
+;; values
+;; ----------------------------------------
+(define (values . args)
+  (case (length args)
+    ((1)
+     (car args))
+    (else
+     (make-values args))))
+
+
+(define (call-with-values producer consumer)
+  (let ((v (producer)))
+    (if (values? v)
+        (apply consumer (values-values v))
+        (consumer v))))
+
+
+;; ----------------------------------------
 ;; for Ruby interop
 ;; ----------------------------------------
 ;; dot_operator

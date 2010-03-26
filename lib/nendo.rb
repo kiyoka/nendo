@@ -127,6 +127,19 @@ class Array
   end
 end
 
+
+class LispValues
+  def initialize( arr )
+    if 1 == arr.size
+      raise ArgumentError, "Error: LispValues object expects 0 or 2+ length of array"
+    else
+      @values = arr
+    end
+  end
+  attr_reader :values
+end
+
+
 class Token
   def initialize( kind, str, sourcefile, lineno = nil, column = nil )
     @kind       = kind
@@ -561,36 +574,56 @@ module BuiltinFunctions
     end
   end
   
-  def __PLMARK( first, *rest )
-    raise TypeError if not (_number_QUMARK(first) or _string_QUMARK(first))
-    rest = rest[0].to_arr
-    __assertFlat( rest )
-    if 0 == rest.length 
-      first
+  def __PLMARK( *args )
+    arr = args[0].to_arr
+    case args[0].length
+    when 0
+      0
     else
-      rest.inject(first){|x,y| x+y}
+      __assertFlat( arr )
+      arr.each { |x| 
+        if not (_number_QUMARK(x) or _string_QUMARK(x))
+          raise TypeError
+        end
+      }
+      case args[0].length
+      when 1
+        args[0].car
+      else
+        arr[1..-1].inject(arr[0]){|x,y| x+y}
+      end
     end
   end
   
+  def __ASMARK( *args )
+    arr = args[0].to_arr
+    case args[0].length
+    when 0
+      1
+    else
+      __assertFlat( arr )
+      arr.each { |x| 
+        if not _number_QUMARK(x)
+          raise TypeError
+        end
+      }
+      case args[0].length
+      when 1
+        args[0].car
+      else
+        arr[1..-1].inject(arr[0]){|x,y| x*y}
+      end
+    end
+  end
+
   def __MIMARK( first, *rest )
-    raise TypeError if not (_number_QUMARK(first) or _string_QUMARK(first))
+    raise TypeError if not _number_QUMARK(first)
     rest = rest[0].to_arr
     __assertFlat( rest )
     if 0 == rest.length 
       - first
     else
       rest.inject(first){|x,y| x-y}
-    end
-  end
-
-  def __ASMARK( first, *rest )
-    raise TypeError if not _number_QUMARK(first)
-    rest = rest[0].to_arr
-    __assertFlat( rest )
-    if 0 == rest.length 
-      first
-    else
-      rest.inject(first){|x,y| x*y}
     end
   end
 
@@ -761,6 +794,26 @@ module BuiltinFunctions
     }.map{ |name| 
       self.toLispSymbol( name[1..-1] ).intern
     }.to_list
+  end
+
+  def _make_MIMARKvalues( lst )
+    if _pair_QUMARK( lst )
+      LispValues.new( lst.to_arr )
+    elsif _null_QUMARK( lst )
+      LispValues.new( [] )
+    else
+      raise ArgumentError, "Error: make-values expects a list argument."
+    end
+  end
+
+  def _values_QUMARK( arg )     arg.is_a? LispValues   end
+
+  def _values_MIMARKvalues( arg )
+    if _values_QUMARK( arg )
+      arg.values.to_list
+    else
+      raise ArgumentError, "Error: values-values expects only LispValues object..."
+    end
   end
 end
 
