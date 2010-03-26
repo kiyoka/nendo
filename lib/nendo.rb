@@ -756,7 +756,9 @@ module BuiltinFunctions
       raise TypeError
     end
   end
-  def _intern( arg )            arg.intern  end
+  def _intern( arg )                            arg.intern  end
+  def _string_MIMARK_GTMARKsymbol( arg )        arg.intern  end
+  def _symbol_MIMARK_GTMARKstring( arg )        arg.to_s    end
   def _string_MIMARKjoin( lst, delim )
     lst.to_a.map{ |x| x.car }.join( delim )
   end

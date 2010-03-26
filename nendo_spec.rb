@@ -524,6 +524,8 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (length '(1 2)) " ).should == "2"
     lambda { @nendo.replStr( " (length \"str\") " ) }.should  raise_error(TypeError)
     lambda { @nendo.replStr( " (length 1) " ) }.should  raise_error(TypeError)
+    @nendo.replStr( " (symbol->string 'sym) " ).should == '"sym"'
+    @nendo.replStr( " (string->symbol \"sym\") " ).should == 'sym'
   end
 end
 
