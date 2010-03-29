@@ -773,7 +773,7 @@ describe Nendo, "when use values " do
     @nendo.replStr( " (values? (values 1 2 3)) " ).should == "true"
     @nendo.replStr( " (values? (values '(a) \"b\" '(\"C\"))) " ).should == "true"
     @nendo.replStr( " (values-values (values)) " ).should == "()"
-    lambda { @nendo.replStr( " (values-values (values 1)) " ) }.should     raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (values-values (values 1)) " ) }.should     raise_error(TypeError)
     @nendo.replStr( " (values-values (values 1 2)) " ).should == "(1 2)"
     @nendo.replStr( " (values-values (values 1 2 3)) " ).should == "(1 2 3)"
     @nendo.replStr( " (values-values (values '(a) \"b\" '(\"C\"))) " ).should == '((a) "b" ("C"))'
@@ -930,5 +930,41 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.replStr( " (define a \"s\") (a.is_a? Fixnum) " ).should == "false"
     @nendo.replStr( " (define a \"s\") (a.is_a? Float) " ).should ==  "false"
     @nendo.replStr( " (define a \"s\") (a.is_a? String) " ).should == "true"
+  end
+end
+
+describe Nendo, "when use keyword feature " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (keyword? :a) " ).should == "true"
+    @nendo.replStr( ' (keyword? (intern ":a")) ' ).should == "false"
+    @nendo.replStr( ' (symbol?  (intern ":a")) ' ).should == "true"
+    @nendo.replStr( " (keyword? ':a) " ).should == "true"
+    @nendo.replStr( " (symbol? ':a) " ).should == "false"
+    @nendo.replStr( " (eq?  :a :a) " ).should == "true"
+    @nendo.replStr( " (eqv? :a :a) " ).should == "true"
+    @nendo.replStr( ' (eq?  :a (intern ":a")) ' ).should == "false"
+    @nendo.replStr( ' (eqv? :a (intern ":a")) ' ).should == "false"
+    @nendo.replStr( ' (keyword? (make-keyword "a")) ' ).should == "true"
+    @nendo.replStr( " :a " ).should == ":a"
+    @nendo.replStr( " ::a " ).should == "::a"
+    @nendo.replStr( " :::key " ).should == ":::key"
+    @nendo.replStr( ' (make-keyword "a") ' ).should == ":a"
+    @nendo.replStr( ' (make-keyword ":a") ' ).should == "::a"
+    @nendo.replStr( " (make-keyword 'a) " ).should == ":a"
+    @nendo.replStr( " (keyword->string :a) " ).should == '"a"'
+    @nendo.replStr( " (keyword->string :abcde) " ).should == '"abcde"'
+    lambda { @nendo.replStr( " (keyword->string 'a) " ) }.should                  raise_error( TypeError )
+    @nendo.replStr( " : " ).should == ':'
+    @nendo.replStr( " (keyword->string :) " ).should == '""'
+    @nendo.replStr( ' (make-keyword "") ' ).should == ":"
+    @nendo.replStr( " (get-keyword :y '(:x 1 :y 2 :z 3)) " ).should == "2"
+    @nendo.replStr( " (get-keyword 'z '(x 1 y 2 z 3)) " ).should == "3"
+    lambda { @nendo.replStr( " (get-keyword 'z '(x 1 y 2 z)) " ) }.should         raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (get-keyword :t '(:x 1 :y 2 :z 3)) " ) }.should    raise_error( RuntimeError )
+    @nendo.replStr( " (get-keyword :t '(:x 1 :y 2 :z 3) #f) " ).should == "false"
   end
 end

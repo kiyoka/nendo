@@ -139,6 +139,29 @@ class LispValues
   attr_reader :values
 end
 
+class LispKeyword
+  def initialize( str )
+    @key = str.intern
+  end
+
+  def ==(other)
+    if other.is_a? LispKeyword
+      self.key == other.key
+    else
+      false
+    end
+  end
+
+  def ===(other)
+    self.==(other)
+  end
+
+  def to_s
+    self.key.to_s
+  end
+
+  attr_reader :key
+end
 
 class Token
   def initialize( kind, str, sourcefile, lineno = nil, column = nil )
@@ -202,6 +225,7 @@ class Reader
   T_LPAREN              = :t_lparen
   T_RPAREN              = :t_rparen
   T_SYMBOL              = :t_symbol
+  T_KEYWORD             = :t_keyword
   T_NUM                 = :t_num
   T_STRING              = :t_string
   T_QUOTE               = :t_quote
@@ -349,6 +373,9 @@ class Reader
             T_FEEDTO
           elsif str.match( /^[+-][0-9.]+$/ )
             T_NUM
+          elsif str.match( /^[:]/ )
+            str = str[1..-1]
+            T_KEYWORD
           else
             T_SYMBOL
           end
@@ -422,6 +449,8 @@ class Reader
       :feedto
     when T_DEBUG_PRINT
       "debug-print".intern
+    when T_KEYWORD
+      LispKeyword.new( cur.str )
     else
       raise "Error: Unknown token in atom()"
     end
@@ -724,6 +753,7 @@ module BuiltinFunctions
   def _procedure_QUMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
   def _macro_QUMARK( arg )       (LispMacro == arg.class) end
   def _symbol_QUMARK(    arg )   (Symbol == arg.class) end
+  def _keyword_QUMARK(    arg )  (arg.is_a? LispKeyword) end
   def _pair_QUMARK(      arg )   
     if _null_QUMARK( arg )
       false
@@ -814,7 +844,23 @@ module BuiltinFunctions
     if _values_QUMARK( arg )
       arg.values.to_list
     else
-      raise ArgumentError, "Error: values-values expects only LispValues object..."
+      raise TypeError, "Error: values-values expects only LispValues object."
+    end
+  end
+
+  def _make_MIMARKkeyword( arg )
+    if _symbol_QUMARK(    arg ) or _string_QUMARK(    arg )
+      LispKeyword.new( arg.to_s )
+    else
+      raise TypeError, "Error: make-keyword expects symbol or string object."
+    end
+  end
+
+  def _keyword_MIMARK_GTMARKstring( arg )
+    if _keyword_QUMARK(    arg )
+      arg.key.to_s
+    else
+      raise TypeError, "Error: keyword->string expects only keyword object."
     end
   end
 end
@@ -991,7 +1037,13 @@ class Evaluator
       global_cap = locals.flatten.include?( variable_sym ) ? nil : "@"
       [ sprintf( "%s%s = ", global_cap, variable_sym ), ar ]
     when :error
-      sprintf( 'begin raise RuntimeError, %s ; rescue => __e ;  __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e ; end ', toRubyValue( args.car ), sourcefile, lineno )
+      [
+       'begin raise RuntimeError, ',
+       args.car,
+       "rescue => __e ",
+       sprintf( "  __e.set_backtrace( [\"%s:%d\"] + __e.backtrace )", sourcefile, lineno ),
+       "  raise __e",
+       "end "]
     else
       if (not lambda_flag) and isRubyInterface( funcname )
         # Ruby method
@@ -1174,6 +1226,8 @@ class Evaluator
       str += sprintf( ":\"%s\"", sexp.to_s )
     when String
       str += sprintf( "\"%s\"", LispString.escape( sexp ))
+    when LispKeyword
+      str += sprintf( "LispKeyword.new( \"%s\" )", sexp.key.to_s )
     when TrueClass, FalseClass, NilClass  # reserved symbols
       str += toRubyValue( sexp )
     else
@@ -1259,6 +1313,8 @@ class Evaluator
         sexp.to_s
       when String
         sprintf( "\"%s\"", LispString.escape( sexp ))
+      when LispKeyword
+        sprintf( "LispKeyword.new( \"%s\" )", sexp.key )
       when Nil
         "Nil.new"
       when TrueClass, FalseClass, NilClass  # reserved symbols
@@ -1501,6 +1557,8 @@ class Printer
       else
         sexp.to_s
       end
+    when LispKeyword
+      ":" + sexp.key.to_s
     when Nil
       "()"
     when nil
