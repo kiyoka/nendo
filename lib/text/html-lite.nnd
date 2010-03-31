@@ -32,34 +32,33 @@
 ;;;  
 ;;;  $Id: html-lite.scm,v 1.19 2008-05-10 13:36:11 shirok Exp $
 ;;;
-
-(define-module text.html-lite
-  (use text.tree)
-  (use srfi-1)
-  (export html-escape html-escape-string html-doctype)
-  )
-(select-module text.html-lite)
+;;;
+;;;  ported for Nendo language by Kiyoka Nishiyama.
 
 ;; Escaping ---------------------------------------------
-(define (html-escape)
-  (port-for-each (lambda (c)
-                   (case c
-                     ((#\<) (display "&lt;"))
-                     ((#\>) (display "&gt;"))
-                     ((#\&) (display "&amp;"))
-                     ((#\") (display "&quot;"))
-                     (else (display c))
-                     ))
-                 read-char))
+(define (html-escape c)
+  (case c
+    (("<")  "&lt;")
+    ((">")  "&gt;")
+    (("&")  "&amp;")
+    (("\"") "&quot;")
+    (else c)))
 
 (define (html-escape-string string)
-  (with-string-io (x->string string) html-escape))
+  (string-join
+   (map
+    html-escape
+    (to-list (string.split "")))
+   ""))
+
+;;(html-escape-string "<html> & \"abc\"")
+
 
 ;; Doctype ----------------------------------------------
 
 ;; Doctype database
 ;;  (type ...) => (xml? doctype)
-(define-constant *doctype-alist*
+(define *doctype-alist*
   '(((:strict :html :html-strict :html-4.01 :html-4.01-strict)
      #f
      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
@@ -90,10 +89,13 @@
        \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n")
     ))
 
-(define (html-doctype :key (type :html-4.01-strict))
-  (cond ((find (lambda (e) (memq type (car e))) *doctype-alist*)
-         => caddr )
-        (else (error "Unknown doctype type spec" type))))
+(define (html-doctype . type)
+  (let1 (if (null? type)
+            :html-4.01-strict
+            type)
+      (cond ((find (lambda (e) (memq type (car e))) *doctype-alist*)
+             => caddr )
+            (else (error "Unknown doctype type spec" type)))))
 
 ;; Elements ------------------------------------------------
 
@@ -110,7 +112,7 @@
                     (get-attr (cddr args) (list* (car args) " " attrs)))
                    (else
                     (get-attr (cddr args)
-                              (list* (format #f "=\"~a\""
+                              (list* (sprintf "=\"%s\""
                                              (html-escape-string (x->string (cadr args))))
                                      (car args)
                                      " "
@@ -127,25 +129,31 @@
         (receive (attr args) (get-attr args '())
           (list "<" name attr ">" args "</" name "\n>"))))))
 
-(define-macro (define-html-elements . elements)
-  (define (make-scheme-name name)
-    (string->symbol (format #f "html:~a" name)))
-  (let loop ((elements elements)
-             (r '()))
-    (cond ((null? elements) `(begin ,@(reverse r)))
-          ((and (pair? (cdr elements)) (eqv? (cadr elements) :empty))
-           (loop (cddr elements)
-                 (list* `(define ,(make-scheme-name (car elements))
-                           (make-html-element ',(car elements) :empty? #t))
-                        `(export ,(make-scheme-name (car elements)))
-                        r)))
-          (else
-           (loop (cdr elements)
-                 (list* `(define ,(make-scheme-name (car elements))
-                           (make-html-element ',(car elements)))
-                        `(export ,(make-scheme-name (car elements)))
-                        r))))
-    ))
+
+
+(define define-html-elements
+  (macro elements
+    (letrec ((make-scheme-name
+              (lambda (name)
+                (string->symbol (sprintf "html:%s" name)))))
+
+      (let loop ((elements elements)
+                 (r '()))
+        (cond ((null? elements) `(begin ,@(reverse r)))
+              ((and (pair? (cdr elements)) (eqv? (cadr elements) :empty))
+               (loop (cddr elements)
+                     (list* `(define ,(make-scheme-name (car elements))
+                               (make-html-element ',(car elements) :empty? #t))
+                            `(export ,(make-scheme-name (car elements)))
+                            r)))
+              (else
+               (loop (cdr elements)
+                     (list* `(define ,(make-scheme-name (car elements))
+                               (make-html-element ',(car elements)))
+                            `(export ,(make-scheme-name (car elements)))
+                            r))))
+        ))))
+
 
 ;; http://www.w3.org/TR/html4/sgml/dtd.html
 
@@ -221,7 +229,4 @@
 
 ;; FRAMES
 (define-html-elements frameset frame noframes iframe)
-
-(provide "text/html-lite")
-
 

@@ -1,0 +1,12 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+
+(define debug-print-length 256)
+
+
+(load-library "text/html-lite")
+
+(write *doctype-alist*)
+(newline)
