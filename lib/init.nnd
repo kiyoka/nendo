@@ -513,23 +513,28 @@
 ;; keyword
 ;; ----------------------------------------
 (define (get-keyword key kv-list . fallback)
-  (let loop ((k (car kv-list))
-             (v (cadr kv-list))
-             (rest (cddr kv-list)))
-    (if (eq? k key)
-        v
-        (case (length rest)
-          ((0)
-           (if (null? fallback)
-               (errorf "Error: value for key %s is not provided : %s\n" (write-to-string key) (write-to-string kv-list))
-               (car fallback)))
-          ((1)
-           (error (sprintf "Error: incomplete key list: %s\n" (write-to-string kv-list))))
-          (else
-           (loop (car rest)
-                 (cadr rest)
-                 (cddr rest)))))))
-
+  (cond
+   ((or (not (list? kv-list))  (>= 2 (length kv-list)))
+    (if (null? fallback)
+        (errorf "Error: imcomplete key list: %s\n" (write-to-string kv-list))
+        (car fallback)))
+   (else
+    (let loop ((k (car kv-list))
+               (v (cadr kv-list))
+               (rest (cddr kv-list)))
+      (if (eq? k key)
+          v
+          (case (length rest)
+            ((0)
+             (if (null? fallback)
+                 (errorf "Error: value for key %s is not provided : %s\n" (write-to-string key) (write-to-string kv-list))
+                 (car fallback)))
+            ((1)
+             (errorf "Error: incomplete key list: %s\n" (write-to-string kv-list)))
+            (else
+             (loop (car rest)
+                   (cadr rest)
+                   (cddr rest)))))))))
 
 ;; ----------------------------------------
 ;; for Ruby interop

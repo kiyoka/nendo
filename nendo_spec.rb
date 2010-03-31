@@ -972,6 +972,11 @@ describe Nendo, "when use keyword feature " do
     @nendo.replStr( " (get-keyword 'z '(x 1 y 2 z 3)) " ).should == "3"
     lambda { @nendo.replStr( " (get-keyword 'z '(x 1 y 2 z)) " ) }.should         raise_error( RuntimeError )
     lambda { @nendo.replStr( " (get-keyword :t '(:x 1 :y 2 :z 3)) " ) }.should    raise_error( RuntimeError )
-    @nendo.replStr( " (get-keyword :t '(:x 1 :y 2 :z 3) #f) " ).should == "false"
+    @nendo.replStr( " (get-keyword :t '() #f) " ).should == "false"
+    @nendo.replStr( " (get-keyword :t '(:x) #f) " ).should == "false"
+    lambda { @nendo.replStr( " (get-keyword :t '()) " ) }.should                  raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (get-keyword :t '(:x)) " ) }.should                raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (get-keyword :t 1) " ) }.should                    raise_error( RuntimeError )
+    @nendo.replStr( " (get-keyword :t 1 #f) " ).should == "false"
   end
 end
