@@ -118,7 +118,7 @@
                  (else
                   (get-attr (cddr args)
                             (list* (sprintf "=\"%s\""
-                                            (html-escape-string (to-s (cadr args))))
+                                            (html-escape-string (x->string (cadr args))))
                                    (car args)
                                    " "
                                    attrs)))))

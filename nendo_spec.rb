@@ -696,6 +696,16 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (tenth   '(100 200 300 400 500 600 700 800 900 1000)) " ).should == "1000"
     @nendo.replStr( " (first   '()) " ).should == "nil"
     @nendo.replStr( " (tenth   '()) " ).should == "nil"
+    @nendo.replStr( " (to-s      10) " ).should == '"10"'
+    @nendo.replStr( " (to_s      10) " ).should == '"10"'
+    @nendo.replStr( " (x->string 10) " ).should == '"10"'
+    @nendo.replStr( " (to-s      2.1) " ).should == '"2.1"'
+    @nendo.replStr( " (to_s      2.1) " ).should == '"2.1"'
+    @nendo.replStr( " (x->string 2.1) " ).should == '"2.1"'
+    @nendo.replStr( " (to_i    \"22\") " ).should == '22'
+    @nendo.replStr( " (to-i    \"22\") " ).should == '22'
+    @nendo.replStr( " (to_i    \"10000\") " ).should == '10000'
+    @nendo.replStr( " (to-i    \"10000\") " ).should == '10000'
     @nendo.replStr( " (let1 aaa 111 aaa) " ).should == "111"
     @nendo.replStr( " (let1 aaa (+ 2 3) aaa) " ).should == "5"
     @nendo.replStr( " (let1 aaa 333 (let1 bbb 444 (+ aaa bbb))) " ).should == "777"
