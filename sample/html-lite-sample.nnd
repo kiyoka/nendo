@@ -3,10 +3,51 @@
 :; exec /usr/local/bin/nendo $0 $*
 
 
+(load-library "text/html-lite")
+(load-library "text/tree")
+
 (define debug-print-length 256)
 
+(define (page-sample)
+  `(
+    ,(html:head
+      (html:title "title of page"))
+    ,(html:body
+      (html:p "これはサンプルです")
+      (html:h1 "section 1")
+      (html:h2 "section 1-2")
+      (html:table :border 1
+                  (html:tr
+                   (html:th "head1")
+                   (html:th "head2"))
+                  (html:tr
+                   (html:td "data1")
+                   (html:td "data2"))
+                  (html:tr
+                   (html:td "data3")
+                   (html:td "data4"))
+                  (html:hr)))))
 
-(load-library "text/html-lite")
+(write-tree
+ (page-sample))
 
-(write *doctype-alist*)
-(newline)
+
+
+      
+             
+            
+
+
+
+
+
+
+
+
+            
+   
+   
+   
+    
+         
+ 

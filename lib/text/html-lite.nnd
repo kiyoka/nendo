@@ -89,46 +89,51 @@
        \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n")
     ))
 
+(define (find pred lst)
+  (let1 result (filter pred lst)
+    (if (null? result)
+        #f
+        (car result))))
+
 (define (html-doctype . type)
-  (let1 (if (null? type)
-            :html-4.01-strict
-            type)
-      (cond ((find (lambda (e) (memq type (car e))) *doctype-alist*)
-             => caddr )
-            (else (error "Unknown doctype type spec" type)))))
+  (let1 type (if (null? type)
+                 :html-4.01-strict
+                 type)
+    (cond ((find (lambda (e) (memq type (car e))) *doctype-alist*)
+           => caddr )
+          (else (error "Unknown doctype type spec" type)))))
 
 ;; Elements ------------------------------------------------
 
 (define (make-html-element name . args)
+  (define (get-attr args attrs)
+    (cond ((null? args) (values (reverse attrs) args))
+          ((keyword? (car args))
+           (cond ((null? (cdr args))
+                  (values (reverse (list* (car args) " " attrs)) args))
+                 ((eq? (cadr args) #f)
+                  (get-attr (cddr args) attrs))
+                 ((eq? (cadr args) #t)
+                  (get-attr (cddr args) (list* (car args) " " attrs)))
+                 (else
+                  (get-attr (cddr args)
+                            (list* (sprintf "=\"%s\""
+                                            (html-escape-string (to-s (cadr args))))
+                                   (car args)
+                                   " "
+                                   attrs)))))
+          (else (values (reverse attrs) args))))
+
   (let ((empty? (get-keyword :empty? args #f)))
-    (define (get-attr args attrs)
-      (cond ((null? args) (values (reverse attrs) args))
-            ((keyword? (car args))
-             (cond ((null? (cdr args))
-                    (values (reverse (list* (car args) " " attrs)) args))
-                   ((eq? (cadr args) #f)
-                    (get-attr (cddr args) attrs))
-                   ((eq? (cadr args) #t)
-                    (get-attr (cddr args) (list* (car args) " " attrs)))
-                   (else
-                    (get-attr (cddr args)
-                              (list* (sprintf "=\"%s\""
-                                             (html-escape-string (x->string (cadr args))))
-                                     (car args)
-                                     " "
-                                     attrs)))))
-            (else (values (reverse attrs) args))))
-
     (if empty?
-      (lambda args
-        (receive (attr args) (get-attr args '())
-          (unless (null? args)
-            (errorf "element ~s can't have content: ~s" name args))
-          (list "<" name attr " />")))
-      (lambda args
-        (receive (attr args) (get-attr args '())
-          (list "<" name attr ">" args "</" name "\n>"))))))
-
+        (lambda args
+          (receive (attr args) (get-attr args '())
+            (unless (null? args)
+              (errorf "element %s can't have content: %s" name (write-to-string args)))
+            (list "<" name attr " />")))
+        (lambda args
+          (receive (attr args) (get-attr args '())
+            (list "<" name attr ">" args "</" name "\n>"))))))
 
 
 (define define-html-elements
