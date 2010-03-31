@@ -592,6 +592,35 @@
         x))
 
 
+(define (cons* arg . args)
+  (if (null? args)
+      arg
+      (cons arg (apply list* args))))
+(define list* cons*)
+
+
+;; ----------------------------------------
+;; Ruby interop librarys
+;; ----------------------------------------
+;; I will implement in the future...
+(define export
+  (macro (name)
+    `(define ,name nil)))
+
+(define (load-library name)
+  (let* ((home (get-nendo-home))
+         (path (+ home "/" name)))
+    (cond
+     ((File.exist? path)
+      (load path))
+     ((File.exist? (+ path ".nndc"))
+      (load (+ path ".nndc")))
+     ((File.exist? (+ path ".nnd"))
+      (load (+ path ".nnd")))
+     (else
+      (errorf "Error: can't load library file [%s]\n" path )))))
+
+
 ;; ----------------------------------------
 ;; Utility function for testing and debugging
 ;; ----------------------------------------

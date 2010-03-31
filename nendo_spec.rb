@@ -241,7 +241,7 @@ describe Nendo, "when call replStr() with boolean operators" do
     @nendo.replStr( " (not \"str\") " ).should == "false"
     @nendo.replStr( " (not not) " ).should == "false"
     @nendo.replStr( " (not (not true)) " ).should == "true"
-    @nendo.replStr( " (not '()) " ).should == "true"
+    @nendo.replStr( " (not '()) " ).should == "false"
     @nendo.replStr( " (not '(1)) " ).should == "false"
   end
 end
@@ -261,7 +261,7 @@ describe Nendo, "when call replStr() with `+' function" do
     @nendo.replStr( " (+ \"a\" ) " ).should == '"a"'
     @nendo.replStr( " (+ \"a\" \"B\" \"c\" ) " ).should == '"aBc"'
     @nendo.replStr( " (+) " ).should == "0"
-    @nendo.replStr( " (+ '()) " ).should == "0"
+    lambda { @nendo.replStr( " (+ '() ) " ) }.should         raise_error(TypeError)
     lambda { @nendo.replStr( " (+ 1 '() ) " ) }.should       raise_error(TypeError)
     lambda { @nendo.replStr( " (+ 1.1 '() ) " ) }.should     raise_error(TypeError)
     lambda { @nendo.replStr( " (+ '(1) ) " ) }.should        raise_error(TypeError)
@@ -283,11 +283,11 @@ describe Nendo, "when call replStr() with `-' function" do
     @nendo.replStr( " (- 100 (- 10 3)) " ).should == "93"
     @nendo.replStr( " (- 1.1 1) " ).should == (1.1-1).to_s
     @nendo.replStr( " (- 1.3 1.1) " ).should == (1.3-1.1).to_s
-    @nendo.replStr( " (- 1 '() ) " ).should == "-1"
-    @nendo.replStr( " (- 1.1 '() ) " ).should == "-1.1"
+    lambda { @nendo.replStr( " (- 1 '() ) " ) }.should       raise_error(TypeError)
+    lambda { @nendo.replStr( " (- 1.1 '() ) " ) }.should     raise_error(TypeError)
     lambda { @nendo.replStr( " (-) " ) }.should              raise_error(ArgumentError)
     lambda { @nendo.replStr( " (- '(1) ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.replStr( " (- '() ) " ) }.should         raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (- '() ) " ) }.should         raise_error(TypeError)
     lambda { @nendo.replStr( " (- 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
   end
 end
@@ -305,7 +305,7 @@ describe Nendo, "when call replStr() with `*' function" do
     @nendo.replStr( " (* 1.1 1) " ).should == "1.1"
     @nendo.replStr( " (* 1.3 1.1) " ).should == (1.3*1.1).to_s
     @nendo.replStr( " (*) " ).should == "1"
-    @nendo.replStr( " (* '()) " ).should == "1"
+    lambda { @nendo.replStr( " (* '() ) " ) }.should         raise_error(TypeError)
     lambda { @nendo.replStr( " (* 1 '() ) " ) }.should       raise_error(TypeError)
     lambda { @nendo.replStr( " (* 1.1 '() ) " ) }.should     raise_error(TypeError)
     lambda { @nendo.replStr( " (* '(1) ) " ) }.should        raise_error(TypeError)
@@ -333,11 +333,10 @@ describe Nendo, "when call replStr() with `/' function" do
       (1/1.11).to_s
     @nendo.replStr( " (/ 1.3 1.1) " ).should ==
       (1.3/1.1).to_s
-    @nendo.replStr( " (/ 1 '() ) " ).should == "1"
-    @nendo.replStr( " (/ 1.1 '() ) " ).should ==
-      (1/1.1).to_s
+    lambda { @nendo.replStr( " (/ 1 '() ) " ) }.should      raise_error(TypeError)
+    lambda { @nendo.replStr( " (/ 1.1 '() ) " ) }.should    raise_error(TypeError)
     lambda { @nendo.replStr( " (/) " ) }.should             raise_error(ArgumentError)
-    lambda { @nendo.replStr( " (/ '() ) " ) }.should        raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (/ '() ) " ) }.should        raise_error(TypeError)
     lambda { @nendo.replStr( " (/ 1.1 \"a\" ) " ) }.should  raise_error(TypeError)
   end
 end
@@ -356,10 +355,10 @@ describe Nendo, "when call replStr() with `%' function" do
     @nendo.replStr( " (% 100 (% 103 10)) " ).should == "1"
     @nendo.replStr( " (% 1 1.11) " ).should == "1.0"
     @nendo.replStr( " (% 1.3 1.1) " ).should == (1.3%1.1).to_s
-    @nendo.replStr( " (% 1 '() ) " ).should == "0"
-    @nendo.replStr( " (% 1.1 '() ) " ).should == "1.0"
+    lambda { @nendo.replStr( " (% 1 '() ) " ) }.should       raise_error(TypeError)
+    lambda { @nendo.replStr( " (% 1.1 '() ) " ) }.should     raise_error(TypeError)
     lambda { @nendo.replStr( " (\%) " ) }.should             raise_error(ArgumentError)
-    lambda { @nendo.replStr( " (\% '() ) " ) }.should        raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (\% '() ) " ) }.should        raise_error(TypeError)
     lambda { @nendo.replStr( " (\% 1.1 \"a\" ) " ) }.should  raise_error(TypeError)
   end
 end
@@ -402,6 +401,13 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '1.1 " ).should == "1.1"
     @nendo.replStr( " ''1.1 " ).should == "'1.1"
     @nendo.replStr( " '''1.1 " ).should == "''1.1"
+    @nendo.replStr( " '() " ).should == "()"
+    @nendo.replStr( " '(()) " ).should == "(())"
+    @nendo.replStr( " '((())) " ).should == "((()))"
+    @nendo.replStr( " '(((()))) " ).should == "(((())))"
+    pending "this is nendo's bug" do
+      @nendo.replStr( " '(()  .  ()) " ).should == "(())"
+    end
   end
 end
 
@@ -421,6 +427,7 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (cons 1 '(2 3)) " ).should == "(1 2 3)"
     @nendo.replStr( " (cons '(1 2) '(3 4)) " ).should == "((1 2) 3 4)"
     @nendo.replStr( " (cons '(1 2) '((3 4))) " ).should == "((1 2) (3 4))"
+    @nendo.replStr( " (cons '() '()) " ).should == "(())"
     lambda { @nendo.replStr( " (cons 1 2 3) " ) }.should    raise_error(ArgumentError)
     lambda { @nendo.replStr( " (cons 1) " ) }.should        raise_error(ArgumentError)
     lambda { @nendo.replStr( " (cons) " ) }.should          raise_error(ArgumentError)
@@ -698,7 +705,7 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (cond (true  1) (false 2)) " ).should == "1"
     @nendo.replStr( " (cond (false 1) (true  2)) " ).should == "2"
     @nendo.replStr( " (cond (true  1) (true  2)) " ).should == "1"
-    @nendo.replStr( " (cond (false 1) (false 2)) " ).should == "nil"
+    @nendo.replStr( " (cond (false 1) (false 2)) " ).should == "()"
     @nendo.replStr( " (cond (false 1) (false 2) (else 3)) " ).should == "3"
     @nendo.replStr( " (cond ((- 10 9) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 2)) " ).should == '"<1>"'
     @nendo.replStr( " (cond (true  1) ((- 10 8) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 3)) " ).should == "1"

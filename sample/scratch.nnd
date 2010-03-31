@@ -4,3 +4,23 @@
 (enable-idebug)
 (define debug-print-length 256)
 
+'(())
+
+;; bug of #?=
+(define (func first . rest)
+  #?=first
+  #?=rest
+  )
+(func '(a) '(b) '())
+;;  #?="(stdin)":3:irst
+;;  Error: undefined variable _irst
+
+
+
+
+
+
+
+
+
+

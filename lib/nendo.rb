@@ -684,7 +684,15 @@ module BuiltinFunctions
   end
 
   def _cons( first, second )
-    Cell.new( first, second )
+    if second.is_a? Cell
+      if second.isNull
+        Cell.new( first )
+      else
+        Cell.new( first, second )
+      end
+    else
+      Cell.new( first, second )
+    end
   end
 
   def _exit( *args )
@@ -862,6 +870,10 @@ module BuiltinFunctions
     else
       raise TypeError, "Error: keyword->string expects only keyword object."
     end
+  end
+
+  def _get_MIMARKnendo_MIMARKhome
+    File.dirname(__FILE__) 
   end
 end
 
@@ -1213,7 +1225,7 @@ class Evaluator
     case sexp
     when Cell
       if sexp.isNull
-        str += "Nil.new"
+        str += "Cell.new()"
       else
         arr = sexp.map { |x| genQuote( x.car ) }
         str += "Cell.new("
