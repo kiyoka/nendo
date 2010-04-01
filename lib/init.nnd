@@ -397,6 +397,13 @@
             (filter-map pred (cdr lst))))))
 
 
+(define (find pred lst)
+  (let1 result (filter pred lst)
+    (if (null? result)
+        #f
+        (car result))))
+
+
 (define lambda
   (macro src
     (if (not (list? (cadr src)))

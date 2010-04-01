@@ -89,12 +89,6 @@
        \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n")
     ))
 
-(define (find pred lst)
-  (let1 result (filter pred lst)
-    (if (null? result)
-        #f
-        (car result))))
-
 (define (html-doctype . type)
   (let1 type (if (null? type)
                  :html-4.01-strict

@@ -25,7 +25,7 @@
                                 if (self.instance_variables.include?(:@_eqv_QUMARK)) then
                                   @_eqv_QUMARK
                                 else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:450"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:457"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                               "<"                              ,Cell.new(
@@ -63,7 +63,7 @@
                                     if (self.instance_variables.include?(:@_eqv_QUMARK)) then
                                       @_eqv_QUMARK
                                     else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:450"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:457"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                   ">"                                  ,Cell.new(
@@ -101,7 +101,7 @@
                                         if (self.instance_variables.include?(:@_eqv_QUMARK)) then
                                           @_eqv_QUMARK
                                         else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:450"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:457"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                       "&"                                      ,Cell.new(
@@ -139,7 +139,7 @@
                                             if (self.instance_variables.include?(:@_eqv_QUMARK)) then
                                               @_eqv_QUMARK
                                             else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:450"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:457"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                           "\""                                          ,Cell.new(
@@ -237,64 +237,6 @@
        \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n"))))))))))
 #--------------------
 
-  @_find = 
-      Proc.new { |_pred,_lst| 
-          begin
-            ___lambda = lambda { |_result| 
-                if ( 
-                  callProcedure( 'null?',
-                      begin
-                        if (self.instance_variables.include?(:@_null_QUMARK)) then
-                          @_null_QUMARK
-                        else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:94"] + __e.backtrace ) ; raise __e
-                      end                    ,
-                      Cell.new(
-                        begin
-                            _result
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
-                        end
-                               ))
-                 ) then
-                  false
-                else
-                    callProcedure( 'car',
-                        begin
-                          if (self.instance_variables.include?(:@_car)) then
-                            @_car
-                          else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
-                        end                      ,
-                        Cell.new(
-                          begin
-                              _result
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
-                          end
-                                 ))
-                end
-            } ; ___lambda.call(
-                  callProcedure( 'filter',
-                      begin
-                        if (self.instance_variables.include?(:@_filter)) then
-                          @_filter
-                        else raise NameError.new( "Error: undefined variable _filter", "_filter" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:93"] + __e.backtrace ) ; raise __e
-                      end                    ,
-                      Cell.new(
-                        begin
-                            _pred
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:93"] + __e.backtrace ) ; raise __e
-                        end                      ,Cell.new(
-                        begin
-                            _lst
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:93"] + __e.backtrace ) ; raise __e
-                        end
-                               )))
-                       )
-          end
-      }
-#--------------------
-
   @_html_MIMARKdoctype = 
       Proc.new { |*__rest__| _type = __rest__[0] ;  
           begin
@@ -306,7 +248,7 @@
                             if (self.instance_variables.include?(:@_find)) then
                               @_find
                             else raise NameError.new( "Error: undefined variable _find", "_find" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:102"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             Proc.new { |_e| 
@@ -315,24 +257,24 @@
                                       if (self.instance_variables.include?(:@_memq)) then
                                         @_memq
                                       else raise NameError.new( "Error: undefined variable _memq", "_memq" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:102"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                       begin
                                           _type
-                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:104"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
                                       end                                    ,Cell.new(
                                       callProcedure( 'car',
                                           begin
                                             if (self.instance_variables.include?(:@_car)) then
                                               @_car
                                             else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:102"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             begin
                                                 _e
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:102"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
                                             end
                                                    ))
                                              )))
@@ -341,7 +283,7 @@
                               if (self.instance_variables.include?(:@__ASMARKdoctype_MIMARKalist_ASMARK)) then
                                 @__ASMARKdoctype_MIMARKalist_ASMARK
                               else raise NameError.new( "Error: undefined variable __ASMARKdoctype_MIMARKalist_ASMARK", "__ASMARKdoctype_MIMARKalist_ASMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:102"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
                             end
                                    )))
                  ) then
@@ -350,7 +292,7 @@
                           if (self.instance_variables.include?(:@_caddr)) then
                             @_caddr
                           else raise NameError.new( "Error: undefined variable _caddr", "_caddr" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:103"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
                           begin
@@ -368,7 +310,7 @@
                             begin raise RuntimeError, 
                             "Unknown doctype type spec"
                             rescue => __e 
-                              __e.set_backtrace( ["./lib/text/html-lite.nnd:104"] + __e.backtrace )
+                              __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace )
                               raise __e
                             end 
                         end
@@ -383,12 +325,12 @@
                           if (self.instance_variables.include?(:@_null_QUMARK)) then
                             @_null_QUMARK
                           else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:93"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
                           begin
                               _type
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:104"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
                           end
                                  ))
                    ) then
@@ -396,7 +338,7 @@
                   else
                       begin
                           _type
-                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:104"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
                       end
                   end
                        )
@@ -416,12 +358,12 @@
                               if (self.instance_variables.include?(:@_null_QUMARK)) then
                                 @_null_QUMARK
                               else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _args
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                               end
                                      ))
                        ) then
@@ -431,7 +373,7 @@
                                     if (self.instance_variables.include?(:@_values)) then
                                       @_values
                                     else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     callProcedure( 'reverse',
@@ -439,17 +381,17 @@
                                           if (self.instance_variables.include?(:@_reverse)) then
                                             @_reverse
                                           else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                           begin
                                               _attrs
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                           end
                                                  ))                                  ,Cell.new(
                                     begin
                                         _args
-                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                     end
                                            )))
                           end
@@ -460,7 +402,7 @@
                                   if (self.instance_variables.include?(:@_keyword_QUMARK)) then
                                     @_keyword_QUMARK
                                   else raise NameError.new( "Error: undefined variable _keyword_QUMARK", "_keyword_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:105"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   callProcedure( 'car',
@@ -468,12 +410,12 @@
                                         if (self.instance_variables.include?(:@_car)) then
                                           @_car
                                         else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                         begin
                                             _args
-                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                         end
                                                ))
                                          ))
@@ -485,7 +427,7 @@
                                           if (self.instance_variables.include?(:@_null_QUMARK)) then
                                             @_null_QUMARK
                                           else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                           callProcedure( 'cdr',
@@ -493,12 +435,12 @@
                                                 if (self.instance_variables.include?(:@_cdr)) then
                                                   @_cdr
                                                 else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:112"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:106"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 begin
                                                     _args
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                 end
                                                        ))
                                                  ))
@@ -509,7 +451,7 @@
                                                 if (self.instance_variables.include?(:@_values)) then
                                                   @_values
                                                 else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 callProcedure( 'reverse',
@@ -517,7 +459,7 @@
                                                       if (self.instance_variables.include?(:@_reverse)) then
                                                         @_reverse
                                                       else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       callProcedure( 'list*',
@@ -525,7 +467,7 @@
                                                             if (self.instance_variables.include?(:@_list_ASMARK)) then
                                                               @_list_ASMARK
                                                             else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                             callProcedure( 'car',
@@ -533,24 +475,24 @@
                                                                   if (self.instance_variables.include?(:@_car)) then
                                                                     @_car
                                                                   else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                   begin
                                                                       _args
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                                   end
                                                                          ))                                                          ,Cell.new(
                                                           " "                                                          ,Cell.new(
                                                             begin
                                                                 _attrs
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    ))))
                                                              ))                                              ,Cell.new(
                                                 begin
                                                     _args
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                 end
                                                        )))
                                       end
@@ -561,7 +503,7 @@
                                               if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                                 @_eq_QUMARK
                                               else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:110"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               callProcedure( 'cadr',
@@ -569,12 +511,12 @@
                                                     if (self.instance_variables.include?(:@_cadr)) then
                                                       @_cadr
                                                     else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:121"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _args
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                     end
                                                            ))                                            ,Cell.new(
                                             false
@@ -584,7 +526,7 @@
                                               callProcedure( 'get-attr',
                                                   begin
                                                       _get_MIMARKattr
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:135"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     callProcedure( 'cddr',
@@ -592,17 +534,17 @@
                                                           if (self.instance_variables.include?(:@_cddr)) then
                                                             @_cddr
                                                           else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:113"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           begin
                                                               _args
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                           end
                                                                  ))                                                  ,Cell.new(
                                                     begin
                                                         _attrs
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                                     end
                                                            )))
                                           end
@@ -613,7 +555,7 @@
                                                   if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                                     @_eq_QUMARK
                                                   else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:110"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   callProcedure( 'cadr',
@@ -621,12 +563,12 @@
                                                         if (self.instance_variables.include?(:@_cadr)) then
                                                           @_cadr
                                                         else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:121"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         begin
                                                             _args
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                         end
                                                                ))                                                ,Cell.new(
                                                 true
@@ -636,7 +578,7 @@
                                                   callProcedure( 'get-attr',
                                                       begin
                                                           _get_MIMARKattr
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:135"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         callProcedure( 'cddr',
@@ -644,12 +586,12 @@
                                                               if (self.instance_variables.include?(:@_cddr)) then
                                                                 @_cddr
                                                               else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:113"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                               begin
                                                                   _args
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                               end
                                                                      ))                                                      ,Cell.new(
                                                         callProcedure( 'list*',
@@ -657,7 +599,7 @@
                                                               if (self.instance_variables.include?(:@_list_ASMARK)) then
                                                                 @_list_ASMARK
                                                               else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                               callProcedure( 'car',
@@ -665,18 +607,18 @@
                                                                     if (self.instance_variables.include?(:@_car)) then
                                                                       @_car
                                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                     begin
                                                                         _args
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            ))                                                            ,Cell.new(
                                                             " "                                                            ,Cell.new(
                                                               begin
                                                                   _attrs
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                                               end
                                                                      ))))
                                                                )))
@@ -689,7 +631,7 @@
                                                       callProcedure( 'get-attr',
                                                           begin
                                                               _get_MIMARKattr
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:135"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                             callProcedure( 'cddr',
@@ -697,12 +639,12 @@
                                                                   if (self.instance_variables.include?(:@_cddr)) then
                                                                     @_cddr
                                                                   else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:113"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                   begin
                                                                       _args
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                                   end
                                                                          ))                                                          ,Cell.new(
                                                             callProcedure( 'list*',
@@ -710,7 +652,7 @@
                                                                   if (self.instance_variables.include?(:@_list_ASMARK)) then
                                                                     @_list_ASMARK
                                                                   else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                   callProcedure( 'sprintf',
@@ -718,7 +660,7 @@
                                                                         if (self.instance_variables.include?(:@_sprintf)) then
                                                                           @_sprintf
                                                                         else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
                                                                       "=\"%s\""                                                                      ,Cell.new(
@@ -727,7 +669,7 @@
                                                                               if (self.instance_variables.include?(:@_html_MIMARKescape_MIMARKstring)) then
                                                                                 @_html_MIMARKescape_MIMARKstring
                                                                               else raise NameError.new( "Error: undefined variable _html_MIMARKescape_MIMARKstring", "_html_MIMARKescape_MIMARKstring" ) end
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:121"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
                                                                               callProcedure( 'x->string',
@@ -735,7 +677,7 @@
                                                                                     if (self.instance_variables.include?(:@_x_MIMARK_GTMARKstring)) then
                                                                                       @_x_MIMARK_GTMARKstring
                                                                                     else raise NameError.new( "Error: undefined variable _x_MIMARK_GTMARKstring", "_x_MIMARK_GTMARKstring" ) end
-                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:121"] + __e.backtrace ) ; raise __e
+                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,
                                                                                   Cell.new(
                                                                                     callProcedure( 'cadr',
@@ -743,12 +685,12 @@
                                                                                           if (self.instance_variables.include?(:@_cadr)) then
                                                                                             @_cadr
                                                                                           else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:121"] + __e.backtrace ) ; raise __e
+                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                                         end                                                                                      ,
                                                                                         Cell.new(
                                                                                           begin
                                                                                               _args
-                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                                                           end
                                                                                                  ))
                                                                                            ))
@@ -759,18 +701,18 @@
                                                                         if (self.instance_variables.include?(:@_car)) then
                                                                           @_car
                                                                         else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
                                                                         begin
                                                                             _args
-                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                                         end
                                                                                ))                                                                ,Cell.new(
                                                                 " "                                                                ,Cell.new(
                                                                   begin
                                                                       _attrs
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                                                   end
                                                                          )))))
                                                                    )))
@@ -792,7 +734,7 @@
                                             if (self.instance_variables.include?(:@_values)) then
                                               @_values
                                             else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             callProcedure( 'reverse',
@@ -800,17 +742,17 @@
                                                   if (self.instance_variables.include?(:@_reverse)) then
                                                     @_reverse
                                                   else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   begin
                                                       _attrs
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
                                                   end
                                                          ))                                          ,Cell.new(
                                             begin
                                                 _args
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                             end
                                                    )))
                                   end
@@ -825,7 +767,7 @@
                       if ( 
                         begin
                             _empty_QUMARK
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:128"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
                         end
                        ) then
                           Proc.new { |*__rest__| _args = __rest__[0] ;  
@@ -834,19 +776,19 @@
                                     if (self.instance_variables.include?(:@_call_MIMARKwith_MIMARKvalues)) then
                                       @_call_MIMARKwith_MIMARKvalues
                                     else raise NameError.new( "Error: undefined variable _call_MIMARKwith_MIMARKvalues", "_call_MIMARKwith_MIMARKvalues" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:509"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     Proc.new { || 
                                         callProcedure( 'get-attr',
                                             begin
                                                 _get_MIMARKattr
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:135"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               begin
                                                   _args
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                             Cell.new()
                                                      )))
@@ -858,7 +800,7 @@
                                                 if (self.instance_variables.include?(:@_not)) then
                                                   @_not
                                                 else raise NameError.new( "Error: undefined variable _not", "_not" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:519"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:526"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 callProcedure( 'null?',
@@ -866,12 +808,12 @@
                                                       if (self.instance_variables.include?(:@_null_QUMARK)) then
                                                         @_null_QUMARK
                                                       else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       begin
                                                           _args
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))
                                                        ))
@@ -883,30 +825,30 @@
                                                         if (self.instance_variables.include?(:@_sprintf)) then
                                                           @_sprintf
                                                         else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                       "element %s can't have content: %s"                                                      ,Cell.new(
                                                         begin
                                                             _name
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,Cell.new(
                                                         callProcedure( 'write-to-string',
                                                             begin
                                                               if (self.instance_variables.include?(:@_write_MIMARKto_MIMARKstring)) then
                                                                 @_write_MIMARKto_MIMARKstring
                                                               else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:132"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                               begin
                                                                   _args
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                               end
                                                                      ))
                                                                ))))
                                                 rescue => __e 
-                                                  __e.set_backtrace( ["./lib/text/html-lite.nnd:104"] + __e.backtrace )
+                                                  __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace )
                                                   raise __e
                                                 end 
                                             end
@@ -916,17 +858,17 @@
                                               if (self.instance_variables.include?(:@_list)) then
                                                 @_list
                                               else raise NameError.new( "Error: undefined variable _list", "_list" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                             "<"                                            ,Cell.new(
                                               begin
                                                   _name
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                               begin
                                                   _attr
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                             " />"
                                                      )))))
@@ -940,19 +882,19 @@
                                     if (self.instance_variables.include?(:@_call_MIMARKwith_MIMARKvalues)) then
                                       @_call_MIMARKwith_MIMARKvalues
                                     else raise NameError.new( "Error: undefined variable _call_MIMARKwith_MIMARKvalues", "_call_MIMARKwith_MIMARKvalues" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:509"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:516"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     Proc.new { || 
                                         callProcedure( 'get-attr',
                                             begin
                                                 _get_MIMARKattr
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:135"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               begin
                                                   _args
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                             Cell.new()
                                                      )))
@@ -963,27 +905,27 @@
                                               if (self.instance_variables.include?(:@_list)) then
                                                 @_list
                                               else raise NameError.new( "Error: undefined variable _list", "_list" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                             "<"                                            ,Cell.new(
                                               begin
                                                   _name
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                               begin
                                                   _attr
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                             ">"                                            ,Cell.new(
                                               begin
                                                   _args
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                             "</"                                            ,Cell.new(
                                               begin
                                                   _name
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                             "\n>"
                                                      )))))))))
@@ -997,13 +939,13 @@
                               if (self.instance_variables.include?(:@_get_MIMARKkeyword)) then
                                 @_get_MIMARKkeyword
                               else raise NameError.new( "Error: undefined variable _get_MIMARKkeyword", "_get_MIMARKkeyword" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:127"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:121"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                             LispKeyword.new( "empty?" )                            ,Cell.new(
                               begin
                                   _args
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:136"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                               end                            ,Cell.new(
                             false
                                      ))))
@@ -1027,7 +969,7 @@
                             if (self.instance_variables.include?(:@_string_MIMARK_GTMARKsymbol)) then
                               @_string_MIMARK_GTMARKsymbol
                             else raise NameError.new( "Error: undefined variable _string_MIMARK_GTMARKsymbol", "_string_MIMARK_GTMARKsymbol" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:137"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             callProcedure( 'sprintf',
@@ -1035,13 +977,13 @@
                                   if (self.instance_variables.include?(:@_sprintf)) then
                                     @_sprintf
                                   else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:137"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                 "html:%s"                                ,Cell.new(
                                   begin
                                       _name
-                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:137"] + __e.backtrace ) ; raise __e
                                   end
                                          )))
                                    ))
@@ -1056,12 +998,12 @@
                                     if (self.instance_variables.include?(:@_null_QUMARK)) then
                                       @_null_QUMARK
                                     else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:147"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:141"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     begin
                                         _elements
-                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                     end
                                            ))
                              ) then
@@ -1071,7 +1013,7 @@
                                           if (self.instance_variables.include?(:@_cons)) then
                                             @_cons
                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                         :"begin"                                        ,Cell.new(
@@ -1080,12 +1022,12 @@
                                                 if (self.instance_variables.include?(:@_reverse)) then
                                                   @_reverse
                                                 else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:147"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:141"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 begin
                                                     _r
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:159"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                 end
                                                        ))
                                                  )))
@@ -1098,7 +1040,7 @@
                                           if (self.instance_variables.include?(:@_not)) then
                                             @_not
                                           else raise NameError.new( "Error: undefined variable _not", "_not" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:519"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:526"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                           callProcedure( 'eq?',
@@ -1106,7 +1048,7 @@
                                                 if (self.instance_variables.include?(:@_eq_QUMARK)) then
                                                   @_eq_QUMARK
                                                 else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:110"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                               false                                              ,Cell.new(
@@ -1115,7 +1057,7 @@
                                                       if (self.instance_variables.include?(:@_pair_QUMARK)) then
                                                         @_pair_QUMARK
                                                       else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:148"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       callProcedure( 'cdr',
@@ -1123,12 +1065,12 @@
                                                             if (self.instance_variables.include?(:@_cdr)) then
                                                               @_cdr
                                                             else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:155"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                             begin
                                                                 _elements
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    ))
                                                              ))
@@ -1140,7 +1082,7 @@
                                             if (self.instance_variables.include?(:@_eqv_QUMARK)) then
                                               @_eqv_QUMARK
                                             else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:148"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             callProcedure( 'cadr',
@@ -1148,12 +1090,12 @@
                                                   if (self.instance_variables.include?(:@_cadr)) then
                                                     @_cadr
                                                   else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:148"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   begin
                                                       _elements
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                   end
                                                          ))                                          ,Cell.new(
                                           LispKeyword.new( "empty" )
@@ -1166,7 +1108,7 @@
                                         callProcedure( 'loop',
                                             begin
                                                 _loop
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:155"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               callProcedure( 'cddr',
@@ -1174,12 +1116,12 @@
                                                     if (self.instance_variables.include?(:@_cddr)) then
                                                       @_cddr
                                                     else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _elements
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                     end
                                                            ))                                            ,Cell.new(
                                               callProcedure( 'list*',
@@ -1187,7 +1129,7 @@
                                                     if (self.instance_variables.include?(:@_list_ASMARK)) then
                                                       @_list_ASMARK
                                                     else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:156"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     callProcedure( 'cons',
@@ -1195,7 +1137,7 @@
                                                           if (self.instance_variables.include?(:@_cons)) then
                                                             @_cons
                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                         :"define"                                                        ,Cell.new(
@@ -1204,13 +1146,13 @@
                                                                 if (self.instance_variables.include?(:@_cons)) then
                                                                   @_cons
                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                                 callProcedure( 'make-scheme-name',
                                                                     begin
                                                                         _make_MIMARKscheme_MIMARKname
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       callProcedure( 'car',
@@ -1218,12 +1160,12 @@
                                                                             if (self.instance_variables.include?(:@_car)) then
                                                                               @_car
                                                                             else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                             begin
                                                                                 _elements
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                             end
                                                                                    ))
                                                                              ))                                                              ,Cell.new(
@@ -1232,7 +1174,7 @@
                                                                       if (self.instance_variables.include?(:@_cons)) then
                                                                         @_cons
                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       callProcedure( 'cons',
@@ -1240,7 +1182,7 @@
                                                                             if (self.instance_variables.include?(:@_cons)) then
                                                                               @_cons
                                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                           :"make-html-element"                                                                          ,Cell.new(
@@ -1249,7 +1191,7 @@
                                                                                   if (self.instance_variables.include?(:@_cons)) then
                                                                                     @_cons
                                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
                                                                                   callProcedure( 'cons',
@@ -1257,7 +1199,7 @@
                                                                                         if (self.instance_variables.include?(:@_cons)) then
                                                                                           @_cons
                                                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                                       end                                                                                    ,
                                                                                       Cell.new(
                                                                                       :"quote"                                                                                      ,Cell.new(
@@ -1266,7 +1208,7 @@
                                                                                               if (self.instance_variables.include?(:@_cons)) then
                                                                                                 @_cons
                                                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
                                                                                             Cell.new(
                                                                                               callProcedure( 'car',
@@ -1274,12 +1216,12 @@
                                                                                                     if (self.instance_variables.include?(:@_car)) then
                                                                                                       @_car
                                                                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                                                   end                                                                                                ,
                                                                                                   Cell.new(
                                                                                                     begin
                                                                                                         _elements
-                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                                                     end
                                                                                                            ))                                                                                            ,Cell.new(
                                                                                             
@@ -1297,7 +1239,7 @@
                                                           if (self.instance_variables.include?(:@_cons)) then
                                                             @_cons
                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                         :"export"                                                        ,Cell.new(
@@ -1306,13 +1248,13 @@
                                                                 if (self.instance_variables.include?(:@_cons)) then
                                                                   @_cons
                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                                 callProcedure( 'make-scheme-name',
                                                                     begin
                                                                         _make_MIMARKscheme_MIMARKname
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       callProcedure( 'car',
@@ -1320,12 +1262,12 @@
                                                                             if (self.instance_variables.include?(:@_car)) then
                                                                               @_car
                                                                             else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                             begin
                                                                                 _elements
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                             end
                                                                                    ))
                                                                              ))                                                              ,Cell.new(
@@ -1334,7 +1276,7 @@
                                                                  )))                                                  ,Cell.new(
                                                     begin
                                                         _r
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:159"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                     end
                                                            ))))
                                                      )))
@@ -1347,7 +1289,7 @@
                                             callProcedure( 'loop',
                                                 begin
                                                     _loop
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:155"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   callProcedure( 'cdr',
@@ -1355,12 +1297,12 @@
                                                         if (self.instance_variables.include?(:@_cdr)) then
                                                           @_cdr
                                                         else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:155"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         begin
                                                             _elements
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                         end
                                                                ))                                                ,Cell.new(
                                                   callProcedure( 'list*',
@@ -1368,7 +1310,7 @@
                                                         if (self.instance_variables.include?(:@_list_ASMARK)) then
                                                           @_list_ASMARK
                                                         else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:156"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         callProcedure( 'cons',
@@ -1376,7 +1318,7 @@
                                                               if (self.instance_variables.include?(:@_cons)) then
                                                                 @_cons
                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                             :"define"                                                            ,Cell.new(
@@ -1385,13 +1327,13 @@
                                                                     if (self.instance_variables.include?(:@_cons)) then
                                                                       @_cons
                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                     callProcedure( 'make-scheme-name',
                                                                         begin
                                                                             _make_MIMARKscheme_MIMARKname
-                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
                                                                           callProcedure( 'car',
@@ -1399,12 +1341,12 @@
                                                                                 if (self.instance_variables.include?(:@_car)) then
                                                                                   @_car
                                                                                 else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
                                                                               Cell.new(
                                                                                 begin
                                                                                     _elements
-                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                                 end
                                                                                        ))
                                                                                  ))                                                                  ,Cell.new(
@@ -1413,7 +1355,7 @@
                                                                           if (self.instance_variables.include?(:@_cons)) then
                                                                             @_cons
                                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
                                                                           callProcedure( 'cons',
@@ -1421,7 +1363,7 @@
                                                                                 if (self.instance_variables.include?(:@_cons)) then
                                                                                   @_cons
                                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
                                                                               Cell.new(
                                                                               :"make-html-element"                                                                              ,Cell.new(
@@ -1430,7 +1372,7 @@
                                                                                       if (self.instance_variables.include?(:@_cons)) then
                                                                                         @_cons
                                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                                     end                                                                                  ,
                                                                                     Cell.new(
                                                                                       callProcedure( 'cons',
@@ -1438,7 +1380,7 @@
                                                                                             if (self.instance_variables.include?(:@_cons)) then
                                                                                               @_cons
                                                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                                           end                                                                                        ,
                                                                                           Cell.new(
                                                                                           :"quote"                                                                                          ,Cell.new(
@@ -1447,7 +1389,7 @@
                                                                                                   if (self.instance_variables.include?(:@_cons)) then
                                                                                                     @_cons
                                                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                                                 end                                                                                              ,
                                                                                                 Cell.new(
                                                                                                   callProcedure( 'car',
@@ -1455,12 +1397,12 @@
                                                                                                         if (self.instance_variables.include?(:@_car)) then
                                                                                                           @_car
                                                                                                         else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                                                       end                                                                                                    ,
                                                                                                       Cell.new(
                                                                                                         begin
                                                                                                             _elements
-                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                                                         end
                                                                                                                ))                                                                                                ,Cell.new(
                                                                                                 
@@ -1478,7 +1420,7 @@
                                                               if (self.instance_variables.include?(:@_cons)) then
                                                                 @_cons
                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                             :"export"                                                            ,Cell.new(
@@ -1487,13 +1429,13 @@
                                                                     if (self.instance_variables.include?(:@_cons)) then
                                                                       @_cons
                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:605"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:612"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                     callProcedure( 'make-scheme-name',
                                                                         begin
                                                                             _make_MIMARKscheme_MIMARKname
-                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
                                                                           callProcedure( 'car',
@@ -1501,12 +1443,12 @@
                                                                                 if (self.instance_variables.include?(:@_car)) then
                                                                                   @_car
                                                                                 else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
                                                                               Cell.new(
                                                                                 begin
                                                                                     _elements
-                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                                                                                 end
                                                                                        ))
                                                                                  ))                                                                  ,Cell.new(
@@ -1515,7 +1457,7 @@
                                                                      )))                                                      ,Cell.new(
                                                         begin
                                                             _r
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:159"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                         end
                                                                ))))
                                                          )))
@@ -1529,12 +1471,12 @@
                       callProcedure( 'loop',
                           begin
                               _loop
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:155"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             begin
                                 _elements
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:158"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                             end                          ,Cell.new(
                           Cell.new()
                                    )))
@@ -1558,7 +1500,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"tt"
@@ -1571,7 +1513,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"i"
@@ -1584,7 +1526,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"b"
@@ -1597,7 +1539,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"big"
@@ -1610,7 +1552,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"small"
@@ -1627,7 +1569,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"em"
@@ -1640,7 +1582,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"strong"
@@ -1653,7 +1595,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"dfn"
@@ -1666,7 +1608,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"code"
@@ -1679,7 +1621,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"samp"
@@ -1692,7 +1634,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"kbd"
@@ -1705,7 +1647,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"var"
@@ -1718,7 +1660,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"cite"
@@ -1731,7 +1673,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"abbr"
@@ -1744,7 +1686,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"acronym"
@@ -1761,7 +1703,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"sub"
@@ -1774,7 +1716,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"sup"
@@ -1787,7 +1729,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"span"
@@ -1800,7 +1742,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"bdo"
@@ -1813,7 +1755,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"br"              ,Cell.new(
@@ -1832,7 +1774,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"body"
@@ -1845,7 +1787,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"address"
@@ -1858,7 +1800,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"div"
@@ -1875,7 +1817,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"a"
@@ -1892,7 +1834,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"map"
@@ -1905,7 +1847,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"area"              ,Cell.new(
@@ -1924,7 +1866,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"link"              ,Cell.new(
@@ -1943,7 +1885,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"img"              ,Cell.new(
@@ -1962,7 +1904,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"object"
@@ -1975,7 +1917,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"param"              ,Cell.new(
@@ -1994,7 +1936,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"hr"              ,Cell.new(
@@ -2013,7 +1955,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"p"
@@ -2030,7 +1972,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"h1"
@@ -2043,7 +1985,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"h2"
@@ -2056,7 +1998,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"h3"
@@ -2069,7 +2011,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"h4"
@@ -2082,7 +2024,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"h5"
@@ -2095,7 +2037,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"h6"
@@ -2112,7 +2054,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"pre"
@@ -2129,7 +2071,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"q"
@@ -2146,7 +2088,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"blockquote"
@@ -2163,7 +2105,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"ins"
@@ -2176,7 +2118,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"del"
@@ -2193,7 +2135,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"dl"
@@ -2206,7 +2148,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"dt"
@@ -2219,7 +2161,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"dd"
@@ -2232,7 +2174,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"ol"
@@ -2245,7 +2187,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"ul"
@@ -2258,7 +2200,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"li"
@@ -2275,7 +2217,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"form"
@@ -2288,7 +2230,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"label"
@@ -2301,7 +2243,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"input"              ,Cell.new(
@@ -2316,7 +2258,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"select"
@@ -2329,7 +2271,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"optgroup"
@@ -2342,7 +2284,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"option"
@@ -2355,7 +2297,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"textarea"
@@ -2368,7 +2310,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"fieldset"
@@ -2381,7 +2323,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"legend"
@@ -2394,7 +2336,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"button"
@@ -2411,7 +2353,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"table"
@@ -2424,7 +2366,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"caption"
@@ -2437,7 +2379,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"thead"
@@ -2450,7 +2392,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"tfoot"
@@ -2463,7 +2405,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"tbody"
@@ -2476,7 +2418,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"colgroup"
@@ -2489,7 +2431,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"col"              ,Cell.new(
@@ -2504,7 +2446,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"tr"
@@ -2517,7 +2459,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"th"
@@ -2530,7 +2472,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"td"
@@ -2547,7 +2489,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"head"
@@ -2560,7 +2502,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"title"
@@ -2573,7 +2515,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"base"              ,Cell.new(
@@ -2588,7 +2530,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"meta"              ,Cell.new(
@@ -2603,7 +2545,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"style"
@@ -2616,7 +2558,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"script"
@@ -2629,7 +2571,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"noscript"
@@ -2646,7 +2588,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"html"
@@ -2663,7 +2605,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"frameset"
@@ -2676,7 +2618,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"frame"
@@ -2689,7 +2631,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"noframes"
@@ -2702,7 +2644,7 @@
                 if (self.instance_variables.include?(:@_make_MIMARKhtml_MIMARKelement)) then
                   @_make_MIMARKhtml_MIMARKelement
                 else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:157"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
               :"iframe"
