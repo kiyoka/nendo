@@ -492,9 +492,12 @@ class Reader
           # (. symbol1 symbol2 ... ) form
           cells << Cell.new( atom() )
         else
-          # ( symbol1 . symbol2 ... ) form
+          # ( symbol1 ... symbol2 . symbol3 ) form
           token
           lastAtom = sexp()
+          if lastAtom.is_a? Cell and lastAtom.isNull
+            lastAtom = Nil.new # the null list "()"  could not be a lastAtom.
+          end
         end
       when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING, T_DEBUG_PRINT
         cells << Cell.new( sexp() )

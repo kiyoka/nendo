@@ -405,9 +405,9 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '(()) " ).should == "(())"
     @nendo.replStr( " '((())) " ).should == "((()))"
     @nendo.replStr( " '(((()))) " ).should == "(((())))"
-    pending "this is nendo's bug" do
-      @nendo.replStr( " '(()  .  ()) " ).should == "(())"
-    end
+    @nendo.replStr( " '(()  .  ()) " ).should == "(())"
+    @nendo.replStr( " '(a . ()) " ).should == "(a)"
+    @nendo.replStr( " '(a b c d e  .  ()) " ).should == "(a b c d e)"
   end
 end
 
