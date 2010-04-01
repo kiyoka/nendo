@@ -127,6 +127,15 @@ class Array
   end
 end
 
+class Hash
+  def to_list
+    arr = Array.new
+    self.each_pair { |key,val|
+      arr << Cell.new( key, val )
+    }
+    arr.to_list
+  end
+end
 
 class LispValues
   def initialize( arr )
@@ -930,7 +939,9 @@ class Evaluator
     @gensym_counter = 0
 
     # compiled ruby code
-    @compiled_code = []
+    #  { 'filename1' => [ 'code1' 'code2' ... ], 
+    #    'filename2' => [ 'code1' 'code2' ... ], ... }
+    @compiled_code = Hash.new
   end
 
   def _gensym( )
@@ -1482,7 +1493,10 @@ class Evaluator
     end
     arr = [ translate( sexp, [] ) ]
     rubyExp = ppRubyExp( 0, arr ).flatten.join
-    @compiled_code << rubyExp
+    if not @compiled_code.has_key?( sourcefile )
+      @compiled_code[ sourcefile ] = Array.new
+    end
+    @compiled_code[ sourcefile ] << rubyExp
     printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
     eval( rubyExp, @binding, sourcefile, lineno );
   end
@@ -1504,15 +1518,21 @@ class Evaluator
     }
   end
 
-  def _loadCompiledCode( filename )
+  def _load_MIMARKcompiled_MIMARKcode( filename )
     open( filename ) { |f|
       rubyExp = f.read
       eval( rubyExp, @binding )
     }
   end
 
-  def _get_MIMARKcompiled_MIMARKcode()
-    @compiled_code.to_list
+  def _get_MIMARKcompiled_MIMARKcode
+    @compiled_code
+    ret = Hash.new
+    @compiled_code.each_key { |key|
+      ret[key] = @compiled_code[key].to_list
+      ret[key]
+    }
+    ret.to_list
   end
 
   def _eval( sexp )
@@ -1605,7 +1625,7 @@ class Nendo
     if use_compiled 
       compiled_file = File.dirname(__FILE__) + "/init.nndc"
       if File.exist?( compiled_file )
-        @evaluator._loadCompiledCode( compiled_file )
+        @evaluator._load_MIMARKcompiled_MIMARKcode( compiled_file )
         done = true
       end
     end

@@ -32,7 +32,6 @@ task :spec do
 end
 
 task :compile do
-  sh "/bin/rm -f ./lib/init.nndc*"
-  sh "time ruby -I ./lib ./bin/nendo generate_compiled.nnd > ./lib/init.nndc.tmp"
-  sh "/bin/mv -f ./lib/init.nndc.tmp ./lib/init.nndc"
+  sh "/bin/rm -f ./lib/init.nndc* ./lib/text/*.nndc*"
+  sh "time ruby -I ./lib ./bin/nendo -q --load ./lib/init.nnd --load ./lib/text/html-lite.nnd --load ./lib/text/tree.nnd save_compiled_file.nnd"
 end

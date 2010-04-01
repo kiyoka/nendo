@@ -618,10 +618,8 @@
   (let* ((home (get-nendo-home))
          (path (+ home "/" name)))
     (cond
-     ((File.exist? path)
-      (load path))
      ((File.exist? (+ path ".nndc"))
-      (load (+ path ".nndc")))
+      (load-compiled-code (+ path ".nndc")))
      ((File.exist? (+ path ".nnd"))
       (load (+ path ".nnd")))
      (else

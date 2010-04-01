@@ -1,13 +1,32 @@
 #!/bin/sh
-true; #-*- mode: nendo; syntax: scheme -*-;;
-true; exec /usr/local/bin/nendo $0 $*
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
 
-(let1 drop-last (lambda (lst)
-                  (reverse
-                   (cdr (reverse lst))))
+(define files '(
+                "./lib/init.nnd"
+                "./lib/text/html-lite.nnd"
+                "./lib/text/tree.nnd"
+                ))
+
+(define (compiled-code-string compiled-code filename)
+  (if (assv filename compiled-code)
+      (string-join
+       (assv-ref filename compiled-code)
+       "\n#--------------------\n")
+      (errorf "Error: [%s] was not loaded" filename)))
+
+(let1 compiled-code (get-compiled-code)
   (for-each
-   (lambda (x)
-     (print "#------------------------------")
-     (print x))
-   (drop-last
-    (get-compiled-code))))
+   (lambda (src)
+     (let1 target (+ src "c")
+       (with-open target
+                  (lambda (f)
+                    (f.puts (compiled-code-string compiled-code src))
+                    (printf "compiled [%s]\n" target))
+                  "w")))
+   files))
+
+
+
+
+
