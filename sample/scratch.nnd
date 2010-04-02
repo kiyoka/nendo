@@ -5,3 +5,16 @@
 (define debug-print-length 256)
 
 
+;; RMagick sample
+(require "RMagick")
+(define ilist (Magick::ImageList.new))
+(define image (Magick::Image.new 320 240))
+(define text (Magick::Draw.new))
+(text.pointsize 28)
+(text.font_weight Magick::BoldWeight)
+(text.font_style Magick::ItalicStyle)
+(text.gravity Magick::CenterGravity)
+(text.text 0 0 "abc")
+
+(ilist.write "a.png")
+
