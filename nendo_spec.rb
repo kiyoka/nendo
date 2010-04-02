@@ -713,6 +713,7 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (let1 v (map (lambda (x) x) '(1 2 3))  v) " ).should == "(1 2 3)"
     @nendo.replStr( " (let  ((v (map (lambda (x) x) '(1 2 3)))) v) " ).should == "(1 2 3)"
     @nendo.replStr( " (cond (true  1) (false 2)) " ).should == "1"
+    @nendo.replStr( " (cond (true   ) (false  )) " ).should == "true"
     @nendo.replStr( " (cond (false 1) (true  2)) " ).should == "2"
     @nendo.replStr( " (cond (true  1) (true  2)) " ).should == "1"
     @nendo.replStr( " (cond (false 1) (false 2)) " ).should == "()"

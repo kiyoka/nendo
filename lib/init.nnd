@@ -128,7 +128,9 @@
                 (let ((condition (if (eq? 'else (car elem))
                                      true
                                      (car elem)))
-                      (body      (cdr elem))
+                      (body      (if (null? (cdr elem))
+                                     '(#t)
+                                     (cdr elem)))
                       (tmpsym    (gensym)))
                   ;;(display "CONDITION") (print condition)
                   ;;(display "BODY")      (print body)
