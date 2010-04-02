@@ -21,13 +21,14 @@ Samples in my mind:
 
 2. dot-operator macro is flexible
   1) . can join any instance and any method.
-    (. str split)                          can be transformed   (str.split)
-    (. (. str split) sort)                 can be transformed   (str.split.sort)
-    (. (. (. str split) sort) reverse)     can be transformed   (str.split.sort.reverse)
-    (. "abc" size)                         can be transformed   (let1 tmp "abc" tmp.size)
-    (. (+ "abc" "def") size)               can be transformed   (let1 tmp (+ "abc" "def") tmp.size)
-    (. (. 'abc to-s) size)                 can be transformed   (let1 tmp1
-                                                                   (let1 tmp2 'abc tmp2.to-s)
-                                                                   tmp1.size)
+    (. str split "")                          can be transformed   (let1 tmp str (tmp.split ""))
+    (. "abc" size)                            can be transformed   (let1 tmp "abc" tmp.size)
+    (. (+ "abc" "def") size)                  can be transformed   (let1 tmp (+ "abc" "def") tmp.size)
+    (. (. (+ "abc" "def") split "") sort)     can be transformed   (let1 tmp1
+                                                                     (let1 tmp2 (+ "abc" "def") tmp.split "")
+                                                                       tmp1.sort)
+    (. (. 'abc to_s) size)                    can be transformed   (let1 tmp1
+                                                                     (let1 tmp2 'abc tmp2.to_s)
+                                                                       tmp1.size)
 
 [END]

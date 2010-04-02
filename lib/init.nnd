@@ -548,40 +548,31 @@
 ;; ----------------------------------------
 ;; for Ruby interop
 ;; ----------------------------------------
-;; dot_operator
 (define dot-operator
   (macro lst
-    (letrec ((dot-operator-iter
+    (letrec ((generate-method-call-form
               (lambda (lst)
-                (cond
-                 ((null? lst)
-                  '())
-                 ((pair? lst)
-                  (if (eq? 'dot-operator (car lst))
-                      (intern
-                       (string-join
-                        (map
-                         (lambda (x)
-                           (if (pair? x)
-                               (to-s (dot-operator-iter x))
-                               (if (symbol? x)
-                                   (to-s x)
-                                   (error (sprintf "dot-operator requires symbol, but got %s" x)))))
-                         (cdr lst))
-                        "."))
-                      (error "dot-operator requires symbol or (. symbol symbol) form.")))
-                 (else
-                  lst)))))
-
+                (let1 tmp (gensym)
+                  (if (symbol? (first lst))
+                      `(,(string->symbol (+ (to-s (first lst)) "." (to-s (second lst))))
+                        ,@(cddr lst))
+                      `(let ((,tmp ,(first lst)))
+                         (,(string->symbol (+ (to-s tmp) "." (to-s (second lst))))
+                          ,@(cddr lst))))))))
       (cond
        ((eq? 0 (length lst))
-        (error ". operator requires argument"))
-       ((and (eq? 1 (length lst))
-             (symbol? (car lst)))
-        (intern (+ "." (to-s (car lst)))))
+        (error ". dot-operator requires argument"))
+       ((eq? 1 (length lst))
+        (cond
+         ((symbol? (car lst))
+          (list (intern (+ "." (to-s (car lst))))))
+         (else
+          (error ". dot-operator requires method name as symbol."))))
        (else
-        ((dot-operator-iter
-          (cons 'dot-operator lst))))))))
+        (if (symbol? (second lst))
+            (generate-method-call-form lst)
+            (error ". dot-operator requires method name as symbol.")))))))
+
 
 (define (with-open filename pred . lst)
   (let1 len (length lst)

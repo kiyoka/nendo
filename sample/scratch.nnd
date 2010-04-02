@@ -4,16 +4,4 @@
 (enable-idebug)
 (define debug-print-length 256)
 
-(define h (Hash.new))
 
-h
-
-(list
- (hash-table-put! h 'k1 'v1)
- (hash-table-put! h 'k2 'v2)
- (hash-table-get h 'k1)
- (hash-table-get h 'k2)
- (hash-table-exist? h 'k1)
- (hash-table-exist? h 'k2)
- (hash-table-exist? h 'k3)
- )

@@ -920,25 +920,23 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.replStr( " (macroexpand '(. a b)) " ).should == "a.b"
-    @nendo.replStr( " (macroexpand '(. a b c)) " ).should == "a.b.c"
-    @nendo.replStr( " (macroexpand '(. Kernel open)) " ).should == "Kernel.open"
-    @nendo.replStr( " (macroexpand '(. open)) " ).should == ".open"
-    @nendo.replStr( " (macroexpand '(. a size)) " ).should == "a.size"
-    @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).should == "a.size.to_s"
-    @nendo.replStr( " (macroexpand '(. (. a size) (. to_s to_i))) " ).should == "a.size.to_s.to_i"
-    @nendo.replStr( " (macroexpand '(. a size to_s to_i)) " ).should == "a.size.to_s.to_i"
-    @nendo.replStr( " (macroexpand '(. (. a size) to_s (. to_s to_i))) " ).should == "a.size.to_s.to_s.to_i"
-    @nendo.replStr( " (macroexpand '(. (. (. a size)))) " ).should == "a.size"
+    @nendo.replStr( " (macroexpand '(. a b)) " ).should == "(a.b)"
+    @nendo.replStr( " (macroexpand '(. a b c)) " ).should == "(a.b c)"
+    @nendo.replStr( " (macroexpand '(. Kernel open)) " ).should == "(Kernel.open)"
+    @nendo.replStr( " (macroexpand '(. open)) " ).should == "(.open)"
+    @nendo.replStr( " (macroexpand '(. a size)) " ).should == "(a.size)"
+    @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).should == "(let ((__gensym__5 (a.size))) (__gensym__5.to_s))"
+    @nendo.replStr( " (macroexpand '(. (. (. a size) to_s) to_i)) " ).should == "(let ((__gensym__7 (let ((__gensym__8 (a.size))) (__gensym__8.to_s)))) (__gensym__7.to_i))"
+    lambda { @nendo.replStr( " (macroexpand '(. (. a size))) " ) }.should             raise_error( RuntimeError )
     @nendo.replStr( " (set! str \"str\") str.size " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (. str size) " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (+ 1 (. str size)) " ).should == "4"
-    @nendo.replStr( " (set! str \"string\") (. str size to_s) " ).should == '"6"'
+    @nendo.replStr( " (set! str \"string\") (. (. str size) to_s) " ).should == '"6"'
     @nendo.replStr( " (to-s str.size) " ).should == '"6"'
     @nendo.replStr( " (to-s 'str.size) " ).should == '"str.size"'
     @nendo.replStr( " (require \"date\") " ).should == "false"
-    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%x\") " ).should == '"01/01/00"'
-    @nendo.replStr( " (define d (Date.new 0)) (d.strftime \"%s\") " ).should == '"-62167392000"'
+    @nendo.replStr( " (. (Date.new 0) strftime \"%x\") " ).should == '"01/01/00"'
+    @nendo.replStr( " (. (Date.new 0) strftime \"%s\") " ).should == '"-62167392000"'
     @nendo.replStr( " (require \"digest/md5\") " ).should == "false"
     @nendo.replStr( " (Digest::MD5.hexdigest \"abc\") " ).should ==           '"900150983cd24fb0d6963f7d28e17f72"'
     @nendo.replStr( " (Digest::MD5.hexdigest \"source text\") " ).should ==   '"20f79a1416626eeacc0bd9a8db87faa2"'
