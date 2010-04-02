@@ -12,7 +12,7 @@
                 STDOUT
                 (car out))
     (let loop ((tree tree))
-      (cond ((null? tree) #f)
+      (cond ((null? tree))
             ((pair? tree) (write-tree (car tree) out) (loop (cdr tree)))
             (else
              (out.print tree))))))
