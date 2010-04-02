@@ -3,65 +3,31 @@
           DESIGN memo of Nendo
 
 
-
 Samples in my mind:
-  1. How to call Ruby's method
-    file.txt is
-      a1 a2 a3
-      b1 b2 b3
-      c1 c2 c3
-      [EOF]
 
-    (let1 f (open "file.txt" "r")
-      (map
-       (lambda (x)
-         (x.chomp.split))
-       (f.readlines.to_list))
-      (f.close))
-    => '(("a1" "a2" "a3") ("b1" "b2" "b3") ("c1" "c2" "c3"))
+1. '.' is a sipecial character in Nendo.
+  1) method call syntax of Kernel class (.method syntax can be translated Kernel.method)
+    (.read)                   can be translated    Kernel.read
+    (.open "file")            can be translated    Kernel.open( "file" )
+    (.open "file" "w")        can be translated    Kernel.open( "file", "w" )
+    (self.open "file" "w")    can be translated    self.open( "file", "w" )
+    (Kernel.open "file")      can be translated    Kernel.open( "file" )
+    (Kernel.open "file" "w")  can be translated    Kernel.open( "file", "w" )
 
-  2. method call for self
-    (.read)                   will translate    (. self read)
-    (.open "file")            will translate    (. self open "file")
-    (.open "file" "w")        will translate    (. self open "file" "w")
-    (self.open "file" "w")    will translate    (. self open "file" "w")
-    (Kernel.open "file")      will translate    (. Kernel open "file" "w")
-    (Kernel.open "file" "w")  will translate    (. Kernel open "file" "w")
-
-  3. new method
-    (Date.new)                will translate    (. Date new)
-    (Date.new.strftime "%X")  will translate    (. (. Date new) strftime "%X")
-
-  4. method call form
-    (str.split)               will translate    (. str split)
-    (str.split.sort)          will translate    (. (. str split) sort)
-    (str.split.sort.reverse)  will translate    (. (. (. str split) sort) reverse)
-
-  5 illegal operation
-    (foo a.b)                 will be error
+  2) method new is not a special.
+    (Date.new)                can be translated    Date.new()
+    (Date.new.strftime "%X")  can be translated    Date.new.strftime( "%X" )
 
 
-How to translate:
-  (+ 1 2)  => _apply( "+", Cell.new( 1, Cell.new( 2 )))
+2. dot-operator macro is flexible
+  1) . can join any instance and any method.
+    (. str split)                          can be transformed   (str.split)
+    (. (. str split) sort)                 can be transformed   (str.split.sort)
+    (. (. (. str split) sort) reverse)     can be transformed   (str.split.sort.reverse)
+    (. "abc" size)                         can be transformed   (let1 tmp "abc" tmp.size)
+    (. (+ "abc" "def") size)               can be transformed   (let1 tmp (+ "abc" "def") tmp.size)
+    (. (. 'abc to-s) size)                 can be transformed   (let1 tmp1
+                                                                   (let1 tmp2 'abc tmp2.to-s)
+                                                                   tmp1.size)
 
-  1
-  => 1
-
-  '(1)
-  => _apply( "quote", Cell.new( 1 ))
-
-  (let1 x 2
-    x)
-  => _lambda1 = lambda {|x| x}
-     _lambda1.call( 2 )
-
-  (def func1 (lambda (arg1 arg2))
-     (+ arg1 arg2))
-  => func1 = lambda {|arg1,arg2|
-                       _apply( "+", Cell.new( arg1, Cell.new( arg2 ))) }
-
-  (func1 1 2)
-  => _apply( "func1", Cell.new( 1, Cell.new( 2 )))
-
-
-
+[END]
