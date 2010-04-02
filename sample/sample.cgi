@@ -14,11 +14,15 @@
     ,(html:body
       (html:h1 "CGI parameter list")
       (html:table :border 1
-                  (for-each
-                   (lambda (x)
-                     (html:tr
-                      (html:td x)))
-                   (to-list (cgi.params.keys)))))))
+                  (html:tr
+                   (html:th "key")
+                   (html:th "value"))
+                  (hash-table-for-each cgi.params
+                    (lambda (key value)
+                      (html:tr
+                       (html:td key)
+                       (html:td (string-join value.to_list "/")))))))))
+                       
 
 (let1 cgi (CGI.new)
   (cgi.print

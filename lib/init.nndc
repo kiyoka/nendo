@@ -8840,6 +8840,268 @@
       end
 #--------------------
 
+  @_make_MIMARKhash_MIMARKtable = 
+      Proc.new { || 
+          begin
+              Hash.new(
+                )
+            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:620"] + __e.backtrace ) ; raise __e
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable_QUMARK = 
+      Proc.new { |_h| 
+          begin
+              _h.is_a?(
+                    begin
+                        Hash
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:623"] + __e.backtrace ) ; raise __e
+                    end
+                )
+            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:623"] + __e.backtrace ) ; raise __e
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKnum_MIMARKentries = 
+      Proc.new { |_h| 
+          begin
+              _h.length(
+                )
+            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:626"] + __e.backtrace ) ; raise __e
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable = 
+      Proc.new { |*__rest__| _kv_MIMARKlist = __rest__[0] ;  
+          begin
+            ___lambda = lambda { |_h| 
+                callProcedure( 'for-each',
+                    begin
+                      if (self.instance_variables.include?(:@_for_MIMARKeach)) then
+                        @_for_MIMARKeach
+                      else raise NameError.new( "Error: undefined variable _for_MIMARKeach", "_for_MIMARKeach" ) end
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:630"] + __e.backtrace ) ; raise __e
+                    end                  ,
+                    Cell.new(
+                      Proc.new { |_entry| 
+                          callProcedure( 'hash-table-put!',
+                              begin
+                                if (self.instance_variables.include?(:@_hash_MIMARKtable_MIMARKput_EXMARK)) then
+                                  @_hash_MIMARKtable_MIMARKput_EXMARK
+                                else raise NameError.new( "Error: undefined variable _hash_MIMARKtable_MIMARKput_EXMARK", "_hash_MIMARKtable_MIMARKput_EXMARK" ) end
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:632"] + __e.backtrace ) ; raise __e
+                              end                            ,
+                              Cell.new(
+                                begin
+                                    _h
+                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:634"] + __e.backtrace ) ; raise __e
+                                end                              ,Cell.new(
+                                callProcedure( 'first',
+                                    begin
+                                      if (self.instance_variables.include?(:@_first)) then
+                                        @_first
+                                      else raise NameError.new( "Error: undefined variable _first", "_first" ) end
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:632"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                    Cell.new(
+                                      begin
+                                          _entry
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:632"] + __e.backtrace ) ; raise __e
+                                      end
+                                             ))                              ,Cell.new(
+                                callProcedure( 'second',
+                                    begin
+                                      if (self.instance_variables.include?(:@_second)) then
+                                        @_second
+                                      else raise NameError.new( "Error: undefined variable _second", "_second" ) end
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:632"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                    Cell.new(
+                                      begin
+                                          _entry
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:632"] + __e.backtrace ) ; raise __e
+                                      end
+                                             ))
+                                       ))))
+                      }                    ,Cell.new(
+                      begin
+                          _kv_MIMARKlist
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:633"] + __e.backtrace ) ; raise __e
+                      end
+                             )))
+                begin
+                    _h
+                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:634"] + __e.backtrace ) ; raise __e
+                end
+            } ; ___lambda.call(
+                  callProcedure( 'make-hash-table',
+                      begin
+                        if (self.instance_variables.include?(:@_make_MIMARKhash_MIMARKtable)) then
+                          @_make_MIMARKhash_MIMARKtable
+                        else raise NameError.new( "Error: undefined variable _make_MIMARKhash_MIMARKtable", "_make_MIMARKhash_MIMARKtable" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:629"] + __e.backtrace ) ; raise __e
+                      end                    ,
+                    Cell.new(
+                               ))
+                       )
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKexist_QUMARK = 
+      Proc.new { |_h,_key| 
+          begin
+              _h.has_key?(
+                    begin
+                        _key
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:637"] + __e.backtrace ) ; raise __e
+                    end
+                )
+            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:637"] + __e.backtrace ) ; raise __e
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKclear_EXMARK = 
+      Proc.new { |_h| 
+          begin
+              _h.clear(
+                )
+            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:640"] + __e.backtrace ) ; raise __e
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKdelete_EXMARK = 
+      Proc.new { |_h,_key| 
+          begin
+              _h.delete(
+                    begin
+                        _key
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:643"] + __e.backtrace ) ; raise __e
+                    end
+                )
+            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:643"] + __e.backtrace ) ; raise __e
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKkeys = 
+      Proc.new { |_h| 
+          callProcedure( 'to-list',
+              begin
+                if (self.instance_variables.include?(:@_to_MIMARKlist)) then
+                  @_to_MIMARKlist
+                else raise NameError.new( "Error: undefined variable _to_MIMARKlist", "_to_MIMARKlist" ) end
+                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:646"] + __e.backtrace ) ; raise __e
+              end            ,
+              Cell.new(
+                begin
+                    _h.keys(
+                      )
+                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:646"] + __e.backtrace ) ; raise __e
+                end
+                       ))
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKvalues = 
+      Proc.new { |_h| 
+          callProcedure( 'to-list',
+              begin
+                if (self.instance_variables.include?(:@_to_MIMARKlist)) then
+                  @_to_MIMARKlist
+                else raise NameError.new( "Error: undefined variable _to_MIMARKlist", "_to_MIMARKlist" ) end
+                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:649"] + __e.backtrace ) ; raise __e
+              end            ,
+              Cell.new(
+                begin
+                    _h.values(
+                      )
+                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:649"] + __e.backtrace ) ; raise __e
+                end
+                       ))
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKmap = 
+      Proc.new { |_h,_pred| 
+          begin
+            ___lambda = lambda { |_keys| 
+                callProcedure( 'map',
+                    begin
+                      if (self.instance_variables.include?(:@_map)) then
+                        @_map
+                      else raise NameError.new( "Error: undefined variable _map", "_map" ) end
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:653"] + __e.backtrace ) ; raise __e
+                    end                  ,
+                    Cell.new(
+                      Proc.new { |_key| 
+                          callProcedure( 'pred',
+                              begin
+                                  _pred
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                              end                            ,
+                              Cell.new(
+                                begin
+                                    _key
+                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                                end                              ,Cell.new(
+                                callProcedure( 'hash-table-get',
+                                    begin
+                                      if (self.instance_variables.include?(:@_hash_MIMARKtable_MIMARKget)) then
+                                        @_hash_MIMARKtable_MIMARKget
+                                      else raise NameError.new( "Error: undefined variable _hash_MIMARKtable_MIMARKget", "_hash_MIMARKtable_MIMARKget" ) end
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                    Cell.new(
+                                      begin
+                                          _h
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                                      end                                    ,Cell.new(
+                                      begin
+                                          _key
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                                      end
+                                             )))
+                                       )))
+                      }                    ,Cell.new(
+                      begin
+                          _keys
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:656"] + __e.backtrace ) ; raise __e
+                      end
+                             )))
+            } ; ___lambda.call(
+                  callProcedure( 'hash-table-keys',
+                      begin
+                        if (self.instance_variables.include?(:@_hash_MIMARKtable_MIMARKkeys)) then
+                          @_hash_MIMARKtable_MIMARKkeys
+                        else raise NameError.new( "Error: undefined variable _hash_MIMARKtable_MIMARKkeys", "_hash_MIMARKtable_MIMARKkeys" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:652"] + __e.backtrace ) ; raise __e
+                      end                    ,
+                      Cell.new(
+                        begin
+                            _h
+                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                        end
+                               ))
+                       )
+          end
+      }
+#--------------------
+
+  @_hash_MIMARKtable_MIMARKfor_MIMARKeach = 
+      begin
+        if (self.instance_variables.include?(:@_hash_MIMARKtable_MIMARKmap)) then
+          @_hash_MIMARKtable_MIMARKmap
+        else raise NameError.new( "Error: undefined variable _hash_MIMARKtable_MIMARKmap", "_hash_MIMARKtable_MIMARKmap" ) end
+        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:657"] + __e.backtrace ) ; raise __e
+      end
+#--------------------
+
   @_export = 
       LispMacro.new { |_name| 
           callProcedure( 'cons',
@@ -8861,7 +9123,7 @@
                     Cell.new(
                       begin
                           _name
-                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:622"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:666"] + __e.backtrace ) ; raise __e
                       end                    ,Cell.new(
                     Cell.new(nil)
                              )))
@@ -8883,17 +9145,17 @@
                                         if (self.instance_variables.include?(:@__PLMARK)) then
                                           @__PLMARK
                                         else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:631"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:675"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                         begin
                                             _path
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:633"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:677"] + __e.backtrace ) ; raise __e
                                         end                                      ,Cell.new(
                                       ".nndc"
                                                )))
                               )
-                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:630"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:674"] + __e.backtrace ) ; raise __e
                         end
                        ) then
                           begin
@@ -8902,7 +9164,7 @@
                                     if (self.instance_variables.include?(:@_load_MIMARKcompiled_MIMARKcode)) then
                                       @_load_MIMARKcompiled_MIMARKcode
                                     else raise NameError.new( "Error: undefined variable _load_MIMARKcompiled_MIMARKcode", "_load_MIMARKcompiled_MIMARKcode" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:629"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:673"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     callProcedure( '+',
@@ -8910,12 +9172,12 @@
                                           if (self.instance_variables.include?(:@__PLMARK)) then
                                             @__PLMARK
                                           else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:631"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:675"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                           begin
                                               _path
-                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:633"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:677"] + __e.backtrace ) ; raise __e
                                           end                                        ,Cell.new(
                                         ".nndc"
                                                  )))
@@ -8930,17 +9192,17 @@
                                             if (self.instance_variables.include?(:@__PLMARK)) then
                                               @__PLMARK
                                             else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:631"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:675"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             begin
                                                 _path
-                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:633"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:677"] + __e.backtrace ) ; raise __e
                                             end                                          ,Cell.new(
                                           ".nnd"
                                                    )))
                                   )
-                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:630"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:674"] + __e.backtrace ) ; raise __e
                             end
                            ) then
                               begin
@@ -8949,7 +9211,7 @@
                                         if (self.instance_variables.include?(:@_load)) then
                                           @_load
                                         else raise NameError.new( "Error: undefined variable _load", "_load" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:631"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:675"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
                                         callProcedure( '+',
@@ -8957,12 +9219,12 @@
                                               if (self.instance_variables.include?(:@__PLMARK)) then
                                                 @__PLMARK
                                               else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:631"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:675"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               begin
                                                   _path
-                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:633"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:677"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
                                             ".nnd"
                                                      )))
@@ -8985,7 +9247,7 @@
                                             "Error: can't load library file [%s]\n"                                            ,Cell.new(
                                               begin
                                                   _path
-                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:633"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:677"] + __e.backtrace ) ; raise __e
                                               end
                                                      )))
                                       rescue => __e 
@@ -9004,17 +9266,17 @@
                               if (self.instance_variables.include?(:@__PLMARK)) then
                                 @__PLMARK
                               else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:631"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:675"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _home
-                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:626"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:670"] + __e.backtrace ) ; raise __e
                               end                            ,Cell.new(
                             "/"                            ,Cell.new(
                               begin
                                   _name
-                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:626"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:670"] + __e.backtrace ) ; raise __e
                               end
                                      ))))
                              )
@@ -9025,7 +9287,7 @@
                         if (self.instance_variables.include?(:@_get_MIMARKnendo_MIMARKhome)) then
                           @_get_MIMARKnendo_MIMARKhome
                         else raise NameError.new( "Error: undefined variable _get_MIMARKnendo_MIMARKhome", "_get_MIMARKnendo_MIMARKhome" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:625"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:669"] + __e.backtrace ) ; raise __e
                       end                    ,
                     Cell.new(
                                ))
@@ -9044,10 +9306,10 @@
               STDERR.print(
                     begin
                         _str
-                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:642"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:686"] + __e.backtrace ) ; raise __e
                     end
                 )
-            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:642"] + __e.backtrace ) ; raise __e
+            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:686"] + __e.backtrace ) ; raise __e
           end
       }
 #--------------------
@@ -9059,7 +9321,7 @@
                 if (self.instance_variables.include?(:@__PLMARK)) then
                   @__PLMARK
                 else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:647"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
               end            ,
               Cell.new(
                 if ( 
@@ -9068,18 +9330,18 @@
                         if (self.instance_variables.include?(:@__LTMARK)) then
                           @__LTMARK
                         else raise NameError.new( "Error: undefined variable __LTMARK", "__LTMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:645"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:689"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
                           if (self.instance_variables.include?(:@_debug_MIMARKprint_MIMARKlength)) then
                             @_debug_MIMARKprint_MIMARKlength
                           else raise NameError.new( "Error: undefined variable _debug_MIMARKprint_MIMARKlength", "_debug_MIMARKprint_MIMARKlength" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:645"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:689"] + __e.backtrace ) ; raise __e
                         end                      ,Cell.new(
                         begin
                             _x.length
-                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:645"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:689"] + __e.backtrace ) ; raise __e
                         end
                                )))
                  ) then
@@ -9090,7 +9352,7 @@
                                 if (self.instance_variables.include?(:@_sprintf)) then
                                   @_sprintf
                                 else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:647"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                                 callProcedure( '+',
@@ -9098,24 +9360,24 @@
                                       if (self.instance_variables.include?(:@__PLMARK)) then
                                         @__PLMARK
                                       else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:647"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     "%"                                    ,Cell.new(
                                       begin
                                           _n
-                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:647"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
                                       end                                    ,Cell.new(
                                     "."                                    ,Cell.new(
                                       begin
                                           _n
-                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:647"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
                                       end                                    ,Cell.new(
                                     "s ..."
                                              ))))))                              ,Cell.new(
                                 begin
                                     _x
-                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:648"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:692"] + __e.backtrace ) ; raise __e
                                 end
                                        )))
                       } ; ___lambda.call(
@@ -9123,14 +9385,14 @@
                               if (self.instance_variables.include?(:@_debug_MIMARKprint_MIMARKlength)) then
                                 @_debug_MIMARKprint_MIMARKlength.to_s
                               else raise NameError.new( "Error: undefined variable _debug_MIMARKprint_MIMARKlength", "_debug_MIMARKprint_MIMARKlength" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:646"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:690"] + __e.backtrace ) ; raise __e
                             end
                                  )
                     end
                 else
                     begin
                         _x
-                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:648"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:692"] + __e.backtrace ) ; raise __e
                     end
                 end              ,Cell.new(
               "\n"
@@ -9177,7 +9439,7 @@
                                       Cell.new(
                                         begin
                                             _val
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:658"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:702"] + __e.backtrace ) ; raise __e
                                         end                                      ,Cell.new(
                                       Cell.new(nil)
                                                )))                                ,Cell.new(
@@ -9253,7 +9515,7 @@
                                                                           Cell.new(
                                                                             begin
                                                                                 _sourcefile
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:699"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,Cell.new(
                                                                             callProcedure( 'cons',
                                                                                 begin
@@ -9265,7 +9527,7 @@
                                                                                 Cell.new(
                                                                                   begin
                                                                                       _lineno
-                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:699"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,Cell.new(
                                                                                   callProcedure( 'cons',
                                                                                       begin
@@ -9294,7 +9556,7 @@
                                                                                                   Cell.new(
                                                                                                     begin
                                                                                                         _sourcesexp
-                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:655"] + __e.backtrace ) ; raise __e
+                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:699"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,Cell.new(
                                                                                                   
                                                                                                            )))
@@ -9338,7 +9600,7 @@
                                                   Cell.new(
                                                     begin
                                                         _val
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:658"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:702"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,Cell.new(
                                                     callProcedure( 'cons',
                                                         begin
@@ -9350,7 +9612,7 @@
                                                         Cell.new(
                                                           begin
                                                               __form
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:656"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:700"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,Cell.new(
                                                         
                                                                  )))
@@ -9443,7 +9705,7 @@
                                                                                                   Cell.new(
                                                                                                     begin
                                                                                                         _val
-                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:658"] + __e.backtrace ) ; raise __e
+                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:702"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,Cell.new(
                                                                                                   
                                                                                                            )))
@@ -9468,7 +9730,7 @@
                                                   Cell.new(
                                                     begin
                                                         _val
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:658"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:702"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,Cell.new(
                                                   
                                                            )))
@@ -9483,7 +9745,7 @@
                         if (self.instance_variables.include?(:@_gensym)) then
                           @_gensym
                         else raise NameError.new( "Error: undefined variable _gensym", "_gensym" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:653"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                       end                    ,
                     Cell.new(
                                ))
@@ -9503,7 +9765,7 @@
                             if (self.instance_variables.include?(:@_for_MIMARKeach)) then
                               @_for_MIMARKeach
                             else raise NameError.new( "Error: undefined variable _for_MIMARKeach", "_for_MIMARKeach" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:668"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:712"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             Proc.new { |_x| 
@@ -9512,7 +9774,7 @@
                                       if (self.instance_variables.include?(:@_display)) then
                                         @_display
                                       else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:674"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:718"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     " "
@@ -9523,12 +9785,12 @@
                                   if (self.instance_variables.include?(:@_range)) then
                                     @_range
                                   else raise NameError.new( "Error: undefined variable _range", "_range" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:668"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:712"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   begin
                                       _level
-                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:686"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:730"] + __e.backtrace ) ; raise __e
                                   end
                                          ))
                                    )))
@@ -9540,7 +9802,7 @@
                               if (self.instance_variables.include?(:@_display)) then
                                 @_display
                               else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:674"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:718"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                             "("
@@ -9553,7 +9815,7 @@
                               if (self.instance_variables.include?(:@_display)) then
                                 @_display
                               else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:674"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:718"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                             ")"
@@ -9564,7 +9826,7 @@
                         if ( 
                           begin
                               _prefix
-                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                           end
                          ) then
                             begin
@@ -9573,7 +9835,7 @@
                                       if (self.instance_variables.include?(:@_display)) then
                                         @_display
                                       else raise NameError.new( "Error: undefined variable _display", "_display" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:674"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:718"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     " "
@@ -9585,12 +9847,12 @@
                               if (self.instance_variables.include?(:@_write)) then
                                 @_write
                               else raise NameError.new( "Error: undefined variable _write", "_write" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _e
-                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                               end
                                      ))
                     }
@@ -9616,7 +9878,7 @@
                                     false                                    ,Cell.new(
                                       begin
                                           _prefix
-                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                       end
                                              )))
                                        ))
@@ -9624,12 +9886,12 @@
                             callProcedure( 'do-indent',
                                 begin
                                     _do_MIMARKindent
-                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:677"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:721"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                   begin
                                       _level
-                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:686"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:730"] + __e.backtrace ) ; raise __e
                                   end
                                          ))
                         else
@@ -9640,7 +9902,7 @@
                               if (self.instance_variables.include?(:@_pp_MIMARKparenl)) then
                                 @_pp_MIMARKparenl
                               else raise NameError.new( "Error: undefined variable _pp_MIMARKparenl", "_pp_MIMARKparenl" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:678"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:722"] + __e.backtrace ) ; raise __e
                             end                          ,
                           Cell.new(
                                      ))
@@ -9654,12 +9916,12 @@
                                             if (self.instance_variables.include?(:@_null_QUMARK)) then
                                               @_null_QUMARK
                                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:681"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:725"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             begin
                                                 _s
-                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                                             end
                                                    ))
                                      ) then
@@ -9668,7 +9930,7 @@
                                               if (self.instance_variables.include?(:@_pp_MIMARKparenr)) then
                                                 @_pp_MIMARKparenr
                                               else raise NameError.new( "Error: undefined variable _pp_MIMARKparenr", "_pp_MIMARKparenr" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:682"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:726"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                           Cell.new(
                                                      ))
@@ -9681,12 +9943,12 @@
                                                       if (self.instance_variables.include?(:@_list_QUMARK)) then
                                                         @_list_QUMARK
                                                       else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:689"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:733"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       begin
                                                           _e
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))
                                                ) then
@@ -9711,7 +9973,7 @@
                                                                   false                                                                  ,Cell.new(
                                                                     begin
                                                                         _prefix
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            )))
                                                                      ))
@@ -9721,7 +9983,7 @@
                                                                 if (self.instance_variables.include?(:@_newline)) then
                                                                   @_newline
                                                                 else raise NameError.new( "Error: undefined variable _newline", "_newline" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:692"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:736"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                             Cell.new(
                                                                        ))
@@ -9733,30 +9995,30 @@
                                                             if (self.instance_variables.include?(:@_pp_MIMARKlist)) then
                                                               @_pp_MIMARKlist
                                                             else raise NameError.new( "Error: undefined variable _pp_MIMARKlist", "_pp_MIMARKlist" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:690"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:734"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                             begin
                                                                 _e
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,Cell.new(
                                                             callProcedure( '+',
                                                                 begin
                                                                   if (self.instance_variables.include?(:@__PLMARK)) then
                                                                     @__PLMARK
                                                                   else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:686"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:730"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                   begin
                                                                       _level
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:686"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:730"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,Cell.new(
                                                                 1
                                                                          )))                                                          ,Cell.new(
                                                             begin
                                                                 _prefix
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    ))))
                                                   end
@@ -9766,23 +10028,23 @@
                                                         if (self.instance_variables.include?(:@_pp_MIMARKatom)) then
                                                           @_pp_MIMARKatom
                                                         else raise NameError.new( "Error: undefined variable _pp_MIMARKatom", "_pp_MIMARKatom" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         begin
                                                             _e
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,Cell.new(
                                                         begin
                                                             _prefix
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:687"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:731"] + __e.backtrace ) ; raise __e
                                                         end
                                                                )))
                                               end
                                               callProcedure( 'loop',
                                                   begin
                                                       _loop
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:688"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:732"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     callProcedure( 'cdr',
@@ -9790,12 +10052,12 @@
                                                           if (self.instance_variables.include?(:@_cdr)) then
                                                             @_cdr
                                                           else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:688"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:732"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           begin
                                                               _s
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                                                           end
                                                                  ))                                                  ,Cell.new(
                                                   true
@@ -9806,12 +10068,12 @@
                                                       if (self.instance_variables.include?(:@_car)) then
                                                         @_car
                                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:683"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:727"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       begin
                                                           _s
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))
                                                      )
@@ -9821,12 +10083,12 @@
                               callProcedure( 'loop',
                                   begin
                                       _loop
-                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:688"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:732"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     begin
                                         _s
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                                     end                                  ,Cell.new(
                                   false
                                            )))
@@ -9841,12 +10103,12 @@
                         if (self.instance_variables.include?(:@_list_QUMARK)) then
                           @_list_QUMARK
                         else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:689"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:733"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
                             _s
-                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                         end
                                ))
                  ) then
@@ -9855,12 +10117,12 @@
                           if (self.instance_variables.include?(:@_pp_MIMARKlist)) then
                             @_pp_MIMARKlist
                           else raise NameError.new( "Error: undefined variable _pp_MIMARKlist", "_pp_MIMARKlist" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:690"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:734"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
                           begin
                               _s
-                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                           end                        ,Cell.new(
                         0                        ,Cell.new(
                         false
@@ -9871,12 +10133,12 @@
                           if (self.instance_variables.include?(:@_write)) then
                             @_write
                           else raise NameError.new( "Error: undefined variable _write", "_write" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                         end                      ,
                         Cell.new(
                           begin
                               _s
-                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:691"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:735"] + __e.backtrace ) ; raise __e
                           end
                                  ))
                 end
@@ -9885,7 +10147,7 @@
                       if (self.instance_variables.include?(:@_newline)) then
                         @_newline
                       else raise NameError.new( "Error: undefined variable _newline", "_newline" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:692"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:736"] + __e.backtrace ) ; raise __e
                     end                  ,
                   Cell.new(
                              ))

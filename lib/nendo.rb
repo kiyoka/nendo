@@ -891,7 +891,25 @@ module BuiltinFunctions
   def _get_MIMARKnendo_MIMARKhome
     File.dirname(__FILE__) 
   end
+
+  def _hash_MIMARKtable_MIMARKget( h, key, *args )
+    if h.has_key?( key )
+      h[key]
+    else
+      arr = args[0].to_arr
+      if 0 < arr.length
+        arr[0]
+      else
+        raise RuntimeError, sprintf( "Error: in hash-table-get()  key [%s] was not exist.\n", key )
+      end
+    end
+  end
+
+  def _hash_MIMARKtable_MIMARKput_EXMARK( h, key, value )
+    h[key] = value
+  end
 end
+
 
 
 # Translate S expression to Ruby expression and Evaluation

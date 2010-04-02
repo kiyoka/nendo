@@ -994,3 +994,39 @@ describe Nendo, "when use keyword feature " do
     @nendo.replStr( " (get-keyword :t 1 #f) " ).should == "false"
   end
 end
+
+describe Nendo, "when use hash-table feature " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (define h (make-hash-table)) " ).should == "{}"
+    @nendo.replStr( " (hash-table? 1) " ).should == "false"
+    @nendo.replStr( " (hash-table? '(1)) " ).should == "false"
+    @nendo.replStr( " (hash-table? (Array.new)) " ).should == "false"
+    @nendo.replStr( " (hash-table? (Hash.new)) " ).should == "true"
+    @nendo.replStr( " h " ).should == "{}"
+    @nendo.replStr( " (hash-table-put! h 'k1 'v1) h" ).should == "{:k1=>:v1}"
+    @nendo.replStr( " (hash-table-put! h 'k2 200) h" ).should == "{:k1=>:v1, :k2=>200}"
+    @nendo.replStr( " (hash-table-get  h 'k1)" ).should == "v1"
+    @nendo.replStr( " (hash-table-get  h 'k2)" ).should == "200"
+    @nendo.replStr( " (hash-table-exist? h 'k1)" ).should == "true"
+    @nendo.replStr( " (hash-table-exist? h 'k2)" ).should == "true"
+    @nendo.replStr( " (hash-table-exist? h 'k3)" ).should == "false"
+    @nendo.replStr( " (hash-table-exist? h \"k1\")" ).should == "false"
+    @nendo.replStr( " (hash-table-num-entries h)" ).should == "2"
+    @nendo.replStr( " (hash-table-delete! h 'k1)" ).should == "v1"
+    lambda { @nendo.replStr( " (hash-table-get h 'k1)" ) }.should                 raise_error( RuntimeError )
+    @nendo.replStr( " (hash-table-get h 'k1 #f) " ).should == "false"
+    @nendo.replStr( " (hash-table-num-entries h)" ).should == "1"
+    @nendo.replStr( " (hash-table-clear! h)" ).should == "{}"
+    @nendo.replStr( " (hash-table-num-entries h)" ).should == "0"
+    @nendo.replStr( " (set! h (hash-table '(\"a\" \"AAA\") '(\"b\" \"BBB\") '(\"c\" \"CCC\")))  h" ).should == "{\"a\"=>\"AAA\", \"b\"=>\"BBB\", \"c\"=>\"CCC\"}"
+    @nendo.replStr( " (hash-table-keys       h)" ).should == '("a" "b" "c")'
+    @nendo.replStr( " (hash-table-values     h)" ).should == '("AAA" "BBB" "CCC")'
+    @nendo.replStr( " (hash-table-map        h (lambda (a b) (+ a b)))" ).should == '("aAAA" "bBBB" "cCCC")'
+    @nendo.replStr( " (hash-table-for-each   h (lambda (a b) (+ a b)))" ).should == '("aAAA" "bBBB" "cCCC")'
+  end
+end
+

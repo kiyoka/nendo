@@ -614,6 +614,50 @@
 
 
 ;; ----------------------------------------
+;; hash-table library functions
+;; ----------------------------------------
+(define (make-hash-table)
+  (Hash.new))
+
+(define (hash-table? h)
+  (h.is_a? Hash))
+
+(define (hash-table-num-entries h)
+  (h.length))
+
+(define (hash-table . kv-list)
+  (let1 h (make-hash-table)
+    (for-each
+     (lambda (entry)
+       (hash-table-put! h (first entry) (second entry)))
+     kv-list)
+    h))
+
+(define (hash-table-exist? h key)
+  (h.has_key? key))
+
+(define (hash-table-clear! h)
+  (h.clear))
+
+(define (hash-table-delete! h key)
+  (h.delete key))
+
+(define (hash-table-keys h)
+  (to-list (h.keys)))
+
+(define (hash-table-values h)
+  (to-list (h.values)))
+
+(define (hash-table-map h pred)
+  (let1 keys (hash-table-keys h)
+    (map
+     (lambda (key)
+       (pred key (hash-table-get h key)))
+     keys)))
+(define hash-table-for-each hash-table-map)
+
+
+;; ----------------------------------------
 ;; Ruby interop librarys
 ;; ----------------------------------------
 ;; I will implement in the future...
