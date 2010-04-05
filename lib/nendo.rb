@@ -908,6 +908,10 @@ module BuiltinFunctions
   def _hash_MIMARKtable_MIMARKput_EXMARK( h, key, value )
     h[key] = value
   end
+
+  def _raise( exception, message )
+    raise exception, message
+  end
 end
 
 

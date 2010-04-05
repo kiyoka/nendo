@@ -622,7 +622,9 @@
   (let1 h (make-hash-table)
     (for-each
      (lambda (entry)
-       (hash-table-put! h (first entry) (second entry)))
+       (if (pair? (cdr entry))
+           (hash-table-put! h (car entry) (cadr entry))
+           (hash-table-put! h (car entry) (cdr  entry))))
      kv-list)
     h))
 
@@ -649,6 +651,19 @@
      keys)))
 (define hash-table-for-each hash-table-map)
 
+(define (hash-table->alist h)
+  (if (not (h.is_a? Hash))
+      (raise TypeError "Error: hash-table->alist expects Hash instance.")
+      (let1 keys (hash-table-keys h)
+        (map
+         (lambda (key)
+           (cons key (hash-table-get h key)))
+         keys))))
+
+(define (alist->hash-table alist)
+  (if (not (list? alist))
+      (raise TypeError "Error: alist->hash-table expects alist.")
+      (apply hash-table alist)))
 
 ;; ----------------------------------------
 ;; Ruby interop librarys
