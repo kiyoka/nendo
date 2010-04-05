@@ -924,11 +924,12 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.replStr( " (macroexpand '(. a b)) " ).should == "(a.b)"
     @nendo.replStr( " (macroexpand '(. a b c)) " ).should == "(a.b c)"
     @nendo.replStr( " (macroexpand '(. Kernel open)) " ).should == "(Kernel.open)"
-    @nendo.replStr( " (macroexpand '(. open)) " ).should == "(.open)"
+    lambda { @nendo.replStr( " (macroexpand '(. open)) " ) }.should                   raise_error( ArgumentError )
+    lambda { @nendo.replStr( " (macroexpand '(. open \"aaa\")) " ) }.should           raise_error( TypeError )
     @nendo.replStr( " (macroexpand '(. a size)) " ).should == "(a.size)"
     @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).should == "(let ((__gensym__5 (a.size))) (__gensym__5.to_s))"
     @nendo.replStr( " (macroexpand '(. (. (. a size) to_s) to_i)) " ).should == "(let ((__gensym__7 (let ((__gensym__8 (a.size))) (__gensym__8.to_s)))) (__gensym__7.to_i))"
-    lambda { @nendo.replStr( " (macroexpand '(. (. a size))) " ) }.should             raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (macroexpand '(. (. a size))) " ) }.should             raise_error( ArgumentError )
     @nendo.replStr( " (set! str \"str\") str.size " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (. str size) " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (+ 1 (. str size)) " ).should == "4"

@@ -562,18 +562,12 @@
                          (,(string->symbol (+ (to-s tmp) "." (to-s (second lst))))
                           ,@(cddr lst))))))))
       (cond
-       ((eq? 0 (length lst))
-        (error ". dot-operator requires argument"))
-       ((eq? 1 (length lst))
-        (cond
-         ((symbol? (car lst))
-          (list (intern (+ "." (to-s (car lst))))))
-         (else
-          (error ". dot-operator requires method name as symbol."))))
+       ((> 2 (length lst))
+        (raise ArgumentError ". dot-operator requires 2+ arguments."))
        (else
         (if (symbol? (second lst))
             (generate-method-call-form lst)
-            (error ". dot-operator requires method name as symbol.")))))))
+            (raise TypeError ". dot-operator requires method name as symbol.")))))))
 
 
 (define (with-open filename pred . lst)
