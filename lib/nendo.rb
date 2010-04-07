@@ -973,6 +973,10 @@ class Evaluator
     @gensym_counter += 1
     sprintf( "__gensym__%d", @gensym_counter ).intern
   end
+  
+  def forward_gensym_counter( )
+    @gensym_counter += 10000
+  end
 
   def toRubyValue( val )
     if NilClass == val.class
@@ -1548,6 +1552,7 @@ class Evaluator
       rubyExp = f.read
       eval( rubyExp, @binding )
     }
+    forward_gensym_counter()
   end
 
   def _get_MIMARKcompiled_MIMARKcode
