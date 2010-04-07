@@ -1090,7 +1090,7 @@ class Evaluator
     when :define, :set!   # `define' special form
       ar = args.cdr.map { |x| x.car }
       variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
-      global_cap = locals.flatten.include?( variable_sym ) ? nil : "@"
+      global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
       [ sprintf( "%s%s = ", global_cap, variable_sym ), ar ]
     when :error
       [
