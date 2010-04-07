@@ -1532,7 +1532,7 @@ class Evaluator
 
   def _load( filename )
     printer = Printer.new( @debug )
-    open( filename ) {|f|
+    open( filename, "r:utf-8" ) {|f|
       reader = Reader.new( f, filename, false )
       while true
         lineno = reader.lineno
@@ -1548,7 +1548,7 @@ class Evaluator
   end
 
   def _load_MIMARKcompiled_MIMARKcode( filename )
-    open( filename ) { |f|
+    open( filename, "r:utf-8" ) { |f|
       rubyExp = f.read
       eval( rubyExp, @binding )
     }
