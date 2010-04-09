@@ -29,8 +29,8 @@
       (blur.to_blob))))
 
 
-(define default-wording "文章を画像化するサイト")
-(define default-size    1)
+(define default-wording "デカ文字")
+(define default-size    2)
 (define size-list '(
                     (1 . "サイズ小")
                     (2 . "サイズ中")
