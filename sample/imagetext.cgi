@@ -31,43 +31,55 @@
 
 (define default-wording "文章を画像化するサイト")
 (define default-size    1)
+(define size-list '(
+                    (1 . "サイズ小")
+                    (2 . "サイズ中")
+                    (3 . "サイズ大")
+                    (4 . "サイズ特大")
+                    ))
+
 
 (define (top-page params)
-  (let* ((size (if (hash-table-exist? params "size")
+  (let* ((size #?=(if (hash-table-exist? params "size")
                    (to-i (car (to-list (hash-table-get params "size"))))
                    default-size))
          (wording (if (hash-table-exist? params "w")
                       (car (to-list (hash-table-get params "w")))
                       default-wording)))
-    `(
-      ,(html-doctype)
-      ,(html:head
-        (html:title "文章を画像化するサイト"))
-      ,(html:body
-        (html:div :style "text-align: center; "
-                  (html:h1 "文章を画像化するサイト")
-                  (html:p
-                   "下記に好きな文章を入力して『画像化』ボタンを押して下さい")
-                  (html:form
-                   :method "GET"
-                   :action "./imagetext.cgi"
-                   (html:input :name "w"       :type "text" :cols 140 :value wording)
-                   (html:input :type "submit"  :value "画像化")
-                   (html:input :name "size"    :type "radio" :value 1 :CHECKED #t) "サイズ小"
-                   (html:input :name "size"    :type "radio" :value 2)             "サイズ中"
-                   (html:input :name "size"    :type "radio" :value 3)             "サイズ大"
-                   (html:input :name "size"    :type "radio" :value 4)             "サイズ特大")
-                  (html:hr)
-                  (html:img :src (sprintf "./imagetext.cgi?img=1&size=%d&w=%s" size wording))
-                  (html:hr))))))
-  
+    (let* ((size (if (> 1 size) 1 size))
+           (size (if (< #?=(length size-list) #?=size) (length size-list) size)))
+      `(
+        ,(html-doctype)
+        ,(html:head
+          (html:title "文章を画像化するサイト"))
+        ,(html:body
+          (html:div :style "text-align: center; "
+                    (html:h1 "文章を画像化するサイト")
+                    (html:p
+                     "下記に好きな文章を入力して『画像化』ボタンを押して下さい")
+                    (html:form
+                     :method "GET"
+                     :action "./imagetext.cgi"
+                     (html:input :name "w"       :type "text" :cols 140 :value wording)
+                     (html:input :type "submit"  :value "画像化")
+                     (map
+                      (lambda (x)
+                        (list
+                         (html:input :name "size"    :type "radio"
+                                     :value (car x)
+                                     :CHECKED (eq? (car x) size))
+                         (cdr x)))
+                      size-list))
+                    (html:hr)
+                    (html:img :src (sprintf "./imagetext.cgi?img=1&size=%d&w=%s" size wording))
+                    (html:hr)))))))
 
-(define size-alist '(
-                     ("1" . 20)
-                     ("2" . 40)
-                     ("3" . 60)
-                     ("4" . 100)
-                     ))
+(define fontsize-alist '(
+                         ("1" . 20)
+                         ("2" . 40)
+                         ("3" . 60)
+                         ("4" . 100)
+                         ))
 
 (let1 cgi (CGI.new)
   (cond ((hash-table-exist? cgi.params "img")
@@ -76,7 +88,7 @@
          (cgi.print
           (response-imagetext
            (car (to-list (hash-table-get cgi.params "w")))
-           (assv-ref (car (to-list (hash-table-get cgi.params "size")))  size-alist))))
+           (assv-ref (car (to-list (hash-table-get cgi.params "size")))  fontsize-alist))))
         (else
          (cgi.print
           (cgi.header))
