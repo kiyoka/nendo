@@ -18,7 +18,9 @@
     (imlist.push image)
     ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ホリデイMDJP03")
     ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/みかちゃん")
-    (set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ丸ゴ ProN W4.otf")
+    ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ丸ゴ ProN W4.otf")
+    ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ明朝 Pro W6.otf")
+    (set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ明朝 Pro W3.otf")
     (set! dr.pointsize pointsize)
     (set! dr.fill   "#404040")
     (set! dr.stroke "#080808")
@@ -40,14 +42,14 @@
 
 
 (define (top-page params)
-  (let* ((size #?=(if (hash-table-exist? params "size")
+  (let* ((size (if (hash-table-exist? params "size")
                    (to-i (car (to-list (hash-table-get params "size"))))
                    default-size))
          (wording (if (hash-table-exist? params "w")
                       (car (to-list (hash-table-get params "w")))
                       default-wording)))
     (let* ((size (if (> 1 size) 1 size))
-           (size (if (< #?=(length size-list) #?=size) (length size-list) size)))
+           (size (if (< (length size-list) size) (length size-list) size)))
       `(
         ,(html-doctype)
         ,(html:head
@@ -79,7 +81,7 @@
                          ("1" . 40)
                          ("2" . 80)
                          ("3" . 160)
-                         ("4" . 320)
+                         ("4" . 260)
                          ))
 
 (let1 cgi (CGI.new)
