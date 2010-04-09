@@ -20,8 +20,8 @@
     ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/みかちゃん")
     (set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ丸ゴ ProN W4.otf")
     (set! dr.pointsize pointsize)
-    (set! dr.fill   "#606060")
-    (set! dr.stroke "#101010")
+    (set! dr.fill   "#404040")
+    (set! dr.stroke "#080808")
     (set! dr.font_weight Magick::BoldWeight)
     (set! dr.gravity Magick::CenterGravity)
     (dr.annotate imlist 0 0 0 0 str)
@@ -51,17 +51,16 @@
       `(
         ,(html-doctype)
         ,(html:head
-          (html:title "文章を画像化するサイト"))
+          (html:title "デカ文字作成"))
         ,(html:body
           (html:div :style "text-align: center; "
-                    (html:h1 "文章を画像化するサイト")
+                    (html:h1 "デカ文字作成")
                     (html:p
-                     "下記に好きな文章を入力して『画像化』ボタンを押して下さい")
+                     "下記に文章を入れて『画像化』ボタンを押して下さい")
                     (html:form
                      :method "GET"
                      :action "./imagetext.cgi"
                      (html:input :name "w"       :type "text" :cols 140 :value wording)
-                     (html:input :type "submit"  :value "画像化")
                      (map
                       (lambda (x)
                         (list
@@ -69,16 +68,18 @@
                                      :value (car x)
                                      :CHECKED (eq? (car x) size))
                          (cdr x)))
-                      size-list))
+                      size-list)
+                     (html:br)
+                     (html:input :type "submit"  :value "画像化"))
                     (html:hr)
                     (html:img :src (sprintf "./imagetext.cgi?img=1&size=%d&w=%s" size wording))
                     (html:hr)))))))
 
 (define fontsize-alist '(
-                         ("1" . 20)
-                         ("2" . 40)
-                         ("3" . 60)
-                         ("4" . 100)
+                         ("1" . 40)
+                         ("2" . 80)
+                         ("3" . 160)
+                         ("4" . 320)
                          ))
 
 (let1 cgi (CGI.new)
