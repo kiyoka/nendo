@@ -9,7 +9,8 @@
 #   5. rake build
 #      to generate nendo-x.x.x.gem
 #   6. install nendo-x.x.x.gem to clean environment and test
-#   7. gem push pkg/nendo-x.x.x.gem
+#   7. gem release
+#   8. gem push pkg/nendo-x.x.x.gem
 
 require 'rake'
 begin
