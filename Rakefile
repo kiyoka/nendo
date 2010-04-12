@@ -10,7 +10,7 @@
 #      to generate nendo-x.x.x.gem
 #   6. install nendo-x.x.x.gem to clean environment and test
 #   7. rake release
-#   8. gem push pkg/nendo-x.x.x.gem
+#   8. gem push pkg/nendo-x.x.x.gem   ( need gem version 1.3.6 or higer. Please "gem update --system" to update )
 
 require 'rake'
 begin
