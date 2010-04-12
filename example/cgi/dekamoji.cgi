@@ -7,7 +7,7 @@
 (require "cgi")
 (require "RMagick")
 
-(define (response-imagetext str pointsize)
+(define (response-dekamoji str pointsize)
   (let* ((font-dots pointsize)
          (margin (* pointsize 0.3))
          (image  (Magick::Image.new (+ (* str.size font-dots) margin) (+ font-dots margin)))
@@ -61,7 +61,7 @@
                      "下記に文章を入れて『画像化』ボタンを押して下さい")
                     (html:form
                      :method "GET"
-                     :action "./imagetext.cgi"
+                     :action "./dekamoji.cgi"
                      (html:input :name "w"       :type "text" :cols 140 :value wording)
                      (map
                       (lambda (x)
@@ -74,7 +74,7 @@
                      (html:br)
                      (html:input :type "submit"  :value "画像化"))
                     (html:hr)
-                    (html:img :src (sprintf "./imagetext.cgi?img=1&size=%d&w=%s" size wording))
+                    (html:img :src (sprintf "./dekamoji.cgi?img=1&size=%d&w=%s" size wording))
                     (html:hr)))))))
 
 (define fontsize-alist '(
@@ -89,7 +89,7 @@
          (cgi.print
           (cgi.header "image/png"))
          (cgi.print
-          (response-imagetext
+          (response-dekamoji
            (car (to-list (hash-table-get cgi.params "w")))
            (assv-ref (car (to-list (hash-table-get cgi.params "size")))  fontsize-alist))))
         (else
