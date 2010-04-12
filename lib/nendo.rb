@@ -6,7 +6,6 @@
 #
 #
 require 'stringio'
-require 'pp'
 
 class Nil
   include Enumerable
@@ -1339,11 +1338,7 @@ class Evaluator
       elsif sexp.isNull
         [ "Cell.new()" ]
       elsif Cell == sexp.car.class
-        if :lambda == sexp.car.car
-          self.apply( translate( sexp.car, locals ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, true )
-        else
-          translate( sexp.car, locals )
-        end
+        self.apply( translate( sexp.car, locals ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, true )
       elsif :begin == sexp.car
         self.makeBegin( sexp.cdr, locals )
       elsif :lambda == sexp.car
