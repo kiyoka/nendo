@@ -757,6 +757,10 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (apply + 1 2 '(3 4)) " ).should == "10"
     @nendo.replStr( " (apply + 1 2 3 '(4)) " ).should == "10"
     @nendo.replStr( ' (apply + \'("a" "b" "c")) ' ).should == '"abc"'
+    @nendo.replStr( " (range 5) " ).should == "(0 1 2 3 4)"
+    @nendo.replStr( " (range 5 1) " ).should == "(1 2 3 4 5)"
+    @nendo.replStr( " (range 5 2) " ).should == "(2 3 4 5 6)"
+    @nendo.replStr( " (iota  5 2) " ).should == "(2 3 4 5 6)"
     @nendo.replStr( " (apply + (range 11)) " ).should == "55"
     @nendo.replStr( " (apply + (map (lambda (x) (+ x 1)) (range 10))) " ).should == "55"
     @nendo.replStr( " (apply + (append (range 11) '(100))) " ).should == "155"

@@ -753,7 +753,18 @@ module BuiltinFunctions
   def _sort(     arg )           arg.to_arr.sort.to_list end
   def _reverse(  arg )           arg.to_arr.reverse.to_list end
   def _uniq(     arg )           arg.to_arr.uniq.to_list end
-  def _range(    num )           (0..num-1).to_a.to_list end
+  def _range(    num, *args )
+    arr = args[0].to_arr
+    if 0 < arr.length
+      if arr[0].is_a? Fixnum
+        (0..num-1).to_a.map { |x| x + arr[0] }.to_list
+      else
+        raise TypeError, "Error range's start expects number."
+      end
+    else
+      (0..num-1).to_a.to_list
+    end
+  end
   def __EQMARK(      a,b )        a ==  b end
   def __GTMARK(      a,b )        a >   b end
   def __GTMARK_EQMARK(      a,b ) a >=  b end
