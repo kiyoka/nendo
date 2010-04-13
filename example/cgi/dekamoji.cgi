@@ -7,27 +7,30 @@
 (require "cgi")
 (require "RMagick")
 
-(define (response-dekamoji str pointsize)
+(define fontbase "/Users/kiyoka/Sites")
+(define font-list `(
+                    ("1" "ゴシック" ,(+ fontbase "/IPAfont00302/ipag.ttf"))
+                    ("2" "明朝"     ,(+ fontbase "/IPAfont00302/ipam.ttf"))
+                    ))
+(define default-fonttype 2)
+
+(define (response-dekamoji str pointsize fontpath)
   (let* ((font-dots pointsize)
-         (margin (* pointsize 0.3))
-         (image  (Magick::Image.new (+ (* str.size font-dots) margin) (+ font-dots margin)))
-         (imlist (Magick::ImageList.new))
-         (dr     (Magick::Draw.new)))
+         (margin   (* pointsize 0.3))
+         (image    (Magick::Image.new (+ (* str.size font-dots) margin) (+ font-dots margin)))
+         (imlist   (Magick::ImageList.new))
+         (dr       (Magick::Draw.new)))
     (set! image.background_color "none")
     (set! image.format "PNG")
     (imlist.push image)
-    ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ホリデイMDJP03")
-    ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/みかちゃん")
-    ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ丸ゴ ProN W4.otf")
-    ;;(set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ明朝 Pro W6.otf")
-    (set! dr.font "/Volumes/Macintosh HD/Library/Fonts/ヒラギノ明朝 Pro W3.otf")
+    (set! dr.font      fontpath)
     (set! dr.pointsize pointsize)
     (set! dr.fill   "#404040")
     (set! dr.stroke "#080808")
     (set! dr.font_weight Magick::BoldWeight)
     (set! dr.gravity Magick::CenterGravity)
     (dr.annotate imlist 0 0 0 0 str)
-    (let1 blur (imlist.blur_image 1.0 1.0)
+    (let1 blur (imlist.blur_image 0.7 0.7)
       (blur.to_blob))))
 
 
@@ -41,15 +44,24 @@
                     ))
 
 
+
 (define (top-page params)
+  (define (calc-limit min val max)
+    (let* ((val (if (< val min) min val))
+           (val (if (< max val) max val)))
+      val))
+
   (let* ((size (if (hash-table-exist? params "size")
                    (to-i (car (to-list (hash-table-get params "size"))))
                    default-size))
          (wording (if (hash-table-exist? params "w")
                       (car (to-list (hash-table-get params "w")))
-                      default-wording)))
-    (let* ((size (if (> 1 size) 1 size))
-           (size (if (< (length size-list) size) (length size-list) size)))
+                      default-wording))
+         (fonttype #?=(if (hash-table-exist? params "type")
+                       (to-i (car (to-list (hash-table-get params "type"))))
+                       default-fonttype)))
+    (let* ((size      (calc-limit 1 size     (length size-list)))
+           (fonttype  (calc-limit 1 fonttype (length font-list))))
       `(
         ,(html-doctype)
         ,(html:head
@@ -63,6 +75,7 @@
                      :method "GET"
                      :action "./dekamoji.cgi"
                      (html:input :name "w"       :type "text" :cols 140 :value wording)
+                     (html:br)
                      (map
                       (lambda (x)
                         (list
@@ -72,9 +85,18 @@
                          (cdr x)))
                       size-list)
                      (html:br)
+                     (map
+                      (lambda (x)
+                        (list
+                         (html:input :name "type"    :type "radio"
+                                     :value (car x)
+                                     :CHECKED (eq? (to-i (car x)) fonttype))
+                         (second x)))
+                      font-list)
+                     (html:br)
                      (html:input :type "submit"  :value "画像化"))
                     (html:hr)
-                    (html:img :src (sprintf "./dekamoji.cgi?img=1&size=%d&w=%s" size wording))
+                    (html:img :src (sprintf "./dekamoji.cgi?img=1&size=%d&type=%s&w=%s" size fonttype wording))
                     (html:hr)))))))
 
 (define fontsize-alist '(
@@ -91,7 +113,8 @@
          (cgi.print
           (response-dekamoji
            (car (to-list (hash-table-get cgi.params "w")))
-           (assv-ref (car (to-list (hash-table-get cgi.params "size")))  fontsize-alist))))
+           (assv-ref (car (to-list (hash-table-get cgi.params "size")))  fontsize-alist)
+           (second #?=(assv-ref (car (to-list (hash-table-get cgi.params "type"))) font-list)))))
         (else
          (cgi.print
           (cgi.header))
