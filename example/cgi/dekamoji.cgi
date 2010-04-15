@@ -7,32 +7,15 @@
 (require "cgi")
 (require "RMagick")
 
+;; ------ Please edit for your site -------
 (define fontbase "/Users/kiyoka/Sites")
+;; ----------------------------------------
+
 (define font-list `(
                     ("1" "ゴシック" ,(+ fontbase "/IPAfont00302/ipag.ttf"))
                     ("2" "明朝"     ,(+ fontbase "/IPAfont00302/ipam.ttf"))
                     ))
 (define default-fonttype 2)
-
-(define (response-dekamoji str pointsize fontpath)
-  (let* ((font-dots pointsize)
-         (margin   (* pointsize 0.3))
-         (image    (Magick::Image.new (+ (* str.size font-dots) margin) (+ font-dots margin)))
-         (imlist   (Magick::ImageList.new))
-         (dr       (Magick::Draw.new)))
-    (set! image.background_color "none")
-    (set! image.format "PNG")
-    (imlist.push image)
-    (set! dr.font      fontpath)
-    (set! dr.pointsize pointsize)
-    (set! dr.fill   "#404040")
-    (set! dr.stroke "#080808")
-    (set! dr.font_weight Magick::BoldWeight)
-    (set! dr.gravity Magick::CenterGravity)
-    (dr.annotate imlist 0 0 0 0 str)
-    (let1 blur (imlist.blur_image 0.7 0.7)
-      (blur.to_blob))))
-
 
 (define default-wording "デカ文字")
 (define default-size    2)
@@ -43,6 +26,26 @@
                     (4 . "サイズ特大")
                     ))
 
+(define (response-dekamoji str pointsize fontpath)
+  (let* ((font-dots pointsize)
+         (margin     (* pointsize 0.3))
+         (tmp-image  (Magick::Image.new 1 1))
+         (dr         (Magick::Draw.new)))
+    (set! dr.font      fontpath)
+    (set! dr.pointsize pointsize)
+    (set! dr.font_weight Magick::BoldWeight)
+    (set! dr.gravity Magick::CenterGravity)
+    (let* ((metrics (dr.get_multiline_type_metrics tmp-image str))
+           (image1   (Magick::Image.new  (+ metrics.width  10) (+ metrics.height 10))))
+      (set! image1.format  "PNG")
+      (set! dr.fill     "#444455")
+      (set! dr.stroke   "#444455")
+      (dr.annotate image1  0 0 5 5 str)
+      (let* ((image2 (image1.blur_channel 0 3 Magick::AllChannels)))
+        (set! dr.fill   "#111111")
+        (set! dr.stroke "#606060")
+        (dr.annotate image2  0 0 0 0 str)
+        (image2.to_blob)))))
 
 
 (define (top-page params)
@@ -57,7 +60,7 @@
          (wording (if (hash-table-exist? params "w")
                       (car (to-list (hash-table-get params "w")))
                       default-wording))
-         (fonttype #?=(if (hash-table-exist? params "type")
+         (fonttype (if (hash-table-exist? params "type")
                        (to-i (car (to-list (hash-table-get params "type"))))
                        default-fonttype)))
     (let* ((size      (calc-limit 1 size     (length size-list)))
@@ -106,18 +109,26 @@
                          ("4" . 260)
                          ))
 
-(let1 cgi (CGI.new)
-  (cond ((hash-table-exist? cgi.params "img")
-         (cgi.print
-          (cgi.header "image/png"))
-         (cgi.print
-          (response-dekamoji
-           (car (to-list (hash-table-get cgi.params "w")))
-           (assv-ref (car (to-list (hash-table-get cgi.params "size")))  fontsize-alist)
-           (second #?=(assv-ref (car (to-list (hash-table-get cgi.params "type"))) font-list)))))
-        (else
-         (cgi.print
-          (cgi.header))
-         (cgi.print
-          (tree->string
-           (top-page cgi.params))))))
+(if #f
+    ;; testing
+    (display
+     (response-dekamoji
+      "デカ文字"
+      80
+      (+ fontbase "/IPAfont00302/ipam.ttf")))
+    ;; release
+    (let1 cgi (CGI.new)
+      (cond ((hash-table-exist? cgi.params "img")
+             (cgi.print
+              (cgi.header "image/png"))
+             (cgi.print
+              (response-dekamoji
+               (car (to-list (hash-table-get cgi.params "w")))
+               (assv-ref (car (to-list (hash-table-get cgi.params "size")))  fontsize-alist)
+               (second (assv-ref (car (to-list (hash-table-get cgi.params "type"))) font-list)))))
+            (else
+             (cgi.print
+              (cgi.header))
+             (cgi.print
+              (tree->string
+               (top-page cgi.params)))))))
