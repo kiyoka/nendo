@@ -72,7 +72,10 @@
 ;; ----------------------------------------
 ;; Utility functions
 ;; ----------------------------------------
-(define list? pair?)
+(define (list? arg)
+  (if (pair? arg)
+      (list? (cdr arg))
+      (null? arg)))
 (define (even? n) (= (% n 2) 0))
 (define (odd? n) (not (= (% n 2) 0)))
 (define (zero? n) (= n 0))
