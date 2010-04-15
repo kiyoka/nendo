@@ -33,6 +33,24 @@ task :spec do
 end
 
 task :compile do
+  # Replace Version Number
+  vh = Jeweler::VersionHelper.new "."
+  result = open( "./lib/init.nnd" ) {|f|
+    lines = f.readlines
+    lines.map {|line|
+      if line.match( /;;NENDO-VERSION/ )
+        sprintf( '  "%s"  ;;NENDO-VERSION', vh.to_s ) + "\n"
+      else
+        line
+      end
+    }
+  }
+  open( "./lib/init.nnd", "w" ) {|f|
+    f.write( result.join )
+  }
+
+  # Compile
   sh "/bin/rm -f ./lib/init.nndc* ./lib/text/*.nndc*"
   sh "time ruby -I ./lib ./bin/nendo -q --load ./lib/init.nnd --load ./lib/text/html-lite.nnd --load ./lib/text/tree.nnd save_compiled_file.nnd"
 end
+
