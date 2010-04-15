@@ -12,8 +12,8 @@
 ;; ----------------------------------------
 
 (define font-list `(
-                    ("1" "ゴシック" ,(+ fontbase "/IPAfont00302/ipag.ttf"))
-                    ("2" "明朝"     ,(+ fontbase "/IPAfont00302/ipam.ttf"))
+                    ("1" "ゴシック" ,(+ fontbase "/IPAfont00302/ipagp.ttf"))
+                    ("2" "明朝"     ,(+ fontbase "/IPAfont00302/ipamp.ttf"))
                     ))
 (define default-fonttype 2)
 
@@ -36,10 +36,10 @@
     (set! dr.font_weight Magick::BoldWeight)
     (set! dr.gravity Magick::CenterGravity)
     (let* ((metrics (dr.get_multiline_type_metrics tmp-image str))
-           (image1   (Magick::Image.new  (+ metrics.width  10) (+ metrics.height 10))))
+           (image1   (Magick::Image.new  (+ metrics.width 30) (+ metrics.height 30))))
       (set! image1.format  "PNG")
-      (set! dr.fill     "#444455")
-      (set! dr.stroke   "#444455")
+      (set! dr.fill     "#333344")
+      (set! dr.stroke   "#222233")
       (dr.annotate image1  0 0 5 5 str)
       (let* ((image2 (image1.blur_channel 0 3 Magick::AllChannels)))
         (set! dr.fill   "#111111")
@@ -77,7 +77,7 @@
                     (html:form
                      :method "GET"
                      :action "./dekamoji.cgi"
-                     (html:input :name "w"       :type "text" :cols 140 :value wording)
+                     (html:input :name "w"       :type "text" :size 60 :value wording)
                      (html:br)
                      (map
                       (lambda (x)
@@ -106,7 +106,7 @@
                          ("1" . 40)
                          ("2" . 80)
                          ("3" . 160)
-                         ("4" . 260)
+                         ("4" . 320)
                          ))
 
 (if #f
