@@ -5,11 +5,17 @@
 (load-library "text/html-lite")
 (load-library "text/tree")
 (require "cgi")
+(require "syslog")
 (require "RMagick")
 
 ;; ------ Please edit for your site -------
 (define fontbase "/Users/kiyoka/Sites")
 ;; ----------------------------------------
+
+(define (debug-print-output-func str)
+  (Syslog.open)
+  (Syslog.log Syslog::LOG_WARNING "%s" (+ "dekamoji:" str))
+  (Syslog.close))
 
 (define font-list `(
                     ("1" "ゴシック" ,(+ fontbase "/IPAfont00302/ipagp.ttf"))
@@ -75,7 +81,7 @@
                     (html:p
                      "下記に文章を入れて『画像化』ボタンを押して下さい")
                     (html:form
-                     :method "GET"
+                     :method "POST"
                      :action "./dekamoji.cgi"
                      (html:input :name "w"       :type "text" :size 60 :value wording)
                      (html:br)
