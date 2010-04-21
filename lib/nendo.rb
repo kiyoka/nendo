@@ -1318,7 +1318,7 @@ class Evaluator
                  end
     if global_cap
       ["begin",
-       [sprintf( 'if (self.instance_variables.map {|x| x.intern}.include?(:@%s)) then', variable_sym ),
+       [sprintf( 'if (self.instance_variables.include?(:@%s)) then', variable_sym ),
         expression,
         sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
         sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
