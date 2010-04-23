@@ -54,3 +54,7 @@ task :compile do
   sh "time ruby -I ./lib ./bin/nendo -q --load ./lib/init.nnd --load ./lib/text/html-lite.nnd --load ./lib/text/tree.nnd save_compiled_file.nnd"
 end
 
+task :clean do
+  sh "/bin/rm -f ./lib/init.nndc* ./lib/text/*.nndc*"
+end
+

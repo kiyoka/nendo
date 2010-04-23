@@ -963,10 +963,14 @@ class Evaluator
     }
     @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
+    # toplevel binding
+    @global_lisp_binding = Hash.new
+
     # built-in functions
     self.methods.grep( /^_/ ) { |rubySymbol|
       @___tmp = self.method( rubySymbol )
-      eval( sprintf( "@%s = @___tmp", rubySymbol ), @binding )
+      eval( sprintf( "@%s = @___tmp;", rubySymbol ), @binding )
+      eval( sprintf( "@global_lisp_binding['%s'] = true;", rubySymbol ), @binding )
     }
 
     # initialize buildin functions as Proc objects
@@ -1108,7 +1112,12 @@ class Evaluator
       ar = args.cdr.map { |x| x.car }
       variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
       global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
-      [ sprintf( "%s%s = ", global_cap, variable_sym ), ar ]
+      [ "begin",
+        [
+         sprintf( "@global_lisp_binding['%s'] = true", variable_sym ),
+         sprintf( "%s%s = ", global_cap, variable_sym ),
+         ar ],
+        "end" ]
     when :error
       [
        'begin raise RuntimeError, ',
@@ -1325,7 +1334,7 @@ class Evaluator
                  end
     if global_cap
       ["begin",
-       [sprintf( 'if (self.instance_variables.include?(:@%s)) then', variable_sym ),
+       [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
         expression,
         sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
         sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
