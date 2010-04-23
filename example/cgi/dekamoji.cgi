@@ -4,18 +4,13 @@
 
 (load-library "text/html-lite")
 (load-library "text/tree")
+(load-library "debug/syslog")
 (require "cgi")
-(require "syslog")
 (require "RMagick")
 
 ;; ------ Please edit for your site -------
 (define fontbase "/Users/kiyoka/Sites")
 ;; ----------------------------------------
-
-(define (debug-print-output-func str)
-  (Syslog.open)
-  (Syslog.log Syslog::LOG_WARNING "%s" (+ "dekamoji:" str))
-  (Syslog.close))
 
 (define font-list `(
                     ("1" "ゴシック" ,(+ fontbase "/IPAfont00302/ipagp.ttf"))

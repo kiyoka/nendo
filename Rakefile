@@ -50,11 +50,12 @@ task :compile do
   }
 
   # Compile
-  sh "/bin/rm -f ./lib/init.nndc* ./lib/text/*.nndc*"
-  sh "time ruby -I ./lib ./bin/nendo -q --load ./lib/init.nnd --load ./lib/text/html-lite.nnd --load ./lib/text/tree.nnd save_compiled_file.nnd"
+  sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
+  sh "time ruby -I ./lib ./bin/nendo -q --load ./lib/init.nnd --load ./lib/text/html-lite.nnd --load ./lib/text/tree.nnd --load ./lib/debug/syslog.nnd save_compiled_file.nnd"
 end
 
 task :clean do
-  sh "/bin/rm -f ./lib/init.nndc* ./lib/text/*.nndc*"
+  sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
 end
+
 

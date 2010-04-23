@@ -27,7 +27,7 @@
                                   if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                     @_eqv_QUMARK
                                   else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:462"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:496"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 Cell.new(
                                 "<"                                ,Cell.new(
@@ -65,7 +65,7 @@
                                       if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                         @_eqv_QUMARK
                                       else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:462"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:496"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                     ">"                                    ,Cell.new(
@@ -103,7 +103,7 @@
                                           if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                             @_eqv_QUMARK
                                           else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:462"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:496"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                         "&"                                        ,Cell.new(
@@ -141,7 +141,7 @@
                                               if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                                 @_eqv_QUMARK
                                               else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:462"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:496"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                             "\""                                            ,Cell.new(
@@ -163,7 +163,7 @@
                                       begin
                                           begin
                                               _c
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:45"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:46"] + __e.backtrace ) ; raise __e
                                           end
                                       end
                                   else
@@ -176,7 +176,7 @@
               } ; ___lambda.call(
                     begin
                         _c
-                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:45"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:46"] + __e.backtrace ) ; raise __e
                     end
                          )
             end
@@ -193,7 +193,7 @@
                   if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                     @_string_MIMARKjoin
                   else raise NameError.new( "Error: undefined variable _string_MIMARKjoin", "_string_MIMARKjoin" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:48"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:49"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                   callProcedure( 'map',
@@ -201,28 +201,28 @@
                         if @global_lisp_binding.has_key?('_map') then
                           @_map
                         else raise NameError.new( "Error: undefined variable _map", "_map" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:49"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:50"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
                         begin
                           if @global_lisp_binding.has_key?('_html_MIMARKescape') then
                             @_html_MIMARKescape
                           else raise NameError.new( "Error: undefined variable _html_MIMARKescape", "_html_MIMARKescape" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:50"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:51"] + __e.backtrace ) ; raise __e
                         end                      ,Cell.new(
                         callProcedure( 'to-list',
                             begin
                               if @global_lisp_binding.has_key?('_to_MIMARKlist') then
                                 @_to_MIMARKlist
                               else raise NameError.new( "Error: undefined variable _to_MIMARKlist", "_to_MIMARKlist" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:51"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _string.split(
                                       ""
                                     )
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:51"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e
                               end
                                      ))
                                )))                ,Cell.new(
@@ -261,7 +261,7 @@
                                 if @global_lisp_binding.has_key?('_find') then
                                   @_find
                                 else raise NameError.new( "Error: undefined variable _find", "_find" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                                 Proc.new { |_e| 
@@ -270,24 +270,24 @@
                                           if @global_lisp_binding.has_key?('_memq') then
                                             @_memq
                                           else raise NameError.new( "Error: undefined variable _memq", "_memq" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                           begin
                                               _type
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
                                           end                                        ,Cell.new(
                                           callProcedure( 'car',
                                               begin
                                                 if @global_lisp_binding.has_key?('_car') then
                                                   @_car
                                                 else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 begin
                                                     _e
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                                 end
                                                        ))
                                                  )))
@@ -296,7 +296,7 @@
                                   if @global_lisp_binding.has_key?('__ASMARKdoctype_MIMARKalist_ASMARK') then
                                     @__ASMARKdoctype_MIMARKalist_ASMARK
                                   else raise NameError.new( "Error: undefined variable __ASMARKdoctype_MIMARKalist_ASMARK", "__ASMARKdoctype_MIMARKalist_ASMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:96"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                 end
                                        )))
                     end
@@ -306,7 +306,7 @@
                             if @global_lisp_binding.has_key?('_caddr') then
                               @_caddr
                             else raise NameError.new( "Error: undefined variable _caddr", "_caddr" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             begin
@@ -324,7 +324,7 @@
                               begin raise RuntimeError, 
                               "Unknown doctype type spec"
                               rescue => __e 
-                                __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace )
+                                __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace )
                                 raise __e
                               end 
                           end
@@ -339,12 +339,12 @@
                             if @global_lisp_binding.has_key?('_null_QUMARK') then
                               @_null_QUMARK
                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:93"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:94"] + __e.backtrace ) ; raise __e
                           end                        ,
                           Cell.new(
                             begin
                                 _type
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
                             end
                                    ))
                      ) then
@@ -352,7 +352,7 @@
                     else
                         begin
                             _type
-                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
                         end
                     end
                          )
@@ -375,12 +375,12 @@
                                 if @global_lisp_binding.has_key?('_null_QUMARK') then
                                   @_null_QUMARK
                                 else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                                 begin
                                     _args
-                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                 end
                                        ))
                          ) then
@@ -390,7 +390,7 @@
                                       if @global_lisp_binding.has_key?('_values') then
                                         @_values
                                       else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                       callProcedure( 'reverse',
@@ -398,17 +398,17 @@
                                             if @global_lisp_binding.has_key?('_reverse') then
                                               @_reverse
                                             else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             begin
                                                 _attrs
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                             end
                                                    ))                                    ,Cell.new(
                                       begin
                                           _args
-                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                       end
                                              )))
                             end
@@ -419,7 +419,7 @@
                                     if @global_lisp_binding.has_key?('_keyword_QUMARK') then
                                       @_keyword_QUMARK
                                     else raise NameError.new( "Error: undefined variable _keyword_QUMARK", "_keyword_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:105"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:106"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                     callProcedure( 'car',
@@ -427,12 +427,12 @@
                                           if @global_lisp_binding.has_key?('_car') then
                                             @_car
                                           else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         Cell.new(
                                           begin
                                               _args
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                           end
                                                  ))
                                            ))
@@ -444,7 +444,7 @@
                                             if @global_lisp_binding.has_key?('_null_QUMARK') then
                                               @_null_QUMARK
                                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             callProcedure( 'cdr',
@@ -452,12 +452,12 @@
                                                   if @global_lisp_binding.has_key?('_cdr') then
                                                     @_cdr
                                                   else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:106"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:107"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   begin
                                                       _args
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                   end
                                                          ))
                                                    ))
@@ -468,7 +468,7 @@
                                                   if @global_lisp_binding.has_key?('_values') then
                                                     @_values
                                                   else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   callProcedure( 'reverse',
@@ -476,7 +476,7 @@
                                                         if @global_lisp_binding.has_key?('_reverse') then
                                                           @_reverse
                                                         else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         callProcedure( 'list*',
@@ -484,7 +484,7 @@
                                                               if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                 @_list_ASMARK
                                                               else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                               callProcedure( 'car',
@@ -492,24 +492,24 @@
                                                                     if @global_lisp_binding.has_key?('_car') then
                                                                       @_car
                                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                     begin
                                                                         _args
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            ))                                                            ,Cell.new(
                                                             " "                                                            ,Cell.new(
                                                               begin
                                                                   _attrs
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                               end
                                                                      ))))
                                                                ))                                                ,Cell.new(
                                                   begin
                                                       _args
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                   end
                                                          )))
                                         end
@@ -520,7 +520,7 @@
                                                 if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                   @_eq_QUMARK
                                                 else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:110"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 callProcedure( 'cadr',
@@ -528,12 +528,12 @@
                                                       if @global_lisp_binding.has_key?('_cadr') then
                                                         @_cadr
                                                       else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       begin
                                                           _args
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))                                              ,Cell.new(
                                               false
@@ -543,7 +543,7 @@
                                                 callProcedure( 'get-attr',
                                                     begin
                                                         _get_MIMARKattr
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       callProcedure( 'cddr',
@@ -551,17 +551,17 @@
                                                             if @global_lisp_binding.has_key?('_cddr') then
                                                               @_cddr
                                                             else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:113"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                             begin
                                                                 _args
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    ))                                                    ,Cell.new(
                                                       begin
                                                           _attrs
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                       end
                                                              )))
                                             end
@@ -572,7 +572,7 @@
                                                     if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                       @_eq_QUMARK
                                                     else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:110"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     callProcedure( 'cadr',
@@ -580,12 +580,12 @@
                                                           if @global_lisp_binding.has_key?('_cadr') then
                                                             @_cadr
                                                           else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           begin
                                                               _args
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                           end
                                                                  ))                                                  ,Cell.new(
                                                   true
@@ -595,7 +595,7 @@
                                                     callProcedure( 'get-attr',
                                                         begin
                                                             _get_MIMARKattr
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           callProcedure( 'cddr',
@@ -603,12 +603,12 @@
                                                                 if @global_lisp_binding.has_key?('_cddr') then
                                                                   @_cddr
                                                                 else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:113"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                                 begin
                                                                     _args
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                 end
                                                                        ))                                                        ,Cell.new(
                                                           callProcedure( 'list*',
@@ -616,7 +616,7 @@
                                                                 if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                   @_list_ASMARK
                                                                 else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                                 callProcedure( 'car',
@@ -624,18 +624,18 @@
                                                                       if @global_lisp_binding.has_key?('_car') then
                                                                         @_car
                                                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       begin
                                                                           _args
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                       end
                                                                              ))                                                              ,Cell.new(
                                                               " "                                                              ,Cell.new(
                                                                 begin
                                                                     _attrs
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                 end
                                                                        ))))
                                                                  )))
@@ -648,7 +648,7 @@
                                                         callProcedure( 'get-attr',
                                                             begin
                                                                 _get_MIMARKattr
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                               callProcedure( 'cddr',
@@ -656,12 +656,12 @@
                                                                     if @global_lisp_binding.has_key?('_cddr') then
                                                                       @_cddr
                                                                     else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:113"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                     begin
                                                                         _args
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            ))                                                            ,Cell.new(
                                                               callProcedure( 'list*',
@@ -669,7 +669,7 @@
                                                                     if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                       @_list_ASMARK
                                                                     else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
                                                                     callProcedure( 'sprintf',
@@ -677,7 +677,7 @@
                                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                                             @_sprintf
                                                                           else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
                                                                         "=\"%s\""                                                                        ,Cell.new(
@@ -686,7 +686,7 @@
                                                                                 if @global_lisp_binding.has_key?('_html_MIMARKescape_MIMARKstring') then
                                                                                   @_html_MIMARKescape_MIMARKstring
                                                                                 else raise NameError.new( "Error: undefined variable _html_MIMARKescape_MIMARKstring", "_html_MIMARKescape_MIMARKstring" ) end
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
                                                                               Cell.new(
                                                                                 callProcedure( 'x->string',
@@ -694,7 +694,7 @@
                                                                                       if @global_lisp_binding.has_key?('_x_MIMARK_GTMARKstring') then
                                                                                         @_x_MIMARK_GTMARKstring
                                                                                       else raise NameError.new( "Error: undefined variable _x_MIMARK_GTMARKstring", "_x_MIMARK_GTMARKstring" ) end
-                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
+                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                     end                                                                                  ,
                                                                                     Cell.new(
                                                                                       callProcedure( 'cadr',
@@ -702,12 +702,12 @@
                                                                                             if @global_lisp_binding.has_key?('_cadr') then
                                                                                               @_cadr
                                                                                             else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
+                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                           end                                                                                        ,
                                                                                           Cell.new(
                                                                                             begin
                                                                                                 _args
-                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                                             end
                                                                                                    ))
                                                                                              ))
@@ -718,18 +718,18 @@
                                                                           if @global_lisp_binding.has_key?('_car') then
                                                                             @_car
                                                                           else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
                                                                           begin
                                                                               _args
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                           end
                                                                                  ))                                                                  ,Cell.new(
                                                                   " "                                                                  ,Cell.new(
                                                                     begin
                                                                         _attrs
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            )))))
                                                                      )))
@@ -751,7 +751,7 @@
                                               if @global_lisp_binding.has_key?('_values') then
                                                 @_values
                                               else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               callProcedure( 'reverse',
@@ -759,17 +759,17 @@
                                                     if @global_lisp_binding.has_key?('_reverse') then
                                                       @_reverse
                                                     else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _attrs
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:119"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                     end
                                                            ))                                            ,Cell.new(
                                               begin
                                                   _args
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                               end
                                                      )))
                                     end
@@ -784,7 +784,7 @@
                         if ( 
                           begin
                               _empty_QUMARK
-                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:123"] + __e.backtrace ) ; raise __e
                           end
                          ) then
                             Proc.new { |*__rest__| _args = __rest__[0] ;  
@@ -793,19 +793,19 @@
                                       if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                         @_call_MIMARKwith_MIMARKvalues
                                       else raise NameError.new( "Error: undefined variable _call_MIMARKwith_MIMARKvalues", "_call_MIMARKwith_MIMARKvalues" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:521"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:555"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                       Proc.new { || 
                                           callProcedure( 'get-attr',
                                               begin
                                                   _get_MIMARKattr
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 begin
                                                     _args
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               Cell.new()
                                                        )))
@@ -817,7 +817,7 @@
                                                   if @global_lisp_binding.has_key?('_not') then
                                                     @_not
                                                   else raise NameError.new( "Error: undefined variable _not", "_not" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:667"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:701"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   callProcedure( 'null?',
@@ -825,12 +825,12 @@
                                                         if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                           @_null_QUMARK
                                                         else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:125"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         begin
                                                             _args
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                         end
                                                                ))
                                                          ))
@@ -842,30 +842,30 @@
                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                             @_sprintf
                                                           else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                         "element %s can't have content: %s"                                                        ,Cell.new(
                                                           begin
                                                               _name
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,Cell.new(
                                                           callProcedure( 'write-to-string',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_write_MIMARKto_MIMARKstring') then
                                                                   @_write_MIMARKto_MIMARKstring
                                                                 else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:127"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                                 begin
                                                                     _args
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                 end
                                                                        ))
                                                                  ))))
                                                   rescue => __e 
-                                                    __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace )
+                                                    __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace )
                                                     raise __e
                                                   end 
                                               end
@@ -875,17 +875,17 @@
                                                 if @global_lisp_binding.has_key?('_list') then
                                                   @_list
                                                 else raise NameError.new( "Error: undefined variable _list", "_list" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                               "<"                                              ,Cell.new(
                                                 begin
                                                     _name
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                                 begin
                                                     _attr
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               " />"
                                                        )))))
@@ -899,19 +899,19 @@
                                       if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                         @_call_MIMARKwith_MIMARKvalues
                                       else raise NameError.new( "Error: undefined variable _call_MIMARKwith_MIMARKvalues", "_call_MIMARKwith_MIMARKvalues" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:521"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:555"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                       Proc.new { || 
                                           callProcedure( 'get-attr',
                                               begin
                                                   _get_MIMARKattr
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:129"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 begin
                                                     _args
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               Cell.new()
                                                        )))
@@ -922,27 +922,27 @@
                                                 if @global_lisp_binding.has_key?('_list') then
                                                   @_list
                                                 else raise NameError.new( "Error: undefined variable _list", "_list" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                               "<"                                              ,Cell.new(
                                                 begin
                                                     _name
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                                 begin
                                                     _attr
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               ">"                                              ,Cell.new(
                                                 begin
                                                     _args
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               "</"                                              ,Cell.new(
                                                 begin
                                                     _name
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               "\n>"
                                                        )))))))))
@@ -956,13 +956,13 @@
                                 if @global_lisp_binding.has_key?('_get_MIMARKkeyword') then
                                   @_get_MIMARKkeyword
                                 else raise NameError.new( "Error: undefined variable _get_MIMARKkeyword", "_get_MIMARKkeyword" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:121"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
                               LispKeyword.new( "empty?" )                              ,Cell.new(
                                 begin
                                     _args
-                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                 end                              ,Cell.new(
                               false
                                        ))))
@@ -989,7 +989,7 @@
                               if @global_lisp_binding.has_key?('_string_MIMARK_GTMARKsymbol') then
                                 @_string_MIMARK_GTMARKsymbol
                               else raise NameError.new( "Error: undefined variable _string_MIMARK_GTMARKsymbol", "_string_MIMARK_GTMARKsymbol" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:137"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               callProcedure( 'sprintf',
@@ -997,13 +997,13 @@
                                     if @global_lisp_binding.has_key?('_sprintf') then
                                       @_sprintf
                                     else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:137"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
                                   "html:%s"                                  ,Cell.new(
                                     begin
                                         _name
-                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:137"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                                     end
                                            )))
                                      ))
@@ -1018,12 +1018,12 @@
                                       if @global_lisp_binding.has_key?('_null_QUMARK') then
                                         @_null_QUMARK
                                       else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:141"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
                                       begin
                                           _elements
-                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                       end
                                              ))
                                ) then
@@ -1033,7 +1033,7 @@
                                             if @global_lisp_binding.has_key?('_cons') then
                                               @_cons
                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                           :"begin"                                          ,Cell.new(
@@ -1042,12 +1042,12 @@
                                                   if @global_lisp_binding.has_key?('_reverse') then
                                                     @_reverse
                                                   else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:141"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   begin
                                                       _r
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                   end
                                                          ))
                                                    )))
@@ -1060,7 +1060,7 @@
                                             if @global_lisp_binding.has_key?('_not') then
                                               @_not
                                             else raise NameError.new( "Error: undefined variable _not", "_not" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:667"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:701"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             callProcedure( 'eq?',
@@ -1068,7 +1068,7 @@
                                                   if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                     @_eq_QUMARK
                                                   else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:110"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                 false                                                ,Cell.new(
@@ -1077,7 +1077,7 @@
                                                         if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                           @_pair_QUMARK
                                                         else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
                                                         callProcedure( 'cdr',
@@ -1085,12 +1085,12 @@
                                                               if @global_lisp_binding.has_key?('_cdr') then
                                                                 @_cdr
                                                               else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
                                                               begin
                                                                   _elements
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                               end
                                                                      ))
                                                                ))
@@ -1102,7 +1102,7 @@
                                               if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                                 @_eqv_QUMARK
                                               else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
                                               callProcedure( 'cadr',
@@ -1110,12 +1110,12 @@
                                                     if @global_lisp_binding.has_key?('_cadr') then
                                                       @_cadr
                                                     else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     begin
                                                         _elements
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                     end
                                                            ))                                            ,Cell.new(
                                             LispKeyword.new( "empty" )
@@ -1128,7 +1128,7 @@
                                           callProcedure( 'loop',
                                               begin
                                                   _loop
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
                                                 callProcedure( 'cddr',
@@ -1136,12 +1136,12 @@
                                                       if @global_lisp_binding.has_key?('_cddr') then
                                                         @_cddr
                                                       else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:144"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       begin
                                                           _elements
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))                                              ,Cell.new(
                                                 callProcedure( 'list*',
@@ -1149,7 +1149,7 @@
                                                       if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                         @_list_ASMARK
                                                       else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
                                                       callProcedure( 'cons',
@@ -1157,7 +1157,7 @@
                                                             if @global_lisp_binding.has_key?('_cons') then
                                                               @_cons
                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                           :"define"                                                          ,Cell.new(
@@ -1166,13 +1166,13 @@
                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                     @_cons
                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                   callProcedure( 'make-scheme-name',
                                                                       begin
                                                                           _make_MIMARKscheme_MIMARKname
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
                                                                         callProcedure( 'car',
@@ -1180,12 +1180,12 @@
                                                                               if @global_lisp_binding.has_key?('_car') then
                                                                                 @_car
                                                                               else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
                                                                               begin
                                                                                   _elements
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                               end
                                                                                      ))
                                                                                ))                                                                ,Cell.new(
@@ -1194,7 +1194,7 @@
                                                                         if @global_lisp_binding.has_key?('_cons') then
                                                                           @_cons
                                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
                                                                         callProcedure( 'cons',
@@ -1202,7 +1202,7 @@
                                                                               if @global_lisp_binding.has_key?('_cons') then
                                                                                 @_cons
                                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
                                                                             :"make-html-element"                                                                            ,Cell.new(
@@ -1211,7 +1211,7 @@
                                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                                       @_cons
                                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,
                                                                                   Cell.new(
                                                                                     callProcedure( 'cons',
@@ -1219,7 +1219,7 @@
                                                                                           if @global_lisp_binding.has_key?('_cons') then
                                                                                             @_cons
                                                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                                         end                                                                                      ,
                                                                                         Cell.new(
                                                                                         :"quote"                                                                                        ,Cell.new(
@@ -1228,7 +1228,7 @@
                                                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                                                   @_cons
                                                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                                               end                                                                                            ,
                                                                                               Cell.new(
                                                                                                 callProcedure( 'car',
@@ -1236,12 +1236,12 @@
                                                                                                       if @global_lisp_binding.has_key?('_car') then
                                                                                                         @_car
                                                                                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,
                                                                                                     Cell.new(
                                                                                                       begin
                                                                                                           _elements
-                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                       end
                                                                                                              ))                                                                                              ,Cell.new(
                                                                                               
@@ -1259,7 +1259,7 @@
                                                             if @global_lisp_binding.has_key?('_cons') then
                                                               @_cons
                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
                                                           :"export"                                                          ,Cell.new(
@@ -1268,13 +1268,13 @@
                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                     @_cons
                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                   callProcedure( 'make-scheme-name',
                                                                       begin
                                                                           _make_MIMARKscheme_MIMARKname
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
                                                                         callProcedure( 'car',
@@ -1282,12 +1282,12 @@
                                                                               if @global_lisp_binding.has_key?('_car') then
                                                                                 @_car
                                                                               else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
                                                                               begin
                                                                                   _elements
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                               end
                                                                                      ))
                                                                                ))                                                                ,Cell.new(
@@ -1296,7 +1296,7 @@
                                                                    )))                                                    ,Cell.new(
                                                       begin
                                                           _r
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                       end
                                                              ))))
                                                        )))
@@ -1309,7 +1309,7 @@
                                               callProcedure( 'loop',
                                                   begin
                                                       _loop
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
                                                     callProcedure( 'cdr',
@@ -1317,12 +1317,12 @@
                                                           if @global_lisp_binding.has_key?('_cdr') then
                                                             @_cdr
                                                           else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           begin
                                                               _elements
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                           end
                                                                  ))                                                  ,Cell.new(
                                                     callProcedure( 'list*',
@@ -1330,7 +1330,7 @@
                                                           if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                             @_list_ASMARK
                                                           else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
                                                           callProcedure( 'cons',
@@ -1338,7 +1338,7 @@
                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                   @_cons
                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                               :"define"                                                              ,Cell.new(
@@ -1347,13 +1347,13 @@
                                                                       if @global_lisp_binding.has_key?('_cons') then
                                                                         @_cons
                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       callProcedure( 'make-scheme-name',
                                                                           begin
                                                                               _make_MIMARKscheme_MIMARKname
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                             callProcedure( 'car',
@@ -1361,12 +1361,12 @@
                                                                                   if @global_lisp_binding.has_key?('_car') then
                                                                                     @_car
                                                                                   else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
                                                                                   begin
                                                                                       _elements
-                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                   end
                                                                                          ))
                                                                                    ))                                                                    ,Cell.new(
@@ -1375,7 +1375,7 @@
                                                                             if @global_lisp_binding.has_key?('_cons') then
                                                                               @_cons
                                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                             callProcedure( 'cons',
@@ -1383,7 +1383,7 @@
                                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                                     @_cons
                                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
                                                                                 :"make-html-element"                                                                                ,Cell.new(
@@ -1392,7 +1392,7 @@
                                                                                         if @global_lisp_binding.has_key?('_cons') then
                                                                                           @_cons
                                                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                                       end                                                                                    ,
                                                                                       Cell.new(
                                                                                         callProcedure( 'cons',
@@ -1400,7 +1400,7 @@
                                                                                               if @global_lisp_binding.has_key?('_cons') then
                                                                                                 @_cons
                                                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
                                                                                             Cell.new(
                                                                                             :"quote"                                                                                            ,Cell.new(
@@ -1409,7 +1409,7 @@
                                                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                                                       @_cons
                                                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                                                   end                                                                                                ,
                                                                                                   Cell.new(
                                                                                                     callProcedure( 'car',
@@ -1417,12 +1417,12 @@
                                                                                                           if @global_lisp_binding.has_key?('_car') then
                                                                                                             @_car
                                                                                                           else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                         end                                                                                                      ,
                                                                                                         Cell.new(
                                                                                                           begin
                                                                                                               _elements
-                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                           end
                                                                                                                  ))                                                                                                  ,Cell.new(
                                                                                                   
@@ -1440,7 +1440,7 @@
                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                   @_cons
                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
                                                               :"export"                                                              ,Cell.new(
@@ -1449,13 +1449,13 @@
                                                                       if @global_lisp_binding.has_key?('_cons') then
                                                                         @_cons
                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:663"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:697"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
                                                                       callProcedure( 'make-scheme-name',
                                                                           begin
                                                                               _make_MIMARKscheme_MIMARKname
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                             callProcedure( 'car',
@@ -1463,12 +1463,12 @@
                                                                                   if @global_lisp_binding.has_key?('_car') then
                                                                                     @_car
                                                                                   else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
                                                                                   begin
                                                                                       _elements
-                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                   end
                                                                                          ))
                                                                                    ))                                                                    ,Cell.new(
@@ -1477,7 +1477,7 @@
                                                                        )))                                                        ,Cell.new(
                                                           begin
                                                               _r
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                           end
                                                                  ))))
                                                            )))
@@ -1491,12 +1491,12 @@
                         callProcedure( 'loop',
                             begin
                                 _loop
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:149"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                               begin
                                   _elements
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                               end                            ,Cell.new(
                             Cell.new()
                                      )))
@@ -1526,7 +1526,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"tt"
@@ -1545,7 +1545,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"i"
@@ -1564,7 +1564,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"b"
@@ -1583,7 +1583,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"big"
@@ -1602,7 +1602,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"small"
@@ -1625,7 +1625,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"em"
@@ -1644,7 +1644,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"strong"
@@ -1663,7 +1663,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"dfn"
@@ -1682,7 +1682,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"code"
@@ -1701,7 +1701,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"samp"
@@ -1720,7 +1720,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"kbd"
@@ -1739,7 +1739,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"var"
@@ -1758,7 +1758,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"cite"
@@ -1777,7 +1777,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"abbr"
@@ -1796,7 +1796,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"acronym"
@@ -1819,7 +1819,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"sub"
@@ -1838,7 +1838,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"sup"
@@ -1857,7 +1857,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"span"
@@ -1876,7 +1876,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"bdo"
@@ -1895,7 +1895,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"br"                ,Cell.new(
@@ -1920,7 +1920,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"body"
@@ -1939,7 +1939,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"address"
@@ -1958,7 +1958,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"div"
@@ -1981,7 +1981,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"a"
@@ -2004,7 +2004,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"map"
@@ -2023,7 +2023,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"area"                ,Cell.new(
@@ -2048,7 +2048,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"link"                ,Cell.new(
@@ -2073,7 +2073,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"img"                ,Cell.new(
@@ -2098,7 +2098,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"object"
@@ -2117,7 +2117,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"param"                ,Cell.new(
@@ -2142,7 +2142,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"hr"                ,Cell.new(
@@ -2167,7 +2167,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"p"
@@ -2190,7 +2190,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"h1"
@@ -2209,7 +2209,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"h2"
@@ -2228,7 +2228,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"h3"
@@ -2247,7 +2247,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"h4"
@@ -2266,7 +2266,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"h5"
@@ -2285,7 +2285,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"h6"
@@ -2308,7 +2308,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"pre"
@@ -2331,7 +2331,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"q"
@@ -2354,7 +2354,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"blockquote"
@@ -2377,7 +2377,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"ins"
@@ -2396,7 +2396,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"del"
@@ -2419,7 +2419,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"dl"
@@ -2438,7 +2438,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"dt"
@@ -2457,7 +2457,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"dd"
@@ -2476,7 +2476,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"ol"
@@ -2495,7 +2495,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"ul"
@@ -2514,7 +2514,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"li"
@@ -2537,7 +2537,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"form"
@@ -2556,7 +2556,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"label"
@@ -2575,7 +2575,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"input"                ,Cell.new(
@@ -2596,7 +2596,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"select"
@@ -2615,7 +2615,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"optgroup"
@@ -2634,7 +2634,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"option"
@@ -2653,7 +2653,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"textarea"
@@ -2672,7 +2672,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"fieldset"
@@ -2691,7 +2691,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"legend"
@@ -2710,7 +2710,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"button"
@@ -2733,7 +2733,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"table"
@@ -2752,7 +2752,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"caption"
@@ -2771,7 +2771,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"thead"
@@ -2790,7 +2790,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"tfoot"
@@ -2809,7 +2809,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"tbody"
@@ -2828,7 +2828,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"colgroup"
@@ -2847,7 +2847,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"col"                ,Cell.new(
@@ -2868,7 +2868,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"tr"
@@ -2887,7 +2887,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"th"
@@ -2906,7 +2906,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"td"
@@ -2929,7 +2929,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"head"
@@ -2948,7 +2948,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"title"
@@ -2967,7 +2967,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"base"                ,Cell.new(
@@ -2988,7 +2988,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"meta"                ,Cell.new(
@@ -3009,7 +3009,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"style"
@@ -3028,7 +3028,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"script"
@@ -3047,7 +3047,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"noscript"
@@ -3070,7 +3070,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"html"
@@ -3093,7 +3093,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"frameset"
@@ -3112,7 +3112,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"frame"
@@ -3131,7 +3131,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"noframes"
@@ -3150,7 +3150,7 @@
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
                   else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
+                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
                 :"iframe"
