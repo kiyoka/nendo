@@ -903,6 +903,9 @@ module BuiltinFunctions
   end
 
   def _hash_MIMARKtable_MIMARKget( h, key, *args )
+    if !((key.is_a? String) or ( key.is_a? Symbol))
+      raise TypeError, "Error: argument key requires String or Symbol.\n"
+    end
     if h.has_key?( key )
       h[key]
     else
@@ -916,6 +919,9 @@ module BuiltinFunctions
   end
 
   def _hash_MIMARKtable_MIMARKput_EXMARK( h, key, value )
+    if !((key.is_a? String) or ( key.is_a? Symbol))
+      raise TypeError, "Error: argument key requires String or Symbol.\n"
+    end
     h[key] = value
   end
 

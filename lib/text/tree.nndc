@@ -1,7 +1,7 @@
 
   callProcedure( 'require',
       begin
-        if (self.instance_variables.map {|x| x.intern}.include?(:@_require)) then
+        if (self.instance_variables.include?(:@_require)) then
           @_require
         else raise NameError.new( "Error: undefined variable _require", "_require" ) end
         rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:8"] + __e.backtrace ) ; raise __e
@@ -22,7 +22,7 @@
                             if ( 
                               callProcedure( 'null?',
                                   begin
-                                    if (self.instance_variables.map {|x| x.intern}.include?(:@_null_QUMARK)) then
+                                    if (self.instance_variables.include?(:@_null_QUMARK)) then
                                       @_null_QUMARK
                                     else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:15"] + __e.backtrace ) ; raise __e
@@ -41,7 +41,7 @@
                                 if ( 
                                   callProcedure( 'pair?',
                                       begin
-                                        if (self.instance_variables.map {|x| x.intern}.include?(:@_pair_QUMARK)) then
+                                        if (self.instance_variables.include?(:@_pair_QUMARK)) then
                                           @_pair_QUMARK
                                         else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
@@ -56,7 +56,7 @@
                                     begin
                                         callProcedure( 'write-tree',
                                             begin
-                                              if (self.instance_variables.map {|x| x.intern}.include?(:@_write_MIMARKtree)) then
+                                              if (self.instance_variables.include?(:@_write_MIMARKtree)) then
                                                 @_write_MIMARKtree
                                               else raise NameError.new( "Error: undefined variable _write_MIMARKtree", "_write_MIMARKtree" ) end
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
@@ -64,7 +64,7 @@
                                             Cell.new(
                                               callProcedure( 'car',
                                                   begin
-                                                    if (self.instance_variables.map {|x| x.intern}.include?(:@_car)) then
+                                                    if (self.instance_variables.include?(:@_car)) then
                                                       @_car
                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
@@ -88,7 +88,7 @@
                                             Cell.new(
                                               callProcedure( 'cdr',
                                                   begin
-                                                    if (self.instance_variables.map {|x| x.intern}.include?(:@_cdr)) then
+                                                    if (self.instance_variables.include?(:@_cdr)) then
                                                       @_cdr
                                                     else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
@@ -141,7 +141,7 @@
                   if ( 
                     callProcedure( 'null?',
                         begin
-                          if (self.instance_variables.map {|x| x.intern}.include?(:@_null_QUMARK)) then
+                          if (self.instance_variables.include?(:@_null_QUMARK)) then
                             @_null_QUMARK
                           else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:15"] + __e.backtrace ) ; raise __e
@@ -160,7 +160,7 @@
                   else
                       callProcedure( 'car',
                           begin
-                            if (self.instance_variables.map {|x| x.intern}.include?(:@_car)) then
+                            if (self.instance_variables.include?(:@_car)) then
                               @_car
                             else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
@@ -183,7 +183,7 @@
             ___lambda = lambda { |_sio| 
                 callProcedure( 'write-tree',
                     begin
-                      if (self.instance_variables.map {|x| x.intern}.include?(:@_write_MIMARKtree)) then
+                      if (self.instance_variables.include?(:@_write_MIMARKtree)) then
                         @_write_MIMARKtree
                       else raise NameError.new( "Error: undefined variable _write_MIMARKtree", "_write_MIMARKtree" ) end
                       rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:22"] + __e.backtrace ) ; raise __e

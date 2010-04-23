@@ -634,6 +634,12 @@
 (define (hash-table-delete! h key)
   (h.delete key))
 
+(define (hash-table-push! ht key value)
+  (hash-table-put!
+   ht
+   key
+   (cons value (hash-table-get ht key '()))))
+
 (define (hash-table-keys h)
   (to-list (h.keys)))
 

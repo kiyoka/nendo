@@ -1056,6 +1056,11 @@ describe Nendo, "when use hash-table feature " do
     @nendo.replStr( " (set! h (hash-table '(a   AAA) '(b . BBB)))  h" ).should   == "{:a=>:AAA, :b=>:BBB}"
     @nendo.replStr( " (define alist (hash-table->alist h)) alist" ).should   == "((a . AAA) (b . BBB))"
     @nendo.replStr( " (define h2 (alist->hash-table alist)) h2" ).should   == "{:a=>:AAA, :b=>:BBB}"
+    @nendo.replStr( " (set! h (make-hash-table)) " ).should == "{}"
+    @nendo.replStr( " (hash-table-push! h 'a :AAA_1)  (hash-table->alist h)" ).should == "((a :AAA_1))"
+    @nendo.replStr( " (hash-table-push! h 'a :AAA_2)  (hash-table->alist h)" ).should == "((a :AAA_2 :AAA_1))"
+    @nendo.replStr( " (hash-table-push! h 'b :BBB_1)  (hash-table->alist h)" ).should == "((a :AAA_2 :AAA_1) (b :BBB_1))"
+    @nendo.replStr( " (hash-table-push! h 'b :BBB_2)  (hash-table->alist h)" ).should == "((a :AAA_2 :AAA_1) (b :BBB_2 :BBB_1))"
   end
 end
 
