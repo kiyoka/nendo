@@ -6,6 +6,7 @@
 #
 #
 require 'stringio'
+#require 'profile'
 
 class Nil
   include Enumerable
@@ -1499,11 +1500,43 @@ class Evaluator
     @expand_flag = true
     macroexpand_1_check( sexp )
   end
-  
+
+  def macroexpand( sexp )
+    case sexp
+    when Cell
+      if :quote == sexp.car
+        sexp
+      else
+        sym = sexp.car.to_s
+        sym = toRubySymbol( sym )
+        newSexp = sexp
+        if isRubyInterface( sym )
+          # do nothing
+        elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
+          eval( sprintf( "@__macro = @%s", sym ), @binding )
+          newSexp = callProcedure( sym, @__macro, sexp.cdr )
+        end
+        if _equal_QUMARK( newSexp, sexp )
+          sexp.map { |x|
+            if x.car.is_a? Cell
+              macroexpand( x.car )
+            else
+              x.car
+            end
+          }.to_list( sexp.lastAtom )
+        else
+          newSexp
+        end
+      end
+    else
+      sexp
+    end
+  end
+
   def lispCompile( sexp )
     converge = true
     begin
-      newSexp  = macroexpand_1( sexp )
+      newSexp  = macroexpand( sexp )
       converge = _equal_QUMARK( newSexp, sexp )
       sexp = newSexp
     end until converge
