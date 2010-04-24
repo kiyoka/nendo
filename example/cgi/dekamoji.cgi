@@ -9,12 +9,12 @@
 (require "RMagick")
 
 ;; ------ Please edit for your site -------
-(define fontbase "/Users/kiyoka/Sites")
+(define fontbase "/usr/local/lib/IPAfont-0302/")
 ;; ----------------------------------------
 
 (define font-list `(
-                    ("1" "ゴシック" ,(+ fontbase "/IPAfont00302/ipagp.ttf"))
-                    ("2" "明朝"     ,(+ fontbase "/IPAfont00302/ipamp.ttf"))
+                    ("1" "ゴシック" ,(+ fontbase "ipagp.ttf"))
+                    ("2" "明朝"     ,(+ fontbase "ipamp.ttf"))
                     ))
 (define default-fonttype 2)
 
