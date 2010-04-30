@@ -1607,8 +1607,8 @@ class Evaluator
   end
 
   def lispEval( sexp, sourcefile, lineno )
-    if not defined?( @lastSourcefile )  then @lastSourcefile = sourcefile   end
-    if not defined?( @lastLineno )      then @lastLineno     = lineno       end
+    @lastSourcefile = sourcefile
+    @lastLineno     = lineno
     sexp = lispCompile( sexp )
     sexp = quoting( sexp );
     if @debug
@@ -1621,10 +1621,7 @@ class Evaluator
     end
     @compiled_code[ sourcefile ] << rubyExp
     printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
-    _result = eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
-    @lastSourcefile = sourcefile
-    @lastLineno     = lineno
-    return _result
+    eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
   end
 
   def _load( filename )

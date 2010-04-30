@@ -4402,7 +4402,7 @@
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:285"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
-                                                                  "%s:%s in dot-operator"                                                                  ,Cell.new(
+                                                                  "%s:%s outside list."                                                                  ,Cell.new(
                                                                     callProcedure( '*FILE*',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('__ASMARKFILE_ASMARK') then
@@ -4915,7 +4915,7 @@
                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:304"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
-                      "%s:%s in dot-operator"                      ,Cell.new(
+                      "%s:%s outside quasiquote"                      ,Cell.new(
                         callProcedure( '*FILE*',
                             begin
                               if @global_lisp_binding.has_key?('__ASMARKFILE_ASMARK') then
@@ -4965,7 +4965,7 @@
                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(
-                      "%s:%s in dot-operator"                      ,Cell.new(
+                      "%s:%s outside quasiquote"                      ,Cell.new(
                         callProcedure( '*FILE*',
                             begin
                               if @global_lisp_binding.has_key?('__ASMARKFILE_ASMARK') then

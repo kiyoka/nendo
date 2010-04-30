@@ -282,7 +282,7 @@
                                (cond ((eq? (car form) 'unquote) (car (cdr form)))
                                      ((eq? (car form) 'unquote-splicing)
                                       (raise RuntimeError (+ "Error: Unquote-splicing wasn't in a list: " (write-to-string form))
-                                             (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))
+                                             (sprintf "%s:%s outside list." (*FILE*) (*LINE*))))
                                      ((and (pair? (car form))
                                            (eq? (car (car form)) 'unquote-splicing))
                                       (mappend form (car (cdr (car form)))
@@ -301,12 +301,12 @@
 
 (define unquote
   (macro (lst)
-    (raise RuntimeError "Error: unquote appeared outside quasiquote" (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*)))))
+    (raise RuntimeError "Error: unquote appeared outside quasiquote" (sprintf "%s:%s outside quasiquote" (*FILE*) (*LINE*)))))
 
 
 (define unquote-splicing
   (macro (lst)
-    (raise RuntimeError "Error: unquote-splicing appeared outside quasiquote" (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*)))))
+    (raise RuntimeError "Error: unquote-splicing appeared outside quasiquote" (sprintf "%s:%s outside quasiquote" (*FILE*) (*LINE*)))))
 
 
 (define when
