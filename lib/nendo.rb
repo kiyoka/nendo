@@ -955,8 +955,17 @@ module BuiltinFunctions
     h[key] = value
   end
 
-  def _raise( exception, message )
-    raise exception, message
+  # backtrace expects this format "filename:lineno: place message ". e.g.  "init.nnd:10: in aaa macro.".
+  def _raise( exception, message, backtrace )
+    raise exception, message, [ backtrace ]
+  end
+
+  def __ASMARKLINE_ASMARK()
+    @lastLineno
+  end
+
+  def __ASMARKFILE_ASMARK()
+    @lastSourcefile
   end
 end
 
@@ -1598,6 +1607,8 @@ class Evaluator
   end
 
   def lispEval( sexp, sourcefile, lineno )
+    if not defined?( @lastSourcefile )  then @lastSourcefile = sourcefile   end
+    if not defined?( @lastLineno )      then @lastLineno     = lineno       end
     sexp = lispCompile( sexp )
     sexp = quoting( sexp );
     if @debug
@@ -1610,7 +1621,10 @@ class Evaluator
     end
     @compiled_code[ sourcefile ] << rubyExp
     printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
-    eval( rubyExp, @binding, sourcefile, lineno );
+    _result = eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
+    @lastSourcefile = sourcefile
+    @lastLineno     = lineno
+    return _result
   end
 
   def _load( filename )

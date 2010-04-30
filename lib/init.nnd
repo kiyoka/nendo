@@ -281,8 +281,8 @@
                      (else (if (zero? level)
                                (cond ((eq? (car form) 'unquote) (car (cdr form)))
                                      ((eq? (car form) 'unquote-splicing)
-                                      (error "Unquote-splicing wasn't in a list:"
-                                             form))
+                                      (raise RuntimeError (+ "Error: Unquote-splicing wasn't in a list: " (write-to-string form))
+                                             (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))
                                      ((and (pair? (car form))
                                            (eq? (car (car form)) 'unquote-splicing))
                                       (mappend form (car (cdr (car form)))
@@ -301,11 +301,12 @@
 
 (define unquote
   (macro (lst)
-    (error "unquote appeared outside quasiquote")))
+    (raise RuntimeError "Error: unquote appeared outside quasiquote" (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*)))))
+
 
 (define unquote-splicing
   (macro (lst)
-    (error "unquote-splicing appeared outside quasiquote")))
+    (raise RuntimeError "Error: unquote-splicing appeared outside quasiquote" (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*)))))
 
 
 (define when
@@ -600,11 +601,11 @@
                           ,@(cddr lst))))))))
       (cond
        ((> 2 (length lst))
-        (raise ArgumentError ". dot-operator requires 2+ arguments."))
+        (raise ArgumentError ". dot-operator requires 2+ arguments." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))
        (else
         (if (symbol? (second lst))
             (generate-method-call-form lst)
-            (raise TypeError ". dot-operator requires method name as symbol.")))))))
+            (raise TypeError ". dot-operator requires method name as symbol." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*)))))))))
 
 
 (define (with-open filename pred . lst)
@@ -690,7 +691,7 @@
 
 (define (hash-table->alist h)
   (if (not (h.is_a? Hash))
-      (raise TypeError "Error: hash-table->alist expects Hash instance.")
+      (error "Error: hash-table->alist expects Hash instance.")
       (let1 keys (hash-table-keys h)
         (map
          (lambda (key)
@@ -699,7 +700,7 @@
 
 (define (alist->hash-table alist)
   (if (not (list? alist))
-      (raise TypeError "Error: alist->hash-table expects alist.")
+      (error "Error: alist->hash-table expects alist.")
       (apply hash-table alist)))
 
 ;; ----------------------------------------
