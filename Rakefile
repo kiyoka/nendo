@@ -3,14 +3,11 @@
 #
 # Release Engineering
 #   1. edit the VERSION.yml file
-#   2. rake compile
-#   3. rake spec
-#   4. rake gemspec
-#   5. rake build
+#   2. rake compile  &&  rake spec  &&  rake gemspec  &&   rake build
 #      to generate nendo-x.x.x.gem
-#   6. install nendo-x.x.x.gem to clean environment and test
-#   7. rake release
-#   8. gem push pkg/nendo-x.x.x.gem   ( need gem version 1.3.6 or higer. Please "gem update --system" to update )
+#   3. install nendo-x.x.x.gem to clean environment and test
+#   4. rake release
+#   5. gem push pkg/nendo-x.x.x.gem   ( need gem version 1.3.6 or higer. Please "gem update --system" to update )
 
 require 'rake'
 begin
