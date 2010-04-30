@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{nendo}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2010-04-12}
+  s.date = %q{2010-04-30}
   s.default_executable = %q{nendo}
   s.description = %q{Nendo is a programming language written in Ruby.}
   s.email = %q{kiyoka@sumibi.org}
@@ -22,12 +22,15 @@ Gem::Specification.new do |s|
      "emacs/nendo-mode.el",
      "example/cgi/dekamoji.cgi",
      "example/cgi/sample.cgi",
+     "example/error_line.nnd",
      "example/exit.nnd",
      "example/fact.nnd",
      "example/fizzbuzz1.nnd",
      "example/html-lite-sample.nnd",
      "example/scratch.nnd",
      "example/tak.nnd",
+     "lib/debug/syslog.nnd",
+     "lib/debug/syslog.nndc",
      "lib/init.nnd",
      "lib/init.nndc",
      "lib/nendo.rb",
