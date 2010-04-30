@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
      "emacs/nendo-mode.el",
      "example/cgi/dekamoji.cgi",
      "example/cgi/sample.cgi",
-     "example/error_line.nnd",
      "example/exit.nnd",
      "example/fact.nnd",
      "example/fizzbuzz1.nnd",
