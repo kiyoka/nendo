@@ -49,6 +49,23 @@
         (image2.to_blob)))))
 
 
+;; -----------------------------------
+;; encode & decode
+(define (encode-wording wording)
+  (string-join 
+   (map
+    (lambda (x)
+      (+ "%" (sprintf "%02X" x)))
+    (to-list (wording.unpack "C*")))
+   ""))
+
+(define (decode-wording enc-str)
+  (let1 hex-str (enc-str.gsub "%" "")
+    (. (. (list hex-str) to_arr) pack "H*")))
+
+
+;; ----------------------------------
+;; top page
 (define (top-page params)
   (define (calc-limit min val max)
     (let* ((val (if (< val min) min val))
@@ -60,12 +77,12 @@
                    default-size))
          (wording (if (hash-table-exist? params "w")
                       (car (to-list (hash-table-get params "w")))
-                      default-wording))
+                      #f))
          (fonttype (if (hash-table-exist? params "type")
                        (to-i (car (to-list (hash-table-get params "type"))))
                        default-fonttype)))
-    (let* ((size      (calc-limit 1 size     (length size-list)))
-           (fonttype  (calc-limit 1 fonttype (length font-list))))
+    (let* ((size         (calc-limit 1 size     (length size-list)))
+           (fonttype     (calc-limit 1 fonttype (length font-list))))
       `(
         ,(html-doctype)
         ,(html:head
@@ -74,7 +91,7 @@
           (html:div :style "text-align: center; "
                     (html:h1 "デカ文字作成")
                     (html:p
-                     "下記に文章を入れて『画像化』ボタンを押して下さい")
+                     "文章を入れて『画像化』ボタンを押して下さい")
                     (html:form
                      :method "POST"
                      :action "./dekamoji.cgi"
@@ -100,7 +117,11 @@
                      (html:br)
                      (html:input :type "submit"  :value "画像化"))
                     (html:hr)
-                    (html:img :src (sprintf "./dekamoji.cgi?img=1&size=%d&type=%s&w=%s" size fonttype wording))
+                    (cond
+                     (wording
+                      (html:img :src (sprintf "./dekamoji.cgi?img=1&size=%d&type=%s&w=%s" size fonttype (encode-wording wording))))
+                     (else
+                      (html:p "no image")))
                     (html:hr)))))))
 
 (define fontsize-alist '(
