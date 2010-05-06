@@ -854,6 +854,20 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (filter-map (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(true true)"
     @nendo.replStr( " (filter-map (lambda (x) (if (= x 2) (* x 10) false)) '(1 2 3)) " ).should == "(20)"
     @nendo.replStr( " (filter-map (lambda (x) (if (not (= x 2)) (* x 10) false)) '(1 2 3)) " ).should == "(10 30)"
+    @nendo.replStr( " " +
+                    "(let1 result '()" +
+                    "  (do" +
+                    "      ((i 0 (+ i 1)))" +
+                    "      ((< 10 i) #f)" +
+                    "    (set! result (cons i result)))" +
+                    "  (reverse result))" ).should == "(0 1 2 3 4 5 6 7 8 9 10)"
+    @nendo.replStr( " " +
+                    "(let1 result '()" +
+                    "  (do" +
+                    "      ((i 0.0 (+ i 0.1)))" +
+                    "      ((< 1.0 i) #f)" +
+                    "    (set! result (cons i result)))" +
+                    "  (reverse result))" ).should == "(0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)"
   end
 end
 

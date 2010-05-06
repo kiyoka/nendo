@@ -4,4 +4,11 @@
 (enable-idebug)
 (define debug-print-length 256)
 
+(let1 result '()
+  (do
+      ((i 0 (+ i 1)))
+      ((< 10 i) #f)
+    (set! result (cons i result)))
+  (reverse result))
+
 
