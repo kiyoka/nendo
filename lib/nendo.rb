@@ -3,7 +3,7 @@
 #
 # nendo.rb  -  "language core of nendo"
 #  
-#   Copyright (c) 2000-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
+#   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #   
 #   Redistribution and use in source and binary forms, with or without
 #   modification, are permitted provided that the following conditions
