@@ -262,6 +262,7 @@ class Reader
   T_EOF                 = :t_eof
   T_LPAREN              = :t_lparen
   T_RPAREN              = :t_rparen
+  T_LVECTOR             = :t_lvector
   T_SYMBOL              = :t_symbol
   T_KEYWORD             = :t_keyword
   T_NUM                 = :t_num
@@ -386,7 +387,7 @@ class Reader
           str = ""
           T_COMMENT
         when /[#]/
-          keyword = readwhile( /[?=!]/ )
+          keyword = readwhile( /[?=!(]/ )
           case keyword
           when /[?=]/
             str = ""
@@ -395,6 +396,9 @@ class Reader
             readwhile( /[^\r\n]/ )
             str = ""
             T_COMMENT
+          when /[(]/
+            str = ""
+            T_LVECTOR
           else
             keyword = readwhile( /[a-z]/ )
             case keyword
@@ -498,6 +502,32 @@ class Reader
     end
   end
 
+  # vector := sexp 
+  #      | atom ... atom
+  def vector
+    printf( "  NonT: [%s]\n", "vector" ) if @debug
+    arr = []
+    while true
+      case curtoken.kind
+      when T_LINEFEED
+        token # skipEnter
+      when T_EOF
+        raise RuntimeError, "Error: unbalanced vector's paren(4)"
+      when T_LPAREN, T_LVECTOR
+        arr << sexp()
+      when T_RPAREN
+        break
+      when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING, T_DEBUG_PRINT
+        arr << sexp()
+      when T_DOT
+        raise RuntimeError, "Error: illegal list."
+      else
+        arr << atom()
+      end
+    end
+    arr
+  end
+  
   # list := sexp 
   #      | atom ... atom
   #      | atom ... . atom 
@@ -511,8 +541,8 @@ class Reader
       when T_LINEFEED
         token # skipEnter
       when T_EOF
-        raise SyntaxError, "Error: unbalanced paren(1)"
-      when T_LPAREN
+        raise RuntimeError, "Error: unbalanced paren(1)"
+      when T_LPAREN, T_LVECTOR
         cells << Cell.new( sexp() )
       when T_RPAREN
         break
@@ -565,7 +595,7 @@ class Reader
     end
   end
 
-  # sexp := ( list ) | 'sexp | `sexp | atom
+  # sexp := ( list ) | | #( vector ) | 'sexp | `sexp | atom
   def sexp
     printf( "  NonT: [%s]\n", "sexp" ) if @debug
     case curtoken.kind
@@ -573,7 +603,7 @@ class Reader
       token
       sexp()
     when T_EOF
-      raise SyntaxError, "Error: unbalanced paren(2)"
+      raise RuntimeError, "Error: unbalanced paren(2)"
     when T_LPAREN
       skipEnter
       token # consume '('
@@ -582,7 +612,14 @@ class Reader
       token # consume ')'
       ret
     when T_RPAREN
-      raise SyntaxError, "Error: unbalanced paren(3)"
+      raise RuntimeError, "Error: unbalanced paren(3)"
+    when T_LVECTOR
+      skipEnter
+      token # consume '#('
+      ret = vector()
+      skipEnter
+      token # consume ')'
+      ret
     when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING
       _atom = atom() ## "quote" symbol
       Cell.new( _atom, Cell.new( sexp() ))
@@ -1350,6 +1387,9 @@ class Evaluator
         str += "," + genQuote( lastAtom )  if lastAtom
         str += arr.map{ |e| ")" }.join
       end
+    when Array
+      arr = sexp.map { |x| genQuote( x ) }
+      str += "[" +  arr.join(",") + "]"
     when Symbol
       str += sprintf( ":\"%s\"", sexp.to_s )
     when String
@@ -1427,6 +1467,8 @@ class Evaluator
       else
         self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals )
       end
+    when Array
+      raise RuntimeError, "Error: can't eval unquoted vector."
     else
       case sexp
       when Symbol
@@ -1496,7 +1538,7 @@ class Evaluator
           sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
                                        quoting( sexp.cdr.cdr ))
         when Symbol      # named letrec is illegal
-          raise SyntaxError, "Error: named letrec is not a illegal form"
+          raise RuntimeError, "Error: named letrec is not a illegal form"
         end
         sexp
       else
@@ -1713,6 +1755,9 @@ class Printer
       else
         "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtom : "") + ")"
       end
+    when Array # is a vector in the Nendo world.
+      arr = sexp.map { |x| __write( x, readable ) }
+      "#(" + arr.join( " " ) + ")"
     when Symbol
       keyword = getQuoteKeyword.call( sexp )
       if keyword

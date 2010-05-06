@@ -443,6 +443,30 @@ describe Nendo, "when read various list expressions" do
   end
 end
 
+describe Nendo, "when read various vector expressions" do
+  before do
+    @nendo = Nendo.new()
+  end
+  it "should" do
+    @nendo.replStr( " '() " ).should == "()"
+    @nendo.replStr( " '[] " ).should == "()"
+    @nendo.replStr( " '#( 1 ) " ).should == "#(1)"
+    @nendo.replStr( " '#( 1 2 ) " ).should == "#(1 2)"
+    @nendo.replStr( " '#( 1 () ) " ).should == "#(1 ())"
+    @nendo.replStr( " '#( () 2 ) " ).should == "#(() 2)"
+    lambda { @nendo.replStr( " '#( 1 . 2 ) " ) }.should                               raise_error( RuntimeError )
+    lambda { @nendo.replStr( " #(+ 1 2) " )    }.should                               raise_error( RuntimeError )
+    @nendo.replStr( " '#( 1 #( 11 )) " ).should == "#(1 #(11))"
+    @nendo.replStr( " '#( 1 #( 11 12 )) " ).should == "#(1 #(11 12))"
+    @nendo.replStr( " '#( 1 #( 11 #( 111 ))) " ).should == "#(1 #(11 #(111)))"
+    @nendo.replStr( " '#( 1 #( 11 #( 111 112))) " ).should == "#(1 #(11 #(111 112)))"
+    @nendo.replStr( " '#(1 2 3) " ).should == "#(1 2 3)"
+    @nendo.replStr( " '#(1.1 2.2 3.3) " ).should == "#(1.1 2.2 3.3)"
+    @nendo.replStr( " '#(a bb ccc dddd) " ).should == "#(a bb ccc dddd)"
+    @nendo.replStr( " '#(a (b) ((c)) (((d)))) " ).should == "#(a (b) ((c)) (((d))))"
+  end
+end
+
 describe Nendo, "when call replStr() with built-in functions" do
   before do
     @nendo = Nendo.new()
