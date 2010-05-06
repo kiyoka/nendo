@@ -1,3 +1,4 @@
+#-*- mode: ruby; -*-
 #  Rakefile for Nendo
 #
 #
@@ -32,19 +33,27 @@ end
 task :compile do
   # Replace Version Number
   vh = Jeweler::VersionHelper.new "."
+  update_flag = false
   result = open( "./lib/init.nnd" ) {|f|
     lines = f.readlines
     lines.map {|line|
       if line.match( /;;NENDO-VERSION/ )
-        sprintf( '  "%s"  ;;NENDO-VERSION', vh.to_s ) + "\n"
+        newline = sprintf( '  "%s"  ;;NENDO-VERSION', vh.to_s ) + "\n"
+        if line != newline
+          update_flag = true
+        end
+        newline
       else
         line
       end
     }
   }
-  open( "./lib/init.nnd", "w" ) {|f|
-    f.write( result.join )
-  }
+  if update_flag
+    puts "Info: ./lib/init.nnd was updated."
+    open( "./lib/init.nnd", "w" ) {|f|
+      f.write( result.join )
+    }
+  end
 
   # Compile
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
