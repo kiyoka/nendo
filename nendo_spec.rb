@@ -1120,4 +1120,46 @@ describe Nendo, "when use hash-table feature " do
   end
 end
 
-
+describe Nendo, "when use vector feature " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (define v (vector)) v" ).should == "#()"
+    @nendo.replStr( " (vector? 1) " ).should == "false"
+    @nendo.replStr( " (vector? (vector)) " ).should == "true"
+    @nendo.replStr( " (vector? (vector 1)) " ).should == "true"
+    @nendo.replStr( " (vector? (vector 1 2)) " ).should == "true"
+    @nendo.replStr( " (vector? '#(1)) " ).should == "true"
+    @nendo.replStr( " (vector? '#(1 2)) " ).should == "true"
+    @nendo.replStr( " (vector? (Array.new)) " ).should == "true"
+    @nendo.replStr( " (vector? (Hash.new)) " ).should == "false"
+    @nendo.replStr( " (vector? 1.1) " ).should == "false"
+    @nendo.replStr( " (vector? \"str\") " ).should == "false"
+    @nendo.replStr( " (define v (make-vector 4))" ).should == "#(nil nil nil nil)"
+    @nendo.replStr( " (vector-set! v 0 'v1)  v" ).should ==   "#(v1 nil nil nil)"
+    @nendo.replStr( " (vector-set! v 1 '100) v" ).should ==  "#(v1 100 nil nil)"
+    @nendo.replStr( " (vector-set! v 2 '200) v" ).should ==    "#(v1 100 200 nil)"
+    @nendo.replStr( " (vector-set! v 3 '(a b c))  v" ).should ==     "#(v1 100 200 (a b c))"
+    @nendo.replStr( " (vector-length v)" ).should == "4"
+    @nendo.replStr( " (vector-ref v 0) " ).should == "v1"
+    @nendo.replStr( " (vector-ref v 1) " ).should == "100"
+    @nendo.replStr( " (vector-ref v 2) " ).should == "200"
+    @nendo.replStr( " (vector-ref v 3) " ).should == "(a b c)"
+    lambda { @nendo.replStr( " (vector-ref v -1)" ) }.should                 raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (vector-ref v -2)" ) }.should                 raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (vector-ref v  5)" ) }.should                 raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (vector-ref v  6)" ) }.should                 raise_error( RuntimeError )
+    @nendo.replStr( " (vector-ref v -1 1000)" ).should == "1000"
+    @nendo.replStr( " (vector-ref v -2 2000)" ).should == "2000"
+    @nendo.replStr( " (vector-ref v  5 3000)" ).should == "3000"
+    @nendo.replStr( " (vector-ref v  6 4000)" ).should == "4000"
+    @nendo.replStr( " (vector-ref v  7 #f)" ).should   == "false"
+    @nendo.replStr( " (define v   (make-vector 10)) v" ).should == "#(nil nil nil nil nil nil nil nil nil nil)"
+    @nendo.replStr( " (vector->list v)" ).should == "(nil nil nil nil nil nil nil nil nil nil)"
+    @nendo.replStr( " (define lst '(a b c (d)))" ).should == "(a b c (d))"
+    @nendo.replStr( " (list->vector lst)" ).should == "#(a b c (d))"
+    @nendo.replStr( " (list->vector (range 10 1))" ).should == "#(1 2 3 4 5 6 7 8 9 10)"
+  end
+end

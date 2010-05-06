@@ -887,6 +887,17 @@ module BuiltinFunctions
       raise TypeError
     end
   end
+  def _to_arr( arg )                 _to_MIMARKarr( arg ) end
+  def _to_MIMARKarr( arg )
+    case arg
+    when Cell
+      arg.to_arr
+    when Array
+      arg
+    else
+      raise TypeError
+    end
+  end
   def _intern( arg )                            arg.intern  end
   def _string_MIMARK_GTMARKsymbol( arg )        arg.intern  end
   def _symbol_MIMARK_GTMARKstring( arg )        arg.to_s    end
@@ -1004,8 +1015,17 @@ module BuiltinFunctions
   def __ASMARKFILE_ASMARK()
     @lastSourcefile
   end
-end
 
+  def _vector_MIMARKset_EXMARK( v, index, value )
+    if !(v.is_a? Array)
+      raise TypeError, "Error: vector-set! requires Array as argument v(Lisp's vector).\n"
+    end
+    if (index < 0) or (v.size <= index)
+      raise ArgumentError, "Error: vector-set! requires index  between 0 and (size-1) number.\n"
+    end
+    v[index] = value
+  end
+end
 
 
 # Translate S expression to Ruby expression and Evaluation

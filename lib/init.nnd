@@ -106,6 +106,7 @@
 ;; ----------------------------------------
 ;; Utility functions
 ;; ----------------------------------------
+(define (vector . lst)  (to-arr lst))
 (define (list? arg)
   (if (pair? arg)
       (list? (cdr arg))
@@ -241,7 +242,6 @@
          (apply1 proc (append (reverse (cdr lol)) (car lol))))
        (reverse args))))
 
-
 ;; The following quasiquote macro is due to Eric S. Tiedemann. ( Imported from TinyScheme )
 ;;   Copyright 1988 by Eric S. Tiedemann; all rights reserved.
 ;;
@@ -259,8 +259,11 @@
                    (if (or (procedure? f) (number? f) (string? f))
                        f
                        (list 'quote f))
-                   (list 'cons l r))))
-            
+                   (if (eqv? l vector)
+                       (apply l (eval r))
+                       (list 'cons l r)
+                       ))))
+
             (mappend
              (lambda (f l r)
                (if (or (null? (cdr f))
@@ -703,6 +706,7 @@
       (error "Error: alist->hash-table expects alist.")
       (apply hash-table alist)))
 
+
 ;; ----------------------------------------
 ;; Ruby interop librarys
 ;; ----------------------------------------
@@ -721,6 +725,60 @@
       (load (+ path ".nnd")))
      (else
       (errorf "Error: can't load library file [%s]\n" path )))))
+
+
+
+;; ----------------------------------------
+;; Vector Library
+;; ----------------------------------------
+(define (vector? v)
+  (v.is_a? Array))
+
+(define (make-vector k . rest)
+  (if (null? rest)
+      (Array.new k)
+      (Array.new k (car rest))))
+
+(define (vector-length v)
+  (v.size))
+
+(define (vector-copy v)
+  (v.clone))
+
+(define (vector-ref v index . fallback)
+  (if (and (<= 0 index) (< index v.size))
+      (v.fetch index)
+      (if (null? fallback)
+          (errorf "Error: vector-ref  index value is overflow: %s\n" index)
+          (car fallback))))
+
+;;
+;; ported from tinyscheme-1.39 by Kiyoka Nishiyama
+;;
+(define (vector-equal? x y)
+     (and (vector? x) (vector? y) (= (vector-length x) (vector-length y))
+          (let ((n (vector-length x)))
+               (let loop ((i 0))
+                    (if (= i n)
+                         #t
+                         (and (equal? (vector-ref x i) (vector-ref y i))
+                              (loop (succ i))))))))
+
+(define (list->vector x)
+     (apply vector x))
+
+(define (vector-fill! v e)
+     (let ((n (vector-length v)))
+          (let loop ((i 0))
+               (if (= i n)
+                    v
+                    (begin (vector-set! v i e) (loop (succ i)))))))
+
+(define (vector->list v)
+     (let loop ((n (pred (vector-length v))) (l '()))
+          (if (= n -1)
+               l
+               (loop (pred n) (cons (vector-ref v n) l)))))
 
 
 ;; ----------------------------------------
