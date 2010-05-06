@@ -37,34 +37,60 @@
 require 'nendo'
 require 'getoptlong'
 
+def userOptionEater
+  i = 0
+  while ( i < ARGV.length )
+    case ARGV[i]
+    when '-h'
+      i += 1
+    when '-q'
+      i += 1
+    when '-l'
+      i += 2
+    when /^[^-]/
+      break
+    else
+      break
+    end
+  end
+  userOptions = ARGV.clone[i..ARGV.length]
+  userOptions.length.times { |x|
+    ARGV.pop
+  }
+  return userOptions
+end
+
+
 def main
   loadInit = true
   core = Nendo.new()
 
+  userOptions = userOptionEater
   opts = GetoptLong.new(
-                        [ '--help',          '-h', GetoptLong::NO_ARGUMENT ],
-                        [ '--no-init-file',  '-q', GetoptLong::NO_ARGUMENT ],
-                        [ '--load',          '-l', GetoptLong::REQUIRED_ARGUMENT ]
+                        [ '-h', GetoptLong::NO_ARGUMENT ],
+                        [ '-q', GetoptLong::NO_ARGUMENT ],
+                        [ '-l', GetoptLong::REQUIRED_ARGUMENT ]
                         ).each { |opt, arg|
     case opt
-    when '--help'
+    when '-h'
       puts <<-EOF
       
       nendo [OPTION] [script-file]
 
-      -h, --help:
+      -h:
         show help
 
-      -q, --no-init-file:
+      -q:
         Does not read the default initialization file.
 
-      -l, --load:
-        Does not read the default initialization file.
+      -l file:
+        load nendo script files. ( can specify n times like   -l a.nnd -l b.nnd  )
 
       EOF
-    when '--no-init-file'
+      exit 0
+    when '-q'
       loadInit = false
-    when '--load'
+    when '-l'
       core.load( arg )
       STDERR.printf( "loaded file [%s]\n", arg )
     end
@@ -73,8 +99,9 @@ def main
   if loadInit
     core.loadInitFile
   end
-  if 0 < ARGV.length
-    core.load( ARGV[0] )
+  if 0 < userOptions.length
+    core.setArgv( userOptions[1..userOptions.length] )
+    core.load( userOptions[0] )
   else
     core.repl
   end

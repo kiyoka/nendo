@@ -48,7 +48,7 @@ task :compile do
 
   # Compile
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
-  sh "time ruby -I ./lib ./bin/nendo -q --load ./lib/init.nnd --load ./lib/text/html-lite.nnd --load ./lib/text/tree.nnd --load ./lib/debug/syslog.nnd save_compiled_file.nnd"
+  sh "time ruby -I ./lib ./bin/nendo -q -l ./lib/init.nnd -l ./lib/text/html-lite.nnd -l ./lib/text/tree.nnd -l ./lib/debug/syslog.nnd save_compiled_file.nnd"
 end
 
 task :clean do

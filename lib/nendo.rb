@@ -1006,9 +1006,7 @@ class Evaluator
 
     # built-in functions
     self.methods.grep( /^_/ ) { |rubySymbol|
-      @___tmp = self.method( rubySymbol )
-      eval( sprintf( "@%s = @___tmp;", rubySymbol ), @binding )
-      eval( sprintf( "@global_lisp_binding['%s'] = true;", rubySymbol ), @binding )
+      global_lisp_define( rubySymbol, self.method( rubySymbol ))
     }
 
     # initialize buildin functions as Proc objects
@@ -1026,6 +1024,16 @@ class Evaluator
     #  { 'filename1' => [ 'code1' 'code2' ... ], 
     #    'filename2' => [ 'code1' 'code2' ... ], ... }
     @compiled_code = Hash.new
+  end
+
+  def global_lisp_define( rubySymbol, val )
+    @___tmp = val
+    eval( sprintf( "@%s = @___tmp;", rubySymbol ), @binding )
+    eval( sprintf( "@global_lisp_binding['%s'] = true;", rubySymbol ), @binding )
+  end
+
+  def setArgv( argv )
+    self.global_lisp_define( toRubySymbol( "*argv*"), argv.to_list )
   end
 
   def _gensym( )
@@ -1761,6 +1769,10 @@ class Nendo
 
   def load( path )
     @evaluator._load( path )
+  end
+
+  def setArgv( argv )
+    @evaluator.setArgv( argv )
   end
 
   def repl
