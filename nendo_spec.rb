@@ -214,6 +214,10 @@ describe Nendo, "when call replStr() with literals" do
     @nendo.replStr( " nil " ).should == "nil"
     @nendo.replStr( " #t " ).should == "true"
     @nendo.replStr( " #f " ).should == "false"
+    lambda { @nendo.replStr( " #a " ) }.should       raise_error(NameError)
+    lambda { @nendo.replStr( " #tt " ) }.should      raise_error(NameError)
+    lambda { @nendo.replStr( " #ff " ) }.should      raise_error(NameError)
+    lambda { @nendo.replStr( " #abc " ) }.should     raise_error(NameError)
   end
 end
 
@@ -451,6 +455,7 @@ describe Nendo, "when read various vector expressions" do
     @nendo.replStr( " '() " ).should == "()"
     @nendo.replStr( " '[] " ).should == "()"
     @nendo.replStr( " '#( 1 ) " ).should == "#(1)"
+    lambda { @nendo.replStr( " '#(( 1 ) " )    }.should                               raise_error( RuntimeError )
     @nendo.replStr( " '#( 1 2 ) " ).should == "#(1 2)"
     @nendo.replStr( " '#( 1 () ) " ).should == "#(1 ())"
     @nendo.replStr( " '#( () 2 ) " ).should == "#(() 2)"

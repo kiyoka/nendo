@@ -305,7 +305,7 @@ class Reader
     @chReader.ungetc( ch ) if nil != ch 
   end
 
-  def readwhile( exp )
+  def readwhile( exp, oneshot = false )
     ret = ""
     while true
       ch = @chReader.getc
@@ -319,6 +319,7 @@ class Reader
         @chReader.ungetc( ch )
         break
       end
+      if oneshot then   break   end
     end
     ret
   end
@@ -387,7 +388,7 @@ class Reader
           str = ""
           T_COMMENT
         when /[#]/
-          keyword = readwhile( /[?=!(]/ )
+          keyword = readwhile( /[?=!]/ )
           case keyword
           when /[?=]/
             str = ""
@@ -396,21 +397,25 @@ class Reader
             readwhile( /[^\r\n]/ )
             str = ""
             T_COMMENT
-          when /[(]/
-            str = ""
-            T_LVECTOR
           else
-            keyword = readwhile( /[a-z]/ )
+            keyword = readwhile( /[(]/, true )
             case keyword
-            when "t"
-              str = "true"
-              T_SYMBOL
-            when "f"
-              str = "false"
-              T_SYMBOL
+            when /[(]/
+              str = ""
+              T_LVECTOR
             else
-              str += readwhile( /[^ \t\r\n]/ )
-              raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
+              keyword = readwhile( /[a-z]/ )
+              case keyword
+              when "t"
+                str = "true"
+                T_SYMBOL
+              when "f"
+                str = "false"
+                T_SYMBOL
+              else
+                str += readwhile( /[^ \t\r\n]/ )
+                raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
+              end
             end
           end
         when /[_a-zA-Z!$%&*+\/:<=>?@^~-]/      # symbol
