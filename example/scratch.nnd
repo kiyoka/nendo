@@ -2,6 +2,7 @@
 
 ;; -----------------
 (enable-idebug)
+(disable-idebug)
 (define debug-print-length 256)
 
 (let1 result '()
@@ -10,5 +11,6 @@
       ((< 10 i) #f)
     (set! result (cons i result)))
   (reverse result))
+
 
 

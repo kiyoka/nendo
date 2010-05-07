@@ -4,6 +4,12 @@
 ;;  Copyright (c) 2010 Kiyoka Nishiyama
 ;;
 ;;
+;; Please add follows to .emacs
+;;  (setq scheme-program-name "nendo")
+;;  (autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
+;;  (autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
+;;  (require 'nendo-mode)
+
 
 (require 'comint)
 (require 'cmuscheme)
@@ -42,6 +48,7 @@
   "Major mode for editing nendo code.
 Editing commands are similar to those of 'scheme-mode'."
   (make-local-variable 'scheme-buffer)
+  (modify-coding-system-alist 'process "nendo" '(utf-8 . utf-8))
   (local-set-key "\C-c\C-e" 'nendo-send-definition)
   (local-set-key "\C-x\C-e" 'nendo-send-last-sexp))
 
