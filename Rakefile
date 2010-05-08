@@ -4,11 +4,12 @@
 #
 # Release Engineering
 #   1. edit the VERSION.yml file
-#   2. rake compile  &&  rake spec  &&  rake gemspec  &&   rake build
+#   2. rake compile  &&  rake spec
+#   3. rake gemspec  &&   rake build
 #      to generate nendo-x.x.x.gem
-#   3. install nendo-x.x.x.gem to clean environment and test
-#   4. rake release
-#   5. gem push pkg/nendo-x.x.x.gem   ( need gem version 1.3.6 or higer. Please "gem update --system" to update )
+#   4. install nendo-x.x.x.gem to clean environment and test
+#   5. rake release
+#   6. gem push pkg/nendo-x.x.x.gem   ( need gem version 1.3.6 or higer. Please "gem update --system" to update )
 
 require 'rake'
 begin
@@ -33,25 +34,21 @@ end
 task :compile do
   # Replace Version Number
   vh = Jeweler::VersionHelper.new "."
-  update_flag = false
-  result = open( "./lib/init.nnd" ) {|f|
+  (original, modified) = open( "./lib/init.nnd" ) {|f|
     lines = f.readlines
-    lines.map {|line|
-      if line.match( /;;NENDO-VERSION/ )
-        newline = sprintf( '  "%s"  ;;NENDO-VERSION', vh.to_s ) + "\n"
-        if line != newline
-          update_flag = true
+    [ lines,
+      lines.map {|line|
+        if line.match( /;;NENDO-VERSION/ )
+          sprintf( '  "%s"  ;;NENDO-VERSION', vh.to_s ) + "\n"
+        else
+          line
         end
-        newline
-      else
-        line
-      end
-    }
+      } ]
   }
-  if update_flag
+  if original.join != modified.join
     puts "Info: ./lib/init.nnd was updated."
     open( "./lib/init.nnd", "w" ) {|f|
-      f.write( result.join )
+      f.write( modified.join )
     }
   end
 
