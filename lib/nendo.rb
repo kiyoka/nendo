@@ -1783,6 +1783,10 @@ class Printer
     when Array # is a vector in the Nendo world.
       arr = sexp.map { |x| __write( x, readable ) }
       "#(" + arr.join( " " ) + ")"
+    when true
+      "#t"
+    when false
+      "#f"
     when Symbol
       keyword = getQuoteKeyword.call( sexp )
       if keyword
