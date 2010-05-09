@@ -214,10 +214,6 @@ describe Nendo, "when call replStr() with literals" do
     @nendo.replStr( " nil " ).should == "nil"
     @nendo.replStr( " #t " ).should == "#t"
     @nendo.replStr( " #f " ).should == "#f"
-    lambda { @nendo.replStr( " #a " ) }.should       raise_error(NameError)
-    lambda { @nendo.replStr( " #tt " ) }.should      raise_error(NameError)
-    lambda { @nendo.replStr( " #ff " ) }.should      raise_error(NameError)
-    lambda { @nendo.replStr( " #abc " ) }.should     raise_error(NameError)
   end
 end
 
@@ -457,6 +453,76 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '(()  .  ()) " ).should == "(())"
     @nendo.replStr( " '(a . ()) " ).should == "(a)"
     @nendo.replStr( " '(a b c d e  .  ()) " ).should == "(a b c d e)"
+  end
+end
+
+
+describe Nendo, "when use #xxxx syntax " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " #t " ).should == "#t"
+    @nendo.replStr( " #f " ).should == "#f"
+    @nendo.replStr( " '#( 1 ) " ).should == "#(1)"
+    @nendo.replStr( " '#() " ).should == "#()"
+    @nendo.replStr( " #!        \n #t" ).should == "#t"
+    @nendo.replStr( " #!        \n 100" ).should == "100"
+    @nendo.replStr( " #!   123  \n 100" ).should == "100"
+    @nendo.replStr( " '#?=1" ).should == "(debug-print 1 \"(string)\" 1 '1)"
+    @nendo.replStr( " #b0  " ).should == Integer("0b0").to_s
+    @nendo.replStr( " #b01 " ).should == Integer("0b01").to_s
+    @nendo.replStr( " #b10 " ).should == Integer("0b10").to_s
+    @nendo.replStr( " #b00000001 " ).should         == Integer("0b00000001").to_s
+    @nendo.replStr( " #b1010101010101010 " ).should == Integer("0b1010101010101010").to_s
+    lambda { @nendo.replStr( " #b2 " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #b02 " ) }.should     raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #bF " ) }.should      raise_error(RuntimeError)
+    @nendo.replStr( " #o0  " ).should  == Integer("0o0").to_s
+    @nendo.replStr( " #o7  " ).should  == Integer("0o7").to_s
+    @nendo.replStr( " #o01 " ).should  == Integer("0o01").to_s
+    @nendo.replStr( " #o10 " ).should  == Integer("0o10").to_s
+    @nendo.replStr( " #o777 " ).should == Integer("0o777").to_s
+    @nendo.replStr( " #o00000007 " ).should         == Integer("0o00000007").to_s
+    @nendo.replStr( " #o0123456701234567 " ).should == Integer("0o0123456701234567").to_s
+    lambda { @nendo.replStr( " #o8 " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #o08 " ) }.should     raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #oA " ) }.should      raise_error(RuntimeError)
+    @nendo.replStr( " #d0  " ).should  == Integer("0d0").to_s
+    @nendo.replStr( " #d9  " ).should  == Integer("0d9").to_s
+    @nendo.replStr( " #d01 " ).should  == Integer("0d01").to_s
+    @nendo.replStr( " #d10 " ).should  == Integer("0d10").to_s
+    @nendo.replStr( " #d999 " ).should == Integer("0d999").to_s
+    @nendo.replStr( " #d00000009 " ).should         == Integer("0d00000009").to_s
+    @nendo.replStr( " #d0123456701234567 " ).should == Integer("0d0123456701234567").to_s
+    lambda { @nendo.replStr( " #dA " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #dF " ) }.should      raise_error(RuntimeError)
+    @nendo.replStr( " #x0  " ).should  == Integer("0x0").to_s
+    @nendo.replStr( " #x9  " ).should  == Integer("0x9").to_s
+    @nendo.replStr( " #xA  " ).should  == Integer("0xA").to_s
+    @nendo.replStr( " #xF  " ).should  == Integer("0xF").to_s
+    @nendo.replStr( " #x01 " ).should  == Integer("0x01").to_s
+    @nendo.replStr( " #x10 " ).should  == Integer("0x10").to_s
+    @nendo.replStr( " #xFFF " ).should == Integer("0xFFF").to_s
+    @nendo.replStr( " #x0000000F " ).should         == Integer("0x0000000F").to_s
+    @nendo.replStr( " #x0123456789ABCDEF0123456789ABCDEF " ).should == Integer("0x0123456789ABCDEF0123456789ABCDEF").to_s
+    lambda { @nendo.replStr( " #xg " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #xh " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #xz " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #xG " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #xH " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #xZ " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.replStr( " #a " ) }.should       raise_error(NameError)
+    lambda { @nendo.replStr( " #c " ) }.should       raise_error(NameError)
+    lambda { @nendo.replStr( " #e " ) }.should       raise_error(NameError)
+    lambda { @nendo.replStr( " #tt " ) }.should      raise_error(NameError)
+    lambda { @nendo.replStr( " #ff " ) }.should      raise_error(NameError)
+    lambda { @nendo.replStr( " #abc " ) }.should     raise_error(NameError)
+    lambda { @nendo.replStr( " #? " ) }.should       raise_error(NameError)
+    lambda { @nendo.replStr( " #?a " ) }.should      raise_error(NameError)
+    lambda { @nendo.replStr( " #= " ) }.should       raise_error(NameError)
+    lambda { @nendo.replStr( " #?? " ) }.should      raise_error(NameError)
   end
 end
 

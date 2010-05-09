@@ -324,6 +324,20 @@ class Reader
     ret
   end
 
+  def peekchar( exp )
+    ch = @chReader.getc
+    #printf( "      peekchar: [%02x]\n", ch ) if @debug
+    if !ch # eof?
+      return nil
+    end
+    if ch.chr.match( exp )
+      ch.chr
+    else
+      @chReader.ungetc( ch )
+      nil
+    end
+  end
+  
   def readstring()
     ret = ""
     while true
@@ -364,7 +378,7 @@ class Reader
         when /[\`]/
           T_QUASIQUOTE
         when /[,]/
-          str += readwhile( /[@]/ )
+          str += readwhile( /[@]/, true )
           if 1 == str.length
             T_UNQUOTE
           else
@@ -388,35 +402,62 @@ class Reader
           str = ""
           T_COMMENT
         when /[#]/
-          keyword = readwhile( /[?=!]/ )
-          case keyword
-          when /[?=]/
-            str = ""
-            T_DEBUG_PRINT
-          when /[!]/
+          nextch = peekchar( /[?!tfbodx(]/ )
+          case nextch
+          when "?"
+            if peekchar( /[=]/ )
+              str = ""
+              T_DEBUG_PRINT
+            else
+              str += readwhile( /[^ \t\r\n]/ )
+              raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
+            end              
+          when "!"
             readwhile( /[^\r\n]/ )
             str = ""
             T_COMMENT
-          else
-            keyword = readwhile( /[(]/, true )
-            case keyword
-            when /[(]/
-              str = ""
-              T_LVECTOR
-            else
-              keyword = readwhile( /[a-z]/ )
-              case keyword
-              when "t"
-                str = "true"
-                T_SYMBOL
-              when "f"
-                str = "false"
-                T_SYMBOL
+          when "("
+            str = ""
+            T_LVECTOR
+          when "t"
+            str = "true"
+            T_SYMBOL
+          when "f"
+            str = "false"
+            T_SYMBOL
+          when "b","o","d","x"
+            str = readwhile( /[0-9a-zA-Z]/ )
+            case nextch
+            when "b"
+              if str.match( /^[0-1]+$/ )
+                str = "0b" + str
               else
-                str += readwhile( /[^ \t\r\n]/ )
-                raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
+                raise RuntimeError, sprintf( "Error: illegal #b number for Nendo #b%s", str )
+              end
+            when "o"
+              if str.match( /^[0-7]+$/ )
+                str = "0o" + str
+              else
+                raise RuntimeError, sprintf( "Error: illegal #o number for Nendo #o%s", str )
+              end
+            when "d"
+              if str.match( /^[0-9]+$/ )
+                str = "0d" + str
+              else
+                raise RuntimeError, sprintf( "Error: illegal #d number for Nendo #d%s", str )
+              end
+            when "x"
+              if str.match( /^[0-9a-fA-F]+$/ )
+                str = "0x" + str
+              else
+                raise RuntimeError, sprintf( "Error: illegal #x number for Nendo #x%s", str )
               end
             end
+            str = Integer( str ).to_s
+            T_NUM
+          else
+            str += readwhile( /[^ \t\r\n]/ )
+            raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
           end
         when /[_a-zA-Z!$%&*+\/:<=>?@^~-]/      # symbol
           str += readwhile( /[0-9._a-zA-Z!$%&*+\/:<=>?@^~-]/ )
@@ -430,7 +471,7 @@ class Reader
           else
             T_SYMBOL
           end
-        when /[0-9]/           # number
+        when /[0-9]/           # Numeric
           str += readwhile( /[0-9.]/ )
           T_NUM
         when /["]/             # String
@@ -867,7 +908,7 @@ module BuiltinFunctions
       (Cell == arg.class)
     end
   end
-  def _number_QUMARK(   arg )    ((Fixnum == arg.class) or (Float == arg.class)) end
+  def _number_QUMARK(   arg )    arg.is_a? Numeric   end
   def _string_QUMARK(   arg )    String == arg.class end
   def _macroexpand_MIMARK1( arg )
     if _pair_QUMARK( arg )
