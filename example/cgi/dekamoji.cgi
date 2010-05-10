@@ -56,6 +56,7 @@
 
 ;; -----------------------------------
 ;; encode & decode
+;; -----------------------------------
 (define (encode-wording wording)
   (string-join 
    (map
@@ -71,23 +72,20 @@
 
 ;; ----------------------------------
 ;; top page
+;; -----------------------------------
 (define (top-page params)
-  (define (calc-limit min val max)
-    (let* ((val (if (< val min) min val))
-           (val (if (< max val) max val)))
-      val))
-
-  (let* ((size (if (hash-table-exist? params "size")
-                   (to-i (car (to-list (hash-table-get params "size"))))
-                   default-size))
-         (wording (if (hash-table-exist? params "w")
-                      (car (to-list (hash-table-get params "w")))
-                      #f))
-         (fonttype (if (hash-table-exist? params "type")
-                       (to-i (car (to-list (hash-table-get params "type"))))
-                       default-fonttype)))
-    (let* ((size         (calc-limit 1 size     (length size-list)))
-           (fonttype     (calc-limit 1 fonttype (length font-list))))
+  (define (calc-limit _start val _end)
+    (min  (max _start val)  _end))
+  (define (get-param params key default-value)
+    (if (hash-table-exist? params key)
+        (car (to-list (hash-table-get params key)))
+        default-value))
+  
+  (let ((size     (to-i (get-param params "size"    default-size)))
+        (wording        (get-param params "w"       #f))
+        (fonttype (to-i (get-param params "type"    default-fonttype))))
+    (let ((size         (calc-limit 1 size     (length size-list)))
+          (fonttype     (calc-limit 1 fonttype (length font-list))))
       `(
         ,(html-doctype)
         ,(html:head
@@ -95,32 +93,23 @@
         ,(html:body
           (html:div :style "text-align: center; "
                     (html:h1 "デカ文字作成")
-                    (html:p
-                     "文章を入れて『画像化』ボタンを押して下さい")
-                    (html:form
-                     :method "POST"
-                     :action "./dekamoji.cgi"
-                     (html:input :name "w"       :type "text" :size 60 :value wording)
-                     (html:br)
-                     (map
-                      (lambda (x)
-                        (list
-                         (html:input :name "size"    :type "radio"
-                                     :value (car x)
-                                     :CHECKED (eq? (car x) size))
-                         (cdr x)))
-                      size-list)
-                     (html:br)
-                     (map
-                      (lambda (x)
-                        (list
-                         (html:input :name "type"    :type "radio"
-                                     :value (car x)
-                                     :CHECKED (eq? (to-i (car x)) fonttype))
-                         (second x)))
-                      font-list)
-                     (html:br)
-                     (html:input :type "submit"  :value "画像化"))
+                    (html:p  "文章を入れて『画像化』ボタンを押して下さい")
+                    (html:form  :method "POST" :action "./dekamoji.cgi"
+                                (html:input :name "w"       :type "text" :size 60 :value wording)
+                                (html:br)
+                                (map (lambda (x) (list
+                                                  (html:input :name "size"    :type "radio"   :value (car x)
+                                                              :CHECKED (eq? (car x) size))
+                                                  (cdr x)))
+                                     size-list)
+                                (html:br)
+                                (map (lambda (x) (list
+                                                  (html:input :name "type"    :type "radio"   :value (car x)
+                                                              :CHECKED (eq? (to-i (car x)) fonttype))
+                                                  (second x)))
+                                     font-list)
+                                (html:br)
+                                (html:input :type "submit"  :value "画像化"))
                     (html:hr)
                     (cond
                      (wording
@@ -137,6 +126,9 @@
                          ("5" . 320)
                          ))
 
+;; -----------------------------------
+;; entry point
+;; -----------------------------------
 (if #f
     ;; testing
     (display
