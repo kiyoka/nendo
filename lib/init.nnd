@@ -448,13 +448,52 @@
 ;; ----------------------------------------
 ;; Higher-order functions
 ;; ----------------------------------------
-(define (map pred lst)
-  (if (null? lst)
-      '()
-      (cons
-       (pred (car lst))
-       (map pred (cdr lst)))))
-(define for-each map)
+;; List utilities imported from TinyScheme  by Kiyoka Nishiyama
+;;  and Fixed bugs in `map' and `for-each'.
+(define (foldr f x lst)
+     (if (null? lst)
+          x
+          (foldr f (f x (car lst)) (cdr lst))))
+
+(define (unzip1-with-cdr . lists)
+  (unzip1-with-cdr-iterative lists '() '()))
+
+(define (unzip1-with-cdr-iterative lists cars cdrs)
+  (if (null? lists)
+      (cons cars cdrs)
+      (let ((car1 (caar lists))
+	    (cdr1 (cdar lists)))
+	(unzip1-with-cdr-iterative 
+	 (cdr lists) 
+	 (append cars (list car1))
+	 (append cdrs (list cdr1))))))
+
+
+(define (map proc . lists)
+  (if (null? lists)
+      (apply proc)
+      (if (null? (car lists))
+	  '()
+	  (let1 unz (apply unzip1-with-cdr lists)
+            (let ((cars (car unz))
+                  (cdrs (cdr unz)))
+              (cons (apply proc cars)
+                    (if (null? cdrs)
+                        '()
+                        (apply map (cons proc cdrs)))))))))
+
+(define (for-each proc . lists)
+  (if (null? lists)
+      (apply proc)
+      (if (null? (car lists))
+	  #t
+	  (let1 unz (apply unzip1-with-cdr lists)
+            (let ((cars (car unz))
+                  (cdrs (cdr unz)))
+              (apply proc cars)
+              (if (null? cdrs)
+                  '()
+                  (apply map (cons proc cdrs))))))))
 
 (define (filter pred lst)
   (if (null? lst)
