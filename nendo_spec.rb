@@ -1067,6 +1067,20 @@ describe Nendo, "when use macros made by quasiquote. " do
   end
 end
 
+describe Nendo, "when use define and lambda macro " do
+  before do
+    @nendo = Nendo.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (macroexpand '(define (main argv) (newline) 0)) " ).should == "(define main (lambda (argv) (newline) 0))"
+    @nendo.replStr( " (macroexpand '(define (main argv) (define (foo x) x) (+ 10 20) 0 (foo 111))) " ).should == "(define main (lambda (argv) (letrec ((foo (lambda (x) x))) (+ 10 20) (foo 111))))"
+    @nendo.replStr( " (define (main argv) (define (foo x) x) (+ 10 20) 0 (foo 111)) (main) " ).should == "111"
+    @nendo.replStr( " (define (main argv) (define (foo1 x) (+ 1 x)) (define (foo2 x) (+ 2 x)) (* (foo1 20) (foo2 30)))   (main '()) " ).should == "672"
+    @nendo.replStr( " (macroexpand '(define (main argv) 0)) " ).should == "(define main (lambda (argv) 0))"
+  end
+end
+
 describe Nendo, "when use macros expands some syntax. " do
   before do
     @nendo = Nendo.new()

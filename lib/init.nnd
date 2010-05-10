@@ -57,6 +57,12 @@
                                         body)))))))))
 
 
+;; debug-print macro is predefined as NOP.
+;; for self debugging of init.nnd.
+(define debug-print
+  (macro (_form sourcefile lineno sourcesexp)
+    _form))
+
 ;; ----------------------------------------
 ;; car and cdr functions
 ;; ----------------------------------------
@@ -488,14 +494,18 @@
               (let ((defs
                       (filter
                        (lambda (x)
-                         (and (eq? 'define (car x))
-                              (symbol? (cadr x))))
+                         (if (pair? x)
+                             (and (eq? 'define (car x))
+                                  (symbol? (cadr x)))
+                             #f))
                        body))
                     (rest
                      (filter
                       (lambda (x)
-                        (not (and (eq? 'define (car x))
-                                  (symbol? (cadr x)))))
+                        (if (pair? x)
+                            (not (and (eq? 'define (car x))
+                                      (symbol? (cadr x))))
+                            #f))
                       body)))
                 (if (< 0 (length defs))
                     `(lambda
