@@ -15,19 +15,23 @@
 (define font-list `(
                     ("1" "ゴシック" ,(+ fontbase "ipagp.ttf"))
                     ("2" "明朝"     ,(+ fontbase "ipamp.ttf"))
+                    ("3" "あんず"   ,(+ fontbase "APJapanesefont.ttf"))
                     ))
 (define default-fonttype 2)
 
 (define default-wording "デカ文字")
 (define default-size    2)
 (define size-list '(
-                    (1 . "サイズ小")
-                    (2 . "サイズ中")
-                    (3 . "サイズ大")
-                    (4 . "サイズ特大")
+                    (1 . "サイズ極小")
+                    (2 . "サイズ小")
+                    (3 . "サイズ中")
+                    (4 . "サイズ大")
+                    (5 . "サイズ特大")
                     ))
 
 (define (response-dekamoji str pointsize fontpath)
+  (define (blur image width)
+    (image.blur_channel 0 width Magick::AllChannels))
   (let* ((font-dots pointsize)
          (margin     (* pointsize 0.3))
          (tmp-image  (Magick::Image.new 1 1))
@@ -42,11 +46,12 @@
       (set! dr.fill     "#777799")
       (set! dr.stroke   "#8888AA")
       (dr.annotate image1  0 0 5 5 str)
-      (let* ((image2 (image1.blur_channel 0 3 Magick::AllChannels)))
+      (let* ((image2 (blur image1 3)))
         (set! dr.fill   "#111111")
         (set! dr.stroke "#606060")
         (dr.annotate image2  0 0 0 0 str)
-        (image2.to_blob)))))
+        (let1 image3 (blur image2 0.5)
+          (image3.to_blob))))))
 
 
 ;; -----------------------------------
@@ -125,10 +130,11 @@
                     (html:hr)))))))
 
 (define fontsize-alist '(
-                         ("1" . 40)
-                         ("2" . 80)
-                         ("3" . 160)
-                         ("4" . 320)
+                         ("1" . 20)
+                         ("2" . 40)
+                         ("3" . 80)
+                         ("4" . 160)
+                         ("5" . 320)
                          ))
 
 (if #f
