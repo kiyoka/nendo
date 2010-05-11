@@ -4,3 +4,28 @@
 (enable-idebug)
 (disable-idebug)
 (define debug-print-length 256)
+
+
+(define begin0
+  (macro body
+    (if (null? body)
+        '(begin
+           #f)
+        (let1 result (gensym)
+          `(let1 ,result ,(car body)
+             ,@(append (cdr body)
+                       (list result)))))))
+
+(macroexpand-1
+ '(begin0
+    1
+    2
+    3))
+
+(begin0
+  (+ 1 100)
+  2
+  3)
+
+
+            
