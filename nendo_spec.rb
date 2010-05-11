@@ -1111,6 +1111,17 @@ describe Nendo, "when use macros made by quasiquote. " do
     @nendo.replStr( " (let* ((a 1)   (b (+ a 2)))  (cons a b)) " ).should == "(1 . 3)"
     @nendo.replStr( " (let* ((a 10)  (b (* a 2)))  (cons a b)) " ).should == "(10 . 20)"
     @nendo.replStr( " (let* ((a 10)  (b (* a 2)) (c (* b 3)))  (list a b c)) " ).should == "(10 20 60)"
+    @nendo.replStr( " (begin0 1 2 3) " ).should == "1"
+    @nendo.replStr( " (define a 2) (begin0 (set! a (* a 2)) (set! a (* a 2)) (set! a (* a 2)) ) " ).should == "4"
+    @nendo.replStr( " (begin0 100) " ).should == "100"
+    @nendo.replStr( " (begin0) " ).should == "#f"
+    @nendo.replStr( " " +
+                    "(receive (a b)" +
+                    "    (begin0" +
+                    "      (values 1 2)" +
+                    "      (values 10 20)" +
+                    "      (values 100 200))" +
+                    " (cons a b))" ).should == "(1 . 2)"
   end
 end
 

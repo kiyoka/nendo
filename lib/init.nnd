@@ -616,6 +616,17 @@
       (let*-expand exps body))))
 
 
+(define begin0
+  (macro body
+    (if (null? body)
+        '(begin
+           #f)
+        (let1 result (gensym)
+          `(receive ,result ,(car body)
+             ,@(cdr body)
+             (apply values ,result))))))
+
+
 ;; ----------------------------------------
 ;; values
 ;; ----------------------------------------
