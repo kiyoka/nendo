@@ -129,13 +129,13 @@
 ;; -----------------------------------
 ;; entry point
 ;; -----------------------------------
-(if #f
+(if #t
     ;; testing
     (display
      (response-dekamoji
       "デカ文字"
       80
-      (+ fontbase "/IPAfont00302/ipam.ttf")))
+      (+ fontbase "ipamp.ttf")))
     ;; release
     (let1 cgi (CGI.new)
       (cond ((hash-table-exist? cgi.params "img")
