@@ -1176,8 +1176,8 @@ describe Nendo, "when use dot-operator (.) macro " do
     lambda { @nendo.replStr( " (macroexpand '(. open)) " ) }.should                   raise_error( ArgumentError )
     lambda { @nendo.replStr( " (macroexpand '(. open \"aaa\")) " ) }.should           raise_error( TypeError )
     @nendo.replStr( " (macroexpand '(. a size)) " ).should == "(a.size)"
-    @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).gsub( /100[0-9][0-9]/, "10000" ).should == "(let ((__gensym__10000 (a.size))) (__gensym__10000.to_s))"
-    @nendo.replStr( " (macroexpand '(. (. (. a size) to_s) to_i)) " ).gsub( /100[0-9][0-9]/, "10000" ).should == "(let ((__gensym__10000 (let ((__gensym__10000 (a.size))) (__gensym__10000.to_s)))) (__gensym__10000.to_i))"
+    @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).gsub( /100[0-9][0-9]/, "10000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000 (a.size))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000.to_s))"
+    @nendo.replStr( " (macroexpand '(. (. (. a size) to_s) to_i)) " ).gsub( /100[0-9][0-9]/, "10000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000 (a.size))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000.to_s)))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000.to_i))"
     lambda { @nendo.replStr( " (macroexpand '(. (. a size))) " ) }.should             raise_error( ArgumentError )
     @nendo.replStr( " (set! str \"str\") str.size " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (. str size) " ).should == "3"

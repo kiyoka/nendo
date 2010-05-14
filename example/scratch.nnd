@@ -6,28 +6,40 @@
 (define debug-print-length 256)
 
 
-(define begin0
-  (macro body
-    (if (null? body)
-        '(begin
-           #f)
-        (let1 result (gensym)
-          `(receive ,result ,(car body)
-             ,@(cdr body)
-             (apply values ,result))))))
+(let loop ((arg1 nil)
+           (arg2 nil))
+  (if #t
+      #t
+      (loop 1 2)))
 
-(macroexpand-1
- '(begin0
-    (values 1 2)
-    2
-    3))
+(define (foo a)
+  (print a)
+  (foo a+1))
+(foo 1)
 
-(receive (a b)
-    (begin0
-      (values 1 2)
-      2
-      3)
-  (cons a b))
 
+(macroexpand
+ '(cond
+   (#t
+    1)
+   (#t
+    2)
+   (else
+    3)))
+
+
+(if
+ #t
+ (begin 1)
+ (if #t
+     (begin 2)
+     (if #t
+         (begin 3)
+         ())))
+
+ 
+  
+   
+  
 
             

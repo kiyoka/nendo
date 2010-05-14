@@ -35,6 +35,7 @@
 #  $Id: 
 #
 require 'stringio'
+require 'digest/md5'
 #require 'profile'
 
 class Nil
@@ -1141,7 +1142,12 @@ class Evaluator
 
   def _gensym( )
     @gensym_counter += 1
-    sprintf( "__gensym__%d", @gensym_counter ).intern
+    filename = if @lastSourcefile.is_a? String
+                 Digest::SHA1.hexdigest( @lastSourcefile )
+               else
+                 ""
+               end
+    sprintf( "__gensym__%s_%d", filename, @gensym_counter ).intern
   end
   
   def forward_gensym_counter( )
