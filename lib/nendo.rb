@@ -1772,6 +1772,10 @@ class Evaluator
     forward_gensym_counter()
   end
 
+  def _clean_MIMARKcompiled_MIMARKcode
+    @compiled_code = Hash.new
+  end
+  
   def _get_MIMARKcompiled_MIMARKcode
     @compiled_code
     ret = Hash.new

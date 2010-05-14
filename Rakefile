@@ -54,7 +54,13 @@ task :compile do
 
   # Compile
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
-  sh "time ruby -I ./lib ./bin/nendo -q -l ./lib/init.nnd -l ./lib/text/html-lite.nnd -l ./lib/text/tree.nnd -l ./lib/debug/syslog.nnd save_compiled_file.nnd"
+  [ "./lib/init.nnd",
+    "./lib/text/html-lite.nnd",
+    "./lib/text/tree.nnd", 
+    "./lib/debug/syslog.nnd" ].each {|fn|
+    printf( "Compilng... [%-40s] : ", fn )
+    sh "time ruby ./bin/nendo ./bin/nendoc " + fn
+  }
 end
 
 task :clean do
