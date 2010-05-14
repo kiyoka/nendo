@@ -824,7 +824,7 @@
                                                   if @global_lisp_binding.has_key?('_not') then
                                                     @_not
                                                   else raise NameError.new( "Error: undefined variable _not", "_not" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./bin/nendoc:68"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./util/nendoc:68"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
                                                   callProcedure( 'null?',
@@ -1067,7 +1067,7 @@
                                             if @global_lisp_binding.has_key?('_not') then
                                               @_not
                                             else raise NameError.new( "Error: undefined variable _not", "_not" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./bin/nendoc:68"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./util/nendoc:68"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
                                             callProcedure( 'eq?',

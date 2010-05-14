@@ -63,19 +63,23 @@
     "\n")))
     
 (define (main argv)
-  (for-each
-   (lambda (fn)
-     (when (not (File.exist? fn))
-       (errorf "Error: file [%s] not found." fn)
-       (exit 1))
-     (load fn)
-     (with-open (+ fn "c")
-                (lambda (f)
-                  (f.puts (compiled-code-string (get-compiled-code) fn)))
-                "w"))
-   argv)
+  (cond
+   ((zero? (length argv))
+    (print
+     (+ "Usage : nendoc xxxx.nnd \n"
+        "        xxxx.nnd is user source file to compile.\n")))
+   (else
+    (for-each
+     (lambda (fn)
+       (when (not (File.exist? fn))
+         (errorf "Error: file [%s] not found." fn)
+         (exit 1))
+       (load fn)
+       (with-open (+ fn "c")
+                  (lambda (f)
+                    (f.puts (compiled-code-string (get-compiled-code) fn)))
+                  "w"))
+     argv)))
   (exit 0))
 
 (main *argv*)
-  
-  

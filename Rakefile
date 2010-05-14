@@ -4,7 +4,7 @@
 #
 # Release Engineering
 #   1. edit the VERSION.yml file
-#   2. rake compile  &&  rake spec
+#   2. rake compile  &&   rake spec
 #   3. rake gemspec  &&   rake build
 #      to generate nendo-x.x.x.gem
 #   4. install nendo-x.x.x.gem to clean environment and test
@@ -21,7 +21,7 @@ begin
     gemspec.email = "kiyoka@sumibi.org"
     gemspec.homepage = "http://github.com/kiyoka/nendo"
     gemspec.authors = ["Kiyoka Nishiyama"]
-    gemspec.files = FileList['lib/**/*.rb', 'lib/**/*.nnd', 'lib/**/*.nndc', 'bin/*', 'example/*.nnd', 'example/cgi/*.cgi', 'emacs/*.el'].to_a
+    gemspec.files = FileList['lib/**/*.rb', 'lib/**/*.nnd', 'lib/**/*.nndc', 'bin/*', 'util/*', 'example/*.nnd', 'example/cgi/*.cgi', 'emacs/*.el'].to_a
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
@@ -59,7 +59,7 @@ task :compile do
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd" ].each {|fn|
     printf( "Compilng... [%-40s] : ", fn )
-    sh "time ruby ./bin/nendo ./bin/nendoc " + fn
+    sh "time ruby ./bin/nendo ./util/nendoc " + fn
   }
 end
 
