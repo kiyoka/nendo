@@ -673,6 +673,11 @@ describe Nendo, "when call replStr() with built-in functions" do
     lambda { @nendo.replStr( " (length 1) " ) }.should  raise_error(TypeError)
     @nendo.replStr( " (symbol->string 'sym) " ).should == '"sym"'
     @nendo.replStr( " (string->symbol \"sym\") " ).should == 'sym'
+    @nendo.replStr( ' (string-join \'("Aa" "Bb" "Cc")    ) ' ).should  == '"AaBbCc"'
+    @nendo.replStr( ' (string-join \'("Aa" "Bb" "Cc") ":") ' ).should  == '"Aa:Bb:Cc"'
+    @nendo.replStr( ' (string-join \'("Aa" "Bb" "Cc") "//") ' ).should == '"Aa//Bb//Cc"'
+    lambda { @nendo.replStr( ' (string-join \'("Aa" "Bb" "Cc") 100) ' ) }.should  raise_error(TypeError)
+    lambda { @nendo.replStr( ' (string-join \'("Aa" "Bb" "Cc") :xx) ' ) }.should  raise_error(TypeError)
   end
 end
 

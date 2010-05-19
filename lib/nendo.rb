@@ -58,7 +58,7 @@ end
 class LispString < String
   def LispString.escape( str )
     if str.is_a? String
-      str.gsub( /["]/, "\\\"" )
+      str.gsub( /\\/, "\\\\\\\\" ).gsub( /["]/, "\\\"" )
     else
       raise TypeError
     end
@@ -349,12 +349,20 @@ class Reader
       end
       if ch.chr.match( /[\\]/ )
         ch2 = @chReader.getc
-        if ch2.chr == "\""    #  \"  reduce to "  
-          ret += "\""
-        else
-          ret += ch.chr
-          ret += ch2.chr
-        end
+        ret += case ch2.chr
+               when '"'    #  \"  reduce to "
+                 '"'
+               when '\\'   #  \\  reduce to \
+                 "\\"
+               when 'n'
+                 "\n"
+               when 'r'
+                 "\r"
+               when 't'
+                 "\t"
+               else
+                 ""
+               end
       elsif ch.chr.match( /[^"]/ )
         ret += ch.chr
       else
@@ -948,8 +956,17 @@ module BuiltinFunctions
   def _intern( arg )                            arg.intern  end
   def _string_MIMARK_GTMARKsymbol( arg )        arg.intern  end
   def _symbol_MIMARK_GTMARKstring( arg )        arg.to_s    end
-  def _string_MIMARKjoin( lst, delim )
-    lst.to_a.map{ |x| x.car }.join( delim )
+  def _string_MIMARKjoin( lst, *args )
+    arr = args[0].to_arr
+    if 0 < arr.length
+      if not arr[0].is_a? String
+        raise TypeError, "Error string-join's expects delimitter as String."
+      else
+        lst.to_a.map{ |x| x.car }.join( arr[0] )
+      end
+    else
+      lst.to_a.map{ |x| x.car }.join
+    end
   end
   def _require( arg )
     Kernel::require( arg )
@@ -1464,7 +1481,7 @@ class Evaluator
       str += "[" +  arr.join(",") + "]"
     when Symbol
       str += sprintf( ":\"%s\"", sexp.to_s )
-    when String
+    when String, LispString
       str += sprintf( "\"%s\"", LispString.escape( sexp ))
     when LispKeyword
       str += sprintf( "LispKeyword.new( \"%s\" )", sexp.key.to_s )
@@ -1549,7 +1566,7 @@ class Evaluator
         lispSymbolReference( sym, locals, nil, sexp.sourcefile, sexp.lineno )
       when Fixnum
         sexp.to_s
-      when String
+      when String, LispString
         sprintf( "\"%s\"", LispString.escape( sexp ))
       when LispKeyword
         sprintf( "LispKeyword.new( \"%s\" )", sexp.key )
@@ -1764,6 +1781,11 @@ class Evaluator
     forward_gensym_counter()
   end
 
+  def _load_MIMARKcompiled_MIMARKcode_MIMARKfrom_MIMARKstring( rubyExp )
+    eval( rubyExp, @binding )
+    forward_gensym_counter()
+  end
+
   def _load_MIMARKcompiled_MIMARKcode( filename )
     open( filename, "r:utf-8" ) { |f|
       rubyExp = f.read
@@ -1845,7 +1867,7 @@ class Printer
       else
         sprintf( "%s", sexp.to_s )
       end
-    when String
+    when String, LispString
       if readable
         sprintf( "\"%s\"", LispString.escape( sexp.to_s ))
       else
@@ -1898,6 +1920,10 @@ class Nendo
 
   def setArgv( argv )
     @evaluator.setArgv( argv )
+  end
+
+  def clean_compiled_code
+    @evaluator._clean_MIMARKcompiled_MIMARKcode()
   end
 
   def repl

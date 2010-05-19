@@ -45,6 +45,8 @@ def userOptionEater
       i += 1
     when '-q'
       i += 1
+    when '-c'
+      i += 1
     when '-l'
       i += 2
     when /^[^-]/
@@ -63,12 +65,15 @@ end
 
 def main
   loadInit = true
+  compile  = false
+  conflict = 0
   core = Nendo.new()
 
   userOptions = userOptionEater
   opts = GetoptLong.new(
                         [ '-h', GetoptLong::NO_ARGUMENT ],
                         [ '-q', GetoptLong::NO_ARGUMENT ],
+                        [ '-c', GetoptLong::NO_ARGUMENT ],
                         [ '-l', GetoptLong::REQUIRED_ARGUMENT ]
                         ).each { |opt, arg|
     case opt
@@ -86,22 +91,45 @@ def main
       -l file:
         load nendo script files. ( can specify n times like   -l a.nnd -l b.nnd  )
 
+      -c:
+        compile nendo script file. (and initialization file was loaded)
+
       EOF
       exit 0
     when '-q'
       loadInit = false
+      conflict += 1
+    when '-c'
+      loadInit = true
+      compile  = true
+      conflict += 1
     when '-l'
       core.load( arg )
       STDERR.printf( "loaded file [%s]\n", arg )
     end
   }
+
+  if  2 <= conflict 
+    STDERR.puts( "Error: Can't specify both -q and -c ...\n" ) 
+    exit( 1 )
+  end
   
   if loadInit
     core.loadInitFile
   end
   if 0 < userOptions.length
-    core.setArgv( userOptions[1..userOptions.length] )
-    core.load( userOptions[0] )
+    fn = userOptions[0]
+    if compile
+      # compile script file.
+      core.clean_compiled_code( )
+      core.load( fn )
+      core.replStr( sprintf( '(save-compiled-file "%s" "%s")', fn, fn + "c"))
+    else
+      # start script file.
+      core.setArgv( userOptions[1..userOptions.length] )
+      core.load( fn )
+      core.replStr( "(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f)" )
+    end
   else
     core.repl
   end

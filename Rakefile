@@ -58,8 +58,7 @@ task :compile do
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd" ].each {|fn|
-    printf( "Compilng... [%-40s] : ", fn )
-    sh "time ruby ./bin/nendo ./util/nendoc " + fn
+    sh "time ruby ./bin/nendo -c " + fn
   }
 end
 
