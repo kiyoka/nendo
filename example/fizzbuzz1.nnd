@@ -18,6 +18,8 @@
          x))))
    (range max)))
 
-(for-each
- print
- (fizzbuzz 30))
+(define (main argv)
+  (for-each
+   print
+   (fizzbuzz 30)))
+
