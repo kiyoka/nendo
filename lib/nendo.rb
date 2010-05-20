@@ -347,7 +347,7 @@ class Reader
       if !ch # eof?
         break
       end
-      if ch.chr.match( /[\\]/ )
+      if ch.chr == "\\"
         ch2 = @chReader.getc
         ret += case ch2.chr
                when '"'    #  \"  reduce to "
@@ -363,7 +363,7 @@ class Reader
                else
                  ""
                end
-      elsif ch.chr.match( /[^"]/ )
+      elsif ch.chr != '"'
         ret += ch.chr
       else
         @chReader.ungetc( ch )
