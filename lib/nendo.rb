@@ -1918,6 +1918,10 @@ class Nendo
     @evaluator._load( path )
   end
 
+  def load_compiled_code_from_string( rubyExp )
+    @evaluator._load_MIMARKcompiled_MIMARKcode_MIMARKfrom_MIMARKstring( rubyExp )
+  end
+
   def setArgv( argv )
     @evaluator.setArgv( argv )
   end

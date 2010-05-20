@@ -123,7 +123,7 @@ def main
       # compile script file.
       core.clean_compiled_code( )
       core.load( fn )
-      core.replStr( sprintf( '(save-compiled-file "%s" "%s")', fn, fn + "c"))
+      core.replStr( sprintf( '(print-compiled-code "%s")', fn ))
     else
       # start script file.
       core.setArgv( userOptions[1..userOptions.length] )

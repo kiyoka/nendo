@@ -58,7 +58,7 @@ task :compile do
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd" ].each {|fn|
-    sh "time ruby ./bin/nendo -c " + fn
+    sh sprintf( "time ruby ./bin/nendo -c %s > %s", fn, fn + "c" )
   }
 end
 
