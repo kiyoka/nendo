@@ -1003,10 +1003,10 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " " +
                     "(let1 result '()" +
                     "  (do" +
-                    "      ((i 0.0 (+ i 0.1)))" +
-                    "      ((< 1.0 i) #f)" +
+                    "      ((i 0 (+ i 3)))" +
+                    "      ((< (* 3 10) i) #f)" +
                     "    (set! result (cons i result)))" +
-                    "  (reverse result))" ).should == "(0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)"
+                    "  (reverse result))" ).should == "(0 3 6 9 12 15 18 21 24 27 30)"
   end
 end
 
