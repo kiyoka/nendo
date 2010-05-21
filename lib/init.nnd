@@ -966,44 +966,52 @@
      (compiled-body-string str-list filename))))
 
 
-(define (print-compiled-code src)
+(define (print-compiled-code src . rest)
+  (define (print-to-file f)
+    (receive (script-flag str)
+        (compiled-code-string (get-compiled-code) src)
+      (cond (script-flag
+             (f.puts (string-join
+                      `(
+                        "#!/usr/bin/env ruby"
+                        "# -*- encoding: utf-8 -*-"
+                        "#"
+                        "#    This file is nendo's compiled script file. "
+                        "#    generated  \"nendo -c src\" command. "
+                        "#"
+                        ""
+                        "require 'rubygems'"
+                        "require 'nendo'"
+                        ""
+                        "core = Nendo.new()"
+                        "core.loadInitFile()"
+                        "core.setArgv( ARGV )"
+                        "core.load_compiled_code_from_string( " ,(write-to-string str) " ) "
+                        "core.replStr( \"(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f) \" )"
+                        "")
+                      "\n")))
+            (else
+             (f.puts (+ (string-join
+                         '(
+                           "#"
+                           "#    This file is nendo's compiled library file. "
+                           "#    generated  \"nendo -c src\" command. "
+                           "# ")
+                         "\n")
+                        "\n"
+                        str))))))
+
   (when (not (File.exist? src))
     (errorf "Error: file [%s] not found." src)
     (exit 1))
   (clean-compiled-code)
   (load src)
-  (let1 f STDOUT
-    (receive (script-flag str)
-        (compiled-code-string (get-compiled-code) src)
-      (if script-flag
-          (f.puts (string-join
-                   `(
-                     "#!/usr/bin/env ruby"
-                     "# -*- encoding: utf-8 -*-"
-                     "#"
-                     "#    This file is nendo compiled script file. "
-                     "#    generated  \"nendo -c src\" command. "
-                     "#"
-                     ""
-                     "require 'rubygems'"
-                     "require 'nendo'"
-                     ""
-                     "core = Nendo.new()"
-                     "core.loadInitFile()"
-                     "core.setArgv( ARGV )"
-                     "core.load_compiled_code_from_string( " ,(write-to-string str) " ) "
-                     "core.replStr( \"(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f) \" )"
-                     "")
-                   "\n"))
-          (f.puts (+ (string-join
-                      '(
-                        "#"
-                        "#    This file is nendo compiled library file. "
-                        "#    generated  \"nendo -c src\" command. "
-                        "# ")
-                      "\n")
-                     "\n"
-                     str))))))
+  (if (null? rest)
+      (print-to-file STDOUT)
+      (with-open (car rest)
+                 (lambda (f)
+                   (print-to-file f))
+                 "w")))
 
 
 ;; ----------------------------------------

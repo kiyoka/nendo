@@ -35,7 +35,7 @@
 #  $Id: 
 #
 require 'stringio'
-require 'digest/md5'
+require 'digest/sha1'
 #require 'profile'
 
 class Nil
@@ -1788,8 +1788,7 @@ class Evaluator
 
   def _load_MIMARKcompiled_MIMARKcode( filename )
     open( filename, "r:utf-8" ) { |f|
-      rubyExp = f.read
-      eval( rubyExp, @binding )
+      eval( f.read, @binding )
     }
     forward_gensym_counter()
   end
@@ -1916,6 +1915,10 @@ class Nendo
 
   def load( path )
     @evaluator._load( path )
+  end
+
+  def load_compiled_code( path )
+    @evaluator._load_MIMARKcompiled_MIMARKcode( path )
   end
 
   def load_compiled_code_from_string( rubyExp )

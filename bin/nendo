@@ -36,6 +36,7 @@
 #
 require 'nendo'
 require 'getoptlong'
+#require 'profile'
 
 def userOptionEater
   i = 0
@@ -62,10 +63,23 @@ def userOptionEater
   return userOptions
 end
 
+def cache_exist?( fn )
+  dotdir_path = File.expand_path( "~/.nendo" )
+  cache_path  = File.expand_path( "~/.nendo/cache" )
+  Dir.mkdir( dotdir_path ) unless File.exist?( dotdir_path )
+  Dir.mkdir( cache_path  ) unless File.exist?( cache_path  )
+  sha1 = Digest::SHA1.hexdigest( File.expand_path( fn ))
+  cache_name = cache_path + "/" + sha1 + "_" + File.basename( fn ) + ".rb"
+  if File.exist?( cache_name )
+    [  true, cache_name ]
+  else
+    [ false, cache_name ]
+  end
+end
 
 def main
-  loadInit = true
-  compile  = false
+  loadInit  = true
+  compile   = false
   conflict = 0
   core = Nendo.new()
 
