@@ -58,7 +58,7 @@ end
 class LispString < String
   def LispString.escape( str )
     if str.is_a? String
-      str.gsub( /\\/, "\\\\\\\\" ).gsub( /["]/, "\\\"" )
+      str.gsub( /\\/, "\\\\\\\\" ).gsub( /["]/, "\\\"" ).gsub( /[\r]/, "\\r" ).gsub( /[\t]/, "\\t" )
     else
       raise TypeError
     end
