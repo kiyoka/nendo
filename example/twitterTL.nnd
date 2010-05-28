@@ -1,0 +1,38 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+(require "rubygems")
+(require "twitter")
+
+(define (display-tl tl)
+  (for-each
+   (lambda (x)
+     (printf "%15s : %s \n"
+             (hash-table-get (assq-ref "user" x) "screen_name")
+             (assq-ref "text" x)))
+   tl))
+
+(define (main argv)
+  (let* ((httpauth (Twitter::HTTPAuth.new (first argv) (second argv)))
+         (client   (Twitter::Base.new httpauth))
+         (lst (client.friends_timeline.to_a.to_list)))
+    (let1 tl (map
+              (lambda (h)
+                (hash-table->alist h))
+              lst)
+      (display-tl tl))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
