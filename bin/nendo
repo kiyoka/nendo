@@ -67,7 +67,7 @@ def main
   loadInit  = true
   compile   = false
   conflict = 0
-  core = Nendo.new()
+  core = Nendo::Core.new()
 
   userOptions = userOptionEater
   opts = GetoptLong.new(

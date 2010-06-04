@@ -983,7 +983,7 @@
                         "require 'rubygems'"
                         "require 'nendo'"
                         ""
-                        "core = Nendo.new()"
+                        "core = Nendo::Core.new()"
                         "core.loadInitFile()"
                         "core.setArgv( ARGV )"
                         "core.load_compiled_code_from_string( " ,(write-to-string str) " ) "

@@ -33,6 +33,7 @@
 #   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  
 require 'nendo'
+include Nendo
 
 describe Cell, "when initialized as '()" do
   before do
@@ -196,7 +197,7 @@ end
 
 describe Nendo, "when call replStr() with literals" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " 1 " ).should == "1"
@@ -222,7 +223,7 @@ end
 
 describe Nendo, "when call replStr() with comparative operators" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (= 1 1) " ).should == "#t"
@@ -273,7 +274,7 @@ end
 
 describe Nendo, "when call replStr() with boolean operators" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " true " ).should == "#t"
@@ -296,7 +297,7 @@ end
 
 describe Nendo, "when call replStr() with `+' function" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (+ 1) " ).should == "1"
@@ -321,7 +322,7 @@ end
 
 describe Nendo, "when call replStr() with `-' function" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (- 1) " ).should == "-1"
@@ -342,7 +343,7 @@ end
 
 describe Nendo, "when call replStr() with `*' function" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (* 1) " ).should == "1"
@@ -365,7 +366,7 @@ end
 
 describe Nendo, "when call replStr() with `/' function" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (/ 1) " ).should == "1"
@@ -391,7 +392,7 @@ end
 
 describe Nendo, "when call replStr() with `%' function" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (% 1) " ).should == "0"
@@ -413,7 +414,7 @@ end
 
 describe Nendo, "when read various list expressions" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " '() " ).should == "()"
@@ -462,7 +463,7 @@ end
 
 describe Nendo, "when use #xxxx syntax " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -531,7 +532,7 @@ end
 
 describe Nendo, "when read various vector expressions" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " '() " ).should == "()"
@@ -556,7 +557,7 @@ end
 
 describe Nendo, "when call replStr() with built-in functions" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (car '(1 2 3 4)) " ).should == "1"
@@ -686,7 +687,7 @@ end
 
 describe Nendo, "when call replStr() with variable modifications" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (define x 1)     x " ).should == "1"
@@ -707,7 +708,7 @@ end
 
 describe Nendo, "when call replStr() with undefined variable" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     lambda { @nendo.replStr( " true " ) }.should_not                   raise_error
@@ -723,7 +724,7 @@ end
 
 describe Nendo, "when call replStr() with built-in special forms" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (begin 1) " ).should == "1"
@@ -761,7 +762,7 @@ end
 
 describe Nendo, "when call replStr() with global and lexical scope variable" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (define var 111) " ).should == "111"
@@ -790,7 +791,7 @@ end
 
 describe Nendo, "when call replStr() with macroexpand-1 function" do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
   end
   it "should" do
     @nendo.replStr( " (set! twice (macro (x) (list 'begin x x)))           (macroexpand-1 '(twice (+ 1 1))) " ).should == "(begin (+ 1 1) (+ 1 1))"
@@ -811,7 +812,7 @@ end
 
 describe Nendo, "when call functions in init.nnd " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1012,7 +1013,7 @@ end
 
 describe Nendo, "when use values " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1064,7 +1065,7 @@ end
 
 describe Nendo, "when toplevel variable was overwritten " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1086,7 +1087,7 @@ end
 
 describe Nendo, "when use quasiquote macro " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1107,7 +1108,7 @@ end
 
 describe Nendo, "when use macros made by quasiquote. " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1135,7 +1136,7 @@ end
 
 describe Nendo, "when use define and lambda macro " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1149,7 +1150,7 @@ end
 
 describe Nendo, "when use macros expands some syntax. " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1174,7 +1175,7 @@ end
 
 describe Nendo, "when use dot-operator (.) macro " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1213,7 +1214,7 @@ end
 
 describe Nendo, "when use keyword feature " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1254,7 +1255,7 @@ end
 
 describe Nendo, "when use hash-table feature " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -1300,7 +1301,7 @@ end
 
 describe Nendo, "when use vector feature " do
   before do
-    @nendo = Nendo.new()
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
