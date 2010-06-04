@@ -280,21 +280,27 @@ class Reader
 
   # inport is IO class
   def initialize( inport, sourcefile, debug = false )
-    @chReader   = CharReader.new( inport, sourcefile )
+    @inport     = inport
+    @sourcefile = sourcefile
+    @chReader   = nil
     @curtoken   = nil
     @debug      = debug
   end
 
   def reset
-    @chReader.reset
+    @chReader.reset  if @chReader
   end
 
   def sourcefile
-    @chReader.sourcefile
+    @sourcefile
   end
 
   def lineno
-    @chReader.lineno
+    if @chReader
+      @chReader.lineno
+    else
+      1
+    end
   end
 
   def skipspace
@@ -691,6 +697,7 @@ class Reader
 
   # return value is [ S-expression-tree, eof-flag, valid-sexp-flag ]
   def _read
+    @chReader = CharReader.new( @inport, @sourcefile )  unless @chReader
     case curtoken.kind
     when T_EOF
       [ Nil.new, true,  false ]
@@ -1933,35 +1940,30 @@ class Nendo
     @evaluator._clean_MIMARKcompiled_MIMARKcode()
   end
 
+  def prompt
+    STDERR.print "nendo> "
+  end
+
   def repl
     printer = Printer.new( @debug_printer )
-    reader = nil
-    print "nendo> "
-    begin
-      begin
-        reader = Reader.new( STDIN, "(stdin)", false )
-      rescue => e
-        print e.message + "\n"
-        e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
-        reader = nil
-        print "\n" + "nendo> "
-      end
-    end until reader
+    reader  = Reader.new( STDIN, "(stdin)", false )
+    self.prompt
     while true
-      lineno = reader.lineno
       begin
+        lineno = reader.lineno
         s = reader._read
         if s[1] # EOF?
           break
-        elsif Nil != s[0].class
+        elsif not s[0].is_a? Nil
           printf( "\n          readExp=<<< %s >>>\n", printer._write(s[0]) ) if @debug_evaluator
-          print printer._write( @evaluator.lispEval( s[0], reader.sourcefile, lineno ))
-          print "\n" + "nendo> "
+          STDERR.print printer._write( @evaluator.lispEval( s[0], reader.sourcefile, lineno )) + "\n"
+          self.prompt
         end
       rescue => e
         print e.message + "\n"
         e.backtrace.each { |x| printf( "\tfrom %s\n", x ) }
-        print "\n" + "nendo> "
+        print "\n"
+        self.prompt
       end
     end
   end
@@ -1976,7 +1978,7 @@ class Nendo
       s = reader._read
       if s[1] # EOF?
         break
-      elsif Nil != s[0].class
+      elsif not s[0].is_a? Nil
         printf( "\n          readExp=<<< %s >>>\n", printer._write(s[0]) ) if @debug_evaluator
         result = printer._write( @evaluator.lispEval( s[0], reader.sourcefile, lineno )) 
       end
