@@ -4,3 +4,110 @@
 (disable-idebug)
 (define debug-print-length 256)
 
+(define (exist-tail-call? sexp)
+  (cond
+   ((not (list? sexp))
+    (error "exist-tail-call? expected a list argument."))
+   (else
+    (let1 last (last-pair sexp)
+      (cond
+       ((pair? last)
+        (if (procedure? (car last))
+            
+       (else
+        ;; noting to do
+        sexp))))))
+
+
+(define (setup-tail-call-mark sexp)
+  (if (exist-tail-call? sexp)
+      (mark-tail-call sexp)
+      (traverse-tail-call sexp)))
+
+(define (traverse-tail-call sexp)
+  (cond
+   ((null? sexp)
+    '())
+   ((list? sexp)
+    (case (car sexp)
+      ('if
+       (setup-tail-call-mark (second sexp))
+       (setup-tail-call-mark (third sexp)))))
+   (else
+    sexp)))
+
+
+(setup-tail-call-mark
+ )
+
+
+(macroexpand
+ '(if #t
+      1
+      2))
+
+(macroexpand
+ '(or
+   1
+   2
+   ))
+
+(macroexpand
+ '(cond
+   (1
+    (print "1"))
+   (2
+    (print "2"))
+   (else
+    (print "else"))))
+
+
+
+
+;; named let supporting
+(define let
+  (macro lst
+    (if (symbol? (car lst))
+        ;; named let
+        (let1 arg-list ,(map
+                         (lambda (x)
+                           (first x))
+                         (second lst))
+
+          `(letrec ((,(first lst)
+                     (lambda (,arg-list)
+                       (begin
+                         (%generate-tco-entry ,(first lst) ,arg-list)
+                         ,(third lst)))))
+             (,(first lst)
+              ,@(map
+                 (lambda (x)
+                   (second x))
+                 (second lst)))))
+           
+        ;; don't touch
+        `(let ,@lst))))
+
+
+
+;; normal source
+(define (sample x)
+  1
+  2
+  3
+  (sample 4))
+
+
+;; marking tco point
+(define (sample x)
+  (%generate-tco-entry (sample x)
+                       1
+                       2
+                       3
+                       (%possible-tco (sample 4))))
+  
+
+
+   
+                   
+  
