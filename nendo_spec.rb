@@ -34,6 +34,11 @@
 #  
 require 'nendo'
 include Nendo
+begin
+  require 'continuation'
+rescue LoadError
+  puts 'Warning: ruby library `continuation` was not found.'
+end
 
 describe Cell, "when initialized as '()" do
   before do
@@ -128,6 +133,34 @@ describe Nendo, "Ruby's lexical closure " do
       val
     }
     lambda1.call( 'A' ).should == 'a'
+  end
+end
+
+
+describe Nendo, "Ruby's continuation " do
+  before do
+    @arr1 = []
+    @arr2 = []
+  end
+  it "should" do
+    _lambda = lambda { |_loop|
+      _loop = Proc.new { |arg1,arg2|
+        cont = nil
+        callcc { |_cont| cont = _cont }
+        @arr1 << arg1
+        @arr2 << arg2
+        _lambda2 = lambda {|_x|
+          if arg1 < 3
+            arg1 = arg1+1 ; arg2 = arg2+2
+            cont.call( )
+          end
+        }
+        _lambda2.call( "dummy string1" )
+      }
+      _loop.call( 1, 2 )
+      [ @arr1, @arr2 ]
+    }
+    _lambda.call( nil ).should == [ [1, 2, 3], [2, 4, 6] ]
   end
 end
 
