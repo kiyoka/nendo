@@ -90,6 +90,10 @@
 
 
 
+
+
+
+
 ;; normal source
 (define (sample x)
   1
@@ -129,7 +133,7 @@
 
 
 ;; function %fixed-tco-entry will be translated to Ruby code
-(%fixed-tco-entry label1 a b c)
+(%fixed-tco-entry label1 a b c ...)
 => [Ruby code]
   update_label1 = lambda {|_a,_b,_c|
                                      a = _a
@@ -139,10 +143,15 @@
   cont_label1 = nil
   callcc { |cc| cont_label1 = cc }
 
+  ...
+
 ;; function %fixed-tco will be translated to Ruby code
 (%fixed-tco (label1 10 20 30))
+=> [macro expand]
+  (begin
+     (update_label 10 20 30)
+     (cont_label1))
 => [Ruby code]
-  update_label1( 10, 20, 30 )
+  update_label1.call( 10, 20, 30 )
   cont_label1.call()
-
 
