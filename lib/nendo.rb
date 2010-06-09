@@ -1559,19 +1559,19 @@ module Nendo
     def letArgumentList( sexp )
       sexp.each { |arg|
         arg.car.car = Cell.new( :quote, Cell.new( arg.car.car ))
-        arg.car.cdr = quoting( arg.car.cdr )
+        arg.car.cdr = quotingPhase( arg.car.cdr )
       }
       sexp
     end
   
-    def quoting( sexp )
+    def quotingPhase( sexp )
       case sexp
       when Cell
         if :quote == sexp.car or :quasiquote == sexp.car 
           sexp
         elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
           sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
-          sexp.cdr.cdr = quoting( sexp.cdr.cdr )
+          sexp.cdr.cdr = quotingPhase( sexp.cdr.cdr )
           sexp
         elsif :let == sexp.car
           if _null_QUMARK( sexp.cdr )
@@ -1581,11 +1581,11 @@ module Nendo
             case sexp.cdr.car
             when Cell        # let
               sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
-                                           quoting( sexp.cdr.cdr ))
+                                           quotingPhase( sexp.cdr.cdr ))
             when Symbol      # named let
               sexp.cdr.car     = Cell.new( :quote, Cell.new( sexp.cdr.car ))
               sexp.cdr.cdr     = Cell.new( letArgumentList( sexp.cdr.cdr.car ),
-                                           quoting( sexp.cdr.cdr.cdr ))
+                                           quotingPhase( sexp.cdr.cdr.cdr ))
             end
           end
           sexp
@@ -1593,13 +1593,13 @@ module Nendo
           case sexp.cdr.car
           when Cell        # letrec
             sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
-                                         quoting( sexp.cdr.cdr ))
+                                         quotingPhase( sexp.cdr.cdr ))
           when Symbol      # named letrec is illegal
             raise RuntimeError, "Error: named letrec is not a illegal form"
           end
           sexp
         else
-          Cell.new( quoting( sexp.car ), quoting( sexp.cdr ))
+          Cell.new( quotingPhase( sexp.car ), quotingPhase( sexp.cdr ))
         end
       else
         sexp
@@ -1687,7 +1687,7 @@ module Nendo
       end
     end
   
-    def lispCompile( sexp )
+    def macroExpandPhase( sexp )
       converge = true
       begin
         newSexp  = macroexpand( sexp )
@@ -1716,8 +1716,8 @@ module Nendo
     def lispEval( sexp, sourcefile, lineno )
       @lastSourcefile = sourcefile
       @lastLineno     = lineno
-      sexp = lispCompile( sexp )
-      sexp = quoting( sexp );
+      sexp = macroExpandPhase( sexp )
+      sexp = quotingPhase( sexp );
       if @debug
         printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
       end
