@@ -77,7 +77,7 @@
           `(letrec ((,(first lst)
                      (lambda (,arg-list)
                        (begin
-                         (%generate-tco-entry ,(first lst) ,arg-list)
+                         (%with-tco-entry ,(first lst) ,arg-list)
                          ,(third lst)))))
              (,(first lst)
               ,@(map
@@ -97,17 +97,52 @@
   3
   (sample 4))
 
-
-;; marking tco point
+;;
+;; 1. ( macro expand phase )
+;;    macro `define` and `lambda` and `if` and other  macro generates these %possible-xxxxx mark.
+;; 
 (define (sample x)
-  (%generate-tco-entry (sample x)
-                       1
-                       2
-                       3
-                       (%possible-tco (sample 4))))
-  
+  (%possible-tco-entry (sample x)
+                   1
+                   2
+                   3
+                   (%possible-tco (sample 4))))
+
+;;
+;; 2. ( searching tco able points phase )
+;;     case of found some optimized code
+(define (sample x)
+  (%fixed-tco-entry (sample x)
+                   1
+                   2
+                   3
+                   (%fixed-tco (sample 4))))
+
+;;    case of not found any optimized code
+(define (sample x)
+  (begin
+    1
+    2
+    3
+    (foo 4)))
 
 
-   
-                   
-  
+
+;; function %fixed-tco-entry will be translated to Ruby code
+(%fixed-tco-entry label1 a b c)
+=> [Ruby code]
+  update_label1 = lambda {|_a,_b,_c|
+                                     a = _a
+                                     b = _b
+                                     c = _c
+                         }
+  cont_label1 = nil
+  callcc { |cc| cont_label1 = cc }
+
+;; function %fixed-tco will be translated to Ruby code
+(%fixed-tco (label1 10 20 30))
+=> [Ruby code]
+  update_label1( 10, 20, 30 )
+  cont_label1.call()
+
+
