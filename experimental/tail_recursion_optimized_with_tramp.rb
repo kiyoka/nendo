@@ -1,18 +1,50 @@
 #!/usr/local/bin/ruby
+#
+# using trampline and CallPacket
+#
 
-_lambda = lambda { |_loop|
-  _loop = Proc.new { |arg1,arg2|
-    if arg1 < 1000
-      _lambda2 = lambda {|x|
-        _loop.call( arg1+1, arg2+1 )
-      }
-      _lambda2.call( "dummy" )
-    else
-      printf( "arg1,arg2 = (%d,%d)\n", arg1, arg2 )
+class DelayedCallPacket
+  def initialize( _proc, _arg1 )
+    @proc = _proc
+    @arg1 = _arg1
+  end
+
+  def call
+    @proc.call( @arg1 )
+  end
+end
+
+def trCall( result )
+  while true
+      if result.is_a? DelayedCallPacket
+        result = result.call()
+      else
+        result
+        break
+      end
+  end
+end
+
+def printCounter( count )
+  m = count % 10000
+  if 0 == m 
+    printf( "count = %6d\n", count )
+  end
+end  
+
+
+def main
+  count = 0
+  @_simple_loop = lambda {|dummy1|
+    trCall( printCounter( count ))
+    count += 1
+    if count < 100000
+      DelayedCallPacket.new( @_simple_loop, nil )
     end
   }
-  _loop.call( 1, 2 )
-}
-_lambda.call( nil )
+  trCall( @_simple_loop.call(nil) ) 
+end
+
+main
 
 
