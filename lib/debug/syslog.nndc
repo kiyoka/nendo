@@ -3,7 +3,7 @@
 #    generated  "nendo -c src" command. 
 # 
 
-  callProcedure( 'require',
+  trampCall( callProcedure( 'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
           @_require
@@ -12,7 +12,7 @@
       end    ,
       Cell.new(
       "syslog"
-               ))
+               )))
 #--------------------
 
   begin
@@ -31,7 +31,7 @@
                         rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                       end                    ,
                     "%s"                    ,
-                      callProcedure( '+',
+                      trampCall( callProcedure( '+',
                           begin
                             if @global_lisp_binding.has_key?('__PLMARK') then
                               @__PLMARK
@@ -44,7 +44,7 @@
                                 _str
                               rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                             end
-                                   )))
+                                   ))))
                   )
               rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
             end

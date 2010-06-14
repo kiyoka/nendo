@@ -26,7 +26,7 @@
                             false
                           end
                       } ; ___lambda.call(
-                            callProcedure( 'eqv?',
+                            trampCall( callProcedure( 'eqv?',
                                 begin
                                   if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                     @_eqv_QUMARK
@@ -39,7 +39,7 @@
                                       ___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023
                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                   end
-                                         )))
+                                         ))))
                                  )
                     end
                    ) then
@@ -64,7 +64,7 @@
                                 false
                               end
                           } ; ___lambda.call(
-                                callProcedure( 'eqv?',
+                                trampCall( callProcedure( 'eqv?',
                                     begin
                                       if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                         @_eqv_QUMARK
@@ -77,7 +77,7 @@
                                           ___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end
-                                             )))
+                                             ))))
                                      )
                         end
                        ) then
@@ -102,7 +102,7 @@
                                     false
                                   end
                               } ; ___lambda.call(
-                                    callProcedure( 'eqv?',
+                                    trampCall( callProcedure( 'eqv?',
                                         begin
                                           if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                             @_eqv_QUMARK
@@ -115,7 +115,7 @@
                                               ___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023
                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                           end
-                                                 )))
+                                                 ))))
                                          )
                             end
                            ) then
@@ -140,7 +140,7 @@
                                         false
                                       end
                                   } ; ___lambda.call(
-                                        callProcedure( 'eqv?',
+                                        trampCall( callProcedure( 'eqv?',
                                             begin
                                               if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                                 @_eqv_QUMARK
@@ -153,7 +153,7 @@
                                                   ___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023
                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                               end
-                                                     )))
+                                                     ))))
                                              )
                                 end
                                ) then
@@ -192,7 +192,7 @@
     @global_lisp_binding['_html_MIMARKescape_MIMARKstring'] = true
     @_html_MIMARKescape_MIMARKstring = 
         Proc.new { |_string| 
-            callProcedure( 'string-join',
+            trampCall( callProcedure( 'string-join',
                 begin
                   if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                     @_string_MIMARKjoin
@@ -200,7 +200,7 @@
                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:49"] + __e.backtrace ) ; raise __e
                 end              ,
                 Cell.new(
-                  callProcedure( 'map',
+                  trampCall( callProcedure( 'map',
                       begin
                         if @global_lisp_binding.has_key?('_map') then
                           @_map
@@ -214,7 +214,7 @@
                           else raise NameError.new( "Error: undefined variable _html_MIMARKescape", "_html_MIMARKescape" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:51"] + __e.backtrace ) ; raise __e
                         end                      ,Cell.new(
-                        callProcedure( 'to-list',
+                        trampCall( callProcedure( 'to-list',
                             begin
                               if @global_lisp_binding.has_key?('_to_MIMARKlist') then
                                 @_to_MIMARKlist
@@ -228,10 +228,10 @@
                                     )
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e
                               end
-                                     ))
-                               )))                ,Cell.new(
+                                     )))
+                               ))))                ,Cell.new(
                 ""
-                         )))
+                         ))))
         }
   end
 #--------------------
@@ -267,7 +267,7 @@
                     begin
                       @global_lisp_binding['___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034'] = true
                       @___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034 = 
-                          callProcedure( 'find',
+                          trampCall( callProcedure( 'find',
                               begin
                                 if @global_lisp_binding.has_key?('_find') then
                                   @_find
@@ -276,7 +276,7 @@
                               end                            ,
                               Cell.new(
                                 Proc.new { |_e| 
-                                    callProcedure( 'memq',
+                                    trampCall( callProcedure( 'memq',
                                         begin
                                           if @global_lisp_binding.has_key?('_memq') then
                                             @_memq
@@ -288,7 +288,7 @@
                                               _type
                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
                                           end                                        ,Cell.new(
-                                          callProcedure( 'car',
+                                          trampCall( callProcedure( 'car',
                                               begin
                                                 if @global_lisp_binding.has_key?('_car') then
                                                   @_car
@@ -300,8 +300,8 @@
                                                     _e
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                                 end
-                                                       ))
-                                                 )))
+                                                       )))
+                                                 ))))
                                 }                              ,Cell.new(
                                 begin
                                   if @global_lisp_binding.has_key?('__ASMARKdoctype_MIMARKalist_ASMARK') then
@@ -309,10 +309,10 @@
                                   else raise NameError.new( "Error: undefined variable __ASMARKdoctype_MIMARKalist_ASMARK", "__ASMARKdoctype_MIMARKalist_ASMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                 end
-                                       )))
+                                       ))))
                     end
                    ) then
-                      callProcedure( 'caddr',
+                      trampCall( callProcedure( 'caddr',
                           begin
                             if @global_lisp_binding.has_key?('_caddr') then
                               @_caddr
@@ -326,7 +326,7 @@
                               else raise NameError.new( "Error: undefined variable ___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034", "___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034" ) end
                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                             end
-                                   ))
+                                   )))
                   else
                       if ( 
                       true
@@ -345,7 +345,7 @@
                   end
               } ; ___lambda.call(
                     if ( 
-                      callProcedure( 'null?',
+                      trampCall( callProcedure( 'null?',
                           begin
                             if @global_lisp_binding.has_key?('_null_QUMARK') then
                               @_null_QUMARK
@@ -357,7 +357,7 @@
                                 _type
                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
                             end
-                                   ))
+                                   )))
                      ) then
                       LispKeyword.new( "html-4.01-strict" )
                     else
@@ -381,7 +381,7 @@
                   _get_MIMARKattr                   = 
                     Proc.new { |_args,_attrs| 
                         if ( 
-                          callProcedure( 'null?',
+                          trampCall( callProcedure( 'null?',
                               begin
                                 if @global_lisp_binding.has_key?('_null_QUMARK') then
                                   @_null_QUMARK
@@ -393,10 +393,10 @@
                                     _args
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                 end
-                                       ))
+                                       )))
                          ) then
                             begin
-                                callProcedure( 'values',
+                                trampCall( callProcedure( 'values',
                                     begin
                                       if @global_lisp_binding.has_key?('_values') then
                                         @_values
@@ -404,7 +404,7 @@
                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
-                                      callProcedure( 'reverse',
+                                      trampCall( callProcedure( 'reverse',
                                           begin
                                             if @global_lisp_binding.has_key?('_reverse') then
                                               @_reverse
@@ -416,16 +416,16 @@
                                                 _attrs
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                             end
-                                                   ))                                    ,Cell.new(
+                                                   )))                                    ,Cell.new(
                                       begin
                                           _args
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                       end
-                                             )))
+                                             ))))
                             end
                         else
                             if ( 
-                              callProcedure( 'keyword?',
+                              trampCall( callProcedure( 'keyword?',
                                   begin
                                     if @global_lisp_binding.has_key?('_keyword_QUMARK') then
                                       @_keyword_QUMARK
@@ -433,7 +433,7 @@
                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:106"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   Cell.new(
-                                    callProcedure( 'car',
+                                    trampCall( callProcedure( 'car',
                                         begin
                                           if @global_lisp_binding.has_key?('_car') then
                                             @_car
@@ -445,12 +445,12 @@
                                               _args
                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                           end
-                                                 ))
-                                           ))
+                                                 )))
+                                           )))
                              ) then
                                 begin
                                     if ( 
-                                      callProcedure( 'null?',
+                                      trampCall( callProcedure( 'null?',
                                           begin
                                             if @global_lisp_binding.has_key?('_null_QUMARK') then
                                               @_null_QUMARK
@@ -458,7 +458,7 @@
                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
-                                            callProcedure( 'cdr',
+                                            trampCall( callProcedure( 'cdr',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_cdr') then
                                                     @_cdr
@@ -470,11 +470,11 @@
                                                       _args
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                   end
-                                                         ))
-                                                   ))
+                                                         )))
+                                                   )))
                                      ) then
                                         begin
-                                            callProcedure( 'values',
+                                            trampCall( callProcedure( 'values',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_values') then
                                                     @_values
@@ -482,7 +482,7 @@
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
-                                                  callProcedure( 'reverse',
+                                                  trampCall( callProcedure( 'reverse',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_reverse') then
                                                           @_reverse
@@ -490,7 +490,7 @@
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
-                                                        callProcedure( 'list*',
+                                                        trampCall( callProcedure( 'list*',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                 @_list_ASMARK
@@ -498,7 +498,7 @@
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
-                                                              callProcedure( 'car',
+                                                              trampCall( callProcedure( 'car',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_car') then
                                                                       @_car
@@ -510,23 +510,23 @@
                                                                         _args
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                     end
-                                                                           ))                                                            ,Cell.new(
+                                                                           )))                                                            ,Cell.new(
                                                             " "                                                            ,Cell.new(
                                                               begin
                                                                   _attrs
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                               end
-                                                                     ))))
-                                                               ))                                                ,Cell.new(
+                                                                     )))))
+                                                               )))                                                ,Cell.new(
                                                   begin
                                                       _args
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                   end
-                                                         )))
+                                                         ))))
                                         end
                                     else
                                         if ( 
-                                          callProcedure( 'eq?',
+                                          trampCall( callProcedure( 'eq?',
                                               begin
                                                 if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                   @_eq_QUMARK
@@ -534,7 +534,7 @@
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
-                                                callProcedure( 'cadr',
+                                                trampCall( callProcedure( 'cadr',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_cadr') then
                                                         @_cadr
@@ -546,18 +546,18 @@
                                                           _args
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             ))                                              ,Cell.new(
+                                                             )))                                              ,Cell.new(
                                               false
-                                                       )))
+                                                       ))))
                                          ) then
                                             begin
-                                                callProcedure( 'get-attr',
+                                                trampCall( callProcedure( 'get-attr',
                                                     begin
                                                         _get_MIMARKattr
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
-                                                      callProcedure( 'cddr',
+                                                      trampCall( callProcedure( 'cddr',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_cddr') then
                                                               @_cddr
@@ -569,16 +569,16 @@
                                                                 _args
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                             end
-                                                                   ))                                                    ,Cell.new(
+                                                                   )))                                                    ,Cell.new(
                                                       begin
                                                           _attrs
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             )))
+                                                             ))))
                                             end
                                         else
                                             if ( 
-                                              callProcedure( 'eq?',
+                                              trampCall( callProcedure( 'eq?',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                       @_eq_QUMARK
@@ -586,7 +586,7 @@
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
-                                                    callProcedure( 'cadr',
+                                                    trampCall( callProcedure( 'cadr',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_cadr') then
                                                             @_cadr
@@ -598,18 +598,18 @@
                                                               _args
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                           end
-                                                                 ))                                                  ,Cell.new(
+                                                                 )))                                                  ,Cell.new(
                                                   true
-                                                           )))
+                                                           ))))
                                              ) then
                                                 begin
-                                                    callProcedure( 'get-attr',
+                                                    trampCall( callProcedure( 'get-attr',
                                                         begin
                                                             _get_MIMARKattr
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
-                                                          callProcedure( 'cddr',
+                                                          trampCall( callProcedure( 'cddr',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cddr') then
                                                                   @_cddr
@@ -621,8 +621,8 @@
                                                                     _args
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                 end
-                                                                       ))                                                        ,Cell.new(
-                                                          callProcedure( 'list*',
+                                                                       )))                                                        ,Cell.new(
+                                                          trampCall( callProcedure( 'list*',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                   @_list_ASMARK
@@ -630,7 +630,7 @@
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
-                                                                callProcedure( 'car',
+                                                                trampCall( callProcedure( 'car',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_car') then
                                                                         @_car
@@ -642,27 +642,27 @@
                                                                           _args
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                       end
-                                                                             ))                                                              ,Cell.new(
+                                                                             )))                                                              ,Cell.new(
                                                               " "                                                              ,Cell.new(
                                                                 begin
                                                                     _attrs
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                 end
-                                                                       ))))
-                                                                 )))
+                                                                       )))))
+                                                                 ))))
                                                 end
                                             else
                                                 if ( 
                                                 true
                                                  ) then
                                                     begin
-                                                        callProcedure( 'get-attr',
+                                                        trampCall( callProcedure( 'get-attr',
                                                             begin
                                                                 _get_MIMARKattr
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                             Cell.new(
-                                                              callProcedure( 'cddr',
+                                                              trampCall( callProcedure( 'cddr',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cddr') then
                                                                       @_cddr
@@ -674,8 +674,8 @@
                                                                         _args
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                     end
-                                                                           ))                                                            ,Cell.new(
-                                                              callProcedure( 'list*',
+                                                                           )))                                                            ,Cell.new(
+                                                              trampCall( callProcedure( 'list*',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                       @_list_ASMARK
@@ -683,7 +683,7 @@
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
-                                                                    callProcedure( 'sprintf',
+                                                                    trampCall( callProcedure( 'sprintf',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                                             @_sprintf
@@ -692,7 +692,7 @@
                                                                         end                                                                      ,
                                                                         Cell.new(
                                                                         "=\"%s\""                                                                        ,Cell.new(
-                                                                          callProcedure( 'html-escape-string',
+                                                                          trampCall( callProcedure( 'html-escape-string',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_html_MIMARKescape_MIMARKstring') then
                                                                                   @_html_MIMARKescape_MIMARKstring
@@ -700,7 +700,7 @@
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
                                                                               Cell.new(
-                                                                                callProcedure( 'x->string',
+                                                                                trampCall( callProcedure( 'x->string',
                                                                                     begin
                                                                                       if @global_lisp_binding.has_key?('_x_MIMARK_GTMARKstring') then
                                                                                         @_x_MIMARK_GTMARKstring
@@ -708,7 +708,7 @@
                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                     end                                                                                  ,
                                                                                     Cell.new(
-                                                                                      callProcedure( 'cadr',
+                                                                                      trampCall( callProcedure( 'cadr',
                                                                                           begin
                                                                                             if @global_lisp_binding.has_key?('_cadr') then
                                                                                               @_cadr
@@ -720,11 +720,11 @@
                                                                                                 _args
                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                                             end
-                                                                                                   ))
-                                                                                             ))
-                                                                                       ))
-                                                                                 )))                                                                  ,Cell.new(
-                                                                    callProcedure( 'car',
+                                                                                                   )))
+                                                                                             )))
+                                                                                       )))
+                                                                                 ))))                                                                  ,Cell.new(
+                                                                    trampCall( callProcedure( 'car',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('_car') then
                                                                             @_car
@@ -736,14 +736,14 @@
                                                                               _args
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                           end
-                                                                                 ))                                                                  ,Cell.new(
+                                                                                 )))                                                                  ,Cell.new(
                                                                   " "                                                                  ,Cell.new(
                                                                     begin
                                                                         _attrs
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                     end
-                                                                           )))))
-                                                                     )))
+                                                                           ))))))
+                                                                     ))))
                                                     end
                                                 else
                                                   Nil.new
@@ -757,7 +757,7 @@
                                 true
                                  ) then
                                     begin
-                                        callProcedure( 'values',
+                                        trampCall( callProcedure( 'values',
                                             begin
                                               if @global_lisp_binding.has_key?('_values') then
                                                 @_values
@@ -765,7 +765,7 @@
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
-                                              callProcedure( 'reverse',
+                                              trampCall( callProcedure( 'reverse',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_reverse') then
                                                       @_reverse
@@ -777,12 +777,12 @@
                                                         _attrs
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           ))                                            ,Cell.new(
+                                                           )))                                            ,Cell.new(
                                               begin
                                                   _args
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                               end
-                                                     )))
+                                                     ))))
                                     end
                                 else
                                   Nil.new
@@ -799,7 +799,7 @@
                           end
                          ) then
                             Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                callProcedure( 'call-with-values',
+                                trampCall( callProcedure( 'call-with-values',
                                     begin
                                       if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                         @_call_MIMARKwith_MIMARKvalues
@@ -808,7 +808,7 @@
                                     end                                  ,
                                     Cell.new(
                                       Proc.new { || 
-                                          callProcedure( 'get-attr',
+                                          trampCall( callProcedure( 'get-attr',
                                               begin
                                                   _get_MIMARKattr
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -819,11 +819,11 @@
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               Cell.new()
-                                                       )))
+                                                       ))))
                                       }                                    ,Cell.new(
                                       Proc.new { |_attr,_args| 
                                           if ( 
-                                            callProcedure( 'not',
+                                            trampCall( callProcedure( 'not',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_not') then
                                                     @_not
@@ -831,7 +831,7 @@
                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
-                                                  callProcedure( 'null?',
+                                                  trampCall( callProcedure( 'null?',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                           @_null_QUMARK
@@ -843,12 +843,12 @@
                                                             _args
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                         end
-                                                               ))
-                                                         ))
+                                                               )))
+                                                         )))
                                            ) then
                                               begin
                                                   begin raise RuntimeError, 
-                                                    callProcedure( 'sprintf',
+                                                    trampCall( callProcedure( 'sprintf',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                             @_sprintf
@@ -861,7 +861,7 @@
                                                               _name
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,Cell.new(
-                                                          callProcedure( 'write-to-string',
+                                                          trampCall( callProcedure( 'write-to-string',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_write_MIMARKto_MIMARKstring') then
                                                                   @_write_MIMARKto_MIMARKstring
@@ -873,15 +873,15 @@
                                                                     _args
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                 end
-                                                                       ))
-                                                                 ))))
+                                                                       )))
+                                                                 )))))
                                                   rescue => __e 
                                                     __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace )
                                                     raise __e
                                                   end 
                                               end
                                           end
-                                          callProcedure( 'list',
+                                          trampCall( callProcedure( 'list',
                                               begin
                                                 if @global_lisp_binding.has_key?('_list') then
                                                   @_list
@@ -899,13 +899,13 @@
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               " />"
-                                                       )))))
+                                                       ))))))
                                       }
-                                             )))
+                                             ))))
                             }
                         else
                             Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                callProcedure( 'call-with-values',
+                                trampCall( callProcedure( 'call-with-values',
                                     begin
                                       if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                         @_call_MIMARKwith_MIMARKvalues
@@ -914,7 +914,7 @@
                                     end                                  ,
                                     Cell.new(
                                       Proc.new { || 
-                                          callProcedure( 'get-attr',
+                                          trampCall( callProcedure( 'get-attr',
                                               begin
                                                   _get_MIMARKattr
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -925,10 +925,10 @@
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,Cell.new(
                                               Cell.new()
-                                                       )))
+                                                       ))))
                                       }                                    ,Cell.new(
                                       Proc.new { |_attr,_args| 
-                                          callProcedure( 'list',
+                                          trampCall( callProcedure( 'list',
                                               begin
                                                 if @global_lisp_binding.has_key?('_list') then
                                                   @_list
@@ -957,13 +957,13 @@
                                                 end                                              ,Cell.new(
                                               "
 >"
-                                                       )))))))))
+                                                       ))))))))))
                                       }
-                                             )))
+                                             ))))
                             }
                         end
                     } ; ___lambda.call(
-                          callProcedure( 'get-keyword',
+                          trampCall( callProcedure( 'get-keyword',
                               begin
                                 if @global_lisp_binding.has_key?('_get_MIMARKkeyword') then
                                   @_get_MIMARKkeyword
@@ -977,7 +977,7 @@
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                 end                              ,Cell.new(
                               false
-                                       ))))
+                                       )))))
                                )
                   end
               } ; ___lambda.call(
@@ -996,7 +996,7 @@
               ___lambda = lambda { |_make_MIMARKscheme_MIMARKname| 
                   _make_MIMARKscheme_MIMARKname                   = 
                     Proc.new { |_name| 
-                        callProcedure( 'string->symbol',
+                        trampCall( callProcedure( 'string->symbol',
                             begin
                               if @global_lisp_binding.has_key?('_string_MIMARK_GTMARKsymbol') then
                                 @_string_MIMARK_GTMARKsymbol
@@ -1004,7 +1004,7 @@
                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
-                              callProcedure( 'sprintf',
+                              trampCall( callProcedure( 'sprintf',
                                   begin
                                     if @global_lisp_binding.has_key?('_sprintf') then
                                       @_sprintf
@@ -1017,15 +1017,15 @@
                                         _name
                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                                     end
-                                           )))
-                                     ))
+                                           ))))
+                                     )))
                     }
                   begin
                     ___lambda = lambda { |_loop| 
                         _loop                         = 
                           Proc.new { |_elements,_r| 
                               if ( 
-                                callProcedure( 'null?',
+                                trampCall( callProcedure( 'null?',
                                     begin
                                       if @global_lisp_binding.has_key?('_null_QUMARK') then
                                         @_null_QUMARK
@@ -1037,10 +1037,10 @@
                                           _elements
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                       end
-                                             ))
+                                             )))
                                ) then
                                   begin
-                                      callProcedure( 'cons',
+                                      trampCall( callProcedure( 'cons',
                                           begin
                                             if @global_lisp_binding.has_key?('_cons') then
                                               @_cons
@@ -1049,7 +1049,7 @@
                                           end                                        ,
                                           Cell.new(
                                           :"begin"                                          ,Cell.new(
-                                            callProcedure( 'reverse',
+                                            trampCall( callProcedure( 'reverse',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_reverse') then
                                                     @_reverse
@@ -1061,13 +1061,13 @@
                                                       _r
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                   end
-                                                         ))
-                                                   )))
+                                                         )))
+                                                   ))))
                                   end
                               else
                                   if ( 
                                     if ( 
-                                      callProcedure( 'not',
+                                      trampCall( callProcedure( 'not',
                                           begin
                                             if @global_lisp_binding.has_key?('_not') then
                                               @_not
@@ -1075,7 +1075,7 @@
                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           Cell.new(
-                                            callProcedure( 'eq?',
+                                            trampCall( callProcedure( 'eq?',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                     @_eq_QUMARK
@@ -1084,7 +1084,7 @@
                                                 end                                              ,
                                                 Cell.new(
                                                 false                                                ,Cell.new(
-                                                  callProcedure( 'pair?',
+                                                  trampCall( callProcedure( 'pair?',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                           @_pair_QUMARK
@@ -1092,7 +1092,7 @@
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
-                                                        callProcedure( 'cdr',
+                                                        trampCall( callProcedure( 'cdr',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_cdr') then
                                                                 @_cdr
@@ -1104,12 +1104,12 @@
                                                                   _elements
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                               end
-                                                                     ))
-                                                               ))
-                                                         )))
-                                                   ))
+                                                                     )))
+                                                               )))
+                                                         ))))
+                                                   )))
                                      ) then
-                                        callProcedure( 'eqv?',
+                                        trampCall( callProcedure( 'eqv?',
                                             begin
                                               if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                                 @_eqv_QUMARK
@@ -1117,7 +1117,7 @@
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
-                                              callProcedure( 'cadr',
+                                              trampCall( callProcedure( 'cadr',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_cadr') then
                                                       @_cadr
@@ -1129,21 +1129,21 @@
                                                         _elements
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           ))                                            ,Cell.new(
+                                                           )))                                            ,Cell.new(
                                             LispKeyword.new( "empty" )
-                                                     )))
+                                                     ))))
                                     else
                                       false
                                     end
                                    ) then
                                       begin
-                                          callProcedure( 'loop',
+                                          trampCall( callProcedure( 'loop',
                                               begin
                                                   _loop
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
-                                                callProcedure( 'cddr',
+                                                trampCall( callProcedure( 'cddr',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_cddr') then
                                                         @_cddr
@@ -1155,8 +1155,8 @@
                                                           _elements
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             ))                                              ,Cell.new(
-                                                callProcedure( 'list*',
+                                                             )))                                              ,Cell.new(
+                                                trampCall( callProcedure( 'list*',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                         @_list_ASMARK
@@ -1164,7 +1164,7 @@
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
-                                                      callProcedure( 'cons',
+                                                      trampCall( callProcedure( 'cons',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_cons') then
                                                               @_cons
@@ -1173,7 +1173,7 @@
                                                           end                                                        ,
                                                           Cell.new(
                                                           :"define"                                                          ,Cell.new(
-                                                            callProcedure( 'cons',
+                                                            trampCall( callProcedure( 'cons',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                     @_cons
@@ -1181,13 +1181,13 @@
                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
-                                                                  callProcedure( 'make-scheme-name',
+                                                                  trampCall( callProcedure( 'make-scheme-name',
                                                                       begin
                                                                           _make_MIMARKscheme_MIMARKname
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
-                                                                        callProcedure( 'car',
+                                                                        trampCall( callProcedure( 'car',
                                                                             begin
                                                                               if @global_lisp_binding.has_key?('_car') then
                                                                                 @_car
@@ -1199,9 +1199,9 @@
                                                                                   _elements
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                               end
-                                                                                     ))
-                                                                               ))                                                                ,Cell.new(
-                                                                  callProcedure( 'cons',
+                                                                                     )))
+                                                                               )))                                                                ,Cell.new(
+                                                                  trampCall( callProcedure( 'cons',
                                                                       begin
                                                                         if @global_lisp_binding.has_key?('_cons') then
                                                                           @_cons
@@ -1209,7 +1209,7 @@
                                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
-                                                                        callProcedure( 'cons',
+                                                                        trampCall( callProcedure( 'cons',
                                                                             begin
                                                                               if @global_lisp_binding.has_key?('_cons') then
                                                                                 @_cons
@@ -1218,7 +1218,7 @@
                                                                             end                                                                          ,
                                                                             Cell.new(
                                                                             :"make-html-element"                                                                            ,Cell.new(
-                                                                              callProcedure( 'cons',
+                                                                              trampCall( callProcedure( 'cons',
                                                                                   begin
                                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                                       @_cons
@@ -1226,7 +1226,7 @@
                                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,
                                                                                   Cell.new(
-                                                                                    callProcedure( 'cons',
+                                                                                    trampCall( callProcedure( 'cons',
                                                                                         begin
                                                                                           if @global_lisp_binding.has_key?('_cons') then
                                                                                             @_cons
@@ -1235,7 +1235,7 @@
                                                                                         end                                                                                      ,
                                                                                         Cell.new(
                                                                                         :"quote"                                                                                        ,Cell.new(
-                                                                                          callProcedure( 'cons',
+                                                                                          trampCall( callProcedure( 'cons',
                                                                                               begin
                                                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                                                   @_cons
@@ -1243,7 +1243,7 @@
                                                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                               end                                                                                            ,
                                                                                               Cell.new(
-                                                                                                callProcedure( 'car',
+                                                                                                trampCall( callProcedure( 'car',
                                                                                                     begin
                                                                                                       if @global_lisp_binding.has_key?('_car') then
                                                                                                         @_car
@@ -1255,18 +1255,18 @@
                                                                                                           _elements
                                                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                       end
-                                                                                                             ))                                                                                              ,Cell.new(
+                                                                                                             )))                                                                                              ,Cell.new(
                                                                                               
-                                                                                                       )))
-                                                                                                 )))                                                                                  ,Cell.new(
+                                                                                                       ))))
+                                                                                                 ))))                                                                                  ,Cell.new(
                                                                                   Cell.new(LispKeyword.new( "empty?" ),Cell.new(true))
-                                                                                           )))
-                                                                                     )))                                                                      ,Cell.new(
+                                                                                           ))))
+                                                                                     ))))                                                                      ,Cell.new(
                                                                       
-                                                                               )))
-                                                                         )))
-                                                                   )))                                                    ,Cell.new(
-                                                      callProcedure( 'cons',
+                                                                               ))))
+                                                                         ))))
+                                                                   ))))                                                    ,Cell.new(
+                                                      trampCall( callProcedure( 'cons',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_cons') then
                                                               @_cons
@@ -1275,7 +1275,7 @@
                                                           end                                                        ,
                                                           Cell.new(
                                                           :"export"                                                          ,Cell.new(
-                                                            callProcedure( 'cons',
+                                                            trampCall( callProcedure( 'cons',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                     @_cons
@@ -1283,13 +1283,13 @@
                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
-                                                                  callProcedure( 'make-scheme-name',
+                                                                  trampCall( callProcedure( 'make-scheme-name',
                                                                       begin
                                                                           _make_MIMARKscheme_MIMARKname
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
-                                                                        callProcedure( 'car',
+                                                                        trampCall( callProcedure( 'car',
                                                                             begin
                                                                               if @global_lisp_binding.has_key?('_car') then
                                                                                 @_car
@@ -1301,30 +1301,30 @@
                                                                                   _elements
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                               end
-                                                                                     ))
-                                                                               ))                                                                ,Cell.new(
+                                                                                     )))
+                                                                               )))                                                                ,Cell.new(
                                                                 
-                                                                         )))
-                                                                   )))                                                    ,Cell.new(
+                                                                         ))))
+                                                                   ))))                                                    ,Cell.new(
                                                       begin
                                                           _r
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             ))))
-                                                       )))
+                                                             )))))
+                                                       ))))
                                       end
                                   else
                                       if ( 
                                       true
                                        ) then
                                           begin
-                                              callProcedure( 'loop',
+                                              trampCall( callProcedure( 'loop',
                                                   begin
                                                       _loop
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
-                                                    callProcedure( 'cdr',
+                                                    trampCall( callProcedure( 'cdr',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_cdr') then
                                                             @_cdr
@@ -1336,8 +1336,8 @@
                                                               _elements
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                           end
-                                                                 ))                                                  ,Cell.new(
-                                                    callProcedure( 'list*',
+                                                                 )))                                                  ,Cell.new(
+                                                    trampCall( callProcedure( 'list*',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                             @_list_ASMARK
@@ -1345,7 +1345,7 @@
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
-                                                          callProcedure( 'cons',
+                                                          trampCall( callProcedure( 'cons',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                   @_cons
@@ -1354,7 +1354,7 @@
                                                               end                                                            ,
                                                               Cell.new(
                                                               :"define"                                                              ,Cell.new(
-                                                                callProcedure( 'cons',
+                                                                trampCall( callProcedure( 'cons',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_cons') then
                                                                         @_cons
@@ -1362,13 +1362,13 @@
                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
-                                                                      callProcedure( 'make-scheme-name',
+                                                                      trampCall( callProcedure( 'make-scheme-name',
                                                                           begin
                                                                               _make_MIMARKscheme_MIMARKname
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
-                                                                            callProcedure( 'car',
+                                                                            trampCall( callProcedure( 'car',
                                                                                 begin
                                                                                   if @global_lisp_binding.has_key?('_car') then
                                                                                     @_car
@@ -1380,9 +1380,9 @@
                                                                                       _elements
                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                   end
-                                                                                         ))
-                                                                                   ))                                                                    ,Cell.new(
-                                                                      callProcedure( 'cons',
+                                                                                         )))
+                                                                                   )))                                                                    ,Cell.new(
+                                                                      trampCall( callProcedure( 'cons',
                                                                           begin
                                                                             if @global_lisp_binding.has_key?('_cons') then
                                                                               @_cons
@@ -1390,7 +1390,7 @@
                                                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
-                                                                            callProcedure( 'cons',
+                                                                            trampCall( callProcedure( 'cons',
                                                                                 begin
                                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                                     @_cons
@@ -1399,7 +1399,7 @@
                                                                                 end                                                                              ,
                                                                                 Cell.new(
                                                                                 :"make-html-element"                                                                                ,Cell.new(
-                                                                                  callProcedure( 'cons',
+                                                                                  trampCall( callProcedure( 'cons',
                                                                                       begin
                                                                                         if @global_lisp_binding.has_key?('_cons') then
                                                                                           @_cons
@@ -1407,7 +1407,7 @@
                                                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                       end                                                                                    ,
                                                                                       Cell.new(
-                                                                                        callProcedure( 'cons',
+                                                                                        trampCall( callProcedure( 'cons',
                                                                                             begin
                                                                                               if @global_lisp_binding.has_key?('_cons') then
                                                                                                 @_cons
@@ -1416,7 +1416,7 @@
                                                                                             end                                                                                          ,
                                                                                             Cell.new(
                                                                                             :"quote"                                                                                            ,Cell.new(
-                                                                                              callProcedure( 'cons',
+                                                                                              trampCall( callProcedure( 'cons',
                                                                                                   begin
                                                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                                                       @_cons
@@ -1424,7 +1424,7 @@
                                                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                   end                                                                                                ,
                                                                                                   Cell.new(
-                                                                                                    callProcedure( 'car',
+                                                                                                    trampCall( callProcedure( 'car',
                                                                                                         begin
                                                                                                           if @global_lisp_binding.has_key?('_car') then
                                                                                                             @_car
@@ -1436,18 +1436,18 @@
                                                                                                               _elements
                                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                           end
-                                                                                                                 ))                                                                                                  ,Cell.new(
+                                                                                                                 )))                                                                                                  ,Cell.new(
                                                                                                   
-                                                                                                           )))
-                                                                                                     )))                                                                                      ,Cell.new(
+                                                                                                           ))))
+                                                                                                     ))))                                                                                      ,Cell.new(
                                                                                       
-                                                                                               )))
-                                                                                         )))                                                                          ,Cell.new(
+                                                                                               ))))
+                                                                                         ))))                                                                          ,Cell.new(
                                                                           
-                                                                                   )))
-                                                                             )))
-                                                                       )))                                                        ,Cell.new(
-                                                          callProcedure( 'cons',
+                                                                                   ))))
+                                                                             ))))
+                                                                       ))))                                                        ,Cell.new(
+                                                          trampCall( callProcedure( 'cons',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                   @_cons
@@ -1456,7 +1456,7 @@
                                                               end                                                            ,
                                                               Cell.new(
                                                               :"export"                                                              ,Cell.new(
-                                                                callProcedure( 'cons',
+                                                                trampCall( callProcedure( 'cons',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_cons') then
                                                                         @_cons
@@ -1464,13 +1464,13 @@
                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
-                                                                      callProcedure( 'make-scheme-name',
+                                                                      trampCall( callProcedure( 'make-scheme-name',
                                                                           begin
                                                                               _make_MIMARKscheme_MIMARKname
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                           Cell.new(
-                                                                            callProcedure( 'car',
+                                                                            trampCall( callProcedure( 'car',
                                                                                 begin
                                                                                   if @global_lisp_binding.has_key?('_car') then
                                                                                     @_car
@@ -1482,17 +1482,17 @@
                                                                                       _elements
                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                   end
-                                                                                         ))
-                                                                                   ))                                                                    ,Cell.new(
+                                                                                         )))
+                                                                                   )))                                                                    ,Cell.new(
                                                                     
-                                                                             )))
-                                                                       )))                                                        ,Cell.new(
+                                                                             ))))
+                                                                       ))))                                                        ,Cell.new(
                                                           begin
                                                               _r
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                           end
-                                                                 ))))
-                                                           )))
+                                                                 )))))
+                                                           ))))
                                           end
                                       else
                                         Nil.new
@@ -1500,7 +1500,7 @@
                                   end
                               end
                           }
-                        callProcedure( 'loop',
+                        trampCall( callProcedure( 'loop',
                             begin
                                 _loop
                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
@@ -1511,7 +1511,7 @@
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                               end                            ,Cell.new(
                             Cell.new()
-                                     )))
+                                     ))))
                     } ; ___lambda.call(
                     nil
                                )
@@ -1533,7 +1533,7 @@
       begin
         @global_lisp_binding['_html_COMARKtt'] = true
         @_html_COMARKtt = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1542,7 +1542,7 @@
                 end              ,
                 Cell.new(
                 :"tt"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKi'] = true
@@ -1552,7 +1552,7 @@
       begin
         @global_lisp_binding['_html_COMARKi'] = true
         @_html_COMARKi = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1561,7 +1561,7 @@
                 end              ,
                 Cell.new(
                 :"i"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKb'] = true
@@ -1571,7 +1571,7 @@
       begin
         @global_lisp_binding['_html_COMARKb'] = true
         @_html_COMARKb = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1580,7 +1580,7 @@
                 end              ,
                 Cell.new(
                 :"b"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKbig'] = true
@@ -1590,7 +1590,7 @@
       begin
         @global_lisp_binding['_html_COMARKbig'] = true
         @_html_COMARKbig = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1599,7 +1599,7 @@
                 end              ,
                 Cell.new(
                 :"big"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKsmall'] = true
@@ -1609,7 +1609,7 @@
       begin
         @global_lisp_binding['_html_COMARKsmall'] = true
         @_html_COMARKsmall = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1618,7 +1618,7 @@
                 end              ,
                 Cell.new(
                 :"small"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -1632,7 +1632,7 @@
       begin
         @global_lisp_binding['_html_COMARKem'] = true
         @_html_COMARKem = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1641,7 +1641,7 @@
                 end              ,
                 Cell.new(
                 :"em"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKstrong'] = true
@@ -1651,7 +1651,7 @@
       begin
         @global_lisp_binding['_html_COMARKstrong'] = true
         @_html_COMARKstrong = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1660,7 +1660,7 @@
                 end              ,
                 Cell.new(
                 :"strong"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKdfn'] = true
@@ -1670,7 +1670,7 @@
       begin
         @global_lisp_binding['_html_COMARKdfn'] = true
         @_html_COMARKdfn = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1679,7 +1679,7 @@
                 end              ,
                 Cell.new(
                 :"dfn"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKcode'] = true
@@ -1689,7 +1689,7 @@
       begin
         @global_lisp_binding['_html_COMARKcode'] = true
         @_html_COMARKcode = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1698,7 +1698,7 @@
                 end              ,
                 Cell.new(
                 :"code"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKsamp'] = true
@@ -1708,7 +1708,7 @@
       begin
         @global_lisp_binding['_html_COMARKsamp'] = true
         @_html_COMARKsamp = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1717,7 +1717,7 @@
                 end              ,
                 Cell.new(
                 :"samp"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKkbd'] = true
@@ -1727,7 +1727,7 @@
       begin
         @global_lisp_binding['_html_COMARKkbd'] = true
         @_html_COMARKkbd = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1736,7 +1736,7 @@
                 end              ,
                 Cell.new(
                 :"kbd"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKvar'] = true
@@ -1746,7 +1746,7 @@
       begin
         @global_lisp_binding['_html_COMARKvar'] = true
         @_html_COMARKvar = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1755,7 +1755,7 @@
                 end              ,
                 Cell.new(
                 :"var"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKcite'] = true
@@ -1765,7 +1765,7 @@
       begin
         @global_lisp_binding['_html_COMARKcite'] = true
         @_html_COMARKcite = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1774,7 +1774,7 @@
                 end              ,
                 Cell.new(
                 :"cite"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKabbr'] = true
@@ -1784,7 +1784,7 @@
       begin
         @global_lisp_binding['_html_COMARKabbr'] = true
         @_html_COMARKabbr = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1793,7 +1793,7 @@
                 end              ,
                 Cell.new(
                 :"abbr"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKacronym'] = true
@@ -1803,7 +1803,7 @@
       begin
         @global_lisp_binding['_html_COMARKacronym'] = true
         @_html_COMARKacronym = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1812,7 +1812,7 @@
                 end              ,
                 Cell.new(
                 :"acronym"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -1826,7 +1826,7 @@
       begin
         @global_lisp_binding['_html_COMARKsub'] = true
         @_html_COMARKsub = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1835,7 +1835,7 @@
                 end              ,
                 Cell.new(
                 :"sub"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKsup'] = true
@@ -1845,7 +1845,7 @@
       begin
         @global_lisp_binding['_html_COMARKsup'] = true
         @_html_COMARKsup = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1854,7 +1854,7 @@
                 end              ,
                 Cell.new(
                 :"sup"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKspan'] = true
@@ -1864,7 +1864,7 @@
       begin
         @global_lisp_binding['_html_COMARKspan'] = true
         @_html_COMARKspan = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1873,7 +1873,7 @@
                 end              ,
                 Cell.new(
                 :"span"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKbdo'] = true
@@ -1883,7 +1883,7 @@
       begin
         @global_lisp_binding['_html_COMARKbdo'] = true
         @_html_COMARKbdo = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1892,7 +1892,7 @@
                 end              ,
                 Cell.new(
                 :"bdo"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKbr'] = true
@@ -1902,7 +1902,7 @@
       begin
         @global_lisp_binding['_html_COMARKbr'] = true
         @_html_COMARKbr = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1913,7 +1913,7 @@
                 :"br"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
   end
 #--------------------
@@ -1927,7 +1927,7 @@
       begin
         @global_lisp_binding['_html_COMARKbody'] = true
         @_html_COMARKbody = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1936,7 +1936,7 @@
                 end              ,
                 Cell.new(
                 :"body"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKaddress'] = true
@@ -1946,7 +1946,7 @@
       begin
         @global_lisp_binding['_html_COMARKaddress'] = true
         @_html_COMARKaddress = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1955,7 +1955,7 @@
                 end              ,
                 Cell.new(
                 :"address"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKdiv'] = true
@@ -1965,7 +1965,7 @@
       begin
         @global_lisp_binding['_html_COMARKdiv'] = true
         @_html_COMARKdiv = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1974,7 +1974,7 @@
                 end              ,
                 Cell.new(
                 :"div"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -1988,7 +1988,7 @@
       begin
         @global_lisp_binding['_html_COMARKa'] = true
         @_html_COMARKa = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -1997,7 +1997,7 @@
                 end              ,
                 Cell.new(
                 :"a"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2011,7 +2011,7 @@
       begin
         @global_lisp_binding['_html_COMARKmap'] = true
         @_html_COMARKmap = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2020,7 +2020,7 @@
                 end              ,
                 Cell.new(
                 :"map"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKarea'] = true
@@ -2030,7 +2030,7 @@
       begin
         @global_lisp_binding['_html_COMARKarea'] = true
         @_html_COMARKarea = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2041,7 +2041,7 @@
                 :"area"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
   end
 #--------------------
@@ -2055,7 +2055,7 @@
       begin
         @global_lisp_binding['_html_COMARKlink'] = true
         @_html_COMARKlink = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2066,7 +2066,7 @@
                 :"link"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
   end
 #--------------------
@@ -2080,7 +2080,7 @@
       begin
         @global_lisp_binding['_html_COMARKimg'] = true
         @_html_COMARKimg = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2091,7 +2091,7 @@
                 :"img"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
   end
 #--------------------
@@ -2105,7 +2105,7 @@
       begin
         @global_lisp_binding['_html_COMARKobject'] = true
         @_html_COMARKobject = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2114,7 +2114,7 @@
                 end              ,
                 Cell.new(
                 :"object"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKparam'] = true
@@ -2124,7 +2124,7 @@
       begin
         @global_lisp_binding['_html_COMARKparam'] = true
         @_html_COMARKparam = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2135,7 +2135,7 @@
                 :"param"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
   end
 #--------------------
@@ -2149,7 +2149,7 @@
       begin
         @global_lisp_binding['_html_COMARKhr'] = true
         @_html_COMARKhr = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2160,7 +2160,7 @@
                 :"hr"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
   end
 #--------------------
@@ -2174,7 +2174,7 @@
       begin
         @global_lisp_binding['_html_COMARKp'] = true
         @_html_COMARKp = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2183,7 +2183,7 @@
                 end              ,
                 Cell.new(
                 :"p"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2197,7 +2197,7 @@
       begin
         @global_lisp_binding['_html_COMARKh1'] = true
         @_html_COMARKh1 = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2206,7 +2206,7 @@
                 end              ,
                 Cell.new(
                 :"h1"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKh2'] = true
@@ -2216,7 +2216,7 @@
       begin
         @global_lisp_binding['_html_COMARKh2'] = true
         @_html_COMARKh2 = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2225,7 +2225,7 @@
                 end              ,
                 Cell.new(
                 :"h2"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKh3'] = true
@@ -2235,7 +2235,7 @@
       begin
         @global_lisp_binding['_html_COMARKh3'] = true
         @_html_COMARKh3 = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2244,7 +2244,7 @@
                 end              ,
                 Cell.new(
                 :"h3"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKh4'] = true
@@ -2254,7 +2254,7 @@
       begin
         @global_lisp_binding['_html_COMARKh4'] = true
         @_html_COMARKh4 = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2263,7 +2263,7 @@
                 end              ,
                 Cell.new(
                 :"h4"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKh5'] = true
@@ -2273,7 +2273,7 @@
       begin
         @global_lisp_binding['_html_COMARKh5'] = true
         @_html_COMARKh5 = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2282,7 +2282,7 @@
                 end              ,
                 Cell.new(
                 :"h5"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKh6'] = true
@@ -2292,7 +2292,7 @@
       begin
         @global_lisp_binding['_html_COMARKh6'] = true
         @_html_COMARKh6 = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2301,7 +2301,7 @@
                 end              ,
                 Cell.new(
                 :"h6"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2315,7 +2315,7 @@
       begin
         @global_lisp_binding['_html_COMARKpre'] = true
         @_html_COMARKpre = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2324,7 +2324,7 @@
                 end              ,
                 Cell.new(
                 :"pre"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2338,7 +2338,7 @@
       begin
         @global_lisp_binding['_html_COMARKq'] = true
         @_html_COMARKq = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2347,7 +2347,7 @@
                 end              ,
                 Cell.new(
                 :"q"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2361,7 +2361,7 @@
       begin
         @global_lisp_binding['_html_COMARKblockquote'] = true
         @_html_COMARKblockquote = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2370,7 +2370,7 @@
                 end              ,
                 Cell.new(
                 :"blockquote"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2384,7 +2384,7 @@
       begin
         @global_lisp_binding['_html_COMARKins'] = true
         @_html_COMARKins = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2393,7 +2393,7 @@
                 end              ,
                 Cell.new(
                 :"ins"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKdel'] = true
@@ -2403,7 +2403,7 @@
       begin
         @global_lisp_binding['_html_COMARKdel'] = true
         @_html_COMARKdel = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2412,7 +2412,7 @@
                 end              ,
                 Cell.new(
                 :"del"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2426,7 +2426,7 @@
       begin
         @global_lisp_binding['_html_COMARKdl'] = true
         @_html_COMARKdl = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2435,7 +2435,7 @@
                 end              ,
                 Cell.new(
                 :"dl"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKdt'] = true
@@ -2445,7 +2445,7 @@
       begin
         @global_lisp_binding['_html_COMARKdt'] = true
         @_html_COMARKdt = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2454,7 +2454,7 @@
                 end              ,
                 Cell.new(
                 :"dt"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKdd'] = true
@@ -2464,7 +2464,7 @@
       begin
         @global_lisp_binding['_html_COMARKdd'] = true
         @_html_COMARKdd = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2473,7 +2473,7 @@
                 end              ,
                 Cell.new(
                 :"dd"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKol'] = true
@@ -2483,7 +2483,7 @@
       begin
         @global_lisp_binding['_html_COMARKol'] = true
         @_html_COMARKol = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2492,7 +2492,7 @@
                 end              ,
                 Cell.new(
                 :"ol"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKul'] = true
@@ -2502,7 +2502,7 @@
       begin
         @global_lisp_binding['_html_COMARKul'] = true
         @_html_COMARKul = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2511,7 +2511,7 @@
                 end              ,
                 Cell.new(
                 :"ul"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKli'] = true
@@ -2521,7 +2521,7 @@
       begin
         @global_lisp_binding['_html_COMARKli'] = true
         @_html_COMARKli = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2530,7 +2530,7 @@
                 end              ,
                 Cell.new(
                 :"li"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2544,7 +2544,7 @@
       begin
         @global_lisp_binding['_html_COMARKform'] = true
         @_html_COMARKform = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2553,7 +2553,7 @@
                 end              ,
                 Cell.new(
                 :"form"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKlabel'] = true
@@ -2563,7 +2563,7 @@
       begin
         @global_lisp_binding['_html_COMARKlabel'] = true
         @_html_COMARKlabel = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2572,7 +2572,7 @@
                 end              ,
                 Cell.new(
                 :"label"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKinput'] = true
@@ -2582,7 +2582,7 @@
       begin
         @global_lisp_binding['_html_COMARKinput'] = true
         @_html_COMARKinput = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2593,7 +2593,7 @@
                 :"input"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
       begin
         @global_lisp_binding['_html_COMARKselect'] = true
@@ -2603,7 +2603,7 @@
       begin
         @global_lisp_binding['_html_COMARKselect'] = true
         @_html_COMARKselect = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2612,7 +2612,7 @@
                 end              ,
                 Cell.new(
                 :"select"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKoptgroup'] = true
@@ -2622,7 +2622,7 @@
       begin
         @global_lisp_binding['_html_COMARKoptgroup'] = true
         @_html_COMARKoptgroup = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2631,7 +2631,7 @@
                 end              ,
                 Cell.new(
                 :"optgroup"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKoption'] = true
@@ -2641,7 +2641,7 @@
       begin
         @global_lisp_binding['_html_COMARKoption'] = true
         @_html_COMARKoption = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2650,7 +2650,7 @@
                 end              ,
                 Cell.new(
                 :"option"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKtextarea'] = true
@@ -2660,7 +2660,7 @@
       begin
         @global_lisp_binding['_html_COMARKtextarea'] = true
         @_html_COMARKtextarea = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2669,7 +2669,7 @@
                 end              ,
                 Cell.new(
                 :"textarea"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKfieldset'] = true
@@ -2679,7 +2679,7 @@
       begin
         @global_lisp_binding['_html_COMARKfieldset'] = true
         @_html_COMARKfieldset = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2688,7 +2688,7 @@
                 end              ,
                 Cell.new(
                 :"fieldset"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKlegend'] = true
@@ -2698,7 +2698,7 @@
       begin
         @global_lisp_binding['_html_COMARKlegend'] = true
         @_html_COMARKlegend = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2707,7 +2707,7 @@
                 end              ,
                 Cell.new(
                 :"legend"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKbutton'] = true
@@ -2717,7 +2717,7 @@
       begin
         @global_lisp_binding['_html_COMARKbutton'] = true
         @_html_COMARKbutton = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2726,7 +2726,7 @@
                 end              ,
                 Cell.new(
                 :"button"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2740,7 +2740,7 @@
       begin
         @global_lisp_binding['_html_COMARKtable'] = true
         @_html_COMARKtable = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2749,7 +2749,7 @@
                 end              ,
                 Cell.new(
                 :"table"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKcaption'] = true
@@ -2759,7 +2759,7 @@
       begin
         @global_lisp_binding['_html_COMARKcaption'] = true
         @_html_COMARKcaption = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2768,7 +2768,7 @@
                 end              ,
                 Cell.new(
                 :"caption"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKthead'] = true
@@ -2778,7 +2778,7 @@
       begin
         @global_lisp_binding['_html_COMARKthead'] = true
         @_html_COMARKthead = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2787,7 +2787,7 @@
                 end              ,
                 Cell.new(
                 :"thead"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKtfoot'] = true
@@ -2797,7 +2797,7 @@
       begin
         @global_lisp_binding['_html_COMARKtfoot'] = true
         @_html_COMARKtfoot = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2806,7 +2806,7 @@
                 end              ,
                 Cell.new(
                 :"tfoot"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKtbody'] = true
@@ -2816,7 +2816,7 @@
       begin
         @global_lisp_binding['_html_COMARKtbody'] = true
         @_html_COMARKtbody = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2825,7 +2825,7 @@
                 end              ,
                 Cell.new(
                 :"tbody"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKcolgroup'] = true
@@ -2835,7 +2835,7 @@
       begin
         @global_lisp_binding['_html_COMARKcolgroup'] = true
         @_html_COMARKcolgroup = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2844,7 +2844,7 @@
                 end              ,
                 Cell.new(
                 :"colgroup"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKcol'] = true
@@ -2854,7 +2854,7 @@
       begin
         @global_lisp_binding['_html_COMARKcol'] = true
         @_html_COMARKcol = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2865,7 +2865,7 @@
                 :"col"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
       begin
         @global_lisp_binding['_html_COMARKtr'] = true
@@ -2875,7 +2875,7 @@
       begin
         @global_lisp_binding['_html_COMARKtr'] = true
         @_html_COMARKtr = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2884,7 +2884,7 @@
                 end              ,
                 Cell.new(
                 :"tr"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKth'] = true
@@ -2894,7 +2894,7 @@
       begin
         @global_lisp_binding['_html_COMARKth'] = true
         @_html_COMARKth = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2903,7 +2903,7 @@
                 end              ,
                 Cell.new(
                 :"th"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKtd'] = true
@@ -2913,7 +2913,7 @@
       begin
         @global_lisp_binding['_html_COMARKtd'] = true
         @_html_COMARKtd = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2922,7 +2922,7 @@
                 end              ,
                 Cell.new(
                 :"td"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -2936,7 +2936,7 @@
       begin
         @global_lisp_binding['_html_COMARKhead'] = true
         @_html_COMARKhead = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2945,7 +2945,7 @@
                 end              ,
                 Cell.new(
                 :"head"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKtitle'] = true
@@ -2955,7 +2955,7 @@
       begin
         @global_lisp_binding['_html_COMARKtitle'] = true
         @_html_COMARKtitle = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2964,7 +2964,7 @@
                 end              ,
                 Cell.new(
                 :"title"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKbase'] = true
@@ -2974,7 +2974,7 @@
       begin
         @global_lisp_binding['_html_COMARKbase'] = true
         @_html_COMARKbase = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -2985,7 +2985,7 @@
                 :"base"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
       begin
         @global_lisp_binding['_html_COMARKmeta'] = true
@@ -2995,7 +2995,7 @@
       begin
         @global_lisp_binding['_html_COMARKmeta'] = true
         @_html_COMARKmeta = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3006,7 +3006,7 @@
                 :"meta"                ,Cell.new(
                 LispKeyword.new( "empty?" )                ,Cell.new(
                 true
-                         ))))
+                         )))))
       end
       begin
         @global_lisp_binding['_html_COMARKstyle'] = true
@@ -3016,7 +3016,7 @@
       begin
         @global_lisp_binding['_html_COMARKstyle'] = true
         @_html_COMARKstyle = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3025,7 +3025,7 @@
                 end              ,
                 Cell.new(
                 :"style"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKscript'] = true
@@ -3035,7 +3035,7 @@
       begin
         @global_lisp_binding['_html_COMARKscript'] = true
         @_html_COMARKscript = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3044,7 +3044,7 @@
                 end              ,
                 Cell.new(
                 :"script"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKnoscript'] = true
@@ -3054,7 +3054,7 @@
       begin
         @global_lisp_binding['_html_COMARKnoscript'] = true
         @_html_COMARKnoscript = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3063,7 +3063,7 @@
                 end              ,
                 Cell.new(
                 :"noscript"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -3077,7 +3077,7 @@
       begin
         @global_lisp_binding['_html_COMARKhtml'] = true
         @_html_COMARKhtml = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3086,7 +3086,7 @@
                 end              ,
                 Cell.new(
                 :"html"
-                         ))
+                         )))
       end
   end
 #--------------------
@@ -3100,7 +3100,7 @@
       begin
         @global_lisp_binding['_html_COMARKframeset'] = true
         @_html_COMARKframeset = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3109,7 +3109,7 @@
                 end              ,
                 Cell.new(
                 :"frameset"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKframe'] = true
@@ -3119,7 +3119,7 @@
       begin
         @global_lisp_binding['_html_COMARKframe'] = true
         @_html_COMARKframe = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3128,7 +3128,7 @@
                 end              ,
                 Cell.new(
                 :"frame"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKnoframes'] = true
@@ -3138,7 +3138,7 @@
       begin
         @global_lisp_binding['_html_COMARKnoframes'] = true
         @_html_COMARKnoframes = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3147,7 +3147,7 @@
                 end              ,
                 Cell.new(
                 :"noframes"
-                         ))
+                         )))
       end
       begin
         @global_lisp_binding['_html_COMARKiframe'] = true
@@ -3157,7 +3157,7 @@
       begin
         @global_lisp_binding['_html_COMARKiframe'] = true
         @_html_COMARKiframe = 
-            callProcedure( 'make-html-element',
+            trampCall( callProcedure( 'make-html-element',
                 begin
                   if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                     @_make_MIMARKhtml_MIMARKelement
@@ -3166,7 +3166,7 @@
                 end              ,
                 Cell.new(
                 :"iframe"
-                         ))
+                         )))
       end
   end
 

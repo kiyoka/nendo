@@ -163,6 +163,18 @@ module Nendo
     attr_reader :key
   end
   
+  class DelayedCallPacket
+    def initialize( _origname, _pred, _args )
+      @origname = _origname
+      @pred     = _pred
+      @args     = _args
+    end
+
+    def call(obj)
+      obj.callProcedure( @origname, @pred, @args )
+    end
+  end
+
   class Token
     def initialize( kind, str, sourcefile, lineno = nil, column = nil )
       @kind       = kind
@@ -1063,6 +1075,10 @@ module Nendo
   # Translate S expression to Ruby expression and Evaluation
   class Evaluator
     include BuiltinFunctions
+    EXEC_TYPE_NORMAL    = 1
+    EXEC_TYPE_ANONYMOUS = 2
+    EXEC_TYPE_TAILCALL  = 3
+
     def initialize( debug = false )
       @indent  = "  "
       @binding = binding
@@ -1226,6 +1242,13 @@ module Nendo
       end
     end
   
+    def trampCall( result )
+      while result.is_a? DelayedCallPacket
+        result = result.call(self)
+      end
+      result
+    end
+
     def callProcedure( origname, pred, args )
       rubyArgument = toRubyArgument( origname, pred, args )
       pred.call( *rubyArgument )
@@ -1246,7 +1269,7 @@ module Nendo
       }
     end
   
-    def execFunc( funcname, args, sourcefile, lineno, locals, lambda_flag )
+    def execFunc( funcname, args, sourcefile, lineno, locals, execType )
       case funcname
       when :define, :set!   # `define' special form
         ar = args.cdr.map { |x| x.car }
@@ -1267,7 +1290,7 @@ module Nendo
          "  raise __e",
          "end "]
       else
-        if (not lambda_flag) and isRubyInterface( funcname )
+        if (EXEC_TYPE_ANONYMOUS != execType) and isRubyInterface( funcname )
           # Ruby method
           #   1) convert arguments
           translatedArr  = args.map { |x| x.car }
@@ -1281,19 +1304,25 @@ module Nendo
             arr = separateWith( args.map.with_index { |x,i| x.car }, ",Cell.new(" )
             arr[0].unshift( "Cell.new(" )
           end
-          if lambda_flag
-            [sprintf( "callProcedure( 'anonymouse', " ),
+          if EXEC_TYPE_ANONYMOUS == execType
+            [sprintf( "trampCall( callProcedure( 'anonymouse', " ),
              [ funcname ] + [ "," ],
              arr,
-             sprintf( "             )" ) + arr.map { |n| ")" }.join]
+             sprintf( "             ))" ) + arr.map { |n| ")" }.join]
           else
+            _call = case execType
+                    when EXEC_TYPE_NORMAL
+                      [ "trampCall( callProcedure(", "))" ]
+                    when EXEC_TYPE_TAILCALL
+                      [ "DelayedCallPacket.new(",    ")"  ]
+                    end
             origname = funcname.to_s
             funcname = funcname.to_s
             sym      = toRubySymbol( funcname )
-            [sprintf( "callProcedure( '%s',", origname ),
+            [sprintf( "%s '%s',", _call[0], origname ),
              [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
              arr,
-             sprintf( "             )" ) + arr.map { |n| ")" }.join]
+             sprintf( "             %s", _call[1] ) + arr.map { |n| ")" }.join]
           end
         end
       end
@@ -1421,13 +1450,13 @@ module Nendo
        "end"]
     end
   
-    def apply( car, cdr, sourcefile, lineno, locals, lambda_flag = false )
+    def apply( car, cdr, sourcefile, lineno, locals, execType )
       cdr.each { |x| 
         if Cell == x.class
           x.car = translate( x.car, locals )
         end
       }
-      execFunc( car, cdr, sourcefile, lineno, locals, lambda_flag )
+      execFunc( car, cdr, sourcefile, lineno, locals, execType )
     end
   
     def genQuote( sexp, str = "" )
@@ -1508,7 +1537,7 @@ module Nendo
         elsif sexp.isNull
           [ "Cell.new()" ]
         elsif Cell == sexp.car.class
-          self.apply( translate( sexp.car, locals ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, true )
+          self.apply( translate( sexp.car, locals ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, EXEC_TYPE_ANONYMOUS )
         elsif :begin == sexp.car
           self.makeBegin( sexp.cdr, locals )
         elsif :lambda == sexp.car
@@ -1522,7 +1551,7 @@ module Nendo
         elsif :letrec == sexp.car
           self.makeLetrec( sexp.cdr,   locals )
         else
-          self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals )
+          self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, EXEC_TYPE_NORMAL )
         end
       when Array
         raise RuntimeError, "Error: can't eval unquoted vector."
