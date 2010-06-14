@@ -1,6 +1,6 @@
 #!/usr/local/bin/ruby
 #
-# using trampline and CallPacket
+# tail recursion optimization with trampline and DelayedCallPacket
 #
 
 class DelayedCallPacket
@@ -15,14 +15,10 @@ class DelayedCallPacket
 end
 
 def trCall( result )
-  while true
-      if result.is_a? DelayedCallPacket
-        result = result.call()
-      else
-        result
-        break
-      end
+  while result.is_a? DelayedCallPacket
+    result = result.call()
   end
+  result
 end
 
 def printCounter( count )
@@ -30,6 +26,7 @@ def printCounter( count )
   if 0 == m 
     printf( "count = %6d\n", count )
   end
+  count
 end  
 
 
@@ -46,5 +43,4 @@ def main
 end
 
 main
-
 
