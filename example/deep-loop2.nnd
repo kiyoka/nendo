@@ -2,14 +2,13 @@
 :; #-*- mode: nendo; syntax: scheme -*-;;
 :; exec /usr/local/bin/nendo $0 $*
 
-(define count 0)
-
-(define (loop1)
-  (when (eq? 0 (% count 1000))
-    (printf "count = %6d\n" count))
-  (set! count (+ count 1))
-  (loop1))
    
 (define (main args)
-  (loop1))
+  (letrec ((loop1
+            (lambda (count)
+              (when (eq? 0 (% count 1000))
+                (printf "count = %6d\n" count))
+              (loop1 (+ count 1)))))
+    (loop1 0)))
 
+     
