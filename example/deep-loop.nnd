@@ -1,0 +1,11 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+(define (loop1 args)
+  (loop1 '(1 2 3)))
+
+(define (main args)
+  (loop1 '()))
+
+
