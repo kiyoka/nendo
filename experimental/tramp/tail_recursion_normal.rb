@@ -1,6 +1,7 @@
 #!/usr/local/bin/ruby
 #
-# tail recursion optimization with trampline and DelayedCallPacket
+# non tail recursion optimization code.
+#   => tail_recursion_normal.rb:X: stack level too deep (SystemStackError)
 #
 
 def printCounter( count )
