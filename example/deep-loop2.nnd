@@ -1,0 +1,15 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+(define count 0)
+
+(define (loop1)
+  (when (eq? 0 (% count 1000))
+    (printf "count = %6d\n" count))
+  (set! count (+ count 1))
+  (loop1))
+   
+(define (main args)
+  (loop1))
+
