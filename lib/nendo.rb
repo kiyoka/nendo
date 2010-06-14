@@ -1129,6 +1129,8 @@ module Nendo
       #  { 'filename1' => [ 'code1' 'code2' ... ], 
       #    'filename2' => [ 'code1' 'code2' ... ], ... }
       @compiled_code = Hash.new
+      
+      global_lisp_define( toRubySymbol( "%compile-phase-functions" ), Cell.new())
     end
   
     def global_lisp_define( rubySymbol, val )
@@ -1612,7 +1614,6 @@ module Nendo
         elsif :let == sexp.car
           if _null_QUMARK( sexp.cdr )
             # do nothing
-            p "kiyoka1"
           else
             case sexp.cdr.car
             when Cell        # let
@@ -1753,7 +1754,13 @@ module Nendo
       @lastSourcefile = sourcefile
       @lastLineno     = lineno
       sexp = macroExpandPhase( sexp )
-      sexp = quotingPhase( sexp );
+      sexp = quotingPhase( sexp )
+      # compiling phase written in Nendo
+      sym = toRubySymbol( "%compile-phase" )
+      if ( eval( sprintf( "(defined? @%s and Proc == @%s.class)", sym,sym ), @binding ))
+        eval( sprintf( "@___tmp = @%s", sym ), @binding )
+        sexp = callProcedure( sym, @___tmp, Cell.new( sexp ))
+      end
       if @debug
         printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
       end

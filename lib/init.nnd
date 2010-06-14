@@ -1015,6 +1015,34 @@
 
 
 ;; ----------------------------------------
+;; compile phase ( it can be written in Nendo! )
+;; ----------------------------------------
+;;
+;; example:
+;;   %compile-phase-functions is ( func1 func2 func3 )
+;; then this function evals.
+;;   (func3 (func2 (func1 sexp)))
+;;
+(define (%compile-phase sexp)
+  (cond
+   ((list? sexp)
+    (for-each
+     (lambda (func)
+       (set! sexp (func sexp)))
+     %compile-phase-functions)
+    sexp)
+   (else
+    sexp)))
+
+(when #f
+  (set! %compile-phase-functions
+        (cons
+         (lambda (x) ;; compile function (sample)
+           (write x)
+           x)
+         %compile-phase-functions)))
+
+;; ----------------------------------------
 ;; global variables
 ;; ----------------------------------------
 (define *nendo-version*
