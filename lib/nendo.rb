@@ -1550,6 +1550,13 @@ module Nendo
           self.makeLet( sexp.cdr,   locals )
         elsif :letrec == sexp.car
           self.makeLetrec( sexp.cdr,   locals )
+        elsif :"%tailcall" == sexp.car
+          if sexp.cdr.car.is_a? Cell
+            sexp = sexp.cdr.car
+            self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, EXEC_TYPE_TAILCALL )
+          else
+            raise RuntimeError, "Error: special form tailcall expects function call expression."
+          end
         else
           self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, EXEC_TYPE_NORMAL )
         end
