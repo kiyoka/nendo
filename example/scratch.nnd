@@ -6,11 +6,21 @@
 
 
 
-
 (define (setup-tailcall-mark sexp)
   (define reserved '(quote begin lambda if let letrec))
 
+  (define (setup-let-args args)
+    (map
+     (lambda (arg)
+       (let ((name (first  arg))
+             (body (second arg)))
+         (list name
+               (setup-tailcall-mark body))))
+     args))
+
   (cond
+   ((not (pair? sexp))
+    sexp)
    ((null? sexp)
     '())
    ((list? sexp)
@@ -31,11 +41,11 @@
          ,(setup-tailcall-mark (fourth sexp))))
       (('let)
        `(let
-            ,(second sexp)
+            ,(setup-let-args (second sexp))
           ,@(setup-tailcall-mark (cddr sexp))))
       (('letrec)
        `(letrec
-            ,(second sexp)
+            ,(setup-let-args (second sexp))
           ,@(setup-tailcall-mark (cddr sexp))))
       (else
        (let* ((r (reverse sexp))
@@ -96,11 +106,12 @@
   '(define (foo)
      (foo))))
 
-(macroexpand
- '(let loop ((x 1))
-    1
-    2
-    (loop 100)))
+(setup-tailcall-mark
+ (macroexpand
+  '(let loop ((x 1))
+     1
+     2
+     (loop 100))))
 
          
 
