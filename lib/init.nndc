@@ -5677,29 +5677,19 @@
                                                                       end
                                                                              )))
                                                                        ))))                                                        ,Cell.new(
-                                                          trampCall( callProcedure( 'cons',
+                                                          trampCall( callProcedure( 'cddr',
                                                               begin
-                                                                if @global_lisp_binding.has_key?('_cons') then
-                                                                  @_cons
-                                                                else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:270"] + __e.backtrace ) ; raise __e
+                                                                if @global_lisp_binding.has_key?('_cddr') then
+                                                                  @_cddr
+                                                                else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:355"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
-                                                                trampCall( callProcedure( 'third',
-                                                                    begin
-                                                                      if @global_lisp_binding.has_key?('_third') then
-                                                                        @_third
-                                                                      else raise NameError.new( "Error: undefined variable _third", "_third" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:355"] + __e.backtrace ) ; raise __e
-                                                                    end                                                                  ,
-                                                                    Cell.new(
-                                                                      begin
-                                                                          _lst
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:363"] + __e.backtrace ) ; raise __e
-                                                                      end
-                                                                             )))                                                              ,Cell.new(
-                                                              
-                                                                       ))))
+                                                                begin
+                                                                    _lst
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:363"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                                       )))
                                                                  ))))
                                                            ))))                                            ,Cell.new(
                                             

@@ -352,7 +352,7 @@
                              (lambda (x)
                                (first x))
                              (second lst))
-                     ,(third lst))))
+                     ,@(cddr lst))))
            (,(first lst)
             ,@(map
                (lambda (x)

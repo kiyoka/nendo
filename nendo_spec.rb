@@ -1176,6 +1176,11 @@ describe Nendo, "when use macros expands some syntax. " do
                     "      (* a b)" +
                     "      (label 4 5)))" +
                     "" ).should == "20"
+    @nendo.replStr( "" +
+                    "(macroexpand '(let loop ((x 1)) "+
+                    "                 1"+
+                    "                 2"+
+                    "                 (loop 100)))" ).should == "(letrec ((loop (lambda (x) 1 2 (loop 100)))) (loop 1))"
   end
 end
 
