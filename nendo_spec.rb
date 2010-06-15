@@ -898,8 +898,8 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (nth 0  '(100 200 300)) " ).should == "100"
     @nendo.replStr( " (nth 1  '(100 200 300)) " ).should == "200"
     @nendo.replStr( " (nth 2  '(100 200 300)) " ).should == "300"
-    @nendo.replStr( " (nth 3  '(100 200 300)) " ).should == "nil"
-    @nendo.replStr( " (nth -1 '(100 200 300)) " ).should == "nil"
+    @nendo.replStr( " (nth 3  '(100 200 300)) " ).should == "()"
+    @nendo.replStr( " (nth -1 '(100 200 300)) " ).should == "()"
     @nendo.replStr( " (first   '(100 200 300 400 500 600 700 800 900 1000)) " ).should == "100"
     @nendo.replStr( " (second  '(100 200 300 400 500 600 700 800 900 1000)) " ).should == "200"
     @nendo.replStr( " (third   '(100 200 300 400 500 600 700 800 900 1000)) " ).should == "300"
@@ -910,8 +910,8 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (eighth  '(100 200 300 400 500 600 700 800 900 1000)) " ).should == "800"
     @nendo.replStr( " (ninth   '(100 200 300 400 500 600 700 800 900 1000)) " ).should == "900"
     @nendo.replStr( " (tenth   '(100 200 300 400 500 600 700 800 900 1000)) " ).should == "1000"
-    @nendo.replStr( " (first   '()) " ).should == "nil"
-    @nendo.replStr( " (tenth   '()) " ).should == "nil"
+    @nendo.replStr( " (first   '()) " ).should == "()"
+    @nendo.replStr( " (tenth   '()) " ).should == "()"
     @nendo.replStr( " (to-s      10) " ).should == '"10"'
     @nendo.replStr( " (to_s      10) " ).should == '"10"'
     @nendo.replStr( " (x->string 10) " ).should == '"10"'

@@ -3,6 +3,7 @@
 #    generated  "nendo -c src" command. 
 # 
 
+trampCall( 
   trampCall( callProcedure( 'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
@@ -13,8 +14,10 @@
       Cell.new(
       "syslog"
                )))
+ )
 #--------------------
 
+trampCall( 
   begin
     @global_lisp_binding['_debug_MIMARKprint_MIMARKoutput_MIMARKfunc'] = true
     @_debug_MIMARKprint_MIMARKoutput_MIMARKfunc = 
@@ -55,6 +58,7 @@
             end
         }
   end
+ )
 
 
 # -------------------------------------------------------

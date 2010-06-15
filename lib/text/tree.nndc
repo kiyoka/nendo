@@ -3,6 +3,7 @@
 #    generated  "nendo -c src" command. 
 # 
 
+trampCall( 
   trampCall( callProcedure( 'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
@@ -13,8 +14,10 @@
       Cell.new(
       "stringio"
                )))
+ )
 #--------------------
 
+trampCall( 
   begin
     @global_lisp_binding['_write_MIMARKtree'] = true
     @_write_MIMARKtree = 
@@ -182,8 +185,10 @@
             end
         }
   end
+ )
 #--------------------
 
+trampCall( 
   begin
     @global_lisp_binding['_tree_MIMARK_GTMARKstring'] = true
     @_tree_MIMARK_GTMARKstring = 
@@ -223,6 +228,7 @@
             end
         }
   end
+ )
 
 
 # -------------------------------------------------------

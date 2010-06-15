@@ -1764,7 +1764,8 @@ module Nendo
       if @debug
         printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
       end
-      arr = [ translate( sexp, [] ) ]
+      
+      arr = [ "trampCall( ", translate( sexp, [] ), " )" ]
       rubyExp = ppRubyExp( 0, arr ).flatten.join
       if not @compiled_code.has_key?( sourcefile )
         @compiled_code[ sourcefile ] = Array.new

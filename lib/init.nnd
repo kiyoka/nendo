@@ -133,7 +133,7 @@
   (letrec ((nth-iter
             (lambda (n index lst)
               (if (null? lst)
-                  nil
+                  '()
                   (if (not (pair? lst))
                       (error "Error: nth got improper list.")
                       (if (eqv? n index)
@@ -1037,9 +1037,7 @@
 (when #f
   (set! %compile-phase-functions
         (cons
-         (lambda (x) ;; compile function (sample)
-           (write x)
-           x)
+         setup-tailcall-mark
          %compile-phase-functions)))
 
 ;; ----------------------------------------
