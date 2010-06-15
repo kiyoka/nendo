@@ -35,10 +35,16 @@
             ,(second sexp)
           ,@(setup-tailcall-mark (cddr sexp))))
       (('if)
-       `(if 
-         ,(second sexp)
-         ,(setup-tailcall-mark (third  sexp))
-         ,(setup-tailcall-mark (fourth sexp))))
+       (case (length sexp)
+         ((3)
+          `(if
+            ,(second sexp)
+            ,(setup-tailcall-mark (third  sexp))))
+         ((4)
+          `(if
+            ,(second sexp)
+            ,(setup-tailcall-mark (third sexp))
+            ,(setup-tailcall-mark (fourth sexp))))))
       (('let)
        `(let
             ,(setup-let-args (second sexp))
@@ -60,7 +66,10 @@
                    (setup-tailcall-mark last)
                    ;; this is the tailcall!
                    `(%tailcall ,last))
-               other)))))))))
+               other)))))))
+   (else
+    sexp)))
+
 
 (pretty-print
  (setup-tailcall-mark
@@ -113,6 +122,12 @@
      2
      (loop 100))))
 
-         
+(setup-tailcall-mark
+ (macroexpand
+  '(cond (false  1) (false  2)))
+ )
 
-
+(setup-tailcall-mark
+ (macroexpand
+  '(if #f () ()))
+ )
