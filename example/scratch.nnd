@@ -6,30 +6,10 @@
 
 
 
-(define (exist-tailcall? sexp)
-  (cond
-   ((not (list? sexp))
-    #f)
-   (else
-    (let1 last (car (last-pair sexp))
-      (cond
-       ((pair? last)
-        (symbol? (car last)))
-       (else
-        #f))))))
 
 (define (setup-tailcall-mark sexp)
-  (if (exist-tailcall? sexp)
-      (let* ((r (reverse sexp))
-             (last (car r))
-             (head (cdr r)))
-        (reverse
-         (cons
-          `(%tailcall ,last)
-          head)))
-      sexp))
+  (define reserved '(quote begin lambda if let letrec))
 
-(define (search-tailcall sexp)
   (cond
    ((null? sexp)
     '())
@@ -37,22 +17,43 @@
     (case (car sexp)
       (('quote)
        sexp)
-      (('if)
-       (setup-tailcall-mark (second sexp))
-       (setup-tailcall-mark (third sexp)))
       (('begin)
        `(begin
           ,@(setup-tailcall-mark (cdr sexp))))
       (('lambda)
        `(lambda
-            ,(cadr sexp)
+            ,(second sexp)
+          ,@(setup-tailcall-mark (cddr sexp))))
+      (('if)
+       `(if 
+         ,(second sexp)
+         ,(setup-tailcall-mark (third  sexp))
+         ,(setup-tailcall-mark (fourth sexp))))
+      (('let)
+       `(let
+            ,(second sexp)
+          ,@(setup-tailcall-mark (cddr sexp))))
+      (('letrec)
+       `(letrec
+            ,(second sexp)
           ,@(setup-tailcall-mark (cddr sexp))))
       (else
-       sexp)))))
-
+       (let* ((r (reverse sexp))
+              (last  (car r))
+              (other (cdr r)))
+         (if (not (pair? last))
+             sexp
+             (reverse
+              (cons
+               (if (memq (car last) reserved)
+                   ;; recursive
+                   (setup-tailcall-mark last)
+                   ;; this is the tailcall!
+                   `(%tailcall ,last))
+               other)))))))))
 
 (pretty-print
- (search-tailcall
+ (setup-tailcall-mark
   '(begin
      1
      2
@@ -60,35 +61,47 @@
      3)))
 
 (pretty-print
- (search-tailcall
+ (setup-tailcall-mark
   '(begin
      1
      2
      (print "abc"))))
 
-(search-tailcall
+(setup-tailcall-mark
  (macroexpand
   '(begin
      (print "abc")
      1
      2)))
 
-(search-tailcall
+(setup-tailcall-mark
  (macroexpand
-  '(lambda (x)
+  '(lambda '(x)
      1
      2
      (print "abc"))))
 
-(search-tailcall
+(setup-tailcall-mark
  (macroexpand
   '(lambda (x)
      1
      2
      (if #t
-         (begin (print "abc"))
-         (begin (print "ABC"))))))
+         (begin 1 2 (print "abc"))
+         (begin 1 2 (print "ABC"))))))
 
 
+(setup-tailcall-mark
+ (macroexpand
+  '(define (foo)
+     (foo))))
+
+(macroexpand
+ '(let loop ((x 1))
+    1
+    2
+    (loop 100)))
+
+         
 
 
