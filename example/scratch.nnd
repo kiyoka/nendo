@@ -4,37 +4,91 @@
 (disable-idebug)
 (define debug-print-length 256)
 
-(define (exist-tail-call? sexp)
+
+
+(define (exist-tailcall? sexp)
   (cond
    ((not (list? sexp))
-    (error "exist-tail-call? expected a list argument."))
+    #f)
    (else
-    (let1 last (last-pair sexp)
+    (let1 last (car (last-pair sexp))
       (cond
        ((pair? last)
-        (if (procedure? (car last))
-            
+        (symbol? (car last)))
        (else
-        ;; noting to do
-        sexp))))))
+        #f))))))
 
+(define (setup-tailcall-mark sexp)
+  (if (exist-tailcall? sexp)
+      (let* ((r (reverse sexp))
+             (last (car r))
+             (head (cdr r)))
+        (reverse
+         (cons
+          `(%tailcall ,last)
+          head)))
+      sexp))
 
-(define (setup-tail-call-mark sexp)
-  (if (exist-tail-call? sexp)
-      (mark-tail-call sexp)
-      (traverse-tail-call sexp)))
-
-(define (traverse-tail-call sexp)
+(define (search-tailcall sexp)
   (cond
    ((null? sexp)
     '())
    ((list? sexp)
     (case (car sexp)
-      ('if
-       (setup-tail-call-mark (second sexp))
-       (setup-tail-call-mark (third sexp)))))
-   (else
-    sexp)))
+      (('quote)
+       sexp)
+      (('if)
+       (setup-tailcall-mark (second sexp))
+       (setup-tailcall-mark (third sexp)))
+      (('begin)
+       `(begin
+          ,@(setup-tailcall-mark (cdr sexp))))
+      (('lambda)
+       `(lambda
+            ,(cadr sexp)
+          ,@(setup-tailcall-mark (cddr sexp))))
+      (else
+       sexp)))))
+
+
+(pretty-print
+ (search-tailcall
+  '(begin
+     1
+     2
+     (print "abc")
+     3)))
+
+(pretty-print
+ (search-tailcall
+  '(begin
+     1
+     2
+     (print "abc"))))
+
+(search-tailcall
+ (macroexpand
+  '(begin
+     (print "abc")
+     1
+     2)))
+
+(search-tailcall
+ (macroexpand
+  '(lambda (x)
+     1
+     2
+     (print "abc"))))
+
+(search-tailcall
+ (macroexpand
+  '(lambda (x)
+     1
+     2
+     (if #t
+         (begin (print "abc"))
+         (begin (print "ABC"))))))
+
 
 
 
