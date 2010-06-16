@@ -164,3 +164,14 @@
    '(let ((aaa 111)) aaa))))
 
  
+(cond ((- 10 9) => (lambda (x) (+ "<" (to_s x) ">"))) (else 2))
+
+(filter
+ (lambda (x)
+   (< x 20))
+ (range 100000 1))
+
+   
+
+
+

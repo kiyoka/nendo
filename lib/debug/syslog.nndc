@@ -4,7 +4,7 @@
 # 
 
 trampCall( 
-  trampCall( callProcedure( 'require',
+  DelayedCallPacket.new( 'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
           @_require
@@ -13,7 +13,7 @@ trampCall(
       end    ,
       Cell.new(
       "syslog"
-               )))
+               ))
  )
 #--------------------
 

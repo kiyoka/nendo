@@ -172,7 +172,7 @@ trampCall(
                                           end
                                       end
                                   else
-                                    Nil.new
+                                      Cell.new()
                                   end
                               end
                           end
@@ -195,7 +195,7 @@ trampCall(
     @global_lisp_binding['_html_MIMARKescape_MIMARKstring'] = true
     @_html_MIMARKescape_MIMARKstring = 
         Proc.new { |_string| 
-            trampCall( callProcedure( 'string-join',
+            DelayedCallPacket.new( 'string-join',
                 begin
                   if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                     @_string_MIMARKjoin
@@ -234,7 +234,7 @@ trampCall(
                                      )))
                                ))))                ,Cell.new(
                 ""
-                         ))))
+                         )))
         }
   end
  )
@@ -319,7 +319,7 @@ trampCall(
                                        ))))
                     end
                    ) then
-                      trampCall( callProcedure( 'caddr',
+                      DelayedCallPacket.new( 'caddr',
                           begin
                             if @global_lisp_binding.has_key?('_caddr') then
                               @_caddr
@@ -333,7 +333,7 @@ trampCall(
                               else raise NameError.new( "Error: undefined variable ___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034", "___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034" ) end
                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                             end
-                                   )))
+                                   ))
                   else
                       if ( 
                       true
@@ -347,7 +347,7 @@ trampCall(
                               end 
                           end
                       else
-                        Nil.new
+                          Cell.new()
                       end
                   end
               } ; ___lambda.call(
@@ -405,7 +405,7 @@ trampCall(
                                        )))
                          ) then
                             begin
-                                trampCall( callProcedure( 'values',
+                                DelayedCallPacket.new( 'values',
                                     begin
                                       if @global_lisp_binding.has_key?('_values') then
                                         @_values
@@ -430,7 +430,7 @@ trampCall(
                                           _args
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                       end
-                                             ))))
+                                             )))
                             end
                         else
                             if ( 
@@ -483,7 +483,7 @@ trampCall(
                                                    )))
                                      ) then
                                         begin
-                                            trampCall( callProcedure( 'values',
+                                            DelayedCallPacket.new( 'values',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_values') then
                                                     @_values
@@ -531,7 +531,7 @@ trampCall(
                                                       _args
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                   end
-                                                         ))))
+                                                         )))
                                         end
                                     else
                                         if ( 
@@ -560,7 +560,7 @@ trampCall(
                                                        ))))
                                          ) then
                                             begin
-                                                trampCall( callProcedure( 'get-attr',
+                                                DelayedCallPacket.new( 'get-attr',
                                                     begin
                                                         _get_MIMARKattr
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -583,7 +583,7 @@ trampCall(
                                                           _attrs
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             ))))
+                                                             )))
                                             end
                                         else
                                             if ( 
@@ -612,7 +612,7 @@ trampCall(
                                                            ))))
                                              ) then
                                                 begin
-                                                    trampCall( callProcedure( 'get-attr',
+                                                    DelayedCallPacket.new( 'get-attr',
                                                         begin
                                                             _get_MIMARKattr
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -658,14 +658,14 @@ trampCall(
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                 end
                                                                        )))))
-                                                                 ))))
+                                                                 )))
                                                 end
                                             else
                                                 if ( 
                                                 true
                                                  ) then
                                                     begin
-                                                        trampCall( callProcedure( 'get-attr',
+                                                        DelayedCallPacket.new( 'get-attr',
                                                             begin
                                                                 _get_MIMARKattr
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -752,10 +752,10 @@ trampCall(
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                     end
                                                                            ))))))
-                                                                     ))))
+                                                                     )))
                                                     end
                                                 else
-                                                  Nil.new
+                                                    Cell.new()
                                                 end
                                             end
                                         end
@@ -766,7 +766,7 @@ trampCall(
                                 true
                                  ) then
                                     begin
-                                        trampCall( callProcedure( 'values',
+                                        DelayedCallPacket.new( 'values',
                                             begin
                                               if @global_lisp_binding.has_key?('_values') then
                                                 @_values
@@ -791,10 +791,10 @@ trampCall(
                                                   _args
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                               end
-                                                     ))))
+                                                     )))
                                     end
                                 else
-                                  Nil.new
+                                    Cell.new()
                                 end
                             end
                         end
@@ -808,7 +808,7 @@ trampCall(
                           end
                          ) then
                             Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                trampCall( callProcedure( 'call-with-values',
+                                DelayedCallPacket.new( 'call-with-values',
                                     begin
                                       if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                         @_call_MIMARKwith_MIMARKvalues
@@ -910,11 +910,11 @@ trampCall(
                                               " />"
                                                        ))))))
                                       }
-                                             ))))
+                                             )))
                             }
                         else
                             Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                trampCall( callProcedure( 'call-with-values',
+                                DelayedCallPacket.new( 'call-with-values',
                                     begin
                                       if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                         @_call_MIMARKwith_MIMARKvalues
@@ -968,7 +968,7 @@ trampCall(
 >"
                                                        ))))))))))
                                       }
-                                             ))))
+                                             )))
                             }
                         end
                     } ; ___lambda.call(

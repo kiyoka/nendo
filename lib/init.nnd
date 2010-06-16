@@ -1040,7 +1040,7 @@
 ;; ----------------------------------------
 (define (setup-tailcall-mark sexp)
   (define (reserved? sym)
-    (memq sym '(quote begin lambda if let letrec define)))
+    (memq sym '(quote macro begin lambda if let letrec define)))
   
   (define (setup-let-args args)
     (map
@@ -1054,6 +1054,20 @@
                        body)
                    body))))
      args))
+
+  (define (setup-proc sexp)
+    (cond
+     ((null? sexp)
+      sexp)
+     ((and (list? sexp)
+           (< 0 (length sexp)))
+      (if (reserved? (car sexp))
+          (setup-tailcall-mark sexp)
+          (if (pair? (car sexp))
+              sexp ;; e.g.  ((lambda (x) ...)
+              `(%tailcall ,sexp))))
+     (else
+      sexp)))
 
   (define (setup-proc-body sexp)
     (if (or (not (list? sexp))
@@ -1082,6 +1096,8 @@
     (case (car sexp)
       (('quote)
        sexp)
+      (('macro)
+       sexp)
       (('begin)
        `(begin
           ,@(setup-proc-body (cdr sexp))))
@@ -1094,12 +1110,12 @@
          ((3)
           `(if
             ,(second sexp)
-            ,(setup-proc-body (third  sexp))))
+            ,(setup-proc     (third  sexp))))
          ((4)
           `(if
             ,(second sexp)
-            ,(setup-proc-body (third sexp))
-            ,(setup-proc-body (fourth sexp))))))
+            ,(setup-proc     (third sexp))
+            ,(setup-proc     (fourth sexp))))))
       (('let)
        `(let
             ,(setup-let-args (second sexp))

@@ -973,7 +973,7 @@ module Nendo
     end
   
     def _apply1( first, arg )
-      callProcedure( "(apply1 genereate func)", first, arg )
+      trampCall( callProcedure( "(apply1 genereate func)", first, arg ))
     end
   
     def _global_MIMARKvariables
@@ -1668,7 +1668,7 @@ module Nendo
             # do nothing
           elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
             eval( sprintf( "@__macro = @%s", sym ), @binding )
-            newSexp = callProcedure( sym, @__macro, sexp.cdr )
+            newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr ))
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -1705,7 +1705,7 @@ module Nendo
             # do nothing
           elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
             eval( sprintf( "@__macro = @%s", sym ), @binding )
-            newSexp = callProcedure( sym, @__macro, sexp.cdr )
+            newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr ))
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -1755,14 +1755,17 @@ module Nendo
       @lastLineno     = lineno
       sexp = macroExpandPhase( sexp )
       sexp = quotingPhase( sexp )
+      if @debug
+        printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
+      end
       # compiling phase written in Nendo
       sym = toRubySymbol( "%compile-phase" )
       if ( eval( sprintf( "(defined? @%s and Proc == @%s.class)", sym,sym ), @binding ))
         eval( sprintf( "@___tmp = @%s", sym ), @binding )
-        sexp = callProcedure( sym, @___tmp, Cell.new( sexp ))
-      end
-      if @debug
-        printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
+        sexp = trampCall( callProcedure( sym, @___tmp, Cell.new( sexp )))
+        if @debug
+          printf( "\n          compiled=<<< %s >>>\n", (Printer.new())._print(sexp))
+        end
       end
       
       arr = [ "trampCall( ", translate( sexp, [] ), " )" ]
