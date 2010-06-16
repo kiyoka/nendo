@@ -14,7 +14,9 @@
        (let ((name (first  arg))
              (body (second arg)))
          (list name
-               (setup-tailcall-mark body))))
+               (if (memq (car body) reserved)
+                   (setup-tailcall-mark body)
+                   body))))
      args))
 
   (define (setup-proc-body sexp)
@@ -148,13 +150,8 @@
   '(cond (false 1) (false 2) (else 3)))
  )
 
-(setup-tailcall-mark
- (macroexpand
-  '(let
-       ((__gensym__f4aff4639ca187de76cb5b05b5b7d0ad2f6e0c7c_10126 #t))
-     (if __gensym__f4aff4639ca187de76cb5b05b5b7d0ad2f6e0c7c_10126
-         __gensym__f4aff4639ca187de76cb5b05b5b7d0ad2f6e0c7c_10126
-         #f)))
- )
-
-
+(pretty-print
+ (setup-tailcall-mark
+  (macroexpand
+   '(case (length '(1      )) ((1) "one") ((2) "two") (else "else")))
+  ))
