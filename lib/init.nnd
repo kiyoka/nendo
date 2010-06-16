@@ -1034,7 +1034,99 @@
    (else
     sexp)))
 
-(when #f
+
+;; ----------------------------------------
+;; tail-call-optimization
+;; ----------------------------------------
+(define (setup-tailcall-mark sexp)
+  (define (reserved? sym)
+    (memq sym '(quote begin lambda if let letrec define)))
+  
+  (define (setup-let-args args)
+    (map
+     (lambda (arg)
+       (let ((name (first  arg))
+             (body (second arg)))
+         (list name
+               (if (list? body)
+                   (if (reserved? (car body))
+                       (setup-tailcall-mark body)
+                       body)
+                   body))))
+     args))
+
+  (define (setup-proc-body sexp)
+    (if (or (not (list? sexp))
+            (null? sexp))
+        sexp
+        (let* ((r (reverse sexp))
+               (last  (car r))
+               (other (cdr r)))
+          (if (not (pair? last))
+              sexp
+              (reverse
+               (cons
+                (if (reserved? (car last))
+                    ;; recursive
+                    (setup-tailcall-mark last)
+                    ;; this is the tailcall!
+                    `(%tailcall ,last))
+                other))))))
+
+  (cond
+   ((not (pair? sexp))
+    sexp)
+   ((null? sexp)
+    '())
+   ((list? sexp)
+    (case (car sexp)
+      (('quote)
+       sexp)
+      (('begin)
+       `(begin
+          ,@(setup-proc-body (cdr sexp))))
+      (('lambda)
+       `(lambda
+            ,(second sexp)
+          ,@(setup-proc-body (cddr sexp))))
+      (('if)
+       (case (length sexp)
+         ((3)
+          `(if
+            ,(second sexp)
+            ,(setup-proc-body (third  sexp))))
+         ((4)
+          `(if
+            ,(second sexp)
+            ,(setup-proc-body (third sexp))
+            ,(setup-proc-body (fourth sexp))))))
+      (('let)
+       `(let
+            ,(setup-let-args (second sexp))
+          ,@(setup-proc-body (cddr sexp))))
+      (('letrec)
+       `(letrec
+            ,(setup-let-args (second sexp))
+          ,@(setup-proc-body (cddr sexp))))
+      (('define)
+       (let1 val (third sexp)
+         `(define
+            ,(second sexp)
+            ,(if (and (list? val)
+                      (not (null? val))
+                      (reserved? (car val)))
+                 (setup-tailcall-mark val)
+                 val))))
+      (else
+       (if (symbol? (car sexp))
+           `(%tailcall ,sexp)
+           sexp))))
+   (else
+    sexp)))
+
+
+;; add to 'compile-phase'
+(when #t
   (set! %compile-phase-functions
         (cons
          setup-tailcall-mark
