@@ -18,7 +18,8 @@
      args))
 
   (define (setup-proc-body sexp)
-    (if (null? sexp)
+    (if (or (not (list? sexp))
+            (null? sexp))
         sexp
         (let* ((r (reverse sexp))
                (last  (car r))
@@ -146,3 +147,14 @@
  (macroexpand
   '(cond (false 1) (false 2) (else 3)))
  )
+
+(setup-tailcall-mark
+ (macroexpand
+  '(let
+       ((__gensym__f4aff4639ca187de76cb5b05b5b7d0ad2f6e0c7c_10126 #t))
+     (if __gensym__f4aff4639ca187de76cb5b05b5b7d0ad2f6e0c7c_10126
+         __gensym__f4aff4639ca187de76cb5b05b5b7d0ad2f6e0c7c_10126
+         #f)))
+ )
+
+
