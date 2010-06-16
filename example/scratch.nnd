@@ -14,8 +14,10 @@
        (let ((name (first  arg))
              (body (second arg)))
          (list name
-               (if (memq (car body) reserved)
-                   (setup-tailcall-mark body)
+               (if (list? body)
+                   (if (memq (car body) reserved)
+                       (setup-tailcall-mark body)
+                       body)
                    body))))
      args))
 
@@ -155,3 +157,10 @@
   (macroexpand
    '(case (length '(1      )) ((1) "one") ((2) "two") (else "else")))
   ))
+
+(pretty-print
+ (setup-tailcall-mark
+  (macroexpand
+   '(let ((aaa 111)) aaa))))
+
+ 
