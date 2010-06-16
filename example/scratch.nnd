@@ -18,19 +18,21 @@
      args))
 
   (define (setup-proc-body sexp)
-    (let* ((r (reverse sexp))
-           (last  (car r))
-           (other (cdr r)))
-      (if (not (pair? last))
-          sexp
-          (reverse
-           (cons
-            (if (memq (car last) reserved)
-                ;; recursive
-                (setup-tailcall-mark last)
-                ;; this is the tailcall!
-                `(%tailcall ,last))
-            other)))))
+    (if (null? sexp)
+        sexp
+        (let* ((r (reverse sexp))
+               (last  (car r))
+               (other (cdr r)))
+          (if (not (pair? last))
+              sexp
+              (reverse
+               (cons
+                (if (memq (car last) reserved)
+                    ;; recursive
+                    (setup-tailcall-mark last)
+                    ;; this is the tailcall!
+                    `(%tailcall ,last))
+                other))))))
 
   (cond
    ((not (pair? sexp))
@@ -142,5 +144,5 @@
 
 (setup-tailcall-mark
  (macroexpand
-  '`(1 2 3))
+  '(cond (false 1) (false 2) (else 3)))
  )
