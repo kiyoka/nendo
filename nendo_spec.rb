@@ -1353,3 +1353,50 @@ describe Nendo, "when use vector feature " do
     @nendo.replStr( " (list->vector (range 10 1))" ).should == "#(1 2 3 4 5 6 7 8 9 10)"
   end
 end
+
+describe Nendo, "tail call optimization " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (setup-tailcall-mark '(print \"abc\")) " ).should == "(%tailcall (print \"abc\"))"
+    @nendo.replStr( " (setup-tailcall-mark '(begin (print \"abc\") 1 2 3)) " ).should == "(begin (print \"abc\") 1 2 3)"
+    @nendo.replStr( " (setup-tailcall-mark '(begin 1 2 (print \"abc\") 3)) " ).should == "(begin 1 2 (print \"abc\") 3)"
+    @nendo.replStr( " (setup-tailcall-mark '(begin 1 2 3 (print \"abc\"))) " ).should == "(begin 1 2 3 (%tailcall (print \"abc\")))"
+    @nendo.replStr( "" +
+                    "(setup-tailcall-mark"+
+                    "  '(lambda '(x)"+
+                    "    1"+
+                    "    2"+
+                    "    (print \"abc\")))" ).should == "(lambda '(x) 1 2 (%tailcall (print \"abc\")))"
+    @nendo.replStr( "" +
+                    "(setup-tailcall-mark"+
+                    "  '(lambda (x)"+
+                    "     1"+
+                    "     2"+
+                    "     (if #t"+
+                    "         (begin 1 2 (print \"abc\"))"+
+                    "         (begin 1 2 (print \"ABC\")))))" ).should == "(lambda (x) 1 2 (if #t (begin 1 2 (%tailcall (print \"abc\"))) (begin 1 2 (%tailcall (print \"ABC\")))))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(define (foo) (foo))"+
+                    "  ))" ).should == "(define foo (lambda () (%tailcall (foo))))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(let loop ((x 1))  1 2 (loop 100))"+
+                    "  ))" ).should == "(letrec ((loop (lambda (x) 1 2 (%tailcall (loop 100))))) (%tailcall (loop 1)))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(let1 aaa 111 aaa)"+
+                    "  ))" ).should == "(let ((aaa 111)) aaa)"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(values? (make-values '()))"+
+                    "  ))" ).should == "(%tailcall (values? (make-values '())))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(cond (false  1) (false  2))"+
+                    "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) ()))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(cond (false 1) (false 2) (else 3))"+
+                    "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) (if #t (begin 3) ())))"
+    @nendo.replStr( " (filter (lambda (x) (< x 10)) (range   1000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
+    @nendo.replStr( " (filter (lambda (x) (< x 10)) (range  10000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
+  end
+end
