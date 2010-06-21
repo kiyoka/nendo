@@ -1281,8 +1281,8 @@ module Nendo
           [
            sprintf( "@global_lisp_binding['%s'] = true", variable_sym ),
            sprintf( "%s%s = ", global_cap, variable_sym ),
-           ar ],
-          "end" ]
+           "trampCall(", [ ar ], ")"],
+           "end" ]
       when :error
         [
          'begin raise RuntimeError, ',
