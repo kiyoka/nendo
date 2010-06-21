@@ -1383,12 +1383,6 @@ describe Nendo, "tail call optimization " do
                     "   '(define (foo) (foo))"+
                     "  ))" ).should == "(define foo (lambda () (%tailcall (foo))))"
     @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
-                    "   '(let loop ((x 1))  1 2 (loop 100))"+
-                    "  ))" ).should == "(letrec ((loop (lambda (x) 1 2 (%tailcall (loop 100))))) (%tailcall (loop 1)))"
-    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
-                    "   '(let1 aaa 111 aaa)"+
-                    "  ))" ).should == "(let ((aaa 111)) aaa)"
-    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
                     "   '(values? (make-values '()))"+
                     "  ))" ).should == "(%tailcall (values? (make-values '())))"
     @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
@@ -1397,6 +1391,29 @@ describe Nendo, "tail call optimization " do
     @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
                     "   '(cond (false 1) (false 2) (else 3))"+
                     "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) (if #t (begin 3) ())))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(and (foo 1) (bar 2))"+
+                    "  ))" ).should == "(if (not (eq? #f (foo 1))) (%tailcall (bar 2)) #f)"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(or (foo 1) (bar 2))"+
+                    "  ))" ).gsub( /20[0-9][0-9][0-9]/, "20000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 #f))))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(let loop ((x 1))  1 2 (loop 100))"+
+                    "  ))" ).should == "(letrec ((loop (lambda (x) 1 2 (%tailcall (loop 100))))) (%tailcall (loop 1)))"
+    @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
+                    "   '(let1 aaa 111 aaa)"+
+                    "  ))" ).should == "(let ((aaa 111)) aaa)"
+    @nendo.replStr( "" +
+                    "(setup-tailcall-mark"+
+                    "  '(letrec ((func1 "+
+                    "             (lambda (x)"+
+                    "                1"+
+                    "                (func2)))"+
+                    "            (func2 "+
+                    "             (lambda (x)"+
+                    "                2"+
+                    "                (func1))))"+
+                    "     (func1 100)))" ).should == "(letrec ((func1 (lambda (x) 1 (%tailcall (func2)))) (func2 (lambda (x) 2 (%tailcall (func1))))) (%tailcall (func1 100)))"
     @nendo.replStr( "(filter (lambda (x) (< x 10)) (range   1000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
     @nendo.replStr( "(filter (lambda (x) (< x 10)) (range  10000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
   end
