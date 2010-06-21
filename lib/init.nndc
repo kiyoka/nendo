@@ -15819,36 +15819,24 @@ trampCall(
 #--------------------
 
 trampCall( 
-  if ( 
-  true
-   ) then
-      begin
-          begin
-            @global_lisp_binding['__PAMARKcompile_MIMARKphase_MIMARKfunctions'] = true
-            @__PAMARKcompile_MIMARKphase_MIMARKfunctions = 
-                trampCall( callProcedure( 'cons',
-                    begin
-                      if @global_lisp_binding.has_key?('_cons') then
-                        @_cons
-                      else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1147"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                    Cell.new(
-                      begin
-                        if @global_lisp_binding.has_key?('_setup_MIMARKtailcall_MIMARKmark') then
-                          @_setup_MIMARKtailcall_MIMARKmark
-                        else raise NameError.new( "Error: undefined variable _setup_MIMARKtailcall_MIMARKmark", "_setup_MIMARKtailcall_MIMARKmark" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1148"] + __e.backtrace ) ; raise __e
-                      end                    ,Cell.new(
-                      begin
-                        if @global_lisp_binding.has_key?('__PAMARKcompile_MIMARKphase_MIMARKfunctions') then
-                          @__PAMARKcompile_MIMARKphase_MIMARKfunctions
-                        else raise NameError.new( "Error: undefined variable __PAMARKcompile_MIMARKphase_MIMARKfunctions", "__PAMARKcompile_MIMARKphase_MIMARKfunctions" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1149"] + __e.backtrace ) ; raise __e
-                      end
-                             ))))
-          end
-      end
+  begin
+    @global_lisp_binding['__PAMARKcompile_MIMARKphase_MIMARKfunctions'] = true
+    @__PAMARKcompile_MIMARKphase_MIMARKfunctions = 
+        trampCall( callProcedure( 'list',
+            begin
+              if @global_lisp_binding.has_key?('_list') then
+                @_list
+              else raise NameError.new( "Error: undefined variable _list", "_list" ) end
+              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1146"] + __e.backtrace ) ; raise __e
+            end          ,
+            Cell.new(
+              begin
+                if @global_lisp_binding.has_key?('_setup_MIMARKtailcall_MIMARKmark') then
+                  @_setup_MIMARKtailcall_MIMARKmark
+                else raise NameError.new( "Error: undefined variable _setup_MIMARKtailcall_MIMARKmark", "_setup_MIMARKtailcall_MIMARKmark" ) end
+                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1147"] + __e.backtrace ) ; raise __e
+              end
+                     )))
   end
  )
 #--------------------

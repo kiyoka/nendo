@@ -1358,6 +1358,7 @@ describe Nendo, "tail call optimization " do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
+    @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `filter' can be optimized on second loading phase.
   end
   it "should" do
     @nendo.replStr( " (setup-tailcall-mark '(print \"abc\")) " ).should == "(%tailcall (print \"abc\"))"
@@ -1396,7 +1397,7 @@ describe Nendo, "tail call optimization " do
     @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
                     "   '(cond (false 1) (false 2) (else 3))"+
                     "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) (if #t (begin 3) ())))"
-    @nendo.replStr( " (filter (lambda (x) (< x 10)) (range   1000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
-    @nendo.replStr( " (filter (lambda (x) (< x 10)) (range  10000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
+    @nendo.replStr( "(filter (lambda (x) (< x 10)) (range   1000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
+    @nendo.replStr( "(filter (lambda (x) (< x 10)) (range  10000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
   end
 end

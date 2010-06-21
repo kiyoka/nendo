@@ -1141,12 +1141,11 @@
     sexp)))
 
 
-;; add to 'compile-phase'
-(when #t
-  (set! %compile-phase-functions
-        (cons
-         setup-tailcall-mark
-         %compile-phase-functions)))
+;; definition of 'compile-phase'
+(set! %compile-phase-functions
+      (list
+       setup-tailcall-mark
+       ))
 
 ;; ----------------------------------------
 ;; global variables
