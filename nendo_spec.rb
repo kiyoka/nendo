@@ -34,11 +34,6 @@
 #  
 require 'nendo'
 include Nendo
-begin
-  require 'continuation'
-rescue LoadError
-  puts 'Warning: ruby library `continuation` was not found.'
-end
 
 describe Cell, "when initialized as '()" do
   before do
