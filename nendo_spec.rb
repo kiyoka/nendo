@@ -978,6 +978,15 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (map (lambda (a b)   (+ a b))   '(1 2 3) '(10 20 30)) " ).should == "(11 22 33)"
     @nendo.replStr( " (map (lambda (a b)   (- b a))   '(1 2 3) '(10 20 30)) " ).should == "(9 18 27)"
     @nendo.replStr( " (map (lambda (a b c) (+ a b c)) '(1 2 3) '(10 20 30) '(100 200 300)) " ).should == "(111 222 333)"
+    @nendo.replStr( " (define _result"+
+                    "   (map"+
+                    "    (lambda (x)"+
+                    "      (* x 2))"+
+                    "    (range 10000 1)))"+
+                    " (list"+
+                    "  (first  _result)"+
+                    "  (second _result)"+
+                    "  (last-pair _result))" ).should == "(2 4 (20000))"
     @nendo.replStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons (* x 2) _lst))) '(1 2 3))  _lst" ).should == "(6 4 2)"
     @nendo.replStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons (+ x 1) _lst))) '(1 2 3))  _lst" ).should == "(4 3 2)"
     @nendo.replStr( " (define _lst '())  (for-each (lambda (a b) (set! _lst (cons (cons a b) _lst))) '(1 2 3) '(10 20 30))  _lst" ).should ==

@@ -4,41 +4,22 @@
 (disable-idebug)
 (define debug-print-length 256)
 
+(define _result
+  (map
+   (lambda (x)
+     (* x 2))
+   (range 10000 1)))
+(list
+ (first  _result)
+ (second _result)
+ (last-pair _result))
 
-(pretty-print
- (setup-tailcall-mark
-  (macroexpand
-   '(let ((aaa 111)) aaa))
-  ))
-
-   
-
-(define (for-each proc . lists)
-  (define (for-each-arg1 proc lst)
-    (if (null? lst)
-        #t
-        (begin
-          (proc (car lst))
-          (for-each-arg1 proc (cdr lst)))))
-  (cond
-   ((null? lists)
-    (apply proc))
-   ((eq? 1 (length lists))
-    (for-each-arg1 proc (car lists)))
-   (else
-    (if (null? (car lists))
-        #t
-        (let1 unz (apply unzip1-with-cdr lists)
-          (let ((cars (car unz))
-                (cdrs (cdr unz)))
-            (apply proc cars)
-            (if (null? cdrs)
-                '()
-                (apply for-each (cons proc cdrs)))))))))
-
-
-(for-each
- print
+(equal?
+ (range 10000)
  (range 10000))
 
 
+
+
+
+ 

@@ -470,17 +470,32 @@
 
 
 (define (map proc . lists)
-  (if (null? lists)
-      (apply proc)
+  (letrec ((result '())
+           (map-arg1
+            (lambda (proc lst)
+              (if (null? lst)
+                  #t
+                  (begin
+                    (set! result
+                          (cons (proc (car lst))
+                                result))
+                    (map-arg1 proc (cdr lst)))))))
+    (cond
+     ((null? lists)
+      (apply proc))
+     ((eq? 1 (length lists))
+      (map-arg1 proc (car lists)) ;; tail call optimization version
+      (reverse result))
+     (else
       (if (null? (car lists))
-	  '()
-	  (let1 unz (apply unzip1-with-cdr lists)
+          '()
+          (let1 unz (apply unzip1-with-cdr lists)
             (let ((cars (car unz))
                   (cdrs (cdr unz)))
               (cons (apply proc cars)
                     (if (null? cdrs)
                         '()
-                        (apply map (cons proc cdrs)))))))))
+                        (apply map (cons proc cdrs)))))))))))
 
 
 (define (for-each proc . lists)
