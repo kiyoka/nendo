@@ -982,6 +982,7 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons (+ x 1) _lst))) '(1 2 3))  _lst" ).should == "(4 3 2)"
     @nendo.replStr( " (define _lst '())  (for-each (lambda (a b) (set! _lst (cons (cons a b) _lst))) '(1 2 3) '(10 20 30))  _lst" ).should ==
       "((3 . 30) (2 . 20) (1 . 10))"
+    @nendo.replStr( " (define _cnt 0) (for-each   (lambda (x) (set! _cnt (+ _cnt 1))) (range 10000)) _cnt" ).should == "10000"
     @nendo.replStr( " (filter     (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
     @nendo.replStr( " (filter     (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(2)"
     @nendo.replStr( " (filter     (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(1 3)"

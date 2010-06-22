@@ -482,18 +482,30 @@
                         '()
                         (apply map (cons proc cdrs)))))))))
 
+
 (define (for-each proc . lists)
-  (if (null? lists)
-      (apply proc)
-      (if (null? (car lists))
-	  #t
-	  (let1 unz (apply unzip1-with-cdr lists)
-            (let ((cars (car unz))
-                  (cdrs (cdr unz)))
-              (apply proc cars)
-              (if (null? cdrs)
-                  '()
-                  (apply map (cons proc cdrs))))))))
+  (define (for-each-arg1 proc lst)
+    (if (null? lst)
+        #t
+        (begin
+          (proc (car lst))
+          (for-each-arg1 proc (cdr lst)))))
+  (cond
+   ((null? lists)
+    (apply proc))
+   ((eq? 1 (length lists))
+    (for-each-arg1 proc (car lists))) ;; tail call optimization version
+   (else
+    (if (null? (car lists))
+        #t
+        (let1 unz (apply unzip1-with-cdr lists)
+          (let ((cars (car unz))
+                (cdrs (cdr unz)))
+            (apply proc cars)
+            (if (null? cdrs)
+                '()
+                (apply for-each (cons proc cdrs)))))))))
+
 
 (define (filter pred lst)
   (if (null? lst)
@@ -1151,5 +1163,5 @@
 ;; global variables
 ;; ----------------------------------------
 (define *nendo-version*
-  "0.3.3"  ;;NENDO-VERSION
+  "0.3.2"  ;;NENDO-VERSION
   )
