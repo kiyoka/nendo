@@ -901,7 +901,7 @@ module Nendo
     def _string_QUMARK(   arg )    String == arg.class end
     def _macroexpand_MIMARK1( arg )
       if _pair_QUMARK( arg )
-        macroexpand_1( arg )
+        macroexpand_engine( arg, 0, 1 )
       else
         arg
       end
@@ -1643,19 +1643,7 @@ module Nendo
       end
     end
   
-    def macroexpand_1_check( sexp )
-      if not @expand_flag
-        sexp
-      else
-        newSexp = macroexpand_1_sub( sexp )
-        if not _equal_QUMARK( newSexp, sexp )
-          @expand_flag = false
-        end
-        newSexp
-      end
-    end
-  
-    def macroexpand_1_sub( sexp )
+    def macroexpand_engine( sexp, _times, _stop_times = nil )
       case sexp
       when Cell
         if :quote == sexp.car
@@ -1669,48 +1657,17 @@ module Nendo
           elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
             eval( sprintf( "@__macro = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr ))
+            _times += 1
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
               if x.car.is_a? Cell
-                macroexpand_1_check( x.car )
-              else
-                x.car
-              end
-            }.to_list( sexp.lastAtom )
-          else
-            newSexp
-          end
-        end
-      else
-        sexp
-      end
-    end
-    
-    def macroexpand_1( sexp )
-      @expand_flag = true
-      macroexpand_1_check( sexp )
-    end
-  
-    def macroexpand( sexp )
-      case sexp
-      when Cell
-        if :quote == sexp.car
-          sexp
-        else
-          sym = sexp.car.to_s
-          sym = toRubySymbol( sym )
-          newSexp = sexp
-          if isRubyInterface( sym )
-            # do nothing
-          elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
-            eval( sprintf( "@__macro = @%s", sym ), @binding )
-            newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr ))
-          end
-          if _equal_QUMARK( newSexp, sexp )
-            sexp.map { |x|
-              if x.car.is_a? Cell
-                macroexpand( x.car )
+                if not _stop_times.nil?
+                  if _stop_times <= _times
+                    return newSexp
+                  end
+                end
+                macroexpand_engine( x.car, _times, _stop_times )
               else
                 x.car
               end
@@ -1727,7 +1684,7 @@ module Nendo
     def macroExpandPhase( sexp )
       converge = true
       begin
-        newSexp  = macroexpand( sexp )
+        newSexp  = macroexpand_engine( sexp, 0 )
         converge = _equal_QUMARK( newSexp, sexp )
         sexp = newSexp
       end until converge
