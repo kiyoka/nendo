@@ -815,6 +815,7 @@ describe Nendo, "when call functions in init.nnd " do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
+    @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `map' can be optimized on second loading phase.
   end
   it "should" do
     @nendo.replStr( " (cadr '(1 2 3 4)) " ).should == "2"
