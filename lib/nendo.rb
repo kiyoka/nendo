@@ -1492,6 +1492,16 @@ module Nendo
       str
     end
   
+    def trampCallCap( sym )
+      if isRubyInterface( sym )
+        arr = sym.split( /[.]/ )
+        arr[0] = sprintf( "trampCall(%s)", arr[0] )
+        arr.join( "." )
+      else
+        "trampCall(" + sym + ")"
+      end
+    end
+
     def lispSymbolReference( sym, locals, translatedArr, sourcefile, lineno )
       variable_sym = sym.split( /[.]/ )[0]
       global_cap = if variable_sym.match( /^[A-Z]/ )
@@ -1500,11 +1510,11 @@ module Nendo
                      locals.flatten.include?( variable_sym ) ? nil : "@"
                    end
       expression = if translatedArr
-                     [sprintf( "%s%s(", global_cap, sym ),
+                     [trampCallCap( sprintf( "%s%s(", global_cap, sym )),
                       separateWith( translatedArr, "," ),
                       sprintf( "  )" )]
                    else
-                     [sprintf( "%s%s", global_cap, sym )]
+                     [trampCallCap( sprintf( "%s%s", global_cap, sym ))]
                    end
       if global_cap
         ["begin",

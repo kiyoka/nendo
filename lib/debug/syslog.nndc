@@ -7,7 +7,7 @@ trampCall(
   DelayedCallPacket.new( 'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
-          @_require
+          trampCall(@_require)
         else raise NameError.new( "Error: undefined variable _require", "_require" ) end
         rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:37"] + __e.backtrace ) ; raise __e
       end    ,
@@ -24,28 +24,28 @@ trampCall(
     trampCall(
           Proc.new { |_str| 
               begin
-                  Syslog.open(
+                  trampCall(Syslog).open(
                     )
                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:40"] + __e.backtrace ) ; raise __e
               end
               begin
-                  Syslog.log(
+                  trampCall(Syslog).log(
                         begin
-                            Syslog::LOG_WARNING
+                            trampCall(Syslog::LOG_WARNING)
                           rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                         end                      ,
                       "%s"                      ,
                         trampCall( callProcedure( '+',
                             begin
                               if @global_lisp_binding.has_key?('__PLMARK') then
-                                @__PLMARK
+                                trampCall(@__PLMARK)
                               else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                             end                          ,
                             Cell.new(
                             "Nendo: "                            ,Cell.new(
                               begin
-                                  _str
+                                  trampCall(_str)
                                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                               end
                                      ))))
@@ -53,7 +53,7 @@ trampCall(
                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
               end
               begin
-                  Syslog.close(
+                  trampCall(Syslog).close(
                     )
                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:42"] + __e.backtrace ) ; raise __e
               end
