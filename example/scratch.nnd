@@ -4,20 +4,15 @@
 (disable-idebug)
 (define debug-print-length 256)
 
-(define _result
-  (map
-   (lambda (x)
-     (* x 2))
-   (range 10000 1)))
-(list
- (first  _result)
- (second _result)
- (last-pair _result))
+(letrec ((str (if #t (+ "a" "A") '())))   str.class)
 
-(equal?
- (range 10000)
- (range 10000))
 
+
+
+         
+         
+                  
+            
 
 
 
