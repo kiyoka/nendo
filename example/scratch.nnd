@@ -4,14 +4,3 @@
 (disable-idebug)
 (define debug-print-length 256)
 
-
-(pretty-print
- (setup-tailcall-mark
-  (macroexpand
-   '(let ((aaa 111)) aaa))
-  ))
-
-   
-
-
-

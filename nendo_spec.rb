@@ -802,11 +802,11 @@ describe Nendo, "when call replStr() with macroexpand-1 function" do
     @nendo.replStr( " (macroexpand-1 '(twice (twice (inc a))))" ).should ==
       "(begin (twice (inc a)) (twice (inc a)))"
     @nendo.replStr( " (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))" ).should ==
-      "(begin (begin (inc a) (inc a)) (twice (inc a)))"
+      "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
     @nendo.replStr( " (macroexpand-1 (macroexpand-1 (macroexpand-1 '(twice (twice (inc a))))))" ).should ==
-      "(begin (begin (set! a (+ a 1)) (inc a)) (twice (inc a)))"
+      "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (begin (inc a) (inc a)))"
     @nendo.replStr( " (macroexpand-1 (macroexpand-1 (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))))" ).should ==
-      "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (twice (inc a)))"
+      "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (begin (set! a (+ a 1)) (set! a (+ a 1))))"
     @nendo.replStr( " (set! a 10) (twice (twice (inc a)))" ).should == "14"
   end
 end
