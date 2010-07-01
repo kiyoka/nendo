@@ -1,13 +1,14 @@
-;;-*- mode: scheme; syntax: scheme -*-;;
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
 
-;; takeuchi function
+;; takeuchi function ( tarai mawashi bench )
 (define (tak x y z)
-  (if (> x y)
+  (if (>= y x)
+      y
       (tak (tak (- x 1) y z)
            (tak (- y 1) z x)
-           (tak (- z 1) x y))
-      y))
+           (tak (- z 1) x y))))
 
-(print (tak 8 4 0))
-
-
+(define (main argv)
+  (print (tak 10 5 0)))
