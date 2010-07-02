@@ -1,4 +1,4 @@
-;;; SRFI-1 list-processing library 			-*- Scheme -*-
+;;; SRFI-1 list-processing library 			-*- mode: nendo; syntax: scheme -*-
 ;;; Reference implementation
 ;;;
 ;;; Copyright (c) 1998, 1999 by Olin Shivers. You may do as you please with
@@ -268,17 +268,17 @@
 
 ;;; IOTA count [start step]	(start start+step ... start+(count-1)*step)
 
-(define (iota count . maybe-start+step)
-  (check-arg integer? count iota)
+(define (iota count . args)
   (if (< count 0) (error "Negative step count" iota count))
-  (let-optionals maybe-start+step ((start 0) (step 1))
-    (check-arg number? start iota)
-    (check-arg number? step iota)
-    (let loop ((n 0) (r '()))
-      (if (= n count)
-	  (reverse r)
-	  (loop (+ 1 n)
-		(cons (+ start (* n step)) r))))))
+  (let ((start (if (pair? args) (car args) 0))
+        (step  (if (and (pair? args) (pair? (cdr args))) (cadr args) 1)))
+    (check-arg number? start)
+    (check-arg number? step)
+    (let ((last-val (+ start (* (- count 1) step))))
+      (do ((count count (- count 1))
+	   (val last-val (- val step))
+	   (ans '() (cons val ans)))
+	  ((<= count 0)  ans)))))
 	  
 ;;; I thought these were lovely, but the public at large did not share my
 ;;; enthusiasm...
@@ -803,7 +803,7 @@
   (check-arg procedure? p unfold-right)
   (check-arg procedure? f unfold-right)
   (check-arg procedure? g unfold-right)
-  (let lp ((seed seed) (ans (:optional maybe-tail '())))
+  (let lp ((seed seed) (ans (get-optional maybe-tail '())))
     (if (p seed) ans
 	(lp (g seed)
 	    (cons (f seed) ans)))))

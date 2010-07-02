@@ -958,6 +958,17 @@
   (newline))
 
 
+;; ----------------------------------------
+;; optional argument parser
+;; ----------------------------------------
+(define get-optional
+  (macro (restarg default)
+    (let1 _restarg (gensym)
+      `(let1 ,_restarg ,restarg
+         (if (null? ,_restarg)
+             ,default
+             (car ,_restarg))))))
+
 
 ;; ----------------------------------------
 ;; global variables bind checker

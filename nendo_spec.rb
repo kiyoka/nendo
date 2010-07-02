@@ -1427,3 +1427,21 @@ describe Nendo, "tail call optimization " do
     @nendo.replStr( "(letrec ((str (if #t (+ \"a\" \"A\") '())))   (+ str \"...\")) " ).should == '"aA..."'
   end
 end
+
+
+describe Nendo, "optional argument parser " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (get-optional '() 100) " ).should == "100"
+    @nendo.replStr( " (get-optional '(1) 100) " ).should == "1"
+    @nendo.replStr( " (get-optional '(2) 100) " ).should == "2"
+    @nendo.replStr( " (get-optional '(3 4) 100) " ).should == "3"
+    @nendo.replStr( " (get-optional '() #t) " ).should == "#t"
+    @nendo.replStr( " (get-optional '() #f) " ).should == "#f"
+  end
+end
+
+

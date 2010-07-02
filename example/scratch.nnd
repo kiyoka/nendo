@@ -7,6 +7,14 @@
 (letrec ((str (if #t (+ "a" "A") '())))   str.class)
 
 
+(define (proc x . maybe-opt)
+  (let ((option (get-optional maybe-opt #f)))
+    (list x option)))
+
+(proc 1 2 3)
+
+
+
 
 
          
