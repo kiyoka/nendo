@@ -969,6 +969,10 @@
              ,default
              (car ,_restarg))))))
 
+;; pending
+(define check-arg
+  (macro (a b . c)
+    `(begin)))
 
 ;; ----------------------------------------
 ;; global variables bind checker
@@ -1189,5 +1193,5 @@
 ;; global variables
 ;; ----------------------------------------
 (define *nendo-version*
-  "0.3.2"  ;;NENDO-VERSION
+  "0.3.3"  ;;NENDO-VERSION
   )

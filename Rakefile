@@ -55,6 +55,7 @@ task :compile do
   # Compile
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
   [ "./lib/init.nnd",
+    "./lib/srfi-1.nnd",
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd" ].each {|fn|
