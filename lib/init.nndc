@@ -1969,11 +1969,11 @@ trampCall(
     @_max = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
-              DelayedCallPacket.new( 'foldr',
+              DelayedCallPacket.new( 'fold-right',
                   begin
-                    if @global_lisp_binding.has_key?('_foldr') then
-                      trampCall(@_foldr)
-                    else raise NameError.new( "Error: undefined variable _foldr", "_foldr" ) end
+                    if @global_lisp_binding.has_key?('_fold_MIMARKright') then
+                      trampCall(@_fold_MIMARKright)
+                    else raise NameError.new( "Error: undefined variable _fold_MIMARKright", "_fold_MIMARKright" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:127"] + __e.backtrace ) ; raise __e
                   end                ,
                   Cell.new(
@@ -2047,11 +2047,11 @@ trampCall(
     @_min = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
-              DelayedCallPacket.new( 'foldr',
+              DelayedCallPacket.new( 'fold-right',
                   begin
-                    if @global_lisp_binding.has_key?('_foldr') then
-                      trampCall(@_foldr)
-                    else raise NameError.new( "Error: undefined variable _foldr", "_foldr" ) end
+                    if @global_lisp_binding.has_key?('_fold_MIMARKright') then
+                      trampCall(@_fold_MIMARKright)
+                    else raise NameError.new( "Error: undefined variable _fold_MIMARKright", "_fold_MIMARKright" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:129"] + __e.backtrace ) ; raise __e
                   end                ,
                   Cell.new(
@@ -7325,8 +7325,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_foldr'] = true
-    @_foldr = 
+    @global_lisp_binding['_fold_MIMARKright'] = true
+    @_fold_MIMARKright = 
     trampCall(
           Proc.new { |_f,_x,_lst| 
               if ( 
@@ -7349,11 +7349,11 @@ trampCall(
                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:456"] + __e.backtrace ) ; raise __e
                   end
               else
-                  DelayedCallPacket.new( 'foldr',
+                  DelayedCallPacket.new( 'fold-right',
                       begin
-                        if @global_lisp_binding.has_key?('_foldr') then
-                          trampCall(@_foldr)
-                        else raise NameError.new( "Error: undefined variable _foldr", "_foldr" ) end
+                        if @global_lisp_binding.has_key?('_fold_MIMARKright') then
+                          trampCall(@_fold_MIMARKright)
+                        else raise NameError.new( "Error: undefined variable _fold_MIMARKright", "_fold_MIMARKright" ) end
                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:456"] + __e.backtrace ) ; raise __e
                       end                    ,
                       Cell.new(

@@ -124,9 +124,9 @@
 (define (negative? n) (< n 0))
 (define (abs n) (if (>= n 0) n (- n)))
 (define (max . lst)
-     (foldr (lambda (a b) (if (> a b) a b)) (car lst) (cdr lst)))
+     (fold-right (lambda (a b) (if (> a b) a b)) (car lst) (cdr lst)))
 (define (min . lst)
-     (foldr (lambda (a b) (if (< a b) a b)) (car lst) (cdr lst)))
+     (fold-right (lambda (a b) (if (< a b) a b)) (car lst) (cdr lst)))
 (define (succ x) (+ x 1))
 (define (pred x) (- x 1))
 (define (nth n lst)
@@ -450,10 +450,10 @@
 ;; ----------------------------------------
 ;; List utilities imported from TinyScheme  by Kiyoka Nishiyama
 ;;  and Fixed bugs in `map' and `for-each'.
-(define (foldr f x lst)
+(define (fold-right f x lst)
      (if (null? lst)
           x
-          (foldr f (f x (car lst)) (cdr lst))))
+          (fold-right f (f x (car lst)) (cdr lst))))
 
 (define (unzip1-with-cdr . lists)
   (unzip1-with-cdr-iterative lists '() '()))
