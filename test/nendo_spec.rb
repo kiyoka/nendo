@@ -466,6 +466,7 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '(a . #f) " ).should == "(a . #f)"
     @nendo.replStr( " '(a . nil) " ).should == "(a . nil)"
     @nendo.replStr( " '(a b c d e  .  ()) " ).should == "(a b c d e)"
+    @nendo.replStr( " '(#t #t #f #f nil nil '() '()) " ).should == "(#t #t #f #f nil nil '() '())"
   end
 end
 
@@ -1103,6 +1104,14 @@ describe Nendo, "when use values " do
     @nendo.replStr( " (receive all       (values 10)        all)            " ).should == "(10)"
     @nendo.replStr( " (receive all       (values 10 20)     all)            " ).should == "(10 20)"
     @nendo.replStr( " (receive all       (values 10 20 30)  all)            " ).should == "(10 20 30)"
+    @nendo.replStr( " (receive (a b)     (values '(1) '(2)) (list a b))     " ).should == "((1) (2))"
+    @nendo.replStr( " (receive (a b)     (values '() '(2))  (list a b))     " ).should == "(() (2))"
+    @nendo.replStr( " (receive (a b)     (values '(1) '())  (list a b))     " ).should == "((1) ())"
+    @nendo.replStr( " (receive (a b)     (values #t #t)     (cons a b))     " ).should == "(#t . #t)"
+    @nendo.replStr( " (receive (a b)     (values #t #f)     (cons a b))     " ).should == "(#t . #f)"
+    @nendo.replStr( " (receive (a b)     (values nil #t)    (cons a b))     " ).should == "(nil . #t)"
+    @nendo.replStr( " (receive (a b)     (values nil #f)    (cons a b))     " ).should == "(nil . #f)"
+    @nendo.replStr( " (receive (a b)     (values nil nil)   (cons a b))     " ).should == "(nil . nil)"
   end
 end
 
