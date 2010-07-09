@@ -923,6 +923,7 @@ module Nendo
         (Cell == arg.class)
       end
     end
+    def _integer_QUMARK(   arg )   arg.is_a? Integer   end
     def _number_QUMARK(   arg )    arg.is_a? Numeric   end
     def _string_QUMARK(   arg )    String == arg.class end
     def _macroexpand_MIMARK1( arg )
