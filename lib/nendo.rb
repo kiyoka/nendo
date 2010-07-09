@@ -47,7 +47,10 @@ module Nendo
     def length()    0        end
     def isNull()    true     end
     def isDotted()  false    end
-    def lastAtom()  nil      end
+    def lastAtom()  false    end
+    def getLastAtom() 
+      raise RuntimeError, "Error: Nil#getLastAtom() method:  this cell is not dotted list."
+    end
     def to_s()      ""       end
     def car()
       raise "Error: pair required, but got ()"
@@ -112,10 +115,14 @@ module Nendo
   
     def lastAtom
       lastOne = self.lastCell
-      if lastOne.isDotted
-        lastOne.cdr
+      lastOne.isDotted
+    end
+    
+    def getLastAtom
+      if self.lastAtom
+        self.lastCell.cdr
       else
-        nil
+        Nendo::Nil.new
       end
     end
   
@@ -569,7 +576,7 @@ module Nendo
       printf( "  NonT: [%s]\n", "list" ) if @debug
       dotted = false
       cells = []
-      lastAtom = nil
+      lastAtom = Nil.new
       while true
         case curtoken.kind
         when T_LINEFEED
@@ -595,7 +602,7 @@ module Nendo
         when T_QUOTE , T_QUASIQUOTE , T_UNQUOTE , T_UNQUOTE_SPLICING, T_DEBUG_PRINT
           cells << Cell.new( sexp() )
         else
-          if lastAtom
+          if not lastAtom.is_a? Nil
             raise "Error : illegal dotted pair syntax."
           else
             cells << Cell.new( atom() )
@@ -606,15 +613,11 @@ module Nendo
       if 0 == cells.size
         Cell.new() # null list
       elsif 1 == cells.size
-        if lastAtom
-          cells.first.cdr = lastAtom
-        end
+        cells.first.cdr = lastAtom
         cells.first
       elsif 1 < cells.size
         ptr = cells.pop
-        if lastAtom
-          ptr.cdr = lastAtom
-        end
+        ptr.cdr = lastAtom
         cells.reverse.each { |x|
           x.cdr = ptr
           ptr = x
@@ -811,7 +814,30 @@ module Nendo
         Cell.new( first, second )
       end
     end
-  
+
+    def _set_MIMARKcar_EXMARK( cell, arg )
+      if cell.is_a? Cell
+        cell.car = arg
+        cell
+      else
+        raise TypeError
+      end
+    end
+
+    def _set_MIMARKcdr_EXMARK( cell, arg )
+      arg = if arg.is_a? Cell
+              _null_QUMARK( arg ) ? Nil.new : arg
+            else
+              arg
+            end
+      if cell.is_a? Cell
+        cell.cdr = arg
+        cell
+      else
+        raise TypeError
+      end
+    end
+
     def _exit( *args )
       if 0 == args[0].length
         Kernel::exit(0)
@@ -1342,13 +1368,15 @@ module Nendo
     def toRubyParameter( argform )
       argsyms = []
       locals = []
-      rest = nil
+      rest = false
       if Symbol == argform.class
         rest       = argform
       else
         argsyms    = argform.map { |x|  toRubySymbol( x.car ) }
         locals     = argsyms.clone
-        rest       = argform.lastAtom
+        if argform.lastAtom
+          rest = argform.getLastAtom
+        end
       end
       if rest
         rest       = toRubySymbol( rest ) 
@@ -1472,8 +1500,7 @@ module Nendo
           arr = sexp.map { |x| genQuote( x.car ) }
           str += "Cell.new("
           str += arr.join( ",Cell.new(" )
-          lastAtom = sexp.lastAtom
-          str += "," + genQuote( lastAtom )  if lastAtom
+          str += "," + genQuote( sexp.getLastAtom )  if sexp.lastAtom
           str += arr.map{ |e| ")" }.join
         end
       when Array
@@ -1685,7 +1712,7 @@ module Nendo
               else
                 x.car
               end
-            }.to_list( sexp.lastAtom )
+            }.to_list( sexp.lastAtom, sexp.getLastAtom )
           else
             @macroExpandCount -= 1
             newSexp
@@ -1833,12 +1860,12 @@ module Nendo
       when Cell
         arr = sexp.map { |x| __write( x.car, readable ) }
         lastAtom = sexp.lastAtom
-        lastAtom = __write( lastAtom, readable )  if lastAtom
+        lastAtomStr = lastAtom ? __write( sexp.getLastAtom, readable ) : ""
         keyword = getQuoteKeyword.call( sexp.car )
         if keyword
-          keyword + arr[1..-1].join( " " ) + (lastAtom ? " . " + lastAtom : "")
+          keyword + arr[1..-1].join( " " ) + (lastAtom ? " . " + lastAtomStr : "")
         else
-          "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtom : "") + ")"
+          "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtomStr : "") + ")"
         end
       when Array # is a vector in the Nendo world.
         arr = sexp.map { |x| __write( x, readable ) }
@@ -1985,7 +2012,7 @@ class Symbol
 end
 
 class Array
-  def to_list( lastAtom = nil )
+  def to_list( lastAtom = false, value = Nendo::Nil.new )
     if 0 == self.length
       Nendo::Nil.new
     else
@@ -1993,7 +2020,7 @@ class Array
         Nendo::Cell.new( x )
       }
       ptr = cells.pop
-      ptr.cdr = lastAtom  if lastAtom
+      ptr.cdr = value  if lastAtom
       cells.reverse.each { |x|
         x.cdr = ptr
         ptr = x

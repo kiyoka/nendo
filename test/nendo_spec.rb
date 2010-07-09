@@ -47,7 +47,8 @@ describe Cell, "when initialized as '()" do
     @cell.to_arr.should == []
     @cell.class.should == Cell
     @cell.map{ |x| x }.should == []
-    @cell.lastAtom.should == nil
+    @cell.lastAtom.should be_false
+    @cell.getLastAtom.class.should == Nil
   end
 end
 
@@ -65,7 +66,8 @@ describe Cell, "when initialized as '(100)" do
     @cell.to_arr.should == [ 100 ]
     @cell.lastCell.car.should == 100
     @cell.lastCell.cdr.class.should == Nil
-    @cell.lastAtom.should == nil
+    @cell.lastAtom.should be_false
+    @cell.getLastAtom.class.should == Nil
   end
 end
 
@@ -84,6 +86,8 @@ describe Cell, "when initialized as '(100 . 200)" do
     @cell.to_arr.should == [ 100 ]
     @cell.lastCell.car.should == 100
     @cell.lastCell.cdr.should == 200
+    @cell.lastAtom.should be_true
+    @cell.getLastAtom.should == 200
   end
 end
 
@@ -103,7 +107,8 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
     @cell.to_arr.should == [ 100, 200 ]
     @cell.lastCell.car.should == 200
     @cell.lastCell.cdr.should == 300
-    @cell.lastAtom.should == 300
+    @cell.lastAtom.should be_true
+    @cell.getLastAtom.should == 300
   end
 end
 
@@ -457,6 +462,9 @@ describe Nendo, "when read various list expressions" do
     @nendo.replStr( " '(((()))) " ).should == "(((())))"
     @nendo.replStr( " '(()  .  ()) " ).should == "(())"
     @nendo.replStr( " '(a . ()) " ).should == "(a)"
+    @nendo.replStr( " '(a . #t) " ).should == "(a . #t)"
+    @nendo.replStr( " '(a . #f) " ).should == "(a . #f)"
+    @nendo.replStr( " '(a . nil) " ).should == "(a . nil)"
     @nendo.replStr( " '(a b c d e  .  ()) " ).should == "(a b c d e)"
   end
 end
@@ -704,6 +712,20 @@ describe Nendo, "when call replStr() with variable modifications" do
     @nendo.replStr( " 1 2 3 " ).should   == "3"
     @nendo.replStr( " (define x 3.14)  (set! x (* x 2))          x " ).should   == "6.28"
     @nendo.replStr( " 1 \n 2 \n 3 \n " ).should   == "3"
+    @nendo.replStr( " (define a '(1 . 2))  (set-car! a 100)      a " ).should   == "(100 . 2)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-car! a '())      a " ).should   == "(() . 2)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-car! a #t)       a " ).should   == "(#t . 2)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-car! a #f)       a " ).should   == "(#f . 2)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-car! a nil)      a " ).should   == "(nil . 2)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-cdr! a 200)      a " ).should   == "(1 . 200)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-cdr! a '(2))     a " ).should   == "(1 2)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-cdr! a '())      a " ).should   == "(1)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-cdr! a #t)       a " ).should   == "(1 . #t)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-cdr! a #f)       a " ).should   == "(1 . #f)"
+    @nendo.replStr( " (define a '(1 . 2))  (set-cdr! a nil)      a " ).should   == "(1 . nil)"
+    @nendo.replStr( " (define a '((1 . 2) 3))    (set-car! (car a) 100)      a " ).should   == "((100 . 2) 3)"
+    @nendo.replStr( " (define a '((1 . 2) 3))    (set-cdr! (car a) 200)      a " ).should   == "((1 . 200) 3)"
+    @nendo.replStr( " (define a '((1 . 2) . 3))  (set-cdr! a 300)            a " ).should   == "((1 . 2) . 300)"
   end
 end
 
