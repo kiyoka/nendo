@@ -4,25 +4,7 @@
 (disable-idebug)
 (define debug-print-length 256)
 
-(letrec ((str (if #t (+ "a" "A") '())))   str.class)
-
-
-(define (proc x . maybe-opt)
-  (let ((option (get-optional maybe-opt #f)))
-    (list x option)))
-
-(proc 1 2 3)
-
-
-
-
-
-         
-         
-                  
-            
-
-
-
-
- 
+;; Bug : got in `translate': undefined method `sourcefile' for #<Nendo::Cell:0x00000101580668> (NoMethodError)
+(let-values (((a b) (car+cdr '(1 . 2))))
+  (or (and (= a 1) (= b 2))
+      (fail 'car+cdr:1))))
