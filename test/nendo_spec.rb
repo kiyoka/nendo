@@ -582,6 +582,13 @@ describe Nendo, "when call replStr() with built-in functions" do
     @nendo.replStr( " (cons '(1 2) '(3 4)) " ).should == "((1 2) 3 4)"
     @nendo.replStr( " (cons '(1 2) '((3 4))) " ).should == "((1 2) (3 4))"
     @nendo.replStr( " (cons '() '()) " ).should == "(())"
+    @nendo.replStr( " (cons '() (cdr '(100))) " ).should == "(())"
+    @nendo.replStr( " (cons '() (car '(()))) " ).should == "(())"
+    @nendo.replStr( " (cons (car '(())) '()) " ).should == "(())"
+    @nendo.replStr( " (cons (car '(())) (car '(()))) " ).should == "(())"
+    @nendo.replStr( " (cons '() (cdr '(100))) " ).should == "(())"
+    @nendo.replStr( " (cons (cdr '(100)) '()) " ).should == "(())"
+    @nendo.replStr( " (cons (cdr '(100)) (cdr '(100))) " ).should == "(())"
     lambda { @nendo.replStr( " (cons 1 2 3) " ) }.should    raise_error(ArgumentError)
     lambda { @nendo.replStr( " (cons 1) " ) }.should        raise_error(ArgumentError)
     lambda { @nendo.replStr( " (cons) " ) }.should          raise_error(ArgumentError)

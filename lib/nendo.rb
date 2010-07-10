@@ -49,14 +49,14 @@ module Nendo
     def isDotted()  false    end
     def lastAtom()  false    end
     def getLastAtom() 
-      raise RuntimeError, "Error: Nil#getLastAtom() method:  this cell is not dotted list."
+      raise RuntimeError, "Error: Nil#getLastAtom method:  this cell is not dotted list."
     end
     def to_s()      ""       end
     def car()
-      raise "Error: pair required, but got ()"
+      raise "Error: Nil#car method:  pair required, but got ()"
     end
     def cdr()
-      raise "Error: pair required, but got ()"
+      raise "Error: Nil#cdr method:  pair required, but got ()"
     end
   end
   
@@ -804,6 +804,9 @@ module Nendo
     end
   
     def _cons( first, second )
+      if first.is_a? Nil
+        first = Cell.new
+      end
       if second.is_a? Cell
         if second.isNull
           Cell.new( first )
