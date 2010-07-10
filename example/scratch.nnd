@@ -7,4 +7,9 @@
 ;; Bug : got in `translate': undefined method `sourcefile' for #<Nendo::Cell:0x00000101580668> (NoMethodError)
 (let-values (((a b) (car+cdr '(1 . 2))))
   (or (and (= a 1) (= b 2))
-      (fail 'car+cdr:1))))
+      (fail 'car+cdr:1)))
+
+
+;; circular
+(circular-list 1 2)
+
