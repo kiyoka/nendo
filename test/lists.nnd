@@ -54,18 +54,17 @@
 (or (equal? (list-copy '(1 2 3 . 4)) '(1 2 3 . 4))
     (fail 'list-copy:2))
 
-(when #f ;; pending
-  (or (not (list? (circular-list 1 2 3)))
-      (fail 'circular-list:1))
-  (or (let* ((a (list 'a))
-             (b (list 'b))
-             (c (list 'c))
-             (x (circular-list a b c)))
-        (and (eq? a (car x))
-             (eq? b (cadr x))
-             (eq? c (caddr x))
-             (eq? a (cadddr x))))
-      (fail 'circular-list:2)))
+(or (not (list? (circular-list 1 2 3)))
+    (fail 'circular-list:1))
+(or (let* ((a (list 'a))
+           (b (list 'b))
+           (c (list 'c))
+           (x (circular-list a b c)))
+      (and (eq? a (car x))
+           (eq? b (cadr x))
+           (eq? c (caddr x))
+           (eq? a (cadddr x))))
+    (fail 'circular-list:2))
 
 (or (equal? (iota 0) '())
     (fail 'iota:1))
@@ -237,9 +236,8 @@
     (fail 'zip:1))
 (or (equal? (zip '() '() '() '()) '())
     (fail 'zip:2))
-(when #f ;; pending
-  (or (equal? (zip '(1) (circular-list 1 2)) '((1 1)))
-      (fail 'zip:3)))
+(or (equal? (zip '(1) (circular-list 1 2)) '((1 1)))
+    (fail 'zip:3))
 
 (or (equal? '(1 2 3 4 5) (unzip1 '((1) (2) (3) (4) (5))))
     (fail 'unzip1:1))
@@ -278,9 +276,8 @@
     (fail 'count:1))
 (or (equal? 3 (count < '(1 2 4 8) '(2 4 6 8 10 12 14 16)))
     (fail 'count:2))
-(when #f ;; pending
-  (or (equal? 2 (count < '(3 1 4 1) (circular-list 1 10)))
-      (fail 'count:3)))
+(or (equal? 2 (count < '(3 1 4 1) (circular-list 1 10)))
+    (fail 'count:3))
 
 (or (equal? '(c 3 b 2 a 1) (fold cons* '() '(a b c) '(1 2 3 4 5)))
     (fail 'fold:1))
@@ -323,10 +320,9 @@
 			  10))
     (fail 'unfold-right:1))
 
-(when #f ;; pending
-  (or (equal? '(4 1 5 1)
-              (map + '(3 1 4 1) (circular-list 1 0)))
-      (fail 'map:1)))
+(or (equal? '(4 1 5 1)
+            (map + '(3 1 4 1) (circular-list 1 0)))
+    (fail 'map:1))
 
 (when #f ;; pending
   (or (equal? '(5 4 3 2 1)
@@ -372,12 +368,11 @@
 	      l))
     (fail 'pair-for-each:1))
 
-(when #f
-  (or (equal? '(1 9 49)
-              (filter-map (lambda (x y) (and (number? x) (* x x))) 
-                          '(a 1 b 3 c 7)
-                          (circular-list 1 2)))
-      (fail 'filter-map:1)))
+(or (equal? '(1 9 49)
+            (filter-map (lambda (x y) (and (number? x) (* x x))) 
+                        '(a 1 b 3 c 7)
+                        (circular-list 1 2)))
+    (fail 'filter-map:1))
 
 (or (equal? '(0 8 8 -4) (filter even? '(0 7 8 8 43 -4)))
     (fail 'filter:1))
@@ -466,9 +461,8 @@
     (fail 'any:1))
 (or (not (any integer? '(a 3.1 b 2.7)))
     (fail 'any:2))
-(when #f
-  (or (any < '(3 1 4 1 5) (circular-list 2 7 1 8 2))
-      (fail 'any:3)))
+(or (any < '(3 1 4 1 5) (circular-list 2 7 1 8 2))
+    (fail 'any:3))
 (or (equal? 'yes (any (lambda (a b) (if (< a b) 'yes #f))
 		      '(1 2 3) '(0 1 4)))
     (fail 'any:4))
@@ -477,9 +471,8 @@
     (fail 'every:1))
 (or (not (every integer? '(3 4 5.1)))
     (fail 'every:2))
-(when #f ;; pending
-  (or (every < '(1 2 3) (circular-list 2 3 4))
-      (fail 'every:3)))
+(or (every < '(1 2 3) (circular-list 2 3 4))
+    (fail 'every:3))
 
 (or (equal? 2 (list-index even? '(3 1 4 1 5 9)))
     (fail 'list-index:1))

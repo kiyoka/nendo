@@ -83,12 +83,19 @@ module Nendo
     attr_accessor :car, :cdr
   
     def each                    # Supporting iterator
+      h = {}
       if not isNull
         it = self
         while Nil != it.class
+          h[ it.hash ] = true
+          # printf( "%s : %s\n", it.car, it.hash )
           yield it
           if it.cdr.is_a? Cell
             it = it.cdr
+            if h.has_key?( it.hash )
+              # found circular-list.
+              it = Nil.new
+            end
           else
             it = Nil.new
           end

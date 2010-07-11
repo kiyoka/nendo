@@ -149,7 +149,6 @@
 	      (null? x)))
 	(null? x))))
 
-
 ;;; A dotted list is a finite list (possibly of length 0) terminated
 ;;; by a non-nil value. Any non-cons, non-nil value (e.g., "foo" or 5)
 ;;; is a dotted list of length 0.
@@ -176,6 +175,11 @@
 		(let ((x   (cdr x))
 		      (lag (cdr lag)))
 		  (or (eq? x lag) (lp x lag))))))))
+
+(define (list? x)
+  (if (circular-list? x)
+      #f
+      (proper-list? x)))
 
 (define (not-pair? x) (not (pair? x)))	; Inline me.
 

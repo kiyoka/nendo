@@ -10,6 +10,18 @@
       (fail 'car+cdr:1)))
 
 
+'(1 2 3)
+(exit)
+
 ;; circular
-(circular-list 1 2)
+(load-library "srfi-1")
+(list?
+ (circular-list 1 2))
+
+
+
+
+  
+
+
 
