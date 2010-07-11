@@ -819,7 +819,8 @@
 
 
 ;;; We extend MAP to handle arguments of unequal length.
-(define map map-in-order)	
+(define map map-in-order)
+(define for-each map-in-order)
 
 
 ;;; filter, remove, partition
@@ -1059,7 +1060,7 @@
 		 (new-tail (recur (delete x tail elt=))))
 	    (if (eq? tail new-tail) lis (cons x new-tail)))))))
 
-(define (delete-duplicates! lis maybe-=)
+(define (delete-duplicates! lis . maybe-=)
   (let ((elt= (get-optional maybe-= equal?)))
     (check-arg procedure? elt= delete-duplicates!)
     (let recur ((lis lis))

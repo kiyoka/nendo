@@ -324,18 +324,17 @@
             (map + '(3 1 4 1) (circular-list 1 0)))
     (fail 'map:1))
 
-(when #f ;; pending
-  (or (equal? '(5 4 3 2 1)
-              (let ((v 1)
-                    (l '()))
-                (for-each (lambda (x y)
-                            (let ((n v))
-                              (set! v (+ v 1))
-                              (set! l (cons n l))))
-                          '(0 0 0 0 0)
-                          (circular-list 1 2))
-                l))
-      (fail 'for-each:1)))
+(or (equal? '(5 4 3 2 1)
+            (let ((v 1)
+                  (l '()))
+              (for-each (lambda (x y)
+                          (let ((n v))
+                            (set! v (+ v 1))
+                            (set! l (cons n l))))
+                        '(0 0 0 0 0)
+                        (circular-list 1 2))
+              l))
+    (fail 'for-each:1))
 
 
 (or (equal? '(1 -1 3 -3 8 -8) 
@@ -505,8 +504,8 @@
 
 (when #f ;; pending
   (or (let* ((x     (list 'a 'b 'a 'c 'a 'b 'c 'z))
-             (cells (pair-fold cons '() x))
-             (r     (delete-duplicates! x)))
+           (cells (pair-fold cons '() x))
+           (r     (delete-duplicates! x)))
         (and (equal? '(a b c z) r)
              (every (lambda (x) (memq x cells)) (pair-fold cons '() r))))
       (fail 'delete-duplicates!:1)))
