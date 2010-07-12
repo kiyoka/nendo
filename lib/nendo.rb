@@ -1119,7 +1119,8 @@ module Nendo
       rubyExp = self.methods.select { |x|
         x.to_s.match( /^_/ )
       }.map { |name|
-        sprintf( "@%s = self.method( :%s ).to_proc", name, name )
+        sprintf( "@%s = self.method( :%s ).to_proc", name, name ) + ";" + 
+        sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", name )
       }.join( " ; " )
       eval( rubyExp, @binding )
   
@@ -1281,9 +1282,15 @@ module Nendo
         [ "begin",
           [
            sprintf( "@global_lisp_binding['%s'] = true", variable_sym ),
+           if global_cap
+             sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", variable_sym )
+           else
+             ""
+           end,
            sprintf( "%s%s = ", global_cap, variable_sym ),
            "trampCall(", [ ar ], ")"],
-           "end" ]
+          "end"
+        ]
       when :error
         [
          'begin raise RuntimeError, ',
@@ -1313,15 +1320,19 @@ module Nendo
              arr,
              sprintf( "             ))" ) + arr.map { |n| ")" }.join]
           else
-            _call = case execType
-                    when EXEC_TYPE_NORMAL
-                      [ "trampCall( callProcedure(", "))" ]
-                    when EXEC_TYPE_TAILCALL
-                      [ "DelayedCallPacket.new(",    ")"  ]
-                    end
             origname = funcname.to_s
             funcname = funcname.to_s
             sym      = toRubySymbol( funcname )
+            _call = case execType
+                    when EXEC_TYPE_NORMAL
+                      if locals.flatten.include?( sym )
+                        [ "trampCall( callProcedure(", "))" ]  # local function
+                      else
+                        [ sprintf( "trampCall( self.%s_METHOD(", sym ), "))" ] # top level function
+                      end
+                    when EXEC_TYPE_TAILCALL
+                      [ "DelayedCallPacket.new(",    ")"  ]
+                    end
             [sprintf( "%s '%s',", _call[0], origname ),
              [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
              arr,

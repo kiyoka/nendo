@@ -20,6 +20,7 @@ trampCall(
 trampCall( 
   begin
     @global_lisp_binding['_debug_MIMARKprint_MIMARKoutput_MIMARKfunc'] = true
+    def self._debug_MIMARKprint_MIMARKoutput_MIMARKfunc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
     @_debug_MIMARKprint_MIMARKoutput_MIMARKfunc = 
     trampCall(
           Proc.new { |_str| 
@@ -35,7 +36,7 @@ trampCall(
                           rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                         end                      ,
                       "%s"                      ,
-                        trampCall( callProcedure( '+',
+                        trampCall( self.__PLMARK_METHOD( '+',
                             begin
                               if @global_lisp_binding.has_key?('__PLMARK') then
                                 trampCall(@__PLMARK)

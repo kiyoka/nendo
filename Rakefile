@@ -4,7 +4,7 @@
 #
 # Release Engineering
 #   1. edit the VERSION.yml file
-#   2. rake compile  &&   rake spec
+#   2. rake compile  &&   rake check
 #   3. rake gemspec  &&   rake build
 #      to generate nendo-x.x.x.gem
 #   4. install nendo-x.x.x.gem to clean environment and test
@@ -27,7 +27,7 @@ rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
 
-task :spec do
+task :check do
   sh "ruby -I ./lib /usr/local/bin/spec nendo_spec.rb"
 end
 

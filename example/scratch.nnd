@@ -6,15 +6,19 @@
 
 (letrec ((str (if #t (+ "a" "A") '())))   str.class)
 
+(define (foo lis)
+  (second lis))
+  
+(foo '(1 2 3))
+(foo 1)
 
 
+
+
+  
 
          
-         
-                  
-            
 
 
 
 
- 
