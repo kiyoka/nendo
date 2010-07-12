@@ -1254,8 +1254,7 @@ module Nendo
     end
 
     def callProcedure( origname, pred, args )
-      rubyArgument = toRubyArgument( origname, pred, args )
-      pred.call( *rubyArgument )
+      pred.call( *toRubyArgument( origname, pred, args ))
     end
   
     # for code generation of Ruby's argument values
