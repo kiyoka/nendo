@@ -1281,12 +1281,12 @@ module Nendo
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
         [ "begin",
           [
-           sprintf( "@global_lisp_binding['%s'] = true", variable_sym ),
            if global_cap
              sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", variable_sym )
            else
              ""
            end,
+           sprintf( "@global_lisp_binding['%s'] = true", variable_sym ),
            sprintf( "%s%s = ", global_cap, variable_sym ),
            "trampCall(", [ ar ], ")"],
           "end"
