@@ -16,23 +16,21 @@ class Evaluator
     p "funcE"
   end
 
-  def test1
-    funcB( 100 )
-    funcE( 200 )
+  def addSpecialMethods()
+    @binding = binding
+    eval( "def self.funcEE( dummy ) while true \n p 'funcEE' \n end  end", binding )
+    eval( "@_funcEE = self.method( :funcEE ).to_proc", binding )
   end
 
-  def test2
-    funcEdash( 300 )
+  def callSpecialMethods()
+    @_funcEE.call( 200 )
   end
 end
 
 e = Evaluator.new
-e.test1
+e.addSpecialMethods()
+e.callSpecialMethods()
 
-def e.funcEdash( dummy )
-  p "funcEdash"
-end
 
-e.test2
 
 
