@@ -169,10 +169,7 @@ module Nendo
       @pred     = _pred
       @args     = _args
     end
-
-    def call(obj)
-      obj.callProcedure( @origname, @pred, @args )
-    end
+    attr_reader :origname, :pred, :args
   end
 
   class Token
@@ -1119,8 +1116,7 @@ module Nendo
       rubyExp = self.methods.select { |x|
         x.to_s.match( /^_/ )
       }.map { |name|
-        sprintf( "@%s = self.method( :%s ).to_proc", name, name ) + ";" + 
-        sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", name )
+        sprintf( "@%s = self.method( :%s ).to_proc", name, name )
       }.join( " ; " )
       eval( rubyExp, @binding )
   
@@ -1138,7 +1134,7 @@ module Nendo
     def global_lisp_define( rubySymbol, val )
       @___tmp = val
       eval( sprintf( "@%s = @___tmp;", rubySymbol ), @binding )
-      eval( sprintf( "@global_lisp_binding['%s'] = true;", rubySymbol ), @binding )
+      eval( sprintf( "@global_lisp_binding['%s'] = @___tmp;", rubySymbol ), @binding )
     end
   
     def setArgv( argv )
@@ -1248,11 +1244,24 @@ module Nendo
   
     def trampCall( result )
       while result.is_a? DelayedCallPacket
-        result = result.call(self)
+        method_name = toRubySymbol( result.origname ) + "_METHOD"
+        @tmp_origname = result.origname
+        @tmp_pred     = result.pred
+        @tmp_args     = result.args
+        result = eval( sprintf( "self.%s( @tmp_origname, @tmp_pred, @tmp_args )", method_name ), @binding )
       end
       result
     end
 
+    def method_missing( name, *args )
+      sym = toRubySymbol( name );
+      if @global_lisp_binding[name].is_a? Proc
+        @global_lisp_binding[name].call( args[0], args[1], args[2] )
+      else
+        callProcedure( args[0], args[1], args[2] )
+      end
+    end
+    
     def callProcedure( origname, pred, args )
       pred.call( *toRubyArgument( origname, pred, args ))
     end
@@ -1281,11 +1290,13 @@ module Nendo
         [ "begin",
           [
            if global_cap
-             sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", variable_sym )
+             [
+              sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", variable_sym ),
+              sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD )", variable_sym, variable_sym )
+             ]
            else
              ""
            end,
-           sprintf( "@global_lisp_binding['%s'] = true", variable_sym ),
            sprintf( "%s%s = ", global_cap, variable_sym ),
            "trampCall(", [ ar ], ")"],
           "end"
@@ -1324,16 +1335,12 @@ module Nendo
             sym      = toRubySymbol( funcname )
             _call = case execType
                     when EXEC_TYPE_NORMAL
-                      if locals.flatten.include?( sym )
-                        [ "trampCall( callProcedure(", "))" ]  # local function
-                      else
-                        [ sprintf( "trampCall( self.%s_METHOD(", sym ), "))" ] # top level function
-                      end
+                      [ sprintf( "trampCall( self.%s_METHOD(", sym ), "))" ]
                     when EXEC_TYPE_TAILCALL
                       [ "DelayedCallPacket.new(",    ")"  ]
                     end
-            [sprintf( "%s '%s',", _call[0], origname ),
-             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
+            [sprintf( "%s '%s',", _call[0], origname ), 
+             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","], 
              arr,
              sprintf( "             %s", _call[1] ) + arr.map { |n| ")" }.join]
           end
