@@ -5,8 +5,8 @@
 
 trampCall( 
   begin
-    @global_lisp_binding['_define'] = true
-    def self._define_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._define_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_define'] = self.method( :_define_METHOD )
     @_define = 
     trampCall(
           LispMacro.new { |_arg,*__rest__| _body = __rest__[0] ;  
@@ -215,8 +215,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_debug_MIMARKprint'] = true
-    def self._debug_MIMARKprint_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._debug_MIMARKprint_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_debug_MIMARKprint'] = self.method( :_debug_MIMARKprint_METHOD )
     @_debug_MIMARKprint = 
     trampCall(
           LispMacro.new { |__form,_sourcefile,_lineno,_sourcesexp| 
@@ -232,8 +232,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caar'] = true
-    def self._caar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caar'] = self.method( :_caar_METHOD )
     @_caar = 
     trampCall(
           Proc.new { |_x| 
@@ -267,8 +267,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cadr'] = true
-    def self._cadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cadr'] = self.method( :_cadr_METHOD )
     @_cadr = 
     trampCall(
           Proc.new { |_x| 
@@ -302,8 +302,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdar'] = true
-    def self._cdar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdar'] = self.method( :_cdar_METHOD )
     @_cdar = 
     trampCall(
           Proc.new { |_x| 
@@ -337,8 +337,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cddr'] = true
-    def self._cddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cddr'] = self.method( :_cddr_METHOD )
     @_cddr = 
     trampCall(
           Proc.new { |_x| 
@@ -372,8 +372,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caaar'] = true
-    def self._caaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caaar'] = self.method( :_caaar_METHOD )
     @_caaar = 
     trampCall(
           Proc.new { |_x| 
@@ -416,8 +416,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caadr'] = true
-    def self._caadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caadr'] = self.method( :_caadr_METHOD )
     @_caadr = 
     trampCall(
           Proc.new { |_x| 
@@ -460,8 +460,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cadar'] = true
-    def self._cadar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cadar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cadar'] = self.method( :_cadar_METHOD )
     @_cadar = 
     trampCall(
           Proc.new { |_x| 
@@ -504,8 +504,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caddr'] = true
-    def self._caddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caddr'] = self.method( :_caddr_METHOD )
     @_caddr = 
     trampCall(
           Proc.new { |_x| 
@@ -548,8 +548,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdaar'] = true
-    def self._cdaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdaar'] = self.method( :_cdaar_METHOD )
     @_cdaar = 
     trampCall(
           Proc.new { |_x| 
@@ -592,8 +592,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdadr'] = true
-    def self._cdadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdadr'] = self.method( :_cdadr_METHOD )
     @_cdadr = 
     trampCall(
           Proc.new { |_x| 
@@ -636,8 +636,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cddar'] = true
-    def self._cddar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cddar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cddar'] = self.method( :_cddar_METHOD )
     @_cddar = 
     trampCall(
           Proc.new { |_x| 
@@ -680,8 +680,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdddr'] = true
-    def self._cdddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdddr'] = self.method( :_cdddr_METHOD )
     @_cdddr = 
     trampCall(
           Proc.new { |_x| 
@@ -724,8 +724,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caaaar'] = true
-    def self._caaaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caaaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caaaar'] = self.method( :_caaaar_METHOD )
     @_caaaar = 
     trampCall(
           Proc.new { |_x| 
@@ -777,8 +777,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caaadr'] = true
-    def self._caaadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caaadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caaadr'] = self.method( :_caaadr_METHOD )
     @_caaadr = 
     trampCall(
           Proc.new { |_x| 
@@ -830,8 +830,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caadar'] = true
-    def self._caadar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caadar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caadar'] = self.method( :_caadar_METHOD )
     @_caadar = 
     trampCall(
           Proc.new { |_x| 
@@ -883,8 +883,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caaddr'] = true
-    def self._caaddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caaddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caaddr'] = self.method( :_caaddr_METHOD )
     @_caaddr = 
     trampCall(
           Proc.new { |_x| 
@@ -936,8 +936,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cadaar'] = true
-    def self._cadaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cadaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cadaar'] = self.method( :_cadaar_METHOD )
     @_cadaar = 
     trampCall(
           Proc.new { |_x| 
@@ -989,8 +989,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cadadr'] = true
-    def self._cadadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cadadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cadadr'] = self.method( :_cadadr_METHOD )
     @_cadadr = 
     trampCall(
           Proc.new { |_x| 
@@ -1042,8 +1042,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_caddar'] = true
-    def self._caddar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._caddar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_caddar'] = self.method( :_caddar_METHOD )
     @_caddar = 
     trampCall(
           Proc.new { |_x| 
@@ -1095,8 +1095,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cadddr'] = true
-    def self._cadddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cadddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cadddr'] = self.method( :_cadddr_METHOD )
     @_cadddr = 
     trampCall(
           Proc.new { |_x| 
@@ -1148,8 +1148,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdaaar'] = true
-    def self._cdaaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdaaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdaaar'] = self.method( :_cdaaar_METHOD )
     @_cdaaar = 
     trampCall(
           Proc.new { |_x| 
@@ -1201,8 +1201,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdaadr'] = true
-    def self._cdaadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdaadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdaadr'] = self.method( :_cdaadr_METHOD )
     @_cdaadr = 
     trampCall(
           Proc.new { |_x| 
@@ -1254,8 +1254,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdadar'] = true
-    def self._cdadar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdadar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdadar'] = self.method( :_cdadar_METHOD )
     @_cdadar = 
     trampCall(
           Proc.new { |_x| 
@@ -1307,8 +1307,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdaddr'] = true
-    def self._cdaddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdaddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdaddr'] = self.method( :_cdaddr_METHOD )
     @_cdaddr = 
     trampCall(
           Proc.new { |_x| 
@@ -1360,8 +1360,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cddaar'] = true
-    def self._cddaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cddaar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cddaar'] = self.method( :_cddaar_METHOD )
     @_cddaar = 
     trampCall(
           Proc.new { |_x| 
@@ -1413,8 +1413,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cddadr'] = true
-    def self._cddadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cddadr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cddadr'] = self.method( :_cddadr_METHOD )
     @_cddadr = 
     trampCall(
           Proc.new { |_x| 
@@ -1466,8 +1466,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cdddar'] = true
-    def self._cdddar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cdddar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cdddar'] = self.method( :_cdddar_METHOD )
     @_cdddar = 
     trampCall(
           Proc.new { |_x| 
@@ -1519,8 +1519,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cddddr'] = true
-    def self._cddddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cddddr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cddddr'] = self.method( :_cddddr_METHOD )
     @_cddddr = 
     trampCall(
           Proc.new { |_x| 
@@ -1572,8 +1572,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_iota'] = true
-    def self._iota_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._iota_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_iota'] = self.method( :_iota_METHOD )
     @_iota = 
     trampCall(
           begin
@@ -1589,8 +1589,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_append'] = true
-    def self._append_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._append_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_append'] = self.method( :_append_METHOD )
     @_append = 
     trampCall(
           Proc.new { |_a,_b| 
@@ -1702,8 +1702,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector'] = true
-    def self._vector_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector'] = self.method( :_vector_METHOD )
     @_vector = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
@@ -1728,8 +1728,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_list_QUMARK'] = true
-    def self._list_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_list_QUMARK'] = self.method( :_list_QUMARK_METHOD )
     @_list_QUMARK = 
     trampCall(
           Proc.new { |_arg| 
@@ -1793,8 +1793,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_even_QUMARK'] = true
-    def self._even_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._even_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_even_QUMARK'] = self.method( :_even_QUMARK_METHOD )
     @_even_QUMARK = 
     trampCall(
           Proc.new { |_n| 
@@ -1830,8 +1830,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_odd_QUMARK'] = true
-    def self._odd_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._odd_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_odd_QUMARK'] = self.method( :_odd_QUMARK_METHOD )
     @_odd_QUMARK = 
     trampCall(
           Proc.new { |_n| 
@@ -1876,8 +1876,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_zero_QUMARK'] = true
-    def self._zero_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._zero_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_zero_QUMARK'] = self.method( :_zero_QUMARK_METHOD )
     @_zero_QUMARK = 
     trampCall(
           Proc.new { |_n| 
@@ -1903,8 +1903,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_positive_QUMARK'] = true
-    def self._positive_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._positive_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_positive_QUMARK'] = self.method( :_positive_QUMARK_METHOD )
     @_positive_QUMARK = 
     trampCall(
           Proc.new { |_n| 
@@ -1930,8 +1930,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_negative_QUMARK'] = true
-    def self._negative_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._negative_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_negative_QUMARK'] = self.method( :_negative_QUMARK_METHOD )
     @_negative_QUMARK = 
     trampCall(
           Proc.new { |_n| 
@@ -1957,8 +1957,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_abs'] = true
-    def self._abs_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._abs_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_abs'] = self.method( :_abs_METHOD )
     @_abs = 
     trampCall(
           Proc.new { |_n| 
@@ -2005,8 +2005,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_max'] = true
-    def self._max_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._max_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_max'] = self.method( :_max_METHOD )
     @_max = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
@@ -2084,8 +2084,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_min'] = true
-    def self._min_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._min_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_min'] = self.method( :_min_METHOD )
     @_min = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
@@ -2163,8 +2163,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_succ'] = true
-    def self._succ_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._succ_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_succ'] = self.method( :_succ_METHOD )
     @_succ = 
     trampCall(
           Proc.new { |_x| 
@@ -2190,8 +2190,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_pred'] = true
-    def self._pred_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._pred_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_pred'] = self.method( :_pred_METHOD )
     @_pred = 
     trampCall(
           Proc.new { |_x| 
@@ -2217,8 +2217,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_nth'] = true
-    def self._nth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._nth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_nth'] = self.method( :_nth_METHOD )
     @_nth = 
     trampCall(
           Proc.new { |_n,_lst| 
@@ -2377,8 +2377,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_first'] = true
-    def self._first_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._first_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_first'] = self.method( :_first_METHOD )
     @_first = 
     trampCall(
           Proc.new { |_lst| 
@@ -2404,8 +2404,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_second'] = true
-    def self._second_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._second_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_second'] = self.method( :_second_METHOD )
     @_second = 
     trampCall(
           Proc.new { |_lst| 
@@ -2431,8 +2431,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_third'] = true
-    def self._third_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._third_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_third'] = self.method( :_third_METHOD )
     @_third = 
     trampCall(
           Proc.new { |_lst| 
@@ -2458,8 +2458,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_fourth'] = true
-    def self._fourth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._fourth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_fourth'] = self.method( :_fourth_METHOD )
     @_fourth = 
     trampCall(
           Proc.new { |_lst| 
@@ -2485,8 +2485,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_fifth'] = true
-    def self._fifth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._fifth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_fifth'] = self.method( :_fifth_METHOD )
     @_fifth = 
     trampCall(
           Proc.new { |_lst| 
@@ -2512,8 +2512,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_sixth'] = true
-    def self._sixth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._sixth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_sixth'] = self.method( :_sixth_METHOD )
     @_sixth = 
     trampCall(
           Proc.new { |_lst| 
@@ -2539,8 +2539,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_seventh'] = true
-    def self._seventh_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._seventh_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_seventh'] = self.method( :_seventh_METHOD )
     @_seventh = 
     trampCall(
           Proc.new { |_lst| 
@@ -2566,8 +2566,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_eighth'] = true
-    def self._eighth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._eighth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_eighth'] = self.method( :_eighth_METHOD )
     @_eighth = 
     trampCall(
           Proc.new { |_lst| 
@@ -2593,8 +2593,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_ninth'] = true
-    def self._ninth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._ninth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_ninth'] = self.method( :_ninth_METHOD )
     @_ninth = 
     trampCall(
           Proc.new { |_lst| 
@@ -2620,8 +2620,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_tenth'] = true
-    def self._tenth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._tenth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_tenth'] = self.method( :_tenth_METHOD )
     @_tenth = 
     trampCall(
           Proc.new { |_lst| 
@@ -2647,8 +2647,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_x_MIMARK_GTMARKstring'] = true
-    def self._x_MIMARK_GTMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._x_MIMARK_GTMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_x_MIMARK_GTMARKstring'] = self.method( :_x_MIMARK_GTMARKstring_METHOD )
     @_x_MIMARK_GTMARKstring = 
     trampCall(
           Proc.new { |_object| 
@@ -2673,8 +2673,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_macroexpand'] = true
-    def self._macroexpand_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._macroexpand_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_macroexpand'] = self.method( :_macroexpand_METHOD )
     @_macroexpand = 
     trampCall(
           Proc.new { |_sexp| 
@@ -2751,8 +2751,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_feedto'] = true
-    def self._feedto_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._feedto_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_feedto'] = self.method( :_feedto_METHOD )
     @_feedto = 
     trampCall(
           Proc.new { || 
@@ -2770,8 +2770,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cond'] = true
-    def self._cond_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cond_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cond'] = self.method( :_cond_METHOD )
     @_cond = 
     trampCall(
           LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
@@ -3097,7 +3097,7 @@ trampCall(
                                                    )))
                                              ))))
                                ) then
-                                  trampCall( callProcedure( 'case-block',
+                                  trampCall( self._case_MIMARKblock_METHOD( 'case-block',
                                       begin
                                           trampCall(_case_MIMARKblock)
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:201"] + __e.backtrace ) ; raise __e
@@ -3119,7 +3119,7 @@ trampCall(
                                       Cell.new()
                                                ))))
                               else
-                                  trampCall( callProcedure( 'case-block',
+                                  trampCall( self._case_MIMARKblock_METHOD( 'case-block',
                                       begin
                                           trampCall(_case_MIMARKblock)
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:201"] + __e.backtrace ) ; raise __e
@@ -3138,7 +3138,7 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:203"] + __e.backtrace ) ; raise __e
                                               end
                                                      )))                                      ,Cell.new(
-                                        trampCall( callProcedure( 'cond-iter',
+                                        trampCall( self._cond_MIMARKiter_METHOD( 'cond-iter',
                                             begin
                                                 trampCall(_cond_MIMARKiter)
                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:203"] + __e.backtrace ) ; raise __e
@@ -3162,7 +3162,7 @@ trampCall(
                               end
                           end
                       }
-                    trampCall( callProcedure( 'cond-iter',
+                    trampCall( self._cond_MIMARKiter_METHOD( 'cond-iter',
                         begin
                             trampCall(_cond_MIMARKiter)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:203"] + __e.backtrace ) ; raise __e
@@ -3185,8 +3185,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_let1'] = true
-    def self._let1_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._let1_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_let1'] = self.method( :_let1_METHOD )
     @_let1 = 
     trampCall(
           LispMacro.new { |_var,_expr,*__rest__| _body = __rest__[0] ;  
@@ -3247,8 +3247,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_or'] = true
-    def self._or_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._or_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_or'] = self.method( :_or_METHOD )
     @_or = 
     trampCall(
           LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
@@ -3422,7 +3422,7 @@ trampCall(
                                                                 trampCall(_sym)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:225"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,Cell.new(
-                                                            trampCall( callProcedure( 'or-iter',
+                                                            trampCall( self._or_MIMARKiter_METHOD( 'or-iter',
                                                                 begin
                                                                     trampCall(_or_MIMARKiter)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:226"] + __e.backtrace ) ; raise __e
@@ -3463,7 +3463,7 @@ trampCall(
                               end
                           end
                       }
-                    trampCall( callProcedure( 'or-iter',
+                    trampCall( self._or_MIMARKiter_METHOD( 'or-iter',
                         begin
                             trampCall(_or_MIMARKiter)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:226"] + __e.backtrace ) ; raise __e
@@ -3486,8 +3486,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_and'] = true
-    def self._and_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._and_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_and'] = self.method( :_and_METHOD )
     @_and = 
     trampCall(
           LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
@@ -3612,7 +3612,7 @@ trampCall(
                                                                          )))
                                                                    )))))
                                                              ))))                                              ,Cell.new(
-                                                trampCall( callProcedure( 'and-iter',
+                                                trampCall( self._and_MIMARKiter_METHOD( 'and-iter',
                                                     begin
                                                         trampCall(_and_MIMARKiter)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:241"] + __e.backtrace ) ; raise __e
@@ -3641,7 +3641,7 @@ trampCall(
                               end
                           end
                       }
-                    trampCall( callProcedure( 'and-iter',
+                    trampCall( self._and_MIMARKiter_METHOD( 'and-iter',
                         begin
                             trampCall(_and_MIMARKiter)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:241"] + __e.backtrace ) ; raise __e
@@ -3664,8 +3664,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_apply'] = true
-    def self._apply_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._apply_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_apply'] = self.method( :_apply_METHOD )
     @_apply = 
     trampCall(
           Proc.new { |_proc,*__rest__| _args = __rest__[0] ;  
@@ -3776,8 +3776,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_quasiquote'] = true
-    def self._quasiquote_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._quasiquote_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_quasiquote'] = self.method( :_quasiquote_METHOD )
     @_quasiquote = 
     trampCall(
           LispMacro.new { |_l| 
@@ -4620,7 +4620,7 @@ trampCall(
                                              ))))
                                ) then
                                   begin
-                                      trampCall( callProcedure( 'mcons',
+                                      trampCall( self._mcons_METHOD( 'mcons',
                                           begin
                                               trampCall(_mcons)
                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:307"] + __e.backtrace ) ; raise __e
@@ -4631,7 +4631,7 @@ trampCall(
                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:308"] + __e.backtrace ) ; raise __e
                                             end                                          ,Cell.new(
                                           Cell.new(:"quote",Cell.new(:"quasiquote"))                                          ,Cell.new(
-                                            trampCall( callProcedure( 'foo',
+                                            trampCall( self._foo_METHOD( 'foo',
                                                 begin
                                                     trampCall(_foo)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -4910,7 +4910,7 @@ trampCall(
                                                         end
                                                        ) then
                                                           begin
-                                                              trampCall( callProcedure( 'mappend',
+                                                              trampCall( self._mappend_METHOD( 'mappend',
                                                                   begin
                                                                       trampCall(_mappend)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:297"] + __e.backtrace ) ; raise __e
@@ -4951,7 +4951,7 @@ trampCall(
                                                                                              )))
                                                                                        )))
                                                                                  )))                                                                  ,Cell.new(
-                                                                    trampCall( callProcedure( 'foo',
+                                                                    trampCall( self._foo_METHOD( 'foo',
                                                                         begin
                                                                             trampCall(_foo)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -4982,7 +4982,7 @@ trampCall(
                                                           true
                                                            ) then
                                                               begin
-                                                                  trampCall( callProcedure( 'mcons',
+                                                                  trampCall( self._mcons_METHOD( 'mcons',
                                                                       begin
                                                                           trampCall(_mcons)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:307"] + __e.backtrace ) ; raise __e
@@ -4992,7 +4992,7 @@ trampCall(
                                                                             trampCall(_form)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:308"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,Cell.new(
-                                                                        trampCall( callProcedure( 'foo',
+                                                                        trampCall( self._foo_METHOD( 'foo',
                                                                             begin
                                                                                 trampCall(_foo)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -5016,7 +5016,7 @@ trampCall(
                                                                                     end
                                                                                            )))
                                                                                      ))))                                                                      ,Cell.new(
-                                                                        trampCall( callProcedure( 'foo',
+                                                                        trampCall( self._foo_METHOD( 'foo',
                                                                             begin
                                                                                 trampCall(_foo)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -5075,7 +5075,7 @@ trampCall(
                                                              ))))
                                                ) then
                                                   begin
-                                                      trampCall( callProcedure( 'mcons',
+                                                      trampCall( self._mcons_METHOD( 'mcons',
                                                           begin
                                                               trampCall(_mcons)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:307"] + __e.backtrace ) ; raise __e
@@ -5086,7 +5086,7 @@ trampCall(
                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:308"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,Cell.new(
                                                           Cell.new(:"quote",Cell.new(:"unquote"))                                                          ,Cell.new(
-                                                            trampCall( callProcedure( 'foo',
+                                                            trampCall( self._foo_METHOD( 'foo',
                                                                 begin
                                                                     trampCall(_foo)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -5149,7 +5149,7 @@ trampCall(
                                                                  ))))
                                                    ) then
                                                       begin
-                                                          trampCall( callProcedure( 'mcons',
+                                                          trampCall( self._mcons_METHOD( 'mcons',
                                                               begin
                                                                   trampCall(_mcons)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:307"] + __e.backtrace ) ; raise __e
@@ -5160,7 +5160,7 @@ trampCall(
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:308"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,Cell.new(
                                                               Cell.new(:"quote",Cell.new(:"unquote-splicing"))                                                              ,Cell.new(
-                                                                trampCall( callProcedure( 'foo',
+                                                                trampCall( self._foo_METHOD( 'foo',
                                                                     begin
                                                                         trampCall(_foo)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -5201,7 +5201,7 @@ trampCall(
                                                       true
                                                        ) then
                                                           begin
-                                                              trampCall( callProcedure( 'mcons',
+                                                              trampCall( self._mcons_METHOD( 'mcons',
                                                                   begin
                                                                       trampCall(_mcons)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:307"] + __e.backtrace ) ; raise __e
@@ -5211,7 +5211,7 @@ trampCall(
                                                                         trampCall(_form)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:308"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,Cell.new(
-                                                                    trampCall( callProcedure( 'foo',
+                                                                    trampCall( self._foo_METHOD( 'foo',
                                                                         begin
                                                                             trampCall(_foo)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -5235,7 +5235,7 @@ trampCall(
                                                                                 end
                                                                                        )))
                                                                                  ))))                                                                  ,Cell.new(
-                                                                    trampCall( callProcedure( 'foo',
+                                                                    trampCall( self._foo_METHOD( 'foo',
                                                                         begin
                                                                             trampCall(_foo)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -5274,7 +5274,7 @@ trampCall(
                               end
                           end
                       }
-                    trampCall( callProcedure( 'foo',
+                    trampCall( self._foo_METHOD( 'foo',
                         begin
                             trampCall(_foo)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:309"] + __e.backtrace ) ; raise __e
@@ -5298,8 +5298,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_unquote'] = true
-    def self._unquote_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unquote_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_unquote'] = self.method( :_unquote_METHOD )
     @_unquote = 
     trampCall(
           LispMacro.new { |_lst| 
@@ -5353,8 +5353,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_unquote_MIMARKsplicing'] = true
-    def self._unquote_MIMARKsplicing_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unquote_MIMARKsplicing_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_unquote_MIMARKsplicing'] = self.method( :_unquote_MIMARKsplicing_METHOD )
     @_unquote_MIMARKsplicing = 
     trampCall(
           LispMacro.new { |_lst| 
@@ -5408,8 +5408,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_when'] = true
-    def self._when_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._when_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_when'] = self.method( :_when_METHOD )
     @_when = 
     trampCall(
           LispMacro.new { |*__rest__| _form = __rest__[0] ;  
@@ -5486,8 +5486,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_unless'] = true
-    def self._unless_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unless_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_unless'] = self.method( :_unless_METHOD )
     @_unless = 
     trampCall(
           LispMacro.new { |*__rest__| _form = __rest__[0] ;  
@@ -5584,8 +5584,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_while'] = true
-    def self._while_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._while_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_while'] = self.method( :_while_METHOD )
     @_while = 
     trampCall(
           LispMacro.new { |*__rest__| _form = __rest__[0] ;  
@@ -5815,8 +5815,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_until'] = true
-    def self._until_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._until_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_until'] = self.method( :_until_METHOD )
     @_until = 
     trampCall(
           LispMacro.new { |*__rest__| _form = __rest__[0] ;  
@@ -5893,8 +5893,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_let'] = true
-    def self._let_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._let_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_let'] = self.method( :_let_METHOD )
     @_let = 
     trampCall(
           LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
@@ -6145,8 +6145,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_errorf'] = true
-    def self._errorf_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._errorf_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_errorf'] = self.method( :_errorf_METHOD )
     @_errorf = 
     trampCall(
           LispMacro.new { |_format,*__rest__| _args = __rest__[0] ;  
@@ -6205,8 +6205,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_do'] = true
-    def self._do_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._do_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_do'] = self.method( :_do_METHOD )
     @_do = 
     trampCall(
           LispMacro.new { |*__rest__| _do_MIMARKmacro = __rest__[0] ;  
@@ -6740,8 +6740,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_generic_MIMARKmember'] = true
-    def self._generic_MIMARKmember_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._generic_MIMARKmember_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_generic_MIMARKmember'] = self.method( :_generic_MIMARKmember_METHOD )
     @_generic_MIMARKmember = 
     trampCall(
           Proc.new { |_cmp,_obj,_lst| 
@@ -6765,7 +6765,7 @@ trampCall(
                   end
               else
                   if ( 
-                    trampCall( callProcedure( 'cmp',
+                    trampCall( self._cmp_METHOD( 'cmp',
                         begin
                             trampCall(_cmp)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:412"] + __e.backtrace ) ; raise __e
@@ -6845,8 +6845,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_memq'] = true
-    def self._memq_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._memq_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_memq'] = self.method( :_memq_METHOD )
     @_memq = 
     trampCall(
           Proc.new { |_obj,_lst| 
@@ -6881,8 +6881,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_memv'] = true
-    def self._memv_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._memv_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_memv'] = self.method( :_memv_METHOD )
     @_memv = 
     trampCall(
           Proc.new { |_obj,_lst| 
@@ -6917,8 +6917,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_member'] = true
-    def self._member_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._member_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_member'] = self.method( :_member_METHOD )
     @_member = 
     trampCall(
           Proc.new { |_obj,_lst| 
@@ -6953,8 +6953,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_generic_MIMARKassoc'] = true
-    def self._generic_MIMARKassoc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._generic_MIMARKassoc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_generic_MIMARKassoc'] = self.method( :_generic_MIMARKassoc_METHOD )
     @_generic_MIMARKassoc = 
     trampCall(
           Proc.new { |_cmp,_obj,_alst| 
@@ -6978,7 +6978,7 @@ trampCall(
                   end
               else
                   if ( 
-                    trampCall( callProcedure( 'cmp',
+                    trampCall( self._cmp_METHOD( 'cmp',
                         begin
                             trampCall(_cmp)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:426"] + __e.backtrace ) ; raise __e
@@ -7067,8 +7067,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_assq'] = true
-    def self._assq_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._assq_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_assq'] = self.method( :_assq_METHOD )
     @_assq = 
     trampCall(
           Proc.new { |_obj,_alst| 
@@ -7103,8 +7103,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_assv'] = true
-    def self._assv_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._assv_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_assv'] = self.method( :_assv_METHOD )
     @_assv = 
     trampCall(
           Proc.new { |_obj,_alst| 
@@ -7139,8 +7139,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_assoc'] = true
-    def self._assoc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._assoc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_assoc'] = self.method( :_assoc_METHOD )
     @_assoc = 
     trampCall(
           Proc.new { |_obj,_alst| 
@@ -7175,8 +7175,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_acons'] = true
-    def self._acons_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._acons_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_acons'] = self.method( :_acons_METHOD )
     @_acons = 
     trampCall(
           Proc.new { |_x,_y,_z| 
@@ -7218,15 +7218,15 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_assq_MIMARKref'] = true
-    def self._assq_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._assq_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_assq_MIMARKref'] = self.method( :_assq_MIMARKref_METHOD )
     @_assq_MIMARKref = 
     trampCall(
           Proc.new { |_obj,_alst| 
               if ( 
                 begin
-                  @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20147'] = true
-                  def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20147_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                    def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20147_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                    @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20147'] = self.method( :___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20147_METHOD )
                   @___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20147 = 
                   trampCall(
                         trampCall( self._assq_METHOD( 'assq',
@@ -7283,15 +7283,15 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_assv_MIMARKref'] = true
-    def self._assv_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._assv_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_assv_MIMARKref'] = self.method( :_assv_MIMARKref_METHOD )
     @_assv_MIMARKref = 
     trampCall(
           Proc.new { |_obj,_alst| 
               if ( 
                 begin
-                  @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20149'] = true
-                  def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20149_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                    def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20149_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                    @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20149'] = self.method( :___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20149_METHOD )
                   @___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20149 = 
                   trampCall(
                         trampCall( self._assv_METHOD( 'assv',
@@ -7348,15 +7348,15 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_assoc_MIMARKref'] = true
-    def self._assoc_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._assoc_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_assoc_MIMARKref'] = self.method( :_assoc_MIMARKref_METHOD )
     @_assoc_MIMARKref = 
     trampCall(
           Proc.new { |_obj,_alst| 
               if ( 
                 begin
-                  @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20151'] = true
-                  def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20151_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                    def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20151_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                    @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20151'] = self.method( :___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20151_METHOD )
                   @___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20151 = 
                   trampCall(
                         trampCall( self._assoc_METHOD( 'assoc',
@@ -7413,8 +7413,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_foldr'] = true
-    def self._foldr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._foldr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_foldr'] = self.method( :_foldr_METHOD )
     @_foldr = 
     trampCall(
           Proc.new { |_f,_x,_lst| 
@@ -7450,7 +7450,7 @@ trampCall(
                             trampCall(_f)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:456"] + __e.backtrace ) ; raise __e
                         end                      ,Cell.new(
-                        trampCall( callProcedure( 'f',
+                        trampCall( self._f_METHOD( 'f',
                             begin
                                 trampCall(_f)
                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:456"] + __e.backtrace ) ; raise __e
@@ -7497,8 +7497,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_unzip1_MIMARKwith_MIMARKcdr'] = true
-    def self._unzip1_MIMARKwith_MIMARKcdr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unzip1_MIMARKwith_MIMARKcdr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_unzip1_MIMARKwith_MIMARKcdr'] = self.method( :_unzip1_MIMARKwith_MIMARKcdr_METHOD )
     @_unzip1_MIMARKwith_MIMARKcdr = 
     trampCall(
           Proc.new { |*__rest__| _lists = __rest__[0] ;  
@@ -7525,8 +7525,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative'] = true
-    def self._unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative'] = self.method( :_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative_METHOD )
     @_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative = 
     trampCall(
           Proc.new { |_lists,_cars,_cdrs| 
@@ -7677,8 +7677,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_map'] = true
-    def self._map_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._map_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_map'] = self.method( :_map_METHOD )
     @_map = 
     trampCall(
           Proc.new { |_proc,*__rest__| _lists = __rest__[0] ;  
@@ -7707,7 +7707,6 @@ trampCall(
                           else
                               begin
                                   begin
-                                    @global_lisp_binding['_result'] = true
                                     
                                     _result = 
                                     trampCall(
@@ -7719,7 +7718,7 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:498"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
-                                                trampCall( callProcedure( 'proc',
+                                                trampCall( self._proc_METHOD( 'proc',
                                                     begin
                                                         trampCall(_proc)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:498"] + __e.backtrace ) ; raise __e
@@ -7830,7 +7829,7 @@ trampCall(
                                        ))))
                          ) then
                             begin
-                                trampCall( callProcedure( 'map-arg1',
+                                trampCall( self._map_MIMARKarg1_METHOD( 'map-arg1',
                                     begin
                                         trampCall(_map_MIMARKarg1)
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:487"] + __e.backtrace ) ; raise __e
@@ -8049,8 +8048,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_for_MIMARKeach'] = true
-    def self._for_MIMARKeach_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._for_MIMARKeach_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_for_MIMARKeach'] = self.method( :_for_MIMARKeach_METHOD )
     @_for_MIMARKeach = 
     trampCall(
           Proc.new { |_proc,*__rest__| _lists = __rest__[0] ;  
@@ -8076,7 +8075,7 @@ trampCall(
                             true
                           else
                               begin
-                                  trampCall( callProcedure( 'proc',
+                                  trampCall( self._proc_METHOD( 'proc',
                                       begin
                                           trampCall(_proc)
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:522"] + __e.backtrace ) ; raise __e
@@ -8377,8 +8376,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_filter'] = true
-    def self._filter_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._filter_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_filter'] = self.method( :_filter_METHOD )
     @_filter = 
     trampCall(
           Proc.new { |_pred,_lst| 
@@ -8400,7 +8399,7 @@ trampCall(
                 Cell.new()
               else
                   if ( 
-                    trampCall( callProcedure( 'pred',
+                    trampCall( self._pred_METHOD( 'pred',
                         begin
                             trampCall(_pred)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:532"] + __e.backtrace ) ; raise __e
@@ -8506,8 +8505,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_filter_MIMARKmap'] = true
-    def self._filter_MIMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._filter_MIMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_filter_MIMARKmap'] = self.method( :_filter_MIMARKmap_METHOD )
     @_filter_MIMARKmap = 
     trampCall(
           Proc.new { |_pred,_lst| 
@@ -8604,7 +8603,7 @@ trampCall(
                                          )))
                         end
                     } ; ___lambda.call(
-                          trampCall( callProcedure( 'pred',
+                          trampCall( self._pred_METHOD( 'pred',
                               begin
                                   trampCall(_pred)
                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:543"] + __e.backtrace ) ; raise __e
@@ -8635,8 +8634,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_find'] = true
-    def self._find_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._find_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_find'] = self.method( :_find_METHOD )
     @_find = 
     trampCall(
           Proc.new { |_pred,_lst| 
@@ -8701,8 +8700,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_lambda'] = true
-    def self._lambda_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lambda_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_lambda'] = self.method( :_lambda_METHOD )
     @_lambda = 
     trampCall(
           LispMacro.new { |*__rest__| _src = __rest__[0] ;  
@@ -9204,8 +9203,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_case'] = true
-    def self._case_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._case_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_case'] = self.method( :_case_METHOD )
     @_case = 
     trampCall(
           LispMacro.new { |_cond_MIMARKexp,*__rest__| _body = __rest__[0] ;  
@@ -9436,7 +9435,7 @@ trampCall(
                                              ))))
                                ) then
                                   begin
-                                      trampCall( callProcedure( 'case-block',
+                                      trampCall( self._case_MIMARKblock_METHOD( 'case-block',
                                           begin
                                               trampCall(_case_MIMARKblock)
                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:620"] + __e.backtrace ) ; raise __e
@@ -9474,7 +9473,7 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:620"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
-                                                trampCall( callProcedure( 'case-block',
+                                                trampCall( self._case_MIMARKblock_METHOD( 'case-block',
                                                     begin
                                                         trampCall(_case_MIMARKblock)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:620"] + __e.backtrace ) ; raise __e
@@ -9498,7 +9497,7 @@ trampCall(
                                                             end
                                                                    )))
                                                              ))))                                              ,Cell.new(
-                                                trampCall( callProcedure( 'case-iter',
+                                                trampCall( self._case_MIMARKiter_METHOD( 'case-iter',
                                                     begin
                                                         trampCall(_case_MIMARKiter)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:626"] + __e.backtrace ) ; raise __e
@@ -9582,7 +9581,7 @@ trampCall(
                                                       end                                                    ,
                                                       Cell.new(
                                                       :"cond"                                                      ,Cell.new(
-                                                        trampCall( callProcedure( 'case-iter',
+                                                        trampCall( self._case_MIMARKiter_METHOD( 'case-iter',
                                                             begin
                                                                 trampCall(_case_MIMARKiter)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:626"] + __e.backtrace ) ; raise __e
@@ -9627,8 +9626,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_let_ASMARK'] = true
-    def self._let_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._let_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_let_ASMARK'] = self.method( :_let_ASMARK_METHOD )
     @_let_ASMARK = 
     trampCall(
           LispMacro.new { |_exps,*__rest__| _body = __rest__[0] ;  
@@ -9811,7 +9810,7 @@ trampCall(
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:604"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
-                                                                  trampCall( callProcedure( 'let*-expand',
+                                                                  trampCall( self._let_ASMARK_MIMARKexpand_METHOD( 'let*-expand',
                                                                       begin
                                                                           trampCall(_let_ASMARK_MIMARKexpand)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:643"] + __e.backtrace ) ; raise __e
@@ -9862,7 +9861,7 @@ trampCall(
                                        )
                           end
                       }
-                    trampCall( callProcedure( 'let*-expand',
+                    trampCall( self._let_ASMARK_MIMARKexpand_METHOD( 'let*-expand',
                         begin
                             trampCall(_let_ASMARK_MIMARKexpand)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:643"] + __e.backtrace ) ; raise __e
@@ -9889,8 +9888,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_begin0'] = true
-    def self._begin0_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._begin0_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_begin0'] = self.method( :_begin0_METHOD )
     @_begin0 = 
     trampCall(
           LispMacro.new { |*__rest__| _body = __rest__[0] ;  
@@ -10045,8 +10044,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_values'] = true
-    def self._values_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._values_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_values'] = self.method( :_values_METHOD )
     @_values = 
     trampCall(
           Proc.new { |*__rest__| _args = __rest__[0] ;  
@@ -10148,8 +10147,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_call_MIMARKwith_MIMARKvalues'] = true
-    def self._call_MIMARKwith_MIMARKvalues_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._call_MIMARKwith_MIMARKvalues_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_call_MIMARKwith_MIMARKvalues'] = self.method( :_call_MIMARKwith_MIMARKvalues_METHOD )
     @_call_MIMARKwith_MIMARKvalues = 
     trampCall(
           Proc.new { |_producer,_consumer| 
@@ -10210,7 +10209,7 @@ trampCall(
                                      ))
                     end
                 } ; ___lambda.call(
-                      trampCall( callProcedure( 'producer',
+                      trampCall( self._producer_METHOD( 'producer',
                           begin
                               trampCall(_producer)
                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:669"] + __e.backtrace ) ; raise __e
@@ -10227,8 +10226,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_receive'] = true
-    def self._receive_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._receive_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_receive'] = self.method( :_receive_METHOD )
     @_receive = 
     trampCall(
           LispMacro.new { |_vars,_expr,*__rest__| _body = __rest__[0] ;  
@@ -10330,8 +10329,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_get_MIMARKkeyword'] = true
-    def self._get_MIMARKkeyword_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._get_MIMARKkeyword_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_get_MIMARKkeyword'] = self.method( :_get_MIMARKkeyword_METHOD )
     @_get_MIMARKkeyword = 
     trampCall(
           Proc.new { |_key,_kv_MIMARKlist,*__rest__| _fallback = __rest__[0] ;  
@@ -10825,8 +10824,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_dot_MIMARKoperator'] = true
-    def self._dot_MIMARKoperator_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._dot_MIMARKoperator_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_dot_MIMARKoperator'] = self.method( :_dot_MIMARKoperator_METHOD )
     @_dot_MIMARKoperator = 
     trampCall(
           LispMacro.new { |*__rest__| _lst = __rest__[0] ;  
@@ -11209,7 +11208,7 @@ trampCall(
                                                      )))
                                                )))
                                  ) then
-                                    trampCall( callProcedure( 'generate-method-call-form',
+                                    trampCall( self._generate_MIMARKmethod_MIMARKcall_MIMARKform_METHOD( 'generate-method-call-form',
                                         begin
                                             trampCall(_generate_MIMARKmethod_MIMARKcall_MIMARKform)
                                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:728"] + __e.backtrace ) ; raise __e
@@ -11281,8 +11280,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_with_MIMARKopen'] = true
-    def self._with_MIMARKopen_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._with_MIMARKopen_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_with_MIMARKopen'] = self.method( :_with_MIMARKopen_METHOD )
     @_with_MIMARKopen = 
     trampCall(
           Proc.new { |_filename,_pred,*__rest__| _lst = __rest__[0] ;  
@@ -11302,7 +11301,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:743"] + __e.backtrace ) ; raise __e
                                 end
                             } ; ___lambda.call(
-                                  trampCall( callProcedure( 'pred',
+                                  trampCall( self._pred_METHOD( 'pred',
                                       begin
                                           trampCall(_pred)
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:741"] + __e.backtrace ) ; raise __e
@@ -11427,8 +11426,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_last_MIMARKpair'] = true
-    def self._last_MIMARKpair_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._last_MIMARKpair_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_last_MIMARKpair'] = self.method( :_last_MIMARKpair_METHOD )
     @_last_MIMARKpair = 
     trampCall(
           Proc.new { |_x| 
@@ -11492,8 +11491,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_cons_ASMARK'] = true
-    def self._cons_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cons_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_cons_ASMARK'] = self.method( :_cons_ASMARK_METHOD )
     @_cons_ASMARK = 
     trampCall(
           Proc.new { |_arg,*__rest__| _args = __rest__[0] ;  
@@ -11558,8 +11557,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_list_ASMARK'] = true
-    def self._list_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_list_ASMARK'] = self.method( :_list_ASMARK_METHOD )
     @_list_ASMARK = 
     trampCall(
           begin
@@ -11575,8 +11574,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_make_MIMARKhash_MIMARKtable'] = true
-    def self._make_MIMARKhash_MIMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._make_MIMARKhash_MIMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_make_MIMARKhash_MIMARKtable'] = self.method( :_make_MIMARKhash_MIMARKtable_METHOD )
     @_make_MIMARKhash_MIMARKtable = 
     trampCall(
           Proc.new { || 
@@ -11593,8 +11592,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_QUMARK'] = true
-    def self._hash_MIMARKtable_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_QUMARK'] = self.method( :_hash_MIMARKtable_QUMARK_METHOD )
     @_hash_MIMARKtable_QUMARK = 
     trampCall(
           Proc.new { |_h| 
@@ -11615,8 +11614,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKnum_MIMARKentries'] = true
-    def self._hash_MIMARKtable_MIMARKnum_MIMARKentries_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKnum_MIMARKentries_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKnum_MIMARKentries'] = self.method( :_hash_MIMARKtable_MIMARKnum_MIMARKentries_METHOD )
     @_hash_MIMARKtable_MIMARKnum_MIMARKentries = 
     trampCall(
           Proc.new { |_h| 
@@ -11633,8 +11632,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable'] = true
-    def self._hash_MIMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable'] = self.method( :_hash_MIMARKtable_METHOD )
     @_hash_MIMARKtable = 
     trampCall(
           Proc.new { |*__rest__| _kv_MIMARKlist = __rest__[0] ;  
@@ -11783,8 +11782,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKexist_QUMARK'] = true
-    def self._hash_MIMARKtable_MIMARKexist_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKexist_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKexist_QUMARK'] = self.method( :_hash_MIMARKtable_MIMARKexist_QUMARK_METHOD )
     @_hash_MIMARKtable_MIMARKexist_QUMARK = 
     trampCall(
           Proc.new { |_h,_key| 
@@ -11805,8 +11804,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKclear_EXMARK'] = true
-    def self._hash_MIMARKtable_MIMARKclear_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKclear_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKclear_EXMARK'] = self.method( :_hash_MIMARKtable_MIMARKclear_EXMARK_METHOD )
     @_hash_MIMARKtable_MIMARKclear_EXMARK = 
     trampCall(
           Proc.new { |_h| 
@@ -11823,8 +11822,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKdelete_EXMARK'] = true
-    def self._hash_MIMARKtable_MIMARKdelete_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKdelete_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKdelete_EXMARK'] = self.method( :_hash_MIMARKtable_MIMARKdelete_EXMARK_METHOD )
     @_hash_MIMARKtable_MIMARKdelete_EXMARK = 
     trampCall(
           Proc.new { |_h,_key| 
@@ -11845,8 +11844,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKpush_EXMARK'] = true
-    def self._hash_MIMARKtable_MIMARKpush_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKpush_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKpush_EXMARK'] = self.method( :_hash_MIMARKtable_MIMARKpush_EXMARK_METHOD )
     @_hash_MIMARKtable_MIMARKpush_EXMARK = 
     trampCall(
           Proc.new { |_ht,_key,_value| 
@@ -11906,8 +11905,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKkeys'] = true
-    def self._hash_MIMARKtable_MIMARKkeys_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKkeys_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKkeys'] = self.method( :_hash_MIMARKtable_MIMARKkeys_METHOD )
     @_hash_MIMARKtable_MIMARKkeys = 
     trampCall(
           Proc.new { |_h| 
@@ -11933,8 +11932,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKvalues'] = true
-    def self._hash_MIMARKtable_MIMARKvalues_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKvalues_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKvalues'] = self.method( :_hash_MIMARKtable_MIMARKvalues_METHOD )
     @_hash_MIMARKtable_MIMARKvalues = 
     trampCall(
           Proc.new { |_h| 
@@ -11960,8 +11959,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKmap'] = true
-    def self._hash_MIMARKtable_MIMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKmap'] = self.method( :_hash_MIMARKtable_MIMARKmap_METHOD )
     @_hash_MIMARKtable_MIMARKmap = 
     trampCall(
           Proc.new { |_h,_pred| 
@@ -11976,7 +11975,7 @@ trampCall(
                         end                      ,
                         Cell.new(
                           Proc.new { |_key| 
-                              trampCall( callProcedure( 'pred',
+                              trampCall( self._pred_METHOD( 'pred',
                                   begin
                                       trampCall(_pred)
                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:809"] + __e.backtrace ) ; raise __e
@@ -12034,8 +12033,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARKfor_MIMARKeach'] = true
-    def self._hash_MIMARKtable_MIMARKfor_MIMARKeach_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARKfor_MIMARKeach_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARKfor_MIMARKeach'] = self.method( :_hash_MIMARKtable_MIMARKfor_MIMARKeach_METHOD )
     @_hash_MIMARKtable_MIMARKfor_MIMARKeach = 
     trampCall(
           begin
@@ -12051,8 +12050,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_hash_MIMARKtable_MIMARK_GTMARKalist'] = true
-    def self._hash_MIMARKtable_MIMARK_GTMARKalist_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._hash_MIMARKtable_MIMARK_GTMARKalist_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_hash_MIMARKtable_MIMARK_GTMARKalist'] = self.method( :_hash_MIMARKtable_MIMARK_GTMARKalist_METHOD )
     @_hash_MIMARKtable_MIMARK_GTMARKalist = 
     trampCall(
           Proc.new { |_h| 
@@ -12155,8 +12154,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_alist_MIMARK_GTMARKhash_MIMARKtable'] = true
-    def self._alist_MIMARK_GTMARKhash_MIMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._alist_MIMARK_GTMARKhash_MIMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_alist_MIMARK_GTMARKhash_MIMARKtable'] = self.method( :_alist_MIMARK_GTMARKhash_MIMARKtable_METHOD )
     @_alist_MIMARK_GTMARKhash_MIMARKtable = 
     trampCall(
           Proc.new { |_alist| 
@@ -12219,8 +12218,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_export'] = true
-    def self._export_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._export_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_export'] = self.method( :_export_METHOD )
     @_export = 
     trampCall(
           LispMacro.new { |_name| 
@@ -12256,8 +12255,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_load_MIMARKlibrary'] = true
-    def self._load_MIMARKlibrary_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._load_MIMARKlibrary_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_load_MIMARKlibrary'] = self.method( :_load_MIMARKlibrary_METHOD )
     @_load_MIMARKlibrary = 
     trampCall(
           Proc.new { |_name| 
@@ -12430,8 +12429,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector_QUMARK'] = true
-    def self._vector_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector_QUMARK'] = self.method( :_vector_QUMARK_METHOD )
     @_vector_QUMARK = 
     trampCall(
           Proc.new { |_v| 
@@ -12452,8 +12451,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_make_MIMARKvector'] = true
-    def self._make_MIMARKvector_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._make_MIMARKvector_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_make_MIMARKvector'] = self.method( :_make_MIMARKvector_METHOD )
     @_make_MIMARKvector = 
     trampCall(
           Proc.new { |_k,*__rest__| _rest = __rest__[0] ;  
@@ -12513,8 +12512,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector_MIMARKlength'] = true
-    def self._vector_MIMARKlength_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_MIMARKlength_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector_MIMARKlength'] = self.method( :_vector_MIMARKlength_METHOD )
     @_vector_MIMARKlength = 
     trampCall(
           Proc.new { |_v| 
@@ -12531,8 +12530,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector_MIMARKcopy'] = true
-    def self._vector_MIMARKcopy_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_MIMARKcopy_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector_MIMARKcopy'] = self.method( :_vector_MIMARKcopy_METHOD )
     @_vector_MIMARKcopy = 
     trampCall(
           Proc.new { |_v| 
@@ -12549,8 +12548,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector_MIMARKref'] = true
-    def self._vector_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_MIMARKref_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector_MIMARKref'] = self.method( :_vector_MIMARKref_METHOD )
     @_vector_MIMARKref = 
     trampCall(
           Proc.new { |_v,_index,*__rest__| _fallback = __rest__[0] ;  
@@ -12680,8 +12679,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector_MIMARKequal_QUMARK'] = true
-    def self._vector_MIMARKequal_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_MIMARKequal_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector_MIMARKequal_QUMARK'] = self.method( :_vector_MIMARKequal_QUMARK_METHOD )
     @_vector_MIMARKequal_QUMARK = 
     trampCall(
           Proc.new { |_x,_y| 
@@ -12970,8 +12969,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_list_MIMARK_GTMARKvector'] = true
-    def self._list_MIMARK_GTMARKvector_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_MIMARK_GTMARKvector_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_list_MIMARK_GTMARKvector'] = self.method( :_list_MIMARK_GTMARKvector_METHOD )
     @_list_MIMARK_GTMARKvector = 
     trampCall(
           Proc.new { |_x| 
@@ -13002,8 +13001,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector_MIMARKfill_EXMARK'] = true
-    def self._vector_MIMARKfill_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_MIMARKfill_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector_MIMARKfill_EXMARK'] = self.method( :_vector_MIMARKfill_EXMARK_METHOD )
     @_vector_MIMARKfill_EXMARK = 
     trampCall(
           Proc.new { |_v,_e| 
@@ -13118,8 +13117,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_vector_MIMARK_GTMARKlist'] = true
-    def self._vector_MIMARK_GTMARKlist_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._vector_MIMARK_GTMARKlist_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_vector_MIMARK_GTMARKlist'] = self.method( :_vector_MIMARK_GTMARKlist_METHOD )
     @_vector_MIMARK_GTMARKlist = 
     trampCall(
           Proc.new { |_v| 
@@ -13242,8 +13241,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_debug_MIMARKprint_MIMARKlength'] = true
-    def self._debug_MIMARKprint_MIMARKlength_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._debug_MIMARKprint_MIMARKlength_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_debug_MIMARKprint_MIMARKlength'] = self.method( :_debug_MIMARKprint_MIMARKlength_METHOD )
     @_debug_MIMARKprint_MIMARKlength = 
     trampCall(
         63
@@ -13254,8 +13253,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_debug_MIMARKprint_MIMARKoutput_MIMARKfunc'] = true
-    def self._debug_MIMARKprint_MIMARKoutput_MIMARKfunc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._debug_MIMARKprint_MIMARKoutput_MIMARKfunc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_debug_MIMARKprint_MIMARKoutput_MIMARKfunc'] = self.method( :_debug_MIMARKprint_MIMARKoutput_MIMARKfunc_METHOD )
     @_debug_MIMARKprint_MIMARKoutput_MIMARKfunc = 
     trampCall(
           Proc.new { |_str| 
@@ -13276,8 +13275,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_debug_MIMARKlimit_MIMARKlength'] = true
-    def self._debug_MIMARKlimit_MIMARKlength_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._debug_MIMARKlimit_MIMARKlength_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_debug_MIMARKlimit_MIMARKlength'] = self.method( :_debug_MIMARKlimit_MIMARKlength_METHOD )
     @_debug_MIMARKlimit_MIMARKlength = 
     trampCall(
           Proc.new { |_x| 
@@ -13371,8 +13370,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_debug_MIMARKprint'] = true
-    def self._debug_MIMARKprint_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._debug_MIMARKprint_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_debug_MIMARKprint'] = self.method( :_debug_MIMARKprint_METHOD )
     @_debug_MIMARKprint = 
     trampCall(
           LispMacro.new { |__form,_sourcefile,_lineno,_sourcesexp| 
@@ -13733,8 +13732,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_pretty_MIMARKprint'] = true
-    def self._pretty_MIMARKprint_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._pretty_MIMARKprint_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_pretty_MIMARKprint'] = self.method( :_pretty_MIMARKprint_METHOD )
     @_pretty_MIMARKprint = 
     trampCall(
           Proc.new { |_s| 
@@ -13865,7 +13864,7 @@ trampCall(
                                                ))))
                                          )))
                            ) then
-                              trampCall( callProcedure( 'do-indent',
+                              trampCall( self._do_MIMARKindent_METHOD( 'do-indent',
                                   begin
                                       trampCall(_do_MIMARKindent)
                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:943"] + __e.backtrace ) ; raise __e
@@ -13879,7 +13878,7 @@ trampCall(
                           else
                             false
                           end
-                          trampCall( callProcedure( 'pp-parenl',
+                          trampCall( self._pp_MIMARKparenl_METHOD( 'pp-parenl',
                               begin
                                   trampCall(_pp_MIMARKparenl)
                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:944"] + __e.backtrace ) ; raise __e
@@ -13968,7 +13967,7 @@ trampCall(
                                                         else
                                                           false
                                                         end
-                                                        trampCall( callProcedure( 'pp-list',
+                                                        trampCall( self._pp_MIMARKlist_METHOD( 'pp-list',
                                                             begin
                                                                 trampCall(_pp_MIMARKlist)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:956"] + __e.backtrace ) ; raise __e
@@ -13999,7 +13998,7 @@ trampCall(
                                                                      )))))
                                                     end
                                                 else
-                                                    trampCall( callProcedure( 'pp-atom',
+                                                    trampCall( self._pp_MIMARKatom_METHOD( 'pp-atom',
                                                         begin
                                                             trampCall(_pp_MIMARKatom)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:953"] + __e.backtrace ) ; raise __e
@@ -14086,7 +14085,7 @@ trampCall(
                             end
                                    )))
                      ) then
-                        trampCall( callProcedure( 'pp-list',
+                        trampCall( self._pp_MIMARKlist_METHOD( 'pp-list',
                             begin
                                 trampCall(_pp_MIMARKlist)
                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:956"] + __e.backtrace ) ; raise __e
@@ -14135,8 +14134,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_global_MIMARKdefined_QUMARK'] = true
-    def self._global_MIMARKdefined_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._global_MIMARKdefined_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_global_MIMARKdefined_QUMARK'] = self.method( :_global_MIMARKdefined_QUMARK_METHOD )
     @_global_MIMARKdefined_QUMARK = 
     trampCall(
           Proc.new { |_sym| 
@@ -14185,8 +14184,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_compiled_MIMARKcode_MIMARKstring'] = true
-    def self._compiled_MIMARKcode_MIMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._compiled_MIMARKcode_MIMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_compiled_MIMARKcode_MIMARKstring'] = self.method( :_compiled_MIMARKcode_MIMARKstring_METHOD )
     @_compiled_MIMARKcode_MIMARKstring = 
     trampCall(
           Proc.new { |_compiled_MIMARKcode,_filename| 
@@ -14248,7 +14247,7 @@ trampCall(
                                     trampCall(_script_MIMARKflag)
                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:992"] + __e.backtrace ) ; raise __e
                                 end                              ,Cell.new(
-                                trampCall( callProcedure( 'compiled-body-string',
+                                trampCall( self._compiled_MIMARKbody_MIMARKstring_METHOD( 'compiled-body-string',
                                     begin
                                         trampCall(_compiled_MIMARKbody_MIMARKstring)
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:993"] + __e.backtrace ) ; raise __e
@@ -14345,8 +14344,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_print_MIMARKcompiled_MIMARKcode'] = true
-    def self._print_MIMARKcompiled_MIMARKcode_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._print_MIMARKcompiled_MIMARKcode_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_print_MIMARKcompiled_MIMARKcode'] = self.method( :_print_MIMARKcompiled_MIMARKcode_METHOD )
     @_print_MIMARKcompiled_MIMARKcode = 
     trampCall(
           Proc.new { |_src,*__rest__| _rest = __rest__[0] ;  
@@ -14742,7 +14741,7 @@ trampCall(
                                     end
                                            )))                            ,Cell.new(
                               Proc.new { |_f| 
-                                  trampCall( callProcedure( 'print-to-file',
+                                  trampCall( self._print_MIMARKto_MIMARKfile_METHOD( 'print-to-file',
                                       begin
                                           trampCall(_print_MIMARKto_MIMARKfile)
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1040"] + __e.backtrace ) ; raise __e
@@ -14769,8 +14768,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['__PAMARKcompile_MIMARKphase'] = true
-    def self.__PAMARKcompile_MIMARKphase_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKcompile_MIMARKphase_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['__PAMARKcompile_MIMARKphase'] = self.method( :__PAMARKcompile_MIMARKphase_METHOD )
     @__PAMARKcompile_MIMARKphase = 
     trampCall(
           Proc.new { |_sexp| 
@@ -14800,11 +14799,10 @@ trampCall(
                           Cell.new(
                             Proc.new { |_func| 
                                 begin
-                                  @global_lisp_binding['_sexp'] = true
                                   
                                   _sexp = 
                                   trampCall(
-                                        trampCall( callProcedure( 'func',
+                                        trampCall( self._func_METHOD( 'func',
                                             begin
                                                 trampCall(_func)
                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1058"] + __e.backtrace ) ; raise __e
@@ -14852,8 +14850,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_setup_MIMARKtailcall_MIMARKmark'] = true
-    def self._setup_MIMARKtailcall_MIMARKmark_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._setup_MIMARKtailcall_MIMARKmark_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_setup_MIMARKtailcall_MIMARKmark'] = self.method( :_setup_MIMARKtailcall_MIMARKmark_METHOD )
     @_setup_MIMARKtailcall_MIMARKmark = 
     trampCall(
           Proc.new { |_sexp| 
@@ -14917,7 +14915,7 @@ trampCall(
                                                                )))
                                                  ) then
                                                     if ( 
-                                                      trampCall( callProcedure( 'reserved?',
+                                                      trampCall( self._reserved_QUMARK_METHOD( 'reserved?',
                                                           begin
                                                               trampCall(_reserved_QUMARK)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1160"] + __e.backtrace ) ; raise __e
@@ -15088,7 +15086,7 @@ trampCall(
                                ) then
                                   begin
                                       if ( 
-                                        trampCall( callProcedure( 'reserved?',
+                                        trampCall( self._reserved_QUMARK_METHOD( 'reserved?',
                                             begin
                                                 trampCall(_reserved_QUMARK)
                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1160"] + __e.backtrace ) ; raise __e
@@ -15326,7 +15324,7 @@ trampCall(
                                                               end                                                            ,
                                                               Cell.new(
                                                                 if ( 
-                                                                  trampCall( callProcedure( 'reserved?',
+                                                                  trampCall( self._reserved_QUMARK_METHOD( 'reserved?',
                                                                       begin
                                                                           trampCall(_reserved_QUMARK)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1160"] + __e.backtrace ) ; raise __e
@@ -15637,7 +15635,7 @@ trampCall(
                                                               end                                                            ,
                                                               Cell.new(
                                                               :"begin"                                                              ,Cell.new(
-                                                                trampCall( callProcedure( 'setup-proc-body',
+                                                                trampCall( self._setup_MIMARKproc_MIMARKbody_METHOD( 'setup-proc-body',
                                                                     begin
                                                                         trampCall(_setup_MIMARKproc_MIMARKbody)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1153"] + __e.backtrace ) ; raise __e
@@ -15725,7 +15723,7 @@ trampCall(
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1168"] + __e.backtrace ) ; raise __e
                                                                                 end
                                                                                        )))                                                                        ,Cell.new(
-                                                                          trampCall( callProcedure( 'setup-proc-body',
+                                                                          trampCall( self._setup_MIMARKproc_MIMARKbody_METHOD( 'setup-proc-body',
                                                                               begin
                                                                                   trampCall(_setup_MIMARKproc_MIMARKbody)
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1153"] + __e.backtrace ) ; raise __e
@@ -15859,7 +15857,7 @@ trampCall(
                                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1109"] + __e.backtrace ) ; raise __e
                                                                                                 end                                                                                              ,
                                                                                                 Cell.new(
-                                                                                                  trampCall( callProcedure( 'setup-proc',
+                                                                                                  trampCall( self._setup_MIMARKproc_METHOD( 'setup-proc',
                                                                                                       begin
                                                                                                           trampCall(_setup_MIMARKproc)
                                                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1145"] + __e.backtrace ) ; raise __e
@@ -15958,7 +15956,7 @@ trampCall(
                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1109"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,
                                                                                                     Cell.new(
-                                                                                                      trampCall( callProcedure( 'setup-proc',
+                                                                                                      trampCall( self._setup_MIMARKproc_METHOD( 'setup-proc',
                                                                                                           begin
                                                                                                               trampCall(_setup_MIMARKproc)
                                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1145"] + __e.backtrace ) ; raise __e
@@ -15986,7 +15984,7 @@ trampCall(
                                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1109"] + __e.backtrace ) ; raise __e
                                                                                                           end                                                                                                        ,
                                                                                                           Cell.new(
-                                                                                                            trampCall( callProcedure( 'setup-proc',
+                                                                                                            trampCall( self._setup_MIMARKproc_METHOD( 'setup-proc',
                                                                                                                 begin
                                                                                                                     trampCall(_setup_MIMARKproc)
                                                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1145"] + __e.backtrace ) ; raise __e
@@ -16086,7 +16084,7 @@ trampCall(
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1109"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
-                                                                                  trampCall( callProcedure( 'setup-let-args',
+                                                                                  trampCall( self._setup_MIMARKlet_MIMARKargs_METHOD( 'setup-let-args',
                                                                                       begin
                                                                                           trampCall(_setup_MIMARKlet_MIMARKargs)
                                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1152"] + __e.backtrace ) ; raise __e
@@ -16106,7 +16104,7 @@ trampCall(
                                                                                               end
                                                                                                      )))
                                                                                                )))                                                                                ,Cell.new(
-                                                                                  trampCall( callProcedure( 'setup-proc-body',
+                                                                                  trampCall( self._setup_MIMARKproc_MIMARKbody_METHOD( 'setup-proc-body',
                                                                                       begin
                                                                                           trampCall(_setup_MIMARKproc_MIMARKbody)
                                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1153"] + __e.backtrace ) ; raise __e
@@ -16182,7 +16180,7 @@ trampCall(
                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1109"] + __e.backtrace ) ; raise __e
                                                                                     end                                                                                  ,
                                                                                     Cell.new(
-                                                                                      trampCall( callProcedure( 'setup-let-args',
+                                                                                      trampCall( self._setup_MIMARKlet_MIMARKargs_METHOD( 'setup-let-args',
                                                                                           begin
                                                                                               trampCall(_setup_MIMARKlet_MIMARKargs)
                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1152"] + __e.backtrace ) ; raise __e
@@ -16202,7 +16200,7 @@ trampCall(
                                                                                                   end
                                                                                                          )))
                                                                                                    )))                                                                                    ,Cell.new(
-                                                                                      trampCall( callProcedure( 'setup-proc-body',
+                                                                                      trampCall( self._setup_MIMARKproc_MIMARKbody_METHOD( 'setup-proc-body',
                                                                                           begin
                                                                                               trampCall(_setup_MIMARKproc_MIMARKbody)
                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1153"] + __e.backtrace ) ; raise __e
@@ -16379,7 +16377,7 @@ trampCall(
                                                                                                                                  ))))
                                                                                                                            )))
                                                                                                              ) then
-                                                                                                                trampCall( callProcedure( 'reserved?',
+                                                                                                                trampCall( self._reserved_QUMARK_METHOD( 'reserved?',
                                                                                                                     begin
                                                                                                                         trampCall(_reserved_QUMARK)
                                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1160"] + __e.backtrace ) ; raise __e
@@ -16562,8 +16560,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['__PAMARKcompile_MIMARKphase_MIMARKfunctions'] = true
-    def self.__PAMARKcompile_MIMARKphase_MIMARKfunctions_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKcompile_MIMARKphase_MIMARKfunctions_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['__PAMARKcompile_MIMARKphase_MIMARKfunctions'] = self.method( :__PAMARKcompile_MIMARKphase_MIMARKfunctions_METHOD )
     @__PAMARKcompile_MIMARKphase_MIMARKfunctions = 
     trampCall(
           trampCall( self._list_METHOD( 'list',
@@ -16588,8 +16586,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['__ASMARKnendo_MIMARKversion_ASMARK'] = true
-    def self.__ASMARKnendo_MIMARKversion_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__ASMARKnendo_MIMARKversion_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['__ASMARKnendo_MIMARKversion_ASMARK'] = self.method( :__ASMARKnendo_MIMARKversion_ASMARK_METHOD )
     @__ASMARKnendo_MIMARKversion_ASMARK = 
     trampCall(
         "0.3.3"

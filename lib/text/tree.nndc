@@ -19,8 +19,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_write_MIMARKtree'] = true
-    def self._write_MIMARKtree_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._write_MIMARKtree_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_write_MIMARKtree'] = self.method( :_write_MIMARKtree_METHOD )
     @_write_MIMARKtree = 
     trampCall(
           Proc.new { |_tree,*__rest__| _out = __rest__[0] ;  
@@ -193,8 +193,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_tree_MIMARK_GTMARKstring'] = true
-    def self._tree_MIMARK_GTMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._tree_MIMARK_GTMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_tree_MIMARK_GTMARKstring'] = self.method( :_tree_MIMARK_GTMARKstring_METHOD )
     @_tree_MIMARK_GTMARKstring = 
     trampCall(
           Proc.new { |_tree| 
