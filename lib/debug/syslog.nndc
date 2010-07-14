@@ -36,7 +36,7 @@ trampCall(
                           rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                         end                      ,
                       "%s"                      ,
-                        trampCall( self.__PLMARK_METHOD( '+',
+                        trampCall( self.__PLMARK_METHOD(  '+',
                             begin
                               if @global_lisp_binding.has_key?('__PLMARK') then
                                 trampCall(@__PLMARK)
