@@ -28,7 +28,7 @@ rescue LoadError
 end
 
 task :check do
-  sh "ruby -I ./lib /usr/local/bin/spec nendo_spec.rb"
+  sh "ruby -I ./lib /usr/local/bin/spec -b nendo_spec.rb"
 end
 
 task :compile do
