@@ -1107,16 +1107,15 @@ module Nendo
       # toplevel binding
       @global_lisp_binding = Hash.new
   
-      # built-in functions
-      self.methods.grep( /^_/ ) { |rubySymbol|
-        global_lisp_define( rubySymbol, self.method( rubySymbol ))
-      }
-  
       # initialize buildin functions as Proc objects
       rubyExp = self.methods.select { |x|
         x.to_s.match( /^_/ )
       }.map { |name|
-        sprintf( "@%s = self.method( :%s ).to_proc", name, name )
+        [
+         defMethodStr( name ),
+         sprintf( "@%s                        = self.method( :%s        ).to_proc", name, name ),
+         sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD ).to_proc", name, name ),
+        ].join( " ; " )
       }.join( " ; " )
       eval( rubyExp, @binding )
   
@@ -1141,6 +1140,10 @@ module Nendo
       self.global_lisp_define( toRubySymbol( "*argv*"), argv.to_list )
     end
   
+    def defMethodStr( name )
+      sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", name )
+    end
+
     def _gensym( )
       @gensym_counter += 1
       filename = if @lastSourcefile.is_a? String
@@ -1280,7 +1283,7 @@ module Nendo
         x.select { |elem| elem }
       }
     end
-  
+
     def execFunc( funcname, args, sourcefile, lineno, locals, execType )
       case funcname
       when :define, :set!   # `define' special form
@@ -1291,7 +1294,7 @@ module Nendo
           [
            if global_cap
              [
-              sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", variable_sym ),
+              defMethodStr( variable_sym ),
               sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD )", variable_sym, variable_sym )
              ]
            else
@@ -1335,7 +1338,11 @@ module Nendo
             sym      = toRubySymbol( funcname )
             _call = case execType
                     when EXEC_TYPE_NORMAL
-                      [ sprintf( "trampCall( self.%s_METHOD(", sym ), "))" ]
+                      if locals.flatten.include?( sym )
+                        [ sprintf( "trampCall( callProcedure(  ", sym ), "))" ] # local function
+                      else
+                        [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
+                      end
                     when EXEC_TYPE_TAILCALL
                       [ "DelayedCallPacket.new(",    ")"  ]
                     end
