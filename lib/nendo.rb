@@ -1121,6 +1121,9 @@ module Nendo
   
       # reset gensym counter
       @gensym_counter = 0
+
+      # init optimize level
+      @optimize_level = 1
   
       # compiled ruby code
       #  { 'filename1' => [ 'code1' 'code2' ... ], 
@@ -1138,6 +1141,14 @@ module Nendo
   
     def setArgv( argv )
       self.global_lisp_define( toRubySymbol( "*argv*"), argv.to_list )
+    end
+
+    def setOptimizeLevel( level )
+      @optimize_level = level
+    end
+
+    def getOptimizeLevel
+      @optimize_level
     end
   
     def defMethodStr( name )
@@ -1264,6 +1275,15 @@ module Nendo
         callProcedure( args[0], args[1], args[2] )
       end
     end
+
+    def delayCall( origname, pred, args )
+      case @optimize_level
+      when 0 # no optimize
+        callProcedure( origname, pred, args )
+      else # tail call optimization
+        DelayedCallPacket.new( origname, pred, args )
+      end
+    end
     
     def callProcedure( origname, pred, args )
       pred.call( *toRubyArgument( origname, pred, args ))
@@ -1344,7 +1364,7 @@ module Nendo
                         [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
                       end
                     when EXEC_TYPE_TAILCALL
-                      [ "DelayedCallPacket.new(",    ")"  ]
+                      [ "delayCall(",    ")"  ]
                     end
             [sprintf( "%s '%s',", _call[0], origname ), 
              [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","], 
@@ -1829,6 +1849,12 @@ module Nendo
     def _disable_MIMARKidebug()
       @debug = false
     end
+    def _set_MIMARKoptimize_MIMARKlevel(level)
+      self.setOptimizeLevel( level )
+    end
+    def _get_MIMARKoptimize_MIMARKlevel()
+      self.getOptimizeLevel
+    end
   end
   
   class Printer
@@ -1939,6 +1965,10 @@ module Nendo
   
     def setArgv( argv )
       @evaluator.setArgv( argv )
+    end
+
+    def setOptimizeLevel( level )
+      @evaluator.setOptimizeLevel( level )
     end
   
     def clean_compiled_code

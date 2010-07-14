@@ -4,7 +4,7 @@
 # 
 
 trampCall( 
-  DelayedCallPacket.new( 'require',
+  delayCall( 'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
           trampCall(@_require)

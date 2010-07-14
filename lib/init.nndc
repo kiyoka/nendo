@@ -237,7 +237,7 @@ trampCall(
     @_caar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -272,7 +272,7 @@ trampCall(
     @_cadr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -307,7 +307,7 @@ trampCall(
     @_cdar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -342,7 +342,7 @@ trampCall(
     @_cddr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -377,7 +377,7 @@ trampCall(
     @_caaar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -421,7 +421,7 @@ trampCall(
     @_caadr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -465,7 +465,7 @@ trampCall(
     @_cadar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -509,7 +509,7 @@ trampCall(
     @_caddr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -553,7 +553,7 @@ trampCall(
     @_cdaar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -597,7 +597,7 @@ trampCall(
     @_cdadr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -641,7 +641,7 @@ trampCall(
     @_cddar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -685,7 +685,7 @@ trampCall(
     @_cdddr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -729,7 +729,7 @@ trampCall(
     @_caaaar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -782,7 +782,7 @@ trampCall(
     @_caaadr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -835,7 +835,7 @@ trampCall(
     @_caadar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -888,7 +888,7 @@ trampCall(
     @_caaddr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -941,7 +941,7 @@ trampCall(
     @_cadaar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -994,7 +994,7 @@ trampCall(
     @_cadadr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -1047,7 +1047,7 @@ trampCall(
     @_caddar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -1100,7 +1100,7 @@ trampCall(
     @_cadddr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'car',
+              delayCall( 'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -1153,7 +1153,7 @@ trampCall(
     @_cdaaar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1206,7 +1206,7 @@ trampCall(
     @_cdaadr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1259,7 +1259,7 @@ trampCall(
     @_cdadar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1312,7 +1312,7 @@ trampCall(
     @_cdaddr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1365,7 +1365,7 @@ trampCall(
     @_cddaar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1418,7 +1418,7 @@ trampCall(
     @_cddadr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1471,7 +1471,7 @@ trampCall(
     @_cdddar = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1524,7 +1524,7 @@ trampCall(
     @_cddddr = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'cdr',
+              delayCall( 'cdr',
                   begin
                     if @global_lisp_binding.has_key?('_cdr') then
                       trampCall(@_cdr)
@@ -1613,7 +1613,7 @@ trampCall(
                                   end
                                          )))
                            ) then
-                              DelayedCallPacket.new( 'append-reverse',
+                              delayCall( 'append-reverse',
                                   begin
                                       trampCall(_append_MIMARKreverse)
                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:110"] + __e.backtrace ) ; raise __e
@@ -1666,7 +1666,7 @@ trampCall(
                               end
                           end
                       }
-                    DelayedCallPacket.new( 'append-reverse',
+                    delayCall( 'append-reverse',
                         begin
                             trampCall(_append_MIMARKreverse)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:110"] + __e.backtrace ) ; raise __e
@@ -1707,7 +1707,7 @@ trampCall(
     @_vector = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
-              DelayedCallPacket.new( 'to-arr',
+              delayCall( 'to-arr',
                   begin
                     if @global_lisp_binding.has_key?('_to_MIMARKarr') then
                       trampCall(@_to_MIMARKarr)
@@ -1748,7 +1748,7 @@ trampCall(
                       end
                              )))
                ) then
-                  DelayedCallPacket.new( 'list?',
+                  delayCall( 'list?',
                       begin
                         if @global_lisp_binding.has_key?('_list_QUMARK') then
                           trampCall(@_list_QUMARK)
@@ -1771,7 +1771,7 @@ trampCall(
                                      )))
                                ))
               else
-                  DelayedCallPacket.new( 'null?',
+                  delayCall( 'null?',
                       begin
                         if @global_lisp_binding.has_key?('_null_QUMARK') then
                           trampCall(@_null_QUMARK)
@@ -1798,7 +1798,7 @@ trampCall(
     @_even_QUMARK = 
     trampCall(
           Proc.new { |_n| 
-              DelayedCallPacket.new( '=',
+              delayCall( '=',
                   begin
                     if @global_lisp_binding.has_key?('__EQMARK') then
                       trampCall(@__EQMARK)
@@ -1835,7 +1835,7 @@ trampCall(
     @_odd_QUMARK = 
     trampCall(
           Proc.new { |_n| 
-              DelayedCallPacket.new( 'not',
+              delayCall( 'not',
                   begin
                     if @global_lisp_binding.has_key?('_not') then
                       trampCall(@_not)
@@ -1881,7 +1881,7 @@ trampCall(
     @_zero_QUMARK = 
     trampCall(
           Proc.new { |_n| 
-              DelayedCallPacket.new( '=',
+              delayCall( '=',
                   begin
                     if @global_lisp_binding.has_key?('__EQMARK') then
                       trampCall(@__EQMARK)
@@ -1908,7 +1908,7 @@ trampCall(
     @_positive_QUMARK = 
     trampCall(
           Proc.new { |_n| 
-              DelayedCallPacket.new( '>',
+              delayCall( '>',
                   begin
                     if @global_lisp_binding.has_key?('__GTMARK') then
                       trampCall(@__GTMARK)
@@ -1935,7 +1935,7 @@ trampCall(
     @_negative_QUMARK = 
     trampCall(
           Proc.new { |_n| 
-              DelayedCallPacket.new( '<',
+              delayCall( '<',
                   begin
                     if @global_lisp_binding.has_key?('__LTMARK') then
                       trampCall(@__LTMARK)
@@ -1983,7 +1983,7 @@ trampCall(
                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:125"] + __e.backtrace ) ; raise __e
                   end
               else
-                  DelayedCallPacket.new( '-',
+                  delayCall( '-',
                       begin
                         if @global_lisp_binding.has_key?('__MIMARK') then
                           trampCall(@__MIMARK)
@@ -2010,7 +2010,7 @@ trampCall(
     @_max = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
-              DelayedCallPacket.new( 'foldr',
+              delayCall( 'foldr',
                   begin
                     if @global_lisp_binding.has_key?('_foldr') then
                       trampCall(@_foldr)
@@ -2089,7 +2089,7 @@ trampCall(
     @_min = 
     trampCall(
           Proc.new { |*__rest__| _lst = __rest__[0] ;  
-              DelayedCallPacket.new( 'foldr',
+              delayCall( 'foldr',
                   begin
                     if @global_lisp_binding.has_key?('_foldr') then
                       trampCall(@_foldr)
@@ -2168,7 +2168,7 @@ trampCall(
     @_succ = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( '+',
+              delayCall( '+',
                   begin
                     if @global_lisp_binding.has_key?('__PLMARK') then
                       trampCall(@__PLMARK)
@@ -2195,7 +2195,7 @@ trampCall(
     @_pred = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( '-',
+              delayCall( '-',
                   begin
                     if @global_lisp_binding.has_key?('__MIMARK') then
                       trampCall(@__MIMARK)
@@ -2293,7 +2293,7 @@ trampCall(
                                           end
                                                  ))))
                                    ) then
-                                      DelayedCallPacket.new( 'car',
+                                      delayCall( 'car',
                                           begin
                                             if @global_lisp_binding.has_key?('_car') then
                                               trampCall(@_car)
@@ -2307,7 +2307,7 @@ trampCall(
                                             end
                                                    ))
                                   else
-                                      DelayedCallPacket.new( 'nth-iter',
+                                      delayCall( 'nth-iter',
                                           begin
                                               trampCall(_nth_MIMARKiter)
                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:142"] + __e.backtrace ) ; raise __e
@@ -2349,7 +2349,7 @@ trampCall(
                               end
                           end
                       }
-                    DelayedCallPacket.new( 'nth-iter',
+                    delayCall( 'nth-iter',
                         begin
                             trampCall(_nth_MIMARKiter)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:142"] + __e.backtrace ) ; raise __e
@@ -2382,7 +2382,7 @@ trampCall(
     @_first = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2409,7 +2409,7 @@ trampCall(
     @_second = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2436,7 +2436,7 @@ trampCall(
     @_third = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2463,7 +2463,7 @@ trampCall(
     @_fourth = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2490,7 +2490,7 @@ trampCall(
     @_fifth = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2517,7 +2517,7 @@ trampCall(
     @_sixth = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2544,7 +2544,7 @@ trampCall(
     @_seventh = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2571,7 +2571,7 @@ trampCall(
     @_eighth = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2598,7 +2598,7 @@ trampCall(
     @_ninth = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2625,7 +2625,7 @@ trampCall(
     @_tenth = 
     trampCall(
           Proc.new { |_lst| 
-              DelayedCallPacket.new( 'nth',
+              delayCall( 'nth',
                   begin
                     if @global_lisp_binding.has_key?('_nth') then
                       trampCall(@_nth)
@@ -2652,7 +2652,7 @@ trampCall(
     @_x_MIMARK_GTMARKstring = 
     trampCall(
           Proc.new { |_object| 
-              DelayedCallPacket.new( 'to-s',
+              delayCall( 'to-s',
                   begin
                     if @global_lisp_binding.has_key?('_to_MIMARKs') then
                       trampCall(@_to_MIMARKs)
@@ -2708,7 +2708,7 @@ trampCall(
                                          ))))
                                    )))
                      ) then
-                        DelayedCallPacket.new( 'macroexpand',
+                        delayCall( 'macroexpand',
                             begin
                               if @global_lisp_binding.has_key?('_macroexpand') then
                                 trampCall(@_macroexpand)
@@ -3684,7 +3684,7 @@ trampCall(
                       end
                              )))
                ) then
-                  DelayedCallPacket.new( 'proc',
+                  delayCall( 'proc',
                       begin
                           trampCall(_proc)
                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:248"] + __e.backtrace ) ; raise __e
@@ -6801,7 +6801,7 @@ trampCall(
                       true
                        ) then
                           begin
-                              DelayedCallPacket.new( 'generic-member',
+                              delayCall( 'generic-member',
                                   begin
                                     if @global_lisp_binding.has_key?('_generic_MIMARKmember') then
                                       trampCall(@_generic_MIMARKmember)
@@ -6850,7 +6850,7 @@ trampCall(
     @_memq = 
     trampCall(
           Proc.new { |_obj,_lst| 
-              DelayedCallPacket.new( 'generic-member',
+              delayCall( 'generic-member',
                   begin
                     if @global_lisp_binding.has_key?('_generic_MIMARKmember') then
                       trampCall(@_generic_MIMARKmember)
@@ -6886,7 +6886,7 @@ trampCall(
     @_memv = 
     trampCall(
           Proc.new { |_obj,_lst| 
-              DelayedCallPacket.new( 'generic-member',
+              delayCall( 'generic-member',
                   begin
                     if @global_lisp_binding.has_key?('_generic_MIMARKmember') then
                       trampCall(@_generic_MIMARKmember)
@@ -6922,7 +6922,7 @@ trampCall(
     @_member = 
     trampCall(
           Proc.new { |_obj,_lst| 
-              DelayedCallPacket.new( 'generic-member',
+              delayCall( 'generic-member',
                   begin
                     if @global_lisp_binding.has_key?('_generic_MIMARKmember') then
                       trampCall(@_generic_MIMARKmember)
@@ -7004,7 +7004,7 @@ trampCall(
                                  ))))
                    ) then
                       begin
-                          DelayedCallPacket.new( 'car',
+                          delayCall( 'car',
                               begin
                                 if @global_lisp_binding.has_key?('_car') then
                                   trampCall(@_car)
@@ -7023,7 +7023,7 @@ trampCall(
                       true
                        ) then
                           begin
-                              DelayedCallPacket.new( 'generic-assoc',
+                              delayCall( 'generic-assoc',
                                   begin
                                     if @global_lisp_binding.has_key?('_generic_MIMARKassoc') then
                                       trampCall(@_generic_MIMARKassoc)
@@ -7072,7 +7072,7 @@ trampCall(
     @_assq = 
     trampCall(
           Proc.new { |_obj,_alst| 
-              DelayedCallPacket.new( 'generic-assoc',
+              delayCall( 'generic-assoc',
                   begin
                     if @global_lisp_binding.has_key?('_generic_MIMARKassoc') then
                       trampCall(@_generic_MIMARKassoc)
@@ -7108,7 +7108,7 @@ trampCall(
     @_assv = 
     trampCall(
           Proc.new { |_obj,_alst| 
-              DelayedCallPacket.new( 'generic-assoc',
+              delayCall( 'generic-assoc',
                   begin
                     if @global_lisp_binding.has_key?('_generic_MIMARKassoc') then
                       trampCall(@_generic_MIMARKassoc)
@@ -7144,7 +7144,7 @@ trampCall(
     @_assoc = 
     trampCall(
           Proc.new { |_obj,_alst| 
-              DelayedCallPacket.new( 'generic-assoc',
+              delayCall( 'generic-assoc',
                   begin
                     if @global_lisp_binding.has_key?('_generic_MIMARKassoc') then
                       trampCall(@_generic_MIMARKassoc)
@@ -7180,7 +7180,7 @@ trampCall(
     @_acons = 
     trampCall(
           Proc.new { |_x,_y,_z| 
-              DelayedCallPacket.new( 'cons',
+              delayCall( 'cons',
                   begin
                     if @global_lisp_binding.has_key?('_cons') then
                       trampCall(@_cons)
@@ -7249,7 +7249,7 @@ trampCall(
                   )
                 end
                ) then
-                  DelayedCallPacket.new( 'cdr',
+                  delayCall( 'cdr',
                       begin
                         if @global_lisp_binding.has_key?('_cdr') then
                           trampCall(@_cdr)
@@ -7314,7 +7314,7 @@ trampCall(
                   )
                 end
                ) then
-                  DelayedCallPacket.new( 'cdr',
+                  delayCall( 'cdr',
                       begin
                         if @global_lisp_binding.has_key?('_cdr') then
                           trampCall(@_cdr)
@@ -7379,7 +7379,7 @@ trampCall(
                   )
                 end
                ) then
-                  DelayedCallPacket.new( 'cdr',
+                  delayCall( 'cdr',
                       begin
                         if @global_lisp_binding.has_key?('_cdr') then
                           trampCall(@_cdr)
@@ -7438,7 +7438,7 @@ trampCall(
                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:456"] + __e.backtrace ) ; raise __e
                   end
               else
-                  DelayedCallPacket.new( 'foldr',
+                  delayCall( 'foldr',
                       begin
                         if @global_lisp_binding.has_key?('_foldr') then
                           trampCall(@_foldr)
@@ -7502,7 +7502,7 @@ trampCall(
     @_unzip1_MIMARKwith_MIMARKcdr = 
     trampCall(
           Proc.new { |*__rest__| _lists = __rest__[0] ;  
-              DelayedCallPacket.new( 'unzip1-with-cdr-iterative',
+              delayCall( 'unzip1-with-cdr-iterative',
                   begin
                     if @global_lisp_binding.has_key?('_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative') then
                       trampCall(@_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative)
@@ -7545,7 +7545,7 @@ trampCall(
                       end
                              )))
                ) then
-                  DelayedCallPacket.new( 'cons',
+                  delayCall( 'cons',
                       begin
                         if @global_lisp_binding.has_key?('_cons') then
                           trampCall(@_cons)
@@ -7565,7 +7565,7 @@ trampCall(
               else
                   begin
                     ___lambda = lambda { |_car1,_cdr1| 
-                        DelayedCallPacket.new( 'unzip1-with-cdr-iterative',
+                        delayCall( 'unzip1-with-cdr-iterative',
                             begin
                               if @global_lisp_binding.has_key?('_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative') then
                                 trampCall(@_unzip1_MIMARKwith_MIMARKcdr_MIMARKiterative)
@@ -7745,7 +7745,7 @@ trampCall(
                                                        ))))
                                     )
                                   end
-                                  DelayedCallPacket.new( 'map-arg1',
+                                  delayCall( 'map-arg1',
                                       begin
                                           trampCall(_map_MIMARKarg1)
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:487"] + __e.backtrace ) ; raise __e
@@ -7788,7 +7788,7 @@ trampCall(
                                    )))
                      ) then
                         begin
-                            DelayedCallPacket.new( 'apply',
+                            delayCall( 'apply',
                                 begin
                                   if @global_lisp_binding.has_key?('_apply') then
                                     trampCall(@_apply)
@@ -7853,7 +7853,7 @@ trampCall(
                                             end
                                                    )))
                                              ))))
-                                DelayedCallPacket.new( 'reverse',
+                                delayCall( 'reverse',
                                     begin
                                       if @global_lisp_binding.has_key?('_reverse') then
                                         trampCall(@_reverse)
@@ -7902,7 +7902,7 @@ trampCall(
                                           ___lambda = lambda { |_unz| 
                                               begin
                                                 ___lambda = lambda { |_cars,_cdrs| 
-                                                    DelayedCallPacket.new( 'cons',
+                                                    delayCall( 'cons',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_cons') then
                                                             trampCall(@_cons)
@@ -8095,7 +8095,7 @@ trampCall(
                                               end
                                                      )))
                                                )))
-                                  DelayedCallPacket.new( 'for-each-arg1',
+                                  delayCall( 'for-each-arg1',
                                       begin
                                           trampCall(_for_MIMARKeach_MIMARKarg1)
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:512"] + __e.backtrace ) ; raise __e
@@ -8138,7 +8138,7 @@ trampCall(
                                    )))
                      ) then
                         begin
-                            DelayedCallPacket.new( 'apply',
+                            delayCall( 'apply',
                                 begin
                                   if @global_lisp_binding.has_key?('_apply') then
                                     trampCall(@_apply)
@@ -8179,7 +8179,7 @@ trampCall(
                                        ))))
                          ) then
                             begin
-                                DelayedCallPacket.new( 'for-each-arg1',
+                                delayCall( 'for-each-arg1',
                                     begin
                                         trampCall(_for_MIMARKeach_MIMARKarg1)
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:512"] + __e.backtrace ) ; raise __e
@@ -8273,7 +8273,7 @@ trampCall(
                                                      ) then
                                                       Cell.new()
                                                     else
-                                                        DelayedCallPacket.new( 'apply',
+                                                        delayCall( 'apply',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_apply') then
                                                                 trampCall(@_apply)
@@ -8420,7 +8420,7 @@ trampCall(
                                        )))
                                  )))
                    ) then
-                      DelayedCallPacket.new( 'cons',
+                      delayCall( 'cons',
                           begin
                             if @global_lisp_binding.has_key?('_cons') then
                               trampCall(@_cons)
@@ -8469,7 +8469,7 @@ trampCall(
                                          ))))
                                    )))
                   else
-                      DelayedCallPacket.new( 'filter',
+                      delayCall( 'filter',
                           begin
                             if @global_lisp_binding.has_key?('_filter') then
                               trampCall(@_filter)
@@ -8535,7 +8535,7 @@ trampCall(
                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:541"] + __e.backtrace ) ; raise __e
                           end
                          ) then
-                            DelayedCallPacket.new( 'cons',
+                            delayCall( 'cons',
                                 begin
                                   if @global_lisp_binding.has_key?('_cons') then
                                     trampCall(@_cons)
@@ -8575,7 +8575,7 @@ trampCall(
                                                ))))
                                          )))
                         else
-                            DelayedCallPacket.new( 'filter-map',
+                            delayCall( 'filter-map',
                                 begin
                                   if @global_lisp_binding.has_key?('_filter_MIMARKmap') then
                                     trampCall(@_filter_MIMARKmap)
@@ -8658,7 +8658,7 @@ trampCall(
                      ) then
                       false
                     else
-                        DelayedCallPacket.new( 'car',
+                        delayCall( 'car',
                             begin
                               if @global_lisp_binding.has_key?('_car') then
                                 trampCall(@_car)
@@ -10086,7 +10086,7 @@ trampCall(
                       end
                      ) then
                         begin
-                            DelayedCallPacket.new( 'car',
+                            delayCall( 'car',
                                 begin
                                   if @global_lisp_binding.has_key?('_car') then
                                     trampCall(@_car)
@@ -10105,7 +10105,7 @@ trampCall(
                         true
                          ) then
                             begin
-                                DelayedCallPacket.new( 'make-values',
+                                delayCall( 'make-values',
                                     begin
                                       if @global_lisp_binding.has_key?('_make_MIMARKvalues') then
                                         trampCall(@_make_MIMARKvalues)
@@ -10169,7 +10169,7 @@ trampCall(
                             end
                                    )))
                      ) then
-                        DelayedCallPacket.new( 'apply',
+                        delayCall( 'apply',
                             begin
                               if @global_lisp_binding.has_key?('_apply') then
                                 trampCall(@_apply)
@@ -10196,7 +10196,7 @@ trampCall(
                                            )))
                                      )))
                     else
-                        DelayedCallPacket.new( 'consumer',
+                        delayCall( 'consumer',
                             begin
                                 trampCall(_consumer)
                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:672"] + __e.backtrace ) ; raise __e
@@ -10462,7 +10462,7 @@ trampCall(
                             raise __e
                           end 
                       else
-                          DelayedCallPacket.new( 'car',
+                          delayCall( 'car',
                               begin
                                 if @global_lisp_binding.has_key?('_car') then
                                   trampCall(@_car)
@@ -10605,7 +10605,7 @@ trampCall(
                                                               raise __e
                                                             end 
                                                         else
-                                                            DelayedCallPacket.new( 'car',
+                                                            delayCall( 'car',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_car') then
                                                                     trampCall(@_car)
@@ -10691,7 +10691,7 @@ trampCall(
                                                         true
                                                          ) then
                                                             begin
-                                                                DelayedCallPacket.new( 'loop',
+                                                                delayCall( 'loop',
                                                                     begin
                                                                         trampCall(_loop)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:705"] + __e.backtrace ) ; raise __e
@@ -10761,7 +10761,7 @@ trampCall(
                                           end
                                       end
                                   }
-                                DelayedCallPacket.new( 'loop',
+                                delayCall( 'loop',
                                     begin
                                         trampCall(_loop)
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:705"] + __e.backtrace ) ; raise __e
@@ -11455,7 +11455,7 @@ trampCall(
                                    )))
                              )))
                ) then
-                  DelayedCallPacket.new( 'last-pair',
+                  delayCall( 'last-pair',
                       begin
                         if @global_lisp_binding.has_key?('_last_MIMARKpair') then
                           trampCall(@_last_MIMARKpair)
@@ -11516,7 +11516,7 @@ trampCall(
                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:758"] + __e.backtrace ) ; raise __e
                   end
               else
-                  DelayedCallPacket.new( 'cons',
+                  delayCall( 'cons',
                       begin
                         if @global_lisp_binding.has_key?('_cons') then
                           trampCall(@_cons)
@@ -11849,7 +11849,7 @@ trampCall(
     @_hash_MIMARKtable_MIMARKpush_EXMARK = 
     trampCall(
           Proc.new { |_ht,_key,_value| 
-              DelayedCallPacket.new( 'hash-table-put!',
+              delayCall( 'hash-table-put!',
                   begin
                     if @global_lisp_binding.has_key?('_hash_MIMARKtable_MIMARKput_EXMARK') then
                       trampCall(@_hash_MIMARKtable_MIMARKput_EXMARK)
@@ -11910,7 +11910,7 @@ trampCall(
     @_hash_MIMARKtable_MIMARKkeys = 
     trampCall(
           Proc.new { |_h| 
-              DelayedCallPacket.new( 'to-list',
+              delayCall( 'to-list',
                   begin
                     if @global_lisp_binding.has_key?('_to_MIMARKlist') then
                       trampCall(@_to_MIMARKlist)
@@ -11937,7 +11937,7 @@ trampCall(
     @_hash_MIMARKtable_MIMARKvalues = 
     trampCall(
           Proc.new { |_h| 
-              DelayedCallPacket.new( 'to-list',
+              delayCall( 'to-list',
                   begin
                     if @global_lisp_binding.has_key?('_to_MIMARKlist') then
                       trampCall(@_to_MIMARKlist)
@@ -11966,7 +11966,7 @@ trampCall(
           Proc.new { |_h,_pred| 
               begin
                 ___lambda = lambda { |_keys| 
-                    DelayedCallPacket.new( 'map',
+                    delayCall( 'map',
                         begin
                           if @global_lisp_binding.has_key?('_map') then
                             trampCall(@_map)
@@ -12084,7 +12084,7 @@ trampCall(
               else
                   begin
                     ___lambda = lambda { |_keys| 
-                        DelayedCallPacket.new( 'map',
+                        delayCall( 'map',
                             begin
                               if @global_lisp_binding.has_key?('_map') then
                                 trampCall(@_map)
@@ -12190,7 +12190,7 @@ trampCall(
                     raise __e
                   end 
               else
-                  DelayedCallPacket.new( 'apply',
+                  delayCall( 'apply',
                       begin
                         if @global_lisp_binding.has_key?('_apply') then
                           trampCall(@_apply)
@@ -12286,7 +12286,7 @@ trampCall(
                             end
                            ) then
                               begin
-                                  DelayedCallPacket.new( 'load-compiled-code',
+                                  delayCall( 'load-compiled-code',
                                       begin
                                         if @global_lisp_binding.has_key?('_load_MIMARKcompiled_MIMARKcode') then
                                           trampCall(@_load_MIMARKcompiled_MIMARKcode)
@@ -12333,7 +12333,7 @@ trampCall(
                                 end
                                ) then
                                   begin
-                                      DelayedCallPacket.new( 'load',
+                                      delayCall( 'load',
                                           begin
                                             if @global_lisp_binding.has_key?('_load') then
                                               trampCall(@_load)
@@ -12656,7 +12656,7 @@ trampCall(
                         raise __e
                       end 
                   else
-                      DelayedCallPacket.new( 'car',
+                      delayCall( 'car',
                           begin
                             if @global_lisp_binding.has_key?('_car') then
                               trampCall(@_car)
@@ -12899,7 +12899,7 @@ trampCall(
                                                                      ))))
                                                                )))
                                                  ) then
-                                                    DelayedCallPacket.new( 'loop',
+                                                    delayCall( 'loop',
                                                         begin
                                                             trampCall(_loop)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:883"] + __e.backtrace ) ; raise __e
@@ -12924,7 +12924,7 @@ trampCall(
                                                 end
                                             end
                                         }
-                                      DelayedCallPacket.new( 'loop',
+                                      delayCall( 'loop',
                                           begin
                                               trampCall(_loop)
                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:883"] + __e.backtrace ) ; raise __e
@@ -12974,7 +12974,7 @@ trampCall(
     @_list_MIMARK_GTMARKvector = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( 'apply',
+              delayCall( 'apply',
                   begin
                     if @global_lisp_binding.has_key?('_apply') then
                       trampCall(@_apply)
@@ -13058,7 +13058,7 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:893"] + __e.backtrace ) ; raise __e
                                               end
                                                      )))))
-                                        DelayedCallPacket.new( 'loop',
+                                        delayCall( 'loop',
                                             begin
                                                 trampCall(_loop)
                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:893"] + __e.backtrace ) ; raise __e
@@ -13081,7 +13081,7 @@ trampCall(
                                     end
                                 end
                             }
-                          DelayedCallPacket.new( 'loop',
+                          delayCall( 'loop',
                               begin
                                   trampCall(_loop)
                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:893"] + __e.backtrace ) ; raise __e
@@ -13147,7 +13147,7 @@ trampCall(
                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:899"] + __e.backtrace ) ; raise __e
                               end
                           else
-                              DelayedCallPacket.new( 'loop',
+                              delayCall( 'loop',
                                   begin
                                       trampCall(_loop)
                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:899"] + __e.backtrace ) ; raise __e
@@ -13199,7 +13199,7 @@ trampCall(
                                            )))
                           end
                       }
-                    DelayedCallPacket.new( 'loop',
+                    delayCall( 'loop',
                         begin
                             trampCall(_loop)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:899"] + __e.backtrace ) ; raise __e
@@ -13280,7 +13280,7 @@ trampCall(
     @_debug_MIMARKlimit_MIMARKlength = 
     trampCall(
           Proc.new { |_x| 
-              DelayedCallPacket.new( '+',
+              delayCall( '+',
                   begin
                     if @global_lisp_binding.has_key?('__PLMARK') then
                       trampCall(@__PLMARK)
@@ -13741,7 +13741,7 @@ trampCall(
                 ___lambda = lambda { |_do_MIMARKindent,_pp_MIMARKparenl,_pp_MIMARKparenr,_pp_MIMARKatom,_pp_MIMARKlist| 
                     _do_MIMARKindent                     = 
                       Proc.new { |_level| 
-                          DelayedCallPacket.new( 'for-each',
+                          delayCall( 'for-each',
                               begin
                                 if @global_lisp_binding.has_key?('_for_MIMARKeach') then
                                   trampCall(@_for_MIMARKeach)
@@ -13778,7 +13778,7 @@ trampCall(
                       }
                     _pp_MIMARKparenl                     = 
                       Proc.new { || 
-                          DelayedCallPacket.new( 'display',
+                          delayCall( 'display',
                               begin
                                 if @global_lisp_binding.has_key?('_display') then
                                   trampCall(@_display)
@@ -13791,7 +13791,7 @@ trampCall(
                       }
                     _pp_MIMARKparenr                     = 
                       Proc.new { || 
-                          DelayedCallPacket.new( 'display',
+                          delayCall( 'display',
                               begin
                                 if @global_lisp_binding.has_key?('_display') then
                                   trampCall(@_display)
@@ -13823,7 +13823,7 @@ trampCall(
                                                )))
                               end
                           end
-                          DelayedCallPacket.new( 'write',
+                          delayCall( 'write',
                               begin
                                 if @global_lisp_binding.has_key?('_write') then
                                   trampCall(@_write)
@@ -13904,7 +13904,7 @@ trampCall(
                                               end
                                                      )))
                                        ) then
-                                          DelayedCallPacket.new( 'pp-parenr',
+                                          delayCall( 'pp-parenr',
                                               begin
                                                   trampCall(_pp_MIMARKparenr)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:948"] + __e.backtrace ) ; raise __e
@@ -14014,7 +14014,7 @@ trampCall(
                                                           end
                                                                  ))))
                                                 end
-                                                DelayedCallPacket.new( 'loop',
+                                                delayCall( 'loop',
                                                     begin
                                                         trampCall(_loop)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:954"] + __e.backtrace ) ; raise __e
@@ -14053,7 +14053,7 @@ trampCall(
                                           end
                                       end
                                   }
-                                DelayedCallPacket.new( 'loop',
+                                delayCall( 'loop',
                                     begin
                                         trampCall(_loop)
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:954"] + __e.backtrace ) ; raise __e
@@ -14113,7 +14113,7 @@ trampCall(
                               end
                                      )))
                     end
-                    DelayedCallPacket.new( 'newline',
+                    delayCall( 'newline',
                         begin
                           if @global_lisp_binding.has_key?('_newline') then
                             trampCall(@_newline)
@@ -14139,7 +14139,7 @@ trampCall(
     @_global_MIMARKdefined_QUMARK = 
     trampCall(
           Proc.new { |_sym| 
-              DelayedCallPacket.new( 'find',
+              delayCall( 'find',
                   begin
                     if @global_lisp_binding.has_key?('_find') then
                       trampCall(@_find)
@@ -14193,7 +14193,7 @@ trampCall(
                 ___lambda = lambda { |_compiled_MIMARKbody_MIMARKstring| 
                     _compiled_MIMARKbody_MIMARKstring                     = 
                       Proc.new { |_string_MIMARKlist,_filename| 
-                          DelayedCallPacket.new( '+',
+                          delayCall( '+',
                               begin
                                 if @global_lisp_binding.has_key?('__PLMARK') then
                                   trampCall(@__PLMARK)
@@ -14235,7 +14235,7 @@ trampCall(
                       }
                     begin
                       ___lambda = lambda { |_str_MIMARKlist,_script_MIMARKflag| 
-                          DelayedCallPacket.new( 'values',
+                          delayCall( 'values',
                               begin
                                 if @global_lisp_binding.has_key?('_values') then
                                   trampCall(@_values)
@@ -14312,7 +14312,7 @@ trampCall(
                                                  ))))
                                            )))
                              ) then
-                                DelayedCallPacket.new( 'procedure?',
+                                delayCall( 'procedure?',
                                     begin
                                       if @global_lisp_binding.has_key?('_procedure_QUMARK') then
                                         trampCall(@_procedure_QUMARK)
@@ -14353,7 +14353,7 @@ trampCall(
                 ___lambda = lambda { |_print_MIMARKto_MIMARKfile| 
                     _print_MIMARKto_MIMARKfile                     = 
                       Proc.new { |_f| 
-                          DelayedCallPacket.new( 'call-with-values',
+                          delayCall( 'call-with-values',
                               begin
                                 if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                   trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -14707,7 +14707,7 @@ trampCall(
                             end
                                    )))
                      ) then
-                        DelayedCallPacket.new( 'print-to-file',
+                        delayCall( 'print-to-file',
                             begin
                                 trampCall(_print_MIMARKto_MIMARKfile)
                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1040"] + __e.backtrace ) ; raise __e
@@ -14719,7 +14719,7 @@ trampCall(
                               end
                                      ))
                     else
-                        DelayedCallPacket.new( 'with-open',
+                        delayCall( 'with-open',
                             begin
                               if @global_lisp_binding.has_key?('_with_MIMARKopen') then
                                 trampCall(@_with_MIMARKopen)
@@ -14859,7 +14859,7 @@ trampCall(
                 ___lambda = lambda { |_reserved_QUMARK,_setup_MIMARKlet_MIMARKargs,_setup_MIMARKproc,_setup_MIMARKproc_MIMARKbody| 
                     _reserved_QUMARK                     = 
                       Proc.new { |_sym| 
-                          DelayedCallPacket.new( 'memq',
+                          delayCall( 'memq',
                               begin
                                 if @global_lisp_binding.has_key?('_memq') then
                                   trampCall(@_memq)
@@ -14876,7 +14876,7 @@ trampCall(
                       }
                     _setup_MIMARKlet_MIMARKargs                     = 
                       Proc.new { |_args| 
-                          DelayedCallPacket.new( 'map',
+                          delayCall( 'map',
                               begin
                                 if @global_lisp_binding.has_key?('_map') then
                                   trampCall(@_map)
@@ -15107,7 +15107,7 @@ trampCall(
                                                            )))
                                                      )))
                                        ) then
-                                          DelayedCallPacket.new( 'setup-tailcall-mark',
+                                          delayCall( 'setup-tailcall-mark',
                                               begin
                                                 if @global_lisp_binding.has_key?('_setup_MIMARKtailcall_MIMARKmark') then
                                                   trampCall(@_setup_MIMARKtailcall_MIMARKmark)
@@ -15150,7 +15150,7 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1168"] + __e.backtrace ) ; raise __e
                                               end
                                           else
-                                              DelayedCallPacket.new( 'cons',
+                                              delayCall( 'cons',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_cons') then
                                                       trampCall(@_cons)
@@ -15307,7 +15307,7 @@ trampCall(
                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1168"] + __e.backtrace ) ; raise __e
                                                     end
                                                 else
-                                                    DelayedCallPacket.new( 'reverse',
+                                                    delayCall( 'reverse',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_reverse') then
                                                             trampCall(@_reverse)
@@ -15626,7 +15626,7 @@ trampCall(
                                                     end
                                                    ) then
                                                       begin
-                                                          DelayedCallPacket.new( 'cons',
+                                                          delayCall( 'cons',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                   trampCall(@_cons)
@@ -15693,7 +15693,7 @@ trampCall(
                                                         end
                                                        ) then
                                                           begin
-                                                              DelayedCallPacket.new( 'cons',
+                                                              delayCall( 'cons',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                       trampCall(@_cons)
@@ -15819,7 +15819,7 @@ trampCall(
                                                                           end
                                                                          ) then
                                                                             begin
-                                                                                DelayedCallPacket.new( 'cons',
+                                                                                delayCall( 'cons',
                                                                                     begin
                                                                                       if @global_lisp_binding.has_key?('_cons') then
                                                                                         trampCall(@_cons)
@@ -15918,7 +15918,7 @@ trampCall(
                                                                               end
                                                                              ) then
                                                                                 begin
-                                                                                    DelayedCallPacket.new( 'cons',
+                                                                                    delayCall( 'cons',
                                                                                         begin
                                                                                           if @global_lisp_binding.has_key?('_cons') then
                                                                                             trampCall(@_cons)
@@ -16067,7 +16067,7 @@ trampCall(
                                                                 end
                                                                ) then
                                                                   begin
-                                                                      DelayedCallPacket.new( 'cons',
+                                                                      delayCall( 'cons',
                                                                           begin
                                                                             if @global_lisp_binding.has_key?('_cons') then
                                                                               trampCall(@_cons)
@@ -16163,7 +16163,7 @@ trampCall(
                                                                     end
                                                                    ) then
                                                                       begin
-                                                                          DelayedCallPacket.new( 'cons',
+                                                                          delayCall( 'cons',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                                   trampCall(@_cons)
@@ -16261,7 +16261,7 @@ trampCall(
                                                                           begin
                                                                               begin
                                                                                 ___lambda = lambda { |_val| 
-                                                                                    DelayedCallPacket.new( 'cons',
+                                                                                    delayCall( 'cons',
                                                                                         begin
                                                                                           if @global_lisp_binding.has_key?('_cons') then
                                                                                             trampCall(@_cons)
@@ -16473,7 +16473,7 @@ trampCall(
                                                                                                        )))
                                                                                                  )))
                                                                                    ) then
-                                                                                      DelayedCallPacket.new( 'cons',
+                                                                                      delayCall( 'cons',
                                                                                           begin
                                                                                             if @global_lisp_binding.has_key?('_cons') then
                                                                                               trampCall(@_cons)

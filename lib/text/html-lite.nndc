@@ -200,7 +200,7 @@ trampCall(
     @_html_MIMARKescape_MIMARKstring = 
     trampCall(
           Proc.new { |_string| 
-              DelayedCallPacket.new( 'string-join',
+              delayCall( 'string-join',
                   begin
                     if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                       trampCall(@_string_MIMARKjoin)
@@ -333,7 +333,7 @@ trampCall(
                         )
                       end
                      ) then
-                        DelayedCallPacket.new( 'caddr',
+                        delayCall( 'caddr',
                             begin
                               if @global_lisp_binding.has_key?('_caddr') then
                                 trampCall(@_caddr)
@@ -422,7 +422,7 @@ trampCall(
                                          )))
                            ) then
                               begin
-                                  DelayedCallPacket.new( 'values',
+                                  delayCall( 'values',
                                       begin
                                         if @global_lisp_binding.has_key?('_values') then
                                           trampCall(@_values)
@@ -500,7 +500,7 @@ trampCall(
                                                      )))
                                        ) then
                                           begin
-                                              DelayedCallPacket.new( 'values',
+                                              delayCall( 'values',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_values') then
                                                       trampCall(@_values)
@@ -577,7 +577,7 @@ trampCall(
                                                          ))))
                                            ) then
                                               begin
-                                                  DelayedCallPacket.new( 'get-attr',
+                                                  delayCall( 'get-attr',
                                                       begin
                                                           trampCall(_get_MIMARKattr)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -629,7 +629,7 @@ trampCall(
                                                              ))))
                                                ) then
                                                   begin
-                                                      DelayedCallPacket.new( 'get-attr',
+                                                      delayCall( 'get-attr',
                                                           begin
                                                               trampCall(_get_MIMARKattr)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -682,7 +682,7 @@ trampCall(
                                                   true
                                                    ) then
                                                       begin
-                                                          DelayedCallPacket.new( 'get-attr',
+                                                          delayCall( 'get-attr',
                                                               begin
                                                                   trampCall(_get_MIMARKattr)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -783,7 +783,7 @@ trampCall(
                                   true
                                    ) then
                                       begin
-                                          DelayedCallPacket.new( 'values',
+                                          delayCall( 'values',
                                               begin
                                                 if @global_lisp_binding.has_key?('_values') then
                                                   trampCall(@_values)
@@ -825,7 +825,7 @@ trampCall(
                             end
                            ) then
                               Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                  DelayedCallPacket.new( 'call-with-values',
+                                  delayCall( 'call-with-values',
                                       begin
                                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -931,7 +931,7 @@ trampCall(
                               }
                           else
                               Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                  DelayedCallPacket.new( 'call-with-values',
+                                  delayCall( 'call-with-values',
                                       begin
                                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                           trampCall(@_call_MIMARKwith_MIMARKvalues)
