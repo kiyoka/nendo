@@ -1467,7 +1467,9 @@ describe Nendo, "tail call optimization " do
                     "                2"+
                     "                (func1))))"+
                     "     (func1 100)))" ).should == "(letrec ((func1 (lambda (x) 1 (%tailcall (func2)))) (func2 (lambda (x) 2 (%tailcall (func1))))) (%tailcall (func1 100)))"
-    @nendo.replStr( "(filter (lambda (x) (< x 10)) (range   1000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
+    @nendo.replStr( "(set-optimize-level 0) " ).should == "0"
+    lambda { @nendo.replStr( "(filter (lambda (x) (< x 10)) (range  10000)) " ) }.should               raise_error(SystemStackError)
+    @nendo.replStr( "(set-optimize-level 1) " ).should == "1"
     @nendo.replStr( "(filter (lambda (x) (< x 10)) (range  10000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
     @nendo.replStr( "(define str (if #t (car '(\"a\")) (car '(\"b\")))) (sprintf \"A%sZ\" str) " ).should == '"AaZ"'
     @nendo.replStr( "(letrec ((str (if #t (+ \"a\" \"A\") '())))   str.class) " ).should == 'String'

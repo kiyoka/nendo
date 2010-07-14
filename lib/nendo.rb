@@ -183,10 +183,7 @@ module Nendo
       @pred     = _pred
       @args     = _args
     end
-
-    def call(obj)
-      obj.callProcedure( @origname, @pred, @args )
-    end
+    attr_reader :origname, :pred, :args
   end
 
   class Token
@@ -1147,21 +1144,23 @@ module Nendo
       # toplevel binding
       @global_lisp_binding = Hash.new
   
-      # built-in functions
-      self.methods.grep( /^_/ ) { |rubySymbol|
-        global_lisp_define( rubySymbol, self.method( rubySymbol ))
-      }
-  
       # initialize buildin functions as Proc objects
       rubyExp = self.methods.select { |x|
         x.to_s.match( /^_/ )
       }.map { |name|
-        sprintf( "@%s = self.method( :%s ).to_proc", name, name )
+        [
+         defMethodStr( name ),
+         sprintf( "@%s                        = self.method( :%s        ).to_proc", name, name ),
+         sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD ).to_proc", name, name ),
+        ].join( " ; " )
       }.join( " ; " )
       eval( rubyExp, @binding )
   
       # reset gensym counter
       @gensym_counter = 0
+
+      # init optimize level
+      @optimize_level = 1
   
       # compiled ruby code
       #  { 'filename1' => [ 'code1' 'code2' ... ], 
@@ -1174,13 +1173,25 @@ module Nendo
     def global_lisp_define( rubySymbol, val )
       @___tmp = val
       eval( sprintf( "@%s = @___tmp;", rubySymbol ), @binding )
-      eval( sprintf( "@global_lisp_binding['%s'] = true;", rubySymbol ), @binding )
+      eval( sprintf( "@global_lisp_binding['%s'] = @___tmp;", rubySymbol ), @binding )
     end
   
     def setArgv( argv )
       self.global_lisp_define( toRubySymbol( "*argv*"), argv.to_list )
     end
+
+    def setOptimizeLevel( level )
+      @optimize_level = level
+    end
+
+    def getOptimizeLevel
+      @optimize_level
+    end
   
+    def defMethodStr( name )
+      sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", name )
+    end
+
     def _gensym( )
       @gensym_counter += 1
       filename = if @lastSourcefile.is_a? String
@@ -1284,14 +1295,35 @@ module Nendo
   
     def trampCall( result )
       while result.is_a? DelayedCallPacket
-        result = result.call(self)
+        method_name = toRubySymbol( result.origname ) + "_METHOD"
+        @tmp_origname = result.origname
+        @tmp_pred     = result.pred
+        @tmp_args     = result.args
+        result = eval( sprintf( "self.%s( @tmp_origname, @tmp_pred, @tmp_args )", method_name ), @binding )
       end
       result
     end
 
+    def method_missing( name, *args )
+      sym = toRubySymbol( name );
+      if @global_lisp_binding[name].is_a? Proc
+        @global_lisp_binding[name].call( args[0], args[1], args[2] )
+      else
+        callProcedure( args[0], args[1], args[2] )
+      end
+    end
+
+    def delayCall( origname, pred, args )
+      case @optimize_level
+      when 0 # no optimize
+        callProcedure( origname, pred, args )
+      else # tail call optimization
+        DelayedCallPacket.new( origname, pred, args )
+      end
+    end
+    
     def callProcedure( origname, pred, args )
-      rubyArgument = toRubyArgument( origname, pred, args )
-      pred.call( *rubyArgument )
+      pred.call( *toRubyArgument( origname, pred, args ))
     end
   
     # for code generation of Ruby's argument values
@@ -1308,7 +1340,7 @@ module Nendo
         x.select { |elem| elem }
       }
     end
-  
+
     def execFunc( funcname, args, sourcefile, lineno, locals, execType )
       case funcname
       when :define, :set!   # `define' special form
@@ -1317,10 +1349,18 @@ module Nendo
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
         [ "begin",
           [
-           sprintf( "@global_lisp_binding['%s'] = true", variable_sym ),
+           if global_cap
+             [
+              defMethodStr( variable_sym ),
+              sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD )", variable_sym, variable_sym )
+             ]
+           else
+             ""
+           end,
            sprintf( "%s%s = ", global_cap, variable_sym ),
            "trampCall(", [ ar ], ")"],
-           "end" ]
+          "end"
+        ]
       when :error
         [
          'begin raise RuntimeError, ',
@@ -1350,17 +1390,21 @@ module Nendo
              arr,
              sprintf( "             ))" ) + arr.map { |n| ")" }.join]
           else
-            _call = case execType
-                    when EXEC_TYPE_NORMAL
-                      [ "trampCall( callProcedure(", "))" ]
-                    when EXEC_TYPE_TAILCALL
-                      [ "DelayedCallPacket.new(",    ")"  ]
-                    end
             origname = funcname.to_s
             funcname = funcname.to_s
             sym      = toRubySymbol( funcname )
-            [sprintf( "%s '%s',", _call[0], origname ),
-             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
+            _call = case execType
+                    when EXEC_TYPE_NORMAL
+                      if locals.flatten.include?( sym )
+                        [ sprintf( "trampCall( callProcedure(  ", sym ), "))" ] # local function
+                      else
+                        [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
+                      end
+                    when EXEC_TYPE_TAILCALL
+                      [ "delayCall(",    ")"  ]
+                    end
+            [sprintf( "%s '%s',", _call[0], origname ), 
+             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","], 
              arr,
              sprintf( "             %s", _call[1] ) + arr.map { |n| ")" }.join]
           end
@@ -1843,6 +1887,12 @@ module Nendo
     def _disable_MIMARKidebug()
       @debug = false
     end
+    def _set_MIMARKoptimize_MIMARKlevel(level)
+      self.setOptimizeLevel( level )
+    end
+    def _get_MIMARKoptimize_MIMARKlevel()
+      self.getOptimizeLevel
+    end
   end
   
   class Printer
@@ -1953,6 +2003,10 @@ module Nendo
   
     def setArgv( argv )
       @evaluator.setArgv( argv )
+    end
+
+    def setOptimizeLevel( level )
+      @evaluator.setOptimizeLevel( level )
     end
   
     def clean_compiled_code

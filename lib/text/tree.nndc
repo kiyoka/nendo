@@ -4,7 +4,7 @@
 # 
 
 trampCall( 
-  DelayedCallPacket.new( 'require',
+  delayCall( 'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
           trampCall(@_require)
@@ -19,7 +19,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_write_MIMARKtree'] = true
+      def self._write_MIMARKtree_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_write_MIMARKtree'] = self.method( :_write_MIMARKtree_METHOD )
     @_write_MIMARKtree = 
     trampCall(
           Proc.new { |_tree,*__rest__| _out = __rest__[0] ;  
@@ -30,7 +31,7 @@ trampCall(
                           _loop                           = 
                             Proc.new { |_tree| 
                                 if ( 
-                                  trampCall( callProcedure( 'null?',
+                                  trampCall( self._null_QUMARK_METHOD(  'null?',
                                       begin
                                         if @global_lisp_binding.has_key?('_null_QUMARK') then
                                           trampCall(@_null_QUMARK)
@@ -49,7 +50,7 @@ trampCall(
                                     end
                                 else
                                     if ( 
-                                      trampCall( callProcedure( 'pair?',
+                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
                                           begin
                                             if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                               trampCall(@_pair_QUMARK)
@@ -64,7 +65,7 @@ trampCall(
                                                    )))
                                      ) then
                                         begin
-                                            trampCall( callProcedure( 'write-tree',
+                                            trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_write_MIMARKtree') then
                                                     trampCall(@_write_MIMARKtree)
@@ -72,7 +73,7 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
-                                                  trampCall( callProcedure( 'car',
+                                                  trampCall( self._car_METHOD(  'car',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_car') then
                                                           trampCall(@_car)
@@ -90,13 +91,13 @@ trampCall(
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                   end
                                                          ))))
-                                            DelayedCallPacket.new( 'loop',
+                                            delayCall( 'loop',
                                                 begin
                                                     trampCall(_loop)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
-                                                  trampCall( callProcedure( 'cdr',
+                                                  trampCall( self._cdr_METHOD(  'cdr',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cdr') then
                                                           trampCall(@_cdr)
@@ -132,7 +133,7 @@ trampCall(
                                     end
                                 end
                             }
-                          DelayedCallPacket.new( 'loop',
+                          delayCall( 'loop',
                               begin
                                   trampCall(_loop)
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
@@ -149,7 +150,7 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       if ( 
-                        trampCall( callProcedure( 'null?',
+                        trampCall( self._null_QUMARK_METHOD(  'null?',
                             begin
                               if @global_lisp_binding.has_key?('_null_QUMARK') then
                                 trampCall(@_null_QUMARK)
@@ -168,7 +169,7 @@ trampCall(
                             rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:14"] + __e.backtrace ) ; raise __e
                           end
                       else
-                          DelayedCallPacket.new( 'car',
+                          delayCall( 'car',
                               begin
                                 if @global_lisp_binding.has_key?('_car') then
                                   trampCall(@_car)
@@ -192,13 +193,14 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_tree_MIMARK_GTMARKstring'] = true
+      def self._tree_MIMARK_GTMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_tree_MIMARK_GTMARKstring'] = self.method( :_tree_MIMARK_GTMARKstring_METHOD )
     @_tree_MIMARK_GTMARKstring = 
     trampCall(
           Proc.new { |_tree| 
               begin
                 ___lambda = lambda { |_sio| 
-                    trampCall( callProcedure( 'write-tree',
+                    trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
                         begin
                           if @global_lisp_binding.has_key?('_write_MIMARKtree') then
                             trampCall(@_write_MIMARKtree)

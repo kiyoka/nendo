@@ -9,6 +9,11 @@
   (or (and (= a 1) (= b 2))
       (fail 'car+cdr:1)))
 
+(define (foo lis)
+  (second lis))
+  
+(foo '(1 2 3))
+(foo 1)
 
 '(1 2 3)
 (exit)
@@ -17,11 +22,3 @@
 (load-library "srfi-1")
 (list?
  (circular-list 1 2))
-
-
-
-
-  
-
-
-

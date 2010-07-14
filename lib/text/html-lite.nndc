@@ -5,7 +5,8 @@
 
 trampCall( 
   begin
-    @global_lisp_binding['_html_MIMARKescape'] = true
+      def self._html_MIMARKescape_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_html_MIMARKescape'] = self.method( :_html_MIMARKescape_METHOD )
     @_html_MIMARKescape = 
     trampCall(
           Proc.new { |_c| 
@@ -28,7 +29,7 @@ trampCall(
                               false
                             end
                         } ; ___lambda.call(
-                              trampCall( callProcedure( 'eqv?',
+                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                   begin
                                     if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                       trampCall(@_eqv_QUMARK)
@@ -66,7 +67,7 @@ trampCall(
                                   false
                                 end
                             } ; ___lambda.call(
-                                  trampCall( callProcedure( 'eqv?',
+                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                       begin
                                         if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                           trampCall(@_eqv_QUMARK)
@@ -104,7 +105,7 @@ trampCall(
                                       false
                                     end
                                 } ; ___lambda.call(
-                                      trampCall( callProcedure( 'eqv?',
+                                      trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                           begin
                                             if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                               trampCall(@_eqv_QUMARK)
@@ -142,7 +143,7 @@ trampCall(
                                           false
                                         end
                                     } ; ___lambda.call(
-                                          trampCall( callProcedure( 'eqv?',
+                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                               begin
                                                 if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                                   trampCall(@_eqv_QUMARK)
@@ -194,11 +195,12 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_html_MIMARKescape_MIMARKstring'] = true
+      def self._html_MIMARKescape_MIMARKstring_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_html_MIMARKescape_MIMARKstring'] = self.method( :_html_MIMARKescape_MIMARKstring_METHOD )
     @_html_MIMARKescape_MIMARKstring = 
     trampCall(
           Proc.new { |_string| 
-              DelayedCallPacket.new( 'string-join',
+              delayCall( 'string-join',
                   begin
                     if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                       trampCall(@_string_MIMARKjoin)
@@ -206,7 +208,7 @@ trampCall(
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:49"] + __e.backtrace ) ; raise __e
                   end                ,
                   Cell.new(
-                    trampCall( callProcedure( 'map',
+                    trampCall( self._map_METHOD(  'map',
                         begin
                           if @global_lisp_binding.has_key?('_map') then
                             trampCall(@_map)
@@ -220,7 +222,7 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _html_MIMARKescape", "_html_MIMARKescape" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:51"] + __e.backtrace ) ; raise __e
                           end                        ,Cell.new(
-                          trampCall( callProcedure( 'to-list',
+                          trampCall( self._to_MIMARKlist_METHOD(  'to-list',
                               begin
                                 if @global_lisp_binding.has_key?('_to_MIMARKlist') then
                                   trampCall(@_to_MIMARKlist)
@@ -246,7 +248,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['__ASMARKdoctype_MIMARKalist_ASMARK'] = true
+      def self.__ASMARKdoctype_MIMARKalist_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['__ASMARKdoctype_MIMARKalist_ASMARK'] = self.method( :__ASMARKdoctype_MIMARKalist_ASMARK_METHOD )
     @__ASMARKdoctype_MIMARKalist_ASMARK = 
     trampCall(
         Cell.new(Cell.new(Cell.new(LispKeyword.new( "strict" ),Cell.new(LispKeyword.new( "html" ),Cell.new(LispKeyword.new( "html-strict" ),Cell.new(LispKeyword.new( "html-4.01" ),Cell.new(LispKeyword.new( "html-4.01-strict" )))))),Cell.new(false,Cell.new("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
@@ -271,7 +274,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_html_MIMARKdoctype'] = true
+      def self._html_MIMARKdoctype_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_html_MIMARKdoctype'] = self.method( :_html_MIMARKdoctype_METHOD )
     @_html_MIMARKdoctype = 
     trampCall(
           Proc.new { |*__rest__| _type = __rest__[0] ;  
@@ -279,10 +283,11 @@ trampCall(
                 ___lambda = lambda { |_type| 
                     if ( 
                       begin
-                        @global_lisp_binding['___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034'] = true
+                          def self.___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                          @global_lisp_binding['___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034'] = self.method( :___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034_METHOD )
                         @___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034 = 
                         trampCall(
-                              trampCall( callProcedure( 'find',
+                              trampCall( self._find_METHOD(  'find',
                                   begin
                                     if @global_lisp_binding.has_key?('_find') then
                                       trampCall(@_find)
@@ -291,7 +296,7 @@ trampCall(
                                   end                                ,
                                   Cell.new(
                                     Proc.new { |_e| 
-                                        trampCall( callProcedure( 'memq',
+                                        trampCall( self._memq_METHOD(  'memq',
                                             begin
                                               if @global_lisp_binding.has_key?('_memq') then
                                                 trampCall(@_memq)
@@ -303,7 +308,7 @@ trampCall(
                                                   trampCall(_type)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
                                               end                                            ,Cell.new(
-                                              trampCall( callProcedure( 'car',
+                                              trampCall( self._car_METHOD(  'car',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_car') then
                                                       trampCall(@_car)
@@ -328,7 +333,7 @@ trampCall(
                         )
                       end
                      ) then
-                        DelayedCallPacket.new( 'caddr',
+                        delayCall( 'caddr',
                             begin
                               if @global_lisp_binding.has_key?('_caddr') then
                                 trampCall(@_caddr)
@@ -361,7 +366,7 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       if ( 
-                        trampCall( callProcedure( 'null?',
+                        trampCall( self._null_QUMARK_METHOD(  'null?',
                             begin
                               if @global_lisp_binding.has_key?('_null_QUMARK') then
                                 trampCall(@_null_QUMARK)
@@ -392,7 +397,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_make_MIMARKhtml_MIMARKelement'] = true
+      def self._make_MIMARKhtml_MIMARKelement_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_make_MIMARKhtml_MIMARKelement'] = self.method( :_make_MIMARKhtml_MIMARKelement_METHOD )
     @_make_MIMARKhtml_MIMARKelement = 
     trampCall(
           Proc.new { |_name,*__rest__| _args = __rest__[0] ;  
@@ -401,7 +407,7 @@ trampCall(
                     _get_MIMARKattr                     = 
                       Proc.new { |_args,_attrs| 
                           if ( 
-                            trampCall( callProcedure( 'null?',
+                            trampCall( self._null_QUMARK_METHOD(  'null?',
                                 begin
                                   if @global_lisp_binding.has_key?('_null_QUMARK') then
                                     trampCall(@_null_QUMARK)
@@ -416,7 +422,7 @@ trampCall(
                                          )))
                            ) then
                               begin
-                                  DelayedCallPacket.new( 'values',
+                                  delayCall( 'values',
                                       begin
                                         if @global_lisp_binding.has_key?('_values') then
                                           trampCall(@_values)
@@ -424,7 +430,7 @@ trampCall(
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       Cell.new(
-                                        trampCall( callProcedure( 'reverse',
+                                        trampCall( self._reverse_METHOD(  'reverse',
                                             begin
                                               if @global_lisp_binding.has_key?('_reverse') then
                                                 trampCall(@_reverse)
@@ -445,7 +451,7 @@ trampCall(
                               end
                           else
                               if ( 
-                                trampCall( callProcedure( 'keyword?',
+                                trampCall( self._keyword_QUMARK_METHOD(  'keyword?',
                                     begin
                                       if @global_lisp_binding.has_key?('_keyword_QUMARK') then
                                         trampCall(@_keyword_QUMARK)
@@ -453,7 +459,7 @@ trampCall(
                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:106"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
-                                      trampCall( callProcedure( 'car',
+                                      trampCall( self._car_METHOD(  'car',
                                           begin
                                             if @global_lisp_binding.has_key?('_car') then
                                               trampCall(@_car)
@@ -470,7 +476,7 @@ trampCall(
                                ) then
                                   begin
                                       if ( 
-                                        trampCall( callProcedure( 'null?',
+                                        trampCall( self._null_QUMARK_METHOD(  'null?',
                                             begin
                                               if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                 trampCall(@_null_QUMARK)
@@ -478,7 +484,7 @@ trampCall(
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
-                                              trampCall( callProcedure( 'cdr',
+                                              trampCall( self._cdr_METHOD(  'cdr',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_cdr') then
                                                       trampCall(@_cdr)
@@ -494,7 +500,7 @@ trampCall(
                                                      )))
                                        ) then
                                           begin
-                                              DelayedCallPacket.new( 'values',
+                                              delayCall( 'values',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_values') then
                                                       trampCall(@_values)
@@ -502,7 +508,7 @@ trampCall(
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
-                                                    trampCall( callProcedure( 'reverse',
+                                                    trampCall( self._reverse_METHOD(  'reverse',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_reverse') then
                                                             trampCall(@_reverse)
@@ -510,7 +516,7 @@ trampCall(
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
-                                                          trampCall( callProcedure( 'list*',
+                                                          trampCall( self._list_ASMARK_METHOD(  'list*',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                   trampCall(@_list_ASMARK)
@@ -518,7 +524,7 @@ trampCall(
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
-                                                                trampCall( callProcedure( 'car',
+                                                                trampCall( self._car_METHOD(  'car',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_car') then
                                                                         trampCall(@_car)
@@ -546,7 +552,7 @@ trampCall(
                                           end
                                       else
                                           if ( 
-                                            trampCall( callProcedure( 'eq?',
+                                            trampCall( self._eq_QUMARK_METHOD(  'eq?',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                     trampCall(@_eq_QUMARK)
@@ -554,7 +560,7 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
-                                                  trampCall( callProcedure( 'cadr',
+                                                  trampCall( self._cadr_METHOD(  'cadr',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cadr') then
                                                           trampCall(@_cadr)
@@ -571,13 +577,13 @@ trampCall(
                                                          ))))
                                            ) then
                                               begin
-                                                  DelayedCallPacket.new( 'get-attr',
+                                                  delayCall( 'get-attr',
                                                       begin
                                                           trampCall(_get_MIMARKattr)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
-                                                        trampCall( callProcedure( 'cddr',
+                                                        trampCall( self._cddr_METHOD(  'cddr',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_cddr') then
                                                                 trampCall(@_cddr)
@@ -598,7 +604,7 @@ trampCall(
                                               end
                                           else
                                               if ( 
-                                                trampCall( callProcedure( 'eq?',
+                                                trampCall( self._eq_QUMARK_METHOD(  'eq?',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                         trampCall(@_eq_QUMARK)
@@ -606,7 +612,7 @@ trampCall(
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
-                                                      trampCall( callProcedure( 'cadr',
+                                                      trampCall( self._cadr_METHOD(  'cadr',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_cadr') then
                                                               trampCall(@_cadr)
@@ -623,13 +629,13 @@ trampCall(
                                                              ))))
                                                ) then
                                                   begin
-                                                      DelayedCallPacket.new( 'get-attr',
+                                                      delayCall( 'get-attr',
                                                           begin
                                                               trampCall(_get_MIMARKattr)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
-                                                            trampCall( callProcedure( 'cddr',
+                                                            trampCall( self._cddr_METHOD(  'cddr',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cddr') then
                                                                     trampCall(@_cddr)
@@ -642,7 +648,7 @@ trampCall(
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                   end
                                                                          )))                                                          ,Cell.new(
-                                                            trampCall( callProcedure( 'list*',
+                                                            trampCall( self._list_ASMARK_METHOD(  'list*',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                     trampCall(@_list_ASMARK)
@@ -650,7 +656,7 @@ trampCall(
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                                 Cell.new(
-                                                                  trampCall( callProcedure( 'car',
+                                                                  trampCall( self._car_METHOD(  'car',
                                                                       begin
                                                                         if @global_lisp_binding.has_key?('_car') then
                                                                           trampCall(@_car)
@@ -676,13 +682,13 @@ trampCall(
                                                   true
                                                    ) then
                                                       begin
-                                                          DelayedCallPacket.new( 'get-attr',
+                                                          delayCall( 'get-attr',
                                                               begin
                                                                   trampCall(_get_MIMARKattr)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                               Cell.new(
-                                                                trampCall( callProcedure( 'cddr',
+                                                                trampCall( self._cddr_METHOD(  'cddr',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_cddr') then
                                                                         trampCall(@_cddr)
@@ -695,7 +701,7 @@ trampCall(
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                       end
                                                                              )))                                                              ,Cell.new(
-                                                                trampCall( callProcedure( 'list*',
+                                                                trampCall( self._list_ASMARK_METHOD(  'list*',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                                         trampCall(@_list_ASMARK)
@@ -703,7 +709,7 @@ trampCall(
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                     Cell.new(
-                                                                      trampCall( callProcedure( 'sprintf',
+                                                                      trampCall( self._sprintf_METHOD(  'sprintf',
                                                                           begin
                                                                             if @global_lisp_binding.has_key?('_sprintf') then
                                                                               trampCall(@_sprintf)
@@ -712,7 +718,7 @@ trampCall(
                                                                           end                                                                        ,
                                                                           Cell.new(
                                                                           "=\"%s\""                                                                          ,Cell.new(
-                                                                            trampCall( callProcedure( 'html-escape-string',
+                                                                            trampCall( self._html_MIMARKescape_MIMARKstring_METHOD(  'html-escape-string',
                                                                                 begin
                                                                                   if @global_lisp_binding.has_key?('_html_MIMARKescape_MIMARKstring') then
                                                                                     trampCall(@_html_MIMARKescape_MIMARKstring)
@@ -720,7 +726,7 @@ trampCall(
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                                 Cell.new(
-                                                                                  trampCall( callProcedure( 'x->string',
+                                                                                  trampCall( self._x_MIMARK_GTMARKstring_METHOD(  'x->string',
                                                                                       begin
                                                                                         if @global_lisp_binding.has_key?('_x_MIMARK_GTMARKstring') then
                                                                                           trampCall(@_x_MIMARK_GTMARKstring)
@@ -728,7 +734,7 @@ trampCall(
                                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                       end                                                                                    ,
                                                                                       Cell.new(
-                                                                                        trampCall( callProcedure( 'cadr',
+                                                                                        trampCall( self._cadr_METHOD(  'cadr',
                                                                                             begin
                                                                                               if @global_lisp_binding.has_key?('_cadr') then
                                                                                                 trampCall(@_cadr)
@@ -744,7 +750,7 @@ trampCall(
                                                                                                )))
                                                                                          )))
                                                                                    ))))                                                                    ,Cell.new(
-                                                                      trampCall( callProcedure( 'car',
+                                                                      trampCall( self._car_METHOD(  'car',
                                                                           begin
                                                                             if @global_lisp_binding.has_key?('_car') then
                                                                               trampCall(@_car)
@@ -777,7 +783,7 @@ trampCall(
                                   true
                                    ) then
                                       begin
-                                          DelayedCallPacket.new( 'values',
+                                          delayCall( 'values',
                                               begin
                                                 if @global_lisp_binding.has_key?('_values') then
                                                   trampCall(@_values)
@@ -785,7 +791,7 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
-                                                trampCall( callProcedure( 'reverse',
+                                                trampCall( self._reverse_METHOD(  'reverse',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_reverse') then
                                                         trampCall(@_reverse)
@@ -819,7 +825,7 @@ trampCall(
                             end
                            ) then
                               Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                  DelayedCallPacket.new( 'call-with-values',
+                                  delayCall( 'call-with-values',
                                       begin
                                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -828,7 +834,7 @@ trampCall(
                                       end                                    ,
                                       Cell.new(
                                         Proc.new { || 
-                                            trampCall( callProcedure( 'get-attr',
+                                            trampCall( callProcedure(   'get-attr',
                                                 begin
                                                     trampCall(_get_MIMARKattr)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -843,7 +849,7 @@ trampCall(
                                         }                                      ,Cell.new(
                                         Proc.new { |_attr,_args| 
                                             if ( 
-                                              trampCall( callProcedure( 'not',
+                                              trampCall( self._not_METHOD(  'not',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_not') then
                                                       trampCall(@_not)
@@ -851,7 +857,7 @@ trampCall(
                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   Cell.new(
-                                                    trampCall( callProcedure( 'null?',
+                                                    trampCall( self._null_QUMARK_METHOD(  'null?',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                             trampCall(@_null_QUMARK)
@@ -868,7 +874,7 @@ trampCall(
                                              ) then
                                                 begin
                                                     begin raise RuntimeError, 
-                                                      trampCall( callProcedure( 'sprintf',
+                                                      trampCall( self._sprintf_METHOD(  'sprintf',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_sprintf') then
                                                               trampCall(@_sprintf)
@@ -881,7 +887,7 @@ trampCall(
                                                                 trampCall(_name)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,Cell.new(
-                                                            trampCall( callProcedure( 'write-to-string',
+                                                            trampCall( self._write_MIMARKto_MIMARKstring_METHOD(  'write-to-string',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_write_MIMARKto_MIMARKstring') then
                                                                     trampCall(@_write_MIMARKto_MIMARKstring)
@@ -901,7 +907,7 @@ trampCall(
                                                     end 
                                                 end
                                             end
-                                            trampCall( callProcedure( 'list',
+                                            trampCall( self._list_METHOD(  'list',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_list') then
                                                     trampCall(@_list)
@@ -925,7 +931,7 @@ trampCall(
                               }
                           else
                               Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                  DelayedCallPacket.new( 'call-with-values',
+                                  delayCall( 'call-with-values',
                                       begin
                                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -934,7 +940,7 @@ trampCall(
                                       end                                    ,
                                       Cell.new(
                                         Proc.new { || 
-                                            trampCall( callProcedure( 'get-attr',
+                                            trampCall( callProcedure(   'get-attr',
                                                 begin
                                                     trampCall(_get_MIMARKattr)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -948,7 +954,7 @@ trampCall(
                                                          ))))
                                         }                                      ,Cell.new(
                                         Proc.new { |_attr,_args| 
-                                            trampCall( callProcedure( 'list',
+                                            trampCall( self._list_METHOD(  'list',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_list') then
                                                     trampCall(@_list)
@@ -983,7 +989,7 @@ trampCall(
                               }
                           end
                       } ; ___lambda.call(
-                            trampCall( callProcedure( 'get-keyword',
+                            trampCall( self._get_MIMARKkeyword_METHOD(  'get-keyword',
                                 begin
                                   if @global_lisp_binding.has_key?('_get_MIMARKkeyword') then
                                     trampCall(@_get_MIMARKkeyword)
@@ -1012,7 +1018,8 @@ trampCall(
 
 trampCall( 
   begin
-    @global_lisp_binding['_define_MIMARKhtml_MIMARKelements'] = true
+      def self._define_MIMARKhtml_MIMARKelements_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_define_MIMARKhtml_MIMARKelements'] = self.method( :_define_MIMARKhtml_MIMARKelements_METHOD )
     @_define_MIMARKhtml_MIMARKelements = 
     trampCall(
           LispMacro.new { |*__rest__| _elements = __rest__[0] ;  
@@ -1020,7 +1027,7 @@ trampCall(
                 ___lambda = lambda { |_make_MIMARKscheme_MIMARKname| 
                     _make_MIMARKscheme_MIMARKname                     = 
                       Proc.new { |_name| 
-                          trampCall( callProcedure( 'string->symbol',
+                          trampCall( self._string_MIMARK_GTMARKsymbol_METHOD(  'string->symbol',
                               begin
                                 if @global_lisp_binding.has_key?('_string_MIMARK_GTMARKsymbol') then
                                   trampCall(@_string_MIMARK_GTMARKsymbol)
@@ -1028,7 +1035,7 @@ trampCall(
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                               end                            ,
                               Cell.new(
-                                trampCall( callProcedure( 'sprintf',
+                                trampCall( self._sprintf_METHOD(  'sprintf',
                                     begin
                                       if @global_lisp_binding.has_key?('_sprintf') then
                                         trampCall(@_sprintf)
@@ -1049,7 +1056,7 @@ trampCall(
                           _loop                           = 
                             Proc.new { |_elements,_r| 
                                 if ( 
-                                  trampCall( callProcedure( 'null?',
+                                  trampCall( self._null_QUMARK_METHOD(  'null?',
                                       begin
                                         if @global_lisp_binding.has_key?('_null_QUMARK') then
                                           trampCall(@_null_QUMARK)
@@ -1064,7 +1071,7 @@ trampCall(
                                                )))
                                  ) then
                                     begin
-                                        trampCall( callProcedure( 'cons',
+                                        trampCall( self._cons_METHOD(  'cons',
                                             begin
                                               if @global_lisp_binding.has_key?('_cons') then
                                                 trampCall(@_cons)
@@ -1073,7 +1080,7 @@ trampCall(
                                             end                                          ,
                                             Cell.new(
                                             :"begin"                                            ,Cell.new(
-                                              trampCall( callProcedure( 'reverse',
+                                              trampCall( self._reverse_METHOD(  'reverse',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_reverse') then
                                                       trampCall(@_reverse)
@@ -1091,7 +1098,7 @@ trampCall(
                                 else
                                     if ( 
                                       if ( 
-                                        trampCall( callProcedure( 'not',
+                                        trampCall( self._not_METHOD(  'not',
                                             begin
                                               if @global_lisp_binding.has_key?('_not') then
                                                 trampCall(@_not)
@@ -1099,7 +1106,7 @@ trampCall(
                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             Cell.new(
-                                              trampCall( callProcedure( 'eq?',
+                                              trampCall( self._eq_QUMARK_METHOD(  'eq?',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_eq_QUMARK') then
                                                       trampCall(@_eq_QUMARK)
@@ -1108,7 +1115,7 @@ trampCall(
                                                   end                                                ,
                                                   Cell.new(
                                                   false                                                  ,Cell.new(
-                                                    trampCall( callProcedure( 'pair?',
+                                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                             trampCall(@_pair_QUMARK)
@@ -1116,7 +1123,7 @@ trampCall(
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         Cell.new(
-                                                          trampCall( callProcedure( 'cdr',
+                                                          trampCall( self._cdr_METHOD(  'cdr',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cdr') then
                                                                   trampCall(@_cdr)
@@ -1133,7 +1140,7 @@ trampCall(
                                                            ))))
                                                      )))
                                        ) then
-                                          trampCall( callProcedure( 'eqv?',
+                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                               begin
                                                 if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                                   trampCall(@_eqv_QUMARK)
@@ -1141,7 +1148,7 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               Cell.new(
-                                                trampCall( callProcedure( 'cadr',
+                                                trampCall( self._cadr_METHOD(  'cadr',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_cadr') then
                                                         trampCall(@_cadr)
@@ -1161,13 +1168,13 @@ trampCall(
                                       end
                                      ) then
                                         begin
-                                            trampCall( callProcedure( 'loop',
+                                            trampCall( callProcedure(   'loop',
                                                 begin
                                                     trampCall(_loop)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                                 Cell.new(
-                                                  trampCall( callProcedure( 'cddr',
+                                                  trampCall( self._cddr_METHOD(  'cddr',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cddr') then
                                                           trampCall(@_cddr)
@@ -1180,7 +1187,7 @@ trampCall(
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                         end
                                                                )))                                                ,Cell.new(
-                                                  trampCall( callProcedure( 'list*',
+                                                  trampCall( self._list_ASMARK_METHOD(  'list*',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                           trampCall(@_list_ASMARK)
@@ -1188,7 +1195,7 @@ trampCall(
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       Cell.new(
-                                                        trampCall( callProcedure( 'cons',
+                                                        trampCall( self._cons_METHOD(  'cons',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_cons') then
                                                                 trampCall(@_cons)
@@ -1197,7 +1204,7 @@ trampCall(
                                                             end                                                          ,
                                                             Cell.new(
                                                             :"define"                                                            ,Cell.new(
-                                                              trampCall( callProcedure( 'cons',
+                                                              trampCall( self._cons_METHOD(  'cons',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                       trampCall(@_cons)
@@ -1205,13 +1212,13 @@ trampCall(
                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
-                                                                    trampCall( callProcedure( 'make-scheme-name',
+                                                                    trampCall( callProcedure(   'make-scheme-name',
                                                                         begin
                                                                             trampCall(_make_MIMARKscheme_MIMARKname)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
-                                                                          trampCall( callProcedure( 'car',
+                                                                          trampCall( self._car_METHOD(  'car',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_car') then
                                                                                   trampCall(@_car)
@@ -1225,7 +1232,7 @@ trampCall(
                                                                                 end
                                                                                        )))
                                                                                  )))                                                                  ,Cell.new(
-                                                                    trampCall( callProcedure( 'cons',
+                                                                    trampCall( self._cons_METHOD(  'cons',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('_cons') then
                                                                             trampCall(@_cons)
@@ -1233,7 +1240,7 @@ trampCall(
                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
-                                                                          trampCall( callProcedure( 'cons',
+                                                                          trampCall( self._cons_METHOD(  'cons',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                                   trampCall(@_cons)
@@ -1242,7 +1249,7 @@ trampCall(
                                                                               end                                                                            ,
                                                                               Cell.new(
                                                                               :"make-html-element"                                                                              ,Cell.new(
-                                                                                trampCall( callProcedure( 'cons',
+                                                                                trampCall( self._cons_METHOD(  'cons',
                                                                                     begin
                                                                                       if @global_lisp_binding.has_key?('_cons') then
                                                                                         trampCall(@_cons)
@@ -1250,7 +1257,7 @@ trampCall(
                                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                     end                                                                                  ,
                                                                                     Cell.new(
-                                                                                      trampCall( callProcedure( 'cons',
+                                                                                      trampCall( self._cons_METHOD(  'cons',
                                                                                           begin
                                                                                             if @global_lisp_binding.has_key?('_cons') then
                                                                                               trampCall(@_cons)
@@ -1259,7 +1266,7 @@ trampCall(
                                                                                           end                                                                                        ,
                                                                                           Cell.new(
                                                                                           :"quote"                                                                                          ,Cell.new(
-                                                                                            trampCall( callProcedure( 'cons',
+                                                                                            trampCall( self._cons_METHOD(  'cons',
                                                                                                 begin
                                                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                                                     trampCall(@_cons)
@@ -1267,7 +1274,7 @@ trampCall(
                                                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                 end                                                                                              ,
                                                                                                 Cell.new(
-                                                                                                  trampCall( callProcedure( 'car',
+                                                                                                  trampCall( self._car_METHOD(  'car',
                                                                                                       begin
                                                                                                         if @global_lisp_binding.has_key?('_car') then
                                                                                                           trampCall(@_car)
@@ -1290,7 +1297,7 @@ trampCall(
                                                                                  ))))
                                                                            ))))
                                                                      ))))                                                      ,Cell.new(
-                                                        trampCall( callProcedure( 'cons',
+                                                        trampCall( self._cons_METHOD(  'cons',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_cons') then
                                                                 trampCall(@_cons)
@@ -1299,7 +1306,7 @@ trampCall(
                                                             end                                                          ,
                                                             Cell.new(
                                                             :"export"                                                            ,Cell.new(
-                                                              trampCall( callProcedure( 'cons',
+                                                              trampCall( self._cons_METHOD(  'cons',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                       trampCall(@_cons)
@@ -1307,13 +1314,13 @@ trampCall(
                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                                   Cell.new(
-                                                                    trampCall( callProcedure( 'make-scheme-name',
+                                                                    trampCall( callProcedure(   'make-scheme-name',
                                                                         begin
                                                                             trampCall(_make_MIMARKscheme_MIMARKname)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
                                                                         Cell.new(
-                                                                          trampCall( callProcedure( 'car',
+                                                                          trampCall( self._car_METHOD(  'car',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_car') then
                                                                                   trampCall(@_car)
@@ -1342,13 +1349,13 @@ trampCall(
                                         true
                                          ) then
                                             begin
-                                                trampCall( callProcedure( 'loop',
+                                                trampCall( callProcedure(   'loop',
                                                     begin
                                                         trampCall(_loop)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                     Cell.new(
-                                                      trampCall( callProcedure( 'cdr',
+                                                      trampCall( self._cdr_METHOD(  'cdr',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_cdr') then
                                                               trampCall(@_cdr)
@@ -1361,7 +1368,7 @@ trampCall(
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                             end
                                                                    )))                                                    ,Cell.new(
-                                                      trampCall( callProcedure( 'list*',
+                                                      trampCall( self._list_ASMARK_METHOD(  'list*',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_list_ASMARK') then
                                                               trampCall(@_list_ASMARK)
@@ -1369,7 +1376,7 @@ trampCall(
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                           Cell.new(
-                                                            trampCall( callProcedure( 'cons',
+                                                            trampCall( self._cons_METHOD(  'cons',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                     trampCall(@_cons)
@@ -1378,7 +1385,7 @@ trampCall(
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                 :"define"                                                                ,Cell.new(
-                                                                  trampCall( callProcedure( 'cons',
+                                                                  trampCall( self._cons_METHOD(  'cons',
                                                                       begin
                                                                         if @global_lisp_binding.has_key?('_cons') then
                                                                           trampCall(@_cons)
@@ -1386,13 +1393,13 @@ trampCall(
                                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
-                                                                        trampCall( callProcedure( 'make-scheme-name',
+                                                                        trampCall( callProcedure(   'make-scheme-name',
                                                                             begin
                                                                                 trampCall(_make_MIMARKscheme_MIMARKname)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
-                                                                              trampCall( callProcedure( 'car',
+                                                                              trampCall( self._car_METHOD(  'car',
                                                                                   begin
                                                                                     if @global_lisp_binding.has_key?('_car') then
                                                                                       trampCall(@_car)
@@ -1406,7 +1413,7 @@ trampCall(
                                                                                     end
                                                                                            )))
                                                                                      )))                                                                      ,Cell.new(
-                                                                        trampCall( callProcedure( 'cons',
+                                                                        trampCall( self._cons_METHOD(  'cons',
                                                                             begin
                                                                               if @global_lisp_binding.has_key?('_cons') then
                                                                                 trampCall(@_cons)
@@ -1414,7 +1421,7 @@ trampCall(
                                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
-                                                                              trampCall( callProcedure( 'cons',
+                                                                              trampCall( self._cons_METHOD(  'cons',
                                                                                   begin
                                                                                     if @global_lisp_binding.has_key?('_cons') then
                                                                                       trampCall(@_cons)
@@ -1423,7 +1430,7 @@ trampCall(
                                                                                   end                                                                                ,
                                                                                   Cell.new(
                                                                                   :"make-html-element"                                                                                  ,Cell.new(
-                                                                                    trampCall( callProcedure( 'cons',
+                                                                                    trampCall( self._cons_METHOD(  'cons',
                                                                                         begin
                                                                                           if @global_lisp_binding.has_key?('_cons') then
                                                                                             trampCall(@_cons)
@@ -1431,7 +1438,7 @@ trampCall(
                                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                         end                                                                                      ,
                                                                                         Cell.new(
-                                                                                          trampCall( callProcedure( 'cons',
+                                                                                          trampCall( self._cons_METHOD(  'cons',
                                                                                               begin
                                                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                                                   trampCall(@_cons)
@@ -1440,7 +1447,7 @@ trampCall(
                                                                                               end                                                                                            ,
                                                                                               Cell.new(
                                                                                               :"quote"                                                                                              ,Cell.new(
-                                                                                                trampCall( callProcedure( 'cons',
+                                                                                                trampCall( self._cons_METHOD(  'cons',
                                                                                                     begin
                                                                                                       if @global_lisp_binding.has_key?('_cons') then
                                                                                                         trampCall(@_cons)
@@ -1448,7 +1455,7 @@ trampCall(
                                                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,
                                                                                                     Cell.new(
-                                                                                                      trampCall( callProcedure( 'car',
+                                                                                                      trampCall( self._car_METHOD(  'car',
                                                                                                           begin
                                                                                                             if @global_lisp_binding.has_key?('_car') then
                                                                                                               trampCall(@_car)
@@ -1471,7 +1478,7 @@ trampCall(
                                                                                      ))))
                                                                                ))))
                                                                          ))))                                                          ,Cell.new(
-                                                            trampCall( callProcedure( 'cons',
+                                                            trampCall( self._cons_METHOD(  'cons',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cons') then
                                                                     trampCall(@_cons)
@@ -1480,7 +1487,7 @@ trampCall(
                                                                 end                                                              ,
                                                                 Cell.new(
                                                                 :"export"                                                                ,Cell.new(
-                                                                  trampCall( callProcedure( 'cons',
+                                                                  trampCall( self._cons_METHOD(  'cons',
                                                                       begin
                                                                         if @global_lisp_binding.has_key?('_cons') then
                                                                           trampCall(@_cons)
@@ -1488,13 +1495,13 @@ trampCall(
                                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       Cell.new(
-                                                                        trampCall( callProcedure( 'make-scheme-name',
+                                                                        trampCall( callProcedure(   'make-scheme-name',
                                                                             begin
                                                                                 trampCall(_make_MIMARKscheme_MIMARKname)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
-                                                                              trampCall( callProcedure( 'car',
+                                                                              trampCall( self._car_METHOD(  'car',
                                                                                   begin
                                                                                     if @global_lisp_binding.has_key?('_car') then
                                                                                       trampCall(@_car)
@@ -1524,7 +1531,7 @@ trampCall(
                                     end
                                 end
                             }
-                          trampCall( callProcedure( 'loop',
+                          trampCall( callProcedure(   'loop',
                               begin
                                   trampCall(_loop)
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
@@ -1553,17 +1560,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKtt'] = true
+          def self._html_COMARKtt_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtt'] = self.method( :_html_COMARKtt_METHOD )
         @_html_COMARKtt = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtt'] = true
+          def self._html_COMARKtt_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtt'] = self.method( :_html_COMARKtt_METHOD )
         @_html_COMARKtt = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1576,17 +1585,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKi'] = true
+          def self._html_COMARKi_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKi'] = self.method( :_html_COMARKi_METHOD )
         @_html_COMARKi = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKi'] = true
+          def self._html_COMARKi_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKi'] = self.method( :_html_COMARKi_METHOD )
         @_html_COMARKi = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1599,17 +1610,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKb'] = true
+          def self._html_COMARKb_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKb'] = self.method( :_html_COMARKb_METHOD )
         @_html_COMARKb = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKb'] = true
+          def self._html_COMARKb_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKb'] = self.method( :_html_COMARKb_METHOD )
         @_html_COMARKb = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1622,17 +1635,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbig'] = true
+          def self._html_COMARKbig_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbig'] = self.method( :_html_COMARKbig_METHOD )
         @_html_COMARKbig = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbig'] = true
+          def self._html_COMARKbig_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbig'] = self.method( :_html_COMARKbig_METHOD )
         @_html_COMARKbig = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1645,17 +1660,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKsmall'] = true
+          def self._html_COMARKsmall_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsmall'] = self.method( :_html_COMARKsmall_METHOD )
         @_html_COMARKsmall = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKsmall'] = true
+          def self._html_COMARKsmall_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsmall'] = self.method( :_html_COMARKsmall_METHOD )
         @_html_COMARKsmall = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1674,17 +1691,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKem'] = true
+          def self._html_COMARKem_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKem'] = self.method( :_html_COMARKem_METHOD )
         @_html_COMARKem = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKem'] = true
+          def self._html_COMARKem_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKem'] = self.method( :_html_COMARKem_METHOD )
         @_html_COMARKem = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1697,17 +1716,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKstrong'] = true
+          def self._html_COMARKstrong_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKstrong'] = self.method( :_html_COMARKstrong_METHOD )
         @_html_COMARKstrong = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKstrong'] = true
+          def self._html_COMARKstrong_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKstrong'] = self.method( :_html_COMARKstrong_METHOD )
         @_html_COMARKstrong = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1720,17 +1741,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdfn'] = true
+          def self._html_COMARKdfn_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdfn'] = self.method( :_html_COMARKdfn_METHOD )
         @_html_COMARKdfn = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdfn'] = true
+          def self._html_COMARKdfn_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdfn'] = self.method( :_html_COMARKdfn_METHOD )
         @_html_COMARKdfn = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1743,17 +1766,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcode'] = true
+          def self._html_COMARKcode_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcode'] = self.method( :_html_COMARKcode_METHOD )
         @_html_COMARKcode = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcode'] = true
+          def self._html_COMARKcode_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcode'] = self.method( :_html_COMARKcode_METHOD )
         @_html_COMARKcode = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1766,17 +1791,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKsamp'] = true
+          def self._html_COMARKsamp_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsamp'] = self.method( :_html_COMARKsamp_METHOD )
         @_html_COMARKsamp = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKsamp'] = true
+          def self._html_COMARKsamp_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsamp'] = self.method( :_html_COMARKsamp_METHOD )
         @_html_COMARKsamp = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1789,17 +1816,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKkbd'] = true
+          def self._html_COMARKkbd_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKkbd'] = self.method( :_html_COMARKkbd_METHOD )
         @_html_COMARKkbd = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKkbd'] = true
+          def self._html_COMARKkbd_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKkbd'] = self.method( :_html_COMARKkbd_METHOD )
         @_html_COMARKkbd = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1812,17 +1841,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKvar'] = true
+          def self._html_COMARKvar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKvar'] = self.method( :_html_COMARKvar_METHOD )
         @_html_COMARKvar = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKvar'] = true
+          def self._html_COMARKvar_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKvar'] = self.method( :_html_COMARKvar_METHOD )
         @_html_COMARKvar = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1835,17 +1866,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcite'] = true
+          def self._html_COMARKcite_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcite'] = self.method( :_html_COMARKcite_METHOD )
         @_html_COMARKcite = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcite'] = true
+          def self._html_COMARKcite_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcite'] = self.method( :_html_COMARKcite_METHOD )
         @_html_COMARKcite = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1858,17 +1891,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKabbr'] = true
+          def self._html_COMARKabbr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKabbr'] = self.method( :_html_COMARKabbr_METHOD )
         @_html_COMARKabbr = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKabbr'] = true
+          def self._html_COMARKabbr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKabbr'] = self.method( :_html_COMARKabbr_METHOD )
         @_html_COMARKabbr = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1881,17 +1916,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKacronym'] = true
+          def self._html_COMARKacronym_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKacronym'] = self.method( :_html_COMARKacronym_METHOD )
         @_html_COMARKacronym = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKacronym'] = true
+          def self._html_COMARKacronym_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKacronym'] = self.method( :_html_COMARKacronym_METHOD )
         @_html_COMARKacronym = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1910,17 +1947,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKsub'] = true
+          def self._html_COMARKsub_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsub'] = self.method( :_html_COMARKsub_METHOD )
         @_html_COMARKsub = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKsub'] = true
+          def self._html_COMARKsub_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsub'] = self.method( :_html_COMARKsub_METHOD )
         @_html_COMARKsub = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1933,17 +1972,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKsup'] = true
+          def self._html_COMARKsup_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsup'] = self.method( :_html_COMARKsup_METHOD )
         @_html_COMARKsup = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKsup'] = true
+          def self._html_COMARKsup_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKsup'] = self.method( :_html_COMARKsup_METHOD )
         @_html_COMARKsup = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1956,17 +1997,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKspan'] = true
+          def self._html_COMARKspan_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKspan'] = self.method( :_html_COMARKspan_METHOD )
         @_html_COMARKspan = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKspan'] = true
+          def self._html_COMARKspan_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKspan'] = self.method( :_html_COMARKspan_METHOD )
         @_html_COMARKspan = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -1979,17 +2022,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbdo'] = true
+          def self._html_COMARKbdo_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbdo'] = self.method( :_html_COMARKbdo_METHOD )
         @_html_COMARKbdo = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbdo'] = true
+          def self._html_COMARKbdo_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbdo'] = self.method( :_html_COMARKbdo_METHOD )
         @_html_COMARKbdo = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2002,17 +2047,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbr'] = true
+          def self._html_COMARKbr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbr'] = self.method( :_html_COMARKbr_METHOD )
         @_html_COMARKbr = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbr'] = true
+          def self._html_COMARKbr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbr'] = self.method( :_html_COMARKbr_METHOD )
         @_html_COMARKbr = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2033,17 +2080,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKbody'] = true
+          def self._html_COMARKbody_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbody'] = self.method( :_html_COMARKbody_METHOD )
         @_html_COMARKbody = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbody'] = true
+          def self._html_COMARKbody_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbody'] = self.method( :_html_COMARKbody_METHOD )
         @_html_COMARKbody = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2056,17 +2105,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKaddress'] = true
+          def self._html_COMARKaddress_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKaddress'] = self.method( :_html_COMARKaddress_METHOD )
         @_html_COMARKaddress = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKaddress'] = true
+          def self._html_COMARKaddress_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKaddress'] = self.method( :_html_COMARKaddress_METHOD )
         @_html_COMARKaddress = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2079,17 +2130,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdiv'] = true
+          def self._html_COMARKdiv_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdiv'] = self.method( :_html_COMARKdiv_METHOD )
         @_html_COMARKdiv = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdiv'] = true
+          def self._html_COMARKdiv_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdiv'] = self.method( :_html_COMARKdiv_METHOD )
         @_html_COMARKdiv = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2108,17 +2161,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKa'] = true
+          def self._html_COMARKa_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKa'] = self.method( :_html_COMARKa_METHOD )
         @_html_COMARKa = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKa'] = true
+          def self._html_COMARKa_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKa'] = self.method( :_html_COMARKa_METHOD )
         @_html_COMARKa = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2137,17 +2192,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKmap'] = true
+          def self._html_COMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKmap'] = self.method( :_html_COMARKmap_METHOD )
         @_html_COMARKmap = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKmap'] = true
+          def self._html_COMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKmap'] = self.method( :_html_COMARKmap_METHOD )
         @_html_COMARKmap = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2160,17 +2217,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKarea'] = true
+          def self._html_COMARKarea_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKarea'] = self.method( :_html_COMARKarea_METHOD )
         @_html_COMARKarea = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKarea'] = true
+          def self._html_COMARKarea_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKarea'] = self.method( :_html_COMARKarea_METHOD )
         @_html_COMARKarea = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2191,17 +2250,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKlink'] = true
+          def self._html_COMARKlink_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKlink'] = self.method( :_html_COMARKlink_METHOD )
         @_html_COMARKlink = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKlink'] = true
+          def self._html_COMARKlink_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKlink'] = self.method( :_html_COMARKlink_METHOD )
         @_html_COMARKlink = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2222,17 +2283,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKimg'] = true
+          def self._html_COMARKimg_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKimg'] = self.method( :_html_COMARKimg_METHOD )
         @_html_COMARKimg = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKimg'] = true
+          def self._html_COMARKimg_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKimg'] = self.method( :_html_COMARKimg_METHOD )
         @_html_COMARKimg = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2253,17 +2316,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKobject'] = true
+          def self._html_COMARKobject_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKobject'] = self.method( :_html_COMARKobject_METHOD )
         @_html_COMARKobject = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKobject'] = true
+          def self._html_COMARKobject_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKobject'] = self.method( :_html_COMARKobject_METHOD )
         @_html_COMARKobject = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2276,17 +2341,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKparam'] = true
+          def self._html_COMARKparam_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKparam'] = self.method( :_html_COMARKparam_METHOD )
         @_html_COMARKparam = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKparam'] = true
+          def self._html_COMARKparam_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKparam'] = self.method( :_html_COMARKparam_METHOD )
         @_html_COMARKparam = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2307,17 +2374,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKhr'] = true
+          def self._html_COMARKhr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKhr'] = self.method( :_html_COMARKhr_METHOD )
         @_html_COMARKhr = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKhr'] = true
+          def self._html_COMARKhr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKhr'] = self.method( :_html_COMARKhr_METHOD )
         @_html_COMARKhr = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2338,17 +2407,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKp'] = true
+          def self._html_COMARKp_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKp'] = self.method( :_html_COMARKp_METHOD )
         @_html_COMARKp = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKp'] = true
+          def self._html_COMARKp_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKp'] = self.method( :_html_COMARKp_METHOD )
         @_html_COMARKp = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2367,17 +2438,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKh1'] = true
+          def self._html_COMARKh1_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh1'] = self.method( :_html_COMARKh1_METHOD )
         @_html_COMARKh1 = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh1'] = true
+          def self._html_COMARKh1_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh1'] = self.method( :_html_COMARKh1_METHOD )
         @_html_COMARKh1 = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2390,17 +2463,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh2'] = true
+          def self._html_COMARKh2_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh2'] = self.method( :_html_COMARKh2_METHOD )
         @_html_COMARKh2 = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh2'] = true
+          def self._html_COMARKh2_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh2'] = self.method( :_html_COMARKh2_METHOD )
         @_html_COMARKh2 = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2413,17 +2488,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh3'] = true
+          def self._html_COMARKh3_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh3'] = self.method( :_html_COMARKh3_METHOD )
         @_html_COMARKh3 = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh3'] = true
+          def self._html_COMARKh3_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh3'] = self.method( :_html_COMARKh3_METHOD )
         @_html_COMARKh3 = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2436,17 +2513,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh4'] = true
+          def self._html_COMARKh4_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh4'] = self.method( :_html_COMARKh4_METHOD )
         @_html_COMARKh4 = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh4'] = true
+          def self._html_COMARKh4_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh4'] = self.method( :_html_COMARKh4_METHOD )
         @_html_COMARKh4 = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2459,17 +2538,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh5'] = true
+          def self._html_COMARKh5_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh5'] = self.method( :_html_COMARKh5_METHOD )
         @_html_COMARKh5 = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh5'] = true
+          def self._html_COMARKh5_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh5'] = self.method( :_html_COMARKh5_METHOD )
         @_html_COMARKh5 = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2482,17 +2563,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh6'] = true
+          def self._html_COMARKh6_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh6'] = self.method( :_html_COMARKh6_METHOD )
         @_html_COMARKh6 = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKh6'] = true
+          def self._html_COMARKh6_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKh6'] = self.method( :_html_COMARKh6_METHOD )
         @_html_COMARKh6 = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2511,17 +2594,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKpre'] = true
+          def self._html_COMARKpre_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKpre'] = self.method( :_html_COMARKpre_METHOD )
         @_html_COMARKpre = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKpre'] = true
+          def self._html_COMARKpre_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKpre'] = self.method( :_html_COMARKpre_METHOD )
         @_html_COMARKpre = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2540,17 +2625,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKq'] = true
+          def self._html_COMARKq_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKq'] = self.method( :_html_COMARKq_METHOD )
         @_html_COMARKq = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKq'] = true
+          def self._html_COMARKq_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKq'] = self.method( :_html_COMARKq_METHOD )
         @_html_COMARKq = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2569,17 +2656,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKblockquote'] = true
+          def self._html_COMARKblockquote_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKblockquote'] = self.method( :_html_COMARKblockquote_METHOD )
         @_html_COMARKblockquote = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKblockquote'] = true
+          def self._html_COMARKblockquote_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKblockquote'] = self.method( :_html_COMARKblockquote_METHOD )
         @_html_COMARKblockquote = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2598,17 +2687,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKins'] = true
+          def self._html_COMARKins_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKins'] = self.method( :_html_COMARKins_METHOD )
         @_html_COMARKins = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKins'] = true
+          def self._html_COMARKins_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKins'] = self.method( :_html_COMARKins_METHOD )
         @_html_COMARKins = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2621,17 +2712,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdel'] = true
+          def self._html_COMARKdel_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdel'] = self.method( :_html_COMARKdel_METHOD )
         @_html_COMARKdel = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdel'] = true
+          def self._html_COMARKdel_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdel'] = self.method( :_html_COMARKdel_METHOD )
         @_html_COMARKdel = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2650,17 +2743,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKdl'] = true
+          def self._html_COMARKdl_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdl'] = self.method( :_html_COMARKdl_METHOD )
         @_html_COMARKdl = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdl'] = true
+          def self._html_COMARKdl_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdl'] = self.method( :_html_COMARKdl_METHOD )
         @_html_COMARKdl = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2673,17 +2768,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdt'] = true
+          def self._html_COMARKdt_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdt'] = self.method( :_html_COMARKdt_METHOD )
         @_html_COMARKdt = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdt'] = true
+          def self._html_COMARKdt_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdt'] = self.method( :_html_COMARKdt_METHOD )
         @_html_COMARKdt = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2696,17 +2793,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdd'] = true
+          def self._html_COMARKdd_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdd'] = self.method( :_html_COMARKdd_METHOD )
         @_html_COMARKdd = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKdd'] = true
+          def self._html_COMARKdd_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKdd'] = self.method( :_html_COMARKdd_METHOD )
         @_html_COMARKdd = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2719,17 +2818,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKol'] = true
+          def self._html_COMARKol_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKol'] = self.method( :_html_COMARKol_METHOD )
         @_html_COMARKol = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKol'] = true
+          def self._html_COMARKol_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKol'] = self.method( :_html_COMARKol_METHOD )
         @_html_COMARKol = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2742,17 +2843,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKul'] = true
+          def self._html_COMARKul_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKul'] = self.method( :_html_COMARKul_METHOD )
         @_html_COMARKul = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKul'] = true
+          def self._html_COMARKul_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKul'] = self.method( :_html_COMARKul_METHOD )
         @_html_COMARKul = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2765,17 +2868,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKli'] = true
+          def self._html_COMARKli_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKli'] = self.method( :_html_COMARKli_METHOD )
         @_html_COMARKli = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKli'] = true
+          def self._html_COMARKli_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKli'] = self.method( :_html_COMARKli_METHOD )
         @_html_COMARKli = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2794,17 +2899,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKform'] = true
+          def self._html_COMARKform_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKform'] = self.method( :_html_COMARKform_METHOD )
         @_html_COMARKform = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKform'] = true
+          def self._html_COMARKform_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKform'] = self.method( :_html_COMARKform_METHOD )
         @_html_COMARKform = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2817,17 +2924,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKlabel'] = true
+          def self._html_COMARKlabel_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKlabel'] = self.method( :_html_COMARKlabel_METHOD )
         @_html_COMARKlabel = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKlabel'] = true
+          def self._html_COMARKlabel_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKlabel'] = self.method( :_html_COMARKlabel_METHOD )
         @_html_COMARKlabel = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2840,17 +2949,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKinput'] = true
+          def self._html_COMARKinput_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKinput'] = self.method( :_html_COMARKinput_METHOD )
         @_html_COMARKinput = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKinput'] = true
+          def self._html_COMARKinput_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKinput'] = self.method( :_html_COMARKinput_METHOD )
         @_html_COMARKinput = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2865,17 +2976,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKselect'] = true
+          def self._html_COMARKselect_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKselect'] = self.method( :_html_COMARKselect_METHOD )
         @_html_COMARKselect = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKselect'] = true
+          def self._html_COMARKselect_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKselect'] = self.method( :_html_COMARKselect_METHOD )
         @_html_COMARKselect = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2888,17 +3001,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKoptgroup'] = true
+          def self._html_COMARKoptgroup_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKoptgroup'] = self.method( :_html_COMARKoptgroup_METHOD )
         @_html_COMARKoptgroup = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKoptgroup'] = true
+          def self._html_COMARKoptgroup_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKoptgroup'] = self.method( :_html_COMARKoptgroup_METHOD )
         @_html_COMARKoptgroup = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2911,17 +3026,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKoption'] = true
+          def self._html_COMARKoption_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKoption'] = self.method( :_html_COMARKoption_METHOD )
         @_html_COMARKoption = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKoption'] = true
+          def self._html_COMARKoption_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKoption'] = self.method( :_html_COMARKoption_METHOD )
         @_html_COMARKoption = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2934,17 +3051,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtextarea'] = true
+          def self._html_COMARKtextarea_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtextarea'] = self.method( :_html_COMARKtextarea_METHOD )
         @_html_COMARKtextarea = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtextarea'] = true
+          def self._html_COMARKtextarea_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtextarea'] = self.method( :_html_COMARKtextarea_METHOD )
         @_html_COMARKtextarea = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2957,17 +3076,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKfieldset'] = true
+          def self._html_COMARKfieldset_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKfieldset'] = self.method( :_html_COMARKfieldset_METHOD )
         @_html_COMARKfieldset = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKfieldset'] = true
+          def self._html_COMARKfieldset_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKfieldset'] = self.method( :_html_COMARKfieldset_METHOD )
         @_html_COMARKfieldset = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -2980,17 +3101,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKlegend'] = true
+          def self._html_COMARKlegend_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKlegend'] = self.method( :_html_COMARKlegend_METHOD )
         @_html_COMARKlegend = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKlegend'] = true
+          def self._html_COMARKlegend_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKlegend'] = self.method( :_html_COMARKlegend_METHOD )
         @_html_COMARKlegend = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3003,17 +3126,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbutton'] = true
+          def self._html_COMARKbutton_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbutton'] = self.method( :_html_COMARKbutton_METHOD )
         @_html_COMARKbutton = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbutton'] = true
+          def self._html_COMARKbutton_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbutton'] = self.method( :_html_COMARKbutton_METHOD )
         @_html_COMARKbutton = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3032,17 +3157,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKtable'] = true
+          def self._html_COMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtable'] = self.method( :_html_COMARKtable_METHOD )
         @_html_COMARKtable = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtable'] = true
+          def self._html_COMARKtable_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtable'] = self.method( :_html_COMARKtable_METHOD )
         @_html_COMARKtable = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3055,17 +3182,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcaption'] = true
+          def self._html_COMARKcaption_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcaption'] = self.method( :_html_COMARKcaption_METHOD )
         @_html_COMARKcaption = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcaption'] = true
+          def self._html_COMARKcaption_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcaption'] = self.method( :_html_COMARKcaption_METHOD )
         @_html_COMARKcaption = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3078,17 +3207,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKthead'] = true
+          def self._html_COMARKthead_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKthead'] = self.method( :_html_COMARKthead_METHOD )
         @_html_COMARKthead = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKthead'] = true
+          def self._html_COMARKthead_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKthead'] = self.method( :_html_COMARKthead_METHOD )
         @_html_COMARKthead = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3101,17 +3232,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtfoot'] = true
+          def self._html_COMARKtfoot_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtfoot'] = self.method( :_html_COMARKtfoot_METHOD )
         @_html_COMARKtfoot = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtfoot'] = true
+          def self._html_COMARKtfoot_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtfoot'] = self.method( :_html_COMARKtfoot_METHOD )
         @_html_COMARKtfoot = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3124,17 +3257,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtbody'] = true
+          def self._html_COMARKtbody_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtbody'] = self.method( :_html_COMARKtbody_METHOD )
         @_html_COMARKtbody = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtbody'] = true
+          def self._html_COMARKtbody_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtbody'] = self.method( :_html_COMARKtbody_METHOD )
         @_html_COMARKtbody = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3147,17 +3282,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcolgroup'] = true
+          def self._html_COMARKcolgroup_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcolgroup'] = self.method( :_html_COMARKcolgroup_METHOD )
         @_html_COMARKcolgroup = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcolgroup'] = true
+          def self._html_COMARKcolgroup_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcolgroup'] = self.method( :_html_COMARKcolgroup_METHOD )
         @_html_COMARKcolgroup = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3170,17 +3307,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcol'] = true
+          def self._html_COMARKcol_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcol'] = self.method( :_html_COMARKcol_METHOD )
         @_html_COMARKcol = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKcol'] = true
+          def self._html_COMARKcol_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKcol'] = self.method( :_html_COMARKcol_METHOD )
         @_html_COMARKcol = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3195,17 +3334,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtr'] = true
+          def self._html_COMARKtr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtr'] = self.method( :_html_COMARKtr_METHOD )
         @_html_COMARKtr = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtr'] = true
+          def self._html_COMARKtr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtr'] = self.method( :_html_COMARKtr_METHOD )
         @_html_COMARKtr = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3218,17 +3359,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKth'] = true
+          def self._html_COMARKth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKth'] = self.method( :_html_COMARKth_METHOD )
         @_html_COMARKth = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKth'] = true
+          def self._html_COMARKth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKth'] = self.method( :_html_COMARKth_METHOD )
         @_html_COMARKth = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3241,17 +3384,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtd'] = true
+          def self._html_COMARKtd_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtd'] = self.method( :_html_COMARKtd_METHOD )
         @_html_COMARKtd = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtd'] = true
+          def self._html_COMARKtd_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtd'] = self.method( :_html_COMARKtd_METHOD )
         @_html_COMARKtd = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3270,17 +3415,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKhead'] = true
+          def self._html_COMARKhead_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKhead'] = self.method( :_html_COMARKhead_METHOD )
         @_html_COMARKhead = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKhead'] = true
+          def self._html_COMARKhead_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKhead'] = self.method( :_html_COMARKhead_METHOD )
         @_html_COMARKhead = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3293,17 +3440,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtitle'] = true
+          def self._html_COMARKtitle_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtitle'] = self.method( :_html_COMARKtitle_METHOD )
         @_html_COMARKtitle = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKtitle'] = true
+          def self._html_COMARKtitle_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKtitle'] = self.method( :_html_COMARKtitle_METHOD )
         @_html_COMARKtitle = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3316,17 +3465,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbase'] = true
+          def self._html_COMARKbase_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbase'] = self.method( :_html_COMARKbase_METHOD )
         @_html_COMARKbase = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKbase'] = true
+          def self._html_COMARKbase_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKbase'] = self.method( :_html_COMARKbase_METHOD )
         @_html_COMARKbase = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3341,17 +3492,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKmeta'] = true
+          def self._html_COMARKmeta_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKmeta'] = self.method( :_html_COMARKmeta_METHOD )
         @_html_COMARKmeta = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKmeta'] = true
+          def self._html_COMARKmeta_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKmeta'] = self.method( :_html_COMARKmeta_METHOD )
         @_html_COMARKmeta = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3366,17 +3519,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKstyle'] = true
+          def self._html_COMARKstyle_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKstyle'] = self.method( :_html_COMARKstyle_METHOD )
         @_html_COMARKstyle = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKstyle'] = true
+          def self._html_COMARKstyle_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKstyle'] = self.method( :_html_COMARKstyle_METHOD )
         @_html_COMARKstyle = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3389,17 +3544,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKscript'] = true
+          def self._html_COMARKscript_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKscript'] = self.method( :_html_COMARKscript_METHOD )
         @_html_COMARKscript = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKscript'] = true
+          def self._html_COMARKscript_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKscript'] = self.method( :_html_COMARKscript_METHOD )
         @_html_COMARKscript = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3412,17 +3569,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKnoscript'] = true
+          def self._html_COMARKnoscript_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKnoscript'] = self.method( :_html_COMARKnoscript_METHOD )
         @_html_COMARKnoscript = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKnoscript'] = true
+          def self._html_COMARKnoscript_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKnoscript'] = self.method( :_html_COMARKnoscript_METHOD )
         @_html_COMARKnoscript = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3441,17 +3600,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKhtml'] = true
+          def self._html_COMARKhtml_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKhtml'] = self.method( :_html_COMARKhtml_METHOD )
         @_html_COMARKhtml = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKhtml'] = true
+          def self._html_COMARKhtml_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKhtml'] = self.method( :_html_COMARKhtml_METHOD )
         @_html_COMARKhtml = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3470,17 +3631,19 @@ trampCall(
 trampCall( 
   begin
       begin
-        @global_lisp_binding['_html_COMARKframeset'] = true
+          def self._html_COMARKframeset_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKframeset'] = self.method( :_html_COMARKframeset_METHOD )
         @_html_COMARKframeset = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKframeset'] = true
+          def self._html_COMARKframeset_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKframeset'] = self.method( :_html_COMARKframeset_METHOD )
         @_html_COMARKframeset = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3493,17 +3656,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKframe'] = true
+          def self._html_COMARKframe_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKframe'] = self.method( :_html_COMARKframe_METHOD )
         @_html_COMARKframe = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKframe'] = true
+          def self._html_COMARKframe_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKframe'] = self.method( :_html_COMARKframe_METHOD )
         @_html_COMARKframe = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3516,17 +3681,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKnoframes'] = true
+          def self._html_COMARKnoframes_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKnoframes'] = self.method( :_html_COMARKnoframes_METHOD )
         @_html_COMARKnoframes = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKnoframes'] = true
+          def self._html_COMARKnoframes_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKnoframes'] = self.method( :_html_COMARKnoframes_METHOD )
         @_html_COMARKnoframes = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)
@@ -3539,17 +3706,19 @@ trampCall(
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKiframe'] = true
+          def self._html_COMARKiframe_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKiframe'] = self.method( :_html_COMARKiframe_METHOD )
         @_html_COMARKiframe = 
         trampCall(
             nil
         )
       end
       begin
-        @global_lisp_binding['_html_COMARKiframe'] = true
+          def self._html_COMARKiframe_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+          @global_lisp_binding['_html_COMARKiframe'] = self.method( :_html_COMARKiframe_METHOD )
         @_html_COMARKiframe = 
         trampCall(
-              trampCall( callProcedure( 'make-html-element',
+              trampCall( self._make_MIMARKhtml_MIMARKelement_METHOD(  'make-html-element',
                   begin
                     if @global_lisp_binding.has_key?('_make_MIMARKhtml_MIMARKelement') then
                       trampCall(@_make_MIMARKhtml_MIMARKelement)

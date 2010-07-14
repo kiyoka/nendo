@@ -50,6 +50,8 @@ def userOptionEater
       i += 1
     when '-l'
       i += 2
+    when '-O'
+      i += 2
     when /^[^-]/
       break
     else
@@ -74,7 +76,8 @@ def main
                         [ '-h', GetoptLong::NO_ARGUMENT ],
                         [ '-q', GetoptLong::NO_ARGUMENT ],
                         [ '-c', GetoptLong::NO_ARGUMENT ],
-                        [ '-l', GetoptLong::REQUIRED_ARGUMENT ]
+                        [ '-l', GetoptLong::REQUIRED_ARGUMENT ],
+                        [ '-O', GetoptLong::REQUIRED_ARGUMENT ]
                         ).each { |opt, arg|
     case opt
     when '-h'
@@ -94,6 +97,9 @@ def main
       -c:
         compile nendo script file. (and initialization file was loaded)
 
+      -O:
+        set optimize level. (0:no optimize,   1:tail call optimize)
+
       EOF
       exit 0
     when '-q'
@@ -106,6 +112,8 @@ def main
     when '-l'
       core.load( arg )
       STDERR.printf( "loaded file [%s]\n", arg )
+    when '-O'
+      core.setOptimizeLevel( arg.to_i )
     end
   }
 
