@@ -114,17 +114,15 @@
 (or (not (not-pair? (cons 1 2)))
     (fail 'not-pair:2))
 
-(when #f ;; pending
-  (or (list= = '(1 2 3) '(1 2 3) '(1 2 3))
-      (fail 'list=:1))
-  (or (not (list= = '(1 2 3) '(1 2 3) '(1 4 3)))
-      (fail 'list=:2))
+(or (list= = '(1 2 3) '(1 2 3) '(1 2 3))
+    (fail 'list=:1))
+(or (not (list= = '(1 2 3) '(1 2 3) '(1 4 3)))
+    (fail 'list=:2))
                                         ; Checks that l0 is not being used when testing l2, cf spec
-  (or (list= (lambda (a b) (not (eq? a b))) '(#f #f #f) '(#t #t #t) '(#f #f #f))
-      (fail 'list=:3))
-  (or (list= =)
-      (fail 'list=:4))
-  )
+(or (list= (lambda (a b) (not (eq? a b))) '(#f #f #f) '(#t #t #t) '(#f #f #f))
+    (fail 'list=:3))
+(or (list= =)
+    (fail 'list=:4))
 
 (or (= (first '(1 2 3 4 5 6 7 8 9 10)) 1) (fail 'first))
 (or (= (second '(1 2 3 4 5 6 7 8 9 10)) 2) (fail 'second))
