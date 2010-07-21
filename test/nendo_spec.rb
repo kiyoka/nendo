@@ -418,6 +418,76 @@ describe Nendo, "when call replStr() with `%' function" do
   end
 end
 
+describe Nendo, "when call replStr() with `quotient' function" do
+  before do
+    @nendo = Nendo::Core.new()
+  end
+  it "should" do
+    @nendo.replStr( " (quotient 2 1) " ).should == "2"
+    @nendo.replStr( " (quotient 2 2) " ).should == "1"
+    @nendo.replStr( " (quotient 2 2.0) " ).should == "1"
+    @nendo.replStr( " (quotient 2 5.0) " ).should == "0"
+    @nendo.replStr( " (quotient 1 1.11) " ).should == "0"
+    @nendo.replStr( " (quotient  10  3) " ).should == "3"
+    @nendo.replStr( " (quotient -10  3) " ).should == "-3"
+    @nendo.replStr( " (quotient  10 -3) " ).should == "-3"
+    @nendo.replStr( " (quotient  10 -2) " ).should == "-5"
+    lambda { @nendo.replStr( " (quotient 1 ) " ) }.should           raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (quotient 1.1 ) " ) }.should         raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (quotient) " ) }.should              raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (quotient '() ) " ) }.should         raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (quotient 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+    lambda { @nendo.replStr( " (quotient \"a\" 1.1 ) " ) }.should   raise_error(TypeError)
+  end
+end
+
+describe Nendo, "when call replStr() with `remainder' function" do
+  before do
+    @nendo = Nendo::Core.new()
+  end
+  it "should" do
+    @nendo.replStr( " (remainder 2 1) " ).should == "0"
+    @nendo.replStr( " (remainder 2 2) " ).should == "0"
+    @nendo.replStr( " (remainder 2 2.0) " ).should == "0.0"
+    @nendo.replStr( " (remainder 2 5.0) " ).should == "2.0"
+    @nendo.replStr( " (remainder 1 1.11) " ).should == "1.0"
+    @nendo.replStr( " (remainder  10  3) " ).should == "1"
+    @nendo.replStr( " (remainder -10  3) " ).should == "-1"
+    @nendo.replStr( " (remainder  10 -3) " ).should == "1"
+    @nendo.replStr( " (remainder -10 -3) " ).should == "-1"
+    @nendo.replStr( " (remainder  10 -2) " ).should == "0"
+    lambda { @nendo.replStr( " (remainder 1 '() ) " ) }.should       raise_error(TypeError)
+    lambda { @nendo.replStr( " (remainder 1.1 '() ) " ) }.should     raise_error(TypeError)
+    lambda { @nendo.replStr( " (remainder) " ) }.should              raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (remainder '() ) " ) }.should         raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (remainder 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+  end
+end
+
+describe Nendo, "when call replStr() with `modulo' function" do
+  before do
+    @nendo = Nendo::Core.new()
+  end
+  it "should" do
+    @nendo.replStr( " (modulo 2 1) " ).should == "0"
+    @nendo.replStr( " (modulo 2 2) " ).should == "0"
+    @nendo.replStr( " (modulo 2 2.0) " ).should == "0.0"
+    @nendo.replStr( " (modulo 2 5.0) " ).should == "2.0"
+    @nendo.replStr( " (modulo 100 (modulo 103 10)) " ).should == "1"
+    @nendo.replStr( " (modulo 1 1.11) " ).should == "1.0"
+    @nendo.replStr( " (modulo  10  3) " ).should == "1"
+    @nendo.replStr( " (modulo -10  3) " ).should == "2"
+    @nendo.replStr( " (modulo  10 -3) " ).should == "-2"
+    @nendo.replStr( " (modulo -10 -3) " ).should == "-1"
+    @nendo.replStr( " (modulo  10 -2) " ).should == "0"
+    lambda { @nendo.replStr( " (modulo 1 '() ) " ) }.should       raise_error(TypeError)
+    lambda { @nendo.replStr( " (modulo 1.1 '() ) " ) }.should     raise_error(TypeError)
+    lambda { @nendo.replStr( " (modulo) " ) }.should              raise_error(ArgumentError)
+    lambda { @nendo.replStr( " (modulo '() ) " ) }.should         raise_error(TypeError)
+    lambda { @nendo.replStr( " (modulo 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+  end
+end
+
 describe Nendo, "when read various list expressions" do
   before do
     @nendo = Nendo::Core.new()

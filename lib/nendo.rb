@@ -790,8 +790,24 @@ module Nendo
         rest.inject(first){|x,y| x/y}
       end
     end
-  
+    
     def __PAMARK( first, *rest )
+      _modulo( first, *rest )
+    end
+    
+    def _quotient( first, second )
+      raise TypeError if not _number_QUMARK(first)
+      raise TypeError if not _number_QUMARK(second)
+      (first / second.to_f).to_i
+    end
+
+    def _remainder( first, second )
+      raise TypeError if not _number_QUMARK(first)
+      raise TypeError if not _number_QUMARK(second)
+      first - _quotient( first, second ) * second
+    end
+    
+    def _modulo( first, *rest )
       raise TypeError if not _number_QUMARK(first)
       rest = rest[0].to_arr
       __assertFlat( rest )
@@ -801,12 +817,12 @@ module Nendo
         rest.inject(first){|x,y| x%y}
       end
     end
-  
+    
     def _not( arg )
       arg = false   if Nil == arg.class
       not arg
     end
-  
+    
     def _cons( first, second )
       if first.is_a? Nil
         first = Cell.new

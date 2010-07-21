@@ -517,12 +517,11 @@
              (every (lambda (x) (memq x cells)) (pair-fold cons '() r))))
       (fail 'delete-duplicates!:1)))
 
-(when #f ;; pending
-  (or (equal? '(3 . #t) (assoc 6 
-                               '((4 . #t) (3 . #t) (5 . #t))
-                               (lambda (x y)
-                                 (zero? (remainder x y)))))
-      (fail 'assoc:1)))
+(or (equal? '(3 . #t) (assoc 6 
+                             '((4 . #t) (3 . #t) (5 . #t))
+                             (lambda (x y)
+                               (zero? (remainder x y)))))
+    (fail 'assoc:1))
 
 (or (equal? '((1 . #t) (2 . #f)) (alist-cons 1 #t '((2 . #f))))
     (fail 'alist-cons:1))

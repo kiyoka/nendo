@@ -29,7 +29,7 @@ end
 
 task :check do
   sh "ruby -I ./lib /usr/local/bin/spec -b ./test/nendo_spec.rb"
-  sh "ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
+  sh "ruby -I ./lib ./bin/nendo -O 0 ./test/srfi-1-test.nnd"
 end
 
 task :compile do
