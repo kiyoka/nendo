@@ -28,8 +28,11 @@ rescue LoadError
 end
 
 task :check do
-  sh "ruby -I ./lib /usr/local/bin/spec -b ./test/nendo_spec.rb"
-  sh "ruby -I ./lib ./bin/nendo -O 0 ./test/srfi-1-test.nnd"
+  [ "ruby -I ./lib /usr/local/bin/spec -b ./test/nendo_spec.rb",
+    "time ruby -I ./lib ./bin/nendo -O 0 ./test/srfi-1-test.nnd" ].each {|str|
+    puts str
+    sh   str
+  }
 end
 
 task :compile do
@@ -60,7 +63,9 @@ task :compile do
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd" ].each {|fn|
-    sh sprintf( "time ruby ./bin/nendo -c %s > %s", fn, fn + "c" )
+    str = sprintf( "time ruby ./bin/nendo -c %s > %s", fn, fn + "c" )
+    puts str
+    sh   str
   }
 end
 
