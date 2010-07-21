@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{nendo}
-  s.version = "0.3.2"
+  s.version = "0.3.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2010-05-27}
+  s.date = %q{2010-07-21}
   s.default_executable = %q{nendo}
   s.description = %q{Nendo is a programming language written in Ruby.}
   s.email = %q{kiyoka@sumibi.org}
@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
      "emacs/nendo-mode.el",
      "example/cgi/dekamoji.cgi",
      "example/cgi/sample.cgi",
+     "example/deep-loop1.nnd",
+     "example/deep-loop2.nnd",
      "example/exit.nnd",
      "example/fact.nnd",
      "example/fizzbuzz1.nnd",
@@ -29,11 +31,14 @@ Gem::Specification.new do |s|
      "example/nqueen.nnd",
      "example/scratch.nnd",
      "example/tak.nnd",
+     "example/twitterTL.nnd",
      "lib/debug/syslog.nnd",
      "lib/debug/syslog.nndc",
      "lib/init.nnd",
      "lib/init.nndc",
      "lib/nendo.rb",
+     "lib/srfi-1.nnd",
+     "lib/srfi-1.nndc",
      "lib/text/html-lite.nnd",
      "lib/text/html-lite.nndc",
      "lib/text/tree.nnd",
@@ -42,14 +47,17 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/kiyoka/nendo}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Nendo is a dialect of Lisp.}
+  s.test_files = [
+    "test/nendo_spec.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
     else
     end
   else
