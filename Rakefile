@@ -21,7 +21,7 @@ begin
     gemspec.email = "kiyoka@sumibi.org"
     gemspec.homepage = "http://github.com/kiyoka/nendo"
     gemspec.authors = ["Kiyoka Nishiyama"]
-    gemspec.files = FileList['lib/**/*.rb', 'lib/**/*.nnd', 'lib/**/*.nndc', 'bin/*', 'example/*.nnd', 'example/cgi/*.cgi', 'emacs/*.el'].to_a
+    gemspec.files = FileList['lib/**/*.rb', 'lib/**/*.nnd', 'lib/**/*.nndc', 'bin/*', 'test/*', 'example/*.nnd', 'example/cgi/*.cgi', 'emacs/*.el'].to_a
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
@@ -30,7 +30,6 @@ end
 task :check do
   [ "ruby -I ./lib /usr/local/bin/spec -b ./test/nendo_spec.rb",
     "time ruby -I ./lib ./bin/nendo -O 0 ./test/srfi-1-test.nnd" ].each {|str|
-    puts str
     sh   str
   }
 end
@@ -63,9 +62,7 @@ task :compile do
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd" ].each {|fn|
-    str = sprintf( "time ruby ./bin/nendo -c %s > %s", fn, fn + "c" )
-    puts str
-    sh   str
+    sh sprintf( "time ruby ./bin/nendo -c %s > %s", fn, fn + "c" )
   }
 end
 

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2010-07-21}
+  s.date = %q{2010-07-22}
   s.default_executable = %q{nendo}
   s.description = %q{Nendo is a programming language written in Ruby.}
   s.email = %q{kiyoka@sumibi.org}
@@ -42,7 +42,9 @@ Gem::Specification.new do |s|
      "lib/text/html-lite.nnd",
      "lib/text/html-lite.nndc",
      "lib/text/tree.nnd",
-     "lib/text/tree.nndc"
+     "lib/text/tree.nndc",
+     "test/nendo_spec.rb",
+     "test/srfi-1-test.nnd"
   ]
   s.homepage = %q{http://github.com/kiyoka/nendo}
   s.rdoc_options = ["--charset=UTF-8"]
