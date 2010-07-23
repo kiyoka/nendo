@@ -22,6 +22,9 @@
   (for-each display xs)
   (newline))
 
+(define (fixme token)
+  (printf "FIXME!: %s test was pending.\n" token))
+  
 (define (fail token . more)
   (error (sprintf "Error: test failed: %s" token))
   #f)
@@ -509,13 +512,12 @@
 (or (equal? '(a b c z) (delete-duplicates '(a b a c a b c z) eq?))
     (fail 'delete-duplicates:2))
 
-(when #f ;; pending
-  (or (let* ((x     (list 'a 'b 'a 'c 'a 'b 'c 'z))
-             (cells (pair-fold cons '() x))
-             (r     (delete-duplicates! x)))
-        (and (equal? '(a b c z) r)
-             (every (lambda (x) (memq x cells)) (pair-fold cons '() r))))
-      (fail 'delete-duplicates!:1)))
+(or (let* ((x     (list 'a 'b 'a 'c 'a 'b 'c 'z))
+           (cells (pair-fold cons '() x))
+           (r     (delete-duplicates! x)))
+      (and (equal? '(a b c z) r)
+           (every (lambda (x) (memq x cells)) (pair-fold cons '() r))))
+    (fixme 'delete-duplicates!:1))
 
 (or (equal? '(3 . #t) (assoc 6 
                              '((4 . #t) (3 . #t) (5 . #t))
