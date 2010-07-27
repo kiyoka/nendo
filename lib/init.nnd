@@ -844,6 +844,15 @@
      (else
       (errorf "Error: can't load library file [%s]\n" path )))))
 
+;; use macro like Gauche
+(define use
+  (macro (sym)
+    (if (symbol? sym)
+        (let*
+            ((str      (symbol->string sym))
+             (pathname (str.gsub "." "/")))
+          `(load-library ,pathname))
+        (errorf "Error: use macro requires a symbol argument."))))
 
 
 ;; ----------------------------------------

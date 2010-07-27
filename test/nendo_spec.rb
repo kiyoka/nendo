@@ -1346,6 +1346,26 @@ describe Nendo, "when use dot-operator (.) macro " do
   end
 end
 
+describe Nendo, "when use (use ...) macro " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (macroexpand '(use abc)) " ).should            == '(load-library "abc")'
+    @nendo.replStr( " (macroexpand '(use a.b)) " ).should            == '(load-library "a/b")'
+    @nendo.replStr( " (macroexpand '(use a.b.c)) " ).should          == '(load-library "a/b/c")'
+    @nendo.replStr( " (macroexpand '(use a.b.c.d.e.f.g)) " ).should  == '(load-library "a/b/c/d/e/f/g")'
+    @nendo.replStr( " (macroexpand '(use srfi-1)) " ).should         == '(load-library "srfi-1")'
+    @nendo.replStr( " (macroexpand '(use text.tree)) " ).should      == '(load-library "text/tree")'
+    @nendo.replStr( " (macroexpand `(use ,(string->symbol (+ \"text\" \".\" \"tree\")))) " ).should ==  '(load-library "text/tree")'
+    lambda { @nendo.replStr( " (macroexpand '(use '(a)) " ) }.should    raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (macroexpand '(use \"srfi-1\") " ) }.should    raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (macroexpand '(use 1)) " ) }.should    raise_error( RuntimeError )
+    lambda { @nendo.replStr( " (macroexpand '(use (+ 10 20))) " ) }.should    raise_error( RuntimeError )
+  end
+end
+
 describe Nendo, "when use keyword feature " do
   before do
     @nendo = Nendo::Core.new()
