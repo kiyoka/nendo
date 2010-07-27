@@ -4,21 +4,17 @@
 (disable-idebug)
 (define debug-print-length 256)
 
-;; Bug : got in `translate': undefined method `sourcefile' for #<Nendo::Cell:0x00000101580668> (NoMethodError)
-(let-values (((a b) (car+cdr '(1 . 2))))
-  (or (and (= a 1) (= b 2))
-      (fail 'car+cdr:1)))
+(define arr '#(100 200 300 400))
+arr
 
-(define (foo lis)
-  (second lis))
-  
-(foo '(1 2 3))
-(foo 1)
+(require "pp")
 
-'(1 2 3)
-(exit)
+(arr.sort
+ (&block (a b)
+         (if (le? a b)
+             1
+             -1)))
 
-;; circular
-(load-library "srfi-1")
-(list?
- (circular-list 1 2))
+
+
+

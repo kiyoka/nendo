@@ -901,7 +901,6 @@ module Nendo
       end
     end
     def _list(    *args)           args[0] end
-    def _sort(     arg )           arg.to_arr.sort.to_list end
     def _reverse(  arg )           arg.to_arr.reverse.to_list end
     def _uniq(     arg )           arg.to_arr.uniq.to_list end
     def _range(    num, *args )
@@ -1471,6 +1470,8 @@ module Nendo
               sprintf( "LispMacro.new { %s ", argStr )
             when :lambda
               sprintf( "Proc.new { %s ", argStr )
+            when :"&block"
+              sprintf( "&Proc.new { %s ", argStr )
             else
               raise "Error: makeClosure: unknown symbol type " + sym
             end
@@ -1655,6 +1656,8 @@ module Nendo
           self.makeClosure( :lambda, sexp.cdr, locals )
         elsif :macro == sexp.car
           self.makeClosure( :macro, sexp.cdr, locals )
+        elsif :"&block" == sexp.car
+          self.makeClosure( :"&block", sexp.cdr, locals )
         elsif :if == sexp.car
           self.makeIf( sexp.cdr,    locals )
         elsif :let == sexp.car
@@ -1716,7 +1719,7 @@ module Nendo
       when Cell
         if :quote == sexp.car or :quasiquote == sexp.car 
           sexp
-        elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car
+        elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car or :"&block" == sexp.car
           sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
           sexp.cdr.cdr = quotingPhase( sexp.cdr.cdr )
           sexp
