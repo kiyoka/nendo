@@ -1384,6 +1384,26 @@ describe Nendo, "when use dot-operator (.) macro  and  (&block ...) " do
   end
 end
 
+describe Nendo, "when use sort libraries " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (define lst '(1 50 60 30000 4000 200)) " ).should                  == "(1 50 60 30000 4000 200)"
+    @nendo.replStr( " (sort lst) " ).should                                              == "(1 50 60 200 4000 30000)"
+    @nendo.replStr( " (sort lst  (lambda (a b) (- b a))) " ).should                      == "(30000 4000 200 60 50 1)"
+    @nendo.replStr( " (sort-by lst (lambda (item) item)) " ).should                      == "(1 50 60 200 4000 30000)"
+    @nendo.replStr( " (define lst2 '((1 . \"ddd\") (2 . \"cc\") (3 . \"bbbb\") (4 . \"a\"))) " ).should  == '((1 . "ddd") (2 . "cc") (3 . "bbbb") (4 . "a"))'
+    @nendo.replStr( " (sort lst2 (lambda (a b)  (- (car a) (car b)))) " ).should              == '((1 . "ddd") (2 . "cc") (3 . "bbbb") (4 . "a"))'
+    @nendo.replStr( " (sort lst2 (lambda (a b)  (if (>= (cdr a) (cdr b)) 1 -1))) " ).should   == '((4 . "a") (3 . "bbbb") (2 . "cc") (1 . "ddd"))'
+    @nendo.replStr( " (sort-by lst2 (lambda (item) (car item))) " ).should                    == '((1 . "ddd") (2 . "cc") (3 . "bbbb") (4 . "a"))'
+    @nendo.replStr( " (sort-by lst2 (lambda (item) (cdr item))) " ).should                    == '((4 . "a") (3 . "bbbb") (2 . "cc") (1 . "ddd"))'
+    @nendo.replStr( " (sort-by lst2 (lambda (item) (. (cdr item) size))) " ).should           == '((4 . "a") (2 . "cc") (1 . "ddd") (3 . "bbbb"))'
+  end
+end
+
+
 describe Nendo, "when use (use ...) macro " do
   before do
     @nendo = Nendo::Core.new()

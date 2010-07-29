@@ -983,6 +983,23 @@
   (macro (a b . c)
     `(begin)))
 
+
+;; ----------------------------------------
+;; sort library functions
+;; ----------------------------------------
+(define (sort lst . cmpfn)
+  (let1 cmpfn (get-optional cmpfn #f)
+    (to-list
+     (if cmpfn
+         (lst.to_arr.sort (&block (a b) (cmpfn a b)))
+         (lst.to_arr.sort)))))
+
+
+(define (sort-by lst keyfn)
+  (to-list
+   (lst.to_arr.sort_by (&block (item) (keyfn item)))))
+
+
 ;; ----------------------------------------
 ;; global variables bind checker
 ;; ----------------------------------------
