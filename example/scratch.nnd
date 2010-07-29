@@ -17,4 +17,34 @@ arr
 
 
 
+(define lst '(1 50 60 30000 4000 200))
+
+(sort lst)
+(sort lst  (lambda (a b) (- b a)))
+
+
+(sort-by lst (lambda (item) item))
+
+(define lst2 '((1 . "ddd") (2 . "cc") (3 . "bbbb") (4 . "a")))
+
+(sort lst2 (lambda (a b)  (- (car a) (car b))))
+(sort lst2 (lambda (a b)  (if (>= (cdr a) (cdr b)) 1 -1)))
+
+(sort-by lst2 (lambda (item) (car item)))
+(sort-by lst2 (lambda (item) (cdr item)))
+(sort-by lst2 (lambda (item) (. (cdr item) size)))
+
+
+
+
+
+
+               
+
+
+
+                           
+  
+
+
 
