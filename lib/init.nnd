@@ -370,6 +370,24 @@
     `(error
       (sprintf ,format ,@args))))
 
+
+;; ----------------------------------------
+;; optional argument parser
+;; ----------------------------------------
+(define get-optional
+  (macro (restarg default)
+    (let1 _restarg (gensym)
+      `(let1 ,_restarg ,restarg
+         (if (null? ,_restarg)
+             ,default
+             (car ,_restarg))))))
+
+;; pending
+(define check-arg
+  (macro (a b . c)
+    `(begin)))
+
+
 ;; ----------------------------------------
 ;; List utilities imported from TinyScheme
 ;; ----------------------------------------
@@ -965,23 +983,6 @@
       (pp-list s 0 #f)
       (write s))
   (newline))
-
-
-;; ----------------------------------------
-;; optional argument parser
-;; ----------------------------------------
-(define get-optional
-  (macro (restarg default)
-    (let1 _restarg (gensym)
-      `(let1 ,_restarg ,restarg
-         (if (null? ,_restarg)
-             ,default
-             (car ,_restarg))))))
-
-;; pending
-(define check-arg
-  (macro (a b . c)
-    `(begin)))
 
 
 ;; ----------------------------------------
