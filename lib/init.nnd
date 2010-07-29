@@ -748,17 +748,12 @@
 
 
 (define (with-open filename pred . lst)
-  (let1 len (length lst)
-    (let1 f (cond
-             ((= 0 len)
-              (.open filename))
-             ((< 0 len)
-              (.open filename (car lst)))
-             (else
-              (error "with-open requires 2 or 3 arguments.")))
-      (let1 result (pred f)
-        (f.close)
-        result))))
+  (let1 opt (get-optional lst #f)
+    (if (< 1 (length lst))
+        (error "with-open requires 2 or 3 arguments.")
+        (if opt
+            (.open filename opt (&block (f) (pred f)))
+            (.open filename     (&block (f) (pred f)))))))
 
 
 ;; ----------------------------------------

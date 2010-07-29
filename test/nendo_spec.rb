@@ -1403,6 +1403,30 @@ describe Nendo, "when use sort libraries " do
   end
 end
 
+describe Nendo, "when use with-open libraries " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+    @fn = "/tmp/for-with-open.dat"
+    open( @fn, "w" ) { |f|
+      f.puts( "line1" )
+      f.puts( "line2" )
+      f.puts( "line3" )
+    }
+  end
+  it "should" do
+    @nendo.replStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop))) ", @fn )).should                         == '"line1"'
+    @nendo.replStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop))) ", @fn )).should                         == '"line1"'
+    @nendo.replStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop) (f.readline.chop))) ", @fn )).should       == '"line2"'
+    @nendo.replStr( sprintf( " (with-open \"%s\" (lambda (f) (f.puts \"Wrote from Nendo.\")) \"w\")  #t", @fn )).should   == "#t"
+    @nendo.replStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop))) ", @fn )).should                         == '"Wrote from Nendo."'
+    lambda { @nendo.replStr( sprintf( " (with-open \"%s\" (lambda (f) #t) 1 2 ", @fn )) }.should                          raise_error(RuntimeError)
+  end
+
+  after do
+    File.unlink( @fn )
+  end
+end
 
 describe Nendo, "when use (use ...) macro " do
   before do
