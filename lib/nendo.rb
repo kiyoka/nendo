@@ -653,6 +653,7 @@ module Nendo
         token # consume ')'
         ret
       when T_RPAREN
+        token # consume ')'
         raise RuntimeError, "Error: unbalanced paren(3)"
       when T_LVECTOR
         skipEnter
