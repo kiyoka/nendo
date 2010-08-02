@@ -13,7 +13,7 @@
         ;; 書きこみ
         (Range.new 0 99999
                    (&block (num)
-                           (db.store num num)))))
+                     (db.store num num)))))
   (_create)
   (print (hash-table-get db 1000))
   (print (hash-table-get db 10000)))
