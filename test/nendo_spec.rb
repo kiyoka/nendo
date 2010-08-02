@@ -610,24 +610,26 @@ describe Nendo, "when use #xxxx syntax " do
   end
 end
 
+
+class TestClassForBlockArgument
+  def arg1
+    yield 100
+  end
+  def arg2
+    yield 100,200
+  end
+  def arg5
+    yield 10,20,30,40,50
+  end
+end
+
 describe Nendo, "when use &block(Ruby's block) " do
   before do
     @nendo = Nendo::Core.new()
-    class TestClass
-      def arg1
-        yield 100
-      end
-      def arg2
-        yield 100,200
-      end
-      def arg5
-        yield 10,20,30,40,50
-      end
-    end
   end
 
   it "should" do
-    @nendo.replStr( " (define testclass (TestClass.new))  testclass.class" ).should == "TestClass"
+    @nendo.replStr( " (define testclass (TestClassForBlockArgument.new))  testclass.class" ).should == "TestClassForBlockArgument"
     @nendo.replStr( " (testclass.arg1 (&block (a)    (list a)))  " ).should == "(100)"
     @nendo.replStr( " (testclass.arg2 (&block (a b)  (cons a b))) " ).should == "(100 . 200)"
     @nendo.replStr( " (testclass.arg5 (&block (a b c d e)  (list a b c d e))) " ).should == "(10 20 30 40 50)"
