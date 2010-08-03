@@ -997,6 +997,46 @@
 
 
 ;; ----------------------------------------
+;; regexp library functions
+;; ----------------------------------------
+(define (string->regexp str . casefold)
+  (if (not (str.is_a? String))
+      (error "Error: string->regexp requires a String argument.")
+      (if (get-optional casefold #f)
+          (Regexp.new str Regexp::IGNORECASE)
+          (Regexp.new str))))
+
+(define (regexp? obj)
+  (obj.is_a? Regexp))
+
+(define (regexp->string regexp)
+  (regexp.source))
+
+;; return:  Ruby's MatchData instance
+(define (rxmatch regexp str)
+  (regexp.match str))
+
+(define (rxmatch-start match . index)
+  (let1 index (get-optional index 0)
+    (match.begin index)))
+
+(define (rxmatch-end match . index)
+  (let1 index (get-optional index 0)
+    (match.end index)))
+
+(define (rxmatch-substring match . index)
+  (let1 index (get-optional index 0)
+    (nth index (match.to_a.to_list))))
+
+(define (rxmatch-num-matches match)
+  (match.size))
+
+(define (rxmatch->string regexp str . index)
+  (let1 index (get-optional index 0)
+    (rxmatch-substring (rxmatch regexp str) index)))
+
+
+;; ----------------------------------------
 ;; global variables bind checker
 ;; ----------------------------------------
 (define (global-defined? sym)

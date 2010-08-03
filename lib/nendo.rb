@@ -155,12 +155,13 @@ module Nendo
   
   class LispRegexp
     def initialize( str )
-      @exp = str
+      @exp        = str[ 1 ... str.size ]
+      @ignoreCase = (str[0] == 'i')
     end
-
-    def to_s
-      @exp
+    def escape
+      @exp.gsub( /\\/, "\\\\\\\\" )
     end
+    attr_reader :ignoreCase
   end
 
   class LispKeyword
@@ -491,9 +492,10 @@ module Nendo
               end
               str = Integer( str ).to_s
               T_NUM
-            when "/"
+            when "/"  # T_REGEXP's str takes  "iXXXXX"(igreno case)  or  " XXXXXX"(case sensitive)  value.
               readwhile( /[\/]/ ) # consume
               str =  readRegexp()
+              str =  ((0 < readwhile( /[i]/ ).size) ? "i" : " ") + str
               T_REGEXP
             else
               str += readwhile( /[^ \t\r\n]/ )
@@ -1726,7 +1728,11 @@ module Nendo
         when String, LispString
           sprintf( "\"%s\"", LispString.escape( sexp ))
         when LispRegexp
-          sprintf( "Regexp.new( \"%s\" )", sexp.to_s )
+          if sexp.ignoreCase
+            sprintf( "Regexp.new( \"%s\", Regexp::IGNORECASE)", sexp.escape )
+          else
+            sprintf( "Regexp.new( \"%s\")", sexp.escape )
+          end
         when LispKeyword
           sprintf( "LispKeyword.new( \"%s\" )", sexp.key )
         when Nil
@@ -2009,7 +2015,7 @@ module Nendo
           sexp.to_s
         end
       when Regexp
-        "#/" + sexp.source + "/"
+        "#/" + sexp.source + "/" + (sexp.casefold? ? "i" : "")
       when LispKeyword
         ":" + sexp.key.to_s
       when Nil
