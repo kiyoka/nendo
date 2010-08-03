@@ -4,17 +4,6 @@
 (disable-idebug)
 (define debug-print-length 256)
 
-
-
-
-
-
-               
-
-
-
-                           
-  
-
-
-
+(let1 matchdata
+    (. #/abc/ match "xxxxabcxxxx")
+  (print (matchdata.offset 0)))

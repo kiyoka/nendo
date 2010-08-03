@@ -153,6 +153,16 @@ module Nendo
     attr_reader :values
   end
   
+  class LispRegexp
+    def initialize( str )
+      @exp = str
+    end
+
+    def to_s
+      @exp
+    end
+  end
+
   class LispKeyword
     def initialize( str )
       @key = str.intern
@@ -261,6 +271,7 @@ module Nendo
     T_LINEFEED            = :t_linefeed
     T_COMMENT             = :t_comment
     T_DEBUG_PRINT         = :t_debug_print
+    T_REGEXP              = :t_regexp
   
     # inport is IO class
     def initialize( inport, sourcefile, debug = false )
@@ -362,7 +373,33 @@ module Nendo
       end
       ret
     end
-  
+
+    def readRegexp()
+      ret = ""
+      while true
+        ch = @chReader.getc
+        #printf( "      readRegexp1: [%s]\n", ch )
+        if !ch # eof?
+          break
+        end
+        if ch.chr == "\\"    #escape
+          ch2 = @chReader.getc
+          #printf( "      readRegexp2: [%s]\n", ch2 )
+          if ch2.chr == '/'
+            ret += ch2.chr # drop escape "\\" char
+          else
+            ret += ch.chr
+            ret += ch2.chr
+          end
+        elsif ch.chr == '/'
+          break
+        else
+          ret += ch.chr
+        end
+      end
+      ret
+    end
+
     def tokenWithComment
       skipspace
       ch = @chReader.getc
@@ -401,7 +438,7 @@ module Nendo
             str = ""
             T_COMMENT
           when /[#]/
-            nextch = peekchar( /[?!tfbodx(]/ )
+            nextch = peekchar( /[?!tfbodx(\/]/ )
             case nextch
             when "?"
               if peekchar( /[=]/ )
@@ -454,6 +491,10 @@ module Nendo
               end
               str = Integer( str ).to_s
               T_NUM
+            when "/"
+              readwhile( /[\/]/ ) # consume
+              str =  readRegexp()
+              T_REGEXP
             else
               str += readwhile( /[^ \t\r\n]/ )
               raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
@@ -526,6 +567,8 @@ module Nendo
         end
       when T_STRING
         cur.str
+      when T_REGEXP
+        LispRegexp.new( cur.str )
       when T_QUOTE
         :quote
       when T_QUASIQUOTE
@@ -1682,6 +1725,8 @@ module Nendo
           sexp.to_s
         when String, LispString
           sprintf( "\"%s\"", LispString.escape( sexp ))
+        when LispRegexp
+          sprintf( "Regexp.new( \"%s\" )", sexp.to_s )
         when LispKeyword
           sprintf( "LispKeyword.new( \"%s\" )", sexp.key )
         when Nil
@@ -1963,6 +2008,8 @@ module Nendo
         else
           sexp.to_s
         end
+      when Regexp
+        "#/" + sexp.source + "/"
       when LispKeyword
         ":" + sexp.key.to_s
       when Nil
