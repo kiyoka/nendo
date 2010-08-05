@@ -11960,28 +11960,6 @@ trampCall(
 
 trampCall( 
   begin
-      def self._hash_MIMARKtable_MIMARKexist_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
-      @global_lisp_binding['_hash_MIMARKtable_MIMARKexist_QUMARK'] = self.method( :_hash_MIMARKtable_MIMARKexist_QUMARK_METHOD )
-    @_hash_MIMARKtable_MIMARKexist_QUMARK = 
-    trampCall(
-          Proc.new { |_h,_key| 
-              begin
-                  trampCall(_h).has_key?(
-                        begin
-                            trampCall(_key)
-                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:798"] + __e.backtrace ) ; raise __e
-                        end
-                    )
-                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:798"] + __e.backtrace ) ; raise __e
-              end
-          }
-    )
-  end
- )
-#--------------------
-
-trampCall( 
-  begin
       def self._hash_MIMARKtable_MIMARKclear_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
       @global_lisp_binding['_hash_MIMARKtable_MIMARKclear_EXMARK'] = self.method( :_hash_MIMARKtable_MIMARKclear_EXMARK_METHOD )
     @_hash_MIMARKtable_MIMARKclear_EXMARK = 

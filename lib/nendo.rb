@@ -1137,6 +1137,11 @@ module Nendo
     def _hash_MIMARKtable_MIMARKput_EXMARK( h, key, value )
       h[key] = value
     end
+
+    def _hash_MIMARKtable_MIMARKexist_QUMARK( h, key )
+      # don't use h.has_key(k), because has_key method undefined on some database bindings. (e.g. KyotoCabinet)
+      h[key] ? true : false
+    end
   
     # backtrace expects this format "filename:lineno: place message ". e.g.  "init.nnd:10: in aaa macro.".
     def _raise( exception, message, backtrace )
