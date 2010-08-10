@@ -1,3 +1,4 @@
+;;-*- mode: nendo; syntax: scheme -*-;;
 ;;;
 ;;; nendo.test - test framework
 ;;;  
@@ -85,7 +86,7 @@
                "w")))
 
 (define (test msg expect thunk . compare)
-  (let ((cmp (get-option compare equal?))
+  (let ((cmp (get-optional compare equal?))
         (f   *test-output-file*))
     (f.printf "test %s, expects %s ==> " msg (write-to-string expect))
     (f.flush)
@@ -100,7 +101,7 @@
                    (cons (list msg expect r) *discrepancy-list*))
              (test-fail++)))
       (f.flush)
-      )))
+      #t)))
 
 ;; A convenient macro version
 (define test*
@@ -116,8 +117,10 @@
     (range num))))
 
 (define (test-section msg)
-  (let ((msglen (string-length msg)))
-    (STDOUT.printf "<%s>%s\n" msg (make-padding-string (max 5 (- 77 msglen)) "-"))))
+  (let ((f  *test-output-file*)
+        (msglen (string-length msg)))
+    (f.printf "<%s>%s\n" msg (make-padding-string (max 5 (- 77 msglen)) "-"))
+    msg))
 
 (define (test-start msg)
   (let* ((s   (sprintf "Testing %s ... " msg))
@@ -126,6 +129,8 @@
     (f.printf "%s%s" s pad)
     (f.flush)
     (read-summary)
+    (f.printf "\n")
+
     (set! *discrepancy-list* '())
     (let ((msglen (string-length msg)))
       (f.printf "Testing %s %s\n" msg (make-padding-string (max 5 (- 70 msglen)) "-"))
@@ -134,9 +139,7 @@
 
 
 (define (test-end)
-  (let ((e (current-error-port))
-        (o (current-output-port))
-        (f   *test-output-file*))
+  (let1 f  *test-output-file*
     (if (null? *discrepancy-list*)
         (f.printf "passed.\n")
         (begin
