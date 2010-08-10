@@ -1,8 +1,7 @@
-;;-*- mode: nendo; syntax: scheme -*-;;
 ;;;
-;;; nendo/test.nnd - Nendo's unit test library
+;;; nendo.test - test framework
 ;;;  
-;;;   Copyright (c) 2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
+;;;   Copyright (c) 2000-2009  Shiro Kawai  <shiro@acm.org>
 ;;;   
 ;;;   Redistribution and use in source and binary forms, with or without
 ;;;   modification, are permitted provided that the following conditions
@@ -31,5 +30,129 @@
 ;;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
-;;;  $Id: 
-;;;
+;;;  $Id: test.scm,v 1.29 2008-05-10 13:35:56 shirok Exp $
+;;
+;;   ported by Kiyoka Nishiyama for Nendo.
+;; 
+;; List of discrepancies
+(define *test-record-file* "test.record")
+(define *test-output-file* STDOUT)
+(define *discrepancy-list* '())
+
+(define (test-record-file file) (set! *test-record-file* file)) ;;public API
+(define (test-output-file file) (set! *test-output-file* file)) ;;putlic API
+
+(define *test-counts*   (vector 0 0 0 0))
+(define (test-count++)  
+  (vector-set! *test-counts* 0 (+ (vector-ref *test-counts* 0) 1)))
+(define (test-pass++)
+  (vector-set! *test-counts* 1 (+ (vector-ref *test-counts* 1) 1)))
+(define (test-fail++)   
+  (vector-set! *test-counts* 2 (+ (vector-ref *test-counts* 2) 1)))
+(define (test-abort++)   
+  (vector-set! *test-counts* 3 (+ (vector-ref *test-counts* 3) 1)))
+
+(define (format-summary)
+  (sprintf "Total: %5d tests, %5d passed, %5d failed, %5d aborted.\n"
+           (vector-ref *test-counts* 0)
+           (vector-ref *test-counts* 1)
+           (vector-ref *test-counts* 2)
+           (vector-ref *test-counts* 3)))
+
+(define (read-summary)
+  (when (and (string? *test-record-file*)
+             (File.exist? *test-record-file*))
+    (with-open *test-record-file*
+               (lambda (f)
+                 (let ((m (rxmatch #/Total:\s+(\d+)\s+tests,\s+(\d+)\s+passed,\s+(\d+)\s+failed,\s+(\d+)\s+aborted/ (f.readline.chomp))))
+                   (when m
+                     (for-each (lambda (i)
+                                 (vector-set! *test-counts* i
+                                              (to-i (rxmatch-substring m (+ i 1)))))
+                               '(0 1 2 3)))))))
+  ;; We write out aborted+1, in case if the test process fails before test-end
+  ;; For normal case, it will be overwritten by test-end.
+  (let ((orig-abort (vector-ref *test-counts* 3)))
+    (vector-set! *test-counts* 3 (+ orig-abort 1))
+    (write-summary)
+    (vector-set! *test-counts* 3 orig-abort)))
+
+(define (write-summary)
+  (when (string? *test-record-file*)
+    (with-open *test-record-file*
+               (lambda (f)
+                 (f.printf "%s" (format-summary)))
+               "w")))
+
+(define (test msg expect thunk . compare)
+  (let ((cmp (get-option compare equal?))
+        (f   *test-output-file*))
+    (f.printf "test %s, expects %s ==> " msg (write-to-string expect))
+    (f.flush)
+    (test-count++)
+    (let ((r (thunk)))
+      (cond ((cmp expect r)
+             (f.printf "ok\n")
+             (test-pass++))
+            (else
+             (f.printf "ERROR: GOT %s\n" (write-to-string r))
+             (set! *discrepancy-list*
+                   (cons (list msg expect r) *discrepancy-list*))
+             (test-fail++)))
+      (f.flush)
+      )))
+
+;; A convenient macro version
+(define test*
+  (macro (msg expect form . compare)
+    `(test ,msg ,expect (lambda () ,form) ,@compare)))
+
+
+;; Logging and bookkeeping -----------------------------------------
+(define (make-padding-string num char)
+  (string-join
+   (map
+    (lambda (x) char)
+    (range num))))
+
+(define (test-section msg)
+  (let ((msglen (string-length msg)))
+    (STDOUT.printf "<%s>%s\n" msg (make-padding-string (max 5 (- 77 msglen)) "-"))))
+
+(define (test-start msg)
+  (let* ((s   (sprintf "Testing %s ... " msg))
+         (pad (make-padding-string (max 3 (- 65 (string-length s))) " "))
+         (f   *test-output-file*))
+    (f.printf "%s%s" s pad)
+    (f.flush)
+    (read-summary)
+    (set! *discrepancy-list* '())
+    (let ((msglen (string-length msg)))
+      (f.printf "Testing %s %s\n" msg (make-padding-string (max 5 (- 70 msglen)) "-"))
+      (f.flush))
+    msg))
+
+
+(define (test-end)
+  (let ((e (current-error-port))
+        (o (current-output-port))
+        (f   *test-output-file*))
+    (if (null? *discrepancy-list*)
+        (f.printf "passed.\n")
+        (begin
+          (f.printf "failed.\ndiscrepancies found.  Errors are:\n")
+          (for-each (lambda (r)
+                      (f.printf "test %s: expects %s => got %s\n"
+                                (first r)
+                                (write-to-string (second r))
+                                (write-to-string (third r))))
+                    (reverse *discrepancy-list*))))
+    
+    (when *test-record-file*
+      (write-summary))
+    
+    ;; Returns the number of failed tests.
+    (length *discrepancy-list*)))
+
+
+

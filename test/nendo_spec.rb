@@ -1744,3 +1744,16 @@ describe Nendo, "optional argument parser " do
     @nendo.replStr( " (get-optional '() #f) " ).should == "#f"
   end
 end
+
+
+describe Nendo, "nendo.test library " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.replStr( " (when (load-library \"nendo/test\") #t) " ).should == "#t"
+    @nendo.replStr( " (test-output-file (.open \"/dev/null\" \"w\"))  #t" ).should == "#t"
+    @nendo.replStr( " (test-start \"START\") " ).should == "\"START\""
+  end
+end
