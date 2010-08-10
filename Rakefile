@@ -61,7 +61,8 @@ task :compile do
     "./lib/srfi-1.nnd",
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
-    "./lib/debug/syslog.nnd" ].each {|fn|
+    "./lib/debug/syslog.nnd",
+    "./lib/nendo/test.nnd" ].each {|fn|
     sh sprintf( "time ruby ./bin/nendo -c %s > %s", fn, fn + "c" )
   }
 end
