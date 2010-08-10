@@ -4,6 +4,24 @@
 (disable-idebug)
 (define debug-print-length 256)
 
-(let1 matchdata
-    (. #/abc/ match "xxxxabcxxxx")
-  (print (matchdata.offset 0)))
+
+(define end-num 100)
+
+
+(define (foo)
+  (let ((f STDIN)
+        (total 0))
+    (let loop ((num 0))
+      (printf "total = %d, num = %d\n" total num)
+      (set! total (+ total 1))
+      (when (< num end-num)
+        (loop (+ num 1))))))
+
+(foo)
+
+
+
+
+  
+      
+      
