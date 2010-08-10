@@ -998,6 +998,12 @@
 
 
 ;; ----------------------------------------
+;; string library
+;; ----------------------------------------
+(define (string-length str) (str.size))
+
+
+;; ----------------------------------------
 ;; regexp library functions
 ;; ----------------------------------------
 (define (string->regexp str . casefold)
