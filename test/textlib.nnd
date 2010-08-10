@@ -1,0 +1,24 @@
+;;-*- mode: nendo; syntax: scheme -*-;;
+;; test for text.* ( ported from Gauche by kiyoka )
+
+(use nendo.test)
+(test-start "text utilities")
+
+;;===================================================================
+;;-------------------------------------------------------------------
+(test-section "tree")
+(use text.tree)
+(test-module 'text.tree)
+
+(test* "tree->string" "" (tree->string '()))
+(test* "tree->string" "" (tree->string ""))
+(test* "tree->string" "ab" (tree->string "ab"))
+(test* "tree->string" "ab" (tree->string 'ab))
+(test* "tree->string" "ab" (tree->string '(a . b)))
+(test* "tree->string" "ab" (tree->string '(a b)))
+(test* "tree->string" "Ab" (tree->string '(:A . :b)))
+(test* "tree->string" "ab" (tree->string '((((() ())) . a) ((((b)))))))
+
+
+;;===================================================================
+(test-end)

@@ -231,7 +231,7 @@ trampCall(
                               end                            ,
                               Cell.new(
                                 begin
-                                    trampCall(_string).split(
+                                    trampCall(_string).to_s.split(
                                         ""
                                       )
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e

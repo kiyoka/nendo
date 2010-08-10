@@ -49,7 +49,7 @@
   (string-join
    (map
     html-escape
-    (to-list (string.split "")))
+    (to-list (string.to_s.split "")))
    ""))
 
 ;;(html-escape-string "<html> & \"abc\"")

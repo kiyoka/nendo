@@ -1611,6 +1611,23 @@ discrepancies found.  Errors are:
     )
   end
  )
+#--------------------
+
+trampCall( 
+  begin
+      def self._test_MIMARKmodule_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_test_MIMARKmodule'] = self.method( :_test_MIMARKmodule_METHOD )
+    @_test_MIMARKmodule = 
+    trampCall(
+          Proc.new { |_module_MIMARKname| 
+              begin
+                  trampCall(_module_MIMARKname)
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:163"] + __e.backtrace ) ; raise __e
+              end
+          }
+    )
+  end
+ )
 
 
 # -------------------------------------------------------
