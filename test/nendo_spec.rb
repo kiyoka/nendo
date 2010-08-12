@@ -1422,8 +1422,8 @@ describe Nendo, "when use dot-operator (.) macro " do
     lambda { @nendo.replStr( " (macroexpand '(. open)) " ) }.should                   raise_error( ArgumentError )
     lambda { @nendo.replStr( " (macroexpand '(. open \"aaa\")) " ) }.should           raise_error( TypeError )
     @nendo.replStr( " (macroexpand '(. a size)) " ).should == "(a.size)"
-    @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).gsub( /10[0-9][0-9][0-9]/, "10000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000 (a.size))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000.to_s))"
-    @nendo.replStr( " (macroexpand '(. (. (. a size) to_s) to_i)) " ).gsub( /10[0-9][0-9][0-9]/, "10000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000 (a.size))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000.to_s)))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_10000.to_i))"
+    @nendo.replStr( " (macroexpand '(. (. a size) to_s)) " ).gsub( /[12]0[0-9][0-9][0-9]/, "X0000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (a.size))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000.to_s))"
+    @nendo.replStr( " (macroexpand '(. (. (. a size) to_s) to_i)) " ).gsub( /[12]0[0-9][0-9][0-9]/, "X0000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (a.size))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000.to_s)))) (__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000.to_i))"
     lambda { @nendo.replStr( " (macroexpand '(. (. a size))) " ) }.should             raise_error( ArgumentError )
     @nendo.replStr( " (set! str \"str\") str.size " ).should == "3"
     @nendo.replStr( " (set! str \"str\") (. str size) " ).should == "3"
@@ -1701,7 +1701,7 @@ describe Nendo, "tail call optimization " do
                     "  ))" ).should == "(if (not (eq? #f (foo 1))) (%tailcall (bar 2)) #f)"
     @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
                     "   '(or (foo 1) (bar 2))"+
-                    "  ))" ).gsub( /20[0-9][0-9][0-9]/, "20000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_20000 #f))))"
+                    "  ))" ).gsub( /[24]0[0-9][0-9][0-9]/, "X0000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 #f))))"
     @nendo.replStr( "(setup-tailcall-mark (macroexpand "+
                     "   '(let loop ((x 1))  1 2 (loop 100))"+
                     "  ))" ).should == "(letrec ((loop (lambda (x) 1 2 (%tailcall (loop 100))))) (%tailcall (loop 1)))"

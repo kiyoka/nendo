@@ -1056,6 +1056,27 @@
 ;; ----------------------------------------
 ;; Nendo compiler utility
 ;; ----------------------------------------
+(define (disasm varname . opt)
+  (let ((kind  (get-optional opt 'compiled))
+        (alist (get-source-info (varname.to_s))))
+    (cond
+     ((eqv? kind 'compiled)
+      (assv-ref "compiled_str" alist))
+     ((eqv? kind 'source)
+      (assv-ref "source" alist))
+     ((eqv? kind 'expanded)
+      (assv-ref "expanded" alist))
+     ((eqv? kind 'info)
+      (printf " file:   %s \n" (assv-ref "sourcefile" alist))
+      (printf " lineno: %s \n" (assv-ref "lineno"     alist))
+      (printf " source: \n" )
+      (pretty-print
+       (assv-ref "source" alist))
+      (printf " expanded: \n" )
+      (pretty-print
+       (assv-ref "expanded" alist))))))
+
+
 (define (compiled-code-string compiled-code filename)
   (define (compiled-body-string string-list filename)
     (+

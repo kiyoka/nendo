@@ -2,151 +2,18 @@
 ;; -----------------
 (enable-idebug)
 (disable-idebug)
-(define debug-print-length 256)
+(define debug-print-length 2000)
 
-
-(define end-num 100)
+(exit)
 
 
 (pretty-print
- (setup-tailcall-mark 
-  (macroexpand
-   '(define (foo)
-      (let ((f STDIN)
-            (total 0))
-        (let loop ((num 0))
-          (printf "total = %d, num = %d\n" total num)
-          (set! total (+ total 1))
-          (when (< num end-num)
-            (loop (+ num 1))))
-        "abc")))))
+ (disasm "sort" 'source))
+(disasm "map")
+(pretty-print
+ (disasm "map" 'expanded))
+
+(disasm "map" 'info)
 
 
 
-
-;; ----------------------------------------
-;; tail-call-optimization
-;; ----------------------------------------
-(define (setup-tailcall-mark sexp)
-  (define (reserved? sym)
-    (memq sym '(quote macro begin lambda if let letrec define)))
-
-  (define (let-or-letrec? sym)
-    (memq sym '(let letrec)))
-  
-  (define (tailcall-cap sexp)
-    (cond ((not (pair? sexp))
-           sexp)
-          ((eq? '%tailcall (car sexp))
-           sexp)
-          (else
-           `(%tailcall ,sexp))))
-
-  (define (setup-let-args args)
-    #?=(map
-     (lambda (arg)
-       (let ((name (first  arg))
-             (body (second arg)))
-         (list #?=name
-               (if (list? body)
-                   (if #?=(reserved? (car body))
-                       (setup-tailcall-mark body)
-                       body)
-                   body))))
-     args))
-
-  (define (setup-proc sexp)
-    (cond
-     ((null? sexp)
-      sexp)
-     ((and (list? sexp)
-           (< 0 (length sexp)))
-      (if (reserved? (car sexp))
-          (setup-tailcall-mark sexp)
-          (if (pair? (car sexp))
-              sexp ;; e.g.  ((lambda (x) ...)
-              (tailcall-cap sexp))))
-     (else
-      sexp)))
-
-  (define (setup-proc-body sexp)
-    (setup-proc-body-last 
-     (if (and (pair? sexp)
-              (pair? #?=(car sexp))
-              #?=(let-or-letrec? (caar sexp)))
-         (cons
-          (setup-tailcall-mark (first sexp))
-          (cdr sexp))
-         sexp)))
-        
-  (define (setup-proc-body-last sexp)
-    (if (or (not (list? sexp))
-            (null? sexp))
-        sexp
-        (let* ((r (reverse sexp))
-               (last  #?=(car r))
-               (other #?=(cdr r)))
-          (if (not (pair? #?=last))
-              sexp
-              (reverse
-               (cons
-                (if (reserved? (car last))
-                    ;; recursive
-                    (setup-tailcall-mark last)
-                    ;; this is the tailcall!
-                    (tailcall-cap last))
-                other))))))
-
-  (cond
-   ((not (pair? sexp))
-    sexp)
-   ((null? sexp)
-    '())
-   ((list? sexp)
-    (case (car sexp)
-      (('quote)
-       sexp)
-      (('macro)
-       sexp)
-      (('begin)
-       `(begin
-          ,@(setup-proc-body (cdr sexp))))
-      (('lambda)
-       `(lambda
-            ,(second sexp)
-          ,@(setup-proc-body (cddr sexp))))
-      (('if)
-       (case (length sexp)
-         ((3)
-          `(if
-            ,(second sexp)
-            ,(setup-proc     (third  sexp))))
-         ((4)
-          `(if
-            ,(second sexp)
-            ,(setup-proc     (third sexp))
-            ,(setup-proc     (fourth sexp))))))
-      (('let)
-       `(let
-            ,(setup-let-args (second sexp))
-          ,@(setup-proc-body (cddr sexp))))
-      (('letrec)
-       `(letrec
-            ,(setup-let-args (second sexp))
-          ,@(setup-proc-body (cddr sexp))))
-      (('define)
-       (let1 val (third sexp)
-         `(define
-            ,(second sexp)
-            ,(if (and (list? val)
-                      (not (null? val))
-                      (reserved? (car val)))
-                 (setup-tailcall-mark val)
-                 val))))
-      (else
-       (if (symbol? (car sexp))
-           (tailcall-cap sexp)
-           sexp))))
-   (else
-    sexp)))
-      

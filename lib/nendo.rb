@@ -187,6 +187,49 @@ module Nendo
   
     attr_reader :key
   end
+
+  class SourceInfo
+    def initialize
+      @varname       = nil
+      @sourcefile    = nil
+      @lineno        = nil
+      @source_sexp   = Cell.new
+      @expanded_sexp = Cell.new
+      @compiled_str  = nil
+    end
+
+    def deepCopy( sexp )
+      Marshal.load(Marshal.dump( sexp ))
+    end
+
+    def setVarname( varname )
+      @varname        = varname
+    end
+
+    def setSource( sourcefile, lineno, source_sexp )
+      @sourcefile     = sourcefile
+      @lineno         = lineno
+      @source_sexp    = self.deepCopy( source_sexp )
+    end
+
+    def setExpanded( expanded_sexp )
+      @expanded_sexp  = self.deepCopy( expanded_sexp )
+    end
+
+    def setCompiled( compiled_str )
+      @compiled_str   = compiled_str
+    end
+
+    def debugPrint
+      printf( "=== sourceInfo === \n" )
+      printf( "  varname       = %s\n", @varname )
+      printf( "  sourcefile    = %s\n", @sourcefile )
+      printf( "  lineno        = %s\n", @lineno)
+      printf( "  compiled_str  = %s\n", @compiled_str )
+    end
+
+    attr_reader :varname, :sourcefile, :lineno, :source_sexp, :expanded_sexp, :compiled_str
+  end
   
   class DelayedCallPacket
     def initialize( _origname, _pred, _args )
@@ -1165,6 +1208,7 @@ module Nendo
       end
       v[index] = value
     end
+
   end
   
   
@@ -1226,7 +1270,8 @@ module Nendo
       # compiled ruby code
       #  { 'filename1' => [ 'code1' 'code2' ... ], 
       #    'filename2' => [ 'code1' 'code2' ... ], ... }
-      @compiled_code = Hash.new
+      @compiled_code    = Hash.new
+      @source_info_hash = Hash.new
       
       global_lisp_define( toRubySymbol( "%compile-phase-functions" ), Cell.new())
     end
@@ -1366,14 +1411,14 @@ module Nendo
     end
 
     def method_missing( name, *args )
-      sym = toRubySymbol( name );
+      sym = toRubySymbol( name )
       if @global_lisp_binding[name].is_a? Proc
         @global_lisp_binding[name].call( args[0], args[1], args[2] )
       else
         callProcedure( args[0], args[1], args[2] )
       end
     end
-
+    
     def delayCall( origname, pred, args )
       case @optimize_level
       when 0 # no optimize
@@ -1402,12 +1447,15 @@ module Nendo
       }
     end
 
-    def execFunc( funcname, args, sourcefile, lineno, locals, execType )
+    def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
       case funcname
       when :define, :set!   # `define' special form
         ar = args.cdr.map { |x| x.car }
         variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
+        if global_cap and sourceInfo
+          sourceInfo.setVarname( toLispSymbol( variable_sym ))
+        end
         [ "begin",
           [
            if global_cap
@@ -1599,13 +1647,13 @@ module Nendo
        "end"]
     end
   
-    def apply( car, cdr, sourcefile, lineno, locals, execType )
+    def apply( car, cdr, sourcefile, lineno, locals, sourceInfo, execType )
       cdr.each { |x| 
         if Cell == x.class
-          x.car = translate( x.car, locals )
+          x.car = translate( x.car, locals, sourceInfo )
         end
       }
-      execFunc( car, cdr, sourcefile, lineno, locals, execType )
+      execFunc( car, cdr, sourcefile, lineno, locals, sourceInfo, execType )
     end
   
     def genQuote( sexp, str = "" )
@@ -1685,7 +1733,7 @@ module Nendo
     #        (let ((c 3))
     #            (print (+ a b c))))
     #         => locals must be  [["_a" "_b"]["_c"]] value.
-    def translate( sexp, locals )
+    def translate( sexp, locals, sourceInfo = nil )
       case sexp
       when Cell
         if :quote == sexp.car
@@ -1695,7 +1743,7 @@ module Nendo
         elsif sexp.isNull
           [ "Cell.new()" ]
         elsif Cell == sexp.car.class
-          self.apply( translate( sexp.car, locals ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, EXEC_TYPE_ANONYMOUS )
+          self.apply( translate( sexp.car, locals, sourceInfo ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, sourceInfo, EXEC_TYPE_ANONYMOUS )
         elsif :begin == sexp.car
           self.makeBegin( sexp.cdr, locals )
         elsif :lambda == sexp.car
@@ -1713,12 +1761,12 @@ module Nendo
         elsif :"%tailcall" == sexp.car
           if sexp.cdr.car.is_a? Cell
             sexp = sexp.cdr.car
-            self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, EXEC_TYPE_TAILCALL )
+            self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_TAILCALL )
           else
             raise RuntimeError, "Error: special form tailcall expects function call expression."
           end
         else
-          self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, EXEC_TYPE_NORMAL )
+          self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_NORMAL )
         end
       when Array
         raise RuntimeError, "Error: can't eval unquoted vector."
@@ -1877,8 +1925,10 @@ module Nendo
     end
   
     def lispEval( sexp, sourcefile, lineno )
+      sourceInfo = SourceInfo.new
       @lastSourcefile = sourcefile
       @lastLineno     = lineno
+      sourceInfo.setSource( sourcefile, lineno, sexp )
       sexp = macroExpandPhase( sexp )
       sexp = quotingPhase( sexp )
       if @debug
@@ -1893,13 +1943,18 @@ module Nendo
           printf( "\n          compiled=<<< %s >>>\n", (Printer.new())._print(sexp))
         end
       end
+      sourceInfo.setExpanded( sexp )
       
-      arr = [ "trampCall( ", translate( sexp, [] ), " )" ]
+      arr = [ "trampCall( ", translate( sexp, [], sourceInfo ), " )" ]
       rubyExp = ppRubyExp( 0, arr ).flatten.join
+      sourceInfo.setCompiled( rubyExp )
       if not @compiled_code.has_key?( sourcefile )
         @compiled_code[ sourcefile ] = Array.new
       end
       @compiled_code[ sourcefile ] << rubyExp
+      if sourceInfo.varname
+        @source_info_hash[ sourceInfo.varname ] = sourceInfo
+      end
       printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
       eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
     end
@@ -1963,6 +2018,21 @@ module Nendo
     end
     def _get_MIMARKoptimize_MIMARKlevel()
       self.getOptimizeLevel
+    end
+
+    def _get_MIMARKsource_MIMARKinfo( varname )
+      info = @source_info_hash[ varname.to_s ]
+      if info
+        [
+         Cell.new( "varname",           info.varname ),
+         Cell.new( "sourcefile",        info.sourcefile ),
+         Cell.new( "lineno",            info.lineno ),
+         Cell.new( "source",            info.source_sexp ),
+         Cell.new( "expanded",          info.expanded_sexp ),
+         Cell.new( "compiled_str",      info.compiled_str ) ].to_list
+      else
+        raise NameError, sprintf( "Error: not found variable [%s]. \n", varname.to_s )
+      end
     end
   end
   
@@ -2059,6 +2129,7 @@ module Nendo
       end
       unless done
         @evaluator._load( File.dirname(__FILE__) + "/init.nnd" )
+        @evaluator._load( File.dirname(__FILE__) + "/init.nnd" ) # for %tailcall compile for init.nnd
       end
     end
   
