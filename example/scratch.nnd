@@ -7,13 +7,21 @@
 (exit)
 
 
-(pretty-print
- (disasm "sort" 'source))
-(disasm "map")
-(pretty-print
- (disasm "map" 'expanded))
+(define (looptest args)
+  (define (loop count)
+    (when (eq? 0 (% count 1000))
+      (printf "count = %6d\n" count))
+    (when (< count 10000)
+      (loop count)))
+  
+  (print "abc"))
 
-(disasm "map" 'info)
+(pretty-print
+ (disasm "looptest" 'expanded))
+
+         
+
+    
 
 
 
