@@ -30,8 +30,9 @@ end
 task :check do
   [ "ruby -I ./lib /usr/local/bin/spec -b ./test/nendo_spec.rb",
     "time ruby -I ./lib ./bin/nendo -O 0 ./test/srfi-1-test.nnd",
-    "/bin/rm -f test.record ",
-    "time ruby -I ./lib ./bin/nendo ./test/textlib.nnd > test.log" ].each {|str|
+    "/bin/rm -f test.record",
+    "ruby -I ./lib ./bin/nendo ./test/textlib.nnd > test.log",
+    "cat test.record" ].each {|str|
     sh   str
   }
 end
