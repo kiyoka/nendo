@@ -1,0 +1,98 @@
+;;-*- mode: nendo; syntax: scheme -*-;;
+;; test for nendo's core utility
+
+(use nendo.test)
+(test-start "nendo's core utility")
+
+;;===================================================================
+(test-section "pretty-print-to-string")
+(define test-sexp1 '(a (b (c))))
+(define test-sexp2 '(define (function1 a b c) (+ a b c)))
+
+(test* "pretty-print-to-string"
+       (string-join
+        '("(a\n"
+          " (b\n"
+          "  (c)))\n"))
+       (pretty-print-to-string test-sexp1))
+
+(test* "pretty-print-to-string"
+       (string-join
+        '("(define\n"
+          " (function1 a b c)\n"
+          " (+ a b c))\n"))
+       (pretty-print-to-string test-sexp2))
+
+
+;;-------------------------------------------------------------------
+(test-section "disasm")
+
+(define (dummy-function arg1)
+  (let1 var (+ arg1 1)
+    var))
+
+(test* "disasm info"
+" file:   ./test/nendo_util.nnd 
+ lineno: 30 
+ source: 
+(define
+ (dummy-function arg1)
+ (let1 var
+  (+ arg1 1) var))
+ expanded: 
+(define
+ (' dummy-function)
+ (lambda
+  ('
+   (arg1))
+  (let
+   (((' var)
+     (+ arg1 1))) var)))
+"
+       (disasm 'dummy-function 'info))
+(test* "disasm source  "
+       '(define (dummy-function arg1) (let1 var (+ arg1 1) var))
+       (disasm 'dummy-function 'source))
+(test* "disasm expanded"
+       '(define 'dummy-function (lambda '(arg1) (let (('var (+ arg1 1))) var)))
+       (disasm 'dummy-function 'expanded))
+(test* "disasm ruby-code"
+"
+trampCall( 
+  begin
+      def self._dummy_MIMARKfunction_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      @global_lisp_binding['_dummy_MIMARKfunction'] = self.method( :_dummy_MIMARKfunction_METHOD )
+    @_dummy_MIMARKfunction = 
+    trampCall(
+          Proc.new { |_arg1| 
+              begin
+                ___lambda = lambda { |_var| 
+                    begin
+                        trampCall(_var)
+                      rescue => __e ; __e.set_backtrace( [\"./test/nendo_util.nnd:32\"] + __e.backtrace ) ; raise __e
+                    end
+                } ; ___lambda.call(
+                      trampCall( self.__PLMARK_METHOD(  '+',
+                          begin
+                            if @global_lisp_binding.has_key?('__PLMARK') then
+                              trampCall(@__PLMARK)
+                            else raise NameError.new( \"Error: undefined variable __PLMARK\", \"__PLMARK\" ) end
+                            rescue => __e ; __e.set_backtrace( [\"./test/nendo_util.nnd:31\"] + __e.backtrace ) ; raise __e
+                          end                        ,
+                          Cell.new(
+                            begin
+                                trampCall(_arg1)
+                              rescue => __e ; __e.set_backtrace( [\"./test/nendo_util.nnd:31\"] + __e.backtrace ) ; raise __e
+                            end                          ,Cell.new(
+                          1
+                                   ))))
+                           )
+              end
+          }
+    )
+  end
+ )"
+       (disasm 'dummy-function))
+
+;;===================================================================
+(test-end)

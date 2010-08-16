@@ -948,34 +948,41 @@
 ;;    http://practical-scheme.net/wiliki/wiliki.cgi?Gauche%3APrettyPrint
 ;; 
 ;; Subsequently modified for initialize library for nendo: Kiyoka Nishiyama
-(define (pretty-print s)
-  (define (do-indent level)
-    (for-each (lambda (x) (display " ")) (range level)))
-  (define (pp-parenl)
-    (display "("))
-  (define (pp-parenr)
-    (display ")"))
-  (define (pp-atom e prefix)
-    (when prefix (display " "))
-    (write e))
-  (define (pp-list s level prefix)
-    (and prefix (do-indent level))
-    (pp-parenl)
+(define (pretty-print s . f)
+  (define (do-indent f level)
+    (for-each (lambda (x) (f.print " ")) (range level)))
+  (define (pp-parenl f)
+    (f.print "("))
+  (define (pp-parenr f)
+    (f.print ")"))
+  (define (pp-atom f e prefix)
+    (when prefix (f.print " "))
+    (f.print (write-to-string e)))
+  (define (pp-list f s level prefix)
+    (and prefix (do-indent f level))
+    (pp-parenl f)
     (let loop ((s s)
                (prefix #f))
       (if (null? s)
-          (pp-parenr)
+          (pp-parenr f)
           (let1 e (car s)
             (if (list? e)
-                (begin (and prefix (newline))
-                       (pp-list e (+ level 1) prefix))
-                (pp-atom e prefix))
+                (begin (and prefix (f.print "\n"))
+                       (pp-list f e (+ level 1) prefix))
+                (pp-atom f e prefix))
             (loop (cdr s) #t)))))
-  (if (list? s)
-      (pp-list s 0 #f)
-      (write s))
-  (newline))
+  (let1 f (get-optional f STDOUT)
+    (if (list? s)
+        (pp-list f s 0 #f)
+        (f.print (write-to-string s)))
+    (f.print "\n")))
 
+
+(define (pretty-print-to-string s)
+  (let1 io (StringIO.new)
+    (pretty-print s io)
+    (io.rewind)
+    (io.read)))
 
 ;; ----------------------------------------
 ;; sort library functions
@@ -1067,14 +1074,16 @@
      ((eqv? kind 'expanded)
       (assv-ref "expanded" alist))
      ((eqv? kind 'info)
-      (printf " file:   %s \n" (assv-ref "sourcefile" alist))
-      (printf " lineno: %s \n" (assv-ref "lineno"     alist))
-      (printf " source: \n" )
-      (pretty-print
-       (assv-ref "source" alist))
-      (printf " expanded: \n" )
-      (pretty-print
-       (assv-ref "expanded" alist))))))
+      (string-join
+       (list
+        (sprintf " file:   %s \n" (assv-ref "sourcefile" alist))
+        (sprintf " lineno: %s \n" (assv-ref "lineno"     alist))
+        (sprintf " source: \n" )
+        (pretty-print-to-string
+         (assv-ref "source" alist))
+        (sprintf " expanded: \n" )
+        (pretty-print-to-string
+         (assv-ref "expanded" alist))))))))
 
 
 (define (compiled-code-string compiled-code filename)
