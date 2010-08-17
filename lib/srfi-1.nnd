@@ -790,12 +790,7 @@
 	      '())))
 	    
       ;; Fast path.
-      (let recur ((lis lis1))
-	(if (null-list? lis) lis
-	    (let ((tail (recur (cdr lis))))
-	      (cond ((f (car lis)) => (lambda (x) (cons x tail)))
-		    (else tail)))))))
-
+      (%filter-map f lis1)))
 
 ;;; Map F across lists, guaranteeing to go left-to-right.
 ;;; NOTE: Some implementations of R5RS MAP are compliant with this spec;
@@ -812,17 +807,11 @@
 	      '())))
 	    
       ;; Fast path.
-      (let recur ((lis lis1))
-	(if (null-list? lis) lis
-	    (let ((tail (cdr lis))
-		  (x (f (car lis))))		; Do head first,
-	      (cons x (recur tail)))))))	; then tail.
-
+      (%map f lis1)))
 
 ;;; We extend MAP to handle arguments of unequal length.
 (define map map-in-order)
 (define for-each map-in-order)
-
 
 ;;; filter, remove, partition
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -832,17 +821,19 @@
 ;; This FILTER shares the longest tail of L that has no deleted elements.
 ;; If Scheme had multi-continuation calls, they could be made more efficient.
 
-(define (filter pred lis)			; Sleazing with EQ? makes this
-  (check-arg procedure? pred filter)		; one faster.
-  (let recur ((lis lis))		
-    (if (null-list? lis) lis			; Use NOT-PAIR? to handle dotted lists.
-	(let ((head (car lis))
-	      (tail (cdr lis)))
-	  (if (pred head)
-	      (let ((new-tail (recur tail)))	; Replicate the RECUR call so
-		(if (eq? tail new-tail) lis
-		    (cons head new-tail)))
-	      (recur tail))))))			; this one can be a tail call.
+;;(define (filter pred lis)			; Sleazing with EQ? makes this
+;;  (check-arg procedure? pred filter)		; one faster.
+;;  (let recur ((lis lis))		
+;;    (if (null-list? lis) lis			; Use NOT-PAIR? to handle dotted lists.
+;;	(let ((head (car lis))
+;;	      (tail (cdr lis)))
+;;	  (if (pred head)
+;;	      (let ((new-tail (recur tail)))	; Replicate the RECUR call so
+;;		(if (eq? tail new-tail) lis
+;;		    (cons head new-tail)))
+;;	      (recur tail))))))			; this one can be a tail call.
+
+(define filter %filter)
 
 
 ;;; Another version that shares longest tail.

@@ -487,9 +487,9 @@
 	 (append cdrs (list cdr1))))))
 
 
-(define (map proc . lists)
+(define (%map proc . lists)
   (letrec ((result '())
-           (map-arg1
+           (%map-arg1
             (lambda (proc lst)
               (if (null? lst)
                   #t
@@ -497,12 +497,12 @@
                     (set! result
                           (cons (proc (car lst))
                                 result))
-                    (map-arg1 proc (cdr lst)))))))
+                    (%map-arg1 proc (cdr lst)))))))
     (cond
      ((null? lists)
       (apply proc))
      ((eq? 1 (length lists))
-      (map-arg1 proc (car lists)) ;; tail call optimization version
+      (%map-arg1 proc (car lists)) ;; tail call optimization version
       (reverse result))
      (else
       (if (null? (car lists))
@@ -513,21 +513,21 @@
               (cons (apply proc cars)
                     (if (null? cdrs)
                         '()
-                        (apply map (cons proc cdrs)))))))))))
+                        (apply %map (cons proc cdrs)))))))))))
 
 
-(define (for-each proc . lists)
-  (define (for-each-arg1 proc lst)
+(define (%for-each proc . lists)
+  (define (%for-each-arg1 proc lst)
     (if (null? lst)
         #t
         (begin
           (proc (car lst))
-          (for-each-arg1 proc (cdr lst)))))
+          (%for-each-arg1 proc (cdr lst)))))
   (cond
    ((null? lists)
     (apply proc))
    ((eq? 1 (length lists))
-    (for-each-arg1 proc (car lists))) ;; tail call optimization version
+    (%for-each-arg1 proc (car lists))) ;; tail call optimization version
    (else
     (if (null? (car lists))
         #t
@@ -537,35 +537,40 @@
             (apply proc cars)
             (if (null? cdrs)
                 '()
-                (apply for-each (cons proc cdrs)))))))))
+                (apply %for-each (cons proc cdrs)))))))))
 
 
-(define (filter pred lst)
+(define (%filter pred lst)
   (if (null? lst)
       '()
       (if (pred (car lst))
           (cons
            (car lst)
-           (filter pred (cdr lst)))
-          (filter pred (cdr lst)))))
+           (%filter pred (cdr lst)))
+          (%filter pred (cdr lst)))))
 
 
-(define (filter-map pred lst)
+(define (%filter-map pred lst)
   (if (null? lst)
       '()
       (let1 result (pred (car lst))
         (if result
             (cons
              result
-             (filter-map pred (cdr lst)))
-            (filter-map pred (cdr lst))))))
+             (%filter-map pred (cdr lst)))
+            (%filter-map pred (cdr lst))))))
 
 
 (define (find pred lst)
-  (let1 result (filter pred lst)
+  (let1 result (%filter pred lst)
     (if (null? result)
         #f
         (car result))))
+
+(define map         %map)
+(define for-each    %for-each)
+(define filter      %filter)
+(define filter-map  %filter-map)
 
 
 (define lambda
