@@ -1596,15 +1596,17 @@ describe Nendo, "when use hash-table feature " do
     @nendo.replStr( " (hash-table-num-entries h)" ).should == "1"
     @nendo.replStr( " (hash-table-clear! h)" ).should == "{}"
     @nendo.replStr( " (hash-table-num-entries h)" ).should == "0"
-    @nendo.replStr( " (set! h (hash-table '(\"a\" \"AAA\")   '(\"b\" \"BBB\")   '(\"c\" \"CCC\")))    h" ).should == "{\"a\"=>\"AAA\", \"b\"=>\"BBB\", \"c\"=>\"CCC\"}"
+    @nendo.replStr( " (set! h (hash-table '(\"a\" \"AAA\")   '(\"b\" \"BBB\")   '(\"c\" \"CCC\" 100)))  (hash-table-keys   h)" ).should == "(\"a\" \"b\" \"c\")"
+    @nendo.replStr( " (set! h (hash-table '(\"a\" \"AAA\")   '(\"b\" \"BBB\")   '(\"c\" \"CCC\" 100)))  (hash-table-values h)" ).should == "((\"AAA\") (\"BBB\") (\"CCC\" 100))"
     @nendo.replStr( " (set! h (hash-table '(\"a\" . \"AAA\") '(\"b\" . \"BBB\") '(\"c\" . \"CCC\")))  h" ).should == "{\"a\"=>\"AAA\", \"b\"=>\"BBB\", \"c\"=>\"CCC\"}"
     @nendo.replStr( " (hash-table-keys       h)" ).should == '("a" "b" "c")'
     @nendo.replStr( " (hash-table-values     h)" ).should == '("AAA" "BBB" "CCC")'
     @nendo.replStr( " (hash-table-map        h (lambda (a b) (+ a b)))" ).should == '("aAAA" "bBBB" "cCCC")'
     @nendo.replStr( " (hash-table-for-each   h (lambda (a b) (+ a b)))" ).should == '("aAAA" "bBBB" "cCCC")'
-    @nendo.replStr( " (set! h (hash-table '(a   AAA) '(b   BBB)))  h" ).should   == "{:a=>:AAA, :b=>:BBB}"
-    @nendo.replStr( " (set! h (hash-table '(a . AAA) '(b   BBB)))  h" ).should   == "{:a=>:AAA, :b=>:BBB}"
-    @nendo.replStr( " (set! h (hash-table '(a   AAA) '(b . BBB)))  h" ).should   == "{:a=>:AAA, :b=>:BBB}"
+    @nendo.replStr( " (set! h (hash-table '(a   AAA) '(b   BBB)))  (hash-table->alist h)" ).should   == "((a AAA) (b BBB))"
+    @nendo.replStr( " (set! h (hash-table '(a . AAA) '(b   BBB)))  (hash-table->alist h)" ).should   == "((a . AAA) (b BBB))"
+    @nendo.replStr( " (set! h (hash-table '(a   AAA) '(b . BBB)))  (hash-table->alist h)" ).should   == "((a AAA) (b . BBB))"
+    @nendo.replStr( " (set! h (hash-table '(a . AAA) '(b . BBB)))  (hash-table->alist h)" ).should   == "((a . AAA) (b . BBB))"
     @nendo.replStr( " (define alist (hash-table->alist h)) alist" ).should   == "((a . AAA) (b . BBB))"
     @nendo.replStr( " (define h2 (alist->hash-table alist)) h2" ).should   == "{:a=>:AAA, :b=>:BBB}"
     @nendo.replStr( " (set! h (make-hash-table)) " ).should == "{}"

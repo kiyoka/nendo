@@ -793,9 +793,7 @@
   (let1 h (make-hash-table)
     (for-each
      (lambda (entry)
-       (if (pair? (cdr entry))
-           (hash-table-put! h (car entry) (cadr entry))
-           (hash-table-put! h (car entry) (cdr  entry))))
+       (hash-table-put! h (car entry) (cdr  entry)))
      kv-list)
     h))
 
