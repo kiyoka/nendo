@@ -396,15 +396,23 @@
     (fail 'filter-map:1))
 
 (or (equal? '(0 -1 -2 -3 -4 -5 -6 -7 -8 -9)
-            (filter-map (lambda (x) (when (< x 10) (- x))) (iota  10000)))
+            (filter-map (lambda (x) (when (< x 10) (- x))) (iota  1000)))
     (fail 'filter-map:2))
+
+(or (equal? 10000
+            (length (filter-map (lambda (x) x) (iota  10000))))
+    (fail 'filter-map:3))
 
 (or (equal? '(0 8 8 -4) (filter even? '(0 7 8 8 43 -4)))
     (fail 'filter:1))
 
 (or (equal? '(0 1 2 3 4 5 6 7 8 9)
-            (filter     (lambda (x) (< x 10)) (range  10000)))
+            (filter     (lambda (x) (< x 10)) (range  1000)))
     (fail 'filter:2))
+
+(or (equal? 10000
+            (length (filter (lambda (x) x) (iota  10000))))
+    (fail 'filter:3))
 
 (or (let-values (((a b) (partition symbol? '(one 2 3 four five 6))))
       (and (equal? a '(one four five))

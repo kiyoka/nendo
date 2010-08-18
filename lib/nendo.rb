@@ -1223,6 +1223,7 @@ module Nendo
       @indent  = "  "
       @binding = binding
       @debug   = debug
+      @trace_debug = false
       @char_table_lisp_to_ruby = {
         # list     (! $ % & * + - . / : < = > ? @ ^ _ ~)
         '!' => '_EXMARK',
@@ -1254,7 +1255,7 @@ module Nendo
         x.to_s.match( /^_/ )
       }.map { |name|
         [
-         defMethodStr( name ),
+         defMethodStr( name, false ),
          sprintf( "@%s                        = self.method( :%s        ).to_proc", name, name ),
          sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD ).to_proc", name, name ),
         ].join( " ; " )
@@ -1263,6 +1264,9 @@ module Nendo
   
       # reset gensym counter
       @gensym_counter = 0
+
+      # call depth counter
+      @call_depth     = 0
 
       # init optimize level
       @optimize_level = 1
@@ -1294,10 +1298,28 @@ module Nendo
       @optimize_level
     end
   
-    def defMethodStr( name )
-      sprintf( "def self.%s_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end", name )
+    def lispMethodEntry( name, _log )
+      @call_depth += 1
+      if @trace_debug and _log
+        puts " " * @call_depth + "ENTRY: " + name 
+      end
+    end
+    def lispMethodExit( name, _log )
+      if @trace_debug and _log
+        puts " " * @call_depth + "exit:  " + name
+      end
+      @call_depth -= 1
     end
 
+    def defMethodStr( name, _log )
+      [ "def self." + name.to_s + "_METHOD( origname, pred, args ) ",
+        "  lispMethodEntry( origname, " + _log.to_s + " ) ; ",
+        "  ret = callProcedure( origname, pred, args ) ;",
+        "  lispMethodExit( origname,  " + _log.to_s + " ) ; ",
+        "  return ret ",
+        "end " ].join
+    end
+  
     def _gensym( )
       @gensym_counter += 1
       filename = if @lastSourcefile.is_a? String
@@ -1460,7 +1482,7 @@ module Nendo
           [
            if global_cap
              [
-              defMethodStr( variable_sym ),
+              defMethodStr( variable_sym, true ),
               sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD )", variable_sym, variable_sym )
              ]
            else
@@ -2012,6 +2034,12 @@ module Nendo
     end
     def _disable_MIMARKidebug()
       @debug = false
+    end
+    def _enable_MIMARKtrace()
+      @trace_debug = true
+    end
+    def _disable_MIMARKtrace()
+      @trace_debug = false
     end
     def _set_MIMARKoptimize_MIMARKlevel(level)
       self.setOptimizeLevel( level )

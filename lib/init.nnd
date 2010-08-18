@@ -541,24 +541,32 @@
 
 
 (define (%filter pred lst)
-  (if (null? lst)
-      '()
-      (if (pred (car lst))
-          (cons
-           (car lst)
-           (%filter pred (cdr lst)))
-          (%filter pred (cdr lst)))))
-
+  (letrec ((result '())
+           (%filter-arg1
+            (lambda (proc lst)
+              (if (null? lst)
+                  '()
+                  (let1 v (proc (car lst))
+                    (when v
+                      (set! result (cons (car lst) result)))
+                    (%filter-arg1 proc (cdr lst)))))))
+    
+    (%filter-arg1 pred lst) ;; tail call optimization version
+    (reverse result)))
 
 (define (%filter-map pred lst)
-  (if (null? lst)
-      '()
-      (let1 result (pred (car lst))
-        (if result
-            (cons
-             result
-             (%filter-map pred (cdr lst)))
-            (%filter-map pred (cdr lst))))))
+  (letrec ((result '())
+           (%filter-map-arg1
+            (lambda (proc lst)
+              (if (null? lst)
+                  '()
+                  (let1 v (proc (car lst))
+                    (when v
+                      (set! result (cons v result)))
+                    (%filter-map-arg1 proc (cdr lst)))))))
+    
+    (%filter-map-arg1 pred lst) ;; tail call optimization version
+    (reverse result)))
 
 
 (define (find pred lst)

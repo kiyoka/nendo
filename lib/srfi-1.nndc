@@ -5,7 +5,7 @@
 
 trampCall( 
   begin
-      def self._xcons_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._xcons_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_xcons'] = self.method( :_xcons_METHOD )
     @_xcons = 
     trampCall(
@@ -35,7 +35,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._make_MIMARKlist_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._make_MIMARKlist_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_make_MIMARKlist'] = self.method( :_make_MIMARKlist_METHOD )
     @_make_MIMARKlist = 
     trampCall(
@@ -215,7 +215,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_MIMARKtabulate_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_MIMARKtabulate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_MIMARKtabulate'] = self.method( :_list_MIMARKtabulate_METHOD )
     @_list_MIMARKtabulate = 
     trampCall(
@@ -334,7 +334,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._cons_ASMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._cons_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_cons_ASMARK'] = self.method( :_cons_ASMARK_METHOD )
     @_cons_ASMARK = 
     trampCall(
@@ -438,7 +438,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_MIMARKcopy_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_MIMARKcopy_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_MIMARKcopy'] = self.method( :_list_MIMARKcopy_METHOD )
     @_list_MIMARKcopy = 
     trampCall(
@@ -534,7 +534,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._iota_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._iota_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_iota'] = self.method( :_iota_METHOD )
     @_iota = 
     trampCall(
@@ -838,7 +838,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._circular_MIMARKlist_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._circular_MIMARKlist_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_circular_MIMARKlist'] = self.method( :_circular_MIMARKlist_METHOD )
     @_circular_MIMARKlist = 
     trampCall(
@@ -903,7 +903,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._proper_MIMARKlist_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._proper_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_proper_MIMARKlist_QUMARK'] = self.method( :_proper_MIMARKlist_QUMARK_METHOD )
     @_proper_MIMARKlist_QUMARK = 
     trampCall(
@@ -1114,7 +1114,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._dotted_MIMARKlist_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._dotted_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_dotted_MIMARKlist_QUMARK'] = self.method( :_dotted_MIMARKlist_QUMARK_METHOD )
     @_dotted_MIMARKlist_QUMARK = 
     trampCall(
@@ -1343,7 +1343,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._circular_MIMARKlist_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._circular_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_circular_MIMARKlist_QUMARK'] = self.method( :_circular_MIMARKlist_QUMARK_METHOD )
     @_circular_MIMARKlist_QUMARK = 
     trampCall(
@@ -1570,7 +1570,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_QUMARK'] = self.method( :_list_QUMARK_METHOD )
     @_list_QUMARK = 
     trampCall(
@@ -1614,7 +1614,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._not_MIMARKpair_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._not_MIMARKpair_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_not_MIMARKpair_QUMARK'] = self.method( :_not_MIMARKpair_QUMARK_METHOD )
     @_not_MIMARKpair_QUMARK = 
     trampCall(
@@ -1649,7 +1649,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._null_MIMARKlist_QUMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._null_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_null_MIMARKlist_QUMARK'] = self.method( :_null_MIMARKlist_QUMARK_METHOD )
     @_null_MIMARKlist_QUMARK = 
     trampCall(
@@ -1716,7 +1716,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_EQMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_EQMARK'] = self.method( :_list_EQMARK_METHOD )
     @_list_EQMARK = 
     trampCall(
@@ -2163,7 +2163,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._length_PLMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._length_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_length_PLMARK'] = self.method( :_length_PLMARK_METHOD )
     @_length_PLMARK = 
     trampCall(
@@ -2389,7 +2389,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._zip_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._zip_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_zip'] = self.method( :_zip_METHOD )
     @_zip = 
     trampCall(
@@ -2431,7 +2431,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._first_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._first_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_first'] = self.method( :_first_METHOD )
     @_first = 
     trampCall(
@@ -2448,7 +2448,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._second_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._second_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_second'] = self.method( :_second_METHOD )
     @_second = 
     trampCall(
@@ -2465,7 +2465,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._third_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._third_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_third'] = self.method( :_third_METHOD )
     @_third = 
     trampCall(
@@ -2482,7 +2482,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fourth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._fourth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fourth'] = self.method( :_fourth_METHOD )
     @_fourth = 
     trampCall(
@@ -2499,7 +2499,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fifth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._fifth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fifth'] = self.method( :_fifth_METHOD )
     @_fifth = 
     trampCall(
@@ -2534,7 +2534,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._sixth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._sixth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_sixth'] = self.method( :_sixth_METHOD )
     @_sixth = 
     trampCall(
@@ -2569,7 +2569,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._seventh_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._seventh_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_seventh'] = self.method( :_seventh_METHOD )
     @_seventh = 
     trampCall(
@@ -2604,7 +2604,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._eighth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._eighth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_eighth'] = self.method( :_eighth_METHOD )
     @_eighth = 
     trampCall(
@@ -2639,7 +2639,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._ninth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._ninth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_ninth'] = self.method( :_ninth_METHOD )
     @_ninth = 
     trampCall(
@@ -2683,7 +2683,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._tenth_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._tenth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_tenth'] = self.method( :_tenth_METHOD )
     @_tenth = 
     trampCall(
@@ -2727,7 +2727,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._car_PLMARKcdr_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._car_PLMARKcdr_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_car_PLMARKcdr'] = self.method( :_car_PLMARKcdr_METHOD )
     @_car_PLMARKcdr = 
     trampCall(
@@ -2775,7 +2775,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._take_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take'] = self.method( :_take_METHOD )
     @_take = 
     trampCall(
@@ -2888,7 +2888,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._drop_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop'] = self.method( :_drop_METHOD )
     @_drop = 
     trampCall(
@@ -2982,7 +2982,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._take_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_EXMARK'] = self.method( :_take_EXMARK_METHOD )
     @_take_EXMARK = 
     trampCall(
@@ -3058,7 +3058,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_MIMARKright_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._take_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_MIMARKright'] = self.method( :_take_MIMARKright_METHOD )
     @_take_MIMARKright = 
     trampCall(
@@ -3164,7 +3164,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_MIMARKright_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._drop_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop_MIMARKright'] = self.method( :_drop_MIMARKright_METHOD )
     @_drop_MIMARKright = 
     trampCall(
@@ -3289,7 +3289,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_MIMARKright_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._drop_MIMARKright_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop_MIMARKright_EXMARK'] = self.method( :_drop_MIMARKright_EXMARK_METHOD )
     @_drop_MIMARKright_EXMARK = 
     trampCall(
@@ -3447,7 +3447,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._split_MIMARKat_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._split_MIMARKat_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_split_MIMARKat'] = self.method( :_split_MIMARKat_METHOD )
     @_split_MIMARKat = 
     trampCall(
@@ -3603,7 +3603,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._split_MIMARKat_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._split_MIMARKat_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_split_MIMARKat_EXMARK'] = self.method( :_split_MIMARKat_EXMARK_METHOD )
     @_split_MIMARKat_EXMARK = 
     trampCall(
@@ -3730,7 +3730,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._last_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._last_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_last'] = self.method( :_last_METHOD )
     @_last = 
     trampCall(
@@ -3765,7 +3765,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._last_MIMARKpair_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._last_MIMARKpair_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_last_MIMARKpair'] = self.method( :_last_MIMARKpair_METHOD )
     @_last_MIMARKpair = 
     trampCall(
@@ -3850,7 +3850,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip1_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unzip1_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip1'] = self.method( :_unzip1_METHOD )
     @_unzip1 = 
     trampCall(
@@ -3882,7 +3882,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip2_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unzip2_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip2'] = self.method( :_unzip2_METHOD )
     @_unzip2 = 
     trampCall(
@@ -4061,7 +4061,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip3_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unzip3_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip3'] = self.method( :_unzip3_METHOD )
     @_unzip3 = 
     trampCall(
@@ -4270,7 +4270,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip4_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unzip4_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip4'] = self.method( :_unzip4_METHOD )
     @_unzip4 = 
     trampCall(
@@ -4509,7 +4509,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip5_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unzip5_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip5'] = self.method( :_unzip5_METHOD )
     @_unzip5 = 
     trampCall(
@@ -4787,7 +4787,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._append_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_EXMARK'] = self.method( :_append_EXMARK_METHOD )
     @_append_EXMARK = 
     trampCall(
@@ -5070,7 +5070,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKreverse_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._append_MIMARKreverse_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKreverse'] = self.method( :_append_MIMARKreverse_METHOD )
     @_append_MIMARKreverse = 
     trampCall(
@@ -5174,7 +5174,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKreverse_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._append_MIMARKreverse_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKreverse_EXMARK'] = self.method( :_append_MIMARKreverse_EXMARK_METHOD )
     @_append_MIMARKreverse_EXMARK = 
     trampCall(
@@ -5282,7 +5282,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._concatenate_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._concatenate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_concatenate'] = self.method( :_concatenate_METHOD )
     @_concatenate = 
     trampCall(
@@ -5315,7 +5315,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._concatenate_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._concatenate_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_concatenate_EXMARK'] = self.method( :_concatenate_EXMARK_METHOD )
     @_concatenate_EXMARK = 
     trampCall(
@@ -5348,7 +5348,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcdrs_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKcdrs_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcdrs'] = self.method( :__PAMARKcdrs_METHOD )
     @__PAMARKcdrs = 
     trampCall(
@@ -5519,7 +5519,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKcars_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARK'] = self.method( :__PAMARKcars_PLMARK_METHOD )
     @__PAMARKcars_PLMARK = 
     trampCall(
@@ -5624,7 +5624,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARKcdrs_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKcars_PLMARKcdrs_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARKcdrs'] = self.method( :__PAMARKcars_PLMARKcdrs_METHOD )
     @__PAMARKcars_PLMARKcdrs = 
     trampCall(
@@ -5884,7 +5884,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARKcdrs_PLMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKcars_PLMARKcdrs_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARKcdrs_PLMARK'] = self.method( :__PAMARKcars_PLMARKcdrs_PLMARK_METHOD )
     @__PAMARKcars_PLMARKcdrs_PLMARK = 
     trampCall(
@@ -6156,7 +6156,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest'] = self.method( :__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest_METHOD )
     @__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest = 
     trampCall(
@@ -6336,7 +6336,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._count_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._count_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_count'] = self.method( :_count_METHOD )
     @_count = 
     trampCall(
@@ -6641,7 +6641,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unfold_MIMARKright_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unfold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unfold_MIMARKright'] = self.method( :_unfold_MIMARKright_METHOD )
     @_unfold_MIMARKright = 
     trampCall(
@@ -6781,7 +6781,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unfold_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._unfold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unfold'] = self.method( :_unfold_METHOD )
     @_unfold = 
     trampCall(
@@ -7061,7 +7061,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fold_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._fold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fold'] = self.method( :_fold_METHOD )
     @_fold = 
     trampCall(
@@ -7298,7 +7298,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fold_MIMARKright_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._fold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fold_MIMARKright'] = self.method( :_fold_MIMARKright_METHOD )
     @_fold_MIMARKright = 
     trampCall(
@@ -7529,7 +7529,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._pair_MIMARKfold_MIMARKright_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._pair_MIMARKfold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_pair_MIMARKfold_MIMARKright'] = self.method( :_pair_MIMARKfold_MIMARKright_METHOD )
     @_pair_MIMARKfold_MIMARKright = 
     trampCall(
@@ -7751,7 +7751,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._pair_MIMARKfold_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._pair_MIMARKfold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_pair_MIMARKfold'] = self.method( :_pair_MIMARKfold_METHOD )
     @_pair_MIMARKfold = 
     trampCall(
@@ -7998,7 +7998,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._reduce_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._reduce_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_reduce'] = self.method( :_reduce_METHOD )
     @_reduce = 
     trampCall(
@@ -8073,7 +8073,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._reduce_MIMARKright_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._reduce_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_reduce_MIMARKright'] = self.method( :_reduce_MIMARKright_METHOD )
     @_reduce_MIMARKright = 
     trampCall(
@@ -8216,7 +8216,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._append_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKmap'] = self.method( :_append_MIMARKmap_METHOD )
     @_append_MIMARKmap = 
     trampCall(
@@ -8262,7 +8262,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKmap_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._append_MIMARKmap_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKmap_EXMARK'] = self.method( :_append_MIMARKmap_EXMARK_METHOD )
     @_append_MIMARKmap_EXMARK = 
     trampCall(
@@ -8308,7 +8308,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._really_MIMARKappend_MIMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._really_MIMARKappend_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_really_MIMARKappend_MIMARKmap'] = self.method( :_really_MIMARKappend_MIMARKmap_METHOD )
     @_really_MIMARKappend_MIMARKmap = 
     trampCall(
@@ -8657,7 +8657,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._pair_MIMARKfor_MIMARKeach_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._pair_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_pair_MIMARKfor_MIMARKeach'] = self.method( :_pair_MIMARKfor_MIMARKeach_METHOD )
     @_pair_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -8871,7 +8871,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._map_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._map_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_map_EXMARK'] = self.method( :_map_EXMARK_METHOD )
     @_map_EXMARK = 
     trampCall(
@@ -9097,7 +9097,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._filter_MIMARKmap_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._filter_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_filter_MIMARKmap'] = self.method( :_filter_MIMARKmap_METHOD )
     @_filter_MIMARKmap = 
     trampCall(
@@ -9164,7 +9164,7 @@ trampCall(
                                          ) then
                                             if ( 
                                               begin
-                                                  def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                                                  def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                                                   @global_lisp_binding['___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111'] = self.method( :___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111_METHOD )
                                                 @___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111 = 
                                                 trampCall(
@@ -9305,7 +9305,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._map_MIMARKin_MIMARKorder_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._map_MIMARKin_MIMARKorder_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_map_MIMARKin_MIMARKorder'] = self.method( :_map_MIMARKin_MIMARKorder_METHOD )
     @_map_MIMARKin_MIMARKorder = 
     trampCall(
@@ -9477,7 +9477,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._map_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._map_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_map'] = self.method( :_map_METHOD )
     @_map = 
     trampCall(
@@ -9494,7 +9494,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._for_MIMARKeach_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._for_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_for_MIMARKeach'] = self.method( :_for_MIMARKeach_METHOD )
     @_for_MIMARKeach = 
     trampCall(
@@ -9511,7 +9511,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._filter_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._filter_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_filter'] = self.method( :_filter_METHOD )
     @_filter = 
     trampCall(
@@ -9528,7 +9528,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._filter_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._filter_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_filter_EXMARK'] = self.method( :_filter_EXMARK_METHOD )
     @_filter_EXMARK = 
     trampCall(
@@ -9918,7 +9918,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._partition_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._partition_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_partition'] = self.method( :_partition_METHOD )
     @_partition = 
     trampCall(
@@ -10159,7 +10159,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._partition_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._partition_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_partition_EXMARK'] = self.method( :_partition_EXMARK_METHOD )
     @_partition_EXMARK = 
     trampCall(
@@ -10912,7 +10912,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._remove_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._remove_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_remove'] = self.method( :_remove_METHOD )
     @_remove = 
     trampCall(
@@ -10960,7 +10960,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._remove_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._remove_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_remove_EXMARK'] = self.method( :_remove_EXMARK_METHOD )
     @_remove_EXMARK = 
     trampCall(
@@ -11008,7 +11008,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._delete_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete'] = self.method( :_delete_METHOD )
     @_delete = 
     trampCall(
@@ -11110,7 +11110,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._delete_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete_EXMARK'] = self.method( :_delete_EXMARK_METHOD )
     @_delete_EXMARK = 
     trampCall(
@@ -11212,7 +11212,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._member_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._member_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_member'] = self.method( :_member_METHOD )
     @_member = 
     trampCall(
@@ -11305,7 +11305,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_MIMARKduplicates_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._delete_MIMARKduplicates_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete_MIMARKduplicates'] = self.method( :_delete_MIMARKduplicates_METHOD )
     @_delete_MIMARKduplicates = 
     trampCall(
@@ -11522,7 +11522,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_MIMARKduplicates_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._delete_MIMARKduplicates_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete_MIMARKduplicates_EXMARK'] = self.method( :_delete_MIMARKduplicates_EXMARK_METHOD )
     @_delete_MIMARKduplicates_EXMARK = 
     trampCall(
@@ -11739,7 +11739,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._assoc_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._assoc_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_assoc'] = self.method( :_assoc_METHOD )
     @_assoc = 
     trampCall(
@@ -11841,7 +11841,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKcons_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._alist_MIMARKcons_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKcons'] = self.method( :_alist_MIMARKcons_METHOD )
     @_alist_MIMARKcons = 
     trampCall(
@@ -11884,7 +11884,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKcopy_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._alist_MIMARKcopy_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKcopy'] = self.method( :_alist_MIMARKcopy_METHOD )
     @_alist_MIMARKcopy = 
     trampCall(
@@ -11947,7 +11947,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKdelete_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._alist_MIMARKdelete_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKdelete'] = self.method( :_alist_MIMARKdelete_METHOD )
     @_alist_MIMARKdelete = 
     trampCall(
@@ -12058,7 +12058,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKdelete_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._alist_MIMARKdelete_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKdelete_EXMARK'] = self.method( :_alist_MIMARKdelete_EXMARK_METHOD )
     @_alist_MIMARKdelete_EXMARK = 
     trampCall(
@@ -12169,14 +12169,14 @@ trampCall(
 
 trampCall( 
   begin
-      def self._find_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._find_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_find'] = self.method( :_find_METHOD )
     @_find = 
     trampCall(
           Proc.new { |_pred,_list| 
               if ( 
                 begin
-                    def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+                    def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                     @global_lisp_binding['___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130'] = self.method( :___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130_METHOD )
                   @___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130 = 
                   trampCall(
@@ -12234,7 +12234,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._find_MIMARKtail_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._find_MIMARKtail_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_find_MIMARKtail'] = self.method( :_find_MIMARKtail_METHOD )
     @_find_MIMARKtail = 
     trampCall(
@@ -12363,7 +12363,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_MIMARKwhile_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._take_MIMARKwhile_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_MIMARKwhile'] = self.method( :_take_MIMARKwhile_METHOD )
     @_take_MIMARKwhile = 
     trampCall(
@@ -12483,7 +12483,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_MIMARKwhile_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._drop_MIMARKwhile_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop_MIMARKwhile'] = self.method( :_drop_MIMARKwhile_METHOD )
     @_drop_MIMARKwhile = 
     trampCall(
@@ -12584,7 +12584,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_MIMARKwhile_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._take_MIMARKwhile_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_MIMARKwhile_EXMARK'] = self.method( :_take_MIMARKwhile_EXMARK_METHOD )
     @_take_MIMARKwhile_EXMARK = 
     trampCall(
@@ -12807,7 +12807,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._span_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._span_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_span'] = self.method( :_span_METHOD )
     @_span = 
     trampCall(
@@ -12980,7 +12980,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._span_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._span_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_span_EXMARK'] = self.method( :_span_EXMARK_METHOD )
     @_span_EXMARK = 
     trampCall(
@@ -13243,7 +13243,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._break_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._break_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_break'] = self.method( :_break_METHOD )
     @_break = 
     trampCall(
@@ -13291,7 +13291,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._break_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._break_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_break_EXMARK'] = self.method( :_break_EXMARK_METHOD )
     @_break_EXMARK = 
     trampCall(
@@ -13339,7 +13339,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._any_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._any_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_any'] = self.method( :_any_METHOD )
     @_any = 
     trampCall(
@@ -13793,7 +13793,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._every_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._every_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_every'] = self.method( :_every_METHOD )
     @_every = 
     trampCall(
@@ -14247,7 +14247,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_MIMARKindex_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._list_MIMARKindex_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_MIMARKindex'] = self.method( :_list_MIMARKindex_METHOD )
     @_list_MIMARKindex = 
     trampCall(
@@ -14555,7 +14555,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._reverse_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._reverse_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_reverse_EXMARK'] = self.method( :_reverse_EXMARK_METHOD )
     @_reverse_EXMARK = 
     trampCall(
@@ -14660,7 +14660,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKlset2_LTMARK_EQMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self.__PAMARKlset2_LTMARK_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKlset2_LTMARK_EQMARK'] = self.method( :__PAMARKlset2_LTMARK_EQMARK_METHOD )
     @__PAMARKlset2_LTMARK_EQMARK = 
     trampCall(
@@ -14709,7 +14709,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_LTMARK_EQMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_LTMARK_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_LTMARK_EQMARK'] = self.method( :_lset_LTMARK_EQMARK_METHOD )
     @_lset_LTMARK_EQMARK = 
     trampCall(
@@ -15023,7 +15023,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_EQMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_EQMARK'] = self.method( :_lset_EQMARK_METHOD )
     @_lset_EQMARK = 
     trampCall(
@@ -15382,7 +15382,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKadjoin_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKadjoin_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKadjoin'] = self.method( :_lset_MIMARKadjoin_METHOD )
     @_lset_MIMARKadjoin = 
     trampCall(
@@ -15462,7 +15462,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKunion_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKunion_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKunion'] = self.method( :_lset_MIMARKunion_METHOD )
     @_lset_MIMARKunion = 
     trampCall(
@@ -15648,7 +15648,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKunion_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKunion_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKunion_EXMARK'] = self.method( :_lset_MIMARKunion_EXMARK_METHOD )
     @_lset_MIMARKunion_EXMARK = 
     trampCall(
@@ -15858,7 +15858,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKintersection_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKintersection_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKintersection'] = self.method( :_lset_MIMARKintersection_METHOD )
     @_lset_MIMARKintersection = 
     trampCall(
@@ -16009,7 +16009,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKintersection_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKintersection_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKintersection_EXMARK'] = self.method( :_lset_MIMARKintersection_EXMARK_METHOD )
     @_lset_MIMARKintersection_EXMARK = 
     trampCall(
@@ -16160,7 +16160,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdifference_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKdifference_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdifference'] = self.method( :_lset_MIMARKdifference_METHOD )
     @_lset_MIMARKdifference = 
     trampCall(
@@ -16314,7 +16314,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdifference_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKdifference_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdifference_EXMARK'] = self.method( :_lset_MIMARKdifference_EXMARK_METHOD )
     @_lset_MIMARKdifference_EXMARK = 
     trampCall(
@@ -16468,7 +16468,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKxor_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKxor_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKxor'] = self.method( :_lset_MIMARKxor_METHOD )
     @_lset_MIMARKxor = 
     trampCall(
@@ -16682,7 +16682,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKxor_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKxor_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKxor_EXMARK'] = self.method( :_lset_MIMARKxor_EXMARK_METHOD )
     @_lset_MIMARKxor_EXMARK = 
     trampCall(
@@ -16911,7 +16911,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdiff_PLMARKintersection_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKdiff_PLMARKintersection_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdiff_PLMARKintersection'] = self.method( :_lset_MIMARKdiff_PLMARKintersection_METHOD )
     @_lset_MIMARKdiff_PLMARKintersection = 
     trampCall(
@@ -17070,7 +17070,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdiff_PLMARKintersection_EXMARK_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._lset_MIMARKdiff_PLMARKintersection_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdiff_PLMARKintersection_EXMARK'] = self.method( :_lset_MIMARKdiff_PLMARKintersection_EXMARK_METHOD )
     @_lset_MIMARKdiff_PLMARKintersection_EXMARK = 
     trampCall(

@@ -57,10 +57,10 @@
        '(define 'dummy-function (lambda '(arg1) (let (('var (+ arg1 1))) var)))
        (disasm 'dummy-function 'expanded))
 (test* "disasm ruby-code"
-"
+       "
 trampCall( 
   begin
-      def self._dummy_MIMARKfunction_METHOD( origname, pred, args ) callProcedure( origname, pred, args ) end
+      def self._dummy_MIMARKfunction_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_dummy_MIMARKfunction'] = self.method( :_dummy_MIMARKfunction_METHOD )
     @_dummy_MIMARKfunction = 
     trampCall(
