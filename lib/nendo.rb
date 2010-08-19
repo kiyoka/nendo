@@ -1088,7 +1088,7 @@ module Nendo
       end
     end
     def _require( arg )
-      Kernel::require( arg )
+      require( arg )
       false
     end
     def _read( *args )
