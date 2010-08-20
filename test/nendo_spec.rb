@@ -1186,6 +1186,8 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (apply + (range 11)) " ).should == "55"
     @nendo.replStr( " (apply + (map (lambda (x) (+ x 1)) (range 10))) " ).should == "55"
     @nendo.replStr( " (apply + (append (range 11) '(100))) " ).should == "155"
+    @nendo.replStr( " (map (lambda (x) 1)  '()) " ).should           == "()"
+    @nendo.replStr( " (map (lambda (x) 1) (to-list '#())) " ).should == "()"
     @nendo.replStr( " (map (lambda (x) (* x 2)) '(1 2 3)) " ).should == "(2 4 6)"
     @nendo.replStr( " (map (lambda (x) (+ x 1)) '(1 2 3)) " ).should == "(2 3 4)"
     @nendo.replStr( " (map (lambda (a b)   (+ a b))   '(1 2 3) '(10 20 30)) " ).should == "(11 22 33)"
@@ -1200,11 +1202,13 @@ describe Nendo, "when call functions in init.nnd " do
                     "  (first  _result)"+
                     "  (second _result)"+
                     "  (last-pair _result))" ).should == "(2 4 (20000))"
+    @nendo.replStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons 1 _lst)))            '())  _lst" ).should == "()"
     @nendo.replStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons (* x 2) _lst))) '(1 2 3))  _lst" ).should == "(6 4 2)"
     @nendo.replStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons (+ x 1) _lst))) '(1 2 3))  _lst" ).should == "(4 3 2)"
     @nendo.replStr( " (define _lst '())  (for-each (lambda (a b) (set! _lst (cons (cons a b) _lst))) '(1 2 3) '(10 20 30))  _lst" ).should ==
       "((3 . 30) (2 . 20) (1 . 10))"
     @nendo.replStr( " (define _cnt 0) (for-each   (lambda (x) (set! _cnt (+ _cnt 1))) (range 10000)) _cnt" ).should == "10000"
+    @nendo.replStr( " (filter     (lambda (x) x)             '()) " ).should      == "()"
     @nendo.replStr( " (filter     (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
     @nendo.replStr( " (filter     (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(2)"
     @nendo.replStr( " (filter     (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(1 3)"
@@ -1213,6 +1217,7 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.replStr( " (find       (lambda (x) (= x 2))       '(1 2 3)) " ).should == "2"
     @nendo.replStr( " (find       (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "1"
     @nendo.replStr( " (find       (lambda (x) (if (= x 2) (* x 100) false))   '(1 2 3)) " ).should == "2"
+    @nendo.replStr( " (filter-map (lambda (x) x)             '()) " ).should      == "()"
     @nendo.replStr( " (filter-map (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
     @nendo.replStr( " (filter-map (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(#t)"
     @nendo.replStr( " (filter-map (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(#t #t)"

@@ -2251,7 +2251,7 @@ end
 class Array
   def to_list( lastAtom = false, value = Nendo::Nil.new )
     if 0 == self.length
-      Nendo::Nil.new
+      Nendo::Cell.new()
     else
       cells = self.map { |x|
         Nendo::Cell.new( x )
