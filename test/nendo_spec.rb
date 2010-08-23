@@ -682,7 +682,10 @@ describe Nendo, "when use regexp litteral and library functions " do
     @nendo.replStr( ' (rxmatch-substring  matchdata 1) ' ).should                                       == '"あ"'
     @nendo.replStr( ' (rxmatch-substring  matchdata 2) ' ).should                                       == '"い"'
     @nendo.replStr( ' (rxmatch-substring  matchdata 3) ' ).should                                       == '"う"'
-
+    @nendo.replStr( ' (rxmatch            #/abc/i "xxx")' ).should                                         == '#f'
+    @nendo.replStr( ' (rxmatch            #/XXX/  "xxx")' ).should                                         == '#f'
+    @nendo.replStr( ' (rxmatch->string    #/abc/i "xxx")' ).should                                         == '#f'
+    @nendo.replStr( ' (rxmatch->string    #/XXX/  "xxx")' ).should                                         == '#f'
   end
 end
 

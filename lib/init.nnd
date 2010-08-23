@@ -1039,7 +1039,8 @@
 
 ;; return:  Ruby's MatchData instance
 (define (rxmatch regexp str)
-  (regexp.match str))
+  (let1 m (regexp.match str)
+    (if m m #f)))
 
 (define (rxmatch-start match . index)
   (let1 index (get-optional index 0)
@@ -1058,7 +1059,10 @@
 
 (define (rxmatch->string regexp str . index)
   (let1 index (get-optional index 0)
-    (rxmatch-substring (rxmatch regexp str) index)))
+    (let1 m (rxmatch regexp str)
+      (if m
+          (rxmatch-substring m index)
+          #f))))
 
 
 ;; ----------------------------------------
