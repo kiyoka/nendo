@@ -2213,7 +2213,7 @@ module Nendo
       end
     end
   
-    def replStr( str )
+    def evalStr( str )
       printer   = Printer.new( @debug_printer )
       sio       = StringIO.open( str )
       reader    = Reader.new( sio, "(string)", false )

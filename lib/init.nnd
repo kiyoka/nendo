@@ -1143,7 +1143,7 @@
                         "core.loadInitFile()"
                         "core.setArgv( ARGV )"
                         "core.load_compiled_code_from_string( " ,(write-to-string str) " ) "
-                        "core.replStr( \"(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f) \" )"
+                        "core.evalStr( \"(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f) \" )"
                         "")
                       "\n")))
             (else
