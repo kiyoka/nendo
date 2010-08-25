@@ -146,7 +146,7 @@ end
 
 describe Evaluator, "When use Evaluator's util methods" do
   before do
-    @evaluator = Evaluator.new()
+    @evaluator = Evaluator.new(Nendo::Core.new())
   end
   it "should" do
     @evaluator.toRubySymbol( "a" ).should == "_a"
@@ -1795,5 +1795,35 @@ describe Nendo, "nendo.test library " do
     @nendo.evalStr( " (define data #f)   data" ).should ==                                                "#f"
     @nendo.evalStr( " (with-open *test-record-file* (lambda (in) (set! data (in.readline.chomp))))  data " ).should == 
       '"Total:    10 tests,     5 passed,     5 failed,     0 aborted."'
+  end
+end
+
+
+describe Nendo, "when use export-to-ruby macro " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " (define (nendo_function0  ) 0)  #t" ).should == "#t"
+    @nendo.evalStr( " (define (nendo_function1 x) (+ x 1))  #t" ).should == "#t"
+    @nendo.evalStr( " (define (nendo_function2 x y) (* x y))  #t" ).should == "#t"
+    @nendo.evalStr( " (define (nendo_function7 a b c d e f g) (to-arr (list a b c d e f g)))  #t" ).should == "#t"
+    @nendo.evalStr( " (export-to-ruby nendo_function0) " ).should == "#t"
+    @nendo.evalStr( " (export-to-ruby nendo_function1) " ).should == "#t"
+    @nendo.evalStr( " (export-to-ruby nendo_function2) " ).should == "#t"
+    @nendo.evalStr( " (export-to-ruby nendo_function7) " ).should == "#t"
+    @nendo.evalStr( " (macroexpand '(export-to-ruby nendo_function1)) " ).should == '(%export-to-ruby "nendo_function1" nendo_function1)'
+    @nendo.evalStr( " (macroexpand '(export-to-ruby nendo_function7)) " ).should == '(%export-to-ruby "nendo_function7" nendo_function7)'
+    @nendo.evalStr( " (define (a-func0) 0)  #t" ).should == "#t"
+    lambda { @nendo.evalStr( " (export-to-ruby a-func0) " ) }.should         raise_error(ArgumentError)
+    @nendo.evalStr( " (define (clone) 0)  #t" ).should == "#t"
+    lambda { @nendo.evalStr( " (export-to-ruby clone) " ) }.should           raise_error(RuntimeError)
+    @nendo.evalStr( " (define variable_a 0)  #t" ).should == "#t"
+    lambda { @nendo.evalStr( " (export-to-ruby variable_a) " ) }.should      raise_error(ArgumentError)
+    @nendo.nendo_function0.should == 0
+    @nendo.nendo_function1( 10 ).should == 11
+    @nendo.nendo_function2( 8, 9 ).should == 72
+    @nendo.nendo_function7( 7,6,5,4,3,2,1 ).should === [ 7,6,5,4,3,2,1 ]
   end
 end

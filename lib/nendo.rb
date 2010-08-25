@@ -1219,7 +1219,8 @@ module Nendo
     EXEC_TYPE_ANONYMOUS = 2
     EXEC_TYPE_TAILCALL  = 3
 
-    def initialize( debug = false )
+    def initialize( core, debug = false )
+      @core    = core
       @indent  = "  "
       @binding = binding
       @debug   = debug
@@ -2062,6 +2063,33 @@ module Nendo
         raise NameError, sprintf( "Error: not found variable [%s]. \n", varname.to_s )
       end
     end
+    
+    def __PAMARKexport_MIMARKto_MIMARKruby( origname, pred )
+      if toRubySymbol( origname ) != ("_" + origname)
+        raise ArgumentError, "Error: %export-to-ruby requires function name in ruby method naming rule."
+      end
+      if not _procedure_QUMARK( pred )
+        raise ArgumentError, "Error: %export-to-ruby requires 'pred' as a Proc instance."
+      end
+      if 0 > pred.arity
+        raise ArgumentError, "Error: %export-to-ruby requires only a function that have fixed length argument."
+      end
+      if self.methods.include?( origname.intern ) or @core.methods.include?( origname.intern )
+        raise RuntimeError, "Error: %export-to-ruby: Nendo::Core." + origname + " method was already deifned."
+      end
+
+      argsStr = (1..(pred.arity)).map { |n| "arg" + n.to_s }.join( "," )
+      str = [ "def self." + origname + "(" + argsStr + ")",
+              sprintf( "  trampCall( callProcedure( '%s', @_%s, [ " + argsStr + " ].to_list )) ",
+                       origname, origname ),
+              "end ;",
+              "def @core." + origname + "(" + argsStr + ")",
+              "  @evaluator." + origname + "(" + argsStr + ") ",
+              "end"
+            ].join
+      eval( str, @binding )
+      true
+    end
   end
   
   class Printer
@@ -2142,7 +2170,7 @@ module Nendo
   class Core
     def initialize( debug_evaluator = false, debug_printer = false )
       @debug_evaluator = debug_evaluator
-      @evaluator       = Evaluator.new( debug_evaluator )
+      @evaluator       = Evaluator.new( self, debug_evaluator )
       @debug_printer   = debug_printer
     end
     

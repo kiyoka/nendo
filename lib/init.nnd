@@ -849,10 +849,10 @@
 ;; ----------------------------------------
 ;; Ruby interop librarys
 ;; ----------------------------------------
-;; I will implement in the future...
-(define export
-  (macro (name)
-    `(define ,name nil)))
+;; export Nendo's function to the Ruby world
+(define export-to-ruby
+  (macro (funcname)
+    `(%export-to-ruby ,funcname.to_s ,funcname)))
 
 (define (load-library name)
   (let* ((home (get-nendo-home))
@@ -874,6 +874,11 @@
              (pathname (str.gsub "." "/")))
           `(load-library ,pathname))
         (errorf "Error: use macro requires a symbol argument."))))
+
+;; exporting a symbol in the module. (I will implement in the future...)
+(define export
+  (macro (name)
+    `(define ,name nil)))
 
 
 ;; ----------------------------------------

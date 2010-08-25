@@ -4,24 +4,14 @@
 (disable-idebug)
 (define debug-print-length 2000)
 
+(define (foo x) x)
+(export-to-ruby foo)
+
+(define (clone x) x)
+(export-to-ruby clone)
+
+(define a 10)
+(export-to-ruby a)
+
 (exit)
-
-
-(define (looptest args)
-  (define (loop count)
-    (when (eq? 0 (% count 1000))
-      (printf "count = %6d\n" count))
-    (when (< count 10000)
-      (loop count)))
-  
-  (print "abc"))
-
-(pretty-print
- (disasm "looptest" 'expanded))
-
-         
-
-    
-
-
 
