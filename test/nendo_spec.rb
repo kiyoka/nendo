@@ -1371,6 +1371,14 @@ describe Nendo, "when use macros made by quasiquote. " do
                     "      (values 10 20)" +
                     "      (values 100 200))" +
                     " (cons a b))" ).should == "(1 . 2)"
+    @nendo.evalStr( " (macroexpand '(when #t (print \"1\") (print \"2\"))) " ).should == '(if #t (begin (print "1") (print "2")))'
+    @nendo.evalStr( " (macroexpand '(unless #t (print \"1\") (print \"2\"))) " ).should == '(if (not #t) (begin (print "1") (print "2")))'
+    @nendo.evalStr( " (macroexpand '(if-let1 a #t  (print \"T\")  (print \"F\"))) " ).should == '(let ((a #t)) (if a (print "T") (print "F")))'
+    @nendo.evalStr( " (let1 count 0 (when   #t (set! count (+ count 1)) (set! count (+ count 1)))  count) " ).should == "2"
+    @nendo.evalStr( " (let1 count 0 (when   #f (set! count (+ count 1)) (set! count (+ count 1)))  count) " ).should == "0"
+    @nendo.evalStr( " (let1 count 0 (unless #t (set! count (+ count 1)) (set! count (+ count 1)))  count) " ).should == "0"
+    @nendo.evalStr( " (let1 count 0 (unless #f (set! count (+ count 1)) (set! count (+ count 1)))  count) " ).should == "2"
+    @nendo.evalStr( " (if-let1 m (rxmatch #/([0-9]+)/ \"abc100abc\") (rxmatch-substring m 1)) " ).should == '"100"'
   end
 end
 

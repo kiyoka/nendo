@@ -362,6 +362,12 @@
         ;; don't touch
         `(let ,@lst))))
 
+(define if-let1
+  (macro (var _expr _then . _else)
+    `(let1 ,var ,_expr
+       (if ,var ,_then ,@_else))))
+
+
 ;; ----------------------------------------
 ;; errorf
 ;; ----------------------------------------
