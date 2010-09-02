@@ -645,7 +645,12 @@ module Nendo
         when T_LINEFEED
           token # skipEnter
         when T_EOF
-          raise RuntimeError, "Error: unbalanced vector's paren(4)"
+          begin
+            raise RuntimeError, "Error: unbalanced vector's paren(4)"
+          rescue => e
+            e.set_backtrace( [sprintf( "%s:%d", curtoken.sourcefile, curtoken.lineno )] + e.backtrace )
+            raise e
+          end
         when T_LPAREN, T_LVECTOR
           arr << sexp()
         when T_RPAREN
@@ -674,7 +679,12 @@ module Nendo
         when T_LINEFEED
           token # skipEnter
         when T_EOF
-          raise RuntimeError, "Error: unbalanced paren(1)"
+          begin
+            raise RuntimeError, "Error: unbalanced paren(1)"
+          rescue => e
+            e.set_backtrace( [sprintf( "%s:%d", curtoken.sourcefile, curtoken.lineno )] + e.backtrace )
+            raise e
+          end
         when T_LPAREN, T_LVECTOR
           cells << Cell.new( sexp() )
         when T_RPAREN
@@ -732,7 +742,12 @@ module Nendo
         token
         sexp()
       when T_EOF
-        raise RuntimeError, "Error: unbalanced paren(2)"
+        begin
+          raise RuntimeError, "Error: unbalanced paren(2)"
+        rescue => e
+          e.set_backtrace( [sprintf( "%s:%d", curtoken.sourcefile, curtoken.lineno )] + e.backtrace )
+          raise e
+        end
       when T_LPAREN
         skipEnter
         token # consume '('
@@ -742,7 +757,12 @@ module Nendo
         ret
       when T_RPAREN
         token # consume ')'
-        raise RuntimeError, "Error: unbalanced paren(3)"
+        begin
+          raise RuntimeError, "Error: unbalanced vector's paren(3)"
+        rescue => e
+          e.set_backtrace( [sprintf( "%s:%d", curtoken.sourcefile, curtoken.lineno )] + e.backtrace )
+          raise e
+        end
       when T_LVECTOR
         skipEnter
         token # consume '#('
