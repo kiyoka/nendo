@@ -535,71 +535,46 @@
                         '()
                         (apply %map (cons proc cdrs)))))))))))
 
+(define (%internal-define-to-letrec _sym _src)
+  (if (not (list? (cadr _src)))
+      `(,_sym ,@_src)
+      (let ((body (cdr _src))
+            (defs '())
+            (rest '()))
+        (if (not (list? (car body)))
+            `(,_sym ,@_src)
+            (begin
+              (%map
+               (lambda (x)
+                 (if (and (pair? x)
+                          (eq? 'define (car x)))
+                     (set! defs (cons (%expand-define-form (cdr x)) defs))
+                     (set! rest (cons x rest))))
+               body)
+              (let ((defs (reverse defs))
+                    (rest (reverse rest)))
+                (if (< 0 (length defs))
+                    `(,_sym
+                      ,(car _src)
+                      (letrec
+                          ,(%map
+                            (lambda (x)
+                              (list
+                               (cadr x)
+                               (caddr x)))
+                            defs)
+                        ,@rest))
+                    ;; found no `internal-define' syntax
+                    `(,_sym ,@_src))))))))
+
+
 (define lambda
   (macro src
-    (if (not (list? (cadr src)))
-        `(lambda ,@src)
-        (let ((body (cdr src))
-              (defs '())
-              (rest '()))
-          (if (not (list? (car body)))
-              `(lambda ,@src)
-              (begin
-                (%map
-                 (lambda (x)
-                   (if (and (pair? x)
-                            (eq? 'define (car x)))
-                       (set! defs (cons (%expand-define-form (cdr x)) defs))
-                       (set! rest (cons x rest))))
-                 body)
-                (let ((defs (reverse defs))
-                      (rest (reverse rest)))
-                  (if (< 0 (length defs))
-                      `(lambda
-                           ,(car src)
-                         (letrec
-                             ,(%map
-                               (lambda (x)
-                                 (list
-                                  (cadr x)
-                                  (caddr x)))
-                               defs)
-                           ,@rest))
-                      ;; found no `internal-define' syntax
-                      `(lambda ,@src)))))))))
+    (%internal-define-to-letrec 'lambda src)))
 
 (define macro
   (macro src
-    (if (not (list? (cadr src)))
-        `(macro ,@src)
-        (let ((body (cdr src))
-              (defs '())
-              (rest '()))
-          (if (not (list? (car body)))
-              `(macro ,@src)
-              (begin
-                (%map
-                 (lambda (x)
-                   (if (and (pair? x)
-                            (eq? 'define (car x)))
-                       (set! defs (cons (%expand-define-form (cdr x)) defs))
-                       (set! rest (cons x rest))))
-                 body)
-                (let ((defs (reverse defs))
-                      (rest (reverse rest)))
-                  (if (< 0 (length defs))
-                      `(macro
-                           ,(car src)
-                         (letrec
-                             ,(%map
-                               (lambda (x)
-                                 (list
-                                  (cadr x)
-                                  (caddr x)))
-                               defs)
-                           ,@rest))
-                      ;; found no `internal-define' syntax
-                      `(macro ,@src)))))))))
+    (%internal-define-to-letrec 'macro src)))
 
 (define (%for-each proc . lists)
   (define (%for-each-arg1 proc lst)
