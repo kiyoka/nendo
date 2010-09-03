@@ -38,7 +38,7 @@
 ;; define
 ;; ----------------------------------------
 (define %expand-define-form
-  (lambda (arg body)
+  (lambda (arg body-list)
     ;; (define (func arg...) body)
     (if (pair? (cdr arg))
         (if (pair? (car (cdr arg)))
@@ -48,7 +48,7 @@
                 (list
                  (cons 'lambda
                        (cons  (cdr arg)
-                              body)))))))
+                              body-list)))))))
 
 (define define
   (macro (arg . body)
