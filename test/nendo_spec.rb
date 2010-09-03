@@ -1397,6 +1397,20 @@ describe Nendo, "when use define and lambda macro " do
   end
 end
 
+describe Nendo, "when use macro macro " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " (define inc!-macro (macro (x) (+ x 1))) #t" ).should == "#t"
+    @nendo.evalStr( " (inc!-macro 10) " ).should == "11"
+    @nendo.evalStr( " (define dec!-macro (macro (x) (define (dec! v) (- v 1)) (dec! x)))  #t" ).should == "#t"
+    @nendo.evalStr( " (dec!-macro 10) " ).should == "9"
+    @nendo.evalStr( " (. (dec!-macro 10) class) " ).should == 'Fixnum'
+  end
+end
+
 describe Nendo, "when use macros expands some syntax. " do
   before do
     @nendo = Nendo::Core.new()

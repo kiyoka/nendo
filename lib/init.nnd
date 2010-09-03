@@ -535,6 +535,71 @@
                         '()
                         (apply %map (cons proc cdrs)))))))))))
 
+(define lambda
+  (macro src
+    (if (not (list? (cadr src)))
+        `(lambda ,@src)
+        (let ((body (cdr src))
+              (defs '())
+              (rest '()))
+          (if (not (list? (car body)))
+              `(lambda ,@src)
+              (begin
+                (%map
+                 (lambda (x)
+                   (if (and (pair? x)
+                            (eq? 'define (car x)))
+                       (set! defs (cons (%expand-define-form (cdr x)) defs))
+                       (set! rest (cons x rest))))
+                 body)
+                (let ((defs (reverse defs))
+                      (rest (reverse rest)))
+                  (if (< 0 (length defs))
+                      `(lambda
+                           ,(car src)
+                         (letrec
+                             ,(%map
+                               (lambda (x)
+                                 (list
+                                  (cadr x)
+                                  (caddr x)))
+                               defs)
+                           ,@rest))
+                      ;; found no `internal-define' syntax
+                      `(lambda ,@src)))))))))
+
+(define macro
+  (macro src
+    (if (not (list? (cadr src)))
+        `(macro ,@src)
+        (let ((body (cdr src))
+              (defs '())
+              (rest '()))
+          (if (not (list? (car body)))
+              `(macro ,@src)
+              (begin
+                (%map
+                 (macro (x)
+                   (if (and (pair? x)
+                            (eq? 'define (car x)))
+                       (set! defs (cons (%expand-define-form (cdr x)) defs))
+                       (set! rest (cons x rest))))
+                 body)
+                (let ((defs (reverse defs))
+                      (rest (reverse rest)))
+                  (if (< 0 (length defs))
+                      `(macro
+                           ,(car src)
+                         (letrec
+                             ,(%map
+                               (macro (x)
+                                 (list
+                                  (cadr x)
+                                  (caddr x)))
+                               defs)
+                           ,@rest))
+                      ;; found no `internal-define' syntax
+                      `(macro ,@src)))))))))
 
 (define (%for-each proc . lists)
   (define (%for-each-arg1 proc lst)
@@ -559,34 +624,31 @@
                 '()
                 (apply %for-each (cons proc cdrs)))))))))
 
-
 (define (%filter pred lst)
-  (letrec ((result '())
-           (%filter-arg1
-            (lambda (proc lst)
-              (if (null? lst)
-                  '()
-                  (let1 v (proc (car lst))
-                    (when v
-                      (set! result (cons (car lst) result)))
-                    (%filter-arg1 proc (cdr lst)))))))
-    
-    (%filter-arg1 pred lst) ;; tail call optimization version
-    (reverse result)))
+  (define result '())
+  (define (%filter-arg1 proc lst)
+    (if (null? lst)
+        '()
+        (let1 v (proc (car lst))
+          (when v
+            (set! result (cons (car lst) result)))
+          (%filter-arg1 proc (cdr lst)))))
+
+  (%filter-arg1 pred lst) ;; tail call optimization version
+  (reverse result))
 
 (define (%filter-map pred lst)
-  (letrec ((result '())
-           (%filter-map-arg1
-            (lambda (proc lst)
-              (if (null? lst)
-                  '()
-                  (let1 v (proc (car lst))
-                    (when v
-                      (set! result (cons v result)))
-                    (%filter-map-arg1 proc (cdr lst)))))))
-    
-    (%filter-map-arg1 pred lst) ;; tail call optimization version
-    (reverse result)))
+  (define result '())
+  (define (%filter-map-arg1 proc lst)
+    (if (null? lst)
+        '()
+        (let1 v (proc (car lst))
+          (when v
+            (set! result (cons v result)))
+          (%filter-map-arg1 proc (cdr lst)))))
+
+  (%filter-map-arg1 pred lst) ;; tail call optimization version
+  (reverse result))
 
 
 (define (find pred lst)
@@ -601,38 +663,6 @@
 (define filter-map  %filter-map)
 
 
-(define lambda
-  (macro src
-    (if (not (list? (cadr src)))
-        `(lambda ,@src)
-        (let ((body (cdr src))
-              (defs '())
-              (rest '()))
-          (if (not (list? (car body)))
-              `(lambda ,@src)
-              (begin
-                (for-each
-                 (lambda (x)
-                   (if (and (pair? x)
-                            (eq? 'define (car x)))
-                       (set! defs (cons (%expand-define-form (cdr x)) defs))
-                       (set! rest (cons x rest))))
-                 body)
-                (let ((defs (reverse defs))
-                      (rest (reverse rest)))
-                  (if (< 0 (length defs))
-                      `(lambda
-                           ,(car src)
-                         (letrec
-                             ,(map
-                               (lambda (x)
-                                 (list
-                                  (cadr x)
-                                  (caddr x)))
-                               defs)
-                           ,@rest))
-                      ;; found no `internal-define' syntax
-                      `(lambda ,@src)))))))))
 
 
 ;; ----------------------------------------
@@ -640,54 +670,50 @@
 ;; ----------------------------------------
 (define case
   (macro (cond-exp . body)
-    (letrec ((case-block
-              (lambda (val . elem)
-                (let1 block (car elem)
-                  (let ((cond-vals (car block))
-                        (body      (cdr block)))
-                    (let1 v
-                        (if (eq? 'else cond-vals)
-                            cond-vals
-                            (cons 'or
-                                  (map
-                                   (lambda (x)
-                                     `(eqv? ,x ,val))
-                                   cond-vals)))
-                      `((,v
-                         ,@body)))))))
-    
-             (case-iter
-              (lambda (val lst)
-                (cond
-                 ((eq? 0 (length lst))
-                  '())
-                 ((eq? 1 (length lst))
-                  (case-block val (car lst)))
+    (define (case-block val . elem)
+      (let1 block (car elem)
+        (let ((cond-vals (car block))
+              (body      (cdr block)))
+          (let1 v
+              (if (eq? 'else cond-vals)
+                  cond-vals
+                  (cons 'or
+                        (map
+                         (lambda (x)
+                           `(eqv? ,x ,val))
+                         cond-vals)))
+            `((,v
+               ,@body))))))
+  
+    (define (case-iter val lst)
+      (cond
+       ((eq? 0 (length lst))
+        '())
+       ((eq? 1 (length lst))
+        (case-block val (car lst)))
                  (else
                   (append (case-block val (car lst))
-                          (case-iter  val (cdr lst))))))))
+                          (case-iter  val (cdr lst))))))
 
-      (let1 sym (gensym)
-        `(let1 ,sym ,cond-exp
-           (cond
-            ,@(case-iter sym body)))))))
+    (let1 sym (gensym)
+      `(let1 ,sym ,cond-exp
+         (cond
+          ,@(case-iter sym body))))))
 
 
 (define let*
   (macro (exps . body)
-    (letrec ((let*-expand
-              (lambda (rest body)
-                (case (length rest)
-                  ((0)
-                   '())
-                  ((1)
-                   `(let (,(car rest))
-                      ,@body))
-                  (else
-                   `(let (,(car rest))
-                      ,(let*-expand (cdr rest) body)))))))
-
-      (let*-expand exps body))))
+    (define (let*-expand rest body)
+      (case (length rest)
+        ((0)
+         '())
+        ((1)
+         `(let (,(car rest))
+            ,@body))
+        (else
+         `(let (,(car rest))
+            ,(let*-expand (cdr rest) body)))))
+    (let*-expand exps body)))
 
 
 (define begin0
@@ -758,22 +784,21 @@
 ;; ----------------------------------------
 (define dot-operator
   (macro lst
-    (letrec ((generate-method-call-form
-              (lambda (lst)
-                (let1 tmp (gensym)
-                  (if (symbol? (first lst))
-                      `(,(string->symbol (+ (to-s (first lst)) "." (to-s (second lst))))
-                        ,@(cddr lst))
-                      `(let ((,tmp ,(first lst)))
-                         (,(string->symbol (+ (to-s tmp) "." (to-s (second lst))))
-                          ,@(cddr lst))))))))
-      (cond
-       ((> 2 (length lst))
-        (raise ArgumentError ". dot-operator requires 2+ arguments." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))
-       (else
-        (if (symbol? (second lst))
-            (generate-method-call-form lst)
-            (raise TypeError ". dot-operator requires method name as symbol." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*)))))))))
+    (define (generate-method-call-form lst)
+      (let1 tmp (gensym)
+        (if (symbol? (first lst))
+            `(,(string->symbol (+ (to-s (first lst)) "." (to-s (second lst))))
+              ,@(cddr lst))
+            `(let ((,tmp ,(first lst)))
+               (,(string->symbol (+ (to-s tmp) "." (to-s (second lst))))
+                ,@(cddr lst))))))
+    (cond
+     ((> 2 (length lst))
+      (raise ArgumentError ". dot-operator requires 2+ arguments." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))
+     (else
+      (if (symbol? (second lst))
+          (generate-method-call-form lst)
+          (raise TypeError ". dot-operator requires method name as symbol." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))))))
 
 
 (define (with-open filename pred . lst)
