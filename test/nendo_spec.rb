@@ -1389,7 +1389,8 @@ describe Nendo, "when use define and lambda macro " do
   end
   it "should" do
     @nendo.evalStr( " (macroexpand '(define (main argv) (newline) 0)) " ).should == "(define main (lambda (argv) (newline) 0))"
-    @nendo.evalStr( " (macroexpand '(define (main argv) (define (foo x) x) (+ 10 20) 0 (foo 111))) " ).should == "(define main (lambda (argv) (letrec ((foo (lambda (x) x))) (+ 10 20) (foo 111))))"
+    @nendo.evalStr( " (macroexpand '(define (main argv) (define (foo x) x) (+ 10 20) 0 (foo 111))) " ).should == "(define main (lambda (argv) (letrec ((foo (lambda (x) x))) (+ 10 20) 0 (foo 111))))"
+    @nendo.evalStr( " (macroexpand '(define (main argv) (define result '()) (define (foo x) x) (define val 0) (define (bar x) (+ val 10)) )) " ).should == "(define main (lambda (argv) (letrec ((result '()) (foo (lambda (x) x)) (val 0) (bar (lambda (x) (+ val 10)))))))"
     @nendo.evalStr( " (define (main argv) (define (foo x) x) (+ 10 20) 0 (foo 111)) (main) " ).should == "111"
     @nendo.evalStr( " (define (main argv) (define (foo1 x) (+ 1 x)) (define (foo2 x) (+ 2 x)) (* (foo1 20) (foo2 30)))   (main '()) " ).should == "672"
     @nendo.evalStr( " (macroexpand '(define (main argv) 0)) " ).should == "(define main (lambda (argv) 0))"

@@ -37,7 +37,7 @@
 ;; ----------------------------------------
 ;; define
 ;; ----------------------------------------
-(define %expand-define-form
+(define %expand-define-form-lambda
   (lambda (arg body-list)
     ;; (define (func arg...) body)
     (if (pair? (cdr arg))
@@ -57,7 +57,19 @@
         (cons 'define
               (cons arg
                     body))
-        (%expand-define-form arg body))))
+        (%expand-define-form-lambda arg body))))
+
+(define %expand-define-form
+  (lambda (arg-and-body)
+    (let ((arg  (car arg-and-body))
+          (body (cdr arg-and-body)))
+      ;; (define (func arg...) body)
+      (if (not (pair? arg))
+          ;; (define var body)
+          (cons 'define
+                (cons arg
+                      body))
+          (%expand-define-form-lambda arg body)))))
 
 ;; debug-print macro is predefined as NOP.
 ;; for self debugging of init.nnd.
@@ -593,38 +605,34 @@
   (macro src
     (if (not (list? (cadr src)))
         `(lambda ,@src)
-        (let1 body (cdr src)
+        (let ((body (cdr src))
+              (defs '())
+              (rest '()))
           (if (not (list? (car body)))
               `(lambda ,@src)
-              (let ((defs
-                      (filter
-                       (lambda (x)
-                         (if (pair? x)
-                             (and (eq? 'define (car x))
-                                  (symbol? (cadr x)))
-                             #f))
-                       body))
-                    (rest
-                     (filter
-                      (lambda (x)
-                        (if (pair? x)
-                            (not (and (eq? 'define (car x))
-                                      (symbol? (cadr x))))
-                            #f))
-                      body)))
-                (if (< 0 (length defs))
-                    `(lambda
-                         ,(car src)
-                       (letrec
-                           ,(map
-                             (lambda (x)
-                               (list
-                                (cadr x)
-                                (caddr x)))
-                             defs)
-                         ,@rest))
-                    ;; found no `internal-define' syntax
-                    `(lambda ,@src))))))))
+              (begin
+                (for-each
+                 (lambda (x)
+                   (if (and (pair? x)
+                            (eq? 'define (car x)))
+                       (set! defs (cons (%expand-define-form (cdr x)) defs))
+                       (set! rest (cons x rest))))
+                 body)
+                (let ((defs (reverse defs))
+                      (rest (reverse rest)))
+                  (if (< 0 (length defs))
+                      `(lambda
+                           ,(car src)
+                         (letrec
+                             ,(map
+                               (lambda (x)
+                                 (list
+                                  (cadr x)
+                                  (caddr x)))
+                               defs)
+                           ,@rest))
+                      ;; found no `internal-define' syntax
+                      `(lambda ,@src)))))))))
 
 
 ;; ----------------------------------------
