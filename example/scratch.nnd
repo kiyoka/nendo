@@ -4,14 +4,12 @@
 (disable-idebug)
 (define debug-print-length 2000)
 
-(define (foo x) x)
-(export-to-ruby foo)
-
-(define (clone x) x)
-(export-to-ruby clone)
-
-(define a 10)
-(export-to-ruby a)
-
+(%internal-define-to-letrec
+ '(macro (x)
+    (define (foo v) (+ v 1))
+    (define result 10)
+    (define (bar v) (+ v 2))
+    '(1 2 3)))
+  
 (exit)
 
