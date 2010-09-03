@@ -579,7 +579,7 @@
               `(macro ,@src)
               (begin
                 (%map
-                 (macro (x)
+                 (lambda (x)
                    (if (and (pair? x)
                             (eq? 'define (car x)))
                        (set! defs (cons (%expand-define-form (cdr x)) defs))
@@ -592,7 +592,7 @@
                            ,(car src)
                          (letrec
                              ,(%map
-                               (macro (x)
+                               (lambda (x)
                                  (list
                                   (cadr x)
                                   (caddr x)))

@@ -9041,7 +9041,7 @@ trampCall(
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:594"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
-                                      LispMacro.new { |_x| 
+                                      Proc.new { |_x| 
                                           if ( 
                                             if ( 
                                               trampCall( self._not_METHOD(  'not',
@@ -9266,7 +9266,7 @@ trampCall(
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:594"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                             Cell.new(
-                                                                              LispMacro.new { |_x| 
+                                                                              Proc.new { |_x| 
                                                                                   trampCall( self._list_METHOD(  'list',
                                                                                       begin
                                                                                         if @global_lisp_binding.has_key?('_list') then
