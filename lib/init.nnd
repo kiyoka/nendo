@@ -37,25 +37,27 @@
 ;; ----------------------------------------
 ;; define
 ;; ----------------------------------------
-(define define
-      (macro (arg . body)
-        (if (not (pair? arg))
-            ;; (define var body)
-            (cons 'define
-                  (cons arg
-                        body))
-            ;; (define (func arg...) body)
-            (begin
-              (if (pair? (cdr arg))
-                  (if (pair? (car (cdr arg)))
-                      (error "Error: define syntax error.")))
-              (cons 'define
-                    (cons (car arg)
-                          (list
-                           (cons 'lambda
-                                 (cons  (cdr arg)
-                                        body)))))))))
+(define %expand-define-form
+  (lambda (arg body)
+    ;; (define (func arg...) body)
+    (if (pair? (cdr arg))
+        (if (pair? (car (cdr arg)))
+            (error "Error: define syntax error.")))
+    (cons 'define
+          (cons (car arg)
+                (list
+                 (cons 'lambda
+                       (cons  (cdr arg)
+                              body)))))))
 
+(define define
+  (macro (arg . body)
+    (if (not (pair? arg))
+        ;; (define var body)
+        (cons 'define
+              (cons arg
+                    body))
+        (%expand-define-form arg body))))
 
 ;; debug-print macro is predefined as NOP.
 ;; for self debugging of init.nnd.
