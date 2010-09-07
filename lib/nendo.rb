@@ -1054,6 +1054,13 @@ module Nendo
         (Cell == arg.class)
       end
     end
+    def __PAMARKlist_QUMARK(      arg )   
+      if _pair_QUMARK( arg )
+        (not arg.lastAtom) and (1 <= arg.to_arr.size) # it means proper list?
+      else
+        _null_QUMARK( arg )
+      end
+    end
     def _integer_QUMARK(   arg )   arg.is_a? Integer   end
     def _number_QUMARK(   arg )    arg.is_a? Numeric   end
     def _string_QUMARK(   arg )    String == arg.class end

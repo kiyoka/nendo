@@ -127,10 +127,7 @@
 ;; Utility functions
 ;; ----------------------------------------
 (define (vector . lst)  (to-arr lst))
-(define (list? arg)
-  (if (pair? arg)
-      (list? (cdr arg))
-      (null? arg)))
+(define list? %list?)
 (define (even? n) (= (% n 2) 0))
 (define (odd? n) (not (= (% n 2) 0)))
 (define (zero? n) (= n 0))
@@ -857,7 +854,7 @@
          keys))))
 
 (define (alist->hash-table alist)
-  (if (not (list? alist))
+  (if (not (%list? alist))
       (error "Error: alist->hash-table expects alist.")
       (apply hash-table alist)))
 
