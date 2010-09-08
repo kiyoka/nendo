@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{nendo}
-  s.version = "0.3.3"
+  s.version = "0.3.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2010-07-25}
+  s.date = %q{2010-09-08}
   s.default_executable = %q{nendo}
   s.description = %q{Nendo is a programming language written in Ruby.}
   s.email = %q{kiyoka@sumibi.org}
@@ -37,6 +37,8 @@ Gem::Specification.new do |s|
      "lib/init.nnd",
      "lib/init.nndc",
      "lib/nendo.rb",
+     "lib/nendo/test.nnd",
+     "lib/nendo/test.nndc",
      "lib/srfi-1.nnd",
      "lib/srfi-1.nndc",
      "lib/text/html-lite.nnd",
@@ -44,7 +46,9 @@ Gem::Specification.new do |s|
      "lib/text/tree.nnd",
      "lib/text/tree.nndc",
      "test/nendo_spec.rb",
-     "test/srfi-1-test.nnd"
+     "test/nendo_util.nnd",
+     "test/srfi-1-test.nnd",
+     "test/textlib.nnd"
   ]
   s.homepage = %q{http://github.com/kiyoka/nendo}
   s.rdoc_options = ["--charset=UTF-8"]
