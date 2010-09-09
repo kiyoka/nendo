@@ -1,0 +1,31 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+(require "kyotocabinet")
+
+(define db (KyotoCabinet::DB.new))
+
+(define (main argv)
+  (define (_create)
+    (if (not (db.open "numbers.kch" (+ KyotoCabinet::DB::OWRITER KyotoCabinet::DB::OCREATE)))
+        (printf "open error: %s\n" db.error)
+        ;; 書きこみ
+        (for-each
+         (lambda (num)
+           (db.store num num))
+         (range 100000))))
+
+  (_create)
+  (print (hash-table-get db 1000))
+  (print (hash-table-get db 10000)))
+
+
+
+
+  
+
+
+
+  
+
