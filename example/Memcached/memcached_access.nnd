@@ -1,0 +1,19 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+(require "memcache")
+
+(let1 db (MemCache.new "localhost:21201") ;; port is memcachedb's default
+  (hash-table-put! db "nihongo" "日本語")
+  (hash-table-put! db "日本語" "nihongo")
+  (let1 alpha-list (to-list (. "abcdefghijklmnopqrstuvwxyz" split ""))
+    (for-each
+     (lambda (alpha)
+       (hash-table-put! db alpha (+ alpha "日本語混在メッセージ" alpha)))
+     alpha-list)
+    (for-each
+     (lambda (key)
+       (printf "key=%s, value=%s\n" key (hash-table-get db key)))
+     (append alpha-list
+             '("nihongo" "日本語")))))
