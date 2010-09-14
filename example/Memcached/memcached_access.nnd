@@ -7,6 +7,7 @@
 (let1 db (MemCache.new "localhost:21201") ;; port is memcachedb's default
   (hash-table-put! db "nihongo" "日本語")
   (hash-table-put! db "日本語" "nihongo")
+  (hash-table-put! db (. "わたしh" force_encoding "ASCII-8BIT") (. "/私" force_encoding "ASCII-8BIT"))
   (let1 alpha-list (to-list (. "abcdefghijklmnopqrstuvwxyz" split ""))
     (for-each
      (lambda (alpha)
@@ -16,4 +17,6 @@
      (lambda (key)
        (printf "key=%s, value=%s\n" key (hash-table-get db key)))
      (append alpha-list
-             '("nihongo" "日本語")))))
+             `("nihongo" "日本語" ,(. "わたしh" force_encoding "ASCII-8BIT"))))))
+
+
