@@ -1106,7 +1106,7 @@ module Nendo
       arr = args[0].to_arr
       if 0 < arr.length
         if not arr[0].is_a? String
-          raise TypeError, "Error string-join's expects delimitter as String."
+          raise TypeError, "Error: string-join's expects delimitter as String."
         else
           lst.to_a.map{ |x| x.car }.join( arr[0] )
         end
@@ -1117,6 +1117,16 @@ module Nendo
     def _require( arg )
       require( arg )
       false
+    end
+    def _read_MIMARKfrom_MIMARKstring( str )
+      if not str.is_a? String
+        raise TypeError, "Error: read-from-string expects sexp as String."
+      else
+        sio       = StringIO.open( str )
+        reader    = Reader.new( sio, "(string)", false )
+        s = reader._read
+        s[0]
+      end
     end
     def _read( *args )
       lst = args[0].to_arr

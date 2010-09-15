@@ -898,6 +898,13 @@ describe Nendo, "when call evalStr() with built-in functions" do
     @nendo.evalStr( ' (string-join \'("Aa" "Bb" "Cc") "//") ' ).should == '"Aa//Bb//Cc"'
     lambda { @nendo.evalStr( ' (string-join \'("Aa" "Bb" "Cc") 100) ' ) }.should  raise_error(TypeError)
     lambda { @nendo.evalStr( ' (string-join \'("Aa" "Bb" "Cc") :xx) ' ) }.should  raise_error(TypeError)
+    @nendo.evalStr( ' (read-from-string "1") ' ).should == '1'
+    @nendo.evalStr( ' (read-from-string "(+ 1 2)") ' ).should == '(+ 1 2)'
+    @nendo.evalStr( ' (read-from-string "(\"Aa\" \"Bb\" \"Cc\")") ' ).should == '("Aa" "Bb" "Cc")'
+    lambda { @nendo.evalStr( ' (read-from-string 100) ' ) }.should  raise_error(TypeError)
+    @nendo.evalStr( ' (write-to-string 1) ' ).should == '"1"'
+    @nendo.evalStr( ' (write-to-string \'(+ 1 2)) ' ).should == '"(+ 1 2)"'
+    @nendo.evalStr( ' (write-to-string \'("Aa" "Bb" "Cc")) ' ).should == '"(\"Aa\" \"Bb\" \"Cc\")"'
   end
 end
 
