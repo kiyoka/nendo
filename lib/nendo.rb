@@ -845,7 +845,7 @@ module Nendo
         __assertFlat( arr )
         arr.each { |x| 
           if not (_number_QUMARK(x) or _string_QUMARK(x))
-            raise TypeError
+            raise TypeError, sprintf( "Error: arg %s is [%s] type",x ,x.class )
           end
         }
         case args[0].length
@@ -1063,7 +1063,7 @@ module Nendo
     end
     def _integer_QUMARK(   arg )   arg.is_a? Integer   end
     def _number_QUMARK(   arg )    arg.is_a? Numeric   end
-    def _string_QUMARK(   arg )    String == arg.class end
+    def _string_QUMARK(   arg )    arg.is_a? String    end
     def _macroexpand_MIMARK1( arg )
       if _pair_QUMARK( arg )
         macroexpandInit( 1 )

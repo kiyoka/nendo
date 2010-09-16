@@ -1360,6 +1360,15 @@ describe Nendo, "when use quasiquote macro " do
     @nendo.evalStr( " (set! a 3) `(1 ,@(list 2 a)) " ).should == "(1 2 3)"
     @nendo.evalStr( " (set! a 11) `,a " ).should == "11"
     @nendo.evalStr( " (set! a 12) ``,a " ).should == "`,a"
+    @nendo.evalStr( ' (define str "string") str ' ).should == '"string"'
+    @nendo.evalStr( ' `(,str) ' ).should == '("string")'
+    @nendo.evalStr( ' `("STRING") ' ).should == '("STRING")'
+    @nendo.evalStr( ' `(,str "STRING") ' ).should == '("string" "STRING")'
+    @nendo.evalStr( ' `("STRING" ,str) ' ).should == '("STRING" "string")'
+    @nendo.evalStr( ' (car    `("STRING" ,str)) ' ).should == '"STRING"'
+    @nendo.evalStr( ' (second `("STRING" ,str)) ' ).should == '"string"'
+    @nendo.evalStr( ' (caar   `(("STRING" ,str))) ' ).should == '"STRING"'
+    @nendo.evalStr( ' (string-join `("A" "B" "C" "D")) ' ).should == '"ABCD"'
     @nendo.evalStr( " `(list ,(+ 1 2) 4) " ).should == "(list 3 4)"
     @nendo.evalStr( " (let ((name 'a)) `(list ,name ',name)) " ).should == "(list a 'a)"
     @nendo.evalStr( " `(a `(b ,(+ 1 2) ,(foo ,(+ 1 3) d) e) f) " ).should == "(a `(b ,(+ 1 2) ,(foo 4 d) e) f)"
@@ -1572,6 +1581,7 @@ describe Nendo, "when use (use ...) macro " do
     @nendo.evalStr( " (macroexpand '(use a.b.c.d.e.f.g)) " ).should  == '(load-library "a/b/c/d/e/f/g")'
     @nendo.evalStr( " (macroexpand '(use srfi-1)) " ).should         == '(load-library "srfi-1")'
     @nendo.evalStr( " (macroexpand '(use text.tree)) " ).should      == '(load-library "text/tree")'
+    @nendo.evalStr( " (macroexpand '(use debug.syslog)) " ).should   == '(load-library "debug/syslog")'
     @nendo.evalStr( " (macroexpand `(use ,(string->symbol (+ \"text\" \".\" \"tree\")))) " ).should ==  '(load-library "text/tree")'
     lambda { @nendo.evalStr( " (macroexpand '(use '(a)) " ) }.should    raise_error( RuntimeError )
     lambda { @nendo.evalStr( " (macroexpand '(use \"srfi-1\") " ) }.should    raise_error( RuntimeError )

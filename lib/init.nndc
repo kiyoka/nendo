@@ -15965,9 +15965,49 @@ trampCall(
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1128"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     Cell.new(
-                                    Cell.new("
+                                      trampCall( self._cons_METHOD(  'cons',
+                                          begin
+                                            if @global_lisp_binding.has_key?('_cons') then
+                                              trampCall(@_cons)
+                                            else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:947"] + __e.backtrace ) ; raise __e
+                                          end                                        ,
+                                          Cell.new(
+                                          "
 
-",Cell.new("# -------------------------------------------------------",Cell.new("# [EOF]",Cell.new("# -------------------------------------------------------"))))                                    ,Cell.new(
+"                                          ,Cell.new(
+                                            trampCall( self._cons_METHOD(  'cons',
+                                                begin
+                                                  if @global_lisp_binding.has_key?('_cons') then
+                                                    trampCall(@_cons)
+                                                  else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:947"] + __e.backtrace ) ; raise __e
+                                                end                                              ,
+                                                Cell.new(
+                                                "# -------------------------------------------------------"                                                ,Cell.new(
+                                                  trampCall( self._cons_METHOD(  'cons',
+                                                      begin
+                                                        if @global_lisp_binding.has_key?('_cons') then
+                                                          trampCall(@_cons)
+                                                        else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:947"] + __e.backtrace ) ; raise __e
+                                                      end                                                    ,
+                                                      Cell.new(
+                                                      "# [EOF]"                                                      ,Cell.new(
+                                                        trampCall( self._cons_METHOD(  'cons',
+                                                            begin
+                                                              if @global_lisp_binding.has_key?('_cons') then
+                                                                trampCall(@_cons)
+                                                              else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:947"] + __e.backtrace ) ; raise __e
+                                                            end                                                          ,
+                                                            Cell.new(
+                                                            "# -------------------------------------------------------"                                                            ,Cell.new(
+                                                            
+                                                                     ))))
+                                                               ))))
+                                                         ))))
+                                                   ))))                                    ,Cell.new(
                                     "
 "
                                              ))))
@@ -16290,7 +16330,37 @@ trampCall(
                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1176"] + __e.backtrace ) ; raise __e
                                                                                                                                                             end
                                                                                                                                                                    )))                                                                                                                                                    ,Cell.new(
-                                                                                                                                                    Cell.new(" ) ",Cell.new("core.evalStr( \"(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f) \" )",Cell.new("")))
+                                                                                                                                                      trampCall( self._cons_METHOD(  'cons',
+                                                                                                                                                          begin
+                                                                                                                                                            if @global_lisp_binding.has_key?('_cons') then
+                                                                                                                                                              trampCall(@_cons)
+                                                                                                                                                            else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:947"] + __e.backtrace ) ; raise __e
+                                                                                                                                                          end                                                                                                                                                        ,
+                                                                                                                                                          Cell.new(
+                                                                                                                                                          " ) "                                                                                                                                                          ,Cell.new(
+                                                                                                                                                            trampCall( self._cons_METHOD(  'cons',
+                                                                                                                                                                begin
+                                                                                                                                                                  if @global_lisp_binding.has_key?('_cons') then
+                                                                                                                                                                    trampCall(@_cons)
+                                                                                                                                                                  else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:947"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                end                                                                                                                                                              ,
+                                                                                                                                                                Cell.new(
+                                                                                                                                                                "core.evalStr( \"(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f) \" )"                                                                                                                                                                ,Cell.new(
+                                                                                                                                                                  trampCall( self._cons_METHOD(  'cons',
+                                                                                                                                                                      begin
+                                                                                                                                                                        if @global_lisp_binding.has_key?('_cons') then
+                                                                                                                                                                          trampCall(@_cons)
+                                                                                                                                                                        else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                                                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:947"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                      end                                                                                                                                                                    ,
+                                                                                                                                                                      Cell.new(
+                                                                                                                                                                      ""                                                                                                                                                                      ,Cell.new(
+                                                                                                                                                                      
+                                                                                                                                                                               ))))
+                                                                                                                                                                         ))))
+                                                                                                                                                                   ))))
                                                                                                                                                              ))))
                                                                                                                                                        ))))
                                                                                                                                                  ))))
