@@ -1032,7 +1032,6 @@ module Nendo
     def __GTMARK_EQMARK(      a,b ) a >=  b end
     def __LTMARK(      a,b )        a <   b end
     def __LTMARK_EQMARK(      a,b ) a <=  b end
-    def _eqv_QUMARK(     a,b )      a === b end
     def _eq_QUMARK(      a,b )      a ==  b end
     def _gt_QUMARK(      a,b )      a >   b end
     def _ge_QUMARK(      a,b )      a >=  b end
