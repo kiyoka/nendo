@@ -1507,6 +1507,7 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.evalStr( " (define a \"s\") (a.is_a? Fixnum) " ).should == "#f"
     @nendo.evalStr( " (define a \"s\") (a.is_a? Float) " ).should ==  "#f"
     @nendo.evalStr( " (define a \"s\") (a.is_a? String) " ).should == "#t"
+    @nendo.evalStr( ' (equal? (read-from-string "\"100\"") (. 100 to_s)) ' ).should == "#t"
   end
 end
 

@@ -821,7 +821,9 @@ module Nendo
     end
     
     def _equal_QUMARK( a, b )
-      if a.class != b.class
+      if a.is_a? String  and  b.is_a? String
+        a === b
+      elsif a.class != b.class
         false
       elsif a.class == Cell
         if a.isNull and b.isNull
@@ -845,6 +847,7 @@ module Nendo
         __assertFlat( arr )
         arr.each { |x| 
           if not (_number_QUMARK(x) or _string_QUMARK(x))
+            ##arr.each { |v| STDERR.printf( "__PLMARK: %s\n", v ) }
             raise TypeError, sprintf( "Error: arg %s is [%s] type",x ,x.class )
           end
         }
