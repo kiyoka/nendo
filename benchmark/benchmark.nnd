@@ -18,12 +18,21 @@
                  ,proc))))))
 
 
+;; -------------------- fact --------------------
+(bench-task "fact (ruby version)"
+            (printf " => %d\n" (RubyBenchmarkCode.new.fact 1000)))
+
+(bench-task "fact (nendo version)"
+            (printf " => %d\n" (fact 1000)))
+
+
 ;; -------------------- tak --------------------
 (bench-task "tak (ruby version)"
             (printf " => %d\n" (RubyBenchmarkCode.new.tak 10 5 0)))
 
 (bench-task "tak (nendo version)"
             (printf " => %d\n" (tak 10 5 0)))
+
 
 
 ;;[EOF]
