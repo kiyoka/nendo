@@ -1473,7 +1473,6 @@ module Nendo
     end
 
     def method_missing( name, *args )
-      sym = toRubySymbol( name )
       if @global_lisp_binding[name].is_a? Proc
         @global_lisp_binding[name].call( args[0], args[1], args[2] )
       else
