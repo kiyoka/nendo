@@ -86,6 +86,10 @@ task :compile do
   }
 end
 
+task :bench do
+  sh "ruby ./bin/nendo ./benchmark/benchmark.nnd"
+end
+
 task :clean do
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
 end
