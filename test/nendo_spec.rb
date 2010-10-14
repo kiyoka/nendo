@@ -1387,6 +1387,10 @@ describe Nendo, "when use macros made by quasiquote. " do
     @nendo.evalStr( " (case (length '(1 2 3  )) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"else"'
     @nendo.evalStr( " (case (length '(1 2 3 4)) ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"else"'
     @nendo.evalStr( " (case   100               ((1) \"one\") ((2) \"two\") (else \"else\")) " ).should == '"else"'
+    @nendo.evalStr( " (case (car '(a b 1))      ((a) 'a) ((b) 'b) (else 'else)) "              ).should == 'a'
+    @nendo.evalStr( " (case (cadr '(a b 1))     ((a) 'a) ((b) 'b) (else 'else)) "              ).should == 'b'
+    @nendo.evalStr( " (case (caddr '(a b 1))    ((a b) 'a) ((1 2) 'number) (else 'else)) "     ).should == 'number'
+    @nendo.evalStr( " (case (cadddr '(a b 1 2)) ((a b) 'a) ((1 2) 'number) (else 'else)) "     ).should == 'number'
     @nendo.evalStr( " (let* ((a 1)   (b (+ a 2)))  (cons a b)) " ).should == "(1 . 3)"
     @nendo.evalStr( " (let* ((a 10)  (b (* a 2)))  (cons a b)) " ).should == "(10 . 20)"
     @nendo.evalStr( " (let* ((a 10)  (b (* a 2)) (c (* b 3)))  (list a b c)) " ).should == "(10 20 60)"

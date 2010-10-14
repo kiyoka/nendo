@@ -4,12 +4,58 @@
 (disable-idebug)
 (define debug-print-length 2000)
 
-(%internal-define-to-letrec
- '(macro (x)
-    (define (foo v) (+ v 1))
-    (define result 10)
-    (define (bar v) (+ v 2))
-    '(1 2 3)))
+
+
+
+(define case
+  (macro (cond-exp . body)
+    (define (case-block val . elem)
+      (let1 block (car elem)
+        (let ((cond-vals (car block))
+              (body      (cdr block)))
+          (let1 v
+              (if (eq? 'else cond-vals)
+                  cond-vals
+                  (cons 'or
+                        (map
+                         (lambda (x)
+                           `(eqv? (quote ,x) ,val))
+                         cond-vals)))
+            `((,v
+               ,@body))))))
   
+    (define (case-iter val lst)
+      (cond
+       ((null? lst)
+        '())
+       ((eq? 1 (length lst))
+        (case-block val (car lst)))
+       (else
+        (append (case-block val (car lst))
+                (case-iter  val (cdr lst))))))
+
+    (let1 sym (gensym)
+      `(let1 ,sym ,cond-exp
+         (cond
+          ,@(case-iter sym body))))))
+
+(pretty-print
+ (macroexpand-1
+  '(case (car '(a b c d))
+     ((a) 'a)
+     ((b) 'b)
+     ((1) 1)
+     (else 'else))))
+
+(case (caddr '(a b 1 2))
+  ((a) 'a)
+  ((b) 'b)
+  ((1) 1)
+  (else 'else))
+
+ 
+
+
+
 (exit)
 

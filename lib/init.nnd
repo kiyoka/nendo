@@ -652,20 +652,20 @@
                   (cons 'or
                         (map
                          (lambda (x)
-                           `(eqv? ,x ,val))
+                           `(eqv? (quote ,x) ,val))
                          cond-vals)))
             `((,v
                ,@body))))))
   
     (define (case-iter val lst)
       (cond
-       ((eq? 0 (length lst))
+       ((null? lst)
         '())
        ((eq? 1 (length lst))
         (case-block val (car lst)))
-                 (else
-                  (append (case-block val (car lst))
-                          (case-iter  val (cdr lst))))))
+       (else
+        (append (case-block val (car lst))
+                (case-iter  val (cdr lst))))))
 
     (let1 sym (gensym)
       `(let1 ,sym ,cond-exp
@@ -1268,18 +1268,18 @@
     '())
    ((list? sexp)
     (case (car sexp)
-      (('quote)
+      ((quote)
        sexp)
-      (('macro)
+      ((macro)
        sexp)
-      (('begin)
+      ((begin)
        `(begin
           ,@(setup-proc-body (cdr sexp))))
-      (('lambda)
+      ((lambda)
        `(lambda
             ,(second sexp)
           ,@(setup-proc-body (cddr sexp))))
-      (('if)
+      ((if)
        (case (length sexp)
          ((3)
           `(if
@@ -1290,15 +1290,15 @@
             ,(second sexp)
             ,(setup-proc     (third sexp))
             ,(setup-proc     (fourth sexp))))))
-      (('let)
+      ((let)
        `(let
             ,(setup-let-args (second sexp))
           ,@(setup-proc-body (cddr sexp))))
-      (('letrec)
+      ((letrec)
        `(letrec
             ,(setup-let-args (second sexp))
           ,@(setup-proc-body (cddr sexp))))
-      (('define)
+      ((define)
        (let1 val (third sexp)
          `(define
             ,(second sexp)
@@ -1325,5 +1325,5 @@
 ;; global variables
 ;; ----------------------------------------
 (define *nendo-version*
-  "0.3.4"  ;;NENDO-VERSION
+  "0.3.5"  ;;NENDO-VERSION
   )

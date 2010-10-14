@@ -32,6 +32,7 @@ begin
                              'example/KyotoCabinet/*.nnd',
                              'example/KyotoCabinet/*.rb',
                              'emacs/*.el'].to_a
+    gemspec.add_development_dependency "rspec"
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
