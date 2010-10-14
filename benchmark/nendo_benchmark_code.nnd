@@ -10,3 +10,9 @@
            (tak (- y 1) z x)
            (tak (- z 1) x y))))
 
+;; factorial
+(define (fact n)
+  (if (zero? n)
+      1
+      (* n (fact (- n 1)))))
+

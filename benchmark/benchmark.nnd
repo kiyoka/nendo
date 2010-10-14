@@ -3,31 +3,27 @@
 :; exec /usr/local/bin/nendo $0 $*
 
 (require "benchmark")
+(.load   "./benchmark/ruby_benchmark_code.rb")
+( load   "./benchmark/nendo_benchmark_code.nnd")
 
 
-;; takeuchi function ( tarai mawashi bench )
-(define (tak x y z)
-  (if (>= y x)
-      y
-      (tak (tak (- x 1) y z)
-           (tak (- y 1) z x)
-           (tak (- z 1) x y))))
+;; ------------------ macro --------------------
+(define bench-task
+  (macro (title proc)
+    `(begin
+       (.puts ,title)
+       (.puts Benchmark::CAPTION)
+       (.puts (Benchmark.measure
+               (&block ()
+                 ,proc))))))
 
 
-(.load "./benchmark/tak_ruby_version.rb")
-(.puts "tak (ruby version)")
-(.puts Benchmark::CAPTION)
-(.puts (Benchmark.measure
-        (&block ()
-          (let1 ins (RubyBenchmarkCode.new)
-            (printf " => %d\n" (ins.tak 10 5 0))))))
+;; -------------------- tak --------------------
+(bench-task "tak (ruby version)"
+            (printf " => %d\n" (RubyBenchmarkCode.new.tak 10 5 0)))
+
+(bench-task "tak (nendo version)"
+            (printf " => %d\n" (tak 10 5 0)))
 
 
-(load "./benchmark/tak.nnd")
-(.puts "tak (nendo version)")
-(.puts Benchmark::CAPTION)
-(.puts (Benchmark.measure
-        (&block ()
-          (printf " => %d\n" (tak 10 5 0)))))
-
-
+;;[EOF]

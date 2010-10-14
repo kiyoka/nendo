@@ -2,6 +2,7 @@
 
 # takeuchi function ( tarai mawashi bench )
 class RubyBenchmarkCode
+
   def tak( x, y, z )
     if y >= x
       y
@@ -11,4 +12,13 @@ class RubyBenchmarkCode
            tak( z-1, x, y ))
     end
   end
+
+  def fact( n )
+    if 0 == n
+      1
+    else
+      n * fact( n - 1 )
+    end
+  end
+
 end
