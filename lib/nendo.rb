@@ -1490,28 +1490,7 @@ module Nendo
     end
     
     def callProcedure( origname, pred, args )
-      #print "origname = " ; p origname
-      #print "pred  = " ; p pred
-      #print "arity = " ; p pred.arity
-      #print "args.size = " ; p args.size
-      if pred.nil?
-        #print "pred is nil\n"
-        nil
-      elsif 0 == pred.arity
-        #print "pred.arity(1) = " + pred.arity.to_s + "\n"
-        pred.call()
-      elsif 0 < pred.arity
-        #print "pred.arity(1) = " + pred.arity.to_s + "\n"
-        args_arr = args.to_arr
-        if args_arr.size == 0
-          pred.call( Cell.new )
-        else
-          pred.call( *args_arr )
-        end
-      else
-        #print "pred.arity(2) = " + pred.arity.to_s + "\n"
-        pred.call( *toRubyArgument( origname, pred, args ))
-      end
+      pred.call( *toRubyArgument( origname, pred, args ))
     end
   
     # for code generation of Ruby's argument values
@@ -1566,7 +1545,7 @@ module Nendo
           #   1) convert arguments
           translatedArr  = args.map { |x| x.car }
           #   2) generate caller code part
-          lispSymbolReference( :call, toRubySymbol( funcname ), locals, translatedArr, sourcefile, lineno )
+          lispSymbolReference( toRubySymbol( funcname ), locals, translatedArr, sourcefile, lineno )
         else
           # Nendo function
           if 0 == args.length
@@ -1587,7 +1566,7 @@ module Nendo
             _call = case execType
                     when EXEC_TYPE_NORMAL
                       if locals.flatten.include?( sym )
-                        [ sprintf( "trampCall( callProcedure(  "      ), "))" ] # local function
+                        [ sprintf( "trampCall( callProcedure(  ", sym ), "))" ] # local function
                       else
                         [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
                       end
@@ -1595,9 +1574,7 @@ module Nendo
                       [ "delayCall(",    ")"  ]
                     end
             [sprintf( "%s '%s',", _call[0], origname ), 
-             ["trampCall(",
-              lispSymbolReference( :var, sym, locals, nil, sourcefile, lineno ),
-              "),"],
+             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","], 
              arr,
              sprintf( "             %s", _call[1] ) + arr.map { |n| ")" }.join]
           end
@@ -1780,36 +1757,39 @@ module Nendo
       end
     end
 
-    def lispSymbolReference( type, sym, locals, translatedArr, sourcefile, lineno )
+    def lispSymbolReference( sym, locals, translatedArr, sourcefile, lineno )
       variable_sym = sym.split( /[.]/ )[0]
       global_cap = if variable_sym.match( /^[A-Z]/ )
                      nil
                    else
                      locals.flatten.include?( variable_sym ) ? nil : "@"
                    end
-      expression = case type
-                   when :call
+      expression = if translatedArr
                      [trampCallCap( sprintf( "%s%s(", global_cap, sym )),
                       separateWith( translatedArr, "," ),
                       sprintf( "  )" )]
-                   when :var
-                     sprintf( "%s%s", global_cap, sym )
+                   else
+                     [trampCallCap( sprintf( "%s%s", global_cap, sym ))]
                    end
-      if global_cap
-        ["begin",
-         [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
-          expression,
-          sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
-          sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
-         "end"]
+      if false
+        [expression]
       else
-        ["begin",
-         [expression,
-          sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )],
-         "end"]
+        if global_cap
+          ["begin",
+           [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
+            expression,
+            sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
+            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
+           "end"]
+        else
+          ["begin",
+           [expression,
+            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )],
+           "end"]
+        end
       end
     end
-  
+      
     # Lisp->Ruby translater
     #    - locals is array of closure's local variable list
     #      when S-expression is 
@@ -1860,7 +1840,7 @@ module Nendo
         when Symbol
           sym = sexp.to_s
           sym = toRubySymbol( sym )
-          lispSymbolReference( :var, sym, locals, nil, sexp.sourcefile, sexp.lineno )
+          lispSymbolReference( sym, locals, nil, sexp.sourcefile, sexp.lineno )
         when Fixnum
           sexp.to_s
         when String, LispString
