@@ -39,7 +39,7 @@ rescue LoadError
 end
 
 task :check do
-  stage1 = [ "ruby -I ./lib /usr/local/bin/spec -b ./test/nendo_spec.rb",
+  stage1 = [ "ruby -I ./lib /usr/local/bin/rspec -b ./test/nendo_spec.rb",
              "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd" ]
   stage2 = [ "/bin/rm -f test.record",
              "ruby -I ./lib ./bin/nendo ./test/textlib.nnd     >  test.log",
