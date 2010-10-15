@@ -6,33 +6,49 @@
 (.load   "./benchmark/ruby_benchmark_code.rb")
 ( load   "./benchmark/nendo_benchmark_code.nnd")
 
+(require "ruby-prof")
 
 ;; ------------------ macro --------------------
 (define bench-task
-  (macro (title proc)
+  (macro (profile-flag title proc)
     `(begin
        (.puts ,title)
        (.puts Benchmark::CAPTION)
-       (.puts (Benchmark.measure
-               (&block ()
-                 ,proc))))))
+       ,(if profile-flag
+            `(let* ((result (RubyProf.profile
+                             (&block ()
+                               ,proc)))
+                    (printer (RubyProf::GraphPrinter.new result)))
+               (printer.print STDOUT))
+            `(.puts (Benchmark.measure
+                     (&block ()
+                       ,proc))))
+       (.puts ""))))
 
 
 ;; -------------------- fact --------------------
-(bench-task "fact (ruby version)"
-            (printf " => %d\n" (RubyBenchmarkCode.new.fact 1000)))
+;;(bench-task "fact (ruby version)"
+;;            (printf " => %d\n" (RubyBenchmarkCode.new.fact 1000)))
 
-(bench-task "fact (nendo version)"
-            (printf " => %d\n" (fact 1000)))
+;;(bench-task "fact (nendo version)"
+;;            (printf " => %d\n" (fact 1000)))
 
 
 ;; -------------------- tak --------------------
-(bench-task "tak (ruby version)"
-            (printf " => %d\n" (RubyBenchmarkCode.new.tak 10 5 0)))
+;;(bench-task "tak   (ruby version)"
+;;            (printf " => %d\n" (RubyBenchmarkCode.new.tak 10 5 0)))
 
-(bench-task "tak (nendo version)"
-            (printf " => %d\n" (tak 10 5 0)))
+;;(bench-task "tak2  (ruby version)"
+;;            (printf " => %d\n" (RubyBenchmarkCode.new.tak2 10 5 0)))
 
+(if #f
+    (bench-task #t
+                "tak3  (ruby version)"
+                (printf " => %d\n" (RubyBenchmarkCode.new.tak3 8 4 0)))
+    
+    (bench-task #t
+                "tak   (nendo version)"
+                (printf " => %d\n" (tak 8 4 0))))
 
 
 ;;[EOF]
