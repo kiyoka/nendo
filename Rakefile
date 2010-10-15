@@ -87,6 +87,7 @@ task :compile do
 end
 
 task :bench do
+  sh "ruby --version"
   sh "ruby ./bin/nendo ./benchmark/benchmark.nnd"
 end
 
