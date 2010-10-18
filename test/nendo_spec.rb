@@ -553,155 +553,6 @@ describe Nendo, "when read various list expressions" do
 end
 
 
-describe Nendo, "when use #xxxx syntax " do
-  before do
-    @nendo = Nendo::Core.new()
-    @nendo.loadInitFile
-  end
-  it "should" do
-    @nendo.evalStr( " #t " ).should == "#t"
-    @nendo.evalStr( " #f " ).should == "#f"
-    @nendo.evalStr( " '#( 1 ) " ).should == "#(1)"
-    @nendo.evalStr( " '#() " ).should == "#()"
-    @nendo.evalStr( " #!        \n #t" ).should == "#t"
-    @nendo.evalStr( " #!        \n 100" ).should == "100"
-    @nendo.evalStr( " #!   123  \n 100" ).should == "100"
-    @nendo.evalStr( " '#?=1" ).should == "(debug-print 1 \"(string)\" 1 '1)"
-    @nendo.evalStr( " #b0  " ).should == Integer("0b0").to_s
-    @nendo.evalStr( " #b01 " ).should == Integer("0b01").to_s
-    @nendo.evalStr( " #b10 " ).should == Integer("0b10").to_s
-    @nendo.evalStr( " #b00000001 " ).should         == Integer("0b00000001").to_s
-    @nendo.evalStr( " #b1010101010101010 " ).should == Integer("0b1010101010101010").to_s
-    lambda { @nendo.evalStr( " #b2 " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #b02 " ) }.should     raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #bF " ) }.should      raise_error(RuntimeError)
-    @nendo.evalStr( " #o0  " ).should  == Integer("0o0").to_s
-    @nendo.evalStr( " #o7  " ).should  == Integer("0o7").to_s
-    @nendo.evalStr( " #o01 " ).should  == Integer("0o01").to_s
-    @nendo.evalStr( " #o10 " ).should  == Integer("0o10").to_s
-    @nendo.evalStr( " #o777 " ).should == Integer("0o777").to_s
-    @nendo.evalStr( " #o00000007 " ).should         == Integer("0o00000007").to_s
-    @nendo.evalStr( " #o0123456701234567 " ).should == Integer("0o0123456701234567").to_s
-    lambda { @nendo.evalStr( " #o8 " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #o08 " ) }.should     raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #oA " ) }.should      raise_error(RuntimeError)
-    @nendo.evalStr( " #d0  " ).should  == Integer("0d0").to_s
-    @nendo.evalStr( " #d9  " ).should  == Integer("0d9").to_s
-    @nendo.evalStr( " #d01 " ).should  == Integer("0d01").to_s
-    @nendo.evalStr( " #d10 " ).should  == Integer("0d10").to_s
-    @nendo.evalStr( " #d999 " ).should == Integer("0d999").to_s
-    @nendo.evalStr( " #d00000009 " ).should         == Integer("0d00000009").to_s
-    @nendo.evalStr( " #d0123456701234567 " ).should == Integer("0d0123456701234567").to_s
-    lambda { @nendo.evalStr( " #dA " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #dF " ) }.should      raise_error(RuntimeError)
-    @nendo.evalStr( " #x0  " ).should  == Integer("0x0").to_s
-    @nendo.evalStr( " #x9  " ).should  == Integer("0x9").to_s
-    @nendo.evalStr( " #xA  " ).should  == Integer("0xA").to_s
-    @nendo.evalStr( " #xF  " ).should  == Integer("0xF").to_s
-    @nendo.evalStr( " #x01 " ).should  == Integer("0x01").to_s
-    @nendo.evalStr( " #x10 " ).should  == Integer("0x10").to_s
-    @nendo.evalStr( " #xFFF " ).should == Integer("0xFFF").to_s
-    @nendo.evalStr( " #x0000000F " ).should         == Integer("0x0000000F").to_s
-    @nendo.evalStr( " #x0123456789ABCDEF0123456789ABCDEF " ).should == Integer("0x0123456789ABCDEF0123456789ABCDEF").to_s
-    lambda { @nendo.evalStr( " #xg " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #xh " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #xz " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #xG " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #xH " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #xZ " ) }.should      raise_error(RuntimeError)
-    lambda { @nendo.evalStr( " #a " ) }.should       raise_error(NameError)
-    lambda { @nendo.evalStr( " #c " ) }.should       raise_error(NameError)
-    lambda { @nendo.evalStr( " #e " ) }.should       raise_error(NameError)
-    lambda { @nendo.evalStr( " #tt " ) }.should      raise_error(NameError)
-    lambda { @nendo.evalStr( " #ff " ) }.should      raise_error(NameError)
-    lambda { @nendo.evalStr( " #abc " ) }.should     raise_error(NameError)
-    lambda { @nendo.evalStr( " #? " ) }.should       raise_error(NameError)
-    lambda { @nendo.evalStr( " #?a " ) }.should      raise_error(NameError)
-    lambda { @nendo.evalStr( " #= " ) }.should       raise_error(NameError)
-    lambda { @nendo.evalStr( " #?? " ) }.should      raise_error(NameError)
-  end
-end
-
-describe Nendo, "when use regexp litteral and library functions " do
-  before do
-    @nendo = Nendo::Core.new()
-    @nendo.loadInitFile
-  end
-  it "should" do
-    @nendo.evalStr( " #/abc/ " ).should                                       == "#/abc/"
-    @nendo.evalStr( " #/[a-z]/ " ).should                                     == "#/[a-z]/"
-    @nendo.evalStr( " #/[a-zA-Z0-9]+/ " ).should                              == "#/[a-zA-Z0-9]+/"
-    @nendo.evalStr( " #/\\d/ " ).should                                       == "#/\\d/"
-    @nendo.evalStr( " #/[\\/]/ " ).should                                     == "#/[/]/"
-    @nendo.evalStr( " #/abc/i " ).should                                      == "#/abc/i"
-    @nendo.evalStr( " #/[a-z]/i " ).should                                    == "#/[a-z]/i"
-    lambda { @nendo.evalStr( " #/[a-z]/I " ) }.should                         raise_error(NameError)
-    lambda { @nendo.evalStr( " #/[a-z]/a " ) }.should                         raise_error(NameError)
-    
-    @nendo.evalStr( " (string->regexp \"abc\") " ).should                     == "#/abc/"
-    @nendo.evalStr( " (string->regexp \"[a-z]\") " ).should                   == "#/[a-z]/"
-    @nendo.evalStr( " (string->regexp \"[a-zA-Z0-9]+\" ) " ).should           == "#/[a-zA-Z0-9]+/"
-    @nendo.evalStr( " (string->regexp \"\\\\d\" ) " ).should                  == "#/\\d/"
-    @nendo.evalStr( " (regexp? #/str/ ) " ).should                            == "#t"
-    @nendo.evalStr( " (regexp? #/str/i ) " ).should                           == "#t"
-    @nendo.evalStr( " (regexp? \"str\" ) " ).should                           == "#f"
-    @nendo.evalStr( " (regexp? 'str) " ).should                               == "#f"
-    @nendo.evalStr( " (regexp? (. \"str\" intern)) " ).should                 == "#f"
-    @nendo.evalStr( " (regexp? 100) " ).should                                == "#f"
-
-    @nendo.evalStr( " (regexp->string #/abc/ ) " ).should                     == '"abc"'
-    @nendo.evalStr( " (regexp->string #/[a-z]/ ) " ).should                   == '"[a-z]"'
-    @nendo.evalStr( " (regexp->string #/[a-zA-Z0-9]+/ ) " ).should            == '"[a-zA-Z0-9]+"'
-    @nendo.evalStr( ' (regexp->string #/\d+/ ) ' ).should                     == '"\\\\d+"'
-
-    @nendo.evalStr( ' (define matchdata (rxmatch #/(\d+):(\d+)/ "foo314:2000bar")) ' ).should           == '314:2000'
-    @nendo.evalStr( ' (rxmatch-start      matchdata) ' ).should                                         == '3'
-    @nendo.evalStr( ' (rxmatch-start      matchdata 0) ' ).should                                       == '3'
-    @nendo.evalStr( ' (rxmatch-start      matchdata 1) ' ).should                                       == '3'
-    @nendo.evalStr( ' (rxmatch-start      matchdata 2) ' ).should                                       == '7'
-    @nendo.evalStr( ' (rxmatch-end        matchdata) ' ).should                                         == '11'
-    @nendo.evalStr( ' (rxmatch-end        matchdata 0) ' ).should                                       == '11'
-    @nendo.evalStr( ' (rxmatch-end        matchdata 1) ' ).should                                       == '6'
-    @nendo.evalStr( ' (rxmatch-end        matchdata 2) ' ).should                                       == '11'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata) ' ).should                                         == '"314:2000"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 0) ' ).should                                       == '"314:2000"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 1) ' ).should                                       == '"314"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 2) ' ).should                                       == '"2000"'
-    @nendo.evalStr( ' (rxmatch-num-matches matchdata) ' ).should                                        == '3'
-
-    @nendo.evalStr( ' (define matchdata (rxmatch #/(\w+)@([\w.]+)/ "foo@example.com")) ' ).should       == 'foo@example.com'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata) ' ).should                                         == '"foo@example.com"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 0) ' ).should                                       == '"foo@example.com"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 1) ' ).should                                       == '"foo"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 2) ' ).should                                       == '"example.com"'
-
-    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com")' ).should                   == '"foo@example.com"'
-    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com" 0)' ).should                 == '"foo@example.com"'
-    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com" 1)' ).should                 == '"foo"'
-    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com" 2)' ).should                 == '"example.com"'
-
-    @nendo.evalStr( ' (rxmatch->string #/abc/  "000abc00ABC000")' ).should                              == '"abc"'
-    @nendo.evalStr( ' (rxmatch->string #/ABC/  "000abc00ABC000")' ).should                              == '"ABC"'
-    @nendo.evalStr( ' (rxmatch->string #/abc/i "abc")' ).should                                         == '"abc"'
-    @nendo.evalStr( ' (rxmatch->string #/abc/i "ABC")' ).should                                         == '"ABC"'
-    @nendo.evalStr( ' (rxmatch->string #/ABC/i "abc")' ).should                                         == '"abc"'
-    @nendo.evalStr( ' (rxmatch->string #/abc/i "AbC")' ).should                                         == '"AbC"'
-
-    @nendo.evalStr( ' (rxmatch            #/abc/i "xxx")' ).should                                         == '#f'
-    @nendo.evalStr( ' (rxmatch            #/XXX/  "xxx")' ).should                                         == '#f'
-    @nendo.evalStr( ' (rxmatch->string    #/abc/i "xxx")' ).should                                         == '#f'
-    @nendo.evalStr( ' (rxmatch->string    #/XXX/  "xxx")' ).should                                         == '#f'
-
-    pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
-    @nendo.evalStr( ' (define matchdata (rxmatch #/([あ-ん])([あ-ん])([あ-ん])([あ-ん])([あ-ん])/ "ABC漢字あいうえお漢字ABC")) ' ).should  == 'あいうえお'
-    @nendo.evalStr( ' (rxmatch-start      matchdata) ' ).should                                         == '5'
-    @nendo.evalStr( ' (rxmatch-end        matchdata) ' ).should                                         == '10'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata) ' ).should                                         == '"あいうえお"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 1) ' ).should                                       == '"あ"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 2) ' ).should                                       == '"い"'
-    @nendo.evalStr( ' (rxmatch-substring  matchdata 3) ' ).should                                       == '"う"'
-  end
-end
 
 
 class TestClassForBlockArgument
@@ -1046,6 +897,158 @@ describe Nendo, "when call evalStr() with macroexpand-1 function" do
     @nendo.evalStr( " (set! a 10) (twice (twice (inc a)))" ).should == "14"
   end
 end
+
+
+describe Nendo, "when use #xxxx syntax " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " #t " ).should == "#t"
+    @nendo.evalStr( " #f " ).should == "#f"
+    @nendo.evalStr( " '#( 1 ) " ).should == "#(1)"
+    @nendo.evalStr( " '#() " ).should == "#()"
+    @nendo.evalStr( " #!        \n #t" ).should == "#t"
+    @nendo.evalStr( " #!        \n 100" ).should == "100"
+    @nendo.evalStr( " #!   123  \n 100" ).should == "100"
+    @nendo.evalStr( " '#?=1" ).should == "(debug-print 1 \"(string)\" 1 '1)"
+    @nendo.evalStr( " #b0  " ).should == Integer("0b0").to_s
+    @nendo.evalStr( " #b01 " ).should == Integer("0b01").to_s
+    @nendo.evalStr( " #b10 " ).should == Integer("0b10").to_s
+    @nendo.evalStr( " #b00000001 " ).should         == Integer("0b00000001").to_s
+    @nendo.evalStr( " #b1010101010101010 " ).should == Integer("0b1010101010101010").to_s
+    lambda { @nendo.evalStr( " #b2 " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #b02 " ) }.should     raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #bF " ) }.should      raise_error(RuntimeError)
+    @nendo.evalStr( " #o0  " ).should  == Integer("0o0").to_s
+    @nendo.evalStr( " #o7  " ).should  == Integer("0o7").to_s
+    @nendo.evalStr( " #o01 " ).should  == Integer("0o01").to_s
+    @nendo.evalStr( " #o10 " ).should  == Integer("0o10").to_s
+    @nendo.evalStr( " #o777 " ).should == Integer("0o777").to_s
+    @nendo.evalStr( " #o00000007 " ).should         == Integer("0o00000007").to_s
+    @nendo.evalStr( " #o0123456701234567 " ).should == Integer("0o0123456701234567").to_s
+    lambda { @nendo.evalStr( " #o8 " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #o08 " ) }.should     raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #oA " ) }.should      raise_error(RuntimeError)
+    @nendo.evalStr( " #d0  " ).should  == Integer("0d0").to_s
+    @nendo.evalStr( " #d9  " ).should  == Integer("0d9").to_s
+    @nendo.evalStr( " #d01 " ).should  == Integer("0d01").to_s
+    @nendo.evalStr( " #d10 " ).should  == Integer("0d10").to_s
+    @nendo.evalStr( " #d999 " ).should == Integer("0d999").to_s
+    @nendo.evalStr( " #d00000009 " ).should         == Integer("0d00000009").to_s
+    @nendo.evalStr( " #d0123456701234567 " ).should == Integer("0d0123456701234567").to_s
+    lambda { @nendo.evalStr( " #dA " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #dF " ) }.should      raise_error(RuntimeError)
+    @nendo.evalStr( " #x0  " ).should  == Integer("0x0").to_s
+    @nendo.evalStr( " #x9  " ).should  == Integer("0x9").to_s
+    @nendo.evalStr( " #xA  " ).should  == Integer("0xA").to_s
+    @nendo.evalStr( " #xF  " ).should  == Integer("0xF").to_s
+    @nendo.evalStr( " #x01 " ).should  == Integer("0x01").to_s
+    @nendo.evalStr( " #x10 " ).should  == Integer("0x10").to_s
+    @nendo.evalStr( " #xFFF " ).should == Integer("0xFFF").to_s
+    @nendo.evalStr( " #x0000000F " ).should         == Integer("0x0000000F").to_s
+    @nendo.evalStr( " #x0123456789ABCDEF0123456789ABCDEF " ).should == Integer("0x0123456789ABCDEF0123456789ABCDEF").to_s
+    lambda { @nendo.evalStr( " #xg " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #xh " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #xz " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #xG " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #xH " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #xZ " ) }.should      raise_error(RuntimeError)
+    lambda { @nendo.evalStr( " #a " ) }.should       raise_error(NameError)
+    lambda { @nendo.evalStr( " #c " ) }.should       raise_error(NameError)
+    lambda { @nendo.evalStr( " #e " ) }.should       raise_error(NameError)
+    lambda { @nendo.evalStr( " #tt " ) }.should      raise_error(NameError)
+    lambda { @nendo.evalStr( " #ff " ) }.should      raise_error(NameError)
+    lambda { @nendo.evalStr( " #abc " ) }.should     raise_error(NameError)
+    lambda { @nendo.evalStr( " #? " ) }.should       raise_error(NameError)
+    lambda { @nendo.evalStr( " #?a " ) }.should      raise_error(NameError)
+    lambda { @nendo.evalStr( " #= " ) }.should       raise_error(NameError)
+    lambda { @nendo.evalStr( " #?? " ) }.should      raise_error(NameError)
+  end
+end
+
+describe Nendo, "when use regexp litteral and library functions " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " #/abc/ " ).should                                       == "#/abc/"
+    @nendo.evalStr( " #/[a-z]/ " ).should                                     == "#/[a-z]/"
+    @nendo.evalStr( " #/[a-zA-Z0-9]+/ " ).should                              == "#/[a-zA-Z0-9]+/"
+    @nendo.evalStr( " #/\\d/ " ).should                                       == "#/\\d/"
+    @nendo.evalStr( " #/[\\/]/ " ).should                                     == "#/[/]/"
+    @nendo.evalStr( " #/abc/i " ).should                                      == "#/abc/i"
+    @nendo.evalStr( " #/[a-z]/i " ).should                                    == "#/[a-z]/i"
+    lambda { @nendo.evalStr( " #/[a-z]/I " ) }.should                         raise_error(NameError)
+    lambda { @nendo.evalStr( " #/[a-z]/a " ) }.should                         raise_error(NameError)
+    
+    @nendo.evalStr( " (string->regexp \"abc\") " ).should                     == "#/abc/"
+    @nendo.evalStr( " (string->regexp \"[a-z]\") " ).should                   == "#/[a-z]/"
+    @nendo.evalStr( " (string->regexp \"[a-zA-Z0-9]+\" ) " ).should           == "#/[a-zA-Z0-9]+/"
+    @nendo.evalStr( " (string->regexp \"\\\\d\" ) " ).should                  == "#/\\d/"
+    @nendo.evalStr( " (regexp? #/str/ ) " ).should                            == "#t"
+    @nendo.evalStr( " (regexp? #/str/i ) " ).should                           == "#t"
+    @nendo.evalStr( " (regexp? \"str\" ) " ).should                           == "#f"
+    @nendo.evalStr( " (regexp? 'str) " ).should                               == "#f"
+    @nendo.evalStr( " (regexp? (. \"str\" intern)) " ).should                 == "#f"
+    @nendo.evalStr( " (regexp? 100) " ).should                                == "#f"
+
+    @nendo.evalStr( " (regexp->string #/abc/ ) " ).should                     == '"abc"'
+    @nendo.evalStr( " (regexp->string #/[a-z]/ ) " ).should                   == '"[a-z]"'
+    @nendo.evalStr( " (regexp->string #/[a-zA-Z0-9]+/ ) " ).should            == '"[a-zA-Z0-9]+"'
+    @nendo.evalStr( ' (regexp->string #/\d+/ ) ' ).should                     == '"\\\\d+"'
+
+    @nendo.evalStr( ' (define matchdata (rxmatch #/(\d+):(\d+)/ "foo314:2000bar")) ' ).should           == '314:2000'
+    @nendo.evalStr( ' (rxmatch-start      matchdata) ' ).should                                         == '3'
+    @nendo.evalStr( ' (rxmatch-start      matchdata 0) ' ).should                                       == '3'
+    @nendo.evalStr( ' (rxmatch-start      matchdata 1) ' ).should                                       == '3'
+    @nendo.evalStr( ' (rxmatch-start      matchdata 2) ' ).should                                       == '7'
+    @nendo.evalStr( ' (rxmatch-end        matchdata) ' ).should                                         == '11'
+    @nendo.evalStr( ' (rxmatch-end        matchdata 0) ' ).should                                       == '11'
+    @nendo.evalStr( ' (rxmatch-end        matchdata 1) ' ).should                                       == '6'
+    @nendo.evalStr( ' (rxmatch-end        matchdata 2) ' ).should                                       == '11'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata) ' ).should                                         == '"314:2000"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 0) ' ).should                                       == '"314:2000"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 1) ' ).should                                       == '"314"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 2) ' ).should                                       == '"2000"'
+    @nendo.evalStr( ' (rxmatch-num-matches matchdata) ' ).should                                        == '3'
+
+    @nendo.evalStr( ' (define matchdata (rxmatch #/(\w+)@([\w.]+)/ "foo@example.com")) ' ).should       == 'foo@example.com'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata) ' ).should                                         == '"foo@example.com"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 0) ' ).should                                       == '"foo@example.com"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 1) ' ).should                                       == '"foo"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 2) ' ).should                                       == '"example.com"'
+
+    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com")' ).should                   == '"foo@example.com"'
+    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com" 0)' ).should                 == '"foo@example.com"'
+    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com" 1)' ).should                 == '"foo"'
+    @nendo.evalStr( ' (rxmatch->string #/(\w+)@([\w.]+)/ "foo@example.com" 2)' ).should                 == '"example.com"'
+
+    @nendo.evalStr( ' (rxmatch->string #/abc/  "000abc00ABC000")' ).should                              == '"abc"'
+    @nendo.evalStr( ' (rxmatch->string #/ABC/  "000abc00ABC000")' ).should                              == '"ABC"'
+    @nendo.evalStr( ' (rxmatch->string #/abc/i "abc")' ).should                                         == '"abc"'
+    @nendo.evalStr( ' (rxmatch->string #/abc/i "ABC")' ).should                                         == '"ABC"'
+    @nendo.evalStr( ' (rxmatch->string #/ABC/i "abc")' ).should                                         == '"abc"'
+    @nendo.evalStr( ' (rxmatch->string #/abc/i "AbC")' ).should                                         == '"AbC"'
+
+    @nendo.evalStr( ' (rxmatch            #/abc/i "xxx")' ).should                                         == '#f'
+    @nendo.evalStr( ' (rxmatch            #/XXX/  "xxx")' ).should                                         == '#f'
+    @nendo.evalStr( ' (rxmatch->string    #/abc/i "xxx")' ).should                                         == '#f'
+    @nendo.evalStr( ' (rxmatch->string    #/XXX/  "xxx")' ).should                                         == '#f'
+
+    pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
+    @nendo.evalStr( ' (define matchdata (rxmatch #/([あ-ん])([あ-ん])([あ-ん])([あ-ん])([あ-ん])/ "ABC漢字あいうえお漢字ABC")) ' ).should  == 'あいうえお'
+    @nendo.evalStr( ' (rxmatch-start      matchdata) ' ).should                                         == '5'
+    @nendo.evalStr( ' (rxmatch-end        matchdata) ' ).should                                         == '10'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata) ' ).should                                         == '"あいうえお"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 1) ' ).should                                       == '"あ"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 2) ' ).should                                       == '"い"'
+    @nendo.evalStr( ' (rxmatch-substring  matchdata 3) ' ).should                                       == '"う"'
+  end
+end
+
 
 describe Nendo, "when call functions in init.nnd " do
   before do
