@@ -27,28 +27,31 @@
 
 
 ;; -------------------- fact --------------------
-;;(bench-task "fact (ruby version)"
-;;            (printf " => %d\n" (RubyBenchmarkCode.new.fact 1000)))
+(bench-task #f
+            "fact (ruby version)"
+            (printf " => %d\n" (RubyBenchmarkCode.new.fact 1000)))
 
-;;(bench-task "fact (nendo version)"
-;;            (printf " => %d\n" (fact 1000)))
+(bench-task #f
+            "fact (nendo version)"
+            (printf " => %d\n" (fact 1000)))
 
 
 ;; -------------------- tak --------------------
-;;(bench-task "tak   (ruby version)"
-;;            (printf " => %d\n" (RubyBenchmarkCode.new.tak 10 5 0)))
+(bench-task #f
+            "tak   (ruby version)"
+            (printf " => %d\n" (RubyBenchmarkCode.new.tak  10 5 0)))
 
-;;(bench-task "tak2  (ruby version)"
-;;            (printf " => %d\n" (RubyBenchmarkCode.new.tak2 10 5 0)))
+(bench-task #f
+            "tak2  (ruby version)"
+            (printf " => %d\n" (RubyBenchmarkCode.new.tak2 10 5 0)))
 
-(if #f
-    (bench-task #t
-                "tak3  (ruby version)"
-                (printf " => %d\n" (RubyBenchmarkCode.new.tak3 8 4 0)))
-    
-    (bench-task #t
-                "tak   (nendo version)"
-                (printf " => %d\n" (tak 8 4 0))))
+(bench-task #f
+            "tak3  (ruby version)"
+            (printf " => %d\n" (RubyBenchmarkCode.new.tak3 10 5 0)))
+
+(bench-task #f
+            "tak   (nendo version)"
+            (printf " => %d\n" (tak 10 5 0)))
 
 
 ;;[EOF]
