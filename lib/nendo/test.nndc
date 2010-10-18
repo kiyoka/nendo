@@ -103,12 +103,13 @@ trampCall(
                 else raise NameError.new( "Error: undefined variable _vector", "_vector" ) end
                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:46"] + __e.backtrace ) ; raise __e
               end            ,
-              Cell.new(
-              0              ,Cell.new(
-              0              ,Cell.new(
-              0              ,Cell.new(
+          [
+              0              ,
+              0              ,
+              0              ,
               0
-                       ))))))
+          ]
+                       ))
     )
   end
  )
@@ -128,14 +129,14 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _vector_MIMARKset_EXMARK", "_vector_MIMARKset_EXMARK" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:48"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                     begin
                       if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                         trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                       else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:48"] + __e.backtrace ) ; raise __e
-                    end                  ,Cell.new(
-                  0                  ,Cell.new(
+                    end                  ,
+                  0                  ,
                     trampCall( self.__PLMARK_METHOD(  '+',
                         begin
                           if @global_lisp_binding.has_key?('__PLMARK') then
@@ -143,7 +144,7 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:48"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                               begin
                                 if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -151,18 +152,21 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:48"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                   if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                                     trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                                   else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:48"] + __e.backtrace ) ; raise __e
-                                end                              ,Cell.new(
+                                end                              ,
                               0
-                                       ))))                        ,Cell.new(
+                          ]
+                                       ))                        ,
                         1
-                                 ))))
-                           ))))
+                    ]
+                                 ))
+              ]
+                           )
           }
     )
   end
@@ -183,14 +187,14 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _vector_MIMARKset_EXMARK", "_vector_MIMARKset_EXMARK" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:50"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                     begin
                       if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                         trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                       else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:50"] + __e.backtrace ) ; raise __e
-                    end                  ,Cell.new(
-                  1                  ,Cell.new(
+                    end                  ,
+                  1                  ,
                     trampCall( self.__PLMARK_METHOD(  '+',
                         begin
                           if @global_lisp_binding.has_key?('__PLMARK') then
@@ -198,7 +202,7 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:50"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                               begin
                                 if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -206,18 +210,21 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:50"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                   if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                                     trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                                   else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:50"] + __e.backtrace ) ; raise __e
-                                end                              ,Cell.new(
+                                end                              ,
                               1
-                                       ))))                        ,Cell.new(
+                          ]
+                                       ))                        ,
                         1
-                                 ))))
-                           ))))
+                    ]
+                                 ))
+              ]
+                           )
           }
     )
   end
@@ -238,14 +245,14 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _vector_MIMARKset_EXMARK", "_vector_MIMARKset_EXMARK" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:52"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                     begin
                       if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                         trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                       else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:52"] + __e.backtrace ) ; raise __e
-                    end                  ,Cell.new(
-                  2                  ,Cell.new(
+                    end                  ,
+                  2                  ,
                     trampCall( self.__PLMARK_METHOD(  '+',
                         begin
                           if @global_lisp_binding.has_key?('__PLMARK') then
@@ -253,7 +260,7 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:52"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                               begin
                                 if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -261,18 +268,21 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:52"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                   if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                                     trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                                   else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:52"] + __e.backtrace ) ; raise __e
-                                end                              ,Cell.new(
+                                end                              ,
                               2
-                                       ))))                        ,Cell.new(
+                          ]
+                                       ))                        ,
                         1
-                                 ))))
-                           ))))
+                    ]
+                                 ))
+              ]
+                           )
           }
     )
   end
@@ -293,14 +303,14 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _vector_MIMARKset_EXMARK", "_vector_MIMARKset_EXMARK" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:54"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                     begin
                       if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                         trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                       else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:54"] + __e.backtrace ) ; raise __e
-                    end                  ,Cell.new(
-                  3                  ,Cell.new(
+                    end                  ,
+                  3                  ,
                     trampCall( self.__PLMARK_METHOD(  '+',
                         begin
                           if @global_lisp_binding.has_key?('__PLMARK') then
@@ -308,7 +318,7 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:54"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                               begin
                                 if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -316,18 +326,21 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:54"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                   if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                                     trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                                   else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:54"] + __e.backtrace ) ; raise __e
-                                end                              ,Cell.new(
+                                end                              ,
                               3
-                                       ))))                        ,Cell.new(
+                          ]
+                                       ))                        ,
                         1
-                                 ))))
-                           ))))
+                    ]
+                                 ))
+              ]
+                           )
           }
     )
   end
@@ -348,9 +361,9 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:57"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   "Total: %5d tests, %5d passed, %5d failed, %5d aborted.
-"                  ,Cell.new(
+"                  ,
                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                         begin
                           if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -358,15 +371,16 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                               trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                             else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
+                          end                        ,
                         0
-                                 ))))                  ,Cell.new(
+                    ]
+                                 ))                  ,
                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                         begin
                           if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -374,15 +388,16 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                               trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                             else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
+                          end                        ,
                         1
-                                 ))))                  ,Cell.new(
+                    ]
+                                 ))                  ,
                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                         begin
                           if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -390,15 +405,16 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                               trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                             else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
+                          end                        ,
                         2
-                                 ))))                  ,Cell.new(
+                    ]
+                                 ))                  ,
                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                         begin
                           if @global_lisp_binding.has_key?('_vector_MIMARKref') then
@@ -406,16 +422,18 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                               trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                             else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:61"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
+                          end                        ,
                         3
-                                 ))))
-                           ))))))
+                    ]
+                                 ))
+              ]
+                           )
           }
     )
   end
@@ -438,7 +456,7 @@ trampCall(
                         else raise NameError.new( "Error: undefined variable _not", "_not" ) end
                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                       end                    ,
-                      Cell.new(
+                  [
                         trampCall( self._eq_QUMARK_METHOD(  'eq?',
                             begin
                               if @global_lisp_binding.has_key?('_eq_QUMARK') then
@@ -446,8 +464,8 @@ trampCall(
                               else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                             end                          ,
-                            Cell.new(
-                            false                            ,Cell.new(
+                        [
+                            false                            ,
                               trampCall( self._string_QUMARK_METHOD(  'string?',
                                   begin
                                     if @global_lisp_binding.has_key?('_string_QUMARK') then
@@ -455,16 +473,19 @@ trampCall(
                                     else raise NameError.new( "Error: undefined variable _string_QUMARK", "_string_QUMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:64"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                  Cell.new(
+                              [
                                     begin
                                       if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK') then
                                         trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
                                       else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK", "__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:66"] + __e.backtrace ) ; raise __e
                                     end
-                                           )))
-                                     ))))
-                               )))
+                              ]
+                                           ))
+                        ]
+                                     ))
+                  ]
+                               ))
                  ) then
                     begin
                         trampCall(File).exist?(
@@ -489,13 +510,13 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _with_MIMARKopen", "_with_MIMARKopen" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:66"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          Cell.new(
+                      [
                             begin
                               if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK') then
                                 trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
                               else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK", "__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:66"] + __e.backtrace ) ; raise __e
-                            end                          ,Cell.new(
+                            end                          ,
                             Proc.new { |_f| 
                                 begin
                                   ___lambda = lambda { |_m| 
@@ -513,7 +534,7 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _for_MIMARKeach", "_for_MIMARKeach" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:70"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     Proc.new { |_i| 
                                                         trampCall( self._vector_MIMARKset_EXMARK_METHOD(  'vector-set!',
                                                             begin
@@ -522,17 +543,17 @@ trampCall(
                                                               else raise NameError.new( "Error: undefined variable _vector_MIMARKset_EXMARK", "_vector_MIMARKset_EXMARK" ) end
                                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
-                                                            Cell.new(
+                                                        [
                                                               begin
                                                                 if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                                                                   trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                                                                 else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,Cell.new(
+                                                              end                                                            ,
                                                               begin
                                                                   trampCall(_i)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:72"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,Cell.new(
+                                                              end                                                            ,
                                                               trampCall( self._to_MIMARKi_METHOD(  'to-i',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_to_MIMARKi') then
@@ -540,7 +561,7 @@ trampCall(
                                                                     else raise NameError.new( "Error: undefined variable _to_MIMARKi", "_to_MIMARKi" ) end
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:72"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
-                                                                  Cell.new(
+                                                              [
                                                                     trampCall( self._rxmatch_MIMARKsubstring_METHOD(  'rxmatch-substring',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('_rxmatch_MIMARKsubstring') then
@@ -548,11 +569,11 @@ trampCall(
                                                                           else raise NameError.new( "Error: undefined variable _rxmatch_MIMARKsubstring", "_rxmatch_MIMARKsubstring" ) end
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:72"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
-                                                                        Cell.new(
+                                                                    [
                                                                           begin
                                                                               trampCall(_m)
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:72"] + __e.backtrace ) ; raise __e
-                                                                          end                                                                        ,Cell.new(
+                                                                          end                                                                        ,
                                                                           trampCall( self.__PLMARK_METHOD(  '+',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('__PLMARK') then
@@ -560,19 +581,24 @@ trampCall(
                                                                                 else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:77"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
-                                                                              Cell.new(
+                                                                          [
                                                                                 begin
                                                                                     trampCall(_i)
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:72"] + __e.backtrace ) ; raise __e
-                                                                                end                                                                              ,Cell.new(
+                                                                                end                                                                              ,
                                                                               1
-                                                                                       ))))
-                                                                                 ))))
-                                                                           )))
-                                                                     )))))
-                                                    }                                                  ,Cell.new(
+                                                                          ]
+                                                                                       ))
+                                                                    ]
+                                                                                 ))
+                                                              ]
+                                                                           ))
+                                                        ]
+                                                                     ))
+                                                    }                                                  ,
                                                   Cell.new(0,Cell.new(1,Cell.new(2,Cell.new(3))))
-                                                           ))))
+                                              ]
+                                                           ))
                                           end
                                       end
                                   } ; ___lambda.call(
@@ -583,18 +609,20 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable _rxmatch", "_rxmatch" ) end
                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:68"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
-                                            Regexp.new( "Total:\\s+(\\d+)\\s+tests,\\s+(\\d+)\\s+passed,\\s+(\\d+)\\s+failed,\\s+(\\d+)\\s+aborted")                                            ,Cell.new(
+                                        [
+                                            Regexp.new( "Total:\\s+(\\d+)\\s+tests,\\s+(\\d+)\\s+passed,\\s+(\\d+)\\s+failed,\\s+(\\d+)\\s+aborted")                                            ,
                                               begin
                                                   trampCall(_f).readline.chomp(
                                                     )
                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:68"] + __e.backtrace ) ; raise __e
                                               end
-                                                     ))))
+                                        ]
+                                                     ))
                                              )
                                 end
                             }
-                                   ))))
+                      ]
+                                   ))
                   end
               end
               begin
@@ -606,14 +634,14 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _vector_MIMARKset_EXMARK", "_vector_MIMARKset_EXMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                               trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                             else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
-                        3                        ,Cell.new(
+                          end                        ,
+                        3                        ,
                           trampCall( self.__PLMARK_METHOD(  '+',
                               begin
                                 if @global_lisp_binding.has_key?('__PLMARK') then
@@ -621,14 +649,16 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:77"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                     trampCall(_orig_MIMARKabort)
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
-                                end                              ,Cell.new(
+                                end                              ,
                               1
-                                       ))))
-                                 )))))
+                          ]
+                                       ))
+                    ]
+                                 ))
                     trampCall( self._write_MIMARKsummary_METHOD(  'write-summary',
                         begin
                           if @global_lisp_binding.has_key?('_write_MIMARKsummary') then
@@ -636,8 +666,9 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _write_MIMARKsummary", "_write_MIMARKsummary" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:78"] + __e.backtrace ) ; raise __e
                         end                      ,
-                      Cell.new(
-                                 )))
+                    [
+                    ]
+                                 ))
                     delayCall( 'vector-set!',
                         begin
                           if @global_lisp_binding.has_key?('_vector_MIMARKset_EXMARK') then
@@ -645,19 +676,20 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _vector_MIMARKset_EXMARK", "_vector_MIMARKset_EXMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                               trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                             else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
-                        3                        ,Cell.new(
+                          end                        ,
+                        3                        ,
                           begin
                               trampCall(_orig_MIMARKabort)
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
                           end
-                                 ))))
+                    ]
+                                 )
                 } ; ___lambda.call(
                       trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
                           begin
@@ -666,15 +698,16 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _vector_MIMARKref", "_vector_MIMARKref" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:76"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          Cell.new(
+                      [
                             begin
                               if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKcounts_ASMARK') then
                                 trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
                               else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKcounts_ASMARK", "__ASMARKtest_MIMARKcounts_ASMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:79"] + __e.backtrace ) ; raise __e
-                            end                          ,Cell.new(
+                            end                          ,
                           3
-                                   ))))
+                      ]
+                                   ))
                            )
               end
           }
@@ -698,14 +731,15 @@ trampCall(
                       else raise NameError.new( "Error: undefined variable _string_QUMARK", "_string_QUMARK" ) end
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:82"] + __e.backtrace ) ; raise __e
                     end                  ,
-                    Cell.new(
+                [
                       begin
                         if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK') then
                           trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
                         else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK", "__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK" ) end
                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:83"] + __e.backtrace ) ; raise __e
                       end
-                             )))
+                ]
+                             ))
                ) then
                   begin
                       delayCall( 'with-open',
@@ -715,13 +749,13 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _with_MIMARKopen", "_with_MIMARKopen" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:83"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          Cell.new(
+                      [
                             begin
                               if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK') then
                                 trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
                               else raise NameError.new( "Error: undefined variable __ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK", "__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:83"] + __e.backtrace ) ; raise __e
-                            end                          ,Cell.new(
+                            end                          ,
                             Proc.new { |_f| 
                                 begin
                                     trampCall(_f).printf(
@@ -733,14 +767,16 @@ trampCall(
                                                 else raise NameError.new( "Error: undefined variable _format_MIMARKsummary", "_format_MIMARKsummary" ) end
                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:85"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                            Cell.new(
-                                                       )))
+                                          [
+                                          ]
+                                                       ))
                                       )
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:85"] + __e.backtrace ) ; raise __e
                                 end
-                            }                          ,Cell.new(
+                            }                          ,
                           "w"
-                                   ))))
+                      ]
+                                   )
                   end
               end
           }
@@ -772,12 +808,13 @@ trampCall(
                                     else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:99"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                  Cell.new(
+                              [
                                     begin
                                         trampCall(_expect)
                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                     end
-                                           )))
+                              ]
+                                           ))
                           )
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:99"] + __e.backtrace ) ; raise __e
                     end
@@ -793,8 +830,9 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _test_MIMARKcount_PLMARK_PLMARK", "_test_MIMARKcount_PLMARK_PLMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:93"] + __e.backtrace ) ; raise __e
                         end                      ,
-                      Cell.new(
-                                 )))
+                    [
+                    ]
+                                 ))
                     begin
                       ___lambda = lambda { |_r| 
                           if ( 
@@ -803,16 +841,17 @@ trampCall(
                                     trampCall(_cmp)
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:95"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                                Cell.new(
+                            [
                                   begin
                                       trampCall(_expect)
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
-                                  end                                ,Cell.new(
+                                  end                                ,
                                   begin
                                       trampCall(_r)
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                   end
-                                         ))))
+                            ]
+                                         ))
                            ) then
                               begin
                                   begin
@@ -829,8 +868,9 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _test_MIMARKpass_PLMARK_PLMARK", "_test_MIMARKpass_PLMARK_PLMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:97"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                    Cell.new(
-                                               )))
+                                  [
+                                  ]
+                                               ))
                               end
                           else
                               if ( 
@@ -848,12 +888,13 @@ trampCall(
                                                       else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:99"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       begin
                                                           trampCall(_r)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             )))
+                                                ]
+                                                             ))
                                             )
                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:99"] + __e.backtrace ) ; raise __e
                                       end
@@ -869,7 +910,7 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     trampCall( self._list_METHOD(  'list',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_list') then
@@ -877,27 +918,29 @@ trampCall(
                                                           else raise NameError.new( "Error: undefined variable _list", "_list" ) end
                                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
-                                                        Cell.new(
+                                                    [
                                                           begin
                                                               trampCall(_msg)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
-                                                          end                                                        ,Cell.new(
+                                                          end                                                        ,
                                                           begin
                                                               trampCall(_expect)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
-                                                          end                                                        ,Cell.new(
+                                                          end                                                        ,
                                                           begin
                                                               trampCall(_r)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                                           end
-                                                                 )))))                                                  ,Cell.new(
+                                                    ]
+                                                                 ))                                                  ,
                                                     begin
                                                       if @global_lisp_binding.has_key?('__ASMARKdiscrepancy_MIMARKlist_ASMARK') then
                                                         trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                                                       else raise NameError.new( "Error: undefined variable __ASMARKdiscrepancy_MIMARKlist_ASMARK", "__ASMARKdiscrepancy_MIMARKlist_ASMARK" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           ))))
+                                              ]
+                                                           ))
                                         )
                                       end
                                       trampCall( self._test_MIMARKfail_PLMARK_PLMARK_METHOD(  'test-fail++',
@@ -907,8 +950,9 @@ trampCall(
                                             else raise NameError.new( "Error: undefined variable _test_MIMARKfail_PLMARK_PLMARK", "_test_MIMARKfail_PLMARK_PLMARK" ) end
                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:102"] + __e.backtrace ) ; raise __e
                                           end                                        ,
-                                        Cell.new(
-                                                   )))
+                                      [
+                                      ]
+                                                   ))
                                   end
                               else
                                   Cell.new()
@@ -926,8 +970,9 @@ trampCall(
                                     trampCall(_thunk)
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:94"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                              Cell.new(
-                                         )))
+                            [
+                            ]
+                                         ))
                                  )
                     end
                 } ; ___lambda.call(
@@ -941,12 +986,13 @@ trampCall(
                                     else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:143"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                  Cell.new(
+                              [
                                     begin
                                         trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004)
                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                     end
-                                           )))
+                              ]
+                                           ))
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -962,12 +1008,13 @@ trampCall(
                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                     end                                  ,
-                                    Cell.new(
+                                [
                                       begin
                                           trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004)
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end
-                                             ))
+                                ]
+                                             )
                             end
                         } ; ___lambda.call(
                               begin
@@ -1004,8 +1051,8 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"test"                  ,Cell.new(
+              [
+                  :"test"                  ,
                     trampCall( self._cons_METHOD(  'cons',
                         begin
                           if @global_lisp_binding.has_key?('_cons') then
@@ -1013,11 +1060,11 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                               trampCall(_msg)
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:109"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
+                          end                        ,
                           trampCall( self._cons_METHOD(  'cons',
                               begin
                                 if @global_lisp_binding.has_key?('_cons') then
@@ -1025,11 +1072,11 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                     trampCall(_expect)
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:109"] + __e.backtrace ) ; raise __e
-                                end                              ,Cell.new(
+                                end                              ,
                                 trampCall( self._cons_METHOD(  'cons',
                                     begin
                                       if @global_lisp_binding.has_key?('_cons') then
@@ -1037,7 +1084,7 @@ trampCall(
                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                     end                                  ,
-                                    Cell.new(
+                                [
                                       trampCall( self._cons_METHOD(  'cons',
                                           begin
                                             if @global_lisp_binding.has_key?('_cons') then
@@ -1045,8 +1092,8 @@ trampCall(
                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                           end                                        ,
-                                          Cell.new(
-                                          :"lambda"                                          ,Cell.new(
+                                      [
+                                          :"lambda"                                          ,
                                             trampCall( self._cons_METHOD(  'cons',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_cons') then
@@ -1054,8 +1101,8 @@ trampCall(
                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
-                                                Cell.new()                                                ,Cell.new(
+                                            [
+                                                Cell.new()                                                ,
                                                   trampCall( self._cons_METHOD(  'cons',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cons') then
@@ -1063,23 +1110,30 @@ trampCall(
                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:101"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                      Cell.new(
+                                                  [
                                                         begin
                                                             trampCall(_form)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:109"] + __e.backtrace ) ; raise __e
-                                                        end                                                      ,Cell.new(
-                                                      
-                                                               ))))
-                                                         ))))
-                                                   ))))                                    ,Cell.new(
+                                                        end                                                      ,
+                                                      Cell.new()
+                                                  ]
+                                                               ))
+                                            ]
+                                                         ))
+                                      ]
+                                                   ))                                    ,
                                       begin
                                           trampCall(_compare)
                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:109"] + __e.backtrace ) ; raise __e
                                       end
-                                             ))))
-                                       ))))
-                                 ))))
-                           ))))
+                                ]
+                                             ))
+                          ]
+                                       ))
+                    ]
+                                 ))
+              ]
+                           ))
           }
     )
   end
@@ -1100,7 +1154,7 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _string_MIMARKjoin", "_string_MIMARKjoin" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:114"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                     trampCall( self._map_METHOD(  'map',
                         begin
                           if @global_lisp_binding.has_key?('_map') then
@@ -1108,13 +1162,13 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _map", "_map" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:115"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           Proc.new { |_x| 
                               begin
                                   trampCall(_char)
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:116"] + __e.backtrace ) ; raise __e
                               end
-                          }                        ,Cell.new(
+                          }                        ,
                           trampCall( self._range_METHOD(  'range',
                               begin
                                 if @global_lisp_binding.has_key?('_range') then
@@ -1122,14 +1176,17 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _range", "_range" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:117"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                     trampCall(_num)
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:117"] + __e.backtrace ) ; raise __e
                                 end
-                                       )))
-                                 ))))
-                           ))
+                          ]
+                                       ))
+                    ]
+                                 ))
+              ]
+                           )
           }
     )
   end
@@ -1160,7 +1217,7 @@ trampCall(
                                     else raise NameError.new( "Error: undefined variable _make_MIMARKpadding_MIMARKstring", "_make_MIMARKpadding_MIMARKstring" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:122"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                  Cell.new(
+                              [
                                     trampCall( self._max_METHOD(  'max',
                                         begin
                                           if @global_lisp_binding.has_key?('_max') then
@@ -1168,8 +1225,8 @@ trampCall(
                                           else raise NameError.new( "Error: undefined variable _max", "_max" ) end
                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:122"] + __e.backtrace ) ; raise __e
                                         end                                      ,
-                                        Cell.new(
-                                        5                                        ,Cell.new(
+                                    [
+                                        5                                        ,
                                           trampCall( self.__MIMARK_METHOD(  '-',
                                               begin
                                                 if @global_lisp_binding.has_key?('__MIMARK') then
@@ -1177,16 +1234,19 @@ trampCall(
                                                 else raise NameError.new( "Error: undefined variable __MIMARK", "__MIMARK" ) end
                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:122"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                              Cell.new(
-                                              77                                              ,Cell.new(
+                                          [
+                                              77                                              ,
                                                 begin
                                                     trampCall(_msglen)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:122"] + __e.backtrace ) ; raise __e
                                                 end
-                                                       ))))
-                                                 ))))                                  ,Cell.new(
+                                          ]
+                                                       ))
+                                    ]
+                                                 ))                                  ,
                                   "-"
-                                           ))))
+                              ]
+                                           ))
                           )
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:122"] + __e.backtrace ) ; raise __e
                     end
@@ -1208,12 +1268,13 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _string_MIMARKlength", "_string_MIMARKlength" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:121"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          Cell.new(
+                      [
                             begin
                                 trampCall(_msg)
                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:123"] + __e.backtrace ) ; raise __e
                             end
-                                   )))
+                      ]
+                                   ))
                            )
               end
           }
@@ -1261,8 +1322,9 @@ trampCall(
                                       else raise NameError.new( "Error: undefined variable _read_MIMARKsummary", "_read_MIMARKsummary" ) end
                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:131"] + __e.backtrace ) ; raise __e
                                     end                                  ,
-                                  Cell.new(
-                                             )))
+                                [
+                                ]
+                                             ))
                                 begin
                                     trampCall(_f).printf(
                                         "
@@ -1295,7 +1357,7 @@ trampCall(
                                                       else raise NameError.new( "Error: undefined variable _make_MIMARKpadding_MIMARKstring", "_make_MIMARKpadding_MIMARKstring" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       trampCall( self._max_METHOD(  'max',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_max') then
@@ -1303,8 +1365,8 @@ trampCall(
                                                             else raise NameError.new( "Error: undefined variable _max", "_max" ) end
                                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
-                                                          5                                                          ,Cell.new(
+                                                      [
+                                                          5                                                          ,
                                                             trampCall( self.__MIMARK_METHOD(  '-',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('__MIMARK') then
@@ -1312,16 +1374,19 @@ trampCall(
                                                                   else raise NameError.new( "Error: undefined variable __MIMARK", "__MIMARK" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
-                                                                Cell.new(
-                                                                70                                                                ,Cell.new(
+                                                            [
+                                                                70                                                                ,
                                                                   begin
                                                                       trampCall(_msglen)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                                                   end
-                                                                         ))))
-                                                                   ))))                                                    ,Cell.new(
+                                                            ]
+                                                                         ))
+                                                      ]
+                                                                   ))                                                    ,
                                                     "-"
-                                                             ))))
+                                                ]
+                                                             ))
                                             )
                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                       end
@@ -1338,12 +1403,13 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable _string_MIMARKlength", "_string_MIMARKlength" ) end
                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:135"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
+                                        [
                                               begin
                                                   trampCall(_msg)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:138"] + __e.backtrace ) ; raise __e
                                               end
-                                                     )))
+                                        ]
+                                                     ))
                                              )
                                 end
                                 begin
@@ -1367,7 +1433,7 @@ trampCall(
                                   else raise NameError.new( "Error: undefined variable _make_MIMARKpadding_MIMARKstring", "_make_MIMARKpadding_MIMARKstring" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                                Cell.new(
+                            [
                                   trampCall( self._max_METHOD(  'max',
                                       begin
                                         if @global_lisp_binding.has_key?('_max') then
@@ -1375,8 +1441,8 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _max", "_max" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
-                                      3                                      ,Cell.new(
+                                  [
+                                      3                                      ,
                                         trampCall( self.__MIMARK_METHOD(  '-',
                                             begin
                                               if @global_lisp_binding.has_key?('__MIMARK') then
@@ -1384,8 +1450,8 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable __MIMARK", "__MIMARK" ) end
                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:136"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
-                                            65                                            ,Cell.new(
+                                        [
+                                            65                                            ,
                                               trampCall( self._string_MIMARKlength_METHOD(  'string-length',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_string_MIMARKlength') then
@@ -1393,16 +1459,20 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _string_MIMARKlength", "_string_MIMARKlength" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:135"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     begin
                                                         trampCall(_s)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:129"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           )))
-                                                     ))))
-                                               ))))                                ,Cell.new(
+                                              ]
+                                                           ))
+                                        ]
+                                                     ))
+                                  ]
+                                               ))                                ,
                                 " "
-                                         ))))
+                            ]
+                                         ))
                                  )
                     end
                 } ; ___lambda.call(
@@ -1413,13 +1483,14 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:126"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          Cell.new(
-                          "Testing %s ... "                          ,Cell.new(
+                      [
+                          "Testing %s ... "                          ,
                             begin
                                 trampCall(_msg)
                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:138"] + __e.backtrace ) ; raise __e
                             end
-                                   ))))
+                      ]
+                                   ))
                            )
               end
           }
@@ -1445,14 +1516,15 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:143"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          Cell.new(
+                      [
                             begin
                               if @global_lisp_binding.has_key?('__ASMARKdiscrepancy_MIMARKlist_ASMARK') then
                                 trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                               else raise NameError.new( "Error: undefined variable __ASMARKdiscrepancy_MIMARKlist_ASMARK", "__ASMARKdiscrepancy_MIMARKlist_ASMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:158"] + __e.backtrace ) ; raise __e
                             end
-                                   )))
+                      ]
+                                   ))
                      ) then
                         begin
                             trampCall(_f).printf(
@@ -1478,7 +1550,7 @@ discrepancies found.  Errors are:
                                   else raise NameError.new( "Error: undefined variable _for_MIMARKeach", "_for_MIMARKeach" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:147"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                                Cell.new(
+                            [
                                   Proc.new { |_r| 
                                       begin
                                           trampCall(_f).printf(
@@ -1491,12 +1563,13 @@ discrepancies found.  Errors are:
                                                       else raise NameError.new( "Error: undefined variable _first", "_first" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:149"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       begin
                                                           trampCall(_r)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:151"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             )))                                              ,
+                                                ]
+                                                             ))                                              ,
                                                 trampCall( self._write_MIMARKto_MIMARKstring_METHOD(  'write-to-string',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_write_MIMARKto_MIMARKstring') then
@@ -1504,7 +1577,7 @@ discrepancies found.  Errors are:
                                                       else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:151"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       trampCall( self._second_METHOD(  'second',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_second') then
@@ -1512,13 +1585,15 @@ discrepancies found.  Errors are:
                                                             else raise NameError.new( "Error: undefined variable _second", "_second" ) end
                                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:150"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
+                                                      [
                                                             begin
                                                                 trampCall(_r)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:151"] + __e.backtrace ) ; raise __e
                                                             end
-                                                                   )))
-                                                             )))                                              ,
+                                                      ]
+                                                                   ))
+                                                ]
+                                                             ))                                              ,
                                                 trampCall( self._write_MIMARKto_MIMARKstring_METHOD(  'write-to-string',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_write_MIMARKto_MIMARKstring') then
@@ -1526,7 +1601,7 @@ discrepancies found.  Errors are:
                                                       else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:151"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       trampCall( self._third_METHOD(  'third',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_third') then
@@ -1534,17 +1609,19 @@ discrepancies found.  Errors are:
                                                             else raise NameError.new( "Error: undefined variable _third", "_third" ) end
                                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:151"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
+                                                      [
                                                             begin
                                                                 trampCall(_r)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:151"] + __e.backtrace ) ; raise __e
                                                             end
-                                                                   )))
-                                                             )))
+                                                      ]
+                                                                   ))
+                                                ]
+                                                             ))
                                             )
                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:148"] + __e.backtrace ) ; raise __e
                                       end
-                                  }                                ,Cell.new(
+                                  }                                ,
                                   trampCall( self._reverse_METHOD(  'reverse',
                                       begin
                                         if @global_lisp_binding.has_key?('_reverse') then
@@ -1552,15 +1629,17 @@ discrepancies found.  Errors are:
                                         else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:152"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
+                                  [
                                         begin
                                           if @global_lisp_binding.has_key?('__ASMARKdiscrepancy_MIMARKlist_ASMARK') then
                                             trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                                           else raise NameError.new( "Error: undefined variable __ASMARKdiscrepancy_MIMARKlist_ASMARK", "__ASMARKdiscrepancy_MIMARKlist_ASMARK" ) end
                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:158"] + __e.backtrace ) ; raise __e
                                         end
-                                               )))
-                                         ))))
+                                  ]
+                                               ))
+                            ]
+                                         ))
                         end
                     end
                     if ( 
@@ -1579,8 +1658,9 @@ discrepancies found.  Errors are:
                                   else raise NameError.new( "Error: undefined variable _write_MIMARKsummary", "_write_MIMARKsummary" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:155"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                              Cell.new(
-                                         )))
+                            [
+                            ]
+                                         ))
                         end
                     end
                     delayCall( 'length',
@@ -1590,14 +1670,15 @@ discrepancies found.  Errors are:
                           else raise NameError.new( "Error: undefined variable _length", "_length" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:158"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('__ASMARKdiscrepancy_MIMARKlist_ASMARK') then
                               trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                             else raise NameError.new( "Error: undefined variable __ASMARKdiscrepancy_MIMARKlist_ASMARK", "__ASMARKdiscrepancy_MIMARKlist_ASMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:158"] + __e.backtrace ) ; raise __e
                           end
-                                 ))
+                    ]
+                                 )
                 } ; ___lambda.call(
                       begin
                         if @global_lisp_binding.has_key?('__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK') then

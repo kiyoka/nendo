@@ -36,13 +36,14 @@ trampCall(
                                     else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                  Cell.new(
-                                  "<"                                  ,Cell.new(
+                              [
+                                  "<"                                  ,
                                     begin
                                         trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                     end
-                                           ))))
+                              ]
+                                           ))
                                    )
                       end
                      ) then
@@ -74,13 +75,14 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
-                                      ">"                                      ,Cell.new(
+                                  [
+                                      ">"                                      ,
                                         begin
                                             trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                         end
-                                               ))))
+                                  ]
+                                               ))
                                        )
                           end
                          ) then
@@ -112,13 +114,14 @@ trampCall(
                                             else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                           end                                        ,
-                                          Cell.new(
-                                          "&"                                          ,Cell.new(
+                                      [
+                                          "&"                                          ,
                                             begin
                                                 trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                             end
-                                                   ))))
+                                      ]
+                                                   ))
                                            )
                               end
                              ) then
@@ -150,13 +153,14 @@ trampCall(
                                                 else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                              Cell.new(
-                                              "\""                                              ,Cell.new(
+                                          [
+                                              "\""                                              ,
                                                 begin
                                                     trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                 end
-                                                       ))))
+                                          ]
+                                                       ))
                                                )
                                   end
                                  ) then
@@ -207,7 +211,7 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _string_MIMARKjoin", "_string_MIMARKjoin" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:49"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                     trampCall( self._map_METHOD(  'map',
                         begin
                           if @global_lisp_binding.has_key?('_map') then
@@ -215,13 +219,13 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _map", "_map" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:50"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                             if @global_lisp_binding.has_key?('_html_MIMARKescape') then
                               trampCall(@_html_MIMARKescape)
                             else raise NameError.new( "Error: undefined variable _html_MIMARKescape", "_html_MIMARKescape" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:51"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
+                          end                        ,
                           trampCall( self._to_MIMARKlist_METHOD(  'to-list',
                               begin
                                 if @global_lisp_binding.has_key?('_to_MIMARKlist') then
@@ -229,17 +233,20 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _to_MIMARKlist", "_to_MIMARKlist" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                     trampCall(_string).to_s.split(
                                         ""
                                       )
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e
                                 end
-                                       )))
-                                 ))))                  ,Cell.new(
+                          ]
+                                       ))
+                    ]
+                                 ))                  ,
                   ""
-                           )))
+              ]
+                           )
           }
     )
   end
@@ -294,7 +301,7 @@ trampCall(
                                     else raise NameError.new( "Error: undefined variable _find", "_find" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                  Cell.new(
+                              [
                                     Proc.new { |_e| 
                                         trampCall( self._memq_METHOD(  'memq',
                                             begin
@@ -303,11 +310,11 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable _memq", "_memq" ) end
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
+                                        [
                                               begin
                                                   trampCall(_type)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
-                                              end                                            ,Cell.new(
+                                              end                                            ,
                                               trampCall( self._car_METHOD(  'car',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_car') then
@@ -315,21 +322,24 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     begin
                                                         trampCall(_e)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           )))
-                                                     ))))
-                                    }                                  ,Cell.new(
+                                              ]
+                                                           ))
+                                        ]
+                                                     ))
+                                    }                                  ,
                                     begin
                                       if @global_lisp_binding.has_key?('__ASMARKdoctype_MIMARKalist_ASMARK') then
                                         trampCall(@__ASMARKdoctype_MIMARKalist_ASMARK)
                                       else raise NameError.new( "Error: undefined variable __ASMARKdoctype_MIMARKalist_ASMARK", "__ASMARKdoctype_MIMARKalist_ASMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:97"] + __e.backtrace ) ; raise __e
                                     end
-                                           ))))
+                              ]
+                                           ))
                         )
                       end
                      ) then
@@ -340,14 +350,15 @@ trampCall(
                               else raise NameError.new( "Error: undefined variable _caddr", "_caddr" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:98"] + __e.backtrace ) ; raise __e
                             end                          ,
-                            Cell.new(
+                        [
                               begin
                                 if @global_lisp_binding.has_key?('___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034') then
                                   trampCall(@___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034)
                                 else raise NameError.new( "Error: undefined variable ___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034", "___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20034" ) end
                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                               end
-                                     ))
+                        ]
+                                     )
                     else
                         if ( 
                         true
@@ -373,12 +384,13 @@ trampCall(
                               else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:94"] + __e.backtrace ) ; raise __e
                             end                          ,
-                            Cell.new(
+                        [
                               begin
                                   trampCall(_type)
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
                               end
-                                     )))
+                        ]
+                                     ))
                        ) then
                         LispKeyword.new( "html-4.01-strict" )
                       else
@@ -414,12 +426,13 @@ trampCall(
                                   else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                                Cell.new(
+                            [
                                   begin
                                       trampCall(_args)
                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                   end
-                                         )))
+                            ]
+                                         ))
                            ) then
                               begin
                                   delayCall( 'values',
@@ -429,7 +442,7 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _values", "_values" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
+                                  [
                                         trampCall( self._reverse_METHOD(  'reverse',
                                             begin
                                               if @global_lisp_binding.has_key?('_reverse') then
@@ -437,17 +450,19 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
+                                        [
                                               begin
                                                   trampCall(_attrs)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                               end
-                                                     )))                                      ,Cell.new(
+                                        ]
+                                                     ))                                      ,
                                         begin
                                             trampCall(_args)
                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                         end
-                                               )))
+                                  ]
+                                               )
                               end
                           else
                               if ( 
@@ -458,7 +473,7 @@ trampCall(
                                       else raise NameError.new( "Error: undefined variable _keyword_QUMARK", "_keyword_QUMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:106"] + __e.backtrace ) ; raise __e
                                     end                                  ,
-                                    Cell.new(
+                                [
                                       trampCall( self._car_METHOD(  'car',
                                           begin
                                             if @global_lisp_binding.has_key?('_car') then
@@ -466,13 +481,15 @@ trampCall(
                                             else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                           end                                        ,
-                                          Cell.new(
+                                      [
                                             begin
                                                 trampCall(_args)
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                             end
-                                                   )))
-                                             )))
+                                      ]
+                                                   ))
+                                ]
+                                             ))
                                ) then
                                   begin
                                       if ( 
@@ -483,7 +500,7 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
+                                        [
                                               trampCall( self._cdr_METHOD(  'cdr',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_cdr') then
@@ -491,13 +508,15 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:107"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     begin
                                                         trampCall(_args)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           )))
-                                                     )))
+                                              ]
+                                                           ))
+                                        ]
+                                                     ))
                                        ) then
                                           begin
                                               delayCall( 'values',
@@ -507,7 +526,7 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _values", "_values" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     trampCall( self._reverse_METHOD(  'reverse',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_reverse') then
@@ -515,7 +534,7 @@ trampCall(
                                                           else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
-                                                        Cell.new(
+                                                    [
                                                           trampCall( self._list_ASMARK_METHOD(  'list*',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_list_ASMARK') then
@@ -523,7 +542,7 @@ trampCall(
                                                                 else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
-                                                              Cell.new(
+                                                          [
                                                                 trampCall( self._car_METHOD(  'car',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_car') then
@@ -531,24 +550,28 @@ trampCall(
                                                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
-                                                                    Cell.new(
+                                                                [
                                                                       begin
                                                                           trampCall(_args)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                       end
-                                                                             )))                                                              ,Cell.new(
-                                                              " "                                                              ,Cell.new(
+                                                                ]
+                                                                             ))                                                              ,
+                                                              " "                                                              ,
                                                                 begin
                                                                     trampCall(_attrs)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                 end
-                                                                       )))))
-                                                                 )))                                                  ,Cell.new(
+                                                          ]
+                                                                       ))
+                                                    ]
+                                                                 ))                                                  ,
                                                     begin
                                                         trampCall(_args)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           )))
+                                              ]
+                                                           )
                                           end
                                       else
                                           if ( 
@@ -559,7 +582,7 @@ trampCall(
                                                   else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
+                                            [
                                                   trampCall( self._cadr_METHOD(  'cadr',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cadr') then
@@ -567,14 +590,16 @@ trampCall(
                                                         else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                      Cell.new(
+                                                  [
                                                         begin
                                                             trampCall(_args)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                         end
-                                                               )))                                                ,Cell.new(
+                                                  ]
+                                                               ))                                                ,
                                                 false
-                                                         ))))
+                                            ]
+                                                         ))
                                            ) then
                                               begin
                                                   delayCall( 'get-attr',
@@ -582,7 +607,7 @@ trampCall(
                                                           trampCall(_get_MIMARKattr)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                      Cell.new(
+                                                  [
                                                         trampCall( self._cddr_METHOD(  'cddr',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_cddr') then
@@ -590,17 +615,19 @@ trampCall(
                                                               else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
-                                                            Cell.new(
+                                                        [
                                                               begin
                                                                   trampCall(_args)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                               end
-                                                                     )))                                                      ,Cell.new(
+                                                        ]
+                                                                     ))                                                      ,
                                                         begin
                                                             trampCall(_attrs)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                         end
-                                                               )))
+                                                  ]
+                                                               )
                                               end
                                           else
                                               if ( 
@@ -611,7 +638,7 @@ trampCall(
                                                       else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       trampCall( self._cadr_METHOD(  'cadr',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_cadr') then
@@ -619,14 +646,16 @@ trampCall(
                                                             else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
+                                                      [
                                                             begin
                                                                 trampCall(_args)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                             end
-                                                                   )))                                                    ,Cell.new(
+                                                      ]
+                                                                   ))                                                    ,
                                                     true
-                                                             ))))
+                                                ]
+                                                             ))
                                                ) then
                                                   begin
                                                       delayCall( 'get-attr',
@@ -634,7 +663,7 @@ trampCall(
                                                               trampCall(_get_MIMARKattr)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
+                                                      [
                                                             trampCall( self._cddr_METHOD(  'cddr',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cddr') then
@@ -642,12 +671,13 @@ trampCall(
                                                                   else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
-                                                                Cell.new(
+                                                            [
                                                                   begin
                                                                       trampCall(_args)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                   end
-                                                                         )))                                                          ,Cell.new(
+                                                            ]
+                                                                         ))                                                          ,
                                                             trampCall( self._list_ASMARK_METHOD(  'list*',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_list_ASMARK') then
@@ -655,7 +685,7 @@ trampCall(
                                                                   else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
-                                                                Cell.new(
+                                                            [
                                                                   trampCall( self._car_METHOD(  'car',
                                                                       begin
                                                                         if @global_lisp_binding.has_key?('_car') then
@@ -663,19 +693,22 @@ trampCall(
                                                                         else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
-                                                                      Cell.new(
+                                                                  [
                                                                         begin
                                                                             trampCall(_args)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                         end
-                                                                               )))                                                                ,Cell.new(
-                                                                " "                                                                ,Cell.new(
+                                                                  ]
+                                                                               ))                                                                ,
+                                                                " "                                                                ,
                                                                   begin
                                                                       trampCall(_attrs)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                   end
-                                                                         )))))
-                                                                   )))
+                                                            ]
+                                                                         ))
+                                                      ]
+                                                                   )
                                                   end
                                               else
                                                   if ( 
@@ -687,7 +720,7 @@ trampCall(
                                                                   trampCall(_get_MIMARKattr)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
-                                                              Cell.new(
+                                                          [
                                                                 trampCall( self._cddr_METHOD(  'cddr',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_cddr') then
@@ -695,12 +728,13 @@ trampCall(
                                                                       else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:114"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
-                                                                    Cell.new(
+                                                                [
                                                                       begin
                                                                           trampCall(_args)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                       end
-                                                                             )))                                                              ,Cell.new(
+                                                                ]
+                                                                             ))                                                              ,
                                                                 trampCall( self._list_ASMARK_METHOD(  'list*',
                                                                     begin
                                                                       if @global_lisp_binding.has_key?('_list_ASMARK') then
@@ -708,7 +742,7 @@ trampCall(
                                                                       else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
-                                                                    Cell.new(
+                                                                [
                                                                       trampCall( self._sprintf_METHOD(  'sprintf',
                                                                           begin
                                                                             if @global_lisp_binding.has_key?('_sprintf') then
@@ -716,8 +750,8 @@ trampCall(
                                                                             else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
-                                                                          Cell.new(
-                                                                          "=\"%s\""                                                                          ,Cell.new(
+                                                                      [
+                                                                          "=\"%s\""                                                                          ,
                                                                             trampCall( self._html_MIMARKescape_MIMARKstring_METHOD(  'html-escape-string',
                                                                                 begin
                                                                                   if @global_lisp_binding.has_key?('_html_MIMARKescape_MIMARKstring') then
@@ -725,7 +759,7 @@ trampCall(
                                                                                   else raise NameError.new( "Error: undefined variable _html_MIMARKescape_MIMARKstring", "_html_MIMARKescape_MIMARKstring" ) end
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
-                                                                                Cell.new(
+                                                                            [
                                                                                   trampCall( self._x_MIMARK_GTMARKstring_METHOD(  'x->string',
                                                                                       begin
                                                                                         if @global_lisp_binding.has_key?('_x_MIMARK_GTMARKstring') then
@@ -733,7 +767,7 @@ trampCall(
                                                                                         else raise NameError.new( "Error: undefined variable _x_MIMARK_GTMARKstring", "_x_MIMARK_GTMARKstring" ) end
                                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                       end                                                                                    ,
-                                                                                      Cell.new(
+                                                                                  [
                                                                                         trampCall( self._cadr_METHOD(  'cadr',
                                                                                             begin
                                                                                               if @global_lisp_binding.has_key?('_cadr') then
@@ -741,15 +775,19 @@ trampCall(
                                                                                               else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:116"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
-                                                                                            Cell.new(
+                                                                                        [
                                                                                               begin
                                                                                                   trampCall(_args)
                                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                                               end
-                                                                                                     )))
-                                                                                               )))
-                                                                                         )))
-                                                                                   ))))                                                                    ,Cell.new(
+                                                                                        ]
+                                                                                                     ))
+                                                                                  ]
+                                                                                               ))
+                                                                            ]
+                                                                                         ))
+                                                                      ]
+                                                                                   ))                                                                    ,
                                                                       trampCall( self._car_METHOD(  'car',
                                                                           begin
                                                                             if @global_lisp_binding.has_key?('_car') then
@@ -757,19 +795,22 @@ trampCall(
                                                                             else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:117"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
-                                                                          Cell.new(
+                                                                      [
                                                                             begin
                                                                                 trampCall(_args)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                             end
-                                                                                   )))                                                                    ,Cell.new(
-                                                                    " "                                                                    ,Cell.new(
+                                                                      ]
+                                                                                   ))                                                                    ,
+                                                                    " "                                                                    ,
                                                                       begin
                                                                           trampCall(_attrs)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                                       end
-                                                                             ))))))
-                                                                       )))
+                                                                ]
+                                                                             ))
+                                                          ]
+                                                                       )
                                                       end
                                                   else
                                                       Cell.new()
@@ -790,7 +831,7 @@ trampCall(
                                                 else raise NameError.new( "Error: undefined variable _values", "_values" ) end
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                              Cell.new(
+                                          [
                                                 trampCall( self._reverse_METHOD(  'reverse',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_reverse') then
@@ -798,17 +839,19 @@ trampCall(
                                                       else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       begin
                                                           trampCall(_attrs)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             )))                                              ,Cell.new(
+                                                ]
+                                                             ))                                              ,
                                                 begin
                                                     trampCall(_args)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end
-                                                       )))
+                                          ]
+                                                       )
                                       end
                                   else
                                       Cell.new()
@@ -832,21 +875,22 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _call_MIMARKwith_MIMARKvalues", "_call_MIMARKwith_MIMARKvalues" ) end
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
+                                  [
                                         Proc.new { || 
                                             trampCall( callProcedure(   'get-attr',
                                                 begin
                                                     trampCall(_get_MIMARKattr)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
+                                            [
                                                   begin
                                                       trampCall(_args)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
+                                                  end                                                ,
                                                 Cell.new()
-                                                         ))))
-                                        }                                      ,Cell.new(
+                                            ]
+                                                         ))
+                                        }                                      ,
                                         Proc.new { |_attr,_args| 
                                             if ( 
                                               trampCall( self._not_METHOD(  'not',
@@ -856,7 +900,7 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _not", "_not" ) end
                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     trampCall( self._null_QUMARK_METHOD(  'null?',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_null_QUMARK') then
@@ -864,13 +908,15 @@ trampCall(
                                                           else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
-                                                        Cell.new(
+                                                    [
                                                           begin
                                                               trampCall(_args)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                           end
-                                                                 )))
-                                                           )))
+                                                    ]
+                                                                 ))
+                                              ]
+                                                           ))
                                              ) then
                                                 begin
                                                     begin raise RuntimeError, 
@@ -881,12 +927,12 @@ trampCall(
                                                             else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
-                                                          "element %s can't have content: %s"                                                          ,Cell.new(
+                                                      [
+                                                          "element %s can't have content: %s"                                                          ,
                                                             begin
                                                                 trampCall(_name)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,Cell.new(
+                                                            end                                                          ,
                                                             trampCall( self._write_MIMARKto_MIMARKstring_METHOD(  'write-to-string',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_write_MIMARKto_MIMARKstring') then
@@ -894,13 +940,15 @@ trampCall(
                                                                   else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:127"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
-                                                                Cell.new(
+                                                            [
                                                                   begin
                                                                       trampCall(_args)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                                   end
-                                                                         )))
-                                                                   )))))
+                                                            ]
+                                                                         ))
+                                                      ]
+                                                                   ))
                                                     rescue => __e 
                                                       __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace )
                                                       raise __e
@@ -914,20 +962,22 @@ trampCall(
                                                   else raise NameError.new( "Error: undefined variable _list", "_list" ) end
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
-                                                "<"                                                ,Cell.new(
+                                            [
+                                                "<"                                                ,
                                                   begin
                                                       trampCall(_name)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
+                                                  end                                                ,
                                                   begin
                                                       trampCall(_attr)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
+                                                  end                                                ,
                                                 " />"
-                                                         ))))))
+                                            ]
+                                                         ))
                                         }
-                                               )))
+                                  ]
+                                               )
                               }
                           else
                               Proc.new { |*__rest__| _args = __rest__[0] ;  
@@ -938,21 +988,22 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _call_MIMARKwith_MIMARKvalues", "_call_MIMARKwith_MIMARKvalues" ) end
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
+                                  [
                                         Proc.new { || 
                                             trampCall( callProcedure(   'get-attr',
                                                 begin
                                                     trampCall(_get_MIMARKattr)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
+                                            [
                                                   begin
                                                       trampCall(_args)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
+                                                  end                                                ,
                                                 Cell.new()
-                                                         ))))
-                                        }                                      ,Cell.new(
+                                            ]
+                                                         ))
+                                        }                                      ,
                                         Proc.new { |_attr,_args| 
                                             trampCall( self._list_METHOD(  'list',
                                                 begin
@@ -961,31 +1012,33 @@ trampCall(
                                                   else raise NameError.new( "Error: undefined variable _list", "_list" ) end
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
-                                                "<"                                                ,Cell.new(
+                                            [
+                                                "<"                                                ,
                                                   begin
                                                       trampCall(_name)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
+                                                  end                                                ,
                                                   begin
                                                       trampCall(_attr)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
-                                                ">"                                                ,Cell.new(
+                                                  end                                                ,
+                                                ">"                                                ,
                                                   begin
                                                       trampCall(_args)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
-                                                "</"                                                ,Cell.new(
+                                                  end                                                ,
+                                                "</"                                                ,
                                                   begin
                                                       trampCall(_name)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,Cell.new(
+                                                  end                                                ,
                                                 "
 >"
-                                                         ))))))))))
+                                            ]
+                                                         ))
                                         }
-                                               )))
+                                  ]
+                                               )
                               }
                           end
                       } ; ___lambda.call(
@@ -996,14 +1049,15 @@ trampCall(
                                   else raise NameError.new( "Error: undefined variable _get_MIMARKkeyword", "_get_MIMARKkeyword" ) end
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:122"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                                Cell.new(
-                                LispKeyword.new( "empty?" )                                ,Cell.new(
+                            [
+                                LispKeyword.new( "empty?" )                                ,
                                   begin
                                       trampCall(_args)
                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                  end                                ,Cell.new(
+                                  end                                ,
                                 false
-                                         )))))
+                            ]
+                                         ))
                                  )
                     end
                 } ; ___lambda.call(
@@ -1034,7 +1088,7 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _string_MIMARK_GTMARKsymbol", "_string_MIMARK_GTMARKsymbol" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 trampCall( self._sprintf_METHOD(  'sprintf',
                                     begin
                                       if @global_lisp_binding.has_key?('_sprintf') then
@@ -1042,14 +1096,16 @@ trampCall(
                                       else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                                     end                                  ,
-                                    Cell.new(
-                                    "html:%s"                                    ,Cell.new(
+                                [
+                                    "html:%s"                                    ,
                                       begin
                                           trampCall(_name)
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
                                       end
-                                             ))))
-                                       )))
+                                ]
+                                             ))
+                          ]
+                                       ))
                       }
                     begin
                       ___lambda = lambda { |_loop| 
@@ -1063,12 +1119,13 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
+                                  [
                                         begin
                                             trampCall(_elements)
                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                         end
-                                               )))
+                                  ]
+                                               ))
                                  ) then
                                     begin
                                         trampCall( self._cons_METHOD(  'cons',
@@ -1078,8 +1135,8 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
-                                            :"begin"                                            ,Cell.new(
+                                        [
+                                            :"begin"                                            ,
                                               trampCall( self._reverse_METHOD(  'reverse',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_reverse') then
@@ -1087,13 +1144,15 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
+                                              [
                                                     begin
                                                         trampCall(_r)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                     end
-                                                           )))
-                                                     ))))
+                                              ]
+                                                           ))
+                                        ]
+                                                     ))
                                     end
                                 else
                                     if ( 
@@ -1105,7 +1164,7 @@ trampCall(
                                               else raise NameError.new( "Error: undefined variable _not", "_not" ) end
                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                            Cell.new(
+                                        [
                                               trampCall( self._eq_QUMARK_METHOD(  'eq?',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_eq_QUMARK') then
@@ -1113,8 +1172,8 @@ trampCall(
                                                     else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:111"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  Cell.new(
-                                                  false                                                  ,Cell.new(
+                                              [
+                                                  false                                                  ,
                                                     trampCall( self._pair_QUMARK_METHOD(  'pair?',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_pair_QUMARK') then
@@ -1122,7 +1181,7 @@ trampCall(
                                                           else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
-                                                        Cell.new(
+                                                    [
                                                           trampCall( self._cdr_METHOD(  'cdr',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cdr') then
@@ -1130,15 +1189,19 @@ trampCall(
                                                                 else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
-                                                              Cell.new(
+                                                          [
                                                                 begin
                                                                     trampCall(_elements)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                 end
-                                                                       )))
-                                                                 )))
-                                                           ))))
-                                                     )))
+                                                          ]
+                                                                       ))
+                                                    ]
+                                                                 ))
+                                              ]
+                                                           ))
+                                        ]
+                                                     ))
                                        ) then
                                           trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                               begin
@@ -1147,7 +1210,7 @@ trampCall(
                                                 else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                              Cell.new(
+                                          [
                                                 trampCall( self._cadr_METHOD(  'cadr',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_cadr') then
@@ -1155,14 +1218,16 @@ trampCall(
                                                       else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       begin
                                                           trampCall(_elements)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                       end
-                                                             )))                                              ,Cell.new(
+                                                ]
+                                                             ))                                              ,
                                               LispKeyword.new( "empty" )
-                                                       ))))
+                                          ]
+                                                       ))
                                       else
                                         false
                                       end
@@ -1173,7 +1238,7 @@ trampCall(
                                                     trampCall(_loop)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
+                                            [
                                                   trampCall( self._cddr_METHOD(  'cddr',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cddr') then
@@ -1181,12 +1246,13 @@ trampCall(
                                                         else raise NameError.new( "Error: undefined variable _cddr", "_cddr" ) end
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:144"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                      Cell.new(
+                                                  [
                                                         begin
                                                             trampCall(_elements)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                         end
-                                                               )))                                                ,Cell.new(
+                                                  ]
+                                                               ))                                                ,
                                                   trampCall( self._list_ASMARK_METHOD(  'list*',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_list_ASMARK') then
@@ -1194,7 +1260,7 @@ trampCall(
                                                         else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                      Cell.new(
+                                                  [
                                                         trampCall( self._cons_METHOD(  'cons',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_cons') then
@@ -1202,8 +1268,8 @@ trampCall(
                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
-                                                            Cell.new(
-                                                            :"define"                                                            ,Cell.new(
+                                                        [
+                                                            :"define"                                                            ,
                                                               trampCall( self._cons_METHOD(  'cons',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cons') then
@@ -1211,13 +1277,13 @@ trampCall(
                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
-                                                                  Cell.new(
+                                                              [
                                                                     trampCall( callProcedure(   'make-scheme-name',
                                                                         begin
                                                                             trampCall(_make_MIMARKscheme_MIMARKname)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
-                                                                        Cell.new(
+                                                                    [
                                                                           trampCall( self._car_METHOD(  'car',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_car') then
@@ -1225,13 +1291,15 @@ trampCall(
                                                                                 else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
-                                                                              Cell.new(
+                                                                          [
                                                                                 begin
                                                                                     trampCall(_elements)
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                 end
-                                                                                       )))
-                                                                                 )))                                                                  ,Cell.new(
+                                                                          ]
+                                                                                       ))
+                                                                    ]
+                                                                                 ))                                                                  ,
                                                                     trampCall( self._cons_METHOD(  'cons',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('_cons') then
@@ -1239,7 +1307,7 @@ trampCall(
                                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
-                                                                        Cell.new(
+                                                                    [
                                                                           trampCall( self._cons_METHOD(  'cons',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_cons') then
@@ -1247,8 +1315,8 @@ trampCall(
                                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
-                                                                              Cell.new(
-                                                                              :"make-html-element"                                                                              ,Cell.new(
+                                                                          [
+                                                                              :"make-html-element"                                                                              ,
                                                                                 trampCall( self._cons_METHOD(  'cons',
                                                                                     begin
                                                                                       if @global_lisp_binding.has_key?('_cons') then
@@ -1256,7 +1324,7 @@ trampCall(
                                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                     end                                                                                  ,
-                                                                                    Cell.new(
+                                                                                [
                                                                                       trampCall( self._cons_METHOD(  'cons',
                                                                                           begin
                                                                                             if @global_lisp_binding.has_key?('_cons') then
@@ -1264,8 +1332,8 @@ trampCall(
                                                                                             else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                           end                                                                                        ,
-                                                                                          Cell.new(
-                                                                                          :"quote"                                                                                          ,Cell.new(
+                                                                                      [
+                                                                                          :"quote"                                                                                          ,
                                                                                             trampCall( self._cons_METHOD(  'cons',
                                                                                                 begin
                                                                                                   if @global_lisp_binding.has_key?('_cons') then
@@ -1273,7 +1341,7 @@ trampCall(
                                                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                 end                                                                                              ,
-                                                                                                Cell.new(
+                                                                                            [
                                                                                                   trampCall( self._car_METHOD(  'car',
                                                                                                       begin
                                                                                                         if @global_lisp_binding.has_key?('_car') then
@@ -1281,22 +1349,30 @@ trampCall(
                                                                                                         else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                       end                                                                                                    ,
-                                                                                                      Cell.new(
+                                                                                                  [
                                                                                                         begin
                                                                                                             trampCall(_elements)
                                                                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                         end
-                                                                                                               )))                                                                                                ,Cell.new(
-                                                                                                
-                                                                                                         ))))
-                                                                                                   ))))                                                                                    ,Cell.new(
+                                                                                                  ]
+                                                                                                               ))                                                                                                ,
+                                                                                                Cell.new()
+                                                                                            ]
+                                                                                                         ))
+                                                                                      ]
+                                                                                                   ))                                                                                    ,
                                                                                     Cell.new(LispKeyword.new( "empty?" ),Cell.new(true))
-                                                                                             ))))
-                                                                                       ))))                                                                        ,Cell.new(
-                                                                        
-                                                                                 ))))
-                                                                           ))))
-                                                                     ))))                                                      ,Cell.new(
+                                                                                ]
+                                                                                             ))
+                                                                          ]
+                                                                                       ))                                                                        ,
+                                                                        Cell.new()
+                                                                    ]
+                                                                                 ))
+                                                              ]
+                                                                           ))
+                                                        ]
+                                                                     ))                                                      ,
                                                         trampCall( self._cons_METHOD(  'cons',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_cons') then
@@ -1304,8 +1380,8 @@ trampCall(
                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
-                                                            Cell.new(
-                                                            :"export"                                                            ,Cell.new(
+                                                        [
+                                                            :"export"                                                            ,
                                                               trampCall( self._cons_METHOD(  'cons',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cons') then
@@ -1313,13 +1389,13 @@ trampCall(
                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
-                                                                  Cell.new(
+                                                              [
                                                                     trampCall( callProcedure(   'make-scheme-name',
                                                                         begin
                                                                             trampCall(_make_MIMARKscheme_MIMARKname)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
-                                                                        Cell.new(
+                                                                    [
                                                                           trampCall( self._car_METHOD(  'car',
                                                                               begin
                                                                                 if @global_lisp_binding.has_key?('_car') then
@@ -1327,22 +1403,28 @@ trampCall(
                                                                                 else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
-                                                                              Cell.new(
+                                                                          [
                                                                                 begin
                                                                                     trampCall(_elements)
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                 end
-                                                                                       )))
-                                                                                 )))                                                                  ,Cell.new(
-                                                                  
-                                                                           ))))
-                                                                     ))))                                                      ,Cell.new(
+                                                                          ]
+                                                                                       ))
+                                                                    ]
+                                                                                 ))                                                                  ,
+                                                                  Cell.new()
+                                                              ]
+                                                                           ))
+                                                        ]
+                                                                     ))                                                      ,
                                                         begin
                                                             trampCall(_r)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                         end
-                                                               )))))
-                                                         ))))
+                                                  ]
+                                                               ))
+                                            ]
+                                                         ))
                                         end
                                     else
                                         if ( 
@@ -1354,7 +1436,7 @@ trampCall(
                                                         trampCall(_loop)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    Cell.new(
+                                                [
                                                       trampCall( self._cdr_METHOD(  'cdr',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_cdr') then
@@ -1362,12 +1444,13 @@ trampCall(
                                                             else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
+                                                      [
                                                             begin
                                                                 trampCall(_elements)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                             end
-                                                                   )))                                                    ,Cell.new(
+                                                      ]
+                                                                   ))                                                    ,
                                                       trampCall( self._list_ASMARK_METHOD(  'list*',
                                                           begin
                                                             if @global_lisp_binding.has_key?('_list_ASMARK') then
@@ -1375,7 +1458,7 @@ trampCall(
                                                             else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:151"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                          Cell.new(
+                                                      [
                                                             trampCall( self._cons_METHOD(  'cons',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cons') then
@@ -1383,8 +1466,8 @@ trampCall(
                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
-                                                                Cell.new(
-                                                                :"define"                                                                ,Cell.new(
+                                                            [
+                                                                :"define"                                                                ,
                                                                   trampCall( self._cons_METHOD(  'cons',
                                                                       begin
                                                                         if @global_lisp_binding.has_key?('_cons') then
@@ -1392,13 +1475,13 @@ trampCall(
                                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
-                                                                      Cell.new(
+                                                                  [
                                                                         trampCall( callProcedure(   'make-scheme-name',
                                                                             begin
                                                                                 trampCall(_make_MIMARKscheme_MIMARKname)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
-                                                                            Cell.new(
+                                                                        [
                                                                               trampCall( self._car_METHOD(  'car',
                                                                                   begin
                                                                                     if @global_lisp_binding.has_key?('_car') then
@@ -1406,13 +1489,15 @@ trampCall(
                                                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,
-                                                                                  Cell.new(
+                                                                              [
                                                                                     begin
                                                                                         trampCall(_elements)
                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                     end
-                                                                                           )))
-                                                                                     )))                                                                      ,Cell.new(
+                                                                              ]
+                                                                                           ))
+                                                                        ]
+                                                                                     ))                                                                      ,
                                                                         trampCall( self._cons_METHOD(  'cons',
                                                                             begin
                                                                               if @global_lisp_binding.has_key?('_cons') then
@@ -1420,7 +1505,7 @@ trampCall(
                                                                               else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
-                                                                            Cell.new(
+                                                                        [
                                                                               trampCall( self._cons_METHOD(  'cons',
                                                                                   begin
                                                                                     if @global_lisp_binding.has_key?('_cons') then
@@ -1428,8 +1513,8 @@ trampCall(
                                                                                     else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,
-                                                                                  Cell.new(
-                                                                                  :"make-html-element"                                                                                  ,Cell.new(
+                                                                              [
+                                                                                  :"make-html-element"                                                                                  ,
                                                                                     trampCall( self._cons_METHOD(  'cons',
                                                                                         begin
                                                                                           if @global_lisp_binding.has_key?('_cons') then
@@ -1437,7 +1522,7 @@ trampCall(
                                                                                           else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                         end                                                                                      ,
-                                                                                        Cell.new(
+                                                                                    [
                                                                                           trampCall( self._cons_METHOD(  'cons',
                                                                                               begin
                                                                                                 if @global_lisp_binding.has_key?('_cons') then
@@ -1445,8 +1530,8 @@ trampCall(
                                                                                                 else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                               end                                                                                            ,
-                                                                                              Cell.new(
-                                                                                              :"quote"                                                                                              ,Cell.new(
+                                                                                          [
+                                                                                              :"quote"                                                                                              ,
                                                                                                 trampCall( self._cons_METHOD(  'cons',
                                                                                                     begin
                                                                                                       if @global_lisp_binding.has_key?('_cons') then
@@ -1454,7 +1539,7 @@ trampCall(
                                                                                                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,
-                                                                                                    Cell.new(
+                                                                                                [
                                                                                                       trampCall( self._car_METHOD(  'car',
                                                                                                           begin
                                                                                                             if @global_lisp_binding.has_key?('_car') then
@@ -1462,22 +1547,30 @@ trampCall(
                                                                                                             else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                           end                                                                                                        ,
-                                                                                                          Cell.new(
+                                                                                                      [
                                                                                                             begin
                                                                                                                 trampCall(_elements)
                                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                                             end
-                                                                                                                   )))                                                                                                    ,Cell.new(
-                                                                                                    
-                                                                                                             ))))
-                                                                                                       ))))                                                                                        ,Cell.new(
-                                                                                        
-                                                                                                 ))))
-                                                                                           ))))                                                                            ,Cell.new(
-                                                                            
-                                                                                     ))))
-                                                                               ))))
-                                                                         ))))                                                          ,Cell.new(
+                                                                                                      ]
+                                                                                                                   ))                                                                                                    ,
+                                                                                                    Cell.new()
+                                                                                                ]
+                                                                                                             ))
+                                                                                          ]
+                                                                                                       ))                                                                                        ,
+                                                                                        Cell.new()
+                                                                                    ]
+                                                                                                 ))
+                                                                              ]
+                                                                                           ))                                                                            ,
+                                                                            Cell.new()
+                                                                        ]
+                                                                                     ))
+                                                                  ]
+                                                                               ))
+                                                            ]
+                                                                         ))                                                          ,
                                                             trampCall( self._cons_METHOD(  'cons',
                                                                 begin
                                                                   if @global_lisp_binding.has_key?('_cons') then
@@ -1485,8 +1578,8 @@ trampCall(
                                                                   else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
-                                                                Cell.new(
-                                                                :"export"                                                                ,Cell.new(
+                                                            [
+                                                                :"export"                                                                ,
                                                                   trampCall( self._cons_METHOD(  'cons',
                                                                       begin
                                                                         if @global_lisp_binding.has_key?('_cons') then
@@ -1494,13 +1587,13 @@ trampCall(
                                                                         else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
                                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
-                                                                      Cell.new(
+                                                                  [
                                                                         trampCall( callProcedure(   'make-scheme-name',
                                                                             begin
                                                                                 trampCall(_make_MIMARKscheme_MIMARKname)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
-                                                                            Cell.new(
+                                                                        [
                                                                               trampCall( self._car_METHOD(  'car',
                                                                                   begin
                                                                                     if @global_lisp_binding.has_key?('_car') then
@@ -1508,22 +1601,28 @@ trampCall(
                                                                                     else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,
-                                                                                  Cell.new(
+                                                                              [
                                                                                     begin
                                                                                         trampCall(_elements)
                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
                                                                                     end
-                                                                                           )))
-                                                                                     )))                                                                      ,Cell.new(
-                                                                      
-                                                                               ))))
-                                                                         ))))                                                          ,Cell.new(
+                                                                              ]
+                                                                                           ))
+                                                                        ]
+                                                                                     ))                                                                      ,
+                                                                      Cell.new()
+                                                                  ]
+                                                                               ))
+                                                            ]
+                                                                         ))                                                          ,
                                                             begin
                                                                 trampCall(_r)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
                                                             end
-                                                                   )))))
-                                                             ))))
+                                                      ]
+                                                                   ))
+                                                ]
+                                                             ))
                                             end
                                         else
                                             Cell.new()
@@ -1536,13 +1635,14 @@ trampCall(
                                   trampCall(_loop)
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:150"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                     trampCall(_elements)
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
-                                end                              ,Cell.new(
+                                end                              ,
                               Cell.new()
-                                       ))))
+                          ]
+                                       ))
                       } ; ___lambda.call(
                       nil
                                  )
@@ -1579,9 +1679,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"tt"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1604,9 +1705,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"i"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1629,9 +1731,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"b"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1654,9 +1757,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"big"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1679,9 +1783,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"small"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -1710,9 +1815,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"em"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1735,9 +1841,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"strong"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1760,9 +1867,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"dfn"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1785,9 +1893,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"code"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1810,9 +1919,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"samp"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1835,9 +1945,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"kbd"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1860,9 +1971,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"var"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1885,9 +1997,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"cite"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1910,9 +2023,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"abbr"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1935,9 +2049,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"acronym"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -1966,9 +2081,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"sub"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -1991,9 +2107,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"sup"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2016,9 +2133,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"span"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2041,9 +2159,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"bdo"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2066,11 +2185,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"br"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"br"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
   end
@@ -2099,9 +2219,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"body"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2124,9 +2245,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"address"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2149,9 +2271,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"div"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2180,9 +2303,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"a"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2211,9 +2335,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"map"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2236,11 +2361,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"area"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"area"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
   end
@@ -2269,11 +2395,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"link"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"link"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
   end
@@ -2302,11 +2429,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"img"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"img"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
   end
@@ -2335,9 +2463,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"object"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2360,11 +2489,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"param"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"param"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
   end
@@ -2393,11 +2523,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"hr"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"hr"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
   end
@@ -2426,9 +2557,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"p"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2457,9 +2589,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"h1"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2482,9 +2615,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"h2"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2507,9 +2641,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"h3"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2532,9 +2667,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"h4"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2557,9 +2693,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"h5"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2582,9 +2719,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"h6"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2613,9 +2751,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"pre"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2644,9 +2783,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"q"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2675,9 +2815,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"blockquote"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2706,9 +2847,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"ins"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2731,9 +2873,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"del"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2762,9 +2905,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"dl"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2787,9 +2931,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"dt"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2812,9 +2957,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"dd"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2837,9 +2983,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"ol"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2862,9 +3009,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"ul"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2887,9 +3035,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"li"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -2918,9 +3067,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"form"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2943,9 +3093,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"label"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -2968,11 +3119,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"input"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"input"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
       begin
@@ -2995,9 +3147,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"select"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3020,9 +3173,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"optgroup"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3045,9 +3199,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"option"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3070,9 +3225,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"textarea"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3095,9 +3251,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"fieldset"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3120,9 +3277,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"legend"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3145,9 +3303,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"button"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -3176,9 +3335,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"table"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3201,9 +3361,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"caption"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3226,9 +3387,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"thead"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3251,9 +3413,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"tfoot"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3276,9 +3439,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"tbody"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3301,9 +3465,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"colgroup"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3326,11 +3491,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"col"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"col"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
       begin
@@ -3353,9 +3519,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"tr"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3378,9 +3545,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"th"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3403,9 +3571,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"td"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -3434,9 +3603,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"head"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3459,9 +3629,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"title"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3484,11 +3655,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"base"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"base"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
       begin
@@ -3511,11 +3683,12 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
-                  :"meta"                  ,Cell.new(
-                  LispKeyword.new( "empty?" )                  ,Cell.new(
+              [
+                  :"meta"                  ,
+                  LispKeyword.new( "empty?" )                  ,
                   true
-                           )))))
+              ]
+                           ))
         )
       end
       begin
@@ -3538,9 +3711,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"style"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3563,9 +3737,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"script"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3588,9 +3763,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"noscript"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -3619,9 +3795,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"html"
-                           )))
+              ]
+                           ))
         )
       end
   end
@@ -3650,9 +3827,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"frameset"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3675,9 +3853,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"frame"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3700,9 +3879,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"noframes"
-                           )))
+              ]
+                           ))
         )
       end
       begin
@@ -3725,9 +3905,10 @@ trampCall(
                     else raise NameError.new( "Error: undefined variable _make_MIMARKhtml_MIMARKelement", "_make_MIMARKhtml_MIMARKelement" ) end
                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:152"] + __e.backtrace ) ; raise __e
                   end                ,
-                  Cell.new(
+              [
                   :"iframe"
-                           )))
+              ]
+                           ))
         )
       end
   end

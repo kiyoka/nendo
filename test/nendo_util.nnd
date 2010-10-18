@@ -79,13 +79,14 @@ trampCall(
                             else raise NameError.new( \"Error: undefined variable __PLMARK\", \"__PLMARK\" ) end
                             rescue => __e ; __e.set_backtrace( [\"./test/nendo_util.nnd:31\"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          Cell.new(
+                      [
                             begin
                                 trampCall(_arg1)
                               rescue => __e ; __e.set_backtrace( [\"./test/nendo_util.nnd:31\"] + __e.backtrace ) ; raise __e
-                            end                          ,Cell.new(
+                            end                          ,
                           1
-                                   ))))
+                      ]
+                                   ))
                            )
               end
           }

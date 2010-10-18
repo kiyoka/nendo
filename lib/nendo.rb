@@ -38,7 +38,6 @@
 module Nendo
   require 'stringio'
   require 'digest/sha1'
-  #require 'profile'
   
   class Nil
     include Enumerable
@@ -1151,7 +1150,7 @@ module Nendo
     end
   
     def _apply1( first, arg )
-      trampCall( callProcedure( "(apply1 genereate func)", first, arg ))
+      trampCall( callProcedure( "(apply1 genereate func)", first, arg.to_arr ))
     end
   
     def _global_MIMARKvariables
@@ -1430,11 +1429,11 @@ module Nendo
         raise ArgumentError, argument_error_message if 0 != args.length
         []
       elsif 0 < num
-        if args.isNull
+        if 0 == args.length
           [ Nil.new ]
         else
           raise ArgumentError, argument_error_message if num != args.length
-          args.map { |x|  x.car }
+          args
         end
       else
         num = num.abs( )-1
@@ -1443,9 +1442,9 @@ module Nendo
         rest = []
         args.each_with_index { |x,i|
           if i < num
-            params << x.car
+            params << x
           else
-            rest   << x.car
+            rest   << x
           end
         }
         result = []
@@ -1548,17 +1547,12 @@ module Nendo
           lispSymbolReference( toRubySymbol( funcname ), locals, translatedArr, sourcefile, lineno )
         else
           # Nendo function
-          if 0 == args.length
-            arr = [ "Cell.new(" ]
-          else
-            arr = separateWith( args.map.with_index { |x,i| x.car }, ",Cell.new(" )
-            arr[0].unshift( "Cell.new(" )
-          end
+          arr = separateWith( args.map { |x| x.car }, "," )
           if EXEC_TYPE_ANONYMOUS == execType
             [sprintf( "trampCall( callProcedure( 'anonymouse', " ),
              [ funcname ] + [ "," ],
-             arr,
-             sprintf( "             ))" ) + arr.map { |n| ")" }.join]
+             "[", arr, "]",
+             "          ))"]
           else
             origname = funcname.to_s
             funcname = funcname.to_s
@@ -1566,7 +1560,7 @@ module Nendo
             _call = case execType
                     when EXEC_TYPE_NORMAL
                       if locals.flatten.include?( sym )
-                        [ sprintf( "trampCall( callProcedure(  ", sym ), "))" ] # local function
+                        [          "trampCall( callProcedure(  ",        "))" ] # local function
                       else
                         [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
                       end
@@ -1575,8 +1569,8 @@ module Nendo
                     end
             [sprintf( "%s '%s',", _call[0], origname ), 
              [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","], 
-             arr,
-             sprintf( "             %s", _call[1] ) + arr.map { |n| ")" }.join]
+             "[", arr, "]",
+             sprintf( "             %s", _call[1] )]
           end
         end
       end
@@ -1741,6 +1735,8 @@ module Nendo
         str += sprintf( "LispKeyword.new( \"%s\" )", sexp.key.to_s )
       when TrueClass, FalseClass, NilClass  # reserved symbols
         str += toRubyValue( sexp )
+      when Nil
+        str += "Cell.new()"
       else
         str += sprintf( "%s", sexp )
       end
@@ -1771,22 +1767,18 @@ module Nendo
                    else
                      [trampCallCap( sprintf( "%s%s", global_cap, sym ))]
                    end
-      if false
-        [expression]
+      if global_cap
+        ["begin",
+         [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
+          expression,
+          sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
+          sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
+         "end"]
       else
-        if global_cap
-          ["begin",
-           [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
-            expression,
-            sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
-            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
-           "end"]
-        else
-          ["begin",
-           [expression,
-            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )],
-           "end"]
-        end
+        ["begin",
+         [expression,
+          sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )],
+         "end"]
       end
     end
       
@@ -1938,7 +1930,7 @@ module Nendo
             sexp
           elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
             eval( sprintf( "@__macro = @%s", sym ), @binding )
-            newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr ))
+            newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr.to_arr ))
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -2003,7 +1995,7 @@ module Nendo
       sym = toRubySymbol( "%compile-phase" )
       if ( eval( sprintf( "(defined? @%s and Proc == @%s.class)", sym,sym ), @binding ))
         eval( sprintf( "@___tmp = @%s", sym ), @binding )
-        sexp = trampCall( callProcedure( sym, @___tmp, Cell.new( sexp )))
+        sexp = trampCall( callProcedure( sym, @___tmp, [ sexp ]))
         if @debug
           printf( "\n          compiled=<<< %s >>>\n", (Printer.new())._print(sexp))
         end
@@ -2122,7 +2114,7 @@ module Nendo
 
       argsStr = (1..(pred.arity)).map { |n| "arg" + n.to_s }.join( "," )
       str = [ "def self." + origname + "(" + argsStr + ")",
-              sprintf( "  trampCall( callProcedure( '%s', @_%s, [ " + argsStr + " ].to_list )) ",
+              sprintf( "  trampCall( callProcedure( '%s', @_%s, [ " + argsStr + " ] )) ",
                        origname, origname ),
               "end ;",
               "def @core." + origname + "(" + argsStr + ")",

@@ -623,6 +623,7 @@ describe Nendo, "when call evalStr() with built-in functions" do
     @nendo.evalStr( " (cons '(1 2) '(3 4)) " ).should == "((1 2) 3 4)"
     @nendo.evalStr( " (cons '(1 2) '((3 4))) " ).should == "((1 2) (3 4))"
     @nendo.evalStr( " (cons '() '()) " ).should == "(())"
+    @nendo.evalStr( " (cons 1 '()) " ).should == "(1)"
     @nendo.evalStr( " (cons '() (cdr '(100))) " ).should == "(())"
     @nendo.evalStr( " (cons '() (car '(()))) " ).should == "(())"
     @nendo.evalStr( " (cons (car '(())) '()) " ).should == "(())"

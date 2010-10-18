@@ -11,9 +11,10 @@ trampCall(
         else raise NameError.new( "Error: undefined variable _require", "_require" ) end
         rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:10"] + __e.backtrace ) ; raise __e
       end    ,
-      Cell.new(
+  [
       "stringio"
-               ))
+  ]
+               )
  )
 #--------------------
 
@@ -38,12 +39,13 @@ trampCall(
                                         else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:17"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                      Cell.new(
+                                  [
                                         begin
                                             trampCall(_tree)
                                           rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
                                         end
-                                               )))
+                                  ]
+                                               ))
                                  ) then
                                     begin
                                       true
@@ -57,12 +59,13 @@ trampCall(
                                             else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
                                             rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                           end                                        ,
-                                          Cell.new(
+                                      [
                                             begin
                                                 trampCall(_tree)
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
                                             end
-                                                   )))
+                                      ]
+                                                   ))
                                      ) then
                                         begin
                                             trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
@@ -72,7 +75,7 @@ trampCall(
                                                   else raise NameError.new( "Error: undefined variable _write_MIMARKtree", "_write_MIMARKtree" ) end
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
+                                            [
                                                   trampCall( self._car_METHOD(  'car',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_car') then
@@ -80,23 +83,25 @@ trampCall(
                                                         else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                      Cell.new(
+                                                  [
                                                         begin
                                                             trampCall(_tree)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
                                                         end
-                                                               )))                                                ,Cell.new(
+                                                  ]
+                                                               ))                                                ,
                                                   begin
                                                       trampCall(_out)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                   end
-                                                         ))))
+                                            ]
+                                                         ))
                                             delayCall( 'loop',
                                                 begin
                                                     trampCall(_loop)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                                Cell.new(
+                                            [
                                                   trampCall( self._cdr_METHOD(  'cdr',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cdr') then
@@ -104,13 +109,15 @@ trampCall(
                                                         else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                      Cell.new(
+                                                  [
                                                         begin
                                                             trampCall(_tree)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
                                                         end
-                                                               )))
-                                                         ))
+                                                  ]
+                                                               ))
+                                            ]
+                                                         )
                                         end
                                     else
                                         if ( 
@@ -138,12 +145,13 @@ trampCall(
                                   trampCall(_loop)
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                     trampCall(_tree)
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
                                 end
-                                       ))
+                          ]
+                                       )
                       } ; ___lambda.call(
                       nil
                                  )
@@ -157,12 +165,13 @@ trampCall(
                               else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:17"] + __e.backtrace ) ; raise __e
                             end                          ,
-                            Cell.new(
+                        [
                               begin
                                   trampCall(_out)
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                               end
-                                     )))
+                        ]
+                                     ))
                        ) then
                           begin
                               trampCall(STDOUT)
@@ -176,12 +185,13 @@ trampCall(
                                 else raise NameError.new( "Error: undefined variable _car", "_car" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                               end                            ,
-                              Cell.new(
+                          [
                                 begin
                                     trampCall(_out)
                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                 end
-                                       ))
+                          ]
+                                       )
                       end
                            )
               end
@@ -207,16 +217,17 @@ trampCall(
                           else raise NameError.new( "Error: undefined variable _write_MIMARKtree", "_write_MIMARKtree" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
                         end                      ,
-                        Cell.new(
+                    [
                           begin
                               trampCall(_tree)
                             rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
-                          end                        ,Cell.new(
+                          end                        ,
                           begin
                               trampCall(_sio)
                             rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
                           end
-                                 ))))
+                    ]
+                                 ))
                     begin
                         trampCall(_sio).string(
                           )

@@ -11,9 +11,10 @@ trampCall(
         else raise NameError.new( "Error: undefined variable _require", "_require" ) end
         rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:37"] + __e.backtrace ) ; raise __e
       end    ,
-      Cell.new(
+  [
       "syslog"
-               ))
+  ]
+               )
  )
 #--------------------
 
@@ -43,13 +44,14 @@ trampCall(
                               else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                             end                          ,
-                            Cell.new(
-                            "Nendo: "                            ,Cell.new(
+                        [
+                            "Nendo: "                            ,
                               begin
                                   trampCall(_str)
                                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                               end
-                                     ))))
+                        ]
+                                     ))
                     )
                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
               end
