@@ -844,6 +844,10 @@ describe Nendo, "when call evalStr() with built-in special forms" do
     @nendo.evalStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
     @nendo.evalStr( " ((if #t + *) 3 4)" ).should == "7" 
     @nendo.evalStr( " ((if #f + *) 3 4)" ).should == "12" 
+    @nendo.evalStr( " (apply1 + '(1 2))" ).should == "3" 
+    @nendo.evalStr( " (apply1 + (range 10 1))" ).should == "55"
+    @nendo.evalStr( " (apply1 cons '(1 2))" ).should == "(1 . 2)"
+    @nendo.evalStr( " (apply1 list '(1 2 3))" ).should == "(1 2 3)"
     lambda { @nendo.evalStr( " (error \"My Runtime Error\") " ) }.should            raise_error( RuntimeError )
   end
 end
