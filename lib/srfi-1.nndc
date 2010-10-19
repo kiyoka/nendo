@@ -10,7 +10,7 @@ trampCall(
     @_xcons = 
     trampCall(
           Proc.new { |_d,_a| 
-              delayCall( 'cons',
+              delayCall( '_cons',  'cons',
                   begin
                     if @global_lisp_binding.has_key?('_cons') then
                       trampCall(@_cons)
@@ -74,7 +74,7 @@ trampCall(
                                     end
                                 else
                                     begin
-                                        delayCall( '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097',
+                                        delayCall( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097',  '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097',
                                             begin
                                                 trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097)
                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -118,7 +118,7 @@ trampCall(
                                     end
                                 end
                             }
-                          delayCall( '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097',
+                          delayCall( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097',  '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097',
                               begin
                                   trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20097)
                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -183,7 +183,7 @@ trampCall(
                                          ))
                            ) then
                               begin
-                                  delayCall( 'car',
+                                  delayCall( '_car',  'car',
                                       begin
                                         if @global_lisp_binding.has_key?('_car') then
                                           trampCall(@_car)
@@ -263,7 +263,7 @@ trampCall(
                               end
                           else
                               begin
-                                  delayCall( '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098',
+                                  delayCall( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098',  '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098',
                                       begin
                                           trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098)
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -315,7 +315,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098',
+                    delayCall( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098',  '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098',
                         begin
                             trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20098)
                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -376,7 +376,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'cons',
+                              delayCall( '_cons',  'cons',
                                   begin
                                     if @global_lisp_binding.has_key?('_cons') then
                                       trampCall(@_cons)
@@ -433,7 +433,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:59"] + __e.backtrace ) ; raise __e
@@ -486,7 +486,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'cons',
+                              delayCall( '_cons',  'cons',
                                   begin
                                     if @global_lisp_binding.has_key?('_cons') then
                                       trampCall(@_cons)
@@ -539,7 +539,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:67"] + __e.backtrace ) ; raise __e
@@ -629,7 +629,7 @@ trampCall(
                                           end
                                       else
                                           begin
-                                              delayCall( '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099',
+                                              delayCall( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099',  '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099',
                                                   begin
                                                       trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099)
                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -691,7 +691,7 @@ trampCall(
                                           end
                                       end
                                   }
-                                delayCall( '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099',
+                                delayCall( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099',  '__gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099',
                                     begin
                                         trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20099)
                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -775,7 +775,7 @@ trampCall(
                         ]
                                      ))
                        ) then
-                          delayCall( 'car',
+                          delayCall( '_car',  'car',
                               begin
                                 if @global_lisp_binding.has_key?('_car') then
                                   trampCall(@_car)
@@ -858,7 +858,7 @@ trampCall(
                           false
                         end
                        ) then
-                          delayCall( 'cadr',
+                          delayCall( '_cadr',  'cadr',
                               begin
                                 if @global_lisp_binding.has_key?('_cadr') then
                                   trampCall(@_cadr)
@@ -1049,7 +1049,7 @@ trampCall(
                                                 ]
                                                              ))
                                                ) then
-                                                  delayCall( 'lp',
+                                                  delayCall( '_lp',  'lp',
                                                       begin
                                                           trampCall(_lp)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:148"] + __e.backtrace ) ; raise __e
@@ -1100,7 +1100,7 @@ trampCall(
                                                      )
                                         end
                                     else
-                                        delayCall( 'null?',
+                                        delayCall( '_null_QUMARK',  'null?',
                                             begin
                                               if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                 trampCall(@_null_QUMARK)
@@ -1133,7 +1133,7 @@ trampCall(
                                            )
                               end
                           else
-                              delayCall( 'null?',
+                              delayCall( '_null_QUMARK',  'null?',
                                   begin
                                     if @global_lisp_binding.has_key?('_null_QUMARK') then
                                       trampCall(@_null_QUMARK)
@@ -1149,7 +1149,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:148"] + __e.backtrace ) ; raise __e
@@ -1273,7 +1273,7 @@ trampCall(
                                                 ]
                                                              ))
                                                ) then
-                                                  delayCall( 'lp',
+                                                  delayCall( '_lp',  'lp',
                                                       begin
                                                           trampCall(_lp)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:166"] + __e.backtrace ) ; raise __e
@@ -1324,7 +1324,7 @@ trampCall(
                                                      )
                                         end
                                     else
-                                        delayCall( 'not',
+                                        delayCall( '_not',  'not',
                                             begin
                                               if @global_lisp_binding.has_key?('_not') then
                                                 trampCall(@_not)
@@ -1367,7 +1367,7 @@ trampCall(
                                            )
                               end
                           else
-                              delayCall( 'not',
+                              delayCall( '_not',  'not',
                                   begin
                                     if @global_lisp_binding.has_key?('_not') then
                                       trampCall(@_not)
@@ -1393,7 +1393,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:166"] + __e.backtrace ) ; raise __e
@@ -1632,7 +1632,7 @@ trampCall(
                             false
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:177"] + __e.backtrace ) ; raise __e
@@ -1683,7 +1683,7 @@ trampCall(
                ) then
                 false
               else
-                  delayCall( 'proper-list?',
+                  delayCall( '_proper_MIMARKlist_QUMARK',  'proper-list?',
                       begin
                         if @global_lisp_binding.has_key?('_proper_MIMARKlist_QUMARK') then
                           trampCall(@_proper_MIMARKlist_QUMARK)
@@ -1711,7 +1711,7 @@ trampCall(
     @_not_MIMARKpair_QUMARK = 
     trampCall(
           Proc.new { |_x| 
-              delayCall( 'not',
+              delayCall( '_not',  'not',
                   begin
                     if @global_lisp_binding.has_key?('_not') then
                       trampCall(@_not)
@@ -1901,7 +1901,7 @@ trampCall(
                                                                       ]
                                                                                    ))
                                                                      ) then
-                                                                        delayCall( 'lp1',
+                                                                        delayCall( '_lp1',  'lp1',
                                                                             begin
                                                                                 trampCall(_lp1)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:207"] + __e.backtrace ) ; raise __e
@@ -1975,7 +1975,7 @@ trampCall(
                                                                                           ]
                                                                                                        ))
                                                                                          ) then
-                                                                                            delayCall( 'lp1',
+                                                                                            delayCall( '_lp1',  'lp1',
                                                                                                 begin
                                                                                                     trampCall(_lp1)
                                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:207"] + __e.backtrace ) ; raise __e
@@ -2101,7 +2101,7 @@ trampCall(
                                                                                               ]
                                                                                                            ))
                                                                                              ) then
-                                                                                                delayCall( 'lp2',
+                                                                                                delayCall( '_lp2',  'lp2',
                                                                                                     begin
                                                                                                         trampCall(_lp2)
                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:210"] + __e.backtrace ) ; raise __e
@@ -2145,7 +2145,7 @@ trampCall(
                                                                                         end
                                                                                     end
                                                                                 }
-                                                                              delayCall( 'lp2',
+                                                                              delayCall( '_lp2',  'lp2',
                                                                                   begin
                                                                                       trampCall(_lp2)
                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:210"] + __e.backtrace ) ; raise __e
@@ -2218,7 +2218,7 @@ trampCall(
                                                          )
                                             end
                                         }
-                                      delayCall( 'lp1',
+                                      delayCall( '_lp1',  'lp1',
                                           begin
                                               trampCall(_lp1)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:207"] + __e.backtrace ) ; raise __e
@@ -2382,7 +2382,7 @@ trampCall(
                                                 ]
                                                              ))
                                                ) then
-                                                  delayCall( 'lp',
+                                                  delayCall( '_lp',  'lp',
                                                       begin
                                                           trampCall(_lp)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:230"] + __e.backtrace ) ; raise __e
@@ -2496,7 +2496,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:230"] + __e.backtrace ) ; raise __e
@@ -2530,7 +2530,7 @@ trampCall(
     @_zip = 
     trampCall(
           Proc.new { |_list1,*__rest__| _more_MIMARKlists = __rest__[0] ;  
-              delayCall( 'apply',
+              delayCall( '_apply',  'apply',
                   begin
                     if @global_lisp_binding.has_key?('_apply') then
                       trampCall(@_apply)
@@ -2641,7 +2641,7 @@ trampCall(
     @_fifth = 
     trampCall(
           Proc.new { |_x| 
-              delayCall( 'car',
+              delayCall( '_car',  'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -2678,7 +2678,7 @@ trampCall(
     @_sixth = 
     trampCall(
           Proc.new { |_x| 
-              delayCall( 'cadr',
+              delayCall( '_cadr',  'cadr',
                   begin
                     if @global_lisp_binding.has_key?('_cadr') then
                       trampCall(@_cadr)
@@ -2715,7 +2715,7 @@ trampCall(
     @_seventh = 
     trampCall(
           Proc.new { |_x| 
-              delayCall( 'caddr',
+              delayCall( '_caddr',  'caddr',
                   begin
                     if @global_lisp_binding.has_key?('_caddr') then
                       trampCall(@_caddr)
@@ -2752,7 +2752,7 @@ trampCall(
     @_eighth = 
     trampCall(
           Proc.new { |_x| 
-              delayCall( 'cadddr',
+              delayCall( '_cadddr',  'cadddr',
                   begin
                     if @global_lisp_binding.has_key?('_cadddr') then
                       trampCall(@_cadddr)
@@ -2789,7 +2789,7 @@ trampCall(
     @_ninth = 
     trampCall(
           Proc.new { |_x| 
-              delayCall( 'car',
+              delayCall( '_car',  'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -2836,7 +2836,7 @@ trampCall(
     @_tenth = 
     trampCall(
           Proc.new { |_x| 
-              delayCall( 'cadr',
+              delayCall( '_cadr',  'cadr',
                   begin
                     if @global_lisp_binding.has_key?('_cadr') then
                       trampCall(@_cadr)
@@ -2883,7 +2883,7 @@ trampCall(
     @_car_PLMARKcdr = 
     trampCall(
           Proc.new { |_pair| 
-              delayCall( 'values',
+              delayCall( '_values',  'values',
                   begin
                     if @global_lisp_binding.has_key?('_values') then
                       trampCall(@_values)
@@ -2958,7 +2958,7 @@ trampCall(
                            ) then
                             Cell.new()
                           else
-                              delayCall( 'cons',
+                              delayCall( '_cons',  'cons',
                                   begin
                                     if @global_lisp_binding.has_key?('_cons') then
                                       trampCall(@_cons)
@@ -3021,7 +3021,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:293"] + __e.backtrace ) ; raise __e
@@ -3081,7 +3081,7 @@ trampCall(
                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:298"] + __e.backtrace ) ; raise __e
                               end
                           else
-                              delayCall( 'iter',
+                              delayCall( '_iter',  'iter',
                                   begin
                                       trampCall(_iter)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:298"] + __e.backtrace ) ; raise __e
@@ -3120,7 +3120,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'iter',
+                    delayCall( '_iter',  'iter',
                         begin
                             trampCall(_iter)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:298"] + __e.backtrace ) ; raise __e
@@ -3255,7 +3255,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'lp',
+                              delayCall( '_lp',  'lp',
                                   begin
                                       trampCall(_lp)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:314"] + __e.backtrace ) ; raise __e
@@ -3298,7 +3298,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:314"] + __e.backtrace ) ; raise __e
@@ -3367,7 +3367,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'cons',
+                              delayCall( '_cons',  'cons',
                                   begin
                                     if @global_lisp_binding.has_key?('_cons') then
                                       trampCall(@_cons)
@@ -3431,7 +3431,7 @@ trampCall(
                             Cell.new()
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:321"] + __e.backtrace ) ; raise __e
@@ -3518,7 +3518,7 @@ trampCall(
                                       ]
                                                    ))
                                      ) then
-                                        delayCall( 'lp',
+                                        delayCall( '_lp',  'lp',
                                             begin
                                                 trampCall(_lp)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:333"] + __e.backtrace ) ; raise __e
@@ -3578,7 +3578,7 @@ trampCall(
                                         end
                                     end
                                 }
-                              delayCall( 'lp',
+                              delayCall( '_lp',  'lp',
                                   begin
                                       trampCall(_lp)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:333"] + __e.backtrace ) ; raise __e
@@ -3667,7 +3667,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -3683,7 +3683,7 @@ trampCall(
                               ]
                                            )
                           else
-                              delayCall( 'call-with-values',
+                              delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                   begin
                                     if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                       trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -3778,7 +3778,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:387"] + __e.backtrace ) ; raise __e
@@ -3829,7 +3829,7 @@ trampCall(
                 ]
                              ))
                ) then
-                  delayCall( 'values',
+                  delayCall( '_values',  'values',
                       begin
                         if @global_lisp_binding.has_key?('_values') then
                           trampCall(@_values)
@@ -3864,7 +3864,7 @@ trampCall(
                                   Cell.new()
                               ]
                                            ))
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -3945,7 +3945,7 @@ trampCall(
     @_last = 
     trampCall(
           Proc.new { |_lis| 
-              delayCall( 'car',
+              delayCall( '_car',  'car',
                   begin
                     if @global_lisp_binding.has_key?('_car') then
                       trampCall(@_car)
@@ -4006,7 +4006,7 @@ trampCall(
                                   ]
                                                ))
                                  ) then
-                                    delayCall( 'lp',
+                                    delayCall( '_lp',  'lp',
                                         begin
                                             trampCall(_lp)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:405"] + __e.backtrace ) ; raise __e
@@ -4042,7 +4042,7 @@ trampCall(
                                        )
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:405"] + __e.backtrace ) ; raise __e
@@ -4071,7 +4071,7 @@ trampCall(
     @_unzip1 = 
     trampCall(
           Proc.new { |_lis| 
-              delayCall( 'map',
+              delayCall( '_map',  'map',
                   begin
                     if @global_lisp_binding.has_key?('_map') then
                       trampCall(@_map)
@@ -4124,7 +4124,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -4145,7 +4145,7 @@ trampCall(
                           else
                               begin
                                 ___lambda = lambda { |_elt| 
-                                    delayCall( 'call-with-values',
+                                    delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                         begin
                                           if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                             trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -4266,7 +4266,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:417"] + __e.backtrace ) ; raise __e
@@ -4315,7 +4315,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -4340,7 +4340,7 @@ trampCall(
                           else
                               begin
                                 ___lambda = lambda { |_elt| 
-                                    delayCall( 'call-with-values',
+                                    delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                         begin
                                           if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                             trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -4489,7 +4489,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:425"] + __e.backtrace ) ; raise __e
@@ -4538,7 +4538,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -4567,7 +4567,7 @@ trampCall(
                           else
                               begin
                                 ___lambda = lambda { |_elt| 
-                                    delayCall( 'call-with-values',
+                                    delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                         begin
                                           if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                             trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -4744,7 +4744,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:434"] + __e.backtrace ) ; raise __e
@@ -4793,7 +4793,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -4826,7 +4826,7 @@ trampCall(
                           else
                               begin
                                 ___lambda = lambda { |_elt| 
-                                    delayCall( 'call-with-values',
+                                    delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                         begin
                                           if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                             trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -5041,7 +5041,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:444"] + __e.backtrace ) ; raise __e
@@ -5133,7 +5133,7 @@ trampCall(
                                       ]
                                                    ))
                                      ) then
-                                        delayCall( 'lp',
+                                        delayCall( '_lp',  'lp',
                                             begin
                                                 trampCall(_lp)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:461"] + __e.backtrace ) ; raise __e
@@ -5190,7 +5190,7 @@ trampCall(
                                                                     end
                                                               ]
                                                                            ))
-                                                              delayCall( 'lp2',
+                                                              delayCall( '_lp2',  'lp2',
                                                                   begin
                                                                       trampCall(_lp2)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
@@ -5276,7 +5276,7 @@ trampCall(
                                                         end
                                                     end
                                                 }
-                                              delayCall( 'lp2',
+                                              delayCall( '_lp2',  'lp2',
                                                   begin
                                                       trampCall(_lp2)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
@@ -5340,7 +5340,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:461"] + __e.backtrace ) ; raise __e
@@ -5395,7 +5395,7 @@ trampCall(
                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:496"] + __e.backtrace ) ; raise __e
                               end
                           else
-                              delayCall( 'lp',
+                              delayCall( '_lp',  'lp',
                                   begin
                                       trampCall(_lp)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:496"] + __e.backtrace ) ; raise __e
@@ -5447,7 +5447,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:496"] + __e.backtrace ) ; raise __e
@@ -5525,7 +5525,7 @@ trampCall(
                                           end
                                     ]
                                                  ))
-                                    delayCall( 'lp',
+                                    delayCall( '_lp',  'lp',
                                         begin
                                             trampCall(_lp)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:503"] + __e.backtrace ) ; raise __e
@@ -5560,7 +5560,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:503"] + __e.backtrace ) ; raise __e
@@ -5593,7 +5593,7 @@ trampCall(
     @_concatenate = 
     trampCall(
           Proc.new { |_lists| 
-              delayCall( 'reduce-right',
+              delayCall( '_reduce_MIMARKright',  'reduce-right',
                   begin
                     if @global_lisp_binding.has_key?('_reduce_MIMARKright') then
                       trampCall(@_reduce_MIMARKright)
@@ -5627,7 +5627,7 @@ trampCall(
     @_concatenate_EXMARK = 
     trampCall(
           Proc.new { |_lists| 
-              delayCall( 'reduce-right',
+              delayCall( '_reduce_MIMARKright',  'reduce-right',
                   begin
                     if @global_lisp_binding.has_key?('_reduce_MIMARKright') then
                       trampCall(@_reduce_MIMARKright)
@@ -5711,7 +5711,7 @@ trampCall(
                                                ) then
                                                 Cell.new()
                                               else
-                                                  delayCall( 'cons',
+                                                  delayCall( '_cons',  'cons',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cons') then
                                                           trampCall(@_cons)
@@ -5779,7 +5779,7 @@ trampCall(
                                       Cell.new()
                                     end
                                 }
-                              delayCall( 'recur',
+                              delayCall( '_recur',  'recur',
                                   begin
                                       trampCall(_recur)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:541"] + __e.backtrace ) ; raise __e
@@ -5862,7 +5862,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'cons',
+                              delayCall( '_cons',  'cons',
                                   begin
                                     if @global_lisp_binding.has_key?('_cons') then
                                       trampCall(@_cons)
@@ -5909,7 +5909,7 @@ trampCall(
                               ]
                                            )
                           else
-                              delayCall( 'list',
+                              delayCall( '_list',  'list',
                                   begin
                                     if @global_lisp_binding.has_key?('_list') then
                                       trampCall(@_list)
@@ -5925,7 +5925,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:546"] + __e.backtrace ) ; raise __e
@@ -5962,7 +5962,7 @@ trampCall(
                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:557"] + __e.backtrace ) ; raise __e
                       end
                      ) then
-                        delayCall( 'values',
+                        delayCall( '_values',  'values',
                             begin
                               if @global_lisp_binding.has_key?('_values') then
                                 trampCall(@_values)
@@ -5995,7 +5995,7 @@ trampCall(
                                       ]
                                                    ))
                                      ) then
-                                        delayCall( 'call-with-values',
+                                        delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                             begin
                                               if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                                 trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -6154,7 +6154,7 @@ trampCall(
                                         ]
                                                      )
                                     else
-                                        delayCall( 'values',
+                                        delayCall( '_values',  'values',
                                             begin
                                               if @global_lisp_binding.has_key?('_values') then
                                                 trampCall(@_values)
@@ -6168,7 +6168,7 @@ trampCall(
                                                      )
                                     end
                                 }
-                              delayCall( 'recur',
+                              delayCall( '_recur',  'recur',
                                   begin
                                       trampCall(_recur)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:565"] + __e.backtrace ) ; raise __e
@@ -6239,7 +6239,7 @@ trampCall(
                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:576"] + __e.backtrace ) ; raise __e
                       end
                      ) then
-                        delayCall( 'values',
+                        delayCall( '_values',  'values',
                             begin
                               if @global_lisp_binding.has_key?('_values') then
                                 trampCall(@_values)
@@ -6272,7 +6272,7 @@ trampCall(
                                       ]
                                                    ))
                                      ) then
-                                        delayCall( 'call-with-values',
+                                        delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                             begin
                                               if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                                 trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -6431,7 +6431,7 @@ trampCall(
                                         ]
                                                      )
                                     else
-                                        delayCall( 'values',
+                                        delayCall( '_values',  'values',
                                             begin
                                               if @global_lisp_binding.has_key?('_values') then
                                                 trampCall(@_values)
@@ -6458,7 +6458,7 @@ trampCall(
                                                      )
                                     end
                                 }
-                              delayCall( 'recur',
+                              delayCall( '_recur',  'recur',
                                   begin
                                       trampCall(_recur)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:584"] + __e.backtrace ) ; raise __e
@@ -6541,7 +6541,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'call-with-values',
+                              delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                   begin
                                     if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                       trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -6670,7 +6670,7 @@ trampCall(
                               ]
                                            )
                           else
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -6684,7 +6684,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:595"] + __e.backtrace ) ; raise __e
@@ -6756,7 +6756,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
                                   end
                               else
-                                  delayCall( 'call-with-values',
+                                  delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                       begin
                                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -6889,7 +6889,7 @@ trampCall(
                                                )
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
@@ -6936,7 +6936,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
                                   end
                               else
-                                  delayCall( 'lp',
+                                  delayCall( '_lp',  'lp',
                                       begin
                                           trampCall(_lp)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
@@ -7005,7 +7005,7 @@ trampCall(
                                                )
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
@@ -7065,7 +7065,7 @@ trampCall(
                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:630"] + __e.backtrace ) ; raise __e
                               end
                           else
-                              delayCall( 'lp',
+                              delayCall( '_lp',  'lp',
                                   begin
                                       trampCall(_lp)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:629"] + __e.backtrace ) ; raise __e
@@ -7113,7 +7113,7 @@ trampCall(
                                            )
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:629"] + __e.backtrace ) ; raise __e
@@ -7234,7 +7234,7 @@ trampCall(
                           ]
                                        ))
                          ) then
-                            delayCall( 'apply',
+                            delayCall( '_apply',  'apply',
                                 begin
                                   if @global_lisp_binding.has_key?('_apply') then
                                     trampCall(@_apply)
@@ -7296,7 +7296,7 @@ trampCall(
                                           ]
                                                        ))
                                          ) then
-                                            delayCall( 'tail-gen',
+                                            delayCall( '_tail_MIMARKgen',  'tail-gen',
                                                 begin
                                                     trampCall(_tail_MIMARKgen)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:644"] + __e.backtrace ) ; raise __e
@@ -7309,7 +7309,7 @@ trampCall(
                                             ]
                                                          )
                                         else
-                                            delayCall( 'cons',
+                                            delayCall( '_cons',  'cons',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_cons') then
                                                     trampCall(@_cons)
@@ -7353,7 +7353,7 @@ trampCall(
                                                          )
                                         end
                                     }
-                                  delayCall( 'recur',
+                                  delayCall( '_recur',  'recur',
                                       begin
                                           trampCall(_recur)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
@@ -7408,7 +7408,7 @@ trampCall(
                                ) then
                                 Cell.new()
                               else
-                                  delayCall( 'cons',
+                                  delayCall( '_cons',  'cons',
                                       begin
                                         if @global_lisp_binding.has_key?('_cons') then
                                           trampCall(@_cons)
@@ -7452,7 +7452,7 @@ trampCall(
                                                )
                               end
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
@@ -7504,7 +7504,7 @@ trampCall(
                     ___lambda = lambda { |_lp| 
                         _lp                         = 
                           Proc.new { |_lists,_ans| 
-                              delayCall( 'call-with-values',
+                              delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                   begin
                                     if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                       trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -7589,7 +7589,7 @@ trampCall(
                               ]
                                            )
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:662"] + __e.backtrace ) ; raise __e
@@ -7649,7 +7649,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:662"] + __e.backtrace ) ; raise __e
                                   end
                               else
-                                  delayCall( 'lp',
+                                  delayCall( '_lp',  'lp',
                                       begin
                                           trampCall(_lp)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:662"] + __e.backtrace ) ; raise __e
@@ -7699,7 +7699,7 @@ trampCall(
                                                )
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:662"] + __e.backtrace ) ; raise __e
@@ -7778,7 +7778,7 @@ trampCall(
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:674"] + __e.backtrace ) ; raise __e
                                         end
                                     else
-                                        delayCall( 'apply',
+                                        delayCall( '_apply',  'apply',
                                             begin
                                               if @global_lisp_binding.has_key?('_apply') then
                                                 trampCall(@_apply)
@@ -7837,7 +7837,7 @@ trampCall(
                                            )
                               end
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:676"] + __e.backtrace ) ; raise __e
@@ -7895,7 +7895,7 @@ trampCall(
                               else
                                   begin
                                     ___lambda = lambda { |_head| 
-                                        delayCall( 'kons',
+                                        delayCall( '_kons',  'kons',
                                             begin
                                                 trampCall(_kons)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:676"] + __e.backtrace ) ; raise __e
@@ -7948,7 +7948,7 @@ trampCall(
                                   end
                               end
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:676"] + __e.backtrace ) ; raise __e
@@ -8023,7 +8023,7 @@ trampCall(
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
                                         end
                                     else
-                                        delayCall( 'apply',
+                                        delayCall( '_apply',  'apply',
                                             begin
                                               if @global_lisp_binding.has_key?('_apply') then
                                                 trampCall(@_apply)
@@ -8092,7 +8092,7 @@ trampCall(
                                            )
                               end
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
@@ -8148,7 +8148,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
                                   end
                               else
-                                  delayCall( 'f',
+                                  delayCall( '_f',  'f',
                                       begin
                                           trampCall(_f)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
@@ -8184,7 +8184,7 @@ trampCall(
                                                )
                               end
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
@@ -8259,7 +8259,7 @@ trampCall(
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:701"] + __e.backtrace ) ; raise __e
                                         end
                                     else
-                                        delayCall( 'lp',
+                                        delayCall( '_lp',  'lp',
                                             begin
                                                 trampCall(_lp)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:701"] + __e.backtrace ) ; raise __e
@@ -8332,7 +8332,7 @@ trampCall(
                                            )
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:701"] + __e.backtrace ) ; raise __e
@@ -8394,7 +8394,7 @@ trampCall(
                               else
                                   begin
                                     ___lambda = lambda { |_tail| 
-                                        delayCall( 'lp',
+                                        delayCall( '_lp',  'lp',
                                             begin
                                                 trampCall(_lp)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:701"] + __e.backtrace ) ; raise __e
@@ -8441,7 +8441,7 @@ trampCall(
                                   end
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:701"] + __e.backtrace ) ; raise __e
@@ -8498,7 +8498,7 @@ trampCall(
                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:709"] + __e.backtrace ) ; raise __e
                   end
               else
-                  delayCall( 'fold',
+                  delayCall( '_fold',  'fold',
                       begin
                         if @global_lisp_binding.has_key?('_fold') then
                           trampCall(@_fold)
@@ -8597,7 +8597,7 @@ trampCall(
                                 ]
                                              ))
                                ) then
-                                  delayCall( 'f',
+                                  delayCall( '_f',  'f',
                                       begin
                                           trampCall(_f)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:717"] + __e.backtrace ) ; raise __e
@@ -8652,7 +8652,7 @@ trampCall(
                                   end
                               end
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:717"] + __e.backtrace ) ; raise __e
@@ -8706,7 +8706,7 @@ trampCall(
     @_append_MIMARKmap = 
     trampCall(
           Proc.new { |_f,_lis1,*__rest__| _lists = __rest__[0] ;  
-              delayCall( 'really-append-map',
+              delayCall( '_really_MIMARKappend_MIMARKmap',  'really-append-map',
                   begin
                     if @global_lisp_binding.has_key?('_really_MIMARKappend_MIMARKmap') then
                       trampCall(@_really_MIMARKappend_MIMARKmap)
@@ -8753,7 +8753,7 @@ trampCall(
     @_append_MIMARKmap_EXMARK = 
     trampCall(
           Proc.new { |_f,_lis1,*__rest__| _lists = __rest__[0] ;  
-              delayCall( 'really-append-map',
+              delayCall( '_really_MIMARKappend_MIMARKmap',  'really-append-map',
                   begin
                     if @global_lisp_binding.has_key?('_really_MIMARKappend_MIMARKmap') then
                       trampCall(@_really_MIMARKappend_MIMARKmap)
@@ -8818,7 +8818,7 @@ trampCall(
                 ]
                              ))
                ) then
-                  delayCall( 'call-with-values',
+                  delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                       begin
                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -9051,7 +9051,7 @@ trampCall(
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
                                             end
                                         else
-                                            delayCall( 'appender',
+                                            delayCall( '_appender',  'appender',
                                                 begin
                                                     trampCall(_appender)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
@@ -9116,7 +9116,7 @@ trampCall(
                                                )
                                   end
                               }
-                            delayCall( 'recur',
+                            delayCall( '_recur',  'recur',
                                 begin
                                     trampCall(_recur)
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
@@ -9230,7 +9230,7 @@ trampCall(
                                                   end
                                             ]
                                                          ))
-                                            delayCall( 'lp',
+                                            delayCall( '_lp',  'lp',
                                                 begin
                                                     trampCall(_lp)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:764"] + __e.backtrace ) ; raise __e
@@ -9262,7 +9262,7 @@ trampCall(
                                            )
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:764"] + __e.backtrace ) ; raise __e
@@ -9337,7 +9337,7 @@ trampCall(
                                               end
                                         ]
                                                      ))
-                                        delayCall( 'lp',
+                                        delayCall( '_lp',  'lp',
                                             begin
                                                 trampCall(_lp)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:764"] + __e.backtrace ) ; raise __e
@@ -9368,7 +9368,7 @@ trampCall(
                                   end
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:764"] + __e.backtrace ) ; raise __e
@@ -9661,7 +9661,7 @@ trampCall(
                     ___lambda = lambda { |_recur| 
                         _recur                         = 
                           Proc.new { |_lists| 
-                              delayCall( 'call-with-values',
+                              delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                   begin
                                     if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                       trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -9796,7 +9796,7 @@ trampCall(
                               ]
                                            )
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:789"] + __e.backtrace ) ; raise __e
@@ -9827,7 +9827,7 @@ trampCall(
                                )
                   end
               else
-                  delayCall( '%filter-map',
+                  delayCall( '__PAMARKfilter_MIMARKmap',  '%filter-map',
                       begin
                         if @global_lisp_binding.has_key?('__PAMARKfilter_MIMARKmap') then
                           trampCall(@__PAMARKfilter_MIMARKmap)
@@ -9881,7 +9881,7 @@ trampCall(
                     ___lambda = lambda { |_recur| 
                         _recur                         = 
                           Proc.new { |_lists| 
-                              delayCall( 'call-with-values',
+                              delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                   begin
                                     if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                       trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -9978,7 +9978,7 @@ trampCall(
                               ]
                                            )
                           }
-                        delayCall( 'recur',
+                        delayCall( '_recur',  'recur',
                             begin
                                 trampCall(_recur)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:806"] + __e.backtrace ) ; raise __e
@@ -10009,7 +10009,7 @@ trampCall(
                                )
                   end
               else
-                  delayCall( '%map',
+                  delayCall( '__PAMARKmap',  '%map',
                       begin
                         if @global_lisp_binding.has_key?('__PAMARKmap') then
                           trampCall(@__PAMARKmap)
@@ -10156,7 +10156,7 @@ trampCall(
                                              ))
                                ) then
                                   begin
-                                      delayCall( 'lp',
+                                      delayCall( '_lp',  'lp',
                                           begin
                                               trampCall(_lp)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:905"] + __e.backtrace ) ; raise __e
@@ -10228,7 +10228,7 @@ trampCall(
                                                             ]
                                                                          ))
                                                            ) then
-                                                              delayCall( 'scan-in',
+                                                              delayCall( '_scan_MIMARKin',  'scan-in',
                                                                   begin
                                                                       trampCall(_scan_MIMARKin)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:907"] + __e.backtrace ) ; raise __e
@@ -10255,7 +10255,7 @@ trampCall(
                                                               ]
                                                                            )
                                                           else
-                                                              delayCall( 'scan-out',
+                                                              delayCall( '_scan_MIMARKout',  'scan-out',
                                                                   begin
                                                                       trampCall(_scan_MIMARKout)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:899"] + __e.backtrace ) ; raise __e
@@ -10349,7 +10349,7 @@ trampCall(
                                                                                     end
                                                                               ]
                                                                                            ))
-                                                                              delayCall( 'scan-in',
+                                                                              delayCall( '_scan_MIMARKin',  'scan-in',
                                                                                   begin
                                                                                       trampCall(_scan_MIMARKin)
                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:907"] + __e.backtrace ) ; raise __e
@@ -10377,7 +10377,7 @@ trampCall(
                                                                                            )
                                                                           end
                                                                       else
-                                                                          delayCall( 'lp',
+                                                                          delayCall( '_lp',  'lp',
                                                                               begin
                                                                                   trampCall(_lp)
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:905"] + __e.backtrace ) ; raise __e
@@ -10401,7 +10401,7 @@ trampCall(
                                                                                        )
                                                                       end
                                                                   else
-                                                                      delayCall( 'set-cdr!',
+                                                                      delayCall( '_set_MIMARKcdr_EXMARK',  'set-cdr!',
                                                                           begin
                                                                             if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
                                                                               trampCall(@_set_MIMARKcdr_EXMARK)
@@ -10421,7 +10421,7 @@ trampCall(
                                                                                    )
                                                                   end
                                                               }
-                                                            delayCall( 'lp',
+                                                            delayCall( '_lp',  'lp',
                                                                 begin
                                                                     trampCall(_lp)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:905"] + __e.backtrace ) ; raise __e
@@ -10479,7 +10479,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:905"] + __e.backtrace ) ; raise __e
@@ -10530,7 +10530,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -10551,7 +10551,7 @@ trampCall(
                           else
                               begin
                                 ___lambda = lambda { |_elt,_tail| 
-                                    delayCall( 'call-with-values',
+                                    delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                         begin
                                           if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                             trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -10734,7 +10734,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:921"] + __e.backtrace ) ; raise __e
@@ -10781,7 +10781,7 @@ trampCall(
                 ]
                              ))
                ) then
-                  delayCall( 'values',
+                  delayCall( '_values',  'values',
                       begin
                         if @global_lisp_binding.has_key?('_values') then
                           trampCall(@_values)
@@ -10848,7 +10848,7 @@ trampCall(
                                                 ]
                                                              ))
                                                ) then
-                                                  delayCall( 'lp',
+                                                  delayCall( '_lp',  'lp',
                                                       begin
                                                           trampCall(_lp)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -10894,7 +10894,7 @@ trampCall(
                                                             end
                                                       ]
                                                                    ))
-                                                      delayCall( 'scan-out',
+                                                      delayCall( '_scan_MIMARKout',  'scan-out',
                                                           begin
                                                               trampCall(_scan_MIMARKout)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:981"] + __e.backtrace ) ; raise __e
@@ -10927,7 +10927,7 @@ trampCall(
                                                   end
                                               end
                                           else
-                                              delayCall( 'set-cdr!',
+                                              delayCall( '_set_MIMARKcdr_EXMARK',  'set-cdr!',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
                                                       trampCall(@_set_MIMARKcdr_EXMARK)
@@ -10947,7 +10947,7 @@ trampCall(
                                                            )
                                           end
                                       }
-                                    delayCall( 'lp',
+                                    delayCall( '_lp',  'lp',
                                         begin
                                             trampCall(_lp)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -11033,7 +11033,7 @@ trampCall(
                                                             end
                                                       ]
                                                                    ))
-                                                      delayCall( 'scan-in',
+                                                      delayCall( '_scan_MIMARKin',  'scan-in',
                                                           begin
                                                               trampCall(_scan_MIMARKin)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:988"] + __e.backtrace ) ; raise __e
@@ -11065,7 +11065,7 @@ trampCall(
                                                                    )
                                                   end
                                               else
-                                                  delayCall( 'lp',
+                                                  delayCall( '_lp',  'lp',
                                                       begin
                                                           trampCall(_lp)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -11093,7 +11093,7 @@ trampCall(
                                                                )
                                               end
                                           else
-                                              delayCall( 'set-cdr!',
+                                              delayCall( '_set_MIMARKcdr_EXMARK',  'set-cdr!',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
                                                       trampCall(@_set_MIMARKcdr_EXMARK)
@@ -11113,7 +11113,7 @@ trampCall(
                                                            )
                                           end
                                       }
-                                    delayCall( 'lp',
+                                    delayCall( '_lp',  'lp',
                                         begin
                                             trampCall(_lp)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -11189,7 +11189,7 @@ trampCall(
                                                        ))
                                          ) then
                                             begin
-                                                delayCall( 'values',
+                                                delayCall( '_values',  'values',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_values') then
                                                         trampCall(@_values)
@@ -11234,7 +11234,7 @@ trampCall(
                                                            ))
                                              ) then
                                                 begin
-                                                    delayCall( 'lp',
+                                                    delayCall( '_lp',  'lp',
                                                         begin
                                                             trampCall(_lp)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -11296,7 +11296,7 @@ trampCall(
                                                                            ))
                                                         ]
                                                                      ))
-                                                        delayCall( 'values',
+                                                        delayCall( '_values',  'values',
                                                             begin
                                                               if @global_lisp_binding.has_key?('_values') then
                                                                 trampCall(@_values)
@@ -11321,7 +11321,7 @@ trampCall(
                                             end
                                         end
                                     }
-                                  delayCall( 'lp',
+                                  delayCall( '_lp',  'lp',
                                       begin
                                           trampCall(_lp)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -11383,7 +11383,7 @@ trampCall(
                                                        ))
                                          ) then
                                             begin
-                                                delayCall( 'values',
+                                                delayCall( '_values',  'values',
                                                     begin
                                                       if @global_lisp_binding.has_key?('_values') then
                                                         trampCall(@_values)
@@ -11458,7 +11458,7 @@ trampCall(
                                                                        ))
                                                     ]
                                                                  ))
-                                                    delayCall( 'values',
+                                                    delayCall( '_values',  'values',
                                                         begin
                                                           if @global_lisp_binding.has_key?('_values') then
                                                             trampCall(@_values)
@@ -11482,7 +11482,7 @@ trampCall(
                                                 true
                                                  ) then
                                                     begin
-                                                        delayCall( 'lp',
+                                                        delayCall( '_lp',  'lp',
                                                             begin
                                                                 trampCall(_lp)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -11515,7 +11515,7 @@ trampCall(
                                             end
                                         end
                                     }
-                                  delayCall( 'lp',
+                                  delayCall( '_lp',  'lp',
                                       begin
                                           trampCall(_lp)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
@@ -11564,7 +11564,7 @@ trampCall(
     @_remove = 
     trampCall(
           Proc.new { |_pred,_l| 
-              delayCall( 'filter',
+              delayCall( '_filter',  'filter',
                   begin
                     if @global_lisp_binding.has_key?('_filter') then
                       trampCall(@_filter)
@@ -11615,7 +11615,7 @@ trampCall(
     @_remove_EXMARK = 
     trampCall(
           Proc.new { |_pred,_l| 
-              delayCall( 'filter!',
+              delayCall( '_filter_EXMARK',  'filter!',
                   begin
                     if @global_lisp_binding.has_key?('_filter_EXMARK') then
                       trampCall(@_filter_EXMARK)
@@ -11668,7 +11668,7 @@ trampCall(
           Proc.new { |_x,_lis,*__rest__| _maybe_MIMARK_EQMARK = __rest__[0] ;  
               begin
                 ___lambda = lambda { |__EQMARK| 
-                    delayCall( 'filter',
+                    delayCall( '_filter',  'filter',
                         begin
                           if @global_lisp_binding.has_key?('_filter') then
                             trampCall(@_filter)
@@ -11736,7 +11736,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1017"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -11775,7 +11775,7 @@ trampCall(
           Proc.new { |_x,_lis,*__rest__| _maybe_MIMARK_EQMARK = __rest__[0] ;  
               begin
                 ___lambda = lambda { |__EQMARK| 
-                    delayCall( 'filter!',
+                    delayCall( '_filter_EXMARK',  'filter!',
                         begin
                           if @global_lisp_binding.has_key?('_filter_EXMARK') then
                             trampCall(@_filter_EXMARK)
@@ -11843,7 +11843,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1021"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -11882,7 +11882,7 @@ trampCall(
           Proc.new { |_x,_lis,*__rest__| _maybe_MIMARK_EQMARK = __rest__[0] ;  
               begin
                 ___lambda = lambda { |__EQMARK| 
-                    delayCall( 'find-tail',
+                    delayCall( '_find_MIMARKtail',  'find-tail',
                         begin
                           if @global_lisp_binding.has_key?('_find_MIMARKtail') then
                             trampCall(@_find_MIMARKtail)
@@ -11940,7 +11940,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1026"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -12037,7 +12037,7 @@ trampCall(
                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1053"] + __e.backtrace ) ; raise __e
                                                           end
                                                       else
-                                                          delayCall( 'cons',
+                                                          delayCall( '_cons',  'cons',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                   trampCall(@_cons)
@@ -12125,7 +12125,7 @@ trampCall(
                                     end
                                 end
                             }
-                          delayCall( 'recur',
+                          delayCall( '_recur',  'recur',
                               begin
                                   trampCall(_recur)
                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1052"] + __e.backtrace ) ; raise __e
@@ -12167,7 +12167,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1046"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -12264,7 +12264,7 @@ trampCall(
                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1063"] + __e.backtrace ) ; raise __e
                                                           end
                                                       else
-                                                          delayCall( 'cons',
+                                                          delayCall( '_cons',  'cons',
                                                               begin
                                                                 if @global_lisp_binding.has_key?('_cons') then
                                                                   trampCall(@_cons)
@@ -12352,7 +12352,7 @@ trampCall(
                                     end
                                 end
                             }
-                          delayCall( 'recur',
+                          delayCall( '_recur',  'recur',
                               begin
                                   trampCall(_recur)
                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1062"] + __e.backtrace ) ; raise __e
@@ -12394,7 +12394,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1056"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -12433,7 +12433,7 @@ trampCall(
           Proc.new { |_x,_lis,*__rest__| _maybe_MIMARK_EQMARK = __rest__[0] ;  
               begin
                 ___lambda = lambda { |__EQMARK| 
-                    delayCall( 'find',
+                    delayCall( '_find',  'find',
                         begin
                           if @global_lisp_binding.has_key?('_find') then
                             trampCall(@_find)
@@ -12501,7 +12501,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1071"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -12538,7 +12538,7 @@ trampCall(
     @_alist_MIMARKcons = 
     trampCall(
           Proc.new { |_key,_datum,_alist| 
-              delayCall( 'cons',
+              delayCall( '_cons',  'cons',
                   begin
                     if @global_lisp_binding.has_key?('_cons') then
                       trampCall(@_cons)
@@ -12583,7 +12583,7 @@ trampCall(
     @_alist_MIMARKcopy = 
     trampCall(
           Proc.new { |_alist| 
-              delayCall( 'map',
+              delayCall( '_map',  'map',
                   begin
                     if @global_lisp_binding.has_key?('_map') then
                       trampCall(@_map)
@@ -12652,7 +12652,7 @@ trampCall(
           Proc.new { |_key,_alist,*__rest__| _maybe_MIMARK_EQMARK = __rest__[0] ;  
               begin
                 ___lambda = lambda { |__EQMARK| 
-                    delayCall( 'filter',
+                    delayCall( '_filter',  'filter',
                         begin
                           if @global_lisp_binding.has_key?('_filter') then
                             trampCall(@_filter)
@@ -12730,7 +12730,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1081"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -12769,7 +12769,7 @@ trampCall(
           Proc.new { |_key,_alist,*__rest__| _maybe_MIMARK_EQMARK = __rest__[0] ;  
               begin
                 ___lambda = lambda { |__EQMARK| 
-                    delayCall( 'filter!',
+                    delayCall( '_filter_EXMARK',  'filter!',
                         begin
                           if @global_lisp_binding.has_key?('_filter_EXMARK') then
                             trampCall(@_filter_EXMARK)
@@ -12847,7 +12847,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1085"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -12911,7 +12911,7 @@ trampCall(
                   )
                 end
                ) then
-                  delayCall( 'car',
+                  delayCall( '_car',  'car',
                       begin
                         if @global_lisp_binding.has_key?('_car') then
                           trampCall(@_car)
@@ -13033,7 +13033,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1101"] + __e.backtrace ) ; raise __e
                                   end
                               else
-                                  delayCall( 'lp',
+                                  delayCall( '_lp',  'lp',
                                       begin
                                           trampCall(_lp)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1101"] + __e.backtrace ) ; raise __e
@@ -13060,7 +13060,7 @@ trampCall(
                             false
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1101"] + __e.backtrace ) ; raise __e
@@ -13129,7 +13129,7 @@ trampCall(
                                       ]
                                                    ))
                                      ) then
-                                        delayCall( 'cons',
+                                        delayCall( '_cons',  'cons',
                                             begin
                                               if @global_lisp_binding.has_key?('_cons') then
                                                 trampCall(@_cons)
@@ -13187,7 +13187,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1109"] + __e.backtrace ) ; raise __e
@@ -13264,7 +13264,7 @@ trampCall(
                                 ]
                                              ))
                                ) then
-                                  delayCall( 'lp',
+                                  delayCall( '_lp',  'lp',
                                       begin
                                           trampCall(_lp)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1117"] + __e.backtrace ) ; raise __e
@@ -13294,7 +13294,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1117"] + __e.backtrace ) ; raise __e
@@ -13580,7 +13580,7 @@ trampCall(
                             ]
                                          ))
                            ) then
-                              delayCall( 'values',
+                              delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
                                       trampCall(@_values)
@@ -13609,7 +13609,7 @@ trampCall(
                                       ]
                                                    ))
                                      ) then
-                                        delayCall( 'call-with-values',
+                                        delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                             begin
                                               if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                                 trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -13678,7 +13678,7 @@ trampCall(
                                         ]
                                                      )
                                     else
-                                        delayCall( 'values',
+                                        delayCall( '_values',  'values',
                                             begin
                                               if @global_lisp_binding.has_key?('_values') then
                                                 trampCall(@_values)
@@ -13713,7 +13713,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'recur',
+                    delayCall( '_recur',  'recur',
                         begin
                             trampCall(_recur)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1136"] + __e.backtrace ) ; raise __e
@@ -13827,7 +13827,7 @@ trampCall(
                              )
                 end
                ) then
-                  delayCall( 'values',
+                  delayCall( '_values',  'values',
                       begin
                         if @global_lisp_binding.has_key?('_values') then
                           trampCall(@_values)
@@ -13845,7 +13845,7 @@ trampCall(
               else
                   begin
                     ___lambda = lambda { |_suffix| 
-                        delayCall( 'values',
+                        delayCall( '_values',  'values',
                             begin
                               if @global_lisp_binding.has_key?('_values') then
                                 trampCall(@_values)
@@ -13905,7 +13905,7 @@ trampCall(
                                                   ]
                                                                ))
                                                  ) then
-                                                    delayCall( 'lp',
+                                                    delayCall( '_lp',  'lp',
                                                         begin
                                                             trampCall(_lp)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1146"] + __e.backtrace ) ; raise __e
@@ -13973,7 +13973,7 @@ trampCall(
                                           end
                                       end
                                   }
-                                delayCall( 'lp',
+                                delayCall( '_lp',  'lp',
                                     begin
                                         trampCall(_lp)
                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1146"] + __e.backtrace ) ; raise __e
@@ -14019,7 +14019,7 @@ trampCall(
     @_break = 
     trampCall(
           Proc.new { |_pred,_lis| 
-              delayCall( 'span',
+              delayCall( '_span',  'span',
                   begin
                     if @global_lisp_binding.has_key?('_span') then
                       trampCall(@_span)
@@ -14070,7 +14070,7 @@ trampCall(
     @_break_EXMARK = 
     trampCall(
           Proc.new { |_pred,_lis| 
-              delayCall( 'span!',
+              delayCall( '_span_EXMARK',  'span!',
                   begin
                     if @global_lisp_binding.has_key?('_span_EXMARK') then
                       trampCall(@_span_EXMARK)
@@ -14139,7 +14139,7 @@ trampCall(
                 ]
                              ))
                ) then
-                  delayCall( 'call-with-values',
+                  delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                       begin
                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -14447,7 +14447,7 @@ trampCall(
                                     ]
                                                  ))
                                    ) then
-                                      delayCall( 'pred',
+                                      delayCall( '_pred',  'pred',
                                           begin
                                               trampCall(_pred)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1173"] + __e.backtrace ) ; raise __e
@@ -14545,7 +14545,7 @@ trampCall(
                                       end
                                   end
                               }
-                            delayCall( 'lp',
+                            delayCall( '_lp',  'lp',
                                 begin
                                     trampCall(_lp)
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1173"] + __e.backtrace ) ; raise __e
@@ -14620,7 +14620,7 @@ trampCall(
                 ]
                              ))
                ) then
-                  delayCall( 'call-with-values',
+                  delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                       begin
                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -14920,7 +14920,7 @@ trampCall(
                                                   ]
                                                                ))
                                                  ) then
-                                                    delayCall( 'pred',
+                                                    delayCall( '_pred',  'pred',
                                                         begin
                                                             trampCall(_pred)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1200"] + __e.backtrace ) ; raise __e
@@ -14968,7 +14968,7 @@ trampCall(
                                                       ]
                                                                    ))
                                                      ) then
-                                                        delayCall( 'lp',
+                                                        delayCall( '_lp',  'lp',
                                                             begin
                                                                 trampCall(_lp)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1200"] + __e.backtrace ) ; raise __e
@@ -15009,7 +15009,7 @@ trampCall(
                                                     end
                                                 end
                                             }
-                                          delayCall( 'lp',
+                                          delayCall( '_lp',  'lp',
                                               begin
                                                   trampCall(_lp)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1200"] + __e.backtrace ) ; raise __e
@@ -15105,7 +15105,7 @@ trampCall(
                     ___lambda = lambda { |_lp| 
                         _lp                         = 
                           Proc.new { |_lists,_n| 
-                              delayCall( 'call-with-values',
+                              delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                   begin
                                     if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                       trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -15227,7 +15227,7 @@ trampCall(
                               ]
                                            )
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1216"] + __e.backtrace ) ; raise __e
@@ -15339,7 +15339,7 @@ trampCall(
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1216"] + __e.backtrace ) ; raise __e
                                       end
                                   else
-                                      delayCall( 'lp',
+                                      delayCall( '_lp',  'lp',
                                           begin
                                               trampCall(_lp)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1216"] + __e.backtrace ) ; raise __e
@@ -15381,7 +15381,7 @@ trampCall(
                                 false
                               end
                           }
-                        delayCall( 'lp',
+                        delayCall( '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1216"] + __e.backtrace ) ; raise __e
@@ -15457,7 +15457,7 @@ trampCall(
                                           end
                                     ]
                                                  ))
-                                    delayCall( 'lp',
+                                    delayCall( '_lp',  'lp',
                                         begin
                                             trampCall(_lp)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1232"] + __e.backtrace ) ; raise __e
@@ -15492,7 +15492,7 @@ trampCall(
                               end
                           end
                       }
-                    delayCall( 'lp',
+                    delayCall( '_lp',  'lp',
                         begin
                             trampCall(_lp)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1232"] + __e.backtrace ) ; raise __e
@@ -15522,7 +15522,7 @@ trampCall(
     @__PAMARKlset2_LTMARK_EQMARK = 
     trampCall(
           Proc.new { |__EQMARK,_lis1,_lis2| 
-              delayCall( 'every',
+              delayCall( '_every',  'every',
                   begin
                     if @global_lisp_binding.has_key?('_every') then
                       trampCall(@_every)
@@ -15737,7 +15737,7 @@ trampCall(
                                                                       ]
                                                                                    ))
                                                                      ) then
-                                                                        delayCall( 'lp',
+                                                                        delayCall( '_lp',  'lp',
                                                                             begin
                                                                                 trampCall(_lp)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1257"] + __e.backtrace ) ; raise __e
@@ -15818,7 +15818,7 @@ trampCall(
                                                          )
                                             end
                                         }
-                                      delayCall( 'lp',
+                                      delayCall( '_lp',  'lp',
                                           begin
                                               trampCall(_lp)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1257"] + __e.backtrace ) ; raise __e
@@ -16113,7 +16113,7 @@ trampCall(
                                                                       ]
                                                                                    ))
                                                                      ) then
-                                                                        delayCall( 'lp',
+                                                                        delayCall( '_lp',  'lp',
                                                                             begin
                                                                                 trampCall(_lp)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1268"] + __e.backtrace ) ; raise __e
@@ -16194,7 +16194,7 @@ trampCall(
                                                          )
                                             end
                                         }
-                                      delayCall( 'lp',
+                                      delayCall( '_lp',  'lp',
                                           begin
                                               trampCall(_lp)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1268"] + __e.backtrace ) ; raise __e
@@ -16279,7 +16279,7 @@ trampCall(
           Proc.new { |__EQMARK,_lis,*__rest__| _elts = __rest__[0] ;  
               begin
               end
-              delayCall( 'fold',
+              delayCall( '_fold',  'fold',
                   begin
                     if @global_lisp_binding.has_key?('_fold') then
                       trampCall(@_fold)
@@ -16362,7 +16362,7 @@ trampCall(
           Proc.new { |__EQMARK,*__rest__| _lists = __rest__[0] ;  
               begin
               end
-              delayCall( 'reduce',
+              delayCall( '_reduce',  'reduce',
                   begin
                     if @global_lisp_binding.has_key?('_reduce') then
                       trampCall(@_reduce)
@@ -16556,7 +16556,7 @@ trampCall(
           Proc.new { |__EQMARK,*__rest__| _lists = __rest__[0] ;  
               begin
               end
-              delayCall( 'reduce',
+              delayCall( '_reduce',  'reduce',
                   begin
                     if @global_lisp_binding.has_key?('_reduce') then
                       trampCall(@_reduce)
@@ -16830,7 +16830,7 @@ trampCall(
                             true
                              ) then
                                 begin
-                                    delayCall( 'filter',
+                                    delayCall( '_filter',  'filter',
                                         begin
                                           if @global_lisp_binding.has_key?('_filter') then
                                             trampCall(@_filter)
@@ -16987,7 +16987,7 @@ trampCall(
                             true
                              ) then
                                 begin
-                                    delayCall( 'filter!',
+                                    delayCall( '_filter_EXMARK',  'filter!',
                                         begin
                                           if @global_lisp_binding.has_key?('_filter_EXMARK') then
                                             trampCall(@_filter_EXMARK)
@@ -17142,7 +17142,7 @@ trampCall(
                             true
                              ) then
                                 begin
-                                    delayCall( 'filter',
+                                    delayCall( '_filter',  'filter',
                                         begin
                                           if @global_lisp_binding.has_key?('_filter') then
                                             trampCall(@_filter)
@@ -17303,7 +17303,7 @@ trampCall(
                             true
                              ) then
                                 begin
-                                    delayCall( 'filter!',
+                                    delayCall( '_filter_EXMARK',  'filter!',
                                         begin
                                           if @global_lisp_binding.has_key?('_filter_EXMARK') then
                                             trampCall(@_filter_EXMARK)
@@ -17411,7 +17411,7 @@ trampCall(
           Proc.new { |__EQMARK,*__rest__| _lists = __rest__[0] ;  
               begin
               end
-              delayCall( 'reduce',
+              delayCall( '_reduce',  'reduce',
                   begin
                     if @global_lisp_binding.has_key?('_reduce') then
                       trampCall(@_reduce)
@@ -17635,7 +17635,7 @@ trampCall(
           Proc.new { |__EQMARK,*__rest__| _lists = __rest__[0] ;  
               begin
               end
-              delayCall( 'reduce',
+              delayCall( '_reduce',  'reduce',
                   begin
                     if @global_lisp_binding.has_key?('_reduce') then
                       trampCall(@_reduce)
@@ -17898,7 +17898,7 @@ trampCall(
                              ))
                ) then
                   begin
-                      delayCall( 'values',
+                      delayCall( '_values',  'values',
                           begin
                             if @global_lisp_binding.has_key?('_values') then
                               trampCall(@_values)
@@ -17936,7 +17936,7 @@ trampCall(
                                  ))
                    ) then
                       begin
-                          delayCall( 'values',
+                          delayCall( '_values',  'values',
                               begin
                                 if @global_lisp_binding.has_key?('_values') then
                                   trampCall(@_values)
@@ -17957,7 +17957,7 @@ trampCall(
                       true
                        ) then
                           begin
-                              delayCall( 'partition',
+                              delayCall( '_partition',  'partition',
                                   begin
                                     if @global_lisp_binding.has_key?('_partition') then
                                       trampCall(@_partition)
@@ -18065,7 +18065,7 @@ trampCall(
                              ))
                ) then
                   begin
-                      delayCall( 'values',
+                      delayCall( '_values',  'values',
                           begin
                             if @global_lisp_binding.has_key?('_values') then
                               trampCall(@_values)
@@ -18103,7 +18103,7 @@ trampCall(
                                  ))
                    ) then
                       begin
-                          delayCall( 'values',
+                          delayCall( '_values',  'values',
                               begin
                                 if @global_lisp_binding.has_key?('_values') then
                                   trampCall(@_values)
@@ -18124,7 +18124,7 @@ trampCall(
                       true
                        ) then
                           begin
-                              delayCall( 'partition!',
+                              delayCall( '_partition_EXMARK',  'partition!',
                                   begin
                                     if @global_lisp_binding.has_key?('_partition_EXMARK') then
                                       trampCall(@_partition_EXMARK)

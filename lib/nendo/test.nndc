@@ -122,7 +122,7 @@ trampCall(
     @_test_MIMARKcount_PLMARK_PLMARK = 
     trampCall(
           Proc.new { || 
-              delayCall( 'vector-set!',
+              delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
                   begin
                     if @global_lisp_binding.has_key?('_vector_MIMARKset_EXMARK') then
                       trampCall(@_vector_MIMARKset_EXMARK)
@@ -180,7 +180,7 @@ trampCall(
     @_test_MIMARKpass_PLMARK_PLMARK = 
     trampCall(
           Proc.new { || 
-              delayCall( 'vector-set!',
+              delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
                   begin
                     if @global_lisp_binding.has_key?('_vector_MIMARKset_EXMARK') then
                       trampCall(@_vector_MIMARKset_EXMARK)
@@ -238,7 +238,7 @@ trampCall(
     @_test_MIMARKfail_PLMARK_PLMARK = 
     trampCall(
           Proc.new { || 
-              delayCall( 'vector-set!',
+              delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
                   begin
                     if @global_lisp_binding.has_key?('_vector_MIMARKset_EXMARK') then
                       trampCall(@_vector_MIMARKset_EXMARK)
@@ -296,7 +296,7 @@ trampCall(
     @_test_MIMARKabort_PLMARK_PLMARK = 
     trampCall(
           Proc.new { || 
-              delayCall( 'vector-set!',
+              delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
                   begin
                     if @global_lisp_binding.has_key?('_vector_MIMARKset_EXMARK') then
                       trampCall(@_vector_MIMARKset_EXMARK)
@@ -354,7 +354,7 @@ trampCall(
     @_format_MIMARKsummary = 
     trampCall(
           Proc.new { || 
-              delayCall( 'sprintf',
+              delayCall( '_sprintf',  'sprintf',
                   begin
                     if @global_lisp_binding.has_key?('_sprintf') then
                       trampCall(@_sprintf)
@@ -669,7 +669,7 @@ trampCall(
                     [
                     ]
                                  ))
-                    delayCall( 'vector-set!',
+                    delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
                         begin
                           if @global_lisp_binding.has_key?('_vector_MIMARKset_EXMARK') then
                             trampCall(@_vector_MIMARKset_EXMARK)
@@ -742,7 +742,7 @@ trampCall(
                              ))
                ) then
                   begin
-                      delayCall( 'with-open',
+                      delayCall( '_with_MIMARKopen',  'with-open',
                           begin
                             if @global_lisp_binding.has_key?('_with_MIMARKopen') then
                               trampCall(@_with_MIMARKopen)
@@ -1001,7 +1001,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:89"] + __e.backtrace ) ; raise __e
                                 end
                             else
-                                delayCall( 'car',
+                                delayCall( '_car',  'car',
                                     begin
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
@@ -1147,7 +1147,7 @@ trampCall(
     @_make_MIMARKpadding_MIMARKstring = 
     trampCall(
           Proc.new { |_num,_char| 
-              delayCall( 'string-join',
+              delayCall( '_string_MIMARKjoin',  'string-join',
                   begin
                     if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                       trampCall(@_string_MIMARKjoin)
@@ -1663,7 +1663,7 @@ discrepancies found.  Errors are:
                                          ))
                         end
                     end
-                    delayCall( 'length',
+                    delayCall( '_length',  'length',
                         begin
                           if @global_lisp_binding.has_key?('_length') then
                             trampCall(@_length)

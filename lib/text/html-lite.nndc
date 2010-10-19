@@ -204,7 +204,7 @@ trampCall(
     @_html_MIMARKescape_MIMARKstring = 
     trampCall(
           Proc.new { |_string| 
-              delayCall( 'string-join',
+              delayCall( '_string_MIMARKjoin',  'string-join',
                   begin
                     if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                       trampCall(@_string_MIMARKjoin)
@@ -343,7 +343,7 @@ trampCall(
                         )
                       end
                      ) then
-                        delayCall( 'caddr',
+                        delayCall( '_caddr',  'caddr',
                             begin
                               if @global_lisp_binding.has_key?('_caddr') then
                                 trampCall(@_caddr)
@@ -435,7 +435,7 @@ trampCall(
                                          ))
                            ) then
                               begin
-                                  delayCall( 'values',
+                                  delayCall( '_values',  'values',
                                       begin
                                         if @global_lisp_binding.has_key?('_values') then
                                           trampCall(@_values)
@@ -519,7 +519,7 @@ trampCall(
                                                      ))
                                        ) then
                                           begin
-                                              delayCall( 'values',
+                                              delayCall( '_values',  'values',
                                                   begin
                                                     if @global_lisp_binding.has_key?('_values') then
                                                       trampCall(@_values)
@@ -602,7 +602,7 @@ trampCall(
                                                          ))
                                            ) then
                                               begin
-                                                  delayCall( 'get-attr',
+                                                  delayCall( '_get_MIMARKattr',  'get-attr',
                                                       begin
                                                           trampCall(_get_MIMARKattr)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -658,7 +658,7 @@ trampCall(
                                                              ))
                                                ) then
                                                   begin
-                                                      delayCall( 'get-attr',
+                                                      delayCall( '_get_MIMARKattr',  'get-attr',
                                                           begin
                                                               trampCall(_get_MIMARKattr)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -715,7 +715,7 @@ trampCall(
                                                   true
                                                    ) then
                                                       begin
-                                                          delayCall( 'get-attr',
+                                                          delayCall( '_get_MIMARKattr',  'get-attr',
                                                               begin
                                                                   trampCall(_get_MIMARKattr)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:130"] + __e.backtrace ) ; raise __e
@@ -824,7 +824,7 @@ trampCall(
                                   true
                                    ) then
                                       begin
-                                          delayCall( 'values',
+                                          delayCall( '_values',  'values',
                                               begin
                                                 if @global_lisp_binding.has_key?('_values') then
                                                   trampCall(@_values)
@@ -868,7 +868,7 @@ trampCall(
                             end
                            ) then
                               Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                  delayCall( 'call-with-values',
+                                  delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                       begin
                                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                           trampCall(@_call_MIMARKwith_MIMARKvalues)
@@ -981,7 +981,7 @@ trampCall(
                               }
                           else
                               Proc.new { |*__rest__| _args = __rest__[0] ;  
-                                  delayCall( 'call-with-values',
+                                  delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                       begin
                                         if @global_lisp_binding.has_key?('_call_MIMARKwith_MIMARKvalues') then
                                           trampCall(@_call_MIMARKwith_MIMARKvalues)

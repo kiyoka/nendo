@@ -4,7 +4,7 @@
 # 
 
 trampCall( 
-  delayCall( 'require',
+  delayCall( '_require',  'require',
       begin
         if @global_lisp_binding.has_key?('_require') then
           trampCall(@_require)
@@ -96,7 +96,7 @@ trampCall(
                                                   end
                                             ]
                                                          ))
-                                            delayCall( 'loop',
+                                            delayCall( '_loop',  'loop',
                                                 begin
                                                     trampCall(_loop)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
@@ -140,7 +140,7 @@ trampCall(
                                     end
                                 end
                             }
-                          delayCall( 'loop',
+                          delayCall( '_loop',  'loop',
                               begin
                                   trampCall(_loop)
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
@@ -178,7 +178,7 @@ trampCall(
                             rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:14"] + __e.backtrace ) ; raise __e
                           end
                       else
-                          delayCall( 'car',
+                          delayCall( '_car',  'car',
                               begin
                                 if @global_lisp_binding.has_key?('_car') then
                                   trampCall(@_car)
