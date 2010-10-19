@@ -231,12 +231,13 @@ module Nendo
   end
   
   class DelayedCallPacket
-    def initialize( _origname, _pred, _args )
+    def initialize( _origname, _rubysym, _pred, _args )
       @origname = _origname
+      @rubysym  = _rubysym
       @pred     = _pred
       @args     = _args
     end
-    attr_reader :origname, :pred, :args
+    attr_reader :origname, :rubysym, :pred, :args
   end
 
   class Token
@@ -1462,11 +1463,10 @@ module Nendo
   
     def trampCall( result )
       while result.is_a? DelayedCallPacket
-        method_name = toRubySymbol( result.origname ) + "_METHOD"
         @tmp_origname = result.origname
         @tmp_pred     = result.pred
         @tmp_args     = result.args
-        result = eval( sprintf( "self.%s( @tmp_origname, @tmp_pred, @tmp_args )", method_name ), @binding )
+        result = eval( sprintf( "self.%s( @tmp_origname, @tmp_pred, @tmp_args )", result.rubysym + "_METHOD" ), @binding )
       end
       result
     end
@@ -1479,12 +1479,12 @@ module Nendo
       end
     end
     
-    def delayCall( origname, pred, args )
+    def delayCall( rubysym, origname, pred, args )
       case @optimize_level
       when 0 # no optimize
         callProcedure( origname, pred, args )
       else # tail call optimization
-        DelayedCallPacket.new( origname, pred, args )
+        DelayedCallPacket.new( origname, rubysym, pred, args )
       end
     end
     
@@ -1565,7 +1565,7 @@ module Nendo
                         [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
                       end
                     when EXEC_TYPE_TAILCALL
-                      [ "delayCall(",    ")"  ]
+                      [ sprintf( "delayCall( '%s', ", sym ),    ")"  ]
                     end
             [sprintf( "%s '%s',", _call[0], origname ), 
              [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","], 
