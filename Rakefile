@@ -1,7 +1,5 @@
 #-*- mode: ruby; -*-
-#  Rakefile for Nendo
-#
-#
+#                                                  Rakefile for Nendo
 # Release Engineering
 #   1. edit the VERSION.yml file
 #   2. rake compile  &&   rake check
