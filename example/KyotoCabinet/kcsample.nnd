@@ -10,6 +10,7 @@
            (+ KyotoCabinet::DB::OWRITER KyotoCabinet::DB::OCREATE))
     (printf "open error: %s\n" db.error))
 
+
   ;; 書きこみ
   (db.set "key1" "value1")
   (db.set "key2" "value2")
