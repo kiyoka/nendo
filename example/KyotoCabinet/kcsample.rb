@@ -5,7 +5,9 @@ require 'kyotocabinet'
 
 db = KyotoCabinet::DB.new
 # データベースを開く
-unless db.open('sample.kch', KyotoCabinet::DB::OWRITER | KyotoCabinet::DB::OCREATE)
+unless db.open(
+               'sample.kch',
+               KyotoCabinet::DB::OWRITER | KyotoCabinet::DB::OCREATE)
   printf("open error: %s\n", db.error)
 end
 
