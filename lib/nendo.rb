@@ -1198,10 +1198,6 @@ module Nendo
       end
     end
   
-    def _get_MIMARKnendo_MIMARKhome
-      File.dirname(__FILE__) 
-    end
-  
     def _hash_MIMARKtable_MIMARKget( h, key, *args )
       val = h[key]
       if val
@@ -1318,6 +1314,8 @@ module Nendo
       @source_info_hash = Hash.new
       
       global_lisp_define( toRubySymbol( "%compile-phase-functions" ), Cell.new())
+      load_path = $LOAD_PATH + [ File.dirname(__FILE__) ]
+      global_lisp_define( toRubySymbol( "*load-path*" ), load_path.to_list )
     end
   
     def global_lisp_define( rubySymbol, val )
@@ -2016,7 +2014,7 @@ module Nendo
       eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
     end
   
-    def _load( filename )
+    def __PAMARKload( filename )
       printer = Printer.new( @debug )
       open( filename, "r:utf-8" ) {|f|
         reader = Reader.new( f, filename, false )
@@ -2038,8 +2036,8 @@ module Nendo
       eval( rubyExp, @binding )
       forward_gensym_counter()
     end
-  
-    def _load_MIMARKcompiled_MIMARKcode( filename )
+    
+    def __PAMARKload_MIMARKcompiled_MIMARKcode( filename )
       open( filename, "r:utf-8" ) { |f|
         eval( f.read, @binding )
       }
@@ -2213,22 +2211,22 @@ module Nendo
       if use_compiled 
         compiled_file = File.dirname(__FILE__) + "/init.nndc"
         if File.exist?( compiled_file )
-          @evaluator._load_MIMARKcompiled_MIMARKcode( compiled_file )
+          @evaluator.__PAMARKload_MIMARKcompiled_MIMARKcode( compiled_file )
           done = true
         end
       end
       unless done
-        @evaluator._load( File.dirname(__FILE__) + "/init.nnd" )
-        @evaluator._load( File.dirname(__FILE__) + "/init.nnd" ) # for %tailcall compile for init.nnd
+        @evaluator.__PAMARKload( File.dirname(__FILE__) + "/init.nnd" )
+        @evaluator.__PAMARKload( File.dirname(__FILE__) + "/init.nnd" ) # for %tailcall compile for init.nnd
       end
     end
   
     def load( path )
-      @evaluator._load( path )
+      @evaluator.__PAMARKload( path )
     end
   
     def load_compiled_code( path )
-      @evaluator._load_MIMARKcompiled_MIMARKcode( path )
+      @evaluator.__PAMARKload_MIMARKcompiled_MIMARKcode( path )
     end
   
     def load_compiled_code_from_string( rubyExp )

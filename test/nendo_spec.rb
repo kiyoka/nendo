@@ -290,6 +290,20 @@ describe Nendo, "when call evalStr() with comparative operators" do
   end
 end
 
+describe Nendo, "when reference global-variables." do
+  before do
+    @nendo = Nendo::Core.new()
+  end
+  it "should" do
+    @nendo.evalStr( " (pair? *load-path*) " ).should == "#t"
+    @nendo.evalStr( " (string? (car *load-path*)) " ).should == "#t"
+    @nendo.evalStr( " (car      *load-path*)  " ).should == "\"./spec\""
+    @nendo.evalStr( " (car (cdr *load-path*)) " ).should == "\"./lib\""
+    @nendo.evalStr( " (string? (*FILE*)) " ).should == "#t"
+    @nendo.evalStr( " (number? (*LINE*)) " ).should == "#t"
+  end
+end
+
 describe Nendo, "when call evalStr() with boolean operators" do
   before do
     @nendo = Nendo::Core.new()
@@ -1588,14 +1602,14 @@ describe Nendo, "when use (use ...) macro " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " (macroexpand '(use abc)) " ).should            == '(load-library "abc")'
-    @nendo.evalStr( " (macroexpand '(use a.b)) " ).should            == '(load-library "a/b")'
-    @nendo.evalStr( " (macroexpand '(use a.b.c)) " ).should          == '(load-library "a/b/c")'
-    @nendo.evalStr( " (macroexpand '(use a.b.c.d.e.f.g)) " ).should  == '(load-library "a/b/c/d/e/f/g")'
-    @nendo.evalStr( " (macroexpand '(use srfi-1)) " ).should         == '(load-library "srfi-1")'
-    @nendo.evalStr( " (macroexpand '(use text.tree)) " ).should      == '(load-library "text/tree")'
-    @nendo.evalStr( " (macroexpand '(use debug.syslog)) " ).should   == '(load-library "debug/syslog")'
-    @nendo.evalStr( " (macroexpand `(use ,(string->symbol (+ \"text\" \".\" \"tree\")))) " ).should ==  '(load-library "text/tree")'
+    @nendo.evalStr( " (macroexpand '(use abc)) " ).should            == '(load "abc")'
+    @nendo.evalStr( " (macroexpand '(use a.b)) " ).should            == '(load "a/b")'
+    @nendo.evalStr( " (macroexpand '(use a.b.c)) " ).should          == '(load "a/b/c")'
+    @nendo.evalStr( " (macroexpand '(use a.b.c.d.e.f.g)) " ).should  == '(load "a/b/c/d/e/f/g")'
+    @nendo.evalStr( " (macroexpand '(use srfi-1)) " ).should         == '(load "srfi-1")'
+    @nendo.evalStr( " (macroexpand '(use text.tree)) " ).should      == '(load "text/tree")'
+    @nendo.evalStr( " (macroexpand '(use debug.syslog)) " ).should   == '(load "debug/syslog")'
+    @nendo.evalStr( " (macroexpand `(use ,(string->symbol (+ \"text\" \".\" \"tree\")))) " ).should ==  '(load "text/tree")'
     lambda { @nendo.evalStr( " (macroexpand '(use '(a)) " ) }.should    raise_error( RuntimeError )
     lambda { @nendo.evalStr( " (macroexpand '(use \"srfi-1\") " ) }.should    raise_error( RuntimeError )
     lambda { @nendo.evalStr( " (macroexpand '(use 1)) " ) }.should    raise_error( RuntimeError )
@@ -1825,13 +1839,34 @@ describe Nendo, "optional argument parser " do
 end
 
 
+describe Nendo, "(load path) and *load-path*" do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( ' (when (load "nendo/test")                   #t) ' ).should ==  "#t"
+    @nendo.evalStr( ' (when (load "nendo/test.nnd")               #t) ' ).should ==  "#t"
+    @nendo.evalStr( ' (when (load "nendo/test.nnd")               #t) ' ).should ==  "#t"
+    @nendo.evalStr( ' (when (load "./lib/nendo/test.nnd")         #t) ' ).should ==  "#t"
+    @nendo.evalStr( ' (when (load "../nendo/lib/nendo/test.nnd")  #t) ' ).should ==  "#t"
+    @nendo.evalStr( ' (when (use nendo.test) #t)   ' ).should ==                     "#t"
+    @nendo.evalStr( ' (set! *load-path* (list "a" "b")) ' ).should ==                '("a" "b")'
+    @nendo.evalStr( ' (add-load-path "./lib") ' ).should ==                          '("./lib" "a" "b")'
+    @nendo.evalStr( ' (add-load-path "./bin" #t) ' ).should ==                       '("./lib" "a" "b" "./bin")'
+    @nendo.evalStr( ' (when (load "nendo/test")                   #t) ' ).should ==  "#t"
+    lambda{ @nendo.evalStr( " (when (load \"nendo/not-exist-file\") #t) " ) }.should   raise_error(RuntimeError)
+  end
+end
+
+
 describe Nendo, "nendo.test library " do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " (when (load-library \"nendo/test\") #t) " ).should == "#t"
+        @nendo.evalStr( ' (when (load "nendo/test")                   #t) ' ).should ==  "#t"
     @nendo.evalStr( " (when (File.exist? *test-record-file*) (File.unlink *test-record-file*))  #t" ).should == "#t"
     @nendo.evalStr( " (test-output-file (.open \"/dev/null\" \"w\"))  #t" ).should == "#t"
     @nendo.evalStr( " (test-start   \"EMPTY\") " ).should ==                                              '"EMPTY"'
