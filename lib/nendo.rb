@@ -1315,8 +1315,8 @@ module Nendo
       
       global_lisp_define( toRubySymbol( "%compile-phase-functions" ), Cell.new())
       load_path = $LOAD_PATH + [ File.dirname(__FILE__) ]
-      global_lisp_define( toRubySymbol( "*load-path*" ), load_path.to_list )
-      global_lisp_define( toRubySymbol( "*version*"   ), Nendo::Core.version )
+      global_lisp_define( toRubySymbol( "*load-path*"     ), load_path.to_list )
+      global_lisp_define( toRubySymbol( "*nendo-version*" ), Nendo::Core.version )
     end
   
     def global_lisp_define( rubySymbol, val )

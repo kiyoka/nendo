@@ -301,6 +301,8 @@ describe Nendo, "when reference global-variables." do
     @nendo.evalStr( " (car (cdr *load-path*)) " ).should == "\"./lib\""
     @nendo.evalStr( " (string? (*FILE*)) " ).should == "#t"
     @nendo.evalStr( " (number? (*LINE*)) " ).should == "#t"
+    @nendo.evalStr( " *nendo-version* " ).should == '"' + Nendo::Core.version + '"'
+    @nendo.evalStr( " (string? *nendo-version*) " ).should == "#t"
   end
 end
 
