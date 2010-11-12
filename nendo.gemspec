@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{nendo}
-  s.version = "0.3.5"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2010-10-22}
+  s.date = %q{2010-11-12}
   s.default_executable = %q{nendo}
   s.description = %q{Nendo is a programming language written in Ruby.}
   s.email = %q{kiyoka@sumibi.org}
@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
      "example/KyotoCabinet/kcbench1.nnd",
      "example/KyotoCabinet/kcbench2.nnd",
      "example/KyotoCabinet/kcbench3.nnd",
+     "example/KyotoCabinet/kcsample.nnd",
+     "example/KyotoCabinet/kcsample.rb",
      "example/cgi/dekamoji.cgi",
      "example/cgi/sample.cgi",
      "example/deep-loop1.nnd",

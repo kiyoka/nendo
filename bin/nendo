@@ -48,6 +48,8 @@ def userOptionEater
       i += 1
     when '-c'
       i += 1
+    when '-V'
+      i += 1
     when '-l'
       i += 2
     when '-O'
@@ -76,6 +78,7 @@ def main
                         [ '-h', GetoptLong::NO_ARGUMENT ],
                         [ '-q', GetoptLong::NO_ARGUMENT ],
                         [ '-c', GetoptLong::NO_ARGUMENT ],
+                        [ '-V', GetoptLong::NO_ARGUMENT ],
                         [ '-l', GetoptLong::REQUIRED_ARGUMENT ],
                         [ '-O', GetoptLong::REQUIRED_ARGUMENT ]
                         ).each { |opt, arg|
@@ -91,6 +94,9 @@ def main
       -q:
         Does not read the default initialization file.
 
+      -V:
+        show version
+
       -l file:
         load nendo script files. ( can specify n times like   -l a.nnd -l b.nnd  )
 
@@ -102,6 +108,9 @@ def main
 
       EOF
       exit 0
+    when '-V'
+      printf( "Nendo %s\n", Nendo::Core.version )
+      exit( 1 )
     when '-q'
       loadInit = false
       conflict += 1

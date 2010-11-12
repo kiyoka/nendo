@@ -55,21 +55,22 @@ end
 
 task :compile do
   # Replace Version Number
+  targetFile = "./lib/nendo.rb"
   vh = Jeweler::VersionHelper.new "."
-  (original, modified) = open( "./lib/init.nnd" ) {|f|
+  (original, modified) = open( targetFile ) {|f|
     lines = f.readlines
     [ lines,
       lines.map {|line|
-        if line.match( /;;NENDO-VERSION/ )
-          sprintf( '  "%s"  ;;NENDO-VERSION', vh.to_s ) + "\n"
+        if line.match( /##NENDO-VERSION/ )
+          sprintf( '      "%s"  ##NENDO-VERSION', vh.to_s ) + "\n"
         else
           line
         end
       } ]
   }
   if original.join != modified.join
-    puts "Info: ./lib/init.nnd was updated."
-    open( "./lib/init.nnd", "w" ) {|f|
+    puts "Info: " + targetFile + " was updated."
+    open( targetFile, "w" ) {|f|
       f.write( modified.join )
     }
   end

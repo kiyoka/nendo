@@ -19817,18 +19817,6 @@ trampCall(
     )
   end
  )
-#--------------------
-
-trampCall( 
-  begin
-      def self.__ASMARKnendo_MIMARKversion_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
-      @global_lisp_binding['__ASMARKnendo_MIMARKversion_ASMARK'] = self.method( :__ASMARKnendo_MIMARKversion_ASMARK_METHOD )
-    @__ASMARKnendo_MIMARKversion_ASMARK = 
-    trampCall(
-        "0.3.5"
-    )
-  end
- )
 
 
 # -------------------------------------------------------
