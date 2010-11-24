@@ -1303,6 +1303,7 @@ module Nendo
 
       # call depth counter
       @call_depth     = 0
+      @call_counters  = Hash.new
 
       # init optimize level
       @optimize_level = 1
@@ -1488,7 +1489,17 @@ module Nendo
     end
     
     def callProcedure( origname, pred, args )
-      pred.call( *toRubyArgument( origname, pred, args ))
+      if @call_counters.has_key?( origname )
+        @call_counters[ origname ] += 1
+      else
+        @call_counters[ origname ]  = 1
+      end
+
+      result = pred.call( *toRubyArgument( origname, pred, args ))
+
+      @call_counters[ origname ]   -= 1
+
+      result
     end
   
     # for code generation of Ruby's argument values
@@ -1980,41 +1991,59 @@ module Nendo
       }
     end
   
-    def lispEval( sexp, sourcefile, lineno )
-      sourceInfo = SourceInfo.new
-      @lastSourcefile = sourcefile
-      @lastLineno     = lineno
-      sourceInfo.setSource( sourcefile, lineno, sexp )
-      sexp = macroExpandPhase( sexp )
-      sexp = quotingPhase( sexp )
-      if @debug
-        printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
-      end
-      # compiling phase written in Nendo
-      sym = toRubySymbol( "%compile-phase" )
-      if ( eval( sprintf( "(defined? @%s and Proc == @%s.class)", sym,sym ), @binding ))
-        eval( sprintf( "@___tmp = @%s", sym ), @binding )
-        sexp = trampCall( callProcedure( sym, @___tmp, [ sexp ]))
-        if @debug
-          printf( "\n          compiled=<<< %s >>>\n", (Printer.new())._print(sexp))
+    def displayTopOfCalls( exception )
+      STDERR.puts( "  <<< Top of calls >>>" )
+      strs = []
+      @call_counters.each_key { |funcname|
+        if 0 < @call_counters[ funcname ]
+          strs << sprintf( "  %7d : %-20s", @call_counters[ funcname ], funcname )
         end
-      end
-      sourceInfo.setExpanded( sexp )
-      
-      arr = [ "trampCall( ", translate( sexp, [], sourceInfo ), " )" ]
-      rubyExp = ppRubyExp( 0, arr ).flatten.join
-      sourceInfo.setCompiled( rubyExp )
-      if not @compiled_code.has_key?( sourcefile )
-        @compiled_code[ sourcefile ] = Array.new
-      end
-      @compiled_code[ sourcefile ] << rubyExp
-      if sourceInfo.varname
-        @source_info_hash[ sourceInfo.varname ] = sourceInfo
-      end
-      printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
-      eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
+      }
+      strs.sort.reverse.each { |str|
+        STDERR.puts( str )
+      }
     end
-  
+      
+    def lispEval( sexp, sourcefile, lineno )
+      begin
+        sourceInfo = SourceInfo.new
+        @lastSourcefile = sourcefile
+        @lastLineno     = lineno
+        sourceInfo.setSource( sourcefile, lineno, sexp )
+        sexp = macroExpandPhase( sexp )
+        sexp = quotingPhase( sexp )
+        if @debug
+          printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
+        end
+        # compiling phase written in Nendo
+        sym = toRubySymbol( "%compile-phase" )
+        if ( eval( sprintf( "(defined? @%s and Proc == @%s.class)", sym,sym ), @binding ))
+          eval( sprintf( "@___tmp = @%s", sym ), @binding )
+          sexp = trampCall( callProcedure( sym, @___tmp, [ sexp ]))
+          if @debug
+            printf( "\n          compiled=<<< %s >>>\n", (Printer.new())._print(sexp))
+          end
+        end
+        sourceInfo.setExpanded( sexp )
+        
+        arr = [ "trampCall( ", translate( sexp, [], sourceInfo ), " )" ]
+        rubyExp = ppRubyExp( 0, arr ).flatten.join
+        sourceInfo.setCompiled( rubyExp )
+        if not @compiled_code.has_key?( sourcefile )
+          @compiled_code[ sourcefile ] = Array.new
+        end
+        @compiled_code[ sourcefile ] << rubyExp
+        if sourceInfo.varname
+          @source_info_hash[ sourceInfo.varname ] = sourceInfo
+        end
+        printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
+        eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
+      rescue SystemStackError => e
+        displayTopOfCalls( e )
+        raise e
+      end
+    end
+
     def __PAMARKload( filename )
       printer = Printer.new( @debug )
       open( filename, "r:utf-8" ) {|f|
