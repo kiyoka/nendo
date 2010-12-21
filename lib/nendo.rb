@@ -157,6 +157,9 @@ module Nendo
       @exp        = str[ 1 ... str.size ]
       @ignoreCase = (str[0] == 'i')
     end
+    def to_s
+      sprintf( "|%s|", @exp ) + (@ignoreCase ? "i" : "")
+    end
     def escape
       @exp.gsub( /\\/, "\\\\\\\\" )
     end
@@ -429,12 +432,7 @@ module Nendo
         if ch.chr == "\\"    #escape
           ch2 = @chReader.getc
           #printf( "      readRegexp2: [%s]\n", ch2 )
-          if ch2.chr == '/'
-            ret += ch2.chr # drop escape "\\" char
-          else
-            ret += ch.chr
-            ret += ch2.chr
-          end
+          ret += "\\" + ch2.chr
         elsif ch.chr == '/'
           break
         else

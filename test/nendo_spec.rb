@@ -998,17 +998,22 @@ describe Nendo, "when use regexp litteral and library functions " do
     @nendo.evalStr( " #/abc/ " ).should                                       == "#/abc/"
     @nendo.evalStr( " #/[a-z]/ " ).should                                     == "#/[a-z]/"
     @nendo.evalStr( " #/[a-zA-Z0-9]+/ " ).should                              == "#/[a-zA-Z0-9]+/"
-    @nendo.evalStr( " #/\\d/ " ).should                                       == "#/\\d/"
-    @nendo.evalStr( " #/[\\/]/ " ).should                                     == "#/[/]/"
+    @nendo.evalStr( ' #/\d/ ' ).should                                        == '#/\d/'
+    @nendo.evalStr( ' #/[\/]/ ' ).should                                      == '#/[\/]/'
+    @nendo.evalStr( ' #/\]/ ' ).should                                        == '#/\]/'
+    @nendo.evalStr( ' #/^\]/ ' ).should                                       == '#/^\]/'
+    @nendo.evalStr( ' #/\[/ ' ).should                                        == '#/\[/'
+    @nendo.evalStr( ' #/^\[/ ' ).should                                       == '#/^\[/'
+    @nendo.evalStr( ' #/\.\^\$\/\+\-\(\)\|/ ' ).should                        == '#/\.\^\$\/\+\-\(\)\|/'
     @nendo.evalStr( " #/abc/i " ).should                                      == "#/abc/i"
     @nendo.evalStr( " #/[a-z]/i " ).should                                    == "#/[a-z]/i"
     lambda { @nendo.evalStr( " #/[a-z]/I " ) }.should                         raise_error(NameError)
     lambda { @nendo.evalStr( " #/[a-z]/a " ) }.should                         raise_error(NameError)
     
-    @nendo.evalStr( " (string->regexp \"abc\") " ).should                     == "#/abc/"
-    @nendo.evalStr( " (string->regexp \"[a-z]\") " ).should                   == "#/[a-z]/"
-    @nendo.evalStr( " (string->regexp \"[a-zA-Z0-9]+\" ) " ).should           == "#/[a-zA-Z0-9]+/"
-    @nendo.evalStr( " (string->regexp \"\\\\d\" ) " ).should                  == "#/\\d/"
+    @nendo.evalStr( ' (string->regexp "abc") ' ).should                       == '#/abc/'
+    @nendo.evalStr( ' (string->regexp "[a-z]") ' ).should                     == '#/[a-z]/'
+    @nendo.evalStr( ' (string->regexp "[a-zA-Z0-9]+" ) ' ).should             == '#/[a-zA-Z0-9]+/'
+    @nendo.evalStr( ' (string->regexp "\\\\d" ) ' ).should                    == '#/\d/'
     @nendo.evalStr( " (regexp? #/str/ ) " ).should                            == "#t"
     @nendo.evalStr( " (regexp? #/str/i ) " ).should                           == "#t"
     @nendo.evalStr( " (regexp? \"str\" ) " ).should                           == "#f"
