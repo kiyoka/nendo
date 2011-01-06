@@ -34,8 +34,25 @@
 ;;;  $Id: 
 ;;;
 
-;; ----------------------------------------
-;; define
-;; ----------------------------------------
+(require "json")
+(require "pp")
+
+(define (%ruby-json-obj->list obj)
+  (.pp obj)
+  obj)
+  
+(define (%list->ruby-json-obj lst)
+  lst)
+
+;; parser
+(define (parse-json str)
+  (%ruby-json-obj->list 
+   (JSON.parse str)))
+
+;; writer
+(define (->json x)
+  (JSON.generate
+   (%list->ruby-json-obj x)))
+
 
 ;;[EOS]
