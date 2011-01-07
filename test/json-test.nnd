@@ -34,7 +34,7 @@
 ;;;  $Id: 
 ;;;
 (use nendo.test)
-(use sekka.json)
+(use rfc.json)
 
 (test-start "json")
 
@@ -45,15 +45,15 @@
 
 (test* "string (1)"
        '#( "str" )
-       (parse-json "[\"str\"]"))
+       (parse-json-string "[\"str\"]"))
 
 (test* "string (2)"
        '#( "Ã" )
-       (parse-json "[\"Ã\"]"))
+       (parse-json-string "[\"Ã\"]"))
 
 (test* "string (3)"
        '#( "Ã" "€" )
-       (parse-json "[ \"\\u00c3\", \"\\u20ac\" ]"))
+       (parse-json-string "[ \"\\u00c3\", \"\\u20ac\" ]"))
 
 
 ;;===================================================================

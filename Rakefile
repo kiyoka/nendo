@@ -42,8 +42,9 @@ task :check do
   stage1 = [ "ruby -I ./lib /usr/local/bin/rspec -b ./test/nendo_spec.rb",
              "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd" ]
   stage2 = [ "/bin/rm -f test.record",
-             "ruby -I ./lib ./bin/nendo ./test/textlib.nnd     >  test.log",
-             "ruby -I ./lib ./bin/nendo ./test/nendo_util.nnd  >> test.log",
+             "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd     >  test.log",
+             "ruby -I ./lib ./bin/nendo ./test/util-test.nnd        >> test.log",
+             "ruby -I ./lib ./bin/nendo ./test/json-test.nnd        >> test.log",
              "cat test.record" ]
   arr = []
   arr += stage1
