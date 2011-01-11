@@ -55,6 +55,51 @@
        '#( "Ã" "€" )
        (parse-json-string "[ \"\\u00c3\", \"\\u20ac\" ]"))
 
+(test* "string (4)"
+       '#(nil)
+       (parse-json-string "[null]"))
+
+(test* "string (4)"
+       '#(nil)
+       (parse-json-string "[null]"))
+
+(test* "string (5)"
+       '#(#t)
+       (parse-json-string "[true]"))
+
+(test* "string (6)"
+       '#(#f)
+       (parse-json-string "[false]"))
+
+
+(test* "simple object (1)"
+       '()
+       (hash-table->alist
+        (parse-json-string "{}")))
+(test* "simple object (2)"
+       '()
+       (hash-table->alist
+        (parse-json-string " {   }   ")))
+(test* "simple object (3)"
+       '(("a" . 23))
+       (hash-table->alist
+        (parse-json-string "{ \"a\": 23  } ")))
+(test* "simple object (4)"
+       '(("a" . 23) ("b" . 45))
+       (hash-table->alist
+        (parse-json-string "{ \"a\": 23 , \"b\": 45  } ")))
+
+(test* "arrays (1)"
+       '#(1 2 3)
+       (parse-json-string "[1,2,3]"))
+(test* "arrays (2)"
+       '#(#() #(#() #()))
+       (parse-json-string "[[],[[],[]]]"))
+(test* "arrays (3)"
+       '#(#(4)
+          #(#(5) #(6)))
+       (parse-json-string "[[4],[[5],[6]]]"))
+
 
 ;;===================================================================
 (test-end)
