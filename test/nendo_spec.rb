@@ -1710,6 +1710,12 @@ describe Nendo, "when use hash-table feature " do
     @nendo.evalStr( " (hash-table-push! h 'a :AAA_2)  (hash-table->alist h)" ).should == "((a :AAA_2 :AAA_1))"
     @nendo.evalStr( " (hash-table-push! h 'b :BBB_1)  (hash-table->alist h)" ).should == "((a :AAA_2 :AAA_1) (b :BBB_1))"
     @nendo.evalStr( " (hash-table-push! h 'b :BBB_2)  (hash-table->alist h)" ).should == "((a :AAA_2 :AAA_1) (b :BBB_2 :BBB_1))"
+    @nendo.evalStr( " (set! h (hash-table '(true . 1) '(false . 2) '(nil . 3)))  h" ).should   == "{true=>1, false=>2, nil=>3}"
+    @nendo.evalStr( "   (hash-table->alist h) " ).should                                       == "((#t . 1) (#f . 2) (nil . 3))"
+    @nendo.evalStr( "   (hash-table-keys   h) " ).should                                       == "(#t #f nil)"
+    @nendo.evalStr( " (set! h (hash-table '(1 . true) '(2 . false) '(3 . nil)))  h" ).should   == "{1=>true, 2=>false, 3=>nil}"
+    @nendo.evalStr( "   (hash-table->alist h) " ).should                                       == "((1 . #t) (2 . #f) (3 . nil))"
+    @nendo.evalStr( "   (hash-table-keys   h) " ).should                                       == "(1 2 3)"
   end
 end
 

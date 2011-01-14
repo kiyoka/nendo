@@ -1197,9 +1197,8 @@ module Nendo
     end
   
     def _hash_MIMARKtable_MIMARKget( h, key, *args )
-      val = h[key]
-      if val
-        val
+      if h.has_key?(key)
+        h[key]
       else
         arr = args[0].to_arr
         if 0 < arr.length
