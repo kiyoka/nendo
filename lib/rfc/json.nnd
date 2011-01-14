@@ -1,6 +1,6 @@
 ;;-*- mode: nendo; syntax: scheme -*-;;
 ;;;
-;;; init.nnd - JSON parser and constructor
+;;; json.nnd - JSON parser and constructor
 ;;;  
 ;;;   Copyright (c) 2011  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 ;;;   
@@ -39,11 +39,52 @@
 
 
 ;; ------------------------------
+(define (%json:hash-table->alist obj)
+  (cond
+   ((null? obj)
+    obj)
+   ((vector? obj)
+    (list->vector
+     (map
+      (lambda (x)
+        (%json:hash-table->alist x))
+      (vector->list obj))))
+   ((hash-table? obj)
+    (map
+     (lambda (entry)
+       (cons (car entry)
+             (%json:hash-table->alist (cdr entry))))
+     (hash-table->alist obj)))
+   (else
+    obj)))
+
+(define (%json:alist->hash-table obj)
+  (cond
+   ((null? obj)
+    (make-hash-table))
+   ((vector? obj)
+    (list->vector
+     (map
+      (lambda (x)
+        (%json:alist->hash-table x))
+      (vector->list obj))))
+   ((pair? obj)
+    (alist->hash-table
+     (map
+      (lambda (entry)
+        (cons (car entry)
+              (%json:alist->hash-table (cdr entry))))
+      obj)))
+   (else
+    obj)))
+
+
+;; ------------------------------
 ;; parser
 ;; ------------------------------
 (define (parse-json-string str)
-  (JSON.parse str))
-
+  (%json:hash-table->alist 
+   (JSON.parse str)))
 
 (define (parse-json . io)
   (let* ((_   (get-optional io STDIN))
@@ -53,13 +94,14 @@
 
 ;; ------------------------------
 ;; writer
-(define (construct-json x)
-  (JSON.generate x))
+(define (construct-json-string obj)
+  (JSON.dump
+   (%json:alist->hash-table obj)))
 
-
-(define (construct-json-string x)
-  (JSON.dump x))
-
+(define (construct-json obj . io)
+  (let1 _ (get-optional io STDOUT)
+    (_.print
+     (construct-json-string obj))))
 
 
 ;;[EOS]

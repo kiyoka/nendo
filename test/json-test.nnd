@@ -74,20 +74,16 @@
 
 (test* "simple object (1)"
        '()
-       (hash-table->alist
-        (parse-json-string "{}")))
+       (parse-json-string "{}"))
 (test* "simple object (2)"
        '()
-       (hash-table->alist
-        (parse-json-string " {   }   ")))
+       (parse-json-string " {   }   "))
 (test* "simple object (3)"
        '(("a" . 23))
-       (hash-table->alist
-        (parse-json-string "{ \"a\": 23  } ")))
+       (parse-json-string "{ \"a\": 23  } "))
 (test* "simple object (4)"
        '(("a" . 23) ("b" . 45))
-       (hash-table->alist
-        (parse-json-string "{ \"a\": 23 , \"b\": 45  } ")))
+       (parse-json-string "{ \"a\": 23 , \"b\": 45  } "))
 
 (test* "arrays (1)"
        '#(1 2 3)
@@ -99,6 +95,83 @@
        '#(#(4)
           #(#(5) #(6)))
        (parse-json-string "[[4],[[5],[6]]]"))
+
+
+(define testdata-json-string
+  (string-join
+   '("["
+     "  { \"a\": 1, "
+     "    \"b\": 2, "
+     "    \"c\": { \"c1\": 10,"
+     "             \"c2\": 20 },"
+     "    \"d\": [ \"vec1\", \"vec2\", \"vec3\" ]"
+     "  },"
+     "  { \"true\"  : true , "
+     "    \"false\" : false , "
+     "    \"null\"  : null "
+     "  }"
+     "]")))
+
+(define testdata-lisp-object
+  '#(
+     (("a" . 1)
+      ("b" . 2)
+      ("c" . (
+              ("c1" . 10)
+              ("c2" . 20)))
+      ("d" . #("vec1" "vec2" "vec3")))
+     (("true"  . true)
+      ("false" . false)
+      ("null"  . nil))))
+
+
+(test* "array and hash (1)"
+       (write-to-string testdata-lisp-object)
+       (write-to-string (parse-json-string testdata-json-string)))
+
+
+(let1 sio (StringIO.new "{\"a\":23,\"b\":45}")
+  (test* "write to IO"
+         '(("a" . 23) ("b" . 45))
+         (parse-json sio)))
+
+
+
+;;-------------------------------------------------------------------
+(test-section "json constructor")
+
+(test* "string (1)"
+       "[\"str\"]"
+       (construct-json-string '#( "str" )))
+
+(test* "arrays (1)"
+       "[1,2,3]"
+       (construct-json-string '#(1 2 3)))
+(test* "arrays (2)"
+       "[[],[[],[]]]"
+       (construct-json-string '#(#() #(#() #()))))
+
+(test* "simple object (1)"
+       "{}"
+       (construct-json-string '()))
+(test* "simple object (2)"
+       "{\"a\":23}"
+       (construct-json-string '(("a" . 23))))
+(test* "simple object (3)"
+       "{\"a\":23,\"b\":45}"
+       (construct-json-string '(("a" . 23) ("b" . 45))))
+
+(test* "array and hash (1)"
+       (testdata-json-string.gsub #/[ ]/ "")
+       (construct-json-string testdata-lisp-object))
+
+(let1 sio (StringIO.new)
+  (test* "write to IO"
+         "{\"a\":23,\"b\":45}"
+         (begin
+           (construct-json '(("a" . 23) ("b" . 45)) sio)
+           (sio.rewind)
+           (sio.read))))
 
 
 ;;===================================================================
