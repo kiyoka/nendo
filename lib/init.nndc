@@ -16186,7 +16186,7 @@ trampCall(
                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1070"] + __e.backtrace ) ; raise __e
                     end                  ,
                 [
-                    Regexp.new( "^([.]/|[.][.]/|/)")                    ,
+                    Regexp.new( "^([.]\\/|[.][.]\\/|\\/)")                    ,
                       begin
                           trampCall(_path)
                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1067"] + __e.backtrace ) ; raise __e

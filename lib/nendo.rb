@@ -2234,7 +2234,7 @@ module Nendo
     end
 
     def self.version
-      "0.4.0"  ##NENDO-VERSION
+      "0.4.1"  ##NENDO-VERSION
     end
     
     def loadInitFile( use_compiled = true )
