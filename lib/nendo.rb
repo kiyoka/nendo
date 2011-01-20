@@ -1989,7 +1989,7 @@ module Nendo
     end
   
     def displayTopOfCalls( exception )
-      STDERR.puts( "  <<< Top of calls >>>" )
+      STDERR.puts( "\n  <<< Top of calls >>>" )
       strs = []
       @call_counters.each_key { |funcname|
         if 0 < @call_counters[ funcname ]
