@@ -916,15 +916,24 @@
 ;; Utility function for testing and debugging
 ;; ----------------------------------------
 ;; Gauche's #?= like debug print function
-(define debug-print-length 63)
+(define *debug-print-length* 63)
+(define (debug-print-length . len)
+  (let1 len (get-optional len 'none)
+    (if (eq? len 'none)
+        *debug-print-length*
+        (set! *debug-print-length* len))))
 (define (debug-print-output-func str)  ;; default output func
   (STDERR.print str))
 (define (debug-limit-length x)
   (+
-   (if (< debug-print-length x.length)
-       (let1 n debug-print-length.to_s
-         (sprintf (+ "%" n "." n "s ...") x))
-       x)
+   (cond
+    ((not *debug-print-length*)
+     x)
+    ((< *debug-print-length* x.length)
+     (let1 n *debug-print-length*.to_s
+       (sprintf (+ "%" n "." n "s ...") x)))
+    (else
+     x))
    "\n"))
 
 (define debug-print

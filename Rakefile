@@ -98,4 +98,8 @@ task :clean do
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
 end
 
+task :repl do
+  sh "ruby -I ./lib ./bin/nendo"
+end
+
 
