@@ -1,5 +1,5 @@
 ;;;
-;;; util/list.scm - more list library
+;;; util/list.nnd - more list library
 ;;;
 ;;;  Copyright (c) 2003-2010  Shiro Kawai  <shiro@acm.org>
 ;;;  Copyright(C) 2003 by Alex Shinn (foof@synthcode.com)
@@ -13,20 +13,13 @@
 ;;;  warranty.  In no circumstances the author(s) shall be liable
 ;;;  for any damages arising out of the use of this software.
 ;;;
+;;; Subsequently modified for nendo: Kiyoka Nishiyama
+;;; I removed these functions: (because init.nnd supports it.)
+;;;    alist->hash-table  hash-table->alist
 
 ;; This module adds useful list utility procedures that are not in SRFI-1.
 
-(define-module util.list
-  (use srfi-1)
-  (export take* drop* take-right* drop-right* split-at*
-          slices intersperse cond-list
-          alist->hash-table hash-table->alist
-          rassq rassv rassoc
-          assq-ref assv-ref assoc-ref
-          rassq-ref rassv-ref rassoc-ref
-          assq-set! assv-set! assoc-set!)
-  )
-(select-module util.list)
+(use srfi-1)
 
 ;;-----------------------------------------------------------------
 ;; permissive take and drop - if the length of given list is shorter
@@ -137,13 +130,13 @@
 ;;
 
 ;; conversion to/from hash-table
-(define (alist->hash-table a . opt-eq)
-  (let ((tb (apply make-hash-table opt-eq)))
-    (for-each (lambda (x) (hash-table-put! tb (car x) (cdr x))) a)
-    tb))
+;;(define (alist->hash-table a . opt-eq)
+;;  (let ((tb (apply make-hash-table opt-eq)))
+;;    (for-each (lambda (x) (hash-table-put! tb (car x) (cdr x))) a)
+;;    tb))
 
-(define (hash-table->alist h)
-  (hash-table-map h cons))
+;;(define (hash-table->alist h)
+;;  (hash-table-map h cons))
 
 ;; `reverse' alist search fn
 (define (rassoc key alist :optional (eq equal?))
