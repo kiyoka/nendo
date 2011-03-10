@@ -142,7 +142,6 @@ describe Nendo, "Japanese characters in regex " do
   end
   it "should" do
     @matchData.should be_true
-    pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
     @matchData[0].should == "あいうえお"
     @matchData[1].should == "あ"
   end
@@ -223,19 +222,19 @@ describe Nendo, "when call evalStr() with literals" do
     @nendo.evalStr( " 1.1 " ).should == "1.1"
     @nendo.evalStr( " 1.0 " ).should == "1.0"
     @nendo.evalStr( ' "a" ' ).should == '"a"'
-    @nendo.evalStr( ' "日本語" ' ).should == '"日本語"'
     @nendo.evalStr( ' "\n" ' ).should == "\"\n\""
     @nendo.evalStr( ' "\r" ' ).should == "\"\\r\""
     @nendo.evalStr( ' "\t" ' ).should == "\"\\t\""
     @nendo.evalStr( ' "a" ' ).should == '"a"'
     @nendo.evalStr( ' "a\"b" ' ).should == '"a\"b"'
-    @nendo.evalStr( ' "日\"本\"語" ' ).should == '"日\"本\"語"'
     @nendo.evalStr( " true " ).should == "#t"
     @nendo.evalStr( " false " ).should == "#f"
     @nendo.evalStr( " nil " ).should == "nil"
     @nendo.evalStr( " #t " ).should == "#t"
     @nendo.evalStr( " #f " ).should == "#f"
-
+    pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
+    @nendo.evalStr( ' "日本語" ' ).should == '"日本語"'
+    @nendo.evalStr( ' "日\"本\"語" ' ).should == '"日\"本\"語"'
   end
 end
 
@@ -297,8 +296,8 @@ describe Nendo, "when reference global-variables." do
   it "should" do
     @nendo.evalStr( " (pair? *load-path*) " ).should == "#t"
     @nendo.evalStr( " (string? (car *load-path*)) " ).should == "#t"
-    @nendo.evalStr( " (car      *load-path*)  " ).should == "\"./spec\""
-    @nendo.evalStr( " (car (cdr *load-path*)) " ).should == "\"./lib\""
+    @nendo.evalStr( " (to-arr   *load-path*)  " ).should include( "./spec")
+    @nendo.evalStr( " (to-arr   *load-path*)  " ).should include( "./lib")
     @nendo.evalStr( " (string? (*FILE*)) " ).should == "#t"
     @nendo.evalStr( " (number? (*LINE*)) " ).should == "#t"
     @nendo.evalStr( " *nendo-version* " ).should == '"' + Nendo::Core.version + '"'
