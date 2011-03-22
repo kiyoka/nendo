@@ -2149,6 +2149,20 @@ module Nendo
       eval( str, @binding )
       true
     end
+
+    def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
+      printf( "mac_env = %s\n",    _write_MIMARKto_MIMARKstring( mac_env ))
+      printf( "use_env = %s\n",    _write_MIMARKto_MIMARKstring( use_env ))
+      printf( "identifier = %s\n", _write_MIMARKto_MIMARKstring( identifier ))
+      sym = toRubySymbol( identifier )
+      printf( "sym = %s\n", sym )
+      if eval( sprintf( "(defined? @%s and ( LispMacro == @%s.class  or  Proc == @%s.class ))", sym,sym,sym ), @binding )
+        eval( sprintf( "@__tmp = @%s", sym ), @binding )
+        @__tmp
+      else
+        Nil.new
+      end
+    end
   end
   
   class Printer
