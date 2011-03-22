@@ -55,17 +55,18 @@
        _compare))))
   
 
-(define my-add
+(define my-and
   (er-macro-transformer
    (lambda (expr rename compare)
-     #?="my-add"
+     #?="my-and"
      (cond ((null? #?=(cdr expr)))
            ((null? #?=(cddr expr)) (cadr expr))
            (else (list (rename 'if) (cadr expr)
                        (cons (rename 'and) (cddr expr))
                        #f))))))
 
-(my-add
- '(my-add 1 2)
+(my-and
+ '(my-and 1 2)
  '()
  '())
+
