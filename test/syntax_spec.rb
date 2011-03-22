@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# nendo_spec.rb -  "RSpec file for nendo language"
+# syntax_spec.rb -  "RSpec file for nendo language (syntax part)"
 #  
 #   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #   
