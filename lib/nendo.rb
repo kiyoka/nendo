@@ -71,6 +71,12 @@ module Nendo
   
   class LispMacro < Proc
   end
+
+  class LispSyntax
+  end
+
+  class LispCoreSyntax < LispSyntax
+  end
   
   class Cell
     include Enumerable
@@ -1047,6 +1053,7 @@ module Nendo
     def _macro_QUMARK( arg )       (LispMacro == arg.class) end
     def _symbol_QUMARK(    arg )   (Symbol == arg.class) end
     def _keyword_QUMARK(    arg )  (arg.is_a? LispKeyword) end
+    def _syntax_QUMARK( arg )      (arg.is_a? LispSyntax)  end
     def _pair_QUMARK(      arg )   
       if _null_QUMARK( arg )
         false
@@ -1283,7 +1290,7 @@ module Nendo
       # toplevel binding
       @global_lisp_binding = Hash.new
   
-      # initialize buildin functions as Proc objects
+      # initialize builtin functions as Proc objects
       rubyExp = self.methods.select { |x|
         x.to_s.match( /^_/ )
       }.map { |name|
@@ -1292,6 +1299,14 @@ module Nendo
          sprintf( "@%s                        = self.method( :%s        ).to_proc", name, name ),
          sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD ).to_proc", name, name ),
         ].join( " ; " )
+      }.join( " ; " )
+      eval( rubyExp, @binding )
+
+      # initialize builtin syntax as LispCoreSyntax
+      rubyExp = [ :if , :begin , :lambda , :macro , :"&block" , :let , :letrec ].map { |x|
+        name = toRubySymbol( x )
+        [ sprintf( "@%s                        = LispCoreSyntax.new ", name ),
+          sprintf( "@global_lisp_binding['%s'] = @%s ", name, name ) ]
       }.join( " ; " )
       eval( rubyExp, @binding )
   
@@ -2151,12 +2166,12 @@ module Nendo
     end
 
     def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
-      printf( "mac_env = %s\n",    _write_MIMARKto_MIMARKstring( mac_env ))
-      printf( "use_env = %s\n",    _write_MIMARKto_MIMARKstring( use_env ))
-      printf( "identifier = %s\n", _write_MIMARKto_MIMARKstring( identifier ))
+      printf( "mac_env = %s\n",     _write_MIMARKto_MIMARKstring( mac_env ))
+      printf( "use_env = %s\n",     _write_MIMARKto_MIMARKstring( use_env ))
+      printf( "identifier1 = %s\n", _write_MIMARKto_MIMARKstring( identifier ))
       sym = toRubySymbol( identifier )
-      printf( "sym = %s\n", sym )
-      if eval( sprintf( "(defined? @%s and ( LispMacro == @%s.class  or  Proc == @%s.class ))", sym,sym,sym ), @binding )
+      printf( "identifier2 = %s\n", sym )
+      if eval( sprintf( "(defined? @%s and ( @%s.is_a? Proc or @%s.is_a? LispSyntax ))", sym,sym,sym), @binding )
         eval( sprintf( "@__tmp = @%s", sym ), @binding )
         @__tmp
       else
