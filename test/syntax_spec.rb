@@ -36,6 +36,31 @@ require 'nendo'
 include Nendo
 
 
+describe Nendo, "when the lambda's value was referd. " do
+  before do
+    @nendo = Nendo::Core.new()
+  end
+  it "should" do
+    @nendo.evalStr( "(define a 1)" ).should         == '1'
+    @nendo.evalStr( "(define a if)" ).should        match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a if)" ).should        == '#t'
+    @nendo.evalStr( "(define a begin)" ).should     match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a begin)" ).should     == '#t'
+    @nendo.evalStr( "(define a lambda)" ).should    match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a lambda)" ).should    == '#t'
+    @nendo.evalStr( "(define a macro)" ).should     match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a macro)" ).should     == '#t'
+    @nendo.evalStr( "(define a &block)" ).should    match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a &block)" ).should    == '#t'
+    @nendo.evalStr( "(define a let)" ).should       match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a let)" ).should       == '#t'
+    @nendo.evalStr( "(define a letrec)" ).should    match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a letrec)" ).should    == '#t'
+    @nendo.evalStr( "(define a set!)" ).should      match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a set!)" ).should      == '#t'
+  end
+end
+
 describe Nendo, "when call make-syntactic-closure " do
   before do
     @nendo = Nendo::Core.new()

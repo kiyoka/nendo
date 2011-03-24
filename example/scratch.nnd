@@ -68,5 +68,30 @@
 (my-and
  '(my-and 1 2)
  '()
- '())
+ mac-env)
+
+
+(define mac-env (global-variables))
+
+
+(define define-renamed-symbols
+  (macro lst
+    (define (define-iter _lst)
+      (case (length _lst)
+        ((0)
+         '())
+        (else
+         (let ([_to   (string->symbol
+                       (+ "/nendo/macro/" (symbol->string (car _lst))))]
+               [_from (car _lst)])
+           (cons `(define ,_to ,_from)
+                 (define-iter (cdr _lst)))))))
+    `(begin
+       ,@(define-iter lst))))
+
+(define generate-mac-env
+  (macro ()
+    `(define-renamed-symbols ,@mac-env)))
+
+(generate-mac-env)
 

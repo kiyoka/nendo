@@ -1303,7 +1303,7 @@ module Nendo
       eval( rubyExp, @binding )
 
       # initialize builtin syntax as LispCoreSyntax
-      rubyExp = [ :if , :begin , :lambda , :macro , :"&block" , :let , :letrec ].map { |x|
+      rubyExp = [ :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :"set!" ].map { |x|
         name = toRubySymbol( x )
         [ sprintf( "@%s                        = LispCoreSyntax.new ", name ),
           sprintf( "@global_lisp_binding['%s'] = @%s ", name, name ) ]
@@ -1899,8 +1899,24 @@ module Nendo
         if :quote == sexp.car or :quasiquote == sexp.car 
           sexp
         elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car or :"&block" == sexp.car
-          sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
-          sexp.cdr.cdr = quotingPhase( sexp.cdr.cdr )
+          if @debug
+            if 2 >= sexp.length
+              printf( "\n    quotingPhase-1      label=%s, sexp.length=%d \n", sexp.car, sexp.length )
+            else
+              printf( "\n    quotingPhase-1      label=%s, sexp.length=%d, sexp.cdr=%s sexp.cdr.car=%s sexp.cdr.cdr=%s\n", sexp.car, sexp.length, sexp.cdr, sexp.cdr.car, sexp.cdr.cdr )
+            end
+          end
+          if 1 == sexp.length
+            nil
+            # do nothing
+          elsif 3 <= sexp.length
+            # argument
+            sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
+            # body
+            sexp.cdr.cdr = quotingPhase( sexp.cdr.cdr )
+          else
+            raise RuntimeError, sprintf( "Error: %s is not a illegal form got: %s", sexp.car, _write_MIMARKto_MIMARKstring( sexp ))
+          end
           sexp
         elsif :let == sexp.car
           if _null_QUMARK( sexp.cdr )
@@ -1918,12 +1934,16 @@ module Nendo
           end
           sexp
         elsif :letrec == sexp.car
-          case sexp.cdr.car
-          when Cell        # letrec
-            sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
-                                         quotingPhase( sexp.cdr.cdr ))
-          when Symbol      # named letrec is illegal
-            raise RuntimeError, "Error: named letrec is not a illegal form"
+          if _null_QUMARK( sexp.cdr )
+            # do nothing
+          else
+            case sexp.cdr.car
+            when Cell        # letrec
+              sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
+                                           quotingPhase( sexp.cdr.cdr ))
+            when Symbol      # named letrec is illegal
+              raise RuntimeError, "Error: named letrec is not a illegal form"
+            end
           end
           sexp
         else
@@ -2166,11 +2186,13 @@ module Nendo
     end
 
     def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
-      printf( "mac_env = %s\n",     _write_MIMARKto_MIMARKstring( mac_env ))
-      printf( "use_env = %s\n",     _write_MIMARKto_MIMARKstring( use_env ))
-      printf( "identifier1 = %s\n", _write_MIMARKto_MIMARKstring( identifier ))
       sym = toRubySymbol( identifier )
-      printf( "identifier2 = %s\n", sym )
+      if @debug
+        printf( "mac_env = %s\n",     _write_MIMARKto_MIMARKstring( mac_env ))
+        printf( "use_env = %s\n",     _write_MIMARKto_MIMARKstring( use_env ))
+        printf( "identifier1 = %s\n", _write_MIMARKto_MIMARKstring( identifier ))
+        printf( "identifier2 = %s\n", sym )
+      end
       if eval( sprintf( "(defined? @%s and ( @%s.is_a? Proc or @%s.is_a? LispSyntax ))", sym,sym,sym), @binding )
         eval( sprintf( "@__tmp = @%s", sym ), @binding )
         @__tmp
