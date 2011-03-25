@@ -66,9 +66,9 @@
                        #f))))))
 
 
-(define %macro-env-snapshot (global-variables))
 
-(define define-renamed-symbols
+
+(define %define-renamed-symbols
   (macro lst
     (define (define-iter _lst)
       (case (length _lst)
@@ -76,17 +76,31 @@
          '())
         (else
          (let ([_to   (string->symbol
-                       (+ "/nendo/macro/" (symbol->string (car _lst))))]
+                       (+ "/nendo/macroenv/" (symbol->string (car _lst))))]
                [_from (car _lst)])
            (cons `(define ,_to ,_from)
                  (define-iter (cdr _lst)))))))
     `(begin
-       ,@(define-iter lst))))
-
+       ,@(define-iter lst)
+       (define %macro-env-snapshot
+         (list ,@(map
+                  (lambda (x)
+                    (let ([_to   (second x)]
+                          [_from (third  x)])
+                      `(list ,(symbol->string _from)
+                             ,(symbol->string _to)
+                             ,_to)))
+                  (define-iter lst)))))))
+  
 (define define-all-renamed-symbols
   (macro ()
-    `(define-renamed-symbols ,@%macro-env-snapshot)))
+    `(%define-renamed-symbols ,@(global-variables))))
 
+
+(pretty-print
+ (macroexpand
+  '(define-all-renamed-symbols)))
+ 
 (define-all-renamed-symbols)
 
 
