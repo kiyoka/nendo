@@ -65,14 +65,8 @@
                        (cons (rename 'and) (cddr expr))
                        #f))))))
 
-(my-and
- '(my-and 1 2)
- '()
- mac-env)
 
-
-(define mac-env (global-variables))
-
+(define %macro-env-snapshot (global-variables))
 
 (define define-renamed-symbols
   (macro lst
@@ -89,9 +83,15 @@
     `(begin
        ,@(define-iter lst))))
 
-(define generate-mac-env
+(define define-all-renamed-symbols
   (macro ()
-    `(define-renamed-symbols ,@mac-env)))
+    `(define-renamed-symbols ,@%macro-env-snapshot)))
 
-(generate-mac-env)
+(define-all-renamed-symbols)
+
+
+(my-and
+ '(my-and 1 2)
+ '()
+ %macro-env-snapshot)
 
