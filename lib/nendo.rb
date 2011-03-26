@@ -75,7 +75,11 @@ module Nendo
   class LispSyntax
   end
 
-  class LispCoreSyntax < LispSyntax
+  class LispCoreSyntax
+    def initialize( syntaxName )
+      @syntaxName = syntaxName
+    end
+    attr_reader :syntaxName
   end
   
   class Cell
@@ -1054,6 +1058,13 @@ module Nendo
     def _symbol_QUMARK(    arg )   (Symbol == arg.class) end
     def _keyword_QUMARK(    arg )  (arg.is_a? LispKeyword) end
     def _syntax_QUMARK( arg )      (arg.is_a? LispSyntax)  end
+    def _core_MIMARKsyntax_QUMARK( arg )
+      if arg.is_a? LispCoreSyntax
+        arg.syntaxName
+      else
+        nil
+      end
+    end
     def _pair_QUMARK(      arg )   
       if _null_QUMARK( arg )
         false
@@ -1286,6 +1297,8 @@ module Nendo
         '~' => '_CHMARK',
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
+
+      @core_syntax_list = [ :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :"set!" ]
   
       # toplevel binding
       @global_lisp_binding = Hash.new
@@ -1303,9 +1316,9 @@ module Nendo
       eval( rubyExp, @binding )
 
       # initialize builtin syntax as LispCoreSyntax
-      rubyExp = [ :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :"set!" ].map { |x|
+      rubyExp = @core_syntax_list.map { |x|
         name = toRubySymbol( x )
-        [ sprintf( "@%s                        = LispCoreSyntax.new ", name ),
+        [ sprintf( "@%s                        = LispCoreSyntax.new( :\"%s\" ) ", name, x ),
           sprintf( "@global_lisp_binding['%s'] = @%s ", name, name ) ]
       }.join( " ; " )
       eval( rubyExp, @binding )
@@ -1815,7 +1828,14 @@ module Nendo
     def translate( sexp, locals, sourceInfo = nil )
       case sexp
       when Cell
-        if :quote == sexp.car
+        renamed = Hash.new
+        @core_syntax_list.each { |x| renamed[ ("/nendo/macroenv/" + x.to_s).intern ] = x }
+        car = if renamed.has_key?( sexp.car )
+                renamed[ sexp.car ]
+              else
+                sexp.car
+              end
+        if :quote == car
           genQuote( sexp.cdr.car )
         elsif sexp.isDotted
           raise NameError, "Error: can't eval dotted pair."
@@ -1823,21 +1843,21 @@ module Nendo
           [ "Cell.new()" ]
         elsif Cell == sexp.car.class
           self.apply( translate( sexp.car, locals, sourceInfo ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, sourceInfo, EXEC_TYPE_ANONYMOUS )
-        elsif :begin == sexp.car
+        elsif :begin == car
           self.makeBegin( sexp.cdr, locals )
-        elsif :lambda == sexp.car
+        elsif :lambda == car
           self.makeClosure( :lambda, sexp.cdr, locals )
-        elsif :macro == sexp.car
+        elsif :macro == car
           self.makeClosure( :macro, sexp.cdr, locals )
-        elsif :"&block" == sexp.car
+        elsif :"&block" == car
           self.makeClosure( :"&block", sexp.cdr, locals )
-        elsif :if == sexp.car
+        elsif :if == car
           self.makeIf( sexp.cdr,    locals )
-        elsif :let == sexp.car
+        elsif :let == car
           self.makeLet( sexp.cdr,   locals )
-        elsif :letrec == sexp.car
+        elsif :letrec == car
           self.makeLetrec( sexp.cdr,   locals )
-        elsif :"%tailcall" == sexp.car
+        elsif :"%tailcall" == car
           if sexp.cdr.car.is_a? Cell
             sexp = sexp.cdr.car
             self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_TAILCALL )
@@ -1896,9 +1916,10 @@ module Nendo
     def quotingPhase( sexp )
       case sexp
       when Cell
-        if :quote == sexp.car or :quasiquote == sexp.car 
+        car = sexp.car
+        if :quote == car or :quasiquote == car
           sexp
-        elsif :define == sexp.car or :set! == sexp.car or :lambda == sexp.car or :macro == sexp.car or :"&block" == sexp.car
+        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car
           if @debug
             if 2 >= sexp.length
               printf( "\n    quotingPhase-1      label=%s, sexp.length=%d \n", sexp.car, sexp.length )
@@ -1918,7 +1939,7 @@ module Nendo
             raise RuntimeError, sprintf( "Error: %s is not a illegal form got: %s", sexp.car, _write_MIMARKto_MIMARKstring( sexp ))
           end
           sexp
-        elsif :let == sexp.car
+        elsif :let == car
           if _null_QUMARK( sexp.cdr )
             # do nothing
           else
@@ -1933,7 +1954,7 @@ module Nendo
             end
           end
           sexp
-        elsif :letrec == sexp.car
+        elsif :letrec == car
           if _null_QUMARK( sexp.cdr )
             # do nothing
           else
@@ -2185,21 +2206,6 @@ module Nendo
       true
     end
 
-    def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
-      sym = toRubySymbol( identifier )
-      if @debug
-        printf( "mac_env = %s\n",     _write_MIMARKto_MIMARKstring( mac_env ))
-        printf( "use_env = %s\n",     _write_MIMARKto_MIMARKstring( use_env ))
-        printf( "identifier1 = %s\n", _write_MIMARKto_MIMARKstring( identifier ))
-        printf( "identifier2 = %s\n", sym )
-      end
-      if eval( sprintf( "(defined? @%s and ( @%s.is_a? Proc or @%s.is_a? LispSyntax ))", sym,sym,sym), @binding )
-        eval( sprintf( "@__tmp = @%s", sym ), @binding )
-        @__tmp
-      else
-        Nil.new
-      end
-    end
   end
   
   class Printer

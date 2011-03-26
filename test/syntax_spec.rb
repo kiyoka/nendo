@@ -36,7 +36,7 @@ require 'nendo'
 include Nendo
 
 
-describe Nendo, "when the lambda's value was referd. " do
+describe Nendo, "when read the core syntax keyword " do
   before do
     @nendo = Nendo::Core.new()
   end
@@ -64,10 +64,28 @@ end
 describe Nendo, "when call make-syntactic-closure " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+    @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `map' can be optimized on second loading phase.
   end
   it "should" do
-    @nendo.evalStr( "(procedure? (make-syntactic-closure '() '() 'print))" ).should    == '#t'
-    @nendo.evalStr( "(syntax?    (make-syntactic-closure '() '() 'if))" ).should       == '#t'
-    @nendo.evalStr( "(syntax?    (make-syntactic-closure '() '() 'lambda))" ).should   == '#t'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'print  )" ).should    == '/nendo/macroenv/print'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'if     )" ).should    == '/nendo/macroenv/if'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'lambda )" ).should    == '/nendo/macroenv/lambda'
+  end
+end
+
+describe Nendo, "when use core syntax " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+    @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `map' can be optimized on second loading phase.
+  end
+  it "should" do
+    @nendo.evalStr( "(if                        #t 1 2)" ).should    == '1'
+    @nendo.evalStr( "(if                        #f 1 2)" ).should    == '2'
+    @nendo.evalStr( "(/nendo/macroenv/if        #t 1 2)" ).should    == '1'
+    @nendo.evalStr( "(/nendo/macroenv/if        #f 1 2)" ).should    == '2'
+    @nendo.evalStr( "(begin                      1 2 3)" ).should    == '3'
+    @nendo.evalStr( "(/nendo/macroenv/begin      1 2 3)" ).should    == '3'
   end
 end

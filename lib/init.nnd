@@ -1295,18 +1295,18 @@
     '())
    ((list? sexp)
     (case (car sexp)
-      ((quote)
+      ((quote /nendo/macroenv/quote)
        sexp)
-      ((macro)
+      ((macro /nendo/macroenv/macro)
        sexp)
-      ((begin)
+      ((begin /nendo/macroenv/begin)
        `(begin
           ,@(setup-proc-body (cdr sexp))))
-      ((lambda)
+      ((lambda /nendo/macroenv/lambda)
        `(lambda
             ,(second sexp)
           ,@(setup-proc-body (cddr sexp))))
-      ((if)
+      ((if /nendo/macroenv/if)
        (case (length sexp)
          ((3)
           `(if
@@ -1317,15 +1317,15 @@
             ,(second sexp)
             ,(setup-proc     (third sexp))
             ,(setup-proc     (fourth sexp))))))
-      ((let)
+      ((let /nendo/macroenv/let)
        `(let
             ,(setup-let-args (second sexp))
           ,@(setup-proc-body (cddr sexp))))
-      ((letrec)
+      ((letrec /nendo/macroenv/letrec)
        `(letrec
             ,(setup-let-args (second sexp))
           ,@(setup-proc-body (cddr sexp))))
-      ((define)
+      ((define /nendo/macroenv/define)
        (let1 val (third sexp)
          `(define
             ,(second sexp)
@@ -1347,5 +1347,50 @@
       (list
        setup-tailcall-mark
        ))
+
+
+;; explicit renameing macro transformer
+(define (make-syntactic-closure mac-env use-env identifier)
+  (let* ([id-str     (symbol->string identifier)]
+         [alias-data (assq-ref id-str mac-env)])
+    (if alias-data
+        (string->symbol (car alias-data))
+        identifier)))
+
+
+;; define renamed symbols for er-macro-transformer
+;; variable %macro-env-snapshot will defined.
+(define %define-renamed-symbols
+  (macro lst
+    (define (define-iter _lst)
+      (case (length _lst)
+        ((0)
+         '())
+        (else
+         (let ([_to   (string->symbol
+                       (+ "/nendo/macroenv/" (symbol->string (car _lst))))]
+               [_from (car _lst)])
+           (cons `(define ,_to ,_from)
+                 (define-iter (cdr _lst)))))))
+    `(begin
+       ,@(define-iter lst)
+       (define %macro-env-snapshot
+         (list ,@(map
+                  (lambda (x)
+                    (let ([_to   (second x)]
+                          [_from (third  x)])
+                      `(list ,(symbol->string _from)
+                             ,(symbol->string _to)
+                             ,_to)))
+                  (define-iter lst)))))))
+  
+(define define-all-renamed-symbols
+  (macro ()
+    `(%define-renamed-symbols ,@(global-variables))))
+ 
+(define-all-renamed-symbols)
+
+
+
 
 ;;[EOS]
