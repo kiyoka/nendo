@@ -29,7 +29,7 @@
 ;; readable code for nendo.
 (define er-macro-transformer
   (lambda (f)
-    (lambda (expr use-env mac-env)
+    (%syntax (expr use-env mac-env)
       
       (define (expander-main rename compare)
         #?="_expander-main"
@@ -55,7 +55,11 @@
        (_rename '())
        _compare))))
   
+(pretty-print
+ (disasm 'er-macro-transformer 'expanded))
 
+
+;; ------------------------------ my-and --------------------------
 (define my-and
   (er-macro-transformer
    (lambda (expr rename compare)
@@ -67,22 +71,29 @@
                        #f))))))
 
 
-(my-and
- '(my-and 1 2)
- '()
- %macro-env-snapshot)
+(pretty-print
+ (disasm 'my-and 'expanded))
+(disasm 'my-and)
 
-(make-syntactic-closure %macro-env-snapshot '() 'print)
+(syntax? my-and)
 
 
 (enable-idebug)
 
+(macroexpand
+ `(my-and
+   (my-and 1 2)
+   ()
+   ,%macro-env-snapshot))
+
+
+;; ------------------------------ my-and --------------------------
+
+
+
+
 (if #t 'a 'b)
 (/nendo/macroenv/if #t 'a 'b)
 
-(/nendo/macroenv/define aa 1)
-
-
-(core-syntax? /nendo/macroenv/if)
 
 

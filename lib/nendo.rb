@@ -35,6 +35,8 @@
 #  $Id: 
 #
 
+require 'pp'
+
 module Nendo
   require 'stringio'
   require 'digest/sha1'
@@ -72,7 +74,7 @@ module Nendo
   class LispMacro < Proc
   end
 
-  class LispSyntax
+  class LispSyntax < Proc
   end
 
   class LispCoreSyntax
@@ -1298,7 +1300,7 @@ module Nendo
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
-      @core_syntax_list = [ :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :"set!" ]
+      @core_syntax_list = [ :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :"set!", :error, :"%syntax" ]
   
       # toplevel binding
       @global_lisp_binding = Hash.new
@@ -1544,7 +1546,7 @@ module Nendo
 
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
       case funcname
-      when :define, :set!   # `define' special form
+      when :define, :set!  # `define' special form
         ar = args.cdr.map { |x| x.car }
         variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
@@ -1654,6 +1656,8 @@ module Nendo
               sprintf( "LispMacro.new { %s ", argStr )
             when :lambda
               sprintf( "Proc.new { %s ", argStr )
+            when :"%syntax"
+              sprintf( "LispSyntax.new { %s ", argStr )
             when :"&block"
               sprintf( "&Proc.new { %s ", argStr )
             else
@@ -1849,6 +1853,8 @@ module Nendo
           self.makeClosure( :lambda, sexp.cdr, locals )
         elsif :macro == car
           self.makeClosure( :macro, sexp.cdr, locals )
+        elsif :"%syntax" == car
+          self.makeClosure( :"%syntax", sexp.cdr, locals )
         elsif :"&block" == car
           self.makeClosure( :"&block", sexp.cdr, locals )
         elsif :if == car
@@ -1919,7 +1925,7 @@ module Nendo
         car = sexp.car
         if :quote == car or :quasiquote == car
           sexp
-        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car
+        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car or :"&syntax" == car
           if @debug
             if 2 >= sexp.length
               printf( "\n    quotingPhase-1      label=%s, sexp.length=%d \n", sexp.car, sexp.length )
@@ -1986,14 +1992,23 @@ module Nendo
           sexp
         else
           sym = sexp.car.to_s
+          p 'macroexpandEngine' if @debug
+          p sexp.car.class if @debug
+          p sym            if @debug
           sym = toRubySymbol( sym )
           newSexp = sexp
           if isRubyInterface( sym )
             # do nothing
             sexp
           elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
+            p 'kiyoka 1'
             eval( sprintf( "@__macro = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr.to_arr ))
+          elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispSyntax == @%s.class)", sym,sym ), @binding )
+            p 'kiyoka 2'
+            pp sexp if @debug
+            eval( sprintf( "@__syntax = @%s", sym ), @binding )
+            newSexp = trampCall( callProcedure( sym, @__syntax, sexp.cdr.to_arr ))
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
