@@ -162,7 +162,12 @@
 (define (ninth lst)    (nth  8 lst))
 (define (tenth lst)    (nth  9 lst))
 
-(define (x->string object) (to-s object))
+(define (x->string object)   (to-s object))
+(define (number->string num) (x->string num))
+(define string-append
+  (lambda str-lst
+    (string-join str-lst "")))
+
 
 ;; ----------------------------------------
 ;; basic forms
