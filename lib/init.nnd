@@ -633,11 +633,13 @@
     (if (null? result)
         #f
         (car result))))
+(define any find)
 
 (define map         %map)
 (define for-each    %for-each)
 (define filter      %filter)
 (define filter-map  %filter-map)
+
 
 
 
