@@ -520,25 +520,25 @@ describe Nendo, "when use quote and syntax-quote " do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evalStr( " '() " ).should                          == "()"
-    @nendo.evalStr( " '1 " ).should                           == "1"
-    @nendo.evalStr( " '\"str\" " ).should                     == '"str"'
-    @nendo.evalStr( " '(1 . 2) " ).should                     == "(1 . 2)"
-    @nendo.evalStr( " (quote ())" ).should                    == "()"
-    @nendo.evalStr( " (quote 1)" ).should                     == "1"
-    @nendo.evalStr( " (quote \"str\") " ).should              == '"str"'
-    @nendo.evalStr( " (quote (1 . 2)) " ).should              == "(1 . 2)"
-    @nendo.evalStr( " (syntax-quote ())" ).should             == "()"
-    @nendo.evalStr( " (syntax-quote 1)" ).should              == "1"
-    @nendo.evalStr( " (syntax-quote \"str\") " ).should       == '"str"'
-    @nendo.evalStr( " (syntax-quote (1 . 2)) " ).should       == "(1 . 2)"
-    @nendo.evalStr( " (quote quote) " ).should                == "'"
-    @nendo.evalStr( " 'quote " ).should                       == "'"
-    @nendo.evalStr( " ''1 " ).should                          == "'1"
-    @nendo.evalStr( " (quote syntax-quote) " ).should         == "syntax-quote"
-    @nendo.evalStr( " (syntax-quote '1) " ).should            == "'1"
-    @nendo.evalStr( " (syntax-quote (quote 1)) " ).should     == "'1"
-    @nendo.evalStr( " (quote (syntax-quote 1)) " ).should     == "(syntax-quote 1)"
+    @nendo.evalStr( " '() " ).should                                                 == "()"
+    @nendo.evalStr( " '1 " ).should                                                  == "1"
+    @nendo.evalStr( " '\"str\" " ).should                                            == '"str"'
+    @nendo.evalStr( " '(1 . 2) " ).should                                            == "(1 . 2)"
+    @nendo.evalStr( " (quote ())" ).should                                           == "()"
+    @nendo.evalStr( " (quote 1)" ).should                                            == "1"
+    @nendo.evalStr( " (quote \"str\") " ).should                                     == '"str"'
+    @nendo.evalStr( " (quote (1 . 2)) " ).should                                     == "(1 . 2)"
+    @nendo.evalStr( " (syntax-quote ())" ).should                                    == "()"
+    @nendo.evalStr( " (syntax-quote 1)" ).should                                     == "1"
+    @nendo.evalStr( " (syntax-quote \"str\") " ).should                              == '"str"'
+    @nendo.evalStr( " (syntax-quote (1 . 2)) " ).should                              == "(1 . 2)"
+    @nendo.evalStr( " (quote quote) " ).should                                       == "'"
+    @nendo.evalStr( " 'quote " ).should                                              == "'"
+    @nendo.evalStr( " ''1 " ).should                                                 == "'1"
+    @nendo.evalStr( " (quote syntax-quote) " ).should                                == "syntax-quote"
+    @nendo.evalStr( " (syntax-quote '1) " ).should                                   == "'1"
+    @nendo.evalStr( " (syntax-quote (quote 1)) " ).should                            == "'1"
+    @nendo.evalStr( " (quote (syntax-quote 1)) " ).should                            == "(syntax-quote 1)"
   end
 end
 
@@ -1814,6 +1814,8 @@ describe Nendo, "tail call optimization " do
     @nendo.evalStr( " (setup-tailcall-mark '(%syntax (x) x)) " ).should                     == "(%syntax (x) x)"
     @nendo.evalStr( " (setup-tailcall-mark '(%syntax (a b c) (begin a b c))) " ).should     == "(%syntax (a b c) (begin a b c))"
     @nendo.evalStr( " (setup-tailcall-mark '(lambda  (x) (%syntax (y) x))) " ).should       == "(lambda (x) (%syntax (y) x))"
+    @nendo.evalStr( " (setup-tailcall-mark '(lambda  (x) (syntax-quote x))) " ).should      == "(lambda (x) (syntax-quote x))"
+    @nendo.evalStr( " (setup-tailcall-mark '(lambda  (x) (quote x))) " ).should             == "(lambda (x) 'x)"
     @nendo.evalStr( "" +
                     "(setup-tailcall-mark"+
                     "  '(lambda '(x)"+
