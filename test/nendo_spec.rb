@@ -895,6 +895,46 @@ describe Nendo, "when call evalStr() with built-in special forms" do
   end
 end
 
+describe Nendo, "when call evalStr() with built-in special forms (renamed symbol)" do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " (/nendo/macroenv/begin 1) " ).should == "1"
+    @nendo.evalStr( " (/nendo/macroenv/begin 1 2) " ).should == "2"
+    @nendo.evalStr( " (/nendo/macroenv/begin 1 2 3) " ).should == "3"
+    @nendo.evalStr( " (/nendo/macroenv/set! x 2) (/nendo/macroenv/set! y (/nendo/macroenv/begin (/nendo/macroenv/set! x (* x 2)) (/nendo/macroenv/set! x (* x 2)) (/nendo/macroenv/set! x (* x 2)) 100))  (+ x y)" ).should == "116"
+    @nendo.evalStr( " (/nendo/macroenv/let ()                 100) " ).should == "100"
+    @nendo.evalStr( " (/nendo/macroenv/let ((a 11))           a) " ).should == "11"
+    @nendo.evalStr( " (/nendo/macroenv/let ((a 11) (b 22))    (+ a b)) " ).should == "33"
+    @nendo.evalStr( " (/nendo/macroenv/let ((a 22)) (let ((b 33))   (+ a b))) " ).should == "55"
+    @nendo.evalStr( " (/nendo/macroenv/let ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
+    @nendo.evalStr( " (/nendo/macroenv/let  ((a (let ((b 2))   (+ 100 b))))  a) " ).should == "102"
+    @nendo.evalStr( " (/nendo/macroenv/letrec ()                 100) " ).should == "100"
+    @nendo.evalStr( " (/nendo/macroenv/letrec ((a 11))           a) " ).should == "11"
+    @nendo.evalStr( " (/nendo/macroenv/letrec ((a 11) (b 22))    (+ a b)) " ).should == "33"
+    @nendo.evalStr( " (/nendo/macroenv/letrec ((a 22)) (let ((b 33))   (+ a b))) " ).should == "55"
+    @nendo.evalStr( " (/nendo/macroenv/letrec ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
+    @nendo.evalStr( " (/nendo/macroenv/letrec  ((a (let ((b 2))   (+ 100 b))))  a) " ).should == "102"
+    @nendo.evalStr( " (/nendo/macroenv/letrec ( (func1 (/nendo/macroenv/lambda (x) 13))             (func2 (/nendo/macroenv/lambda (x) (* 2 (func1))))  )     (list (func2) (func1))) " ).should == "(26 13)"
+    @nendo.evalStr( " (/nendo/macroenv/letrec ( (func2 (/nendo/macroenv/lambda (x) (* 2 (func1))))  (func1 (/nendo/macroenv/lambda (x) 7))              )     (list (func2) (func1))) " ).should == "(14 7)"
+    @nendo.evalStr( " (/nendo/macroenv/if true   't 'f)" ).should == "t"
+    @nendo.evalStr( " (/nendo/macroenv/if true   '(1) '(2))" ).should == "(1)"
+    @nendo.evalStr( " (/nendo/macroenv/if false  't 'f)" ).should == "f"
+    @nendo.evalStr( " (/nendo/macroenv/if false  '(1) '(2))" ).should == "(2)"
+    @nendo.evalStr( " (/nendo/macroenv/set! x 0) (/nendo/macroenv/if true  (set! x 1) (set! x 2))   x" ).should == "1"
+    @nendo.evalStr( " (/nendo/macroenv/set! x 0) (/nendo/macroenv/if false (set! x 1) (set! x 2))   x" ).should == "2"
+    @nendo.evalStr( " (/nendo/macroenv/set! func (/nendo/macroenv/lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
+    @nendo.evalStr( " ((/nendo/macroenv/lambda (arg1) arg1)  3)" ).should == "3" 
+    @nendo.evalStr( " ((/nendo/macroenv/lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
+    @nendo.evalStr( " ((/nendo/macroenv/if #t + *) 3 4)" ).should == "7" 
+    @nendo.evalStr( " ((/nendo/macroenv/if #f + *) 3 4)" ).should == "12" 
+    lambda { @nendo.evalStr( " (/nendo/macroenv/error \"My Runtime Error\") " ) }.should            raise_error( RuntimeError )
+  end
+end
+
+
 describe Nendo, "when call evalStr() with global and lexical scope variable" do
   before do
     @nendo = Nendo::Core.new()

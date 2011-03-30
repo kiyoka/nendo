@@ -1345,6 +1345,15 @@
                       (reserved? (car val)))
                  (setup-tailcall-mark val)
                  val))))
+      ((set! /nendo/macroenv/set!)
+       (let1 val (third sexp)
+         `(set!
+            ,(second sexp)
+            ,(if (and (list? val)
+                      (not (null? val))
+                      (reserved? (car val)))
+                 (setup-tailcall-mark val)
+                 val))))
       (else
        (if (symbol? (car sexp))
            `(%tailcall ,sexp)

@@ -1300,8 +1300,13 @@ module Nendo
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
-      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :"set!", :error, :"%syntax" ]
-  
+      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :set!, :error, :"%syntax" ]
+      @core_syntax_hash = Hash.new
+      @core_syntax_list.each { |x|
+        renamed = ("/nendo/macroenv/" + x.to_s).intern
+        @core_syntax_hash[ x ] = renamed
+      }
+
       # toplevel binding
       @global_lisp_binding = Hash.new
   
@@ -1546,7 +1551,7 @@ module Nendo
 
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
       case funcname
-      when :define, :set!  # `define' special form
+      when :define, :set!, @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ]   # `define' special form
         ar = args.cdr.map { |x| x.car }
         variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
@@ -1567,7 +1572,7 @@ module Nendo
            "trampCall(", [ ar ], ")"],
           "end"
         ]
-      when :error
+      when :error, @core_syntax_hash[ :error ]
         [
          'begin raise RuntimeError, ',
          args.car,
@@ -1832,10 +1837,9 @@ module Nendo
     def translate( sexp, locals, sourceInfo = nil )
       case sexp
       when Cell
-        renamed = Hash.new
-        @core_syntax_list.each { |x| renamed[ ("/nendo/macroenv/" + x.to_s).intern ] = x }
-        car = if renamed.has_key?( sexp.car )
-                renamed[ sexp.car ]
+        inv = @core_syntax_hash.invert
+        car = if inv.has_key?( sexp.car )
+                inv[ sexp.car ]
               else
                 sexp.car
               end
@@ -1923,9 +1927,18 @@ module Nendo
       case sexp
       when Cell
         car = sexp.car
-        if :quote == car or :quasiquote == car or :"syntax-quote" == car
+        if :quote == car or :quasiquote == car or :"syntax-quote" == car or
+            @core_syntax_hash[ :quote ] == car or
+            @core_syntax_hash[ :quasiquote ] == car or
+            @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
-        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car or :"&syntax" == car
+        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car or :"%syntax" == car or
+            @core_syntax_hash[ :define ] == car or
+            @core_syntax_hash[ :set! ] == car or
+            @core_syntax_hash[ :lambda ] == car or
+            @core_syntax_hash[ :macro ] == car or
+            @core_syntax_hash[ :"&block" ] == car or
+            @core_syntax_hash[ :"%syntax" ] == car
           if @debug
             if 2 >= sexp.length
               printf( "\n    quotingPhase-1      label=%s, sexp.length=%d \n", sexp.car, sexp.length )
@@ -1945,7 +1958,7 @@ module Nendo
             raise RuntimeError, sprintf( "Error: %s is not a illegal form got: %s", sexp.car, _write_MIMARKto_MIMARKstring( sexp ))
           end
           sexp
-        elsif :let == car
+        elsif :let == car or @core_syntax_hash[ :let ] == car
           if _null_QUMARK( sexp.cdr )
             # do nothing
           else
@@ -1960,7 +1973,7 @@ module Nendo
             end
           end
           sexp
-        elsif :letrec == car
+        elsif :letrec == car or @core_syntax_hash[ :letrec ] == car
           if _null_QUMARK( sexp.cdr )
             # do nothing
           else
@@ -1988,7 +2001,8 @@ module Nendo
     def macroexpandEngine( sexp )
       case sexp
       when Cell
-        if :quote == sexp.car or :"syntax-quote" == sexp.car
+        car = sexp.car
+        if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
         else
           sym = sexp.car.to_s
