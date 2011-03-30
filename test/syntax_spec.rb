@@ -61,11 +61,30 @@ describe Nendo, "when read the core syntax keyword " do
   end
 end
 
+
+describe Nendo, "when use identifier checker " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( "(symbol? 'a)" ).should                                     == '#t'
+    @nendo.evalStr( "(identifier? 'a)" ).should                                 == '#t'
+    @nendo.evalStr( "(identifier? 'identifier)" ).should                        == '#t'
+    @nendo.evalStr( "(identifier? 'lambda)" ).should                            == '#t'
+    @nendo.evalStr( "(identifier? 10)" ).should                                 == '#f'
+    @nendo.evalStr( "(identifier? \"str\")" ).should                            == '#f'
+    @nendo.evalStr( "(identifier=? '() 'lambda '() 'lambda)" ).should           == '#t'
+    @nendo.evalStr( "(identifier=? '() 'define '() 'lambda)" ).should           == '#f'
+    @nendo.evalStr( "(identifier=? '() 'if '() '/nendo/macroenv/if)" ).should   == '#f'
+  end
+end
+
+
 describe Nendo, "when call make-syntactic-closure " do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
-    @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `map' can be optimized on second loading phase.
   end
   it "should" do
     @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'print  )" ).should    == '/nendo/macroenv/print'

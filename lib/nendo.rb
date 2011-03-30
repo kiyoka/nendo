@@ -1839,7 +1839,7 @@ module Nendo
               else
                 sexp.car
               end
-        if :quote == car
+        if :quote == car or :"syntax-quote" == car
           genQuote( sexp.cdr.car )
         elsif sexp.isDotted
           raise NameError, "Error: can't eval dotted pair."
@@ -1923,7 +1923,7 @@ module Nendo
       case sexp
       when Cell
         car = sexp.car
-        if :quote == car or :quasiquote == car
+        if :quote == car or :quasiquote == car or :"syntax-quote" == car
           sexp
         elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car or :"&syntax" == car
           if @debug
@@ -1988,7 +1988,7 @@ module Nendo
     def macroexpandEngine( sexp )
       case sexp
       when Cell
-        if :quote == sexp.car
+        if :quote == sexp.car or :"syntax-quote" == sexp.car
           sexp
         else
           sym = sexp.car.to_s
@@ -2001,14 +2001,18 @@ module Nendo
             # do nothing
             sexp
           elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
-            p 'kiyoka 1'
             eval( sprintf( "@__macro = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr.to_arr ))
           elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispSyntax == @%s.class)", sym,sym ), @binding )
-            p 'kiyoka 2'
-            pp sexp if @debug
+            # expected input is
+            #   (syntaxName arg1 arg2 ...)
+            # will be transformed
+            #   (syntaxName (syntaxName arg1 arg2 ...) () %macro-env-snapshot)
+            eval( sprintf( "@__macro_env = @%s", toRubySymbol( "%macro-env-snapshot" )), @binding )
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
-            newSexp = trampCall( callProcedure( sym, @__syntax, sexp.cdr.to_arr ))
+            args = [ sexp, Cell.new(), @__macro_env ]
+            pp args if @debug
+            newSexp = trampCall( callProcedure( sym, @__syntax, args ) )
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|

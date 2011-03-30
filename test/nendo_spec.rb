@@ -515,6 +515,33 @@ describe Nendo, "when call evalStr() with `modulo' function" do
   end
 end
 
+describe Nendo, "when use quote and syntax-quote " do
+  before do
+    @nendo = Nendo::Core.new()
+  end
+  it "should" do
+    @nendo.evalStr( " '() " ).should                          == "()"
+    @nendo.evalStr( " '1 " ).should                           == "1"
+    @nendo.evalStr( " '\"str\" " ).should                     == '"str"'
+    @nendo.evalStr( " '(1 . 2) " ).should                     == "(1 . 2)"
+    @nendo.evalStr( " (quote ())" ).should                    == "()"
+    @nendo.evalStr( " (quote 1)" ).should                     == "1"
+    @nendo.evalStr( " (quote \"str\") " ).should              == '"str"'
+    @nendo.evalStr( " (quote (1 . 2)) " ).should              == "(1 . 2)"
+    @nendo.evalStr( " (syntax-quote ())" ).should             == "()"
+    @nendo.evalStr( " (syntax-quote 1)" ).should              == "1"
+    @nendo.evalStr( " (syntax-quote \"str\") " ).should       == '"str"'
+    @nendo.evalStr( " (syntax-quote (1 . 2)) " ).should       == "(1 . 2)"
+    @nendo.evalStr( " (quote quote) " ).should                == "'"
+    @nendo.evalStr( " 'quote " ).should                       == "'"
+    @nendo.evalStr( " ''1 " ).should                          == "'1"
+    @nendo.evalStr( " (quote syntax-quote) " ).should         == "syntax-quote"
+    @nendo.evalStr( " (syntax-quote '1) " ).should            == "'1"
+    @nendo.evalStr( " (syntax-quote (quote 1)) " ).should     == "'1"
+    @nendo.evalStr( " (quote (syntax-quote 1)) " ).should     == "(syntax-quote 1)"
+  end
+end
+
 describe Nendo, "when read various list expressions" do
   before do
     @nendo = Nendo::Core.new()

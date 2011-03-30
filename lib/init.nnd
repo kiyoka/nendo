@@ -1358,7 +1358,8 @@
        ))
 
 
-;; explicit renameing macro transformer
+
+;; explicit renameing macro expander
 (define (make-syntactic-closure mac-env use-env identifier)
   (let* ([id-str     (symbol->string identifier)]
          [alias-data (assq-ref id-str mac-env)])
@@ -1366,8 +1367,15 @@
         (string->symbol (car alias-data))
         identifier)))
 
+(define (identifier? x)
+  (symbol? x))
 
-;; define renamed symbols for er-macro-transformer
+(define (identifier=? use-env-x x use-env-y y)
+  (eq? x y))
+
+
+
+;; define renamed symbols for er-macro-expander
 ;; variable %macro-env-snapshot will defined.
 (define %define-renamed-symbols
   (macro lst
