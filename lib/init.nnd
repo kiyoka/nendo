@@ -1248,8 +1248,14 @@
 ;; ----------------------------------------
 (define (setup-tailcall-mark sexp)
   (define (reserved? sym)
-    (memq sym '(quote syntax-quote macro %syntax begin lambda if let letrec define define-syntax)))
-  
+    (let* ([reserved-orig '(quote syntax-quote macro %syntax begin lambda if let letrec define define-syntax)]
+           [reserved (append reserved-orig
+                             (map
+                              (lambda (orig)
+                                (string->symbol (+ "/nendo/macroenv/" (symbol->string orig))))
+                              reserved-orig))])
+      (memq sym reserved)))
+
   (define (setup-let-args args)
     (map
      (lambda (arg)
@@ -1301,63 +1307,64 @@
    ((null? sexp)
     '())
    ((list? sexp)
-    (case (car sexp)
-      ((quote /nendo/macroenv/quote)
-       sexp)
-      ((syntax-quote /nendo/macroenv/syntax-quote)
-       sexp)
-      ((macro /nendo/macroenv/macro)
-       sexp)
-      ((%syntax /nendo/macroenv/%syntax)
-       sexp)
-      ((begin /nendo/macroenv/begin)
-       `(begin
-          ,@(setup-proc-body (cdr sexp))))
-      ((lambda /nendo/macroenv/lambda)
-       `(lambda
-            ,(second sexp)
-          ,@(setup-proc-body (cddr sexp))))
-      ((if /nendo/macroenv/if)
-       (case (length sexp)
-         ((3)
-          `(if
-            ,(second sexp)
-            ,(setup-proc     (third  sexp))))
-         ((4)
-          `(if
-            ,(second sexp)
-            ,(setup-proc     (third sexp))
-            ,(setup-proc     (fourth sexp))))))
-      ((let /nendo/macroenv/let)
-       `(let
-            ,(setup-let-args (second sexp))
-          ,@(setup-proc-body (cddr sexp))))
-      ((letrec /nendo/macroenv/letrec)
-       `(letrec
-            ,(setup-let-args (second sexp))
-          ,@(setup-proc-body (cddr sexp))))
-      ((define /nendo/macroenv/define define-syntax /nendo/macroenv/define-syntax)
-       (let1 val (third sexp)
-         `(define
-            ,(second sexp)
-            ,(if (and (list? val)
-                      (not (null? val))
-                      (reserved? (car val)))
-                 (setup-tailcall-mark val)
-                 val))))
-      ((set! /nendo/macroenv/set!)
-       (let1 val (third sexp)
-         `(set!
-            ,(second sexp)
-            ,(if (and (list? val)
-                      (not (null? val))
-                      (reserved? (car val)))
-                 (setup-tailcall-mark val)
-                 val))))
-      (else
-       (if (symbol? (car sexp))
-           `(%tailcall ,sexp)
-           sexp))))
+    (let1 _car (car sexp)
+      (case _car
+        ((quote /nendo/macroenv/quote)
+         sexp)
+        ((syntax-quote /nendo/macroenv/syntax-quote)
+         sexp)
+        ((macro /nendo/macroenv/macro)
+         sexp)
+        ((%syntax /nendo/macroenv/%syntax)
+         sexp)
+        ((begin /nendo/macroenv/begin)
+         `(,_car
+           ,@(setup-proc-body (cdr sexp))))
+        ((lambda /nendo/macroenv/lambda)
+         `(,_car
+              ,(second sexp)
+            ,@(setup-proc-body (cddr sexp))))
+        ((if /nendo/macroenv/if)
+         (case (length sexp)
+           ((3)
+            `(,_car
+              ,(second sexp)
+              ,(setup-proc     (third  sexp))))
+           ((4)
+            `(,_car
+              ,(second sexp)
+              ,(setup-proc     (third sexp))
+              ,(setup-proc     (fourth sexp))))))
+        ((let /nendo/macroenv/let)
+         `(,_car
+           ,(setup-let-args (second sexp))
+           ,@(setup-proc-body (cddr sexp))))
+        ((letrec /nendo/macroenv/letrec)
+         `(,_car
+           ,(setup-let-args (second sexp))
+           ,@(setup-proc-body (cddr sexp))))
+        ((define /nendo/macroenv/define define-syntax /nendo/macroenv/define-syntax)
+         (let1 val (third sexp)
+           `(,_car
+              ,(second sexp)
+              ,(if (and (list? val)
+                        (not (null? val))
+                        (reserved? (car val)))
+                   (setup-tailcall-mark val)
+                   val))))
+        ((set! /nendo/macroenv/set!)
+         (let1 val (third sexp)
+           `(,_car
+             ,(second sexp)
+             ,(if (and (list? val)
+                       (not (null? val))
+                       (reserved? (car val)))
+                  (setup-tailcall-mark val)
+                  val))))
+        (else
+         (if (symbol? (car sexp))
+             `(%tailcall ,sexp)
+             sexp)))))
    (else
     sexp)))
 
