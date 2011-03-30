@@ -1248,7 +1248,7 @@
 ;; ----------------------------------------
 (define (setup-tailcall-mark sexp)
   (define (reserved? sym)
-    (memq sym '(quote syntax-quote macro %syntax begin lambda if let letrec define)))
+    (memq sym '(quote syntax-quote macro %syntax begin lambda if let letrec define define-syntax)))
   
   (define (setup-let-args args)
     (map
@@ -1336,7 +1336,7 @@
        `(letrec
             ,(setup-let-args (second sexp))
           ,@(setup-proc-body (cddr sexp))))
-      ((define /nendo/macroenv/define)
+      ((define /nendo/macroenv/define define-syntax /nendo/macroenv/define-syntax)
        (let1 val (third sexp)
          `(define
             ,(second sexp)

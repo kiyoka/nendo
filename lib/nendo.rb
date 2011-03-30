@@ -1300,7 +1300,7 @@ module Nendo
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
-      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :set!, :error, :"%syntax" ]
+      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax" ]
       @core_syntax_hash = Hash.new
       @core_syntax_list.each { |x|
         renamed = ("/nendo/macroenv/" + x.to_s).intern
@@ -1551,7 +1551,7 @@ module Nendo
 
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
       case funcname
-      when :define, :set!, @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ]   # `define' special form
+      when :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ]   # `define' special form
         ar = args.cdr.map { |x| x.car }
         variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
@@ -1932,13 +1932,14 @@ module Nendo
             @core_syntax_hash[ :quasiquote ] == car or
             @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
-        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car or :"%syntax" == car or
+        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car or :"%syntax" == car or :"define-syntax" == car or
             @core_syntax_hash[ :define ] == car or
             @core_syntax_hash[ :set! ] == car or
             @core_syntax_hash[ :lambda ] == car or
             @core_syntax_hash[ :macro ] == car or
             @core_syntax_hash[ :"&block" ] == car or
-            @core_syntax_hash[ :"%syntax" ] == car
+            @core_syntax_hash[ :"%syntax" ] == car or 
+            @core_syntax_hash[ :"define-syntax" ] == car
           if @debug
             if 2 >= sexp.length
               printf( "\n    quotingPhase-1      label=%s, sexp.length=%d \n", sexp.car, sexp.length )
