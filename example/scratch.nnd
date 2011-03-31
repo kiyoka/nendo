@@ -2,27 +2,28 @@
 ;; -----------------
 (enable-idebug)
 (disable-idebug)
-(define debug-print-length 2000)
+
+(debug-print-length)
+(debug-print-length 2000)
 
 
 ;; chibi-scheme-0.3
-(when #f
-  (define er-macro-transformer
-    (lambda (f)
-      (lambda (expr use-env mac-env)
-        ((lambda (rename compare) (f expr rename compare))
-         ((lambda (renames)
-            (lambda (identifier)
-              ((lambda (cell)
-                 (if cell
-                     (cdr cell)
-                     ((lambda (name)
-                        (set! renames (cons (cons identifier name) renames))
-                        name)
-                      (make-syntactic-closure mac-env '() identifier))))
-               (assq identifier renames))))
-          '())
-         (lambda (x y) (identifier=? use-env x use-env y)))))))
+(define er-macro-transformer
+  (lambda (f)
+    (lambda (expr use-env mac-env)
+      ((lambda (rename compare) (f expr rename compare))
+       ((lambda (renames)
+          (lambda (identifier)
+            ((lambda (cell)
+               (if cell
+                   (cdr cell)
+                   ((lambda (name)
+                      (set! renames (cons (cons identifier name) renames))
+                      name)
+                    (make-syntactic-closure mac-env '() identifier))))
+             (assq identifier renames))))
+        '())
+       (lambda (x y) (identifier=? use-env x use-env y))))))
   
 
 
@@ -37,13 +38,14 @@
       
       (define (_rename renames)
         (lambda (identifier)
+          #?=identifier
           (let ([cell (assq identifier renames)])
             (if cell
                 (cdr cell)
                 ((lambda (name)
                    (set! renames (cons (cons identifier name) renames))
                    name)
-                 #?=(make-syntactic-closure mac-env '() #?=identifier))))))
+                 #?=(make-syntactic-closure mac-env '() identifier))))))
       
       (define (_compare x y)
         #?=(sprintf "compare( %s %s )" x y)
@@ -318,7 +320,9 @@
 
 (pretty-print
  (macroexpand
-  '(map (cut * 2 <>) '(1 2 3 4))))
+  '(map (cut + 1 <>) '(1 2 3 4))))
+
+(map (cut + 1 <>) '(1 2 3 4))
 
 (pretty-print
  (macroexpand

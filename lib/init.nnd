@@ -1378,12 +1378,17 @@
 
 
 ;; explicit renameing macro expander
+;;   URL: http://community.schemewiki.org/?syntactic-closures
 (define (make-syntactic-closure mac-env use-env identifier)
   (let* ([id-str     (symbol->string identifier)]
          [alias-data (assq-ref id-str mac-env)])
     (if alias-data
         (string->symbol (car alias-data))
         identifier)))
+
+(define (strip-syntactic-closures expr)
+  expr)
+
 
 (define (identifier? x)
   (symbol? x))
