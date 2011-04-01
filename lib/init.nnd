@@ -1379,12 +1379,18 @@
 
 ;; explicit renameing macro expander
 ;;   URL: http://community.schemewiki.org/?syntactic-closures
-(define (make-syntactic-closure mac-env use-env identifier)
-  (let* ([id-str     (symbol->string identifier)]
-         [alias-data (assq-ref id-str mac-env)])
-    (if alias-data
-        (string->symbol (car alias-data))
-        identifier)))
+;;(define (make-syntactic-closure mac-env use-env identifier)
+;;  (if (pair? identifier)
+;;      (error "Error: make-syntactic-closure got list.")
+;;      (let* ([id-str     (symbol->string identifier)]
+;;             [alias-data (assq-ref id-str mac-env)])
+;;        (if alias-data
+;;            (string->symbol (car alias-data))
+;;            (let1 v (gensym)
+;;              `(begin
+;;                 (define ,v (list quote ,identifier))
+;;                 ,v)))))))
+  
 
 (define (strip-syntactic-closures expr)
   expr)
@@ -1396,6 +1402,35 @@
 (define (identifier=? use-env-x x use-env-y y)
   (eq? x y))
 
+
+;; readable code for nendo.
+(define er-macro-transformer
+  (lambda (f)
+    (%syntax (expr use-env mac-env)
+      
+      (define (expander-main rename compare)
+        #?="_expander-main"
+        (f expr rename compare))
+      
+      (define (_rename renames)
+        (lambda (identifier)
+          #?=identifier
+          (let ([cell (assq identifier renames)])
+            (if cell
+                (cdr cell)
+                ((lambda (name)
+                   (set! renames (cons (cons identifier name) renames))
+                   name)
+                 #?=(make-syntactic-closure mac-env '() identifier))))))
+      
+      (define (_compare x y)
+        #?=(sprintf "compare( %s %s )" x y)
+        (identifier=? use-env x use-env y))
+      
+      #?="expander-main"
+      (expander-main
+       (_rename '())
+       _compare))))
 
 
 ;; define renamed symbols for er-macro-expander
