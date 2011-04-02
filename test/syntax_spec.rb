@@ -87,9 +87,16 @@ describe Nendo, "when call make-syntactic-closure " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'print  )" ).should    == '/nendo/macroenv/print'
-    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'if     )" ).should    == '/nendo/macroenv/if'
-    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'lambda )" ).should    == '/nendo/macroenv/lambda'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'print  )" ).should                  == 'print'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'if     )" ).should                  == 'if'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'lambda )" ).should                  == 'lambda'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'aaaa   )" ).should                  match( /_gensym_/ )
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'tmp    )" ).should                  match( /_gensym_/ )
+    @nendo.evalStr( "(define name (make-syntactic-closure %macro-env-snapshot '() 'tmp ))" ).should       match( /_gensym_/ )
+    @nendo.evalStr( "name" ).should                                                                       match( /_gensym_/ )
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'new_global_var)" ).should           match( /_gensym_/ )
+    @nendo.evalStr( "(define new_global_var 10)" ).should                                                 == '10'
+    @nendo.evalStr( "(make-syntactic-closure %macro-env-snapshot '() 'new_global_var)" ).should           == 'new_global_var'
   end
 end
 

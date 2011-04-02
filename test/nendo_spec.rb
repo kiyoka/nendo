@@ -181,6 +181,7 @@ describe Evaluator, "When use Evaluator's util methods" do
     @evaluator.toRubySymbol( '^' ).should  == '__NKMARK'
     @evaluator.toRubySymbol( "_" ).should  == "__"
     @evaluator.toRubySymbol( '~' ).should  == '__CHMARK'
+    @evaluator.toRubySymbol( '...' ).should  == '__DOTDOTDOT'
     @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
     @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
     @evaluator.toRubySymbol( "a!" ).should == "_a_EXMARK"
@@ -199,6 +200,7 @@ describe Evaluator, "When use Evaluator's util methods" do
     @evaluator.toLispSymbol( "_a_b" ).should == "a_b"
     @evaluator.toLispSymbol( "_a_b_c" ).should == "a_b_c"
     @evaluator.toLispSymbol( "_A_B_C" ).should == "A_B_C"
+    @evaluator.toLispSymbol( "__DOTDOTDOT" ).should == "..."
     @evaluator.toRubyValue( "a" ).should == "a"
     @evaluator.toRubyValue( "b" ).should == "b"
     @evaluator.toRubyValue( "true" ).should == "true"

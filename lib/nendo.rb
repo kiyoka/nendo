@@ -1278,25 +1278,26 @@ module Nendo
       @debug   = debug
       @trace_debug = false
       @char_table_lisp_to_ruby = {
-        # list     (! $ % & * + - . / : < = > ? @ ^ _ ~)
-        '!' => '_EXMARK',
-        '$' => '_DOMARK',
-        '%' => '_PAMARK',
-        '&' => '_ANMARK',
-        '*' => '_ASMARK',
-        '+' => '_PLMARK',
-        '-' => '_MIMARK',
+        # list     (! $ % & * + - . / : < = > ? @ ^ _ ~ ...)
+        '!'   => '_EXMARK',
+        '$'   => '_DOMARK',
+        '%'   => '_PAMARK',
+        '&'   => '_ANMARK',
+        '*'   => '_ASMARK',
+        '+'   => '_PLMARK',
+        '-'   => '_MIMARK',
         # '.'
-        '/' => '_SLMARK',
-        ':' => '_COMARK',
-        '<' => '_LTMARK',
-        '=' => '_EQMARK',
-        '>' => '_GTMARK',
-        '?' => '_QUMARK',
-        '@' => '_ATMARK',
-        '^' => '_NKMARK',
+        '/'   => '_SLMARK',
+        ':'   => '_COMARK',
+        '<'   => '_LTMARK',
+        '='   => '_EQMARK',
+        '>'   => '_GTMARK',
+        '?'   => '_QUMARK',
+        '@'   => '_ATMARK',
+        '^'   => '_NKMARK',
         # '_'
-        '~' => '_CHMARK',
+        '~'   => '_CHMARK',
+        '...' => '_DOTDOTDOT',
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
@@ -1422,6 +1423,8 @@ module Nendo
       name = name.to_s  if Symbol == name.class
       if 0 == name.length
         ""
+      elsif '...' == name
+        '_' + @char_table_lisp_to_ruby[ name ]
       else
         arr = name.gsub( /["]/, '' ).split( /[.]/ )
         tmp = arr[0]
@@ -2026,7 +2029,6 @@ module Nendo
             eval( sprintf( "@__macro_env = @%s", toRubySymbol( "%macro-env-snapshot" )), @binding )
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             args = [ sexp, Cell.new(), @__macro_env ]
-            pp args if @debug
             newSexp = trampCall( callProcedure( sym, @__syntax, args ) )
           end
           if _equal_QUMARK( newSexp, sexp )
@@ -2238,6 +2240,20 @@ module Nendo
             ].join
       eval( str, @binding )
       true
+    end
+
+    def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
+      if _pair_QUMARK( identifier )
+        raise RuntimeError, "Error: make-syntactic-closure requires symbol only..."
+      else
+        p 'make-syntactic-closure: return value is '
+        if _global_MIMARKvariables().to_arr.include?( identifier )
+          p identifier
+        else
+          sym = toRubySymbol( identifier ) + _gensym( ).to_s
+          p sym.intern
+        end
+      end
     end
 
   end
