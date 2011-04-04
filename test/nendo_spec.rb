@@ -1346,15 +1346,18 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (find       (lambda (x) (= x 2))       '(1 2 3)) " ).should == "2"
     @nendo.evalStr( " (find       (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "1"
     @nendo.evalStr( " (find       (lambda (x) (if (= x 2) (* x 100) false))   '(1 2 3)) " ).should == "2"
-    @nendo.evalStr( " (eq? find any)" ).should      == "#t"
+    @nendo.evalStr( " (eq? find any)" ).should      == "#f"
     @nendo.evalStr( " (find  even?  '(1 2 3)) " ).should == "2"
-    @nendo.evalStr( " (any   even?  '(1 2 3)) " ).should == "2"
     @nendo.evalStr( " (filter-map (lambda (x) x)             '()) " ).should      == "()"
     @nendo.evalStr( " (filter-map (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
     @nendo.evalStr( " (filter-map (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(#t)"
     @nendo.evalStr( " (filter-map (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(#t #t)"
     @nendo.evalStr( " (filter-map (lambda (x) (if (= x 2) (* x 10) false)) '(1 2 3)) " ).should == "(20)"
     @nendo.evalStr( " (filter-map (lambda (x) (if (not (= x 2)) (* x 10) false)) '(1 2 3)) " ).should == "(10 30)"
+    @nendo.evalStr( " (any   even?  '(1 2 3)) " ).should == "#t"
+    @nendo.evalStr( " (any   even?  '(1 3)) " ).should == "#f"
+    @nendo.evalStr( " (any   odd?   '(1 3)) " ).should == "#t"
+    @nendo.evalStr( " (any   (lambda (x) x) '(1 2 3)) " ).should == "1"
     @nendo.evalStr( " " +
                     "(let1 result '()" +
                     "  (do" +

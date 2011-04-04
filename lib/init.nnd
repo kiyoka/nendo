@@ -633,7 +633,12 @@
     (if (null? result)
         #f
         (car result))))
-(define any find)
+
+(define (any pred lst)
+  (let1 result (%filter-map pred lst)
+    (if (null? result)
+        #f
+        (car result))))
 
 (define map         %map)
 (define for-each    %for-each)
