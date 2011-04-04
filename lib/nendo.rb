@@ -1423,9 +1423,8 @@ module Nendo
       name = name.to_s  if Symbol == name.class
       if 0 == name.length
         ""
-      elsif '...' == name
-        '_' + @char_table_lisp_to_ruby[ name ]
       else
+        name.gsub!( Regexp.new( Regexp.escape( '...' )), @char_table_lisp_to_ruby[ '...' ] )
         arr = name.gsub( /["]/, '' ).split( /[.]/ )
         tmp = arr[0]
         tmp.gsub!( /[:][:]/, "  " ) # save '::'
