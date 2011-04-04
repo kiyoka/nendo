@@ -68,7 +68,7 @@
            (_ls (rename 'ls)) (_res (rename 'res)) (_i (rename 'i))
            (_vector->list (rename 'vector->list))
            (_list->vector (rename 'list->vector)))
-       (define ellipse (rename (if ellipse-specified? (cadr expr) '...)))
+       (define ellipse (rename (if #?=ellipse-specified? (cadr expr) '...)))
        (define lits (if ellipse-specified? (caddr expr) (cadr expr)))
        (define forms (if ellipse-specified? (cdddr expr) (cddr expr)))
        (define (next-v)
@@ -254,10 +254,53 @@
                 (list (list _error "no expansion for"
                             (list (rename 'strip-syntactic-closures) _expr)))))))))))
 
-(use srfi-1)
+
+(macroexpand-1
+ '(%cut #f () () print <>))
+
+
+;; ------------------------------ cut ---------------------------
+(define-syntax %cut
+  (syntax-rules (<> <...>)
+    ((%cut e? params args)
+     (lambda params args))
+    ((%cut e? (params ...) (args ...) <> . rest)
+     (%cut e? (params ... tmp) (args ... tmp) . rest))
+    ((%cut e? (params ...) (args ...) <...>)
+     (%cut e? (params ... . tmp) (apply args ... tmp)))
+    ((%cut e? (params ...) (args ...) <...> . rest)
+     (error "cut: non-terminal <...>"))
+    ((%cut #t (params ...) (args ...) x . rest)
+     (let ((tmp x)) (%cut #t (params ...) (args ... tmp) . rest)))
+    ((%cut #f (params ...) (args ...) x . rest)
+     (%cut #t (params ...) (args ... x) . rest))))
 
 (pretty-print
- (disasm 'syntax-rules 'expanded))
+ (disasm '%cut 'expanded))
+
+(define-syntax cut
+  (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
+(define-syntax cute
+  (syntax-rules () ((cute args ...) (%cut #t () () args ...))))
+
+(pretty-print
+ (disasm 'cut 'expanded))
+
+(macroexpand
+ '(map (cut + 1 <>) '(1 2 3 4)))
+
+(map (cut + 1 <>) '(1 2 3 4))
+
+(macroexpand-1
+ '(%cut #f () () print <>))
+
+(%cut #f () () print <>)
+
+(macroexpand-1
+ (macroexpand-1
+  '((cut print <>) 1)))
+
+(cut print <>)
 
 
 ;; ------------------------------ nil! ---------------------------
@@ -356,48 +399,6 @@
 
 
 
-;; ------------------------------ cut ---------------------------
-(define-syntax %cut
-  (syntax-rules (<> <...>)
-    ((%cut e? params args)
-     (lambda params args))
-    ((%cut e? (params ...) (args ...) <> . rest)
-     (%cut e? (params ... tmp) (args ... tmp) . rest))
-    ((%cut e? (params ...) (args ...) <...>)
-     (%cut e? (params ... . tmp) (apply args ... tmp)))
-    ((%cut e? (params ...) (args ...) <...> . rest)
-     (error "cut: non-terminal <...>"))
-    ((%cut #t (params ...) (args ...) x . rest)
-     (let ((tmp x)) (%cut #t (params ...) (args ... tmp) . rest)))
-    ((%cut #f (params ...) (args ...) x . rest)
-     (%cut #t (params ...) (args ... x) . rest))))
-
-(pretty-print
- (disasm '%cut 'expanded))
-
-(define-syntax cut
-  (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
-(define-syntax cute
-  (syntax-rules () ((cute args ...) (%cut #t () () args ...))))
-
-(pretty-print
- (disasm 'cut 'expanded))
-
-(macroexpand
- '(map (cut + 1 <>) '(1 2 3 4)))
-
-(map (cut + 1 <>) '(1 2 3 4))
-
-(macroexpand-1
- '((cut print <>) 1))
-
-(%cut #f () () print <>)
-
-(macroexpand-1
- (macroexpand-1
-  '((cut print <>) 1)))
-
-(cut print <>)
 
 
 
