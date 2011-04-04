@@ -1174,7 +1174,7 @@ module Nendo
   
     def _global_MIMARKvariables
       self.instance_variables.select { |x|
-        x.match( /^[@]_[a-zA-Z]/ )
+        x.match( /^[@]_[_a-zA-Z]/ )
       }.map{ |name| 
         self.toLispSymbol( name[1..-1] ).intern
       }.to_list
@@ -2024,11 +2024,9 @@ module Nendo
             # expected input is
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
-            #   (syntaxName (syntaxName arg1 arg2 ...) () %macro-env-snapshot)
-            eval( sprintf( "@__macro_env = @%s", toRubySymbol( "%macro-env-snapshot" )), @binding )
+            #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
-            args = [ sexp, Cell.new(), @__macro_env ]
-            newSexp = trampCall( callProcedure( sym, @__syntax, args ) )
+            newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -2245,12 +2243,11 @@ module Nendo
       if _pair_QUMARK( identifier )
         raise RuntimeError, "Error: make-syntactic-closure requires symbol only..."
       else
-        p 'make-syntactic-closure: return value is '
-        if _global_MIMARKvariables().to_arr.include?( identifier )
-          p identifier
+        if mac_env.to_arr.include?( identifier )
+          identifier
         else
           sym = toRubySymbol( identifier ) + _gensym( ).to_s
-          p sym.intern
+          sym.intern
         end
       end
     end
