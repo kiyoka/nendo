@@ -7,58 +7,27 @@
 (debug-print-length 2000)
 
 
-;; chibi-scheme-0.3
-(define er-macro-transformer
-  (lambda (f)
-    (lambda (expr use-env mac-env)
-      ((lambda (rename compare) (f expr rename compare))
-       ((lambda (renames)
-          (lambda (identifier)
-            ((lambda (cell)
-               (if cell
-                   (cdr cell)
-                   ((lambda (name)
-                      (set! renames (cons (cons identifier name) renames))
-                      name)
-                    (make-syntactic-closure mac-env '() identifier))))
-             (assq identifier renames))))
-        '())
-       (lambda (x y) (identifier=? use-env x use-env y))))))
-  
 
 
-;; readable code for nendo.
-(define er-macro-transformer
-  (lambda (f)
-    (%syntax (expr use-env mac-env)
-      
-      (define (expander-main rename compare)
-        #?="_expander-main"
-        (f expr rename compare))
-      
-      (define (_rename renames)
-        (lambda (identifier)
-          #?=identifier
-          (let ([cell (assq identifier renames)])
-            (if cell
-                (cdr cell)
-                ((lambda (name)
-                   (set! renames (cons (cons identifier name) renames))
-                   name)
-                 #?=(make-syntactic-closure mac-env '() identifier))))))
-      
-      (define (_compare x y)
-        #?=(sprintf "compare( %s %s )" x y)
-        (identifier=? use-env x use-env y))
-      
-      #?="expander-main"
-      (expander-main
-       (_rename '())
-       _compare))))
-  
+;; ------------------------------ my-or --------------------------
+(define-syntax or
+  (er-macro-transformer
+   (lambda (expr rename compare)
+     (cond ((null? (cdr expr)) #f)
+           ((null? (cddr expr)) (cadr expr))
+           (else
+            (list (rename 'let) (list (list (rename 'tmp) (cadr expr)))
+                  (list (rename 'if) (rename 'tmp)
+                        (rename 'tmp)
+                        (cons (rename 'or) (cddr expr)))))))))
+
+(macroexpand
+ '(or #f #f 1 3))
+
+(or #f #f 1 3)
 
 ;; ------------------------------ my-and --------------------------
-(define-syntax my-and
+(define-syntax and
   (er-macro-transformer
    (lambda (expr rename compare)
      #?="my-and"
@@ -69,9 +38,10 @@
                        #f))))))
 
 (macroexpand
- '(my-and 1 2 3 4))
+ '(and 1 2 3 4))
 
-(my-and 1 2 3 4)
+(and 1 2 3 4)
+
 
 ;; ------------------------------ syntax-rules --------------------------
 
@@ -285,6 +255,10 @@
                             (list (rename 'strip-syntactic-closures) _expr)))))))))))
 
 
+(pretty-print
+ (disasm 'syntax-rules 'expanded))
+
+
 ;; ------------------------------ nil! ---------------------------
 
 (define-syntax nil!
@@ -292,13 +266,54 @@
     ((_ x)
      (set! x '()))))
 
+(pretty-print
+ (disasm 'nil! 'expanded))
+
 (define a 1)
 (macroexpand '(nil! a))
 
+;; ------------------------------ my-when ---------------------------
+(define-syntax my-when
+  (syntax-rules ()
+    ((_ pred b1 ...)
+     (if pred (begin b1 ...)))))
 
+(pretty-print
+ (disasm 'my-when 'expanded))
+
+
+(macroexpand
+ '(my-when #t
+    (display 1)
+    (newline)))
+
+
+(macroexpand
+ '(let ((i 0))
+    (my-when (= i 0)
+             (display "i == 0")
+             (newline))))
+
+;; ------------------------------ and-let (chibi-scheme)---------------------------
+(define-syntax and-let*
+  (syntax-rules ()
+    ((and-let* () . body)
+     (begin . body))
+    ((and-let* ((var expr) . rest) . body)
+     (let ((var expr))
+       (and var (and-let* rest . body))))
+    ((and-let* ((expr) . rest) . body)
+     (let ((tmp expr))
+       (and tmp (and-let* rest . body))))))
+
+
+(and-let* ((num 1)
+           (2)
+           ("abc"))
+  num)
+    
 
 ;; ------------------------------ cut ---------------------------
-
 (define-syntax %cut
   (syntax-rules (<> <...>)
     ((%cut e? params args)
@@ -313,17 +328,28 @@
      (let ((tmp x)) (%cut #t (params ...) (args ... tmp) . rest)))
     ((%cut #f (params ...) (args ...) x . rest)
      (%cut #t (params ...) (args ... x) . rest))))
+
+(pretty-print
+ (disasm '%cut 'expanded))
+
 (define-syntax cut
   (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
 (define-syntax cute
   (syntax-rules () ((cute args ...) (%cut #t () () args ...))))
 
 (pretty-print
- (macroexpand
-  '(map (cut + 1 <>) '(1 2 3 4))))
+ (disasm 'cut 'expanded))
+
+(macroexpand
+ '(map (cut + 1 <>) '(1 2 3 4)))
 
 (map (cut + 1 <>) '(1 2 3 4))
 
-(pretty-print
- (macroexpand
-  '((cut list 1 <> 3 <> 5) 'x2 'x4)))
+(macroexpand-1
+ (macroexpand-1
+  '((cut print <>) 1)))
+
+(cut print <>)
+
+
+
