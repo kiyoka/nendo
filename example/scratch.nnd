@@ -311,7 +311,49 @@
            (2)
            ("abc"))
   num)
-    
+
+
+;; ------------------------------ cond-list (Gauche-0.9.1) ---------------------------
+(define-syntax cond-list
+  (syntax-rules (=> @)
+    ((_) '())
+    ((_ (test) . rest)
+     (let* ((tmp test)
+            (r (cond-list . rest)))
+       (if tmp (cons tmp r) r)))
+    ((_ (test => proc) . rest)
+     (let* ((tmp test)
+            (r (cond-list . rest)))
+       (if tmp (cons (proc tmp) r) r)))
+    ((_ (test => @ proc) . rest)
+     (let* ((tmp test)
+            (r (cond-list . rest)))
+       (if tmp (append (proc tmp) r) r)))
+    ((_ (test @ . expr) . rest)
+     (let* ((tmp test)
+            (r (cond-list . rest)))
+       (if tmp (append (begin . expr) r) r)))
+    ((_ (test . expr) . rest)
+     (let* ((tmp test)
+            (r (cond-list . rest)))
+       (if tmp (cons (begin . expr) r) r)))
+    ))
+
+ 	
+(let ((alist '((x 3) (y -1) (z 6))))
+ (cond-list ((assoc 'x alist) 'have-x)
+            ((assoc 'w alist) 'have-w)
+            ((assoc 'z alist) => cadr)))
+;; (have-x 6)
+
+(let ((x 2) (y #f) (z 5))
+  (cond-list (x @ `(:x ,x))
+             (y @ `(:y ,y))
+             (z @ `(:z ,z))))
+;; (:x 2 :z 5)
+
+
+
 
 ;; ------------------------------ cut ---------------------------
 (define-syntax %cut
@@ -344,6 +386,11 @@
  '(map (cut + 1 <>) '(1 2 3 4)))
 
 (map (cut + 1 <>) '(1 2 3 4))
+
+(macroexpand-1
+ '((cut print <>) 1))
+
+(%cut #f () () print <>)
 
 (macroexpand-1
  (macroexpand-1
