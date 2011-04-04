@@ -87,7 +87,7 @@
               _let (list (list v x))
               (cond
                ((identifier? p)
-                (if (any (lambda (l) (compare p l)) lits)
+                (if (find (lambda (l) (compare p l)) lits)
                     (list _and (list _compare v (list _quote p)) (k vars))
                     (list _let (list (list p v)) (k (cons (cons p dim) vars)))))
                ((ellipse? p)
@@ -96,7 +96,7 @@
                   (cond
                    ((not (list? (cddr p)))
                     (error "dotted ellipse" p))
-                   ((any (lambda (x) (and (identifier? x) (compare x ellipse)))
+                   ((find (lambda (x) (and (identifier? x) (compare x ellipse)))
                          (cddr p))
                     (error "multiple ellipses" p))
                    (else
@@ -180,7 +180,7 @@
        (define (all-vars x dim)
          (let lp ((x x) (dim dim) (vars '()))
            (cond ((identifier? x)
-                  (if (any (lambda (lit) (compare x lit)) lits)
+                  (if (find (lambda (lit) (compare x lit)) lits)
                       vars
                       (cons (cons x dim) vars)))
                  ((ellipse? x) (lp (car x) (+ dim 1) vars))
@@ -200,13 +200,13 @@
             ((vector? x) (lp (vector->list x) free))
             (else free))))
        (define (expand-template tmpl vars)
-         (let lp ((t tmpl) (dim 0))
+         (let lp ((t #?=tmpl) (dim 0))
            (cond
-            ((identifier? t)
+            ((identifier? #?=t)
              (cond
-              ((any (lambda (v) (compare t (car v))) vars)
+              ((find (lambda (v) (compare t (car v))) #?=vars)
                => (lambda (cell)
-                    (if (<= (cdr cell) dim)
+                    (if (<= (cdr #?=cell) dim)
                         t
                         (error "too few ...'s"))))
               (else
@@ -254,6 +254,7 @@
                 (list (list _error "no expansion for"
                             (list (rename 'strip-syntactic-closures) _expr)))))))))))
 
+(use srfi-1)
 
 (pretty-print
  (disasm 'syntax-rules 'expanded))
