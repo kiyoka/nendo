@@ -2,9 +2,15 @@
 ;; -----------------
 (enable-idebug)
 (disable-idebug)
+(exit)
 
 (debug-print-length)
 (debug-print-length 2000)
+
+
+
+(error "Error: (error) func test 1")
+(error "Error: (error) func test 1" '(r a i s e))
 
 
 ;; ------------------------------ cut ---------------------------
@@ -68,6 +74,7 @@
            (2)
            ("abc"))
   num)
+
 
 
 ;; ------------------------------ cond-list (Gauche-0.9.1) ---------------------------

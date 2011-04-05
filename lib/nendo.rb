@@ -1578,9 +1578,17 @@ module Nendo
           "end"
         ]
       when :error, @core_syntax_hash[ :error ]
+        arr = if args.length < 2
+                args.car
+              else
+                [ args.car + " ' ' + ",
+                  "_write_MIMARKto_MIMARKstring(",
+                  args.cdr.car,
+                  ")" ]
+              end
         [
          'begin raise RuntimeError, ',
-         args.car,
+         arr,
          "rescue => __e ",
          sprintf( "  __e.set_backtrace( [\"%s:%d\"] + __e.backtrace )", sourcefile, lineno ),
          "  raise __e",
