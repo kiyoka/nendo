@@ -100,11 +100,11 @@ describe Nendo, "when call make-syntactic-closure " do
   end
 end
 
+
 describe Nendo, "when use core syntax " do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
-    @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `map' can be optimized on second loading phase.
   end
   it "should" do
     @nendo.evalStr( "(if                        #t 1 2)" ).should                        == '1'
@@ -114,5 +114,87 @@ describe Nendo, "when use core syntax " do
     @nendo.evalStr( "(begin                      1 2 3)" ).should                        == '3'
     @nendo.evalStr( "(/nendo/core/begin          1 2 3)" ).should                        == '3'
     @nendo.evalStr( "(car (memq '/nendo/core/begin (global-variables)))" ).should        == '/nendo/core/begin'
+  end
+end
+
+
+describe Nendo, "when use er-macro-transformer " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " " +
+                    "(define-syntax my-or" +
+                    "  (er-macro-transformer" +
+                    "   (lambda (expr rename compare)" +
+                    "     (cond ((null? (cdr expr)) #f)" +
+                    "           ((null? (cddr expr)) (cadr expr))" +
+                    "           (else" +
+                    "            (list (rename 'let) (list (list (rename 'tmp) (cadr expr)))" +
+                    "                  (list (rename 'if) (rename 'tmp)" +
+                    "                        (rename 'tmp)" +
+                    "                        (cons (rename 'my-or) (cddr expr)))))))))" +
+                    "my-or" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( "(my-or 1 2)" ).should                  ==  '1'
+    @nendo.evalStr( "(my-or #f 100 200)" ).should           ==  '100'
+    @nendo.evalStr( "(my-or #f #f #f #f 500)" ).should      ==  '500'
+    @nendo.evalStr( "(my-or #f #f #f #f #f)" ).should       ==  '#f'
+
+    @nendo.evalStr( " " +
+                    "(define-syntax my-and" +
+                    "  (er-macro-transformer" +
+                    "   (lambda (expr rename compare)" +
+                    "     (cond ((null? (cdr expr)))" +
+                    "           ((null? (cddr expr)) (cadr expr))" +
+                    "           (else (list (rename 'if) (cadr expr)" +
+                    "                       (cons (rename 'my-and) (cddr expr))" +
+                    "                       #f))))))" +
+                    "my-and" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( "(my-and 1 2)" ).should                 ==  '2'
+    @nendo.evalStr( "(my-and 1 2 3 4)" ).should             ==  '4'
+    @nendo.evalStr( "(my-and #t #t #t #t 500)" ).should     ==  '500'
+    @nendo.evalStr( "(my-and 1  2  3  4 #f)" ).should       ==  '#f'
+    @nendo.evalStr( "(my-and 1  2 #f  4  5)" ).should       ==  '#f'
+  end
+end
+
+
+describe Nendo, "when use syntax-rules " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " " +
+                    "(define-syntax nil!" +
+                    "  (syntax-rules ()" +
+                    "    ((_ x)" +
+                    "     (set! x '()))))" +
+                    "nil!" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( "(define a 1)  a" ).should                 ==  '1'
+    @nendo.evalStr( "(nil! a)      a" ).should                 ==  '()'
+    @nendo.evalStr( "(set! a 2)    a" ).should                 ==  '2'
+    @nendo.evalStr( "(nil! a)      a" ).should                 ==  '()'
+    @nendo.evalStr( " " +
+                    "(define-syntax test-syntax" +
+                    "  (syntax-rules ()" +
+                    "    ((_ a)" +
+                    "     (list a))" +
+                    "    ((_ a b)" +
+                    "     (list a (list b)))" +
+                    "    ((_ a b c ...)" +
+                    "     (list a (list b (list c ...))))))" +
+                    "test-syntax" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( "(test-syntax 1)" ).should                 ==  '(1)'
+    @nendo.evalStr( "(test-syntax 1 2)" ).should               ==  '(1 (2))'
+    @nendo.evalStr( "(test-syntax 1 2 3)" ).should             ==  '(1 (2 (3)))'
+    @nendo.evalStr( "(test-syntax 1 2 3 4)" ).should           ==  '(1 (2 (3 4)))'
+    @nendo.evalStr( "(test-syntax 1 2 3 4 5)" ).should         ==  '(1 (2 (3 4 5)))'
+    @nendo.evalStr( "(test-syntax 1 2 3 4 5 6)" ).should       ==  '(1 (2 (3 4 5 6)))'
+    @nendo.evalStr( "(test-syntax 'a)" ).should                ==  '(a)'
+    @nendo.evalStr( "(test-syntax 'a \"B\")" ).should          ==  '(a ("B"))'
+    @nendo.evalStr( "(test-syntax 'a \"B\" 'C)" ).should       ==  '(a ("B" (C)))'
+    @nendo.evalStr( "(test-syntax 'a \"B\" 'C \"d\")" ).should ==  '(a ("B" (C "d")))'
   end
 end

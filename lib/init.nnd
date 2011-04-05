@@ -1402,27 +1402,21 @@
 (define er-macro-transformer
   (lambda (f)
     (%syntax (expr use-env mac-env)
-      
       (define (expander-main rename compare)
-        #?="_expander-main"
         (f expr rename compare))
-      
       (define (_rename renames)
         (lambda (identifier)
-          #?=identifier
           (let ([cell (assq identifier renames)])
             (if cell
                 (cdr cell)
                 ((lambda (name)
                    (set! renames (cons (cons identifier name) renames))
                    name)
-                 #?=(make-syntactic-closure mac-env '() identifier))))))
-      
+                 (make-syntactic-closure mac-env '() identifier))))))
       (define (_compare x y)
-        #?=(sprintf "compare( %s %s )" x y)
+        (sprintf "compare( %s %s )" x y)
         (identifier=? use-env x use-env y))
       
-      #?="expander-main"
       (expander-main
        (_rename '())
        _compare))))
@@ -1434,7 +1428,7 @@
 (define-syntax syntax-rules
   (er-macro-transformer
    (lambda (expr rename compare)
-     (let ((ellipse-specified? #?=(identifier? #?=(cadr #?=expr)))
+     (let ((ellipse-specified? (identifier? (cadr expr)))
            (count 0)
            (_er-macro-transformer (rename 'er-macro-transformer))
            (_lambda (rename 'lambda))      (_let (rename 'let))
@@ -1454,7 +1448,7 @@
            (_ls (rename 'ls)) (_res (rename 'res)) (_i (rename 'i))
            (_vector->list (rename 'vector->list))
            (_list->vector (rename 'list->vector)))
-       (define ellipse (rename (if #?=ellipse-specified? #?=(cadr expr) '...)))
+       (define ellipse (rename (if ellipse-specified? (cadr expr) '...)))
        (define lits (if ellipse-specified? (caddr expr) (cadr expr)))
        (define forms (if ellipse-specified? (cdddr expr) (cddr expr)))
        (define (next-v)
@@ -1473,7 +1467,7 @@
               _let (list (list v x))
               (cond
                ((identifier? p)
-                (if #?=(find (lambda (l) (compare p l)) #?=lits)
+                (if (find (lambda (l) (compare p l)) lits)
                     (list _and (list _compare v (list _quote p)) (k vars))
                     (list _let (list (list p v)) (k (cons (cons p dim) vars)))))
                ((ellipse? p)
@@ -1566,7 +1560,7 @@
        (define (all-vars x dim)
          (let lp ((x x) (dim dim) (vars '()))
            (cond ((identifier? x)
-                  (if (find (lambda (lit) (compare x lit)) #?=lits)
+                  (if (find (lambda (lit) (compare x lit)) lits)
                       vars
                       (cons (cons x dim) vars)))
                  ((ellipse? x) (lp (car x) (+ dim 1) vars))
@@ -1586,13 +1580,13 @@
             ((vector? x) (lp (vector->list x) free))
             (else free))))
        (define (expand-template tmpl vars)
-         (let lp ((t #?=tmpl) (dim 0))
+         (let lp ((t tmpl) (dim 0))
            (cond
-            ((identifier? #?=t)
+            ((identifier? t)
              (cond
-              ((find (lambda (v) (compare t (car v))) #?=vars)
+              ((find (lambda (v) (compare t (car v))) vars)
                => (lambda (cell)
-                    (if (<= (cdr #?=cell) dim)
+                    (if (<= (cdr cell) dim)
                         t
                         (error "too few ...'s"))))
               (else
