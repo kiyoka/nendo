@@ -107,11 +107,12 @@ describe Nendo, "when use core syntax " do
     @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `map' can be optimized on second loading phase.
   end
   it "should" do
-    @nendo.evalStr( "(if                        #t 1 2)" ).should    == '1'
-    @nendo.evalStr( "(if                        #f 1 2)" ).should    == '2'
-    @nendo.evalStr( "(/nendo/macroenv/if        #t 1 2)" ).should    == '1'
-    @nendo.evalStr( "(/nendo/macroenv/if        #f 1 2)" ).should    == '2'
-    @nendo.evalStr( "(begin                      1 2 3)" ).should    == '3'
-    @nendo.evalStr( "(/nendo/macroenv/begin      1 2 3)" ).should    == '3'
+    @nendo.evalStr( "(if                        #t 1 2)" ).should                        == '1'
+    @nendo.evalStr( "(if                        #f 1 2)" ).should                        == '2'
+    @nendo.evalStr( "(/nendo/core/if            #t 1 2)" ).should                        == '1'
+    @nendo.evalStr( "(/nendo/core/if            #f 1 2)" ).should                        == '2'
+    @nendo.evalStr( "(begin                      1 2 3)" ).should                        == '3'
+    @nendo.evalStr( "(/nendo/core/begin          1 2 3)" ).should                        == '3'
+    @nendo.evalStr( "(car (memq '/nendo/core/begin (global-variables)))" ).should        == '/nendo/core/begin'
   end
 end

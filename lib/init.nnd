@@ -1257,7 +1257,7 @@
            [reserved (append reserved-orig
                              (map
                               (lambda (orig)
-                                (string->symbol (+ "/nendo/macroenv/" (symbol->string orig))))
+                                (string->symbol (+ "/nendo/core/" (symbol->string orig))))
                               reserved-orig))])
       (memq sym reserved)))
 
@@ -1314,22 +1314,22 @@
    ((list? sexp)
     (let1 _car (car sexp)
       (case _car
-        ((quote /nendo/macroenv/quote)
+        ((quote /nendo/core/quote)
          sexp)
-        ((syntax-quote /nendo/macroenv/syntax-quote)
+        ((syntax-quote /nendo/core/syntax-quote)
          sexp)
-        ((macro /nendo/macroenv/macro)
+        ((macro /nendo/core/macro)
          sexp)
-        ((%syntax /nendo/macroenv/%syntax)
+        ((%syntax /nendo/core/%syntax)
          sexp)
-        ((begin /nendo/macroenv/begin)
+        ((begin /nendo/core/begin)
          `(,_car
            ,@(setup-proc-body (cdr sexp))))
-        ((lambda /nendo/macroenv/lambda)
+        ((lambda /nendo/core/lambda)
          `(,_car
               ,(second sexp)
             ,@(setup-proc-body (cddr sexp))))
-        ((if /nendo/macroenv/if)
+        ((if /nendo/core/if)
          (case (length sexp)
            ((3)
             `(,_car
@@ -1340,15 +1340,15 @@
               ,(second sexp)
               ,(setup-proc     (third sexp))
               ,(setup-proc     (fourth sexp))))))
-        ((let /nendo/macroenv/let)
+        ((let /nendo/core/let)
          `(,_car
            ,(setup-let-args (second sexp))
            ,@(setup-proc-body (cddr sexp))))
-        ((letrec /nendo/macroenv/letrec)
+        ((letrec /nendo/core/letrec)
          `(,_car
            ,(setup-let-args (second sexp))
            ,@(setup-proc-body (cddr sexp))))
-        ((define /nendo/macroenv/define define-syntax /nendo/macroenv/define-syntax)
+        ((define /nendo/core/define define-syntax /nendo/core/define-syntax)
          (let1 val (third sexp)
            `(,_car
               ,(second sexp)
@@ -1357,7 +1357,7 @@
                         (reserved? (car val)))
                    (setup-tailcall-mark val)
                    val))))
-        ((set! /nendo/macroenv/set!)
+        ((set! /nendo/core/set!)
          (let1 val (third sexp)
            `(,_car
              ,(second sexp)

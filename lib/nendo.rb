@@ -1304,7 +1304,7 @@ module Nendo
       @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax" ]
       @core_syntax_hash = Hash.new
       @core_syntax_list.each { |x|
-        renamed = ("/nendo/macroenv/" + x.to_s).intern
+        renamed = ("/nendo/core/" + x.to_s).intern
         @core_syntax_hash[ x ] = renamed
       }
 
@@ -1324,12 +1324,15 @@ module Nendo
       eval( rubyExp, @binding )
 
       # initialize builtin syntax as LispCoreSyntax
-      rubyExp = @core_syntax_list.map { |x|
-        name = toRubySymbol( x )
-        [ sprintf( "@%s                        = LispCoreSyntax.new( :\"%s\" ) ", name, x ),
-          sprintf( "@global_lisp_binding['%s'] = @%s ", name, name ) ]
+      rubyExp = @core_syntax_hash.map { |k,v|
+        name1 = toRubySymbol( k )
+        name2 = toRubySymbol( v )
+        [ sprintf( "@%s                        = LispCoreSyntax.new( :\"%s\" ) ", name1, k ),
+          sprintf( "@global_lisp_binding['%s'] = @%s ", name1, name1 ),
+          sprintf( "@%s                        = @%s ", name2, name1 ),
+          sprintf( "@global_lisp_binding['%s'] = @%s ", name1, name2 ) ].join( " ; " )
       }.join( " ; " )
-      eval( rubyExp, @binding )
+      eval( rubyExp, @binding )          
   
       # reset gensym counter
       @gensym_counter = 0
