@@ -48,6 +48,7 @@ task :check do
   stage2 << "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd     >  test.log"
   stage2 << "ruby -I ./lib ./bin/nendo ./test/util-test.nnd        >> test.log"
   stage2 << "ruby -I ./lib ./bin/nendo ./test/json-test.nnd        >> test.log"
+  stage1 << "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd     >> test.log"
   stage2 << "cat test.record"
   arr = []
   arr += stage1
@@ -83,6 +84,7 @@ task :compile do
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
   [ "./lib/init.nnd",
     "./lib/srfi-1.nnd",
+    "./lib/srfi-26.nnd",
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd",

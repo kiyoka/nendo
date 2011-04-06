@@ -204,7 +204,27 @@ trampCall(
                                ) then
                                   begin
                                       begin raise RuntimeError, 
-                                      "Too many arguments to MAKE-LIST"
+                                        "Too many arguments to MAKE-LIST" ' ' + 
+                                        _write_MIMARKto_MIMARKstring(
+                                          trampCall( self._cons_METHOD(  'cons',
+                                              begin
+                                                if @global_lisp_binding.has_key?('_cons') then
+                                                  trampCall(@_cons)
+                                                else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:35"] + __e.backtrace ) ; raise __e
+                                              end                                            ,
+                                          [
+                                                begin
+                                                    trampCall(_len)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:34"] + __e.backtrace ) ; raise __e
+                                                end                                              ,
+                                                begin
+                                                    trampCall(_maybe_MIMARKelt)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:33"] + __e.backtrace ) ; raise __e
+                                                end
+                                          ]
+                                                       ))
+                                        )
                                       rescue => __e 
                                         __e.set_backtrace( ["./lib/srfi-1.nnd:32"] + __e.backtrace )
                                         raise __e
@@ -586,7 +606,15 @@ trampCall(
                              ))
                ) then
                   begin raise RuntimeError, 
-                  "Negative step count"
+                    "Negative step count" ' ' + 
+                    _write_MIMARKto_MIMARKstring(
+                      begin
+                        if @global_lisp_binding.has_key?('_iota') then
+                          trampCall(@_iota)
+                        else raise NameError.new( "Error: undefined variable _iota", "_iota" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:73"] + __e.backtrace ) ; raise __e
+                      end
+                    )
                   rescue => __e 
                     __e.set_backtrace( ["./lib/srfi-1.nnd:73"] + __e.backtrace )
                     raise __e
@@ -1793,7 +1821,13 @@ trampCall(
                        ) then
                           begin
                               begin raise RuntimeError, 
-                              "null-list?: argument out of domain"
+                                "null-list?: argument out of domain" ' ' + 
+                                _write_MIMARKto_MIMARKstring(
+                                  begin
+                                      trampCall(_l)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:192"] + __e.backtrace ) ; raise __e
+                                  end
+                                )
                               rescue => __e 
                                 __e.set_backtrace( ["./lib/srfi-1.nnd:192"] + __e.backtrace )
                                 raise __e

@@ -1,24 +1,50 @@
-
-(define-module (srfi 26)
-  (export cut cute)
-  (import-immutable (scheme))
-  (body
-   (define-syntax %cut
-     (syntax-rules (<> <...>)
-       ((%cut e? params args)
-        (lambda params args))
-       ((%cut e? (params ...) (args ...) <> . rest)
-        (%cut e? (params ... tmp) (args ... tmp) . rest))
-       ((%cut e? (params ...) (args ...) <...>)
-        (%cut e? (params ... . tmp) (apply args ... tmp)))
-       ((%cut e? (params ...) (args ...) <...> . rest)
-        (error "cut: non-terminal <...>"))
-       ((%cut #t (params ...) (args ...) x . rest)
-        (let ((tmp x)) (%cut #t (params ...) (args ... tmp) . rest)))
-       ((%cut #f (params ...) (args ...) x . rest)
-        (%cut #t (params ...) (args ... x) . rest))))
-   (define-syntax cut
-     (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
-   (define-syntax cute
-     (syntax-rules () ((cute args ...) (%cut #t () () args ...))))))
+;;;-*- mode: nendo; syntax: scheme -*-;;
+;;;
+;;; srfi-26.nnd - srfi-26 : Notation for Specializing Parameters without Currying 
+;;;  
+;;;  Copyright (c) 2009 Alex Shinn
+;;;  All rights reserved.
+;;;  
+;;;  Redistribution and use in source and binary forms, with or without
+;;;  modification, are permitted provided that the following conditions
+;;;  are met:
+;;;  1. Redistributions of source code must retain the above copyright
+;;;     notice, this list of conditions and the following disclaimer.
+;;;  2. Redistributions in binary form must reproduce the above copyright
+;;;     notice, this list of conditions and the following disclaimer in the
+;;;     documentation and/or other materials provided with the distribution.
+;;;  3. The name of the author may not be used to endorse or promote products
+;;;     derived from this software without specific prior written permission.
+;;;  
+;;;  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+;;;  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+;;;  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+;;;  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+;;;  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+;;;  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+;;;  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+;;;  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+;;;  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+;;;  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+;;;  
+;;;  ported for Nendo language by Kiyoka Nishiyama.
+;;;
+(define-syntax %cut
+  (syntax-rules (<> <...>)
+    ((%cut e? params args)
+     (lambda params args))
+    ((%cut e? (params ...) (args ...) <> . rest)
+     (%cut e? (params ... tmp) (args ... tmp) . rest))
+    ((%cut e? (params ...) (args ...) <...>)
+     (%cut e? (params ... . tmp) (apply args ... tmp)))
+    ((%cut e? (params ...) (args ...) <...> . rest)
+     (error "cut: non-terminal <...>"))
+    ((%cut #t (params ...) (args ...) x . rest)
+     (let ((tmp x)) (%cut #t (params ...) (args ... tmp) . rest)))
+    ((%cut #f (params ...) (args ...) x . rest)
+     (%cut #t (params ...) (args ... x) . rest))))
+(define-syntax cut
+  (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
+(define-syntax cute
+  (syntax-rules () ((cute args ...) (%cut #t () () args ...))))
 

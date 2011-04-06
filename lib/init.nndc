@@ -21821,7 +21821,13 @@ trampCall(
                                                                                    ) then
                                                                                       begin
                                                                                           begin raise RuntimeError, 
-                                                                                          "dotted ellipse"
+                                                                                            "dotted ellipse" ' ' + 
+                                                                                            _write_MIMARKto_MIMARKstring(
+                                                                                              begin
+                                                                                                  trampCall(_p)
+                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1548"] + __e.backtrace ) ; raise __e
+                                                                                              end
+                                                                                            )
                                                                                           rescue => __e 
                                                                                             __e.set_backtrace( ["./lib/init.nnd:1605"] + __e.backtrace )
                                                                                             raise __e
@@ -21916,7 +21922,13 @@ trampCall(
                                                                                        ) then
                                                                                           begin
                                                                                               begin raise RuntimeError, 
-                                                                                              "multiple ellipses"
+                                                                                                "multiple ellipses" ' ' + 
+                                                                                                _write_MIMARKto_MIMARKstring(
+                                                                                                  begin
+                                                                                                      trampCall(_p)
+                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1548"] + __e.backtrace ) ; raise __e
+                                                                                                  end
+                                                                                                )
                                                                                               rescue => __e 
                                                                                                 __e.set_backtrace( ["./lib/init.nnd:1605"] + __e.backtrace )
                                                                                                 raise __e

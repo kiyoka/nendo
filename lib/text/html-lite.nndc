@@ -365,7 +365,13 @@ trampCall(
                          ) then
                             begin
                                 begin raise RuntimeError, 
-                                "Unknown doctype type spec"
+                                  "Unknown doctype type spec" ' ' + 
+                                  _write_MIMARKto_MIMARKstring(
+                                    begin
+                                        trampCall(_type)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
+                                    end
+                                  )
                                 rescue => __e 
                                   __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace )
                                   raise __e
