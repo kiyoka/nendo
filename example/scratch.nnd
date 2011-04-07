@@ -7,116 +7,83 @@
 (debug-print-length)
 (debug-print-length 2000)
 
-
-
 (error "Error: (error) func test 1")
 (error "Error: (error) func test 1" '(r a i s e))
 
 
-;; ------------------------------ cut ---------------------------
-(define-syntax %cut
-  (syntax-rules (<> <...>)
-    ((%cut e? params args)
-     (lambda params args))
-    ((%cut e? (params ...) (args ...) <> . rest)
-     (%cut e? (params ... tmp) (args ... tmp) . rest))
-    ((%cut e? (params ...) (args ...) <...>)
-     (%cut e? (params ... . tmp) (apply args ... tmp)))
-    ((%cut e? (params ...) (args ...) <...> . rest)
-     (error "cut: non-terminal <...>"))
-    ((%cut #t (params ...) (args ...) x . rest)
-     (let ((tmp x)) (%cut #t (params ...) (args ... tmp) . rest)))
-    ((%cut #f (params ...) (args ...) x . rest)
-     (%cut #t (params ...) (args ... x) . rest))))
+;; :optional feature from Gauche-0.9.1 .
+(define define
+  (macro (arg . body)
+    (if (not (pair? arg))
+        ;; (define var body)
+        (cons 'define
+              (cons arg
+                    body))
+        (%expand-define-form-lambda arg body))))
+
+(define %expand-define-form
+  (lambda (arg-and-body)
+    (let ((arg  (car arg-and-body))
+          (body (cdr arg-and-body)))
+      ;; (define (func arg...) body)
+      (if (not (pair? arg))
+          ;; (define var body)
+          (cons 'define
+                (cons arg
+                      body))
+          (%expand-define-form-lambda arg body)))))
+
+
+(define %expand-define-form-lambda
+  (lambda (arg body-list)
+    ;; (define (func arg...) body)
+    (if (pair? (cdr arg))
+        (if (pair? (car (cdr arg)))
+            (error "Error: define syntax error.")))
+    (cons 'define
+          (cons (car arg)
+                (%transform-optional-arguments arg body-list)))))
+
+
+  (define (%transform-optional-arguments arg body-list)
+    (if-let1 rest-of-opts #?=(memq :optional arg)
+             (let([opts         '()]
+                  [rest-of-opts (cdr rest-of-opts)])
+               (let loop ((arg arg))
+                 (if (eq? :optional (car arg))
+                     arg
+                     (begin
+                       (set! opts (cons (car arg) opts))
+                       (loop (cdr arg)))))
+               (let1 new-arg (apply list* (append (reverse opts) (list '___rest)))
+                 (list 'lambda
+                       new-arg
+                       `(let
+                            ,rest-of-opts
+                          ,@(map
+                             (lambda (k n)
+                               `(when (< ,n (length __rest))
+                                  (set! ,(car k) (nth ,n ___rest))))
+                             rest-of-opts
+                             (range (length rest-of-opts)))
+                          ,body-list))))
+             (list 'lambda arg body-list)))
+
+
+(%transform-optional-arguments '(arg1 arg2)
+                               '(begin 1 2))
+(pretty-print
+ (%transform-optional-arguments '(arg1 arg2 :optional (arg3 #f))
+                                '(begin 1 2)))
 
 (pretty-print
- (disasm '%cut 'expanded))
+ (%transform-optional-arguments '(arg1 arg2 :optional (arg3 #f) (arg4 #t))
+                                '(begin 1 2)))
 
-(define-syntax cut
-  (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
-(define-syntax cute
-  (syntax-rules () ((cute args ...) (%cut #t () () args ...))))
-
-(pretty-print
- (disasm 'cut 'expanded))
 
 (macroexpand
- '(map (cut + 1 <>) '(1 2 3 4)))
-
-(map (cut + 1 <>) '(1 2 3 4))
-
-(macroexpand-1
- '(%cut #f () () print <>))
-
-(%cut #f () () print <>)
-
-(macroexpand-1
- (macroexpand-1
-  '((cut print <>) 1)))
-
-(cut print <>)
-
-
-;; ------------------------------ and-let (chibi-scheme)---------------------------
-(define-syntax and-let*
-  (syntax-rules ()
-    ((and-let* () . body)
-     (begin . body))
-    ((and-let* ((var expr) . rest) . body)
-     (let ((var expr))
-       (and var (and-let* rest . body))))
-    ((and-let* ((expr) . rest) . body)
-     (let ((tmp expr))
-       (and tmp (and-let* rest . body))))))
-
-
-(and-let* ((num 1)
-           (2)
-           ("abc"))
-  num)
-
-
-
-;; ------------------------------ cond-list (Gauche-0.9.1) ---------------------------
-(define-syntax cond-list
-  (syntax-rules (=> @)
-    ((_) '())
-    ((_ (test) . rest)
-     (let* ((tmp test)
-            (r (cond-list . rest)))
-       (if tmp (cons tmp r) r)))
-    ((_ (test => proc) . rest)
-     (let* ((tmp test)
-            (r (cond-list . rest)))
-       (if tmp (cons (proc tmp) r) r)))
-    ((_ (test => @ proc) . rest)
-     (let* ((tmp test)
-            (r (cond-list . rest)))
-       (if tmp (append (proc tmp) r) r)))
-    ((_ (test @ . expr) . rest)
-     (let* ((tmp test)
-            (r (cond-list . rest)))
-       (if tmp (append (begin . expr) r) r)))
-    ((_ (test . expr) . rest)
-     (let* ((tmp test)
-            (r (cond-list . rest)))
-       (if tmp (cons (begin . expr) r) r)))
-    ))
-
- 	
-(let ((alist '((x 3) (y -1) (z 6))))
- (cond-list ((assoc 'x alist) 'have-x)
-            ((assoc 'w alist) 'have-w)
-            ((assoc 'z alist) => cadr)))
-;; (have-x 6)
-
-(let ((x 2) (y #f) (z 5))
-  (cond-list (x @ `(:x ,x))
-             (y @ `(:y ,y))
-             (z @ `(:z ,z))))
-;; (:x 2 :z 5)
-
-
-
-
-
+ '(define (a arg1 arg2 :optional arg3)
+    (begin
+      1
+      2)))
+   
