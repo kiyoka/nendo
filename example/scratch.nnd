@@ -11,6 +11,19 @@
 (error "Error: (error) func test 1" '(r a i s e))
 
 
+(define (generic-member cmp obj lst)
+  (cond
+    ((null? lst) #f)
+    ((not (pair? lst)) #f)
+    ((cmp obj (car lst)) lst)
+    (else (generic-member cmp obj (cdr lst)))))
+
+
+(memq 'b '(a b c d))
+(memq 'a '(a b c d . e))
+
+
+
 ;; :optional feature from Gauche-0.9.1 .
 
 (define %expand-define-form-lambda

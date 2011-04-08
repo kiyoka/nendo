@@ -1264,6 +1264,23 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (let1 aaa (+ 2 3) aaa) " ).should == "5"
     @nendo.evalStr( " (let1 aaa 333 (let1 bbb 444 (+ aaa bbb))) " ).should == "777"
     @nendo.evalStr( " (let1 aaa 333 (let1 bbb 444 (set! bbb 555) (+ aaa bbb))) " ).should == "888"
+    @nendo.evalStr( " (memq 'b '(a b c d)) " ).should ==                      "(b c d)"
+    @nendo.evalStr( " (memq 'c '(a b c d)) " ).should ==                      "(c d)"
+    @nendo.evalStr( " (memq 'd '(a b c d)) " ).should ==                      "(d)"
+    @nendo.evalStr( " (memq 'e '(a b c d)) " ).should ==                      "#f"
+    @nendo.evalStr( " (memq 'e '(a b c d . e)) " ).should ==                  "#f"
+    @nendo.evalStr( ' (memq "b" \'("a" "b" "c" "d")) ' ).should ==            '("b" "c" "d")'
+    @nendo.evalStr( ' (memv "b" \'("a" "b" "c" "d")) ' ).should ==            '("b" "c" "d")'
+    @nendo.evalStr( ' (memv "c" \'("a" "b" "c" "d")) ' ).should ==            '("c" "d")'
+    @nendo.evalStr( ' (memv "d" \'("a" "b" "c" "d")) ' ).should ==            '("d")'
+    @nendo.evalStr( ' (memv "e" \'("a" "b" "c" "d")) ' ).should ==           '#f'
+    @nendo.evalStr( ' (memv "e" \'("a" "b" "c" "d" . "e")) ' ).should ==     '#f'
+    @nendo.evalStr( ' (memv \'("b") \'(("a") ("b") ("c") ("d"))) ' ).should ==            '#f'
+    @nendo.evalStr( ' (member \'("b") \'(("a") ("b") ("c") ("d"))) ' ).should ==          '(("b") ("c") ("d"))'
+    @nendo.evalStr( ' (member \'("c") \'(("a") ("b") ("c") ("d"))) ' ).should ==          '(("c") ("d"))'
+    @nendo.evalStr( ' (member \'("d") \'(("a") ("b") ("c") ("d"))) ' ).should ==          '(("d"))'
+    @nendo.evalStr( ' (member \'("e") \'(("a") ("b") ("c") ("d"))) ' ).should ==          '#f'
+    @nendo.evalStr( ' (member \'("e") \'(("a") ("b") ("c") ("d") . ("e"))) ' ).should ==  '#f'
     @nendo.evalStr( " (let1 v (map (lambda (x) x) '(1 2 3))  v) " ).should == "(1 2 3)"
     @nendo.evalStr( " (let  ((v (map (lambda (x) x) '(1 2 3)))) v) " ).should == "(1 2 3)"
     @nendo.evalStr( " (cond (true  1) (false 2)) " ).should == "1"
@@ -1926,7 +1943,7 @@ describe Nendo, "tail call optimization " do
 end
 
 
-describe Nendo, "optional argument parser " do
+describe Nendo, "When use optional argument parser " do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
@@ -1938,6 +1955,23 @@ describe Nendo, "optional argument parser " do
     @nendo.evalStr( " (get-optional '(3 4) 100) " ).should == "3"
     @nendo.evalStr( " (get-optional '() #t) " ).should == "#t"
     @nendo.evalStr( " (get-optional '() #f) " ).should == "#f"
+  end
+end
+
+describe Nendo, "When use :optional argument feature " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( '(define (func arg1 arg2) (list arg1 arg2))    (func 1 2)' ).should ==                                    "(1 2)"
+    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3))  (func 1 2)' ).should ==            "(1 2 #f)"
+    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3))  (func 1 2)' ).should ==            "(1 2 #t)"
+    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2)' ).should ==            "(1 2 3)"
+    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3))  (func 1 2 30)' ).should ==         "(1 2 30)"
+    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3))  (func 1 2 40)' ).should ==         "(1 2 40)"
+    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 50)' ).should ==         "(1 2 50)"
+    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 "String")' ).should ==   '(1 2 "String")'
   end
 end
 

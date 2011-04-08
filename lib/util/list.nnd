@@ -1,3 +1,4 @@
+;;;-*- mode: nendo; syntax: scheme -*-;;
 ;;;
 ;;; util/list.nnd - more list library
 ;;;
@@ -20,6 +21,7 @@
 ;; This module adds useful list utility procedures that are not in SRFI-1.
 
 (use srfi-1)
+(use srfi-26)
 
 ;;-----------------------------------------------------------------
 ;; permissive take and drop - if the length of given list is shorter

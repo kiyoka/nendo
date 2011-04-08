@@ -40,16 +40,17 @@ end
 
 task :check do
   stage1 =  []
-  stage1 << "ruby -I ./lib /usr/local/bin/rspec -b ./test/syntax_spec.rb"
+#  stage1 << "ruby -I ./lib /usr/local/bin/rspec -b ./test/syntax_spec.rb"
   stage1 << "ruby -I ./lib /usr/local/bin/rspec -b ./test/nendo_spec.rb"
-  stage1 << "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
+#  stage1 << "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
   stage2 =  []
   stage2 << "/bin/rm -f test.record"
   stage2 << "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd     >  test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/util-test.nnd        >> test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/json-test.nnd        >> test.log"
-  stage1 << "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd      >> test.log"
-  stage1 << "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd     >> test.log"
+#  stage2 << "ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd  >> test.log"
+#  stage2 << "ruby -I ./lib ./bin/nendo ./test/json-test.nnd        >> test.log"
+#  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd      >> test.log"
+#  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd     >> test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd   >> test.log"
   stage2 << "cat test.record"
   arr = []
   arr += stage1
@@ -87,6 +88,7 @@ task :compile do
     "./lib/srfi-1.nnd",
     "./lib/srfi-2.nnd",
     "./lib/srfi-26.nnd",
+    "./lib/util/list.nnd",
     "./lib/text/html-lite.nnd",
     "./lib/text/tree.nnd", 
     "./lib/debug/syslog.nnd",
