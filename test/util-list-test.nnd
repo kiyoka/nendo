@@ -1,0 +1,174 @@
+;;-*- mode: nendo; syntax: scheme -*-;;
+;;
+;; util-list-test.nnd - test suite for util.list
+;;  
+;;   Copyright (c) 2000-2010  Shiro Kawai  <shiro@acm.org>
+;;   
+;;   Redistribution and use in source and binary forms, with or without
+;;   modification, are permitted provided that the following conditions
+;;   are met:
+;;   
+;;   1. Redistributions of source code must retain the above copyright
+;;      notice, this list of conditions and the following disclaimer.
+;;  
+;;   2. Redistributions in binary form must reproduce the above copyright
+;;      notice, this list of conditions and the following disclaimer in the
+;;      documentation and/or other materials provided with the distribution.
+;;  
+;;   3. Neither the name of the authors nor the names of its contributors
+;;      may be used to endorse or promote products derived from this
+;;      software without specific prior written permission.
+;;  
+;;   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+;;   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+;;   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+;;   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+;;   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+;;   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+;;   TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+;;   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+;;   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+(use nendo.test)
+(test-start "util")
+
+;;===================================================================
+;;-------------------------------------------------------------------
+
+(test-section "util.list")
+(use util.list)
+(test-module 'util.list)
+
+(test* "split-at* (normal)" '((a b c) (d))
+       (receive r (split-at* '(a b c d) 3) r))
+(test* "split-at* (boundary)" '(() (a b c d))
+       (receive r (split-at* '(a b c d) 0) r))
+(test* "split-at* (boundary)" '((a b c d) ())
+       (receive r (split-at* '(a b c d) 4) r))
+;;(test* "split-at* (error)" (test-error)
+;;       (receive r (split-at* '(a b c d) -1) r))
+(test* "split-at* (shorten)" '((a b c d) ())
+       (receive r (split-at* '(a b c d) 5) r))
+(test* "split-at* (fill)" '((a b c d #f #f) ())
+       (receive r (split-at* '(a b c d) 6 #t) r))
+(test* "split-at* (fill)" '((a b c d z z) ())
+       (receive r (split-at* '(a b c d) 6 #t 'z) r))
+
+(test* "take* (normal)" '(a b c)      (take* '(a b c d) 3))
+(test* "take* (boundary)" '()         (take* '(a b c d) 0))
+(test* "take* (boundary)" '(a b c d)  (take* '(a b c d) 4))
+;;(test* "take* (error)" (test-error)   (take* '(a b c d) -1))
+(test* "take* (shorten)" '(a b c d)   (take* '(a b c d) 5))
+(test* "take* (fill)" '(a b c d #f #f) (take* '(a b c d) 6 #t))
+(test* "take* (fill)" '(a b c d z z)  (take* '(a b c d) 6 #t 'z))
+
+(test* "drop* (normal)" '(c d)       (drop* '(a b c d) 2))
+(test* "drop* (boundary)" '(a b c d) (drop* '(a b c d) 0))
+(test* "drop* (boundary)" '()        (drop* '(a b c d) 4))
+;;(test* "drop* (error)" (test-error)  (drop* '(a b c d) -3))
+(test* "drop* (past)" '()            (drop* '(a b c d) 5))
+
+(test* "take-right* (normal)" '(b c d)  (take-right* '(a b c d) 3))
+(test* "take-right* (boundary)" '()     (take-right* '(a b c d) 0))
+(test* "take-right* (boundary)" '(a b c d) (take-right* '(a b c d) 4))
+;;(test* "take-right* (error)" (test-error)  (take-right* '(a b c d) -1))
+(test* "take-right* (shorten)" '(a b c d)  (take-right* '(a b c d) 6))
+(test* "take-right* (fill)" '(z z a b c d) (take-right* '(a b c d) 6 #t 'z))
+
+(test* "drop-right* (normal)" '(a b c)  (drop-right* '(a b c d) 1))
+(test* "drop-right* (boundary)" '()     (drop-right* '(a b c d) 4))
+(test* "drop-right* (boundary)" '(a b c d) (drop-right* '(a b c d) 0))
+;;(test* "drop-right* (error)" (test-error)  (drop-right* '(a b c d) -1))
+(test* "drop-right* (past)" '()         (drop-right* '(a b c d) 7))
+
+(test* "slices (normal)" '((0 1 2 3) (4 5 6 7) (8 9 10 11) (12 13 14 15))
+       (slices (iota 16) 4))
+(test* "slices (boundary)" '()
+       (slices '() 4))
+(test* "slices (short)" '((0 1 2 3) (4 5 6 7) (8 9 10 11) (12))
+       (slices (iota 13) 4))
+(test* "slices (short)" '((0 1))
+       (slices (iota 2) 4))
+(test* "slices (fill)" '((0 1 2 3) (4 5 6 7) (8 9 10 11) (12 #f #f #f))
+       (slices (iota 13) 4 #t))
+(test* "slices (fill)" '((0 1 2 3) (4 5 6 7) (8 9 10 11) (12 -1 -1 -1))
+       (slices (iota 13) 4 #t -1))
+
+(test* "intersperse" '(1 + 2 + 3) (intersperse '+ '(1 2 3)))
+(test* "intersperse" '(1 + 2) (intersperse '+ '(1 2)))
+(test* "intersperse" '(1) (intersperse '+ '(1)))
+(test* "intersperse" '() (intersperse '+ '()))
+
+(test* "cond-list" '() (cond-list))
+(test* "cond-list" '(a) (cond-list ('a)))
+(test* "cond-list" '(a) (cond-list (#t 'a) (#f 'b)))
+(test* "cond-list" '(b) (cond-list (#f 'a) (#t 'b)))
+(test* "cond-list" '(a b d) (cond-list (#t 'a) (#t 'b) (#f 'c) (#t 'd)))
+(test* "cond-list" '((b)) (cond-list (#f 'a) ('b => list)))
+(test* "cond-list" '(a b c d x)
+       (cond-list (#t @ '(a b)) (#t @ '(c d)) (#f @ '(e f))
+                  ('x => @ list)))
+
+(test* "alist->hash-table" '(a b)
+       (let ((ht (alist->hash-table '((5 . b) (3 . a)) 'eqv?)))
+         (list (hash-table-get ht 3)
+               (hash-table-get ht 5))))
+(test* "hash-table->alist" '(("a" . 3) ("b" . 5))
+       (let ((a (hash-table->alist
+                 (hash-table 'equal? '("a" . 3) '("b" . 5)))))
+         (list (assoc "a" a)
+               (assoc "b" a))))
+
+(test* "rassoc" '(5 . "b")
+       (rassoc "b" '((3 . "a") (5 . "b"))))
+(test* "rassq" '(5 . b)
+       (rassq 'b '((3 . a) (5 . b))))
+(test* "rassv" '("b" . 5)
+       (rassoc 5 '(("a" . 3) ("b" . 5))))
+
+(test* "assoc-ref" 5
+       (assoc-ref '(("a" . 3) ("b" . 5)) "b"))
+(test* "assoc-ref" 7
+       (assoc-ref '(("a" . 3) ("b" . 5)) "c" 7))
+(test* "assq-ref" 5
+       (assq-ref '((a . 3) (b . 5)) 'b))
+(test* "assq-ref" 7
+       (assq-ref '((a . 3) (b . 5)) 'c 7))
+(test* "assv-ref" 'b
+       (assv-ref '((3 . a) (5 . b)) 5))
+(test* "assv-ref" 'c
+       (assv-ref '((3 . a) (5 . b)) 7 'c))
+
+(test* "rassoc-ref" 5
+       (rassoc-ref '((3 . "a") (5 . "b")) "b"))
+(test* "rassoc-ref" 7
+       (rassoc-ref '((3 . "a") (5 . "b")) "c" 7))
+(test* "rassq-ref" 5
+       (rassq-ref '((3 . a) (5 . b)) 'b))
+(test* "rassq-ref" #f
+       (rassq-ref '((3 . a) (5 . b)) 'c))
+(test* "rassv-ref" 'b
+       (rassv-ref '((a . 3) (b . 5)) 5))
+(test* "rassv-ref" #f
+       (rassv-ref '((a . 3) (b . 5)) 7))
+
+(test* "assoc-set!" '(("a" . 3) ("b" . 9))
+       (assoc-set! (list (cons "a" 3) (cons "b" 5)) "b" 9))
+(test* "assoc-set!" '(("c" . 9) ("a" . 3) ("b" . 5))
+       (assoc-set! (list (cons "a" 3) (cons "b" 5)) "c" 9))
+(test* "assq-set!" '((a . 3) (b . 9))
+       (assq-set! (list (cons 'a 3) (cons 'b 5)) 'b 9))
+(test* "assq-set!" '((c . 9) (a . 3) (b . 5))
+       (assq-set! (list (cons 'a 3) (cons 'b 5)) 'c 9))
+(test* "assv-set!" '((3 . a) (5 . c))
+       (assv-set! (list (cons 3 'a) (cons 5 'b)) 5 'c))
+(test* "assv-set!" '((9 . c) (3 . a) (5 . b))
+       (assv-set! (list (cons 3 'a) (cons 5 'b)) 9 'c))
+
+
+
+;;===================================================================
+(test-end)
