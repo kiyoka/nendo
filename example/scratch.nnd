@@ -27,22 +27,32 @@
   (define (%transform-optional-arguments arg body-list)
     (if-let1 rest-of-opts (memq :optional arg)
              (let([opts         '()]
-                  [rest-of-opts (cdr rest-of-opts)])
+                  [rest-of-opts (cdr rest-of-opts)]
+                  [_rest        (gensym)])
+               ;; arguemnt form check
+               (for-each
+                (lambda (x)
+                  (let1 syntax-is-ok  (if (pair? x)
+                                          (= 2 (length x))
+                                          #f)
+                    (unless syntax-is-ok
+                      (error "Error:  :optional format is illegal ... " arg))))
+                rest-of-opts)
                (let loop ((arg arg))
                  (if (eq? :optional (car arg))
                      arg
                      (begin
                        (set! opts (cons (car arg) opts))
                        (loop (cdr arg)))))
-               (let1 new-arg (apply list* (append (reverse opts) (list '___rest)))
+               (let1 new-arg (apply list* (append (reverse opts) (list _rest)))
                  (list 'lambda
                        new-arg
                        `(let
                             ,rest-of-opts
                           ,@(map
                              (lambda (k n)
-                               `(when (< ,n (length ___rest))
-                                  (set! ,(car k) (nth ,n ___rest))))
+                               `(when (< ,n (length ,_rest))
+                                  (set! ,(car k) (nth ,n ,_rest))))
                              rest-of-opts
                              (range (length rest-of-opts)))
                           ,@body-list))))
@@ -57,6 +67,20 @@
 
 (pretty-print
  (%transform-optional-arguments '(arg1 arg2 :optional (arg3 #f) (arg4 #t))
+                                '((begin 1 2))))
+
+(pretty-print
+ (%transform-optional-arguments '(arg1 arg2 :optional illegal-arg (arg3 #f) (arg4 #t))
+                                '((begin 1 2))))
+(pretty-print
+ (%transform-optional-arguments '(arg1 arg2 :optional (arg3 #f) (arg4 #t) illegal-arg)
+                                '((begin 1 2))))
+(pretty-print
+ (%transform-optional-arguments '(arg1 arg2 :optional (arg3 #f) illegal-arg (arg4 #t))
+                                '((begin 1 2))))
+
+(pretty-print
+ (%transform-optional-arguments '(arg1 arg2 :optional (arg3 #f #f))
                                 '((begin 1 2))))
 
 
