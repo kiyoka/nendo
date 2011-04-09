@@ -132,13 +132,13 @@
 ;;
 
 ;; conversion to/from hash-table
-;;(define (alist->hash-table a . opt-eq)
-;;  (let ((tb (apply make-hash-table opt-eq)))
-;;    (for-each (lambda (x) (hash-table-put! tb (car x) (cdr x))) a)
-;;    tb))
+(define (alist->hash-table a . opt-eq)
+  (let ((tb (apply make-hash-table opt-eq)))
+    (for-each (lambda (x) (hash-table-put! tb (car x) (cdr x))) a)
+    tb))
 
-;;(define (hash-table->alist h)
-;;  (hash-table-map h cons))
+(define (hash-table->alist h)
+  (hash-table-map h cons))
 
 ;; `reverse' alist search fn
 (define (rassoc key alist :optional (eq equal?))
