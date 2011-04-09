@@ -833,16 +833,12 @@ module Nendo
     def _equal_QUMARK( a, b )
       if a.is_a? String  and  b.is_a? String
         a === b
+      elsif _null_QUMARK( a ) and _null_QUMARK( b )
+        true
       elsif a.class != b.class
         false
       elsif a.class == Cell
-        if a.isNull and b.isNull
-          true
-        else
-          _equal_QUMARK( a.car, b.car ) and _equal_QUMARK( a.cdr, b.cdr )
-        end
-      elsif a.class == Nil and b.class == Nil
-        true
+        _equal_QUMARK( a.car, b.car ) and _equal_QUMARK( a.cdr, b.cdr )
       else
         (a === b)
       end
