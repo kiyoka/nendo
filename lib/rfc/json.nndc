@@ -19,6 +19,21 @@ trampCall(
 #--------------------
 
 trampCall( 
+  delayCall( '_load',  'load',
+      begin
+        if @global_lisp_binding.has_key?('_load') then
+          trampCall(@_load)
+        else raise NameError.new( "Error: undefined variable _load", "_load" ) end
+        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+      end    ,
+  [
+      "util/list"
+  ]
+               )
+ )
+#--------------------
+
+trampCall( 
   begin
       def self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist'] = self.method( :__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD )
@@ -517,7 +532,7 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       begin
-                        ___lambda = lambda { |___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_20019| 
+                        ___lambda = lambda { |___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80019| 
                             if ( 
                               trampCall( self._null_QUMARK_METHOD(  'null?',
                                   begin
@@ -528,7 +543,7 @@ trampCall(
                                   end                                ,
                               [
                                     begin
-                                        trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_20019)
+                                        trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80019)
                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                     end
                               ]
@@ -548,7 +563,7 @@ trampCall(
                                     end                                  ,
                                 [
                                       begin
-                                          trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_20019)
+                                          trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80019)
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end
                                 ]
@@ -631,7 +646,7 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       begin
-                        ___lambda = lambda { |___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_20020| 
+                        ___lambda = lambda { |___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80020| 
                             if ( 
                               trampCall( self._null_QUMARK_METHOD(  'null?',
                                   begin
@@ -642,7 +657,7 @@ trampCall(
                                   end                                ,
                               [
                                     begin
-                                        trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_20020)
+                                        trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80020)
                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                     end
                               ]
@@ -662,7 +677,7 @@ trampCall(
                                     end                                  ,
                                 [
                                       begin
-                                          trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_20020)
+                                          trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80020)
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end
                                 ]

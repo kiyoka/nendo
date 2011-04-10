@@ -147,33 +147,38 @@
 (define rassq (cut rassoc <> <> eq?))
 (define rassv (cut rassoc <> <> eqv?))
 
+
+;; -- These functions are disable for Nendo, because Nendo unsupport
+;;    multi-method dispatch feature.
+
 ;; 'assoc-ref', a shortcut of value retrieval w/ default value
 ;; Default parameter comes first, following the convention of
 ;; other *-ref functions.
-(define (assoc-ref alist key :optional (default #f) (eq equal?))
-  (cond [(assoc key alist eq) => cdr]
-        [else default]))
 
-(define (assq-ref alist key . opts)
-  (assoc-ref alist key (get-optional opts #f) eq?))
-(define (assv-ref alist key . opts)
-  (assoc-ref alist key (get-optional opts #f) eqv?))
-
-(define (rassoc-ref alist key :optional (default #f) (eq equal?))
-  (cond [(rassoc key alist eq) => car]
-        [else default]))
-
-(define (rassq-ref alist key . opts)
-  (rassoc-ref alist key (get-optional opts #f) eq?))
-(define (rassv-ref alist key . opts)
-  (rassoc-ref alist key (get-optional opts #f) eqv?))
-
-;; 'assoc-set!'
-(define (assoc-set! alist key val :optional (eq equal?))
-  (cond [(assoc key alist eq)
-         => (lambda (p) (set-cdr! p val) alist)]
-        [else (acons key val alist)]))
-
-(define assq-set!  (cut assoc-set! <> <> <> eq?))
-(define assv-set!  (cut assoc-set! <> <> <> eqv?))
+;;(define (assoc-ref alist key :optional (default #f) (eq equal?))
+;;  (cond [(assoc key alist eq) => cdr]
+;;        [else default]))
+;;
+;;(define (assq-ref alist key . opts)
+;;  (assoc-ref alist key (get-optional opts #f) eq?))
+;;(define (assv-ref alist key . opts)
+;;  (assoc-ref alist key (get-optional opts #f) eqv?))
+;;
+;;(define (rassoc-ref alist key :optional (default #f) (eq equal?))
+;;  (cond [(rassoc key alist eq) => car]
+;;        [else default]))
+;;
+;;(define (rassq-ref alist key . opts)
+;;  (rassoc-ref alist key (get-optional opts #f) eq?))
+;;(define (rassv-ref alist key . opts)
+;;  (rassoc-ref alist key (get-optional opts #f) eqv?))
+;;
+;;;; 'assoc-set!'
+;;(define (assoc-set! alist key val :optional (eq equal?))
+;;  (cond [(assoc key alist eq)
+;;         => (lambda (p) (set-cdr! p val) alist)]
+;;        [else (acons key val alist)]))
+;;
+;;(define assq-set!  (cut assoc-set! <> <> <> eq?))
+;;(define assv-set!  (cut assoc-set! <> <> <> eqv?))
 
