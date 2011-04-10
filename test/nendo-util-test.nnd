@@ -32,7 +32,7 @@
     var))
 
 (test* "disasm info"
-" file:   ./test/util-test.nnd 
+" file:   ./test/nendo-util-test.nnd 
  lineno: 30 
  source: 
 (define
@@ -69,7 +69,7 @@ trampCall(
                 ___lambda = lambda { |_var| 
                     begin
                         trampCall(_var)
-                      rescue => __e ; __e.set_backtrace( [\"./test/util-test.nnd:32\"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:32\"] + __e.backtrace ) ; raise __e
                     end
                 } ; ___lambda.call(
                       trampCall( self.__PLMARK_METHOD(  '+',
@@ -77,12 +77,12 @@ trampCall(
                             if @global_lisp_binding.has_key?('__PLMARK') then
                               trampCall(@__PLMARK)
                             else raise NameError.new( \"Error: undefined variable __PLMARK\", \"__PLMARK\" ) end
-                            rescue => __e ; __e.set_backtrace( [\"./test/util-test.nnd:31\"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:31\"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                                 trampCall(_arg1)
-                              rescue => __e ; __e.set_backtrace( [\"./test/util-test.nnd:31\"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:31\"] + __e.backtrace ) ; raise __e
                             end                          ,
                           1
                       ]
