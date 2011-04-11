@@ -648,6 +648,54 @@
 
 
 
+;; ----------------------------------------
+;; :optional argument feature for define  (The original is Gauche 0.9.1's feature)
+;;  like  "(define (func a b : optional (c #f)) ... )"
+;; ----------------------------------------
+(define (%transform-optional-arguments arg body-list)
+  (if-let1 rest-of-opts (memq :optional arg)
+    (let([opts         '()]
+         [rest-of-opts (cdr rest-of-opts)]
+         [_rest        (gensym)])
+      ;; arguemnt form check
+      (for-each
+       (lambda (x)
+         (let1 syntax-is-ok  (if (pair? x)
+                                 (= 2 (length x))
+                                 #f)
+           (unless syntax-is-ok
+             (error "Error:  :optional format is illegal ... " arg))))
+       rest-of-opts)
+      (let loop ((arg arg))
+        (if (eq? :optional (car arg))
+            arg
+            (begin
+              (set! opts (cons (car arg) opts))
+              (loop (cdr arg)))))
+      (let1 new-arg (apply list* (append (reverse opts) (list _rest)))
+        (list 'lambda
+              new-arg
+              `(let
+                   ,rest-of-opts
+                 ,@(map
+                    (lambda (k n)
+                      `(when (< ,n (length ,_rest))
+                         (set! ,(car k) (nth ,n ,_rest))))
+                    rest-of-opts
+                    (range (length rest-of-opts)))
+                 ,@body-list))))
+    `(lambda ,arg ,@body-list)))
+
+(define %expand-define-form-lambda
+  (lambda (arg body-list)
+    ;; (define (func arg...) body)
+    (if (pair? (cdr arg))
+        (if (pair? (car (cdr arg)))
+            (error "Error: define syntax error.")))
+    (cons 'define
+          (list (car arg)
+                (%transform-optional-arguments (cdr arg) body-list)))))
+
 
 
 ;; ----------------------------------------
@@ -1628,57 +1676,6 @@
                  forms)
                 (list (list _error "no expansion for"
                             (list (rename 'strip-syntactic-closures) _expr)))))))))))
-
-
-
-;; ----------------------------------------
-;; :optional argument feature for define  (The original is Gauche 0.9.1's feature)
-;;  like  "(define (func a b : optional (c #f)) ... )"
-;; ----------------------------------------
-(define (%transform-optional-arguments arg body-list)
-  (if-let1 rest-of-opts (memq :optional arg)
-    (let([opts         '()]
-         [rest-of-opts (cdr rest-of-opts)]
-         [_rest        (gensym)])
-      ;; arguemnt form check
-      (for-each
-       (lambda (x)
-         (let1 syntax-is-ok  (if (pair? x)
-                                 (= 2 (length x))
-                                 #f)
-           (unless syntax-is-ok
-             (error "Error:  :optional format is illegal ... " arg))))
-       rest-of-opts)
-      (let loop ((arg arg))
-        (if (eq? :optional (car arg))
-            arg
-            (begin
-              (set! opts (cons (car arg) opts))
-              (loop (cdr arg)))))
-      (let1 new-arg (apply list* (append (reverse opts) (list _rest)))
-        (list 'lambda
-              new-arg
-              `(let
-                   ,rest-of-opts
-                 ,@(map
-                    (lambda (k n)
-                      `(when (< ,n (length ,_rest))
-                         (set! ,(car k) (nth ,n ,_rest))))
-                    rest-of-opts
-                    (range (length rest-of-opts)))
-                 ,@body-list))))
-    `(lambda ,arg ,@body-list)))
-
-(define %expand-define-form-lambda
-  (lambda (arg body-list)
-    ;; (define (func arg...) body)
-    (if (pair? (cdr arg))
-        (if (pair? (car (cdr arg)))
-            (error "Error: define syntax error.")))
-    (cons 'define
-          (list (car arg)
-                (%transform-optional-arguments (cdr arg) body-list)))))
-
 
 
 ;;[EOS]
