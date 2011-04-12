@@ -38,7 +38,7 @@ rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
 
-task :check do
+task :test do
   stage1 =  []
   stage1 << "ruby -I ./lib /usr/local/bin/rspec -b ./test/syntax_spec.rb"
   stage1 << "ruby -I ./lib /usr/local/bin/rspec -b ./test/nendo_spec.rb"
