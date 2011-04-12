@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{nendo}
-  s.version = "0.4.1"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2011-01-27}
+  s.date = %q{2011-04-13}
   s.default_executable = %q{nendo}
   s.description = %q{Nendo is a programming language written in Ruby.}
   s.email = %q{kiyoka@sumibi.org}
@@ -52,22 +52,33 @@ Gem::Specification.new do |s|
     "lib/rfc/json.nndc",
     "lib/srfi-1.nnd",
     "lib/srfi-1.nndc",
+    "lib/srfi-2.nnd",
+    "lib/srfi-2.nndc",
+    "lib/srfi-26.nnd",
+    "lib/srfi-26.nndc",
     "lib/text/html-lite.nnd",
     "lib/text/html-lite.nndc",
     "lib/text/tree.nnd",
     "lib/text/tree.nndc",
+    "lib/util/list.nnd",
+    "lib/util/list.nndc",
     "test/json-test.nnd",
+    "test/nendo-util-test.nnd",
     "test/nendo_spec.rb",
     "test/srfi-1-test.nnd",
+    "test/srfi-2-test.nnd",
+    "test/srfi-26-test.nnd",
+    "test/syntax_spec.rb",
     "test/textlib-test.nnd",
-    "test/util-test.nnd"
+    "test/util-list-test.nnd"
   ]
   s.homepage = %q{http://github.com/kiyoka/nendo}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Nendo is a dialect of Lisp.}
   s.test_files = [
-    "test/nendo_spec.rb"
+    "test/nendo_spec.rb",
+    "test/syntax_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
