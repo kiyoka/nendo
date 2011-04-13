@@ -2,7 +2,7 @@
 #                                                  Rakefile for Nendo
 # Release Engineering
 #   1. edit the VERSION.yml file
-#   2. rake compile  &&   rake check
+#   2. rake compile  &&   rake test
 #   3. rake gemspec  &&   rake build
 #      to generate nendo-x.x.x.gem
 #   4. install nendo-x.x.x.gem to clean environment and test
