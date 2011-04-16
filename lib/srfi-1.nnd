@@ -1057,11 +1057,15 @@
     (check-arg procedure? elt= delete-duplicates!)
     (let recur ((lis lis))
       (if (null-list? lis) lis
-	  (let* ((x (car lis))
-		 (tail (cdr lis))
-		 (new-tail (recur (delete! x tail elt=))))
-	    (if (eq? tail new-tail) lis (cons x new-tail)))))))
-
+          (let* ((x (car lis))
+                 (tail (cdr lis))
+                 (new-tail (recur (delete! x tail elt=))))
+            (if (eq? tail new-tail)
+                lis
+                (begin
+                  (set-car! lis x)
+                  (set-cdr! lis new-tail)
+                  lis)))))))
 
 ;;; alist stuff
 ;;;;;;;;;;;;;;;

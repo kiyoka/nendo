@@ -22,9 +22,6 @@
   (for-each display xs)
   (newline))
 
-(define (fixme token)
-  (printf "FIXME!: %s test was pending.\n" token))
-  
 (define (fail token . more)
   (error (sprintf "Error: test failed: %s" token))
   #f)
@@ -533,6 +530,13 @@
 	   (every (lambda (x) (memq x cells)) (pair-fold cons '() r))))
     (fail 'delete!:1))
 
+(or (let* ((x     (list 1 48 2 5 37))
+	   (cells (pair-fold cons '() x))
+	   (r     (delete! 5 x >)))
+      (and (equal? r '(48 5 37))
+	   (every (lambda (x) (memq x cells)) (pair-fold cons '() r))))
+    (fail 'delete!:2))
+
 (or (equal? '((a . 3) (b . 7) (c . 1))
 	    (delete-duplicates '((a . 3) (b . 7) (a . 9) (c . 1))
 			       (lambda (x y) (eq? (car x) (car y)))))
@@ -545,7 +549,7 @@
            (r     (delete-duplicates! x)))
       (and (equal? '(a b c z) r)
            (every (lambda (x) (memq x cells)) (pair-fold cons '() r))))
-    (fixme 'delete-duplicates!:1))
+    (fail 'delete-duplicates!:1))
 
 (or (equal? '(3 . #t) (assoc 6 
                              '((4 . #t) (3 . #t) (5 . #t))
