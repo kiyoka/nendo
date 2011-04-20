@@ -1960,68 +1960,11 @@ describe Nendo, "When use :optional argument feature " do
     @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3))  (func 1 2 40)' ).should ==         "(1 2 40)"
     @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 50)' ).should ==         "(1 2 50)"
     @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 "String")' ).should ==   '(1 2 "String")'
-  end
-end
 
-
-describe Nendo, "(load path) and *load-path*" do
-  before do
-    @nendo = Nendo::Core.new()
-    @nendo.loadInitFile
-  end
-  it "should" do
-    @nendo.evalStr( ' (when (load "nendo/test")                   #t) ' ).should ==  "#t"
-    @nendo.evalStr( ' (when (load "nendo/test.nnd")               #t) ' ).should ==  "#t"
-    @nendo.evalStr( ' (when (load "nendo/test.nnd")               #t) ' ).should ==  "#t"
-    @nendo.evalStr( ' (when (load "./lib/nendo/test.nnd")         #t) ' ).should ==  "#t"
-    @nendo.evalStr( ' (when (load "../nendo/lib/nendo/test.nnd")  #t) ' ).should ==  "#t"
-    @nendo.evalStr( ' (when (use nendo.test) #t)   ' ).should ==                     "#t"
-    @nendo.evalStr( ' (set! *load-path* (list "a" "b")) ' ).should ==                '("a" "b")'
-    @nendo.evalStr( ' (add-load-path "./lib") ' ).should ==                          '("./lib" "a" "b")'
-    @nendo.evalStr( ' (add-load-path "./bin" #t) ' ).should ==                       '("./lib" "a" "b" "./bin")'
-    @nendo.evalStr( ' (when (load "nendo/test")                   #t) ' ).should ==  "#t"
-    lambda{ @nendo.evalStr( " (when (load \"nendo/not-exist-file\") #t) " ) }.should   raise_error(RuntimeError)
-  end
-end
-
-
-describe Nendo, "nendo.test library " do
-  before do
-    @nendo = Nendo::Core.new()
-    @nendo.loadInitFile
-  end
-  it "should" do
-        @nendo.evalStr( ' (when (load "nendo/test")                   #t) ' ).should ==  "#t"
-    @nendo.evalStr( " (when (File.exist? *test-record-file*) (File.unlink *test-record-file*))  #t" ).should == "#t"
-    @nendo.evalStr( " (test-output-file (.open \"/dev/null\" \"w\"))  #t" ).should == "#t"
-    @nendo.evalStr( " (test-start   \"EMPTY\") " ).should ==                                              '"EMPTY"'
-    @nendo.evalStr( " (test-section \"EMPTY-SECTION\") " ).should ==                                      '"EMPTY-SECTION"'
-    @nendo.evalStr( " (test-end) " ).should ==                                                            '0'
-    @nendo.evalStr( " *test-counts* " ).should ==                                                         '#(0 0 0 0)'
-
-    @nendo.evalStr( " (test-start   \"SUCCESS\") " ).should ==                                            '"SUCCESS"'
-    @nendo.evalStr( " (test-section \"SUCCESS-SECTION\") " ).should ==                                    '"SUCCESS-SECTION"'
-    @nendo.evalStr( " (test  \"test 1\" 1 (lambda () 1))                  *test-counts*" ).should ==      '#(1 1 0 0)'
-    @nendo.evalStr( " (test* \"test 2\" 1 1 eq?)                          *test-counts*" ).should ==      '#(2 2 0 0)'
-    @nendo.evalStr( " (test* \"test 3\" (+ 2 2) (* 2 2) eqv?)             *test-counts*" ).should ==      '#(3 3 0 0)'
-    @nendo.evalStr( " (test* \"test 4\" \"abc\" (+ \"a\" \"b\" \"c\"))    *test-counts*" ).should ==      '#(4 4 0 0)'
-    @nendo.evalStr( " (test* \"test 5\" '(1 . 2)  (cons 1 2))             *test-counts*" ).should ==      '#(5 5 0 0)'
-    @nendo.evalStr( " (test-end) " ).should ==                                                            '0'
-    @nendo.evalStr( " *test-counts* " ).should ==                                                         '#(5 5 0 0)'
-
-    @nendo.evalStr( " (test-start   \"FAIL\") " ).should ==                                               '"FAIL"'
-    @nendo.evalStr( " (test-section \"FAIL-SECTION\") " ).should ==                                       '"FAIL-SECTION"'
-    @nendo.evalStr( " (test  \"test 6\" 1 (lambda () 2))                  *test-counts*" ).should ==      '#(6 5 1 0)'
-    @nendo.evalStr( " (test* \"test 7\" 1 2 eqv?)                         *test-counts*" ).should ==      '#(7 5 2 0)'
-    @nendo.evalStr( " (test* \"test 8\" '(1) '(1) eq?)                    *test-counts*" ).should ==      '#(8 5 3 0)'
-    @nendo.evalStr( " (test* \"test 9\" \"ABC\" (+ \"a\" \"b\" \"c\"))    *test-counts*" ).should ==      '#(9 5 4 0)'
-    @nendo.evalStr( " (test* \"test 10\" '(1 . 2)  (cons 10 20))          *test-counts*" ).should ==      '#(10 5 5 0)'
-    @nendo.evalStr( " (test-end) " ).should ==                                                            '5'
-    @nendo.evalStr( " *test-counts* " ).should ==                                                         '#(10 5 5 0)'
-
-    @nendo.evalStr( " (define data #f)   data" ).should ==                                                "#f"
-    @nendo.evalStr( " (with-open *test-record-file* (lambda (in) (set! data (in.readline.chomp))))  data " ).should == 
-      '"Total:    10 tests,     5 passed,     5 failed,     0 aborted."'
+    @nendo.evalStr( '(define func (lambda (arg1 arg2) (list arg1 arg2)))   (func 1 2)' ).should ==                            '(1 2)'
+    lambda { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.should   raise_error( RuntimeError, /handle keyword argument/ )
+    lambda { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.should   raise_error( RuntimeError, /handle keyword argument/ )
+    lambda { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.should   raise_error( RuntimeError, /handle keyword argument/ )
   end
 end
 

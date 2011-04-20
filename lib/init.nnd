@@ -642,12 +642,22 @@
 ;; ----------------------------------------
 ;;  lambda & macro
 ;; ----------------------------------------
+(define (%%optional-argument-check target arg-and-body)
+  (let1 arg-list (if (list? arg-and-body)
+                     (car arg-and-body)
+                     '())
+    (when (list? arg-list)
+      (when (any (lambda (x) (keyword? x)) arg-list)
+        (errorf "Error: %s can't handle keyword argument." target)))))
+
 (define lambda
   (macro src
+    (%%optional-argument-check 'lambda src)
     (%internal-define-to-letrec 'lambda src)))
 
 (define macro
   (macro src
+    (%%optional-argument-check 'macro src)
     (%internal-define-to-letrec 'macro src)))
 
 ;; ----------------------------------------
