@@ -1550,9 +1550,15 @@ module Nendo
       }
     end
 
+    def isDefines( sym )
+      [ :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ] ].include?( sym )
+    end
+
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
-      case funcname
-      when :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ]   # `define' special form
+      printf( "execFunc: class=%s str=%s\n", funcname.class, funcname.to_s ) if @debug
+
+      if isDefines( funcname )
+        p "execFunc is Defines" if @debug
         ar = args.cdr.map { |x| x.car }
         variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
@@ -1573,7 +1579,7 @@ module Nendo
            "trampCall(", [ ar ], ")"],
           "end"
         ]
-      when :error, @core_syntax_hash[ :error ]
+      elsif :error == funcname or  @core_syntax_hash[ :error ] == funcname
         arr = if args.length < 2
                 args.car
               else
@@ -1626,14 +1632,23 @@ module Nendo
         end
       end
     end
-  
+
+    def makeSetVariable( car, cdr, locals, sourceInfo )
+      cdr.cdr.each { |x|
+        if Cell == x.class
+          x.car = translate( x.car, locals, sourceInfo )
+        end
+      }
+      execFunc( car, cdr, car.sourcefile, car.lineno, locals, sourceInfo, EXEC_TYPE_ANONYMOUS )
+    end
+
     def makeBegin( args, locals )
       ar = args.map { |e|
         translate( e.car, locals )
       }
       ["begin", ar, "end"]
     end
-  
+
     # returns [ argsyms[], string ]
     def toRubyParameter( argform )
       argsyms = []
@@ -1754,7 +1769,7 @@ module Nendo
         sprintf( "           )")],
        "end"]
     end
-  
+
     def apply( car, cdr, sourcefile, lineno, locals, sourceInfo, execType )
       cdr.each { |x| 
         if Cell == x.class
@@ -1763,7 +1778,7 @@ module Nendo
       }
       execFunc( car, cdr, sourcefile, lineno, locals, sourceInfo, execType )
     end
-  
+
     def genQuote( sexp, str = "" )
       origStr = str
       case sexp
@@ -1858,6 +1873,9 @@ module Nendo
           raise NameError, "Error: can't eval dotted pair."
         elsif sexp.isNull
           [ "Cell.new()" ]
+        elsif isDefines( car )
+          printf( "kiyoka1: class=%s str=%s\n", car.class, car.to_s ) if @debug
+          self.makeSetVariable( car, sexp.cdr, locals, sourceInfo )
         elsif Cell == sexp.car.class
           self.apply( translate( sexp.car, locals, sourceInfo ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, sourceInfo, EXEC_TYPE_ANONYMOUS )
         elsif :begin == car
@@ -1915,95 +1933,11 @@ module Nendo
         end
       end
     end
-  
-    # insert quote in let argument list
-    #  ((sym1 list1)
-    #   (sym2 list2)
-    #   (sym3 list3))
-    # will be transformed
-    #  (((quote sym1) list1)
-    #   ((quote sym2) list2)
-    #   ((quote sym3) list3))
-    def letArgumentList( sexp )
-      sexp.each { |arg|
-        arg.car.car = Cell.new( :quote, Cell.new( arg.car.car ))
-        arg.car.cdr = quotingPhase( arg.car.cdr )
-      }
+
+    def quotingPhase( sexp )
       sexp
     end
-  
-    def quotingPhase( sexp )
-      case sexp
-      when Cell
-        car = sexp.car
-        if :quote == car or :quasiquote == car or :"syntax-quote" == car or
-            @core_syntax_hash[ :quote ] == car or
-            @core_syntax_hash[ :quasiquote ] == car or
-            @core_syntax_hash[ :"syntax-quote" ] == car
-          sexp
-        elsif :define == car or :set! == car or :lambda == car or :macro == car or :"&block" == car or :"%syntax" == car or :"define-syntax" == car or
-            @core_syntax_hash[ :define ] == car or
-            @core_syntax_hash[ :set! ] == car or
-            @core_syntax_hash[ :lambda ] == car or
-            @core_syntax_hash[ :macro ] == car or
-            @core_syntax_hash[ :"&block" ] == car or
-            @core_syntax_hash[ :"%syntax" ] == car or 
-            @core_syntax_hash[ :"define-syntax" ] == car
-          if @debug
-            if 2 >= sexp.length
-              printf( "\n    quotingPhase-1      label=%s, sexp.length=%d \n", sexp.car, sexp.length )
-            else
-              printf( "\n    quotingPhase-1      label=%s, sexp.length=%d, sexp.cdr=%s sexp.cdr.car=%s sexp.cdr.cdr=%s\n", sexp.car, sexp.length, sexp.cdr, sexp.cdr.car, sexp.cdr.cdr )
-            end
-          end
-          if 1 == sexp.length
-            nil
-            # do nothing
-          elsif 3 <= sexp.length
-            # argument
-            sexp.cdr.car = Cell.new( :quote, Cell.new( sexp.cdr.car ))
-            # body
-            sexp.cdr.cdr = quotingPhase( sexp.cdr.cdr )
-          else
-            raise RuntimeError, sprintf( "Error: %s is not a illegal form got: %s", sexp.car, _write_MIMARKto_MIMARKstring( sexp ))
-          end
-          sexp
-        elsif :let == car or @core_syntax_hash[ :let ] == car
-          if _null_QUMARK( sexp.cdr )
-            # do nothing
-          else
-            case sexp.cdr.car
-            when Cell        # let
-              sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
-                                           quotingPhase( sexp.cdr.cdr ))
-            when Symbol      # named let
-              sexp.cdr.car     = Cell.new( :quote, Cell.new( sexp.cdr.car ))
-              sexp.cdr.cdr     = Cell.new( letArgumentList( sexp.cdr.cdr.car ),
-                                           quotingPhase( sexp.cdr.cdr.cdr ))
-            end
-          end
-          sexp
-        elsif :letrec == car or @core_syntax_hash[ :letrec ] == car
-          if _null_QUMARK( sexp.cdr )
-            # do nothing
-          else
-            case sexp.cdr.car
-            when Cell        # letrec
-              sexp.cdr         = Cell.new( letArgumentList( sexp.cdr.car ),
-                                           quotingPhase( sexp.cdr.cdr ))
-            when Symbol      # named letrec is illegal
-              raise RuntimeError, "Error: named letrec is not a illegal form"
-            end
-          end
-          sexp
-        else
-          Cell.new( quotingPhase( sexp.car ), quotingPhase( sexp.cdr ))
-        end
-      else
-        sexp
-      end
-    end
-  
+
     def macroexpandInit( initVal )
       @macroExpandCount = initVal
     end
