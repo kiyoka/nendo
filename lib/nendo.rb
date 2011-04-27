@@ -34,9 +34,6 @@
 #  
 #  $Id: 
 #
-
-require 'pp'
-
 module Nendo
   require 'stringio'
   require 'digest/sha1'
@@ -1555,10 +1552,7 @@ module Nendo
     end
 
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
-      printf( "execFunc: class=%s str=%s\n", funcname.class, funcname.to_s ) if @debug
-
       if isDefines( funcname )
-        p "execFunc is Defines" if @debug
         ar = args.cdr.map { |x| x.car }
         variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
         global_cap = locals.flatten.include?( variable_sym.split( /[.]/ )[0] ) ? nil : "@"
@@ -1675,10 +1669,7 @@ module Nendo
   
     def makeClosure( sym, args, locals )
       first = args.car
-      if args.car.car == :quote
-        first   = args.car.cdr.car
-      end
-      rest    = args.cdr
+      rest  = args.cdr
       ( _locals, argStr ) = toRubyParameter( first )
       str = case sym
             when :macro
@@ -1722,12 +1713,12 @@ module Nendo
       _name = "___lambda"
       argvals = []
       rest = args.cdr
-      if args.car.is_a? Nil
+      if _null_QUMARK( args.car )
         # nothing to do
         lambda_head = sprintf( "%s = lambda { || ", _name )
       else
         argsyms = args.car.map { |x|
-          toRubySymbol( x.car.car.cdr.car.to_s )
+          toRubySymbol( x.car.car.to_s )
         }
         argvals = args.car.map.with_index { |x,i|
           translate( x.car.cdr.car, locals )
@@ -1748,12 +1739,12 @@ module Nendo
       argvals = []
       argsyms = []
       rest = args.cdr
-      if args.car.is_a? Nil
+      if _null_QUMARK( args.car )
         # nothing to do
         lambda_head = sprintf( "%s = lambda { || ", _name )
       else
         argsyms = args.car.map { |x|
-          toRubySymbol( x.car.car.cdr.car.to_s )
+          toRubySymbol( x.car.car.to_s )
         }
         argvals = args.car.map { |x|
           translate( x.car.cdr.car, locals.clone + [argsyms] )
@@ -1874,10 +1865,7 @@ module Nendo
         elsif sexp.isNull
           [ "Cell.new()" ]
         elsif isDefines( car )
-          printf( "kiyoka1: class=%s str=%s\n", car.class, car.to_s ) if @debug
           self.makeSetVariable( car, sexp.cdr, locals, sourceInfo )
-        elsif Cell == sexp.car.class
-          self.apply( translate( sexp.car, locals, sourceInfo ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, sourceInfo, EXEC_TYPE_ANONYMOUS )
         elsif :begin == car
           self.makeBegin( sexp.cdr, locals )
         elsif :lambda == car
@@ -1897,10 +1885,16 @@ module Nendo
         elsif :"%tailcall" == car
           if sexp.cdr.car.is_a? Cell
             sexp = sexp.cdr.car
-            self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_TAILCALL )
+            if isDefines( sexp.car )
+              translate( sexp, locals, sourceInfo )
+            else
+              self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_TAILCALL )
+            end
           else
             raise RuntimeError, "Error: special form tailcall expects function call expression."
           end
+        elsif Cell == sexp.car.class
+          self.apply( translate( sexp.car, locals, sourceInfo ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, sourceInfo, EXEC_TYPE_ANONYMOUS )
         else
           self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_NORMAL )
         end
@@ -1934,10 +1928,6 @@ module Nendo
       end
     end
 
-    def quotingPhase( sexp )
-      sexp
-    end
-
     def macroexpandInit( initVal )
       @macroExpandCount = initVal
     end
@@ -1950,9 +1940,6 @@ module Nendo
           sexp
         else
           sym = sexp.car.to_s
-          p 'macroexpandEngine' if @debug
-          p sexp.car.class if @debug
-          p sym            if @debug
           sym = toRubySymbol( sym )
           newSexp = sexp
           if isRubyInterface( sym )
@@ -2038,9 +2025,8 @@ module Nendo
         @lastLineno     = lineno
         sourceInfo.setSource( sourcefile, lineno, sexp )
         sexp = macroExpandPhase( sexp )
-        sexp = quotingPhase( sexp )
         if @debug
-          printf( "\n          quoting=<<< %s >>>\n", (Printer.new())._print(sexp))
+          printf( "\n          expaneded=<<< %s >>>\n", (Printer.new())._print(sexp))
         end
         # compiling phase written in Nendo
         sym = toRubySymbol( "%compile-phase" )
@@ -2048,7 +2034,7 @@ module Nendo
           eval( sprintf( "@___tmp = @%s", sym ), @binding )
           sexp = trampCall( callProcedure( sym, @___tmp, [ sexp ]))
           if @debug
-            printf( "\n          compiled=<<< %s >>>\n", (Printer.new())._print(sexp))
+            printf( "\n          compiled= <<< %s >>>\n", (Printer.new())._print(sexp))
           end
         end
         sourceInfo.setExpanded( sexp )
