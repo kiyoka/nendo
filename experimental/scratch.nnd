@@ -18,6 +18,11 @@
     ((_ x)
      (set! x 100))))
 
+(syntax-rules ()
+  ((_ x)
+   (set! x 100)))
+
+
 (define a "abc")
 (set-100 a)
 
@@ -45,26 +50,36 @@
 ;; -------------------------------------------------------
 ;; let-syntax and letrec-syntax transformation
 ;; for Nendo macro system
-;;  (define (a-topleve-func arg1 arg2 ...)
-;;    (let-syntax ((name1 (syntax-rules ...)))
-;;      ... body1 ...
-;;      (letrec-syntax ((name2 (syntax-rules ... ))
-;;                     ((name3 (syntax-rules ... )))
-;;        ... body2 ...))))
+(define (a-topleve-func arg1 arg2 ...)
+  (let-syntax ((name1 (syntax-rules ...))
+               (name2 (syntax-rules ...)))
+    ... body1 ...
+    (letrec-syntax ((name1 (syntax-rules ... ))
+                    (name2 (syntax-rules ... )))
+      ... body2 ...)))
 ;;
-;; will be transformed:
+;; must be transformed:
 ;;
-;;  (begin
-;;    (%temp-syntax name1 (syntax-rules ...))
-;;    (%temp-syntax name2 (syntax-rules ...))
-;;    (%temp-syntax name3 (syntax-rules ...))
-;;    (define (a-toplevel-func arg1 arg2 ...)
-;;      (%use-syntax (name1)
-;;        ... body1 ...
-;;        (%use-syntax (name2 name3)
-;;          ... body2 ...)))
-;;  )
+(define (a-toplevel-func arg1 arg2 ...)
+  (%lexical-define-syntax ((name1 (syntax-rules ...)))
+      (%lexical-define-syntax ((name2 (syntax-rules ...)))
+          ... body1 ...
+          (%lexcal-define-syntax ((name1 (syntax-rules ...))
+                                  (name2 (syntax-rules ...)))
+             ... body2 ...))))
+;;
+;; macroExpand in nendo.rb must be transform
+;;   #<LispSyntax> is an instance of evaled (syntax-rules ...) expression
+;;
+(define (a-toplevel-func arg1 arg2 ...)
+  (%lexical-define-syntax ((name1 . #<LispSyntax>))
+      (%lexical-define-syntax ((name2 . #<LispSyntax>))
+          ... body1 ...
+          (%lexcal-define-syntax ((name1 . #<LispSyntax>)
+                                  (name2 . #<LispSyntax>))
+             ... body2 ...))))
 ;; -------------------------------------------------------
+
 
 
 
