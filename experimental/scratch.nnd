@@ -12,10 +12,67 @@
 (define letrec-syntax let)
 
 
+
+(define-syntax set-100
+  (syntax-rules ()
+    ((_ x)
+     (set! x 100))))
+
+(define a "abc")
+(set-100 a)
+
+
+(define a "abc")
+(let-syntax
+    ((set-1000
+      (syntax-rules ()
+        ((_ x)
+         (set! x 1000)))))
+  (set-1000 a))
+
+
+
+(begin
+  (%temp-syntax set-1000 (rename1 rename2)
+                (syntax-rules ()
+                  ((_ x)
+                   (set! x 1000))))
+  (define (foo arg1)
+    (%use-syntax (set-1000)
+                 (set-1000 10))))
+
+
+;; -------------------------------------------------------
+;; let-syntax and letrec-syntax transformation
+;; for Nendo macro system
+;;  (define (a-topleve-func arg1 arg2 ...)
+;;    (let-syntax ((name1 (syntax-rules ...)))
+;;      ... body1 ...
+;;      (letrec-syntax ((name2 (syntax-rules ... ))
+;;                     ((name3 (syntax-rules ... )))
+;;        ... body2 ...))))
+;;
+;; will be transformed:
+;;
+;;  (begin
+;;    (%temp-syntax name1 (syntax-rules ...))
+;;    (%temp-syntax name2 (syntax-rules ...))
+;;    (%temp-syntax name3 (syntax-rules ...))
+;;    (define (a-toplevel-func arg1 arg2 ...)
+;;      (%use-syntax (name1)
+;;        ... body1 ...
+;;        (%use-syntax (name2 name3)
+;;          ... body2 ...)))
+;;  )
+;; -------------------------------------------------------
+
+
+
 (eq? 'ok (let ()
            (let-syntax ()
              (define internal-def 'ok))
            internal-def))
+
 
 (eq? 'ok (let ()
            (letrec-syntax ()
