@@ -1858,57 +1858,57 @@ describe Nendo, "tail call optimization " do
     @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `filter' can be optimized on second loading phase.
   end
   it "should" do
-    @nendo.evalStr( " (setup-tailcall-mark '(print \"abc\")) " ).should == "(%tailcall (print \"abc\"))"
-    @nendo.evalStr( " (setup-tailcall-mark '(begin (print \"abc\") 1 2 3)) " ).should == "(begin (print \"abc\") 1 2 3)"
-    @nendo.evalStr( " (setup-tailcall-mark '(begin 1 2 (print \"abc\") 3)) " ).should == "(begin 1 2 (print \"abc\") 3)"
-    @nendo.evalStr( " (setup-tailcall-mark '(begin 1 2 3 (print \"abc\"))) " ).should == "(begin 1 2 3 (%tailcall (print \"abc\")))"
-    @nendo.evalStr( " (setup-tailcall-mark '(lambda  (x) x)) " ).should                     == "(lambda (x) x)"
-    @nendo.evalStr( " (setup-tailcall-mark '(macro   (x) x)) " ).should                     == "(macro (x) x)"
-    @nendo.evalStr( " (setup-tailcall-mark '(%syntax (x) x)) " ).should                     == "(%syntax (x) x)"
-    @nendo.evalStr( " (setup-tailcall-mark '(%syntax (a b c) (begin a b c))) " ).should     == "(%syntax (a b c) (begin a b c))"
-    @nendo.evalStr( " (setup-tailcall-mark '(lambda  (x) (%syntax (y) x))) " ).should       == "(lambda (x) (%syntax (y) x))"
-    @nendo.evalStr( " (setup-tailcall-mark '(lambda  (x) (syntax-quote x))) " ).should      == "(lambda (x) (syntax-quote x))"
-    @nendo.evalStr( " (setup-tailcall-mark '(lambda  (x) (quote x))) " ).should             == "(lambda (x) 'x)"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(print \"abc\")) " ).should == "(%tailcall (print \"abc\"))"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(begin (print \"abc\") 1 2 3)) " ).should == "(begin (print \"abc\") 1 2 3)"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(begin 1 2 (print \"abc\") 3)) " ).should == "(begin 1 2 (print \"abc\") 3)"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(begin 1 2 3 (print \"abc\"))) " ).should == "(begin 1 2 3 (%tailcall (print \"abc\")))"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) x)) " ).should                     == "(lambda (x) x)"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(macro   (x) x)) " ).should                     == "(macro (x) x)"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(%syntax (x) x)) " ).should                     == "(%syntax (x) x)"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(%syntax (a b c) (begin a b c))) " ).should     == "(%syntax (a b c) (begin a b c))"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (%syntax (y) x))) " ).should       == "(lambda (x) (%syntax (y) x))"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (syntax-quote x))) " ).should      == "(lambda (x) (syntax-quote x))"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (quote x))) " ).should             == "(lambda (x) 'x)"
     @nendo.evalStr( "" +
-                    "(setup-tailcall-mark"+
+                    "(%setup-%tailcall-mark"+
                     "  '(lambda '(x)"+
                     "    1"+
                     "    2"+
                     "    (print \"abc\")))" ).should == "(lambda '(x) 1 2 (%tailcall (print \"abc\")))"
     @nendo.evalStr( "" +
-                    "(setup-tailcall-mark"+
+                    "(%setup-%tailcall-mark"+
                     "  '(lambda (x)"+
                     "     1"+
                     "     2"+
                     "     (if #t"+
                     "         (begin 1 2 (print \"abc\"))"+
                     "         (begin 1 2 (print \"ABC\")))))" ).should == "(lambda (x) 1 2 (if #t (begin 1 2 (%tailcall (print \"abc\"))) (begin 1 2 (%tailcall (print \"ABC\")))))"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(define (foo) (foo))"+
                     "  ))" ).should == "(define foo (lambda () (%tailcall (foo))))"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(values? (make-values '()))"+
                     "  ))" ).should == "(%tailcall (values? (make-values '())))"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(cond (false  1) (false  2))"+
                     "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) ()))"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(cond (false 1) (false 2) (else 3))"+
                     "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) (if #t (begin 3) ())))"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(and (foo 1) (bar 2))"+
                     "  ))" ).should == "(if (not (eq? #f (foo 1))) (%tailcall (bar 2)) #f)"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(or (foo 1) (bar 2))"+
                     "  ))" ).gsub( /[24]0[0-9][0-9][0-9]/, "X0000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 #f))))"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(let loop ((x 1))  1 2 (loop 100))"+
                     "  ))" ).should == "(letrec ((loop (lambda (x) 1 2 (%tailcall (loop 100))))) (%tailcall (loop 1)))"
-    @nendo.evalStr( "(setup-tailcall-mark (macroexpand "+
+    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(let1 aaa 111 aaa)"+
                     "  ))" ).should == "(let ((aaa 111)) aaa)"
     @nendo.evalStr( "" +
-                    "(setup-tailcall-mark"+
+                    "(%setup-%tailcall-mark"+
                     "  '(letrec ((func1 "+
                     "             (lambda (x)"+
                     "                1"+

@@ -1304,9 +1304,9 @@
 
 
 ;; ----------------------------------------
-;; tail-call-optimization
+;; tail call optimization
 ;; ----------------------------------------
-(define (setup-tailcall-mark sexp)
+(define (%setup-%tailcall-mark sexp)
   (define (reserved? sym)
     (let* ([reserved-orig '(quote syntax-quote macro %syntax begin lambda if let letrec define define-syntax)]
            [reserved (append reserved-orig
@@ -1324,7 +1324,7 @@
          (list name
                (if (list? body)
                    (if (reserved? (car body))
-                       (setup-tailcall-mark body)
+                       (%setup-%tailcall-mark body)
                        body)
                    body))))
      args))
@@ -1336,7 +1336,7 @@
      ((and (list? sexp)
            (< 0 (length sexp)))
       (if (reserved? (car sexp))
-          (setup-tailcall-mark sexp)
+          (%setup-%tailcall-mark sexp)
           (if (pair? (car sexp))
               sexp ;; e.g.  ((lambda (x) ...)
               `(%tailcall ,sexp))))
@@ -1356,7 +1356,7 @@
                (cons
                 (if (reserved? (car last))
                     ;; recursive
-                    (setup-tailcall-mark last)
+                    (%setup-%tailcall-mark last)
                     ;; this is the tailcall!
                     `(%tailcall ,last))
                 other))))))
@@ -1410,7 +1410,7 @@
               ,(if (and (list? val)
                         (not (null? val))
                         (reserved? (car val)))
-                   (setup-tailcall-mark val)
+                   (%setup-%tailcall-mark val)
                    val))))
         ((set! /nendo/core/set!)
          (let1 val (third sexp)
@@ -1419,7 +1419,7 @@
              ,(if (and (list? val)
                        (not (null? val))
                        (reserved? (car val)))
-                  (setup-tailcall-mark val)
+                  (%setup-%tailcall-mark val)
                   val))))
         (else
          (if (symbol? (car sexp))
@@ -1432,7 +1432,7 @@
 ;; definition of 'compile-phase'
 (set! %compile-phase-functions
       (list
-       setup-tailcall-mark
+       %setup-%tailcall-mark
        ))
 
 
