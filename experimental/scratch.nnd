@@ -36,6 +36,15 @@
   (set-1000 a))
 
 
+(define aa 100) 
+(%lexical-define-syntax ((nil! 
+                          (syntax-rules () 
+                            ((_ x) 
+                             (set! x '())))))
+                        (nil! aa))
+aa
+
+
 
 (begin
   (%temp-syntax set-1000 (rename1 rename2)
@@ -72,12 +81,12 @@
 ;;   #<LispSyntax> is an instance of evaled (syntax-rules ...) expression
 ;;
 (define (a-toplevel-func arg1 arg2 ...)
-  (%lexical-define-syntax ((name1 . #<LispSyntax>))
-      (%lexical-define-syntax ((name2 . #<LispSyntax>))
-          ... body1 ...
-          (%lexcal-define-syntax ((name1 . #<LispSyntax>)
-                                  (name2 . #<LispSyntax>))
-             ... body2 ...))))
+  (%lexical-syntax ((name1 . #<LispSyntax>))
+    (%lexical-syntax ((name2 . #<LispSyntax>))
+       ... body1 ...
+       (%lexcal-syntax ((name1 . #<LispSyntax>)
+                        (name2 . #<LispSyntax>))
+          ... body2 ...))))
 ;; -------------------------------------------------------
 
 
