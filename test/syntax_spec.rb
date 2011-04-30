@@ -2,24 +2,24 @@
 # -*- encoding: utf-8 -*-
 #
 # syntax_spec.rb -  "RSpec file for nendo language (syntax part)"
-#  
+#
 #   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
-#   
+#
 #   Redistribution and use in source and binary forms, with or without
 #   modification, are permitted provided that the following conditions
 #   are met:
-#   
+#
 #   1. Redistributions of source code must retain the above copyright
 #      notice, this list of conditions and the following disclaimer.
-#  
+#
 #   2. Redistributions in binary form must reproduce the above copyright
 #      notice, this list of conditions and the following disclaimer in the
 #      documentation and/or other materials provided with the distribution.
-#  
+#
 #   3. Neither the name of the authors nor the names of its contributors
 #      may be used to endorse or promote products derived from this
 #      software without specific prior written permission.
-#  
+#
 #   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 #   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 #   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -31,7 +31,7 @@
 #   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 #   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 #   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#  
+#
 require 'nendo'
 include Nendo
 
@@ -196,5 +196,30 @@ describe Nendo, "when use syntax-rules " do
     @nendo.evalStr( "(test-syntax 'a \"B\")" ).should          ==  '(a ("B"))'
     @nendo.evalStr( "(test-syntax 'a \"B\" 'C)" ).should       ==  '(a ("B" (C)))'
     @nendo.evalStr( "(test-syntax 'a \"B\" 'C \"d\")" ).should ==  '(a ("B" (C "d")))'
+  end
+end
+
+
+describe Nendo, "When use let-syntax and letrec-syntax " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " " +
+           "(macroexpand" +
+           "  '(%lexical-define-syntax ((nil!" +
+           "     (syntax-rules ()" +
+           "       ((_ x)" +
+           "        (set! x '())))))" +
+           "     (nil! aa))) " ).should == "(begin (set! aa '()))"
+    @nendo.evalStr( " " +
+           "(define aa 100) " +
+           "(%lexical-define-syntax ((nil!" +
+           "   (syntax-rules ()" +
+           "     ((_ x)" +
+           "      (set! x '())))))" +
+           "   (nil! aa)) " +
+           "aa" ).should == "()"
   end
 end

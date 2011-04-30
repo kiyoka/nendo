@@ -148,6 +148,21 @@ module Nendo
         self.map {|x| x.car}
       end
     end
+
+    def first
+      self.car
+    end
+
+    def second
+      self.cdr.car
+    end
+
+    def third
+      self.cdr.cdr.car
+    end
+
+    alias :cdar  :second
+    alias :cddar :third
   end
   
   class LispValues
@@ -1080,7 +1095,7 @@ module Nendo
     def _macroexpand_MIMARK1( arg )
       if _pair_QUMARK( arg )
         macroexpandInit( 1 )
-        macroexpandEngine( arg )
+        macroexpandEngine( arg, [] )
       else
         arg
       end
@@ -1932,35 +1947,68 @@ module Nendo
       @macroExpandCount = initVal
     end
 
-    def macroexpandEngine( sexp )
+    def macroexpandEngine( sexp, syntaxArray )
+      pp [ "macroexpandEngine", _write_MIMARKto_MIMARKstring( sexp ), syntaxArray ] if @debug
       case sexp
       when Cell
         car = sexp.car
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
+        elsif :"%lexical-define-syntax" == car
+          arr = sexp.second.to_arr
+          pp [ "%lexical-define-syntax: arr",  arr  ] if @debug
+          locals = arr.map {|e|
+            name = e.first
+            pp [ "  %lexical-define-syntax: name", name ] if @debug
+            body = _eval( e.second )
+            pp [ "%lexical-define-syntax: body", body ] if @debug
+            Cell.new( name , body )
+          }
+          ret = [ :"%lexical-syntax", locals.to_list ].to_list
+          ret.cdr.cdr = sexp.cdr.cdr
+          p _write_MIMARKto_MIMARKstring( ret ) if @debug
+          pp [ "lexical-define-syntax => lexical-syntax", ret ] if @debug
+          ret
+        elsif :"%lexical-syntax" == car
+          arr = sexp.second.map { |e|
+            [ e.car.car, e.car.cdr ]
+          }
+          pp [ "%lexical-syntax", arr, sexp.cdr.cdr ] if @debug
+          ret = Cell.new( :begin, sexp.cdr.cdr )
+          p _write_MIMARKto_MIMARKstring( ret ) if @debug
+          macroexpandEngine( ret, syntaxArray + arr )
         else
-          sym = sexp.car.to_s
-          sym = toRubySymbol( sym )
+          sym = toRubySymbol( car.to_s )
           newSexp = sexp
           if isRubyInterface( sym )
             # do nothing
             sexp
-          elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
+          elsif car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
             eval( sprintf( "@__macro = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr.to_arr ))
-          elsif sexp.car.class == Symbol and eval( sprintf( "(defined? @%s and LispSyntax == @%s.class)", sym,sym ), @binding )
+          elsif car.class == Symbol and eval( sprintf( "(defined? @%s and LispSyntax == @%s.class)", sym,sym ), @binding )
             # expected input is
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
+          elsif car.class == Symbol and syntaxArray.map {|arr| arr[0]}.include?( car )
+            # lexical macro expandeding
+            symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
+            if not symbol_and_syntaxObj
+              raise "can't find valid syntaxObject"
+            end
+            pp [ "lexical mcaro expanding (before) ", _write_MIMARKto_MIMARKstring( sexp ), " by ", symbol_and_syntaxObj[0] ] if @debug
+            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
+            pp [ "lexical mcaro expanding (after ) ", _write_MIMARKto_MIMARKstring( newSexp ) ] if @debug
+            newSexp
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
               if x.car.is_a? Cell
                 if 0 <= @macroExpandCount
-                  macroexpandEngine( x.car )
+                  macroexpandEngine( x.car, syntaxArray )
                 else
                   x.car
                 end
@@ -1982,7 +2030,7 @@ module Nendo
       converge = true
       begin
         macroexpandInit( 100000 )
-        newSexp  = macroexpandEngine( sexp )
+        newSexp  = macroexpandEngine( sexp, [] )
         converge = _equal_QUMARK( newSexp, sexp )
         sexp = newSexp
       end until converge
