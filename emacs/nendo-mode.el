@@ -150,6 +150,8 @@ Editing commands are similar to those of 'scheme-mode'."
 	(let-match . 2)
 	(let-optionals* . 2)
 	(let-values . 1)
+	(let-syntax . 1)
+	(letrec-syntax . 1)
 	(let1 . 2)
 	(let/cc . 1)
 	(make . 1)
