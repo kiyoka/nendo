@@ -7,128 +7,16 @@
 (debug-print-length)
 (debug-print-length 2000)
 
-
-(define let-syntax let)
-(define letrec-syntax let)
-
+(let-syntax ((a (+ 1 2)))
+  (a))
 
 
-(define-syntax set-100
-  (syntax-rules ()
-    ((_ x)
-     (set! x 100))))
-
-(syntax-rules ()
-  ((_ x)
-   (set! x 100)))
-
-
-(define a "abc")
-(set-100 a)
-
-
-(define a "abc")
-(let-syntax
-    ((set-1000
-      (syntax-rules ()
-        ((_ x)
-         (set! x 1000)))))
-  (set-1000 a))
-
-
-(define aa 100) 
-(%lexical-define-syntax ((nil! 
-                          (syntax-rules () 
-                            ((_ x) 
-                             (set! x '())))))
-                        (nil! aa))
-aa
-
-
-
-(begin
-  (%temp-syntax set-1000 (rename1 rename2)
-                (syntax-rules ()
-                  ((_ x)
-                   (set! x 1000))))
-  (define (foo arg1)
-    (%use-syntax (set-1000)
-                 (set-1000 10))))
-
-
-;; -------------------------------------------------------
-;; let-syntax and letrec-syntax transformation
-;; for Nendo macro system
-(define (a-topleve-func arg1 arg2 ...)
-  (let-syntax ((name1 (syntax-rules ...))
-               (name2 (syntax-rules ...)))
-    ... body1 ...
-    (letrec-syntax ((name1 (syntax-rules ... ))
-                    (name2 (syntax-rules ... )))
-      ... body2 ...)))
-;;
-;; must be transformed:
-;;
-(define (a-toplevel-func arg1 arg2 ...)
-  (%lexical-define-syntax ((name1 (syntax-rules ...)))
-      (%lexical-define-syntax ((name2 (syntax-rules ...)))
-          ... body1 ...
-          (%lexcal-define-syntax ((name1 (syntax-rules ...))
-                                  (name2 (syntax-rules ...)))
-             ... body2 ...))))
-;;
-;; macroExpand in nendo.rb must be transform
-;;   #<LispSyntax> is an instance of evaled (syntax-rules ...) expression
-;;
-(define (a-toplevel-func arg1 arg2 ...)
-  (%lexical-syntax ((name1 . #<LispSyntax>))
-    (%lexical-syntax ((name2 . #<LispSyntax>))
-       ... body1 ...
-       (%lexcal-syntax ((name1 . #<LispSyntax>)
-                        (name2 . #<LispSyntax>))
-          ... body2 ...))))
-;; -------------------------------------------------------
-
-
-(define (%remove-%lexical-syntax-keyword sexp)
-  (cond
-   ((not (pair? sexp))
-    sexp)
-   ((null? sexp)
-    '())
-   ((list? sexp)
-    (let1 _car (car sexp)
-      (case _car
-        ((quote /nendo/core/quote)
-         sexp)
-        ((%lexical-syntax)
-         `(begin
-            ,@(%remove-%lexical-syntax-keyword (cddr sexp))))
-        (else
-         (cons
-          (%remove-%lexical-syntax-keyword (car sexp))
-          (%remove-%lexical-syntax-keyword (cdr sexp)))))))
-   (else
-    sexp)))
-
-
-(%remove-%lexical-syntax-keyword
- '(a b c))
-
-(%remove-%lexical-syntax-keyword
- '(let ()
-    (let-syntax ()
-      (define internal-def 'ok))
-    internal-def))
-
-(%remove-%lexical-syntax-keyword
- '(let ()
-    (%lexical-syntax ()
-      (define internal-def 'ok))
-    internal-def))
-
-
-
+;;(test 'ok)
+(let ((... 2))
+  (let-syntax ((s (syntax-rules ()
+                    ((_ x ...) 'bad)
+                    ((_ . r) 'ok))))
+    (s a b c))))
 
 
 (eq? 'ok (let ()
@@ -156,12 +44,16 @@ aa
                          (args aaa ...)))))
   (foo 3 - 5))
 
-(test '(5 4 1 2 3)
-    (let-syntax
-        ((foo (syntax-rules ()
-                ((foo args ... penultimate ultimate)
-                 (list ultimate penultimate args ...)))))
-      (foo 1 2 3 4 5)))
+(let-syntax
+    ((foo (syntax-rules ()
+            ((foo args ... penultimate ultimate)
+             (list ultimate penultimate args ...)))))
+  (foo 1 2 3 4 5))
+
+
+
+
+
 
 
 

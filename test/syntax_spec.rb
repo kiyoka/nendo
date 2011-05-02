@@ -207,7 +207,7 @@ EOS
   end
 end
 
-describe Nendo, "When use let-syntax (1)" do
+describe Nendo, "When use let-syntax" do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
@@ -241,15 +241,29 @@ EOS
     internal-def))
 EOS
            ).should == "ok"
-  end
-end
 
-describe Nendo, "When use let-syntax (2)" do
-  before do
-    @nendo = Nendo::Core.new()
-    @nendo.loadInitFile
-  end
-  it "should" do
+    @nendo.evalStr( <<EOS
+(let ()
+  (let-syntax ()
+    (define internal-def 'ok)
+    internal-def))
+EOS
+           ).should == "ok"
+
+    @nendo.evalStr( <<EOS
+(let-syntax
+    ((foo (syntax-rules ()
+            ((foo args ... penultimate ultimate)
+             (list ultimate penultimate args ...)))))
+  (foo 1 2 3 4 5))
+EOS
+           ).should == "(5 4 1 2 3)"
+
+    lambda { @nendo.evalStr( <<EOS
+(let-syntax ((a (+ 1 2)))
+  (a))
+EOS
+                    ) }.should     raise_error( SyntaxError, /syntax-rules/ )
 
     @nendo.evalStr( <<EOS
 (let ()
@@ -287,5 +301,15 @@ EOS
       (m))))
 EOS
            ).should == "outer"
+
+    @nendo.evalStr( <<EOS
+(let ((... 2))
+  (let-syntax ((s (syntax-rules ()
+                    ((_ x ...) 'bad)
+                    ((_ . r) 'ok))))
+    (s a b c)))
+EOS
+           ).should == "ok"
+
   end
 end
