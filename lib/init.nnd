@@ -1431,9 +1431,9 @@
 
 
 ;; ----------------------------------------
-;; remove phase of `%lexical-syntax'
+;; remove phase of `let-syntax'
 ;; ----------------------------------------
-(define (%remove-%lexical-syntax-keyword sexp)
+(define (%remove-let-syntax-keyword sexp)
   (cond
    ((not (pair? sexp))
     sexp)
@@ -1444,13 +1444,13 @@
       (case _car
         ((quote /nendo/core/quote)
          sexp)
-        ((%lexical-syntax)
+        ((let-syntax)
          `(begin
-            ,@(%remove-%lexical-syntax-keyword (cddr sexp))))
+            ,@(%remove-let-syntax-keyword (cddr sexp))))
         (else
          (cons
-          (%remove-%lexical-syntax-keyword (car sexp))
-          (%remove-%lexical-syntax-keyword (cdr sexp)))))))
+          (%remove-let-syntax-keyword (car sexp))
+          (%remove-let-syntax-keyword (cdr sexp)))))))
    (else
     sexp)))
 
@@ -1459,7 +1459,7 @@
 ;; definition of 'compile-phase'
 (set! %compile-phase-functions
       (list
-       %remove-%lexical-syntax-keyword
+       %remove-let-syntax-keyword
        %setup-%tailcall-mark
        ))
 

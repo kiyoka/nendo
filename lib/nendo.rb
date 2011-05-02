@@ -1963,8 +1963,8 @@ module Nendo
         car = sexp.car
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
-        elsif :"%lexical-syntax" == car
-          pp "%lexical-syntax : <entry>" if @debug
+        elsif :"let-syntax" == car
+          pp "let-syntax : <entry>" if @debug
           arr = sexp.second.map { |x|
             [ x.car.car, false, Cell.new( :"syntax-rules",
                                      macroexpandEngine( x.car.cdr.car.cdr, syntaxArray )) ]
@@ -1975,7 +1975,7 @@ module Nendo
             pp [ "newKeywords: ", e[0], write_to_string( e[2] ) ] if @debug
             Cell.new( e[0], Cell.new( e[2] ))
           }.to_list
-          ret = Cell.new( :"%lexical-syntax",
+          ret = Cell.new( :"let-syntax",
                      Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr )))
           p "result10: " + write_to_string( ret ) if @debug
           ret

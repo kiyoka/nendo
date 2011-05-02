@@ -21832,9 +21832,9 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
-      @global_lisp_binding['__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword'] = self.method( :__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword_METHOD )
-    @__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword = 
+      def self.__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword'] = self.method( :__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword_METHOD )
+    @__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword = 
     trampCall(
           Proc.new { |_sexp| 
               if ( 
@@ -22010,7 +22010,7 @@ trampCall(
                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                         [
-                                                            :"%lexical-syntax"                                                            ,
+                                                            :"let-syntax"                                                            ,
                                                               begin
                                                                   trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20356)
                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -22030,11 +22030,11 @@ trampCall(
                                                           end                                                        ,
                                                       [
                                                           :"begin"                                                          ,
-                                                            trampCall( self.__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword_METHOD(  '%remove-%lexical-syntax-keyword',
+                                                            trampCall( self.__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword_METHOD(  '%remove-let-syntax-keyword',
                                                                 begin
-                                                                  if @global_lisp_binding.has_key?('__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword') then
-                                                                    trampCall(@__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword)
-                                                                  else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword" ) end
+                                                                  if @global_lisp_binding.has_key?('__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword') then
+                                                                    trampCall(@__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword)
+                                                                  else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword" ) end
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1453"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                             [
@@ -22070,11 +22070,11 @@ trampCall(
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1451"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                           [
-                                                                trampCall( self.__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword_METHOD(  '%remove-%lexical-syntax-keyword',
+                                                                trampCall( self.__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword_METHOD(  '%remove-let-syntax-keyword',
                                                                     begin
-                                                                      if @global_lisp_binding.has_key?('__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword') then
-                                                                        trampCall(@__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword)
-                                                                      else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword" ) end
+                                                                      if @global_lisp_binding.has_key?('__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword') then
+                                                                        trampCall(@__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword)
+                                                                      else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword" ) end
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1453"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                 [
@@ -22094,11 +22094,11 @@ trampCall(
                                                                                    ))
                                                                 ]
                                                                              ))                                                              ,
-                                                                trampCall( self.__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword_METHOD(  '%remove-%lexical-syntax-keyword',
+                                                                trampCall( self.__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword_METHOD(  '%remove-let-syntax-keyword',
                                                                     begin
-                                                                      if @global_lisp_binding.has_key?('__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword') then
-                                                                        trampCall(@__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword)
-                                                                      else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword" ) end
+                                                                      if @global_lisp_binding.has_key?('__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword') then
+                                                                        trampCall(@__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword)
+                                                                      else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword" ) end
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1453"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                 [
@@ -22188,9 +22188,9 @@ trampCall(
               end            ,
           [
                 begin
-                  if @global_lisp_binding.has_key?('__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword') then
-                    trampCall(@__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword)
-                  else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARK_PAMARKlexical_MIMARKsyntax_MIMARKkeyword" ) end
+                  if @global_lisp_binding.has_key?('__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword') then
+                    trampCall(@__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword)
+                  else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword" ) end
                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1462"] + __e.backtrace ) ; raise __e
                 end              ,
                 begin

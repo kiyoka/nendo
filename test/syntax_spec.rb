@@ -124,33 +124,37 @@ describe Nendo, "when use er-macro-transformer " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " " +
-                    "(define-syntax my-or" +
-                    "  (er-macro-transformer" +
-                    "   (lambda (expr rename compare)" +
-                    "     (cond ((null? (cdr expr)) #f)" +
-                    "           ((null? (cddr expr)) (cadr expr))" +
-                    "           (else" +
-                    "            (list (rename 'let) (list (list (rename 'tmp) (cadr expr)))" +
-                    "                  (list (rename 'if) (rename 'tmp)" +
-                    "                        (rename 'tmp)" +
-                    "                        (cons (rename 'my-or) (cddr expr)))))))))" +
-                    "my-or" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( <<EOS
+(define-syntax my-or
+  (er-macro-transformer
+   (lambda (expr rename compare)
+     (cond ((null? (cdr expr)) #f)
+           ((null? (cddr expr)) (cadr expr))
+           (else
+            (list (rename 'let) (list (list (rename 'tmp) (cadr expr)))
+                  (list (rename 'if) (rename 'tmp)
+                        (rename 'tmp)
+                        (cons (rename 'my-or) (cddr expr)))))))))
+my-or
+EOS
+           ).should    match( /Nendo::LispSyntax/ )
     @nendo.evalStr( "(my-or 1 2)" ).should                  ==  '1'
     @nendo.evalStr( "(my-or #f 100 200)" ).should           ==  '100'
     @nendo.evalStr( "(my-or #f #f #f #f 500)" ).should      ==  '500'
     @nendo.evalStr( "(my-or #f #f #f #f #f)" ).should       ==  '#f'
 
-    @nendo.evalStr( " " +
-                    "(define-syntax my-and" +
-                    "  (er-macro-transformer" +
-                    "   (lambda (expr rename compare)" +
-                    "     (cond ((null? (cdr expr)))" +
-                    "           ((null? (cddr expr)) (cadr expr))" +
-                    "           (else (list (rename 'if) (cadr expr)" +
-                    "                       (cons (rename 'my-and) (cddr expr))" +
-                    "                       #f))))))" +
-                    "my-and" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( <<EOS
+(define-syntax my-and
+  (er-macro-transformer
+   (lambda (expr rename compare)
+     (cond ((null? (cdr expr)))
+           ((null? (cddr expr)) (cadr expr))
+           (else (list (rename 'if) (cadr expr)
+                       (cons (rename 'my-and) (cddr expr))
+                       #f))))))
+my-and
+EOS
+           ).should    match( /Nendo::LispSyntax/ )
     @nendo.evalStr( "(my-and 1 2)" ).should                 ==  '2'
     @nendo.evalStr( "(my-and 1 2 3 4)" ).should             ==  '4'
     @nendo.evalStr( "(my-and #t #t #t #t 500)" ).should     ==  '500'
@@ -166,26 +170,30 @@ describe Nendo, "when use syntax-rules " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " " +
-                    "(define-syntax nil!" +
-                    "  (syntax-rules ()" +
-                    "    ((_ x)" +
-                    "     (set! x '()))))" +
-                    "nil!" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( <<EOS
+(define-syntax nil!
+  (syntax-rules ()
+    ((_ x)
+     (set! x '()))))
+nil!
+EOS
+           ).should    match( /Nendo::LispSyntax/ )
     @nendo.evalStr( "(define a 1)  a" ).should                 ==  '1'
     @nendo.evalStr( "(nil! a)      a" ).should                 ==  '()'
     @nendo.evalStr( "(set! a 2)    a" ).should                 ==  '2'
     @nendo.evalStr( "(nil! a)      a" ).should                 ==  '()'
-    @nendo.evalStr( " " +
-                    "(define-syntax test-syntax" +
-                    "  (syntax-rules ()" +
-                    "    ((_ a)" +
-                    "     (list a))" +
-                    "    ((_ a b)" +
-                    "     (list a (list b)))" +
-                    "    ((_ a b c ...)" +
-                    "     (list a (list b (list c ...))))))" +
-                    "test-syntax" ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( <<EOS
+(define-syntax test-syntax
+  (syntax-rules ()
+    ((_ a)
+     (list a))
+    ((_ a b)
+     (list a (list b)))
+    ((_ a b c ...)
+     (list a (list b (list c ...))))))
+test-syntax
+EOS
+           ).should    match( /Nendo::LispSyntax/ )
     @nendo.evalStr( "(test-syntax 1)" ).should                 ==  '(1)'
     @nendo.evalStr( "(test-syntax 1 2)" ).should               ==  '(1 (2))'
     @nendo.evalStr( "(test-syntax 1 2 3)" ).should             ==  '(1 (2 (3)))'
@@ -205,29 +213,34 @@ describe Nendo, "When use let-syntax (1)" do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " " +
-           "(macroexpand" +
-           "  '(%lexical-syntax ((nil!" +
-           "     (syntax-rules ()" +
-           "       ((_ x)" +
-           "        (set! x '())))))" +
-           "     (nil! aa))) " ).should == "(%lexical-syntax ((nil! (syntax-rules () ((_ x) (set! x '()))))) (set! aa '()))"
+    @nendo.evalStr( <<EOS
+(macroexpand
+ '(let-syntax ((nil!
+                (syntax-rules ()
+                  ((_ x)
+                   (set! x '())))))
+    (nil! aa)))
+EOS
+           ).should == "(let-syntax ((nil! (syntax-rules () ((_ x) (set! x '()))))) (set! aa '()))"
 
-    @nendo.evalStr( " " +
-           "(define aa 100) " +
-           "(%lexical-syntax ((nil!" +
-           "   (syntax-rules ()" +
-           "     ((_ x)" +
-           "      (set! x '())))))" +
-           "   (nil! aa)) " +
-           "aa" ).should == "()"
+    @nendo.evalStr( <<EOS
+(define aa 100)
+(let-syntax ((nil!
+              (syntax-rules ()
+                ((_ x)
+                 (set! x '())))))
+  (nil! aa))
+aa
+EOS
+           ).should == "()"
 
-    @nendo.evalStr( " " +
-           "(let ()" +
-           "  (%lexical-syntax ()" +
-           "    (define internal-def 'ok)" +
-           "  internal-def))" +
-           " " ).should == "ok"
+    @nendo.evalStr( <<EOS
+(let ()
+  (let-syntax ()
+    (define internal-def 'ok)
+    internal-def))
+EOS
+           ).should == "ok"
   end
 end
 
@@ -238,35 +251,41 @@ describe Nendo, "When use let-syntax (2)" do
   end
   it "should" do
 
-    @nendo.evalStr( " " +
-           "(let ()" +
-           "  (%lexical-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))" +
-           "                    (b (syntax-rules () ((_ ?x) (- ?x 8)))))" +
-           "    (list (a 7) (b 8))))" ).should == "(15 0)"
+    @nendo.evalStr( <<EOS
+(let ()
+  (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
+               (b (syntax-rules () ((_ ?x) (- ?x 8)))))
+    (list (a 7) (b 8))))
+EOS
+           ).should == "(15 0)"
 
-    @nendo.evalStr( " " +
-           "(let ()" +
-           "  (%lexical-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))" +
-           "                    (b (syntax-rules () ((_ ?x) (- ?x 8)))))" +
-           "    (%lexical-syntax ((aa (syntax-rules () ((_ ?x) (b 2))))" +
-           "                      (bb (syntax-rules () ((_ ?x) (a 3)))))" +
-           "      (list (aa 7) (bb 8)))))" ).should == "(-6 11)"
+    @nendo.evalStr( <<EOS
+(let ()
+  (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
+               (b (syntax-rules () ((_ ?x) (- ?x 8)))))
+    (let-syntax ((aa (syntax-rules () ((_ ?x) (b 2))))
+                 (bb (syntax-rules () ((_ ?x) (a 3)))))
+      (list (aa 7) (bb 8)))))
+EOS
+           ).should == "(-6 11)"
 
-    @nendo.evalStr( " " +
-           "(let ()" +
-           "  (%lexical-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))" +
-           "                    (b (syntax-rules () ((_ ?x) (- ?x 8)))))" +
-           "    (%lexical-syntax ((a (syntax-rules () ((_ ?y) (b 2))))" +
-           "                      (b (syntax-rules () ((_ ?y) (a 3)))))" +
-           "      (list (a 7) (b 8)))))" ).should == "(-6 11)"
+    @nendo.evalStr( <<EOS
+(let ()
+  (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
+               (b (syntax-rules () ((_ ?x) (- ?x 8)))))
+    (let-syntax ((a (syntax-rules () ((_ ?y) (b 2))))
+                 (b (syntax-rules () ((_ ?y) (a 3)))))
+      (list (a 7) (b 8)))))
+EOS
+           ).should == "(-6 11)"
 
-
-#    @nendo.evalStr( " " +
-#           "(let ((x 'outer))" +
-#           "  (%lexical-syntax ((m (syntax-rules () ((m) x))))" +
-#           "    (let ((x 'inner))" +
-#           "      (m))))" ).should == "outer"
-
+    pending( "let variables affect let-syntax's form." )
+    @nendo.evalStr( <<EOS
+(let ((x 'outer))
+  (let-syntax ((m (syntax-rules () ((m) x))))
+    (let ((x 'inner))
+      (m))))
+EOS
+           ).should == "outer"
   end
 end
-
