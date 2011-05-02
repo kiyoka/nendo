@@ -849,8 +849,10 @@ module Nendo
         true
       elsif a.class != b.class
         false
-      elsif a.class == Cell
+      elsif a.class == Cell and b.class == Cell
         _equal_QUMARK( a.car, b.car ) and _equal_QUMARK( a.cdr, b.cdr )
+      elsif a.is_a? Proc or b.is_a? Proc
+        a == b
       else
         (a === b)
       end
@@ -1060,6 +1062,7 @@ module Nendo
     def _cdr(      cell )          cell.cdr end
     def _write(  arg  )            printer = Printer.new ; print printer._write( arg ) ; arg end
     def _write_MIMARKto_MIMARKstring(  arg  )  printer = Printer.new ; printer._write( arg )             end
+    alias write_to_string _write_MIMARKto_MIMARKstring
     def _display(  arg  )          printer = Printer.new ; print printer._print( arg ) ; arg end
     def _print(  arg  )            self._display( arg )  ; self._newline() ; arg             end
     def _newline(       )          print "\n" end
@@ -1948,35 +1951,39 @@ module Nendo
     end
 
     def macroexpandEngine( sexp, syntaxArray )
-      pp [ "macroexpandEngine", _write_MIMARKto_MIMARKstring( sexp ), syntaxArray ] if @debug
+      #pp [ "##macroexpandEngine_before", write_to_string( sexp ), syntaxArray.map{ |arr| arr[0] } ] if @debug
+      ret = __macroexpandEngine( sexp, syntaxArray )
+      #pp [ "##macroexpandEngine_after ", write_to_string( ret  ), syntaxArray.map{ |arr| arr[0] } ] if @debug
+      ret
+    end
+
+    def __macroexpandEngine( sexp, syntaxArray )
       case sexp
       when Cell
         car = sexp.car
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
-        elsif :"%lexical-define-syntax" == car
-          arr = sexp.second.to_arr
-          pp [ "%lexical-define-syntax: arr",  arr  ] if @debug
-          locals = arr.map {|e|
-            name = e.first
-            pp [ "  %lexical-define-syntax: name", name ] if @debug
-            body = _eval( e.second )
-            pp [ "%lexical-define-syntax: body", body ] if @debug
-            Cell.new( name , body )
-          }
-          ret = [ :"%lexical-syntax", locals.to_list ].to_list
-          ret.cdr.cdr = sexp.cdr.cdr
-          p _write_MIMARKto_MIMARKstring( ret ) if @debug
-          pp [ "lexical-define-syntax => lexical-syntax", ret ] if @debug
-          ret
         elsif :"%lexical-syntax" == car
-          arr = sexp.second.map { |e|
-            [ e.car.car, e.car.cdr ]
+          pp "%lexical-syntax : <entry>" if @debug
+          arr_tmp = sexp.second.map { |x|
+            [ x.car.car, false, Cell.new( :"syntax-rules",
+                                     macroexpandEngine( x.car.cdr.car.cdr, syntaxArray )) ]
           }
-          pp [ "%lexical-syntax", arr, sexp.cdr.cdr ] if @debug
-          ret = Cell.new( :begin, sexp.cdr.cdr )
-          p _write_MIMARKto_MIMARKstring( ret ) if @debug
-          macroexpandEngine( ret, syntaxArray + arr )
+          arr_tmp.each { |x|
+            pp [ "kiyoka10", write_to_string( x[2] ) ]
+          }
+
+          arr = arr_tmp.map {|y|
+            [ y[0], _eval( y[2] ), y[2] ]
+          }
+          newKeywords = arr.map { |e|
+            pp [ "newKeywords: ", e[0], write_to_string( e[2] ) ] if @debug
+            Cell.new( e[0], Cell.new( e[2] ))
+          }.to_list
+          ret = Cell.new( :"%lexical-syntax",
+                     Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr )))
+          p "result10: " + write_to_string( ret )
+          ret
         else
           sym = toRubySymbol( car.to_s )
           newSexp = sexp
@@ -1996,13 +2003,13 @@ module Nendo
           elsif car.class == Symbol and syntaxArray.map {|arr| arr[0]}.include?( car )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
+            keys = syntaxArray.reverse.map {|arr| arr[0]}
             if not symbol_and_syntaxObj
               raise "can't find valid syntaxObject"
             end
-            pp [ "lexical mcaro expanding (before) ", _write_MIMARKto_MIMARKstring( sexp ), " by ", symbol_and_syntaxObj[0] ] if @debug
-            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
-            pp [ "lexical mcaro expanding (after ) ", _write_MIMARKto_MIMARKstring( newSexp ) ] if @debug
-            newSexp
+            pp [ "lexical macro expanding (before) ", write_to_string( sexp ), " by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
+            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [ sexp, Cell.new(), (_global_MIMARKvariables( ).to_arr + keys).to_list ] ))
+            pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -2025,7 +2032,7 @@ module Nendo
         sexp
       end
     end
-  
+
     def macroExpandPhase( sexp )
       converge = true
       begin
@@ -2036,7 +2043,11 @@ module Nendo
       end until converge
       sexp
     end
-    
+
+    def lexicalSyntaxStripPhase( sexp )
+      sexp
+    end
+
     def ppRubyExp( level, exp )
       indent = @indent * level
       exp.map { |x|
@@ -2072,11 +2083,14 @@ module Nendo
         @lastSourcefile = sourcefile
         @lastLineno     = lineno
         sourceInfo.setSource( sourcefile, lineno, sexp )
+
+        # macro expand phase
         sexp = macroExpandPhase( sexp )
         if @debug
           printf( "\n          expaneded=<<< %s >>>\n", (Printer.new())._print(sexp))
         end
-        # compiling phase written in Nendo
+
+        # compiling phase written
         sym = toRubySymbol( "%compile-phase" )
         if ( eval( sprintf( "(defined? @%s and Proc == @%s.class)", sym,sym ), @binding ))
           eval( sprintf( "@___tmp = @%s", sym ), @binding )
@@ -2445,3 +2459,4 @@ class Hash
     arr.to_list
   end
 end
+

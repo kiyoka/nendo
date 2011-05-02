@@ -199,27 +199,72 @@ describe Nendo, "when use syntax-rules " do
   end
 end
 
-
-describe Nendo, "When use let-syntax and letrec-syntax " do
+describe Nendo, "When use let-syntax and letrec-syntax (1)" do
   before do
-    @nendo = Nendo::Core.new()
+    @nendo = Nendo::Core.new(true,true)
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " " +
-           "(macroexpand" +
-           "  '(%lexical-define-syntax ((nil!" +
-           "     (syntax-rules ()" +
-           "       ((_ x)" +
-           "        (set! x '())))))" +
-           "     (nil! aa))) " ).should == "(begin (set! aa '()))"
-    @nendo.evalStr( " " +
-           "(define aa 100) " +
-           "(%lexical-define-syntax ((nil!" +
-           "   (syntax-rules ()" +
-           "     ((_ x)" +
-           "      (set! x '())))))" +
-           "   (nil! aa)) " +
-           "aa" ).should == "()"
+#    @nendo.evalStr( " " +
+#           "(macroexpand" +
+#           "  '(%lexical-syntax ((nil!" +
+#           "     (syntax-rules ()" +
+#           "       ((_ x)" +
+#           "        (set! x '())))))" +
+#           "     (nil! aa))) " ).should == ""
+#    @nendo.evalStr( " " +
+#           "(define aa 100) " +
+#           "(%lexical-syntax ((nil!" +
+#           "   (syntax-rules ()" +
+#           "     ((_ x)" +
+#           "      (set! x '())))))" +
+#           "   (nil! aa)) " +
+#           "aa" ).should == "()"
+#    @nendo.evalStr( " " +
+#           "(let ()" +
+#           "  (%lexical-syntax ()" +
+#           "    (define internal-def 'ok)" +
+#           "  internal-def))" +
+#           " " ).should == "ok"
   end
 end
+
+describe Nendo, "When use let-syntax and letrec-syntax (2)" do
+  before do
+    @nendo = Nendo::Core.new(true,true)
+    @nendo.loadInitFile
+  end
+  it "should" do
+
+#    @nendo.evalStr( " " +
+#           "(let ()" +
+#           "  (%lexical-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))" +
+#           "                    (b (syntax-rules () ((_ ?x) (- ?x 8)))))" +
+#           "    (list (a 7) (b 8))))" ).should == "(15 0)"
+
+#    @nendo.evalStr( " " +
+#           "(let ()" +
+#           "  (%lexical-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))" +
+#           "                    (b (syntax-rules () ((_ ?x) (- ?x 8)))))" +
+#           "    (%lexical-syntax ((aa (syntax-rules () ((_ ?x) (b 2))))" +
+#           "                      (bb (syntax-rules () ((_ ?x) (a 3)))))" +
+#           "      (list (aa 7) (bb 8)))))" ).should == "(-6 11)"
+
+    @nendo.evalStr( " " +
+           "(let ()" +
+           "  (%lexical-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))" +
+           "                    (b (syntax-rules () ((_ ?x) (- ?x 8)))))" +
+           "    (%lexical-syntax ((a (syntax-rules () ((_ ?y) (b 2))))" +
+           "                      (b (syntax-rules () ((_ ?y) (a 3)))))" +
+           "      (list (a 7) (b 8)))))" ).should == "(-6 11)"
+
+
+#    @nendo.evalStr( " " +
+#           "(let ((x 'outer))" +
+#           "  (%lexical-syntax ((m (syntax-rules () ((m) x))))" +
+#           "    (let ((x 'inner))" +
+#           "      (m))))" ).should == "outer"
+
+  end
+end
+
