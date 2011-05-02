@@ -1965,15 +1965,10 @@ module Nendo
           sexp
         elsif :"%lexical-syntax" == car
           pp "%lexical-syntax : <entry>" if @debug
-          arr_tmp = sexp.second.map { |x|
+          arr = sexp.second.map { |x|
             [ x.car.car, false, Cell.new( :"syntax-rules",
                                      macroexpandEngine( x.car.cdr.car.cdr, syntaxArray )) ]
-          }
-          arr_tmp.each { |x|
-            pp [ "kiyoka10", write_to_string( x[2] ) ]
-          }
-
-          arr = arr_tmp.map {|y|
+          }.map {|y|
             [ y[0], _eval( y[2] ), y[2] ]
           }
           newKeywords = arr.map { |e|
@@ -1982,7 +1977,7 @@ module Nendo
           }.to_list
           ret = Cell.new( :"%lexical-syntax",
                      Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr )))
-          p "result10: " + write_to_string( ret )
+          p "result10: " + write_to_string( ret ) if @debug
           ret
         else
           sym = toRubySymbol( car.to_s )
