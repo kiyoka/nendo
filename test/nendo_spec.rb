@@ -2,24 +2,24 @@
 # -*- encoding: utf-8 -*-
 #
 # nendo_spec.rb -  "RSpec file for nendo language"
-#  
+#
 #   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
-#   
+#
 #   Redistribution and use in source and binary forms, with or without
 #   modification, are permitted provided that the following conditions
 #   are met:
-#   
+#
 #   1. Redistributions of source code must retain the above copyright
 #      notice, this list of conditions and the following disclaimer.
-#  
+#
 #   2. Redistributions in binary form must reproduce the above copyright
 #      notice, this list of conditions and the following disclaimer in the
 #      documentation and/or other materials provided with the distribution.
-#  
+#
 #   3. Neither the name of the authors nor the names of its contributors
 #      may be used to endorse or promote products derived from this
 #      software without specific prior written permission.
-#  
+#
 #   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 #   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 #   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -31,7 +31,7 @@
 #   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 #   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 #   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#  
+#
 require 'nendo'
 include Nendo
 
@@ -56,7 +56,7 @@ describe Cell, "when initialized as '(100)" do
   before do
     @cell = Cell.new( 100 )
   end
-  
+
   it "should" do
     @cell.isNull.should_not be_true
     @cell.length.should == 1
@@ -75,7 +75,7 @@ describe Cell, "when initialized as '(100 . 200)" do
   before do
     @cell = Cell.new( 100, 200 )
   end
-  
+
   it "should" do
     @cell.isNull.should_not be_true
     @cell.isDotted.should be_true
@@ -95,7 +95,7 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
   before do
     @cell = Cell.new( 100, Cell.new( 200, 300 ))
   end
-  
+
   it "should" do
     @cell.isNull.should_not   be_true
     @cell.isDotted.should_not be_true
@@ -865,7 +865,16 @@ describe Nendo, "when call evalStr() with built-in special forms" do
     @nendo.evalStr( " (begin 1) " ).should == "1"
     @nendo.evalStr( " (begin 1 2) " ).should == "2"
     @nendo.evalStr( " (begin 1 2 3) " ).should == "3"
-    @nendo.evalStr( " (set! x 2) (set! y (begin (set! x (* x 2)) (set! x (* x 2)) (set! x (* x 2)) 100))  (+ x y)" ).should == "116"
+    @nendo.evalStr( <<EOS
+(set! x 2)
+(set! y (begin
+          (set! x (* x 2))
+          (set! x (* x 2))
+          (set! x (* x 2))
+          100))
+(+ x y)
+EOS
+           ).should == "116"
     @nendo.evalStr( " (let ()                 100) " ).should == "100"
     @nendo.evalStr( " (let ((a 11))           a) " ).should == "11"
     @nendo.evalStr( " (let ((a 11) (b 22))    (+ a b)) " ).should == "33"
@@ -878,8 +887,18 @@ describe Nendo, "when call evalStr() with built-in special forms" do
     @nendo.evalStr( " (letrec ((a 22)) (let ((b 33))   (+ a b))) " ).should == "55"
     @nendo.evalStr( " (letrec ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
     @nendo.evalStr( " (letrec  ((a (let ((b 2))   (+ 100 b))))  a) " ).should == "102"
-    @nendo.evalStr( " (letrec ( (func1 (lambda (x) 13))             (func2 (lambda (x) (* 2 (func1))))  )     (list (func2) (func1))) " ).should == "(26 13)"
-    @nendo.evalStr( " (letrec ( (func2 (lambda (x) (* 2 (func1))))  (func1 (lambda (x) 7))              )     (list (func2) (func1))) " ).should == "(14 7)"
+    @nendo.evalStr( <<EOS
+(letrec ((func1 (lambda (x) 13))
+         (func2 (lambda (x) (* 2 (func1)))))
+  (list (func2) (func1)))
+EOS
+           ).should == "(26 13)"
+    @nendo.evalStr( <<EOS
+(letrec ((func2 (lambda (x) (* 2 (func1))))
+         (func1 (lambda (x) 7)))
+  (list (func2) (func1)))
+EOS
+    ).should == "(14 7)"
     @nendo.evalStr( " (if true   't 'f)" ).should == "t"
     @nendo.evalStr( " (if true   '(1) '(2))" ).should == "(1)"
     @nendo.evalStr( " (if false  't 'f)" ).should == "f"
@@ -887,11 +906,11 @@ describe Nendo, "when call evalStr() with built-in special forms" do
     @nendo.evalStr( " (set! x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
     @nendo.evalStr( " (set! x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"
     @nendo.evalStr( " (set! func (lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
-    @nendo.evalStr( " ((lambda (arg1) arg1)  3)" ).should == "3" 
-    @nendo.evalStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
-    @nendo.evalStr( " ((if #t + *) 3 4)" ).should == "7" 
-    @nendo.evalStr( " ((if #f + *) 3 4)" ).should == "12" 
-    @nendo.evalStr( " (apply1 + '(1 2))" ).should == "3" 
+    @nendo.evalStr( " ((lambda (arg1) arg1)  3)" ).should == "3"
+    @nendo.evalStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6"
+    @nendo.evalStr( " ((if #t + *) 3 4)" ).should == "7"
+    @nendo.evalStr( " ((if #f + *) 3 4)" ).should == "12"
+    @nendo.evalStr( " (apply1 + '(1 2))" ).should == "3"
     @nendo.evalStr( " (apply1 + (range 10 1))" ).should == "55"
     @nendo.evalStr( " (apply1 cons '(1 2))" ).should == "(1 . 2)"
     @nendo.evalStr( " (apply1 list '(1 2 3))" ).should == "(1 2 3)"
@@ -909,7 +928,16 @@ describe Nendo, "when call evalStr() with built-in special forms (renamed symbol
     @nendo.evalStr( " (/nendo/core/begin 1) " ).should     == "1"
     @nendo.evalStr( " (/nendo/core/begin 1 2) " ).should   == "2"
     @nendo.evalStr( " (/nendo/core/begin 1 2 3) " ).should == "3"
-    @nendo.evalStr( " (/nendo/core/set! x 2) (/nendo/core/set! y (/nendo/core/begin (/nendo/core/set! x (* x 2)) (/nendo/core/set! x (* x 2)) (/nendo/core/set! x (* x 2)) 100))  (+ x y)" ).should == "116"
+    @nendo.evalStr( <<EOS
+(/nendo/core/set! x 2)
+(/nendo/core/set! y (/nendo/core/begin
+                     (/nendo/core/set! x (* x 2))
+                     (/nendo/core/set! x (* x 2))
+                     (/nendo/core/set! x (* x 2))
+                     100))
+(+ x y)
+EOS
+           ).should == "116"
     @nendo.evalStr( " (/nendo/core/let ()                 100) " ).should                                == "100"
     @nendo.evalStr( " (/nendo/core/let ((a 11))           a) " ).should                                  == "11"
     @nendo.evalStr( " (/nendo/core/let ((a 11) (b 22))    (+ a b)) " ).should                            == "33"
@@ -922,19 +950,33 @@ describe Nendo, "when call evalStr() with built-in special forms (renamed symbol
     @nendo.evalStr( " (/nendo/core/letrec ((a 22)) (let ((b 33))   (+ a b))) " ).should                  == "55"
     @nendo.evalStr( " (/nendo/core/letrec ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
     @nendo.evalStr( " (/nendo/core/letrec  ((a (let ((b 2))   (+ 100 b))))  a) " ).should                == "102"
-    @nendo.evalStr( " (/nendo/core/letrec ( (func1 (/nendo/core/lambda (x) 13))             (func2 (/nendo/core/lambda (x) (* 2 (func1))))  )     (list (func2) (func1))) " ).should == "(26 13)"
-    @nendo.evalStr( " (/nendo/core/letrec ( (func2 (/nendo/core/lambda (x) (* 2 (func1))))  (func1 (/nendo/core/lambda (x) 7))              )     (list (func2) (func1))) " ).should == "(14 7)"
+    @nendo.evalStr( <<EOS
+(/nendo/core/letrec ((func1 (/nendo/core/lambda (x) 13))
+                     (func2 (/nendo/core/lambda (x) (* 2 (func1)))))
+   (list (func2) (func1)))
+EOS
+           ).should == "(26 13)"
+    @nendo.evalStr( <<EOS
+(/nendo/core/letrec ((func2 (/nendo/core/lambda (x) (* 2 (func1))))
+                     (func1 (/nendo/core/lambda (x) 7)))
+   (list (func2) (func1)))
+EOS
+           ).should == "(14 7)"
     @nendo.evalStr( " (/nendo/core/if true   't 'f)" ).should     == "t"
     @nendo.evalStr( " (/nendo/core/if true   '(1) '(2))" ).should == "(1)"
     @nendo.evalStr( " (/nendo/core/if false  't 'f)" ).should     == "f"
     @nendo.evalStr( " (/nendo/core/if false  '(1) '(2))" ).should == "(2)"
     @nendo.evalStr( " (/nendo/core/set! x 0) (/nendo/core/if true  (set! x 1) (set! x 2))   x" ).should == "1"
     @nendo.evalStr( " (/nendo/core/set! x 0) (/nendo/core/if false (set! x 1) (set! x 2))   x" ).should == "2"
-    @nendo.evalStr( " (/nendo/core/set! func (/nendo/core/lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
-    @nendo.evalStr( " ((/nendo/core/lambda (arg1) arg1)  3)" ).should         == "3" 
-    @nendo.evalStr( " ((/nendo/core/lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6" 
-    @nendo.evalStr( " ((/nendo/core/if #t + *) 3 4)" ).should                 == "7" 
-    @nendo.evalStr( " ((/nendo/core/if #f + *) 3 4)" ).should                 == "12" 
+    @nendo.evalStr( <<EOS
+(/nendo/core/set! func (/nendo/core/lambda (arg1) arg1))
+(list (func 1) (func 2))
+EOS
+           ).should == "(1 2)"
+    @nendo.evalStr( " ((/nendo/core/lambda (arg1) arg1)  3)" ).should         == "3"
+    @nendo.evalStr( " ((/nendo/core/lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6"
+    @nendo.evalStr( " ((/nendo/core/if #t + *) 3 4)" ).should                 == "7"
+    @nendo.evalStr( " ((/nendo/core/if #f + *) 3 4)" ).should                 == "12"
     lambda { @nendo.evalStr( " (/nendo/core/error \"My Runtime Error\") " ) }.should            raise_error( RuntimeError )
   end
 end
@@ -950,22 +992,24 @@ describe Nendo, "when call evalStr() with global and lexical scope variable" do
     @nendo.evalStr( " (let ((var 222)) (set! var 333) var) " ).should == "333"
     @nendo.evalStr( " (let ((var 222)) (set! var 333)) var " ).should == "111"
     @nendo.evalStr( " (define global1 \"G\") " ).should == '"G"'
-    @nendo.evalStr( " " +
-                    "(let ((local1 \"L\")" +
-                    "      (local2 \"L\"))" +
-                    "  (set! global1 (+ global1 \"lobal1\"))" +
-                    "  (set! local1  (+ local1   \"ocal1\"))" +
-                    "  (set! local2  (+ local2   \"ocal2\"))" +
-                    "  (list global1" +
-                    "        local1" +
-                    "        local2" +
-                    "        (let ((local1 \"A\")" +
-                    "              (local2 \"B\"))" +
-                    "          (set! local1  (+ local1   \"a\"))" +
-                    "          (set! local2  (+ local2   \"b\"))" +
-                    "          (list local1 local2" +
-                    "                (let ((local1 \"CCC\"))" +
-                    "                  (list global1 local1 local2))))))" ).should == '("Global1" "Local1" "Local2" ("Aa" "Bb" ("Global1" "CCC" "Bb")))'
+    @nendo.evalStr( <<EOS
+(let ((local1 \"L\")
+      (local2 \"L\"))
+  (set! global1 (+ global1 \"lobal1\"))
+  (set! local1  (+ local1   \"ocal1\"))
+  (set! local2  (+ local2   \"ocal2\"))
+  (list global1
+        local1
+        local2
+        (let ((local1 \"A\")
+              (local2 \"B\"))
+          (set! local1  (+ local1   \"a\"))
+          (set! local2  (+ local2   \"b\"))
+          (list local1 local2
+                (let ((local1 \"CCC\"))
+                  (list global1 local1 local2))))))
+EOS
+           ).should == '("Global1" "Local1" "Local2" ("Aa" "Bb" ("Global1" "CCC" "Bb")))'
   end
 end
 
@@ -974,17 +1018,47 @@ describe Nendo, "when call evalStr() with macroexpand-1 function" do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evalStr( " (set! twice (macro (x) (list 'begin x x)))           (macroexpand-1 '(twice (+ 1 1))) " ).should == "(begin (+ 1 1) (+ 1 1))"
-    @nendo.evalStr( " (set! inc (macro (x) (list 'set! x (list '+ x 1))))  (macroexpand-1 '(inc a)) " ).should == "(set! a (+ a 1))"
+    @nendo.evalStr( <<EOS
+(set! twice (macro (x) (list 'begin x x)))
+(macroexpand-1 '(twice (+ 1 1)))
+EOS
+           ).should == "(begin (+ 1 1) (+ 1 1))"
+    @nendo.evalStr( <<EOS
+(set! inc (macro (x) (list 'set! x (list '+ x 1))))
+(macroexpand-1 '(inc a))
+EOS
+           ).should == "(set! a (+ a 1))"
     @nendo.evalStr( " (set! a 10) (inc a) " ).should == "11"
     @nendo.evalStr( " (set! a 10) (inc a) (inc a)" ).should == "12"
-    @nendo.evalStr( " (macroexpand-1 '(twice (twice (inc a))))" ).should ==
+    @nendo.evalStr( <<EOS
+(macroexpand-1
+ '(twice (twice (inc a))))
+EOS
+           ).should ==
       "(begin (twice (inc a)) (twice (inc a)))"
-    @nendo.evalStr( " (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))" ).should ==
+    @nendo.evalStr( <<EOS
+(macroexpand-1
+ (macroexpand-1
+  '(twice (twice (inc a)))))
+EOS
+           ).should ==
       "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
-    @nendo.evalStr( " (macroexpand-1 (macroexpand-1 (macroexpand-1 '(twice (twice (inc a))))))" ).should ==
+    @nendo.evalStr( <<EOS
+(macroexpand-1
+ (macroexpand-1
+  (macroexpand-1
+   '(twice (twice (inc a))))))
+EOS
+           ).should ==
       "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (begin (inc a) (inc a)))"
-    @nendo.evalStr( " (macroexpand-1 (macroexpand-1 (macroexpand-1 (macroexpand-1 '(twice (twice (inc a)))))))" ).should ==
+    @nendo.evalStr( <<EOS
+(macroexpand-1
+ (macroexpand-1
+  (macroexpand-1
+   (macroexpand-1
+    '(twice (twice (inc a)))))))
+EOS
+           ).should ==
       "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (begin (set! a (+ a 1)) (set! a (+ a 1))))"
     @nendo.evalStr( " (set! a 10) (twice (twice (inc a)))" ).should == "14"
   end
@@ -1080,7 +1154,7 @@ describe Nendo, "when use regexp litteral and library functions " do
     @nendo.evalStr( " #/[a-z]/i " ).should                                    == "#/[a-z]/i"
     lambda { @nendo.evalStr( " #/[a-z]/I " ) }.should                         raise_error(NameError)
     lambda { @nendo.evalStr( " #/[a-z]/a " ) }.should                         raise_error(NameError)
-    
+
     @nendo.evalStr( ' (string->regexp "abc") ' ).should                       == '#/abc/'
     @nendo.evalStr( ' (string->regexp "[a-z]") ' ).should                     == '#/[a-z]/'
     @nendo.evalStr( ' (string->regexp "[a-zA-Z0-9]+" ) ' ).should             == '#/[a-zA-Z0-9]+/'
@@ -1136,7 +1210,12 @@ describe Nendo, "when use regexp litteral and library functions " do
     @nendo.evalStr( ' (rxmatch->string    #/XXX/  "xxx")' ).should                                         == '#f'
 
     pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
-    @nendo.evalStr( ' (define matchdata (rxmatch #/([あ-ん])([あ-ん])([あ-ん])([あ-ん])([あ-ん])/ "ABC漢字あいうえお漢字ABC")) ' ).should  == 'あいうえお'
+    @nendo.evalStr( <<EOS
+(define matchdata
+  (rxmatch #/([あ-ん])([あ-ん])([あ-ん])([あ-ん])([あ-ん])/
+           "ABC漢字あいうえお漢字ABC"))
+EOS
+           ).should  == 'あいうえお'
     @nendo.evalStr( ' (rxmatch-start      matchdata) ' ).should                                         == '5'
     @nendo.evalStr( ' (rxmatch-end        matchdata) ' ).should                                         == '10'
     @nendo.evalStr( ' (rxmatch-substring  matchdata) ' ).should                                         == '"あいうえお"'
@@ -1289,8 +1368,27 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (cond (true  1) (true  2)) " ).should == "1"
     @nendo.evalStr( " (cond (false 1) (false 2)) " ).should == "()"
     @nendo.evalStr( " (cond (false 1) (false 2) (else 3)) " ).should == "3"
-    @nendo.evalStr( " (cond ((- 10 9) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 2)) " ).should == '"<1>"'
-    @nendo.evalStr( " (cond (true  1) ((- 10 8) => (lambda (x) (+ \"<\" (to_s x) \">\"))) (else 3)) " ).should == "1"
+    @nendo.evalStr( <<EOS
+(cond
+ ((- 10 9)
+  =>
+  (lambda (x)
+    (+ \"<\" (to_s x) \">\")))
+ (else
+  2))
+EOS
+           ).should == '"<1>"'
+    @nendo.evalStr( <<EOS
+(cond
+ (true  1)
+ ((- 10 8)
+  =>
+  (lambda (x)
+    (+ \"<\" (to_s x) \">\")))
+ (else
+  3))
+EOS
+           ).should == "1"
     @nendo.evalStr( " (or) " ).should == "#f"
     @nendo.evalStr( " (or true) " ).should == "#t"
     @nendo.evalStr( " (or false) " ).should == "#f"
@@ -1318,8 +1416,27 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (and true '(2) true) " ).should == "#t"
     @nendo.evalStr( " (and true true '(2)) " ).should == "(2)"
     @nendo.evalStr( " (and true '(2) false) " ).should == "#f"
-    @nendo.evalStr( " (define total 0) (and 1 2       (set! total (+ total 1)) (set! total (+ total 2)) 5)  total" ).should == "3"
-    @nendo.evalStr( " (define total 1) (and 1 2 false (set! total (+ total 2)) (set! total (+ total 3)) 5)  total" ).should == "1"
+    @nendo.evalStr( <<EOS
+(define total 0)
+(and 1
+     2
+     (set! total (+ total 1))
+     (set! total (+ total 2))
+     5)
+total
+EOS
+           ).should == "3"
+    @nendo.evalStr( <<EOS
+(define total 1)
+(and 1
+     2
+     false
+     (set! total (+ total 2))
+     (set! total (+ total 3))
+     5)
+total
+EOS
+           ).should == "1"
     @nendo.evalStr( " (apply + 100 '()) " ).should == "100"
     @nendo.evalStr( " (apply + '(1 2)) " ).should == "3"
     @nendo.evalStr( " (apply + 1 2 '(3)) " ).should == "6"
@@ -1337,24 +1454,89 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (map (lambda (x) 1) (to-list '#())) " ).should == "()"
     @nendo.evalStr( " (map (lambda (x) (* x 2)) '(1 2 3)) " ).should == "(2 4 6)"
     @nendo.evalStr( " (map (lambda (x) (+ x 1)) '(1 2 3)) " ).should == "(2 3 4)"
-    @nendo.evalStr( " (map (lambda (a b)   (+ a b))   '(1 2 3) '(10 20 30)) " ).should == "(11 22 33)"
-    @nendo.evalStr( " (map (lambda (a b)   (- b a))   '(1 2 3) '(10 20 30)) " ).should == "(9 18 27)"
-    @nendo.evalStr( " (map (lambda (a b c) (+ a b c)) '(1 2 3) '(10 20 30) '(100 200 300)) " ).should == "(111 222 333)"
-    @nendo.evalStr( " (define _result"+
-                    "   (map"+
-                    "    (lambda (x)"+
-                    "      (* x 2))"+
-                    "    (range 10000 1)))"+
-                    " (list"+
-                    "  (first  _result)"+
-                    "  (second _result)"+
-                    "  (last-pair _result))" ).should == "(2 4 (20000))"
-    @nendo.evalStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons 1 _lst)))            '())  _lst" ).should == "()"
-    @nendo.evalStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons (* x 2) _lst))) '(1 2 3))  _lst" ).should == "(6 4 2)"
-    @nendo.evalStr( " (define _lst '())  (for-each (lambda (x) (set! _lst (cons (+ x 1) _lst))) '(1 2 3))  _lst" ).should == "(4 3 2)"
-    @nendo.evalStr( " (define _lst '())  (for-each (lambda (a b) (set! _lst (cons (cons a b) _lst))) '(1 2 3) '(10 20 30))  _lst" ).should ==
+    @nendo.evalStr( <<EOS
+(map
+ (lambda (a b)   (+ a b))
+ '(1 2 3)
+ '(10 20 30))
+EOS
+           ).should == "(11 22 33)"
+    @nendo.evalStr( <<EOS
+(map
+ (lambda (a b)
+   (- b a))
+ '(1 2 3)
+ '(10 20 30))
+EOS
+           ).should == "(9 18 27)"
+    @nendo.evalStr( <<EOS
+(map
+ (lambda (a b c)
+   (+ a b c))
+ '(1 2 3)
+ '(10 20 30)
+ '(100 200 300))
+EOS
+           ).should == "(111 222 333)"
+    @nendo.evalStr( <<EOS
+(define _result
+  (map
+   (lambda (x)
+     (* x 2))
+   (range 10000 1)))
+(list
+ (first  _result)
+ (second _result)
+ (last-pair _result))
+EOS
+           ).should == "(2 4 (20000))"
+    @nendo.evalStr( <<EOS
+(define _lst '())
+(for-each
+ (lambda (x)
+   (set! _lst (cons 1 _lst)))
+ '())
+_lst
+EOS
+           ).should == "()"
+    @nendo.evalStr( <<EOS
+(define _lst '())
+(for-each
+ (lambda (x)
+   (set! _lst (cons (* x 2) _lst)))
+ '(1 2 3))
+_lst
+EOS
+           ).should == "(6 4 2)"
+    @nendo.evalStr( <<EOS
+(define _lst '())
+(for-each
+ (lambda (x)
+   (set! _lst (cons (+ x 1) _lst)))
+ '(1 2 3))
+_lst
+EOS
+           ).should == "(4 3 2)"
+    @nendo.evalStr( <<EOS
+(define _lst '())
+(for-each
+ (lambda (a b)
+   (set! _lst (cons (cons a b) _lst)))
+ '(1 2 3)
+ '(10 20 30))
+_lst
+EOS
+           ).should ==
       "((3 . 30) (2 . 20) (1 . 10))"
-    @nendo.evalStr( " (define _cnt 0) (for-each   (lambda (x) (set! _cnt (+ _cnt 1))) (range 10000)) _cnt" ).should == "10000"
+    @nendo.evalStr( <<EOS
+(define _cnt 0)
+(for-each
+ (lambda (x)
+   (set! _cnt (+ _cnt 1)))
+ (range 10000))
+_cnt
+EOS
+           ).should == "10000"
     @nendo.evalStr( " (filter     (lambda (x) x)             '()) " ).should      == "()"
     @nendo.evalStr( " (filter     (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
     @nendo.evalStr( " (filter     (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(2)"
@@ -1370,26 +1552,42 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (filter-map (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
     @nendo.evalStr( " (filter-map (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(#t)"
     @nendo.evalStr( " (filter-map (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(#t #t)"
-    @nendo.evalStr( " (filter-map (lambda (x) (if (= x 2) (* x 10) false)) '(1 2 3)) " ).should == "(20)"
-    @nendo.evalStr( " (filter-map (lambda (x) (if (not (= x 2)) (* x 10) false)) '(1 2 3)) " ).should == "(10 30)"
+    @nendo.evalStr( <<EOS
+(filter-map
+ (lambda (x)
+   (if (= x 2) (* x 10) false))
+ '(1 2 3))
+EOS
+           ).should == "(20)"
+    @nendo.evalStr( <<EOS
+(filter-map
+ (lambda (x)
+   (if (not (= x 2)) (* x 10) false))
+ '(1 2 3))
+EOS
+           ).should == "(10 30)"
     @nendo.evalStr( " (any   even?  '(1 2 3)) " ).should == "#t"
     @nendo.evalStr( " (any   even?  '(1 3)) " ).should == "#f"
     @nendo.evalStr( " (any   odd?   '(1 3)) " ).should == "#t"
     @nendo.evalStr( " (any   (lambda (x) x) '(1 2 3)) " ).should == "1"
-    @nendo.evalStr( " " +
-                    "(let1 result '()" +
-                    "  (do" +
-                    "      ((i 0 (+ i 1)))" +
-                    "      ((< 10 i) #f)" +
-                    "    (set! result (cons i result)))" +
-                    "  (reverse result))" ).should == "(0 1 2 3 4 5 6 7 8 9 10)"
-    @nendo.evalStr( " " +
-                    "(let1 result '()" +
-                    "  (do" +
-                    "      ((i 0 (+ i 3)))" +
-                    "      ((< (* 3 10) i) #f)" +
-                    "    (set! result (cons i result)))" +
-                    "  (reverse result))" ).should == "(0 3 6 9 12 15 18 21 24 27 30)"
+    @nendo.evalStr( <<EOS
+(let1 result '()
+  (do
+      ((i 0 (+ i 1)))
+      ((< 10 i) #f)
+    (set! result (cons i result)))
+  (reverse result))
+EOS
+           ).should == "(0 1 2 3 4 5 6 7 8 9 10)"
+    @nendo.evalStr( <<EOS
+(let1 result '()
+  (do
+      ((i 0 (+ i 3)))
+      ((< (* 3 10) i) #f)
+    (set! result (cons i result)))
+  (reverse result))
+EOS
+           ).should == "(0 3 6 9 12 15 18 21 24 27 30)"
   end
 end
 
@@ -1414,22 +1612,30 @@ describe Nendo, "when use values " do
     @nendo.evalStr( " (values-values (values 1 2)) " ).should == "(1 2)"
     @nendo.evalStr( " (values-values (values 1 2 3)) " ).should == "(1 2 3)"
     @nendo.evalStr( " (values-values (values '(a) \"b\" '(\"C\"))) " ).should == '((a) "b" ("C"))'
-    @nendo.evalStr( "" +
-                    " (call-with-values" +
-                    "     (lambda () (values 4 5)) " +
-                    "   (lambda (a b) b))" ).should == "5"
-    @nendo.evalStr( "" +
-                    " (call-with-values" +
-                    "     (lambda () (values 1 2)) " +
-                    "   cons)" ).should == "(1 . 2)"
-    @nendo.evalStr( "" +
-                    " (call-with-values" +
-                    "     (lambda () (values 10)) " +
-                    "   list)" ).should == "(10)"
-    @nendo.evalStr( "" +
-                    " (call-with-values" +
-                    "     (lambda () (values)) " +
-                    "   list)" ).should == "()"
+    @nendo.evalStr( <<EOS
+(call-with-values
+    (lambda () (values 4 5))
+  (lambda (a b) b))
+EOS
+           ).should == "5"
+    @nendo.evalStr( <<EOS
+(call-with-values
+    (lambda () (values 1 2))
+  cons)
+EOS
+           ).should == "(1 . 2)"
+    @nendo.evalStr( <<EOS
+(call-with-values
+    (lambda () (values 10))
+  list)
+EOS
+           ).should == "(10)"
+    @nendo.evalStr( <<EOS
+(call-with-values
+    (lambda () (values))
+  list)
+EOS
+           ).should == "()"
     @nendo.evalStr( " (call-with-values * -) " ).should == "-1"
     @nendo.evalStr( " (receive (a)       (values)           (list a))       " ).should == "()"
     @nendo.evalStr( " (receive (a)       (values 10)        (list a))       " ).should == "(10)"
@@ -1524,16 +1730,24 @@ describe Nendo, "when use macros made by quasiquote. " do
     @nendo.evalStr( " (let* ((a 10)  (b (* a 2)))  (cons a b)) " ).should == "(10 . 20)"
     @nendo.evalStr( " (let* ((a 10)  (b (* a 2)) (c (* b 3)))  (list a b c)) " ).should == "(10 20 60)"
     @nendo.evalStr( " (begin0 1 2 3) " ).should == "1"
-    @nendo.evalStr( " (define a 2) (begin0 (set! a (* a 2)) (set! a (* a 2)) (set! a (* a 2)) ) " ).should == "4"
+    @nendo.evalStr( <<EOS
+(define a 2)
+(begin0 (set! a (* a 2))
+        (set! a (* a 2))
+        (set! a (* a 2)))
+EOS
+           ).should == "4"
     @nendo.evalStr( " (begin0 100) " ).should == "100"
     @nendo.evalStr( " (begin0) " ).should == "#f"
-    @nendo.evalStr( " " +
-                    "(receive (a b)" +
-                    "    (begin0" +
-                    "      (values 1 2)" +
-                    "      (values 10 20)" +
-                    "      (values 100 200))" +
-                    " (cons a b))" ).should == "(1 . 2)"
+    @nendo.evalStr( <<EOS
+(receive (a b)
+    (begin0
+      (values 1 2)
+      (values 10 20)
+      (values 100 200))
+  (cons a b))
+EOS
+           ).should == "(1 . 2)"
     @nendo.evalStr( " (macroexpand '(when #t (print \"1\") (print \"2\"))) " ).should == '(if #t (begin (print "1") (print "2")))'
     @nendo.evalStr( " (macroexpand '(unless #t (print \"1\") (print \"2\"))) " ).should == '(if (not #t) (begin (print "1") (print "2")))'
     @nendo.evalStr( " (macroexpand '(if-let1 a #t  (print \"T\")  (print \"F\"))) " ).should == '(let ((a #t)) (if a (print "T") (print "F")))'
@@ -1551,11 +1765,51 @@ describe Nendo, "when use define and lambda macro " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " (macroexpand '(define (main argv) (newline) 0)) " ).should == "(define main (lambda (argv) (newline) 0))"
-    @nendo.evalStr( " (macroexpand '(define (main argv) (define (foo x) x) (+ 10 20) 0 (foo 111))) " ).should == "(define main (lambda (argv) (letrec ((foo (lambda (x) x))) (+ 10 20) 0 (foo 111))))"
-    @nendo.evalStr( " (macroexpand '(define (main argv) (define result '()) (define (foo x) x) (define val 0) (define (bar x) (+ val 10)) )) " ).should == "(define main (lambda (argv) (letrec ((result '()) (foo (lambda (x) x)) (val 0) (bar (lambda (x) (+ val 10)))))))"
-    @nendo.evalStr( " (define (main argv) (define (foo x) x) (+ 10 20) 0 (foo 111)) (main) " ).should == "111"
-    @nendo.evalStr( " (define (main argv) (define (foo1 x) (+ 1 x)) (define (foo2 x) (+ 2 x)) (* (foo1 20) (foo2 30)))   (main '()) " ).should == "672"
+    @nendo.evalStr( <<EOS
+(macroexpand
+ '(define (main argv)
+    (newline)
+    0))
+EOS
+           ).should == "(define main (lambda (argv) (newline) 0))"
+    @nendo.evalStr( <<EOS
+(macroexpand
+ '(define (main argv)
+    (define (foo x) x)
+    (+ 10 20)
+    0
+    (foo 111)))
+EOS
+           ).should == "(define main (lambda (argv) (letrec ((foo (lambda (x) x))) (+ 10 20) 0 (foo 111))))"
+    @nendo.evalStr( <<EOS
+(macroexpand
+ '(define (main argv)
+    (define result '())
+    (define (foo x) x)
+    (define val 0)
+    (define (bar x)
+      (+ val 10))))
+EOS
+           ).should == "(define main (lambda (argv) (letrec ((result '()) (foo (lambda (x) x)) (val 0) (bar (lambda (x) (+ val 10)))))))"
+    @nendo.evalStr( <<EOS
+(define (main argv)
+  (define (foo x) x)
+  (+ 10 20)
+  0
+  (foo 111))
+(main)
+EOS
+           ).should == "111"
+    @nendo.evalStr( <<EOS
+(define (main argv)
+  (define (foo1 x) (+ 1 x))
+  (define (foo2 x) (+ 2 x))
+  (*
+   (foo1 20)
+   (foo2 30)))
+(main '())
+EOS
+           ).should == "672"
     @nendo.evalStr( " (macroexpand '(define (main argv) 0)) " ).should == "(define main (lambda (argv) 0))"
   end
 end
@@ -1566,15 +1820,27 @@ describe Nendo, "when use macro macro " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " (define inc!-macro (macro (x) (+ x 1))) #t" ).should == "#t"
+    @nendo.evalStr( <<EOS
+(define inc!-macro
+  (macro (x)
+    (+ x 1)))
+EOS
+           ).should  match( /Nendo::LispMacro/ )
     @nendo.evalStr( " (inc!-macro 10) " ).should == "11"
-    @nendo.evalStr( " (define dec!-macro (macro (x) (define (dec! v) (- v 1)) (dec! x)))  #t" ).should == "#t"
+    @nendo.evalStr( <<EOS
+(define dec!-macro
+  (macro (x)
+    (define (dec! v)
+      (- v 1))
+    (dec! x)))
+EOS
+           ).should  match( /Nendo::LispMacro/ )
     @nendo.evalStr( " (dec!-macro 10) " ).should == "9"
     @nendo.evalStr( " (. (dec!-macro 10) class) " ).should == 'Fixnum'
   end
 end
 
-describe Nendo, "when use macros expands some syntax. " do
+describe Nendo, "when use macros expand some syntax. " do
   before do
     @nendo = Nendo::Core.new()
     @nendo.loadInitFile
@@ -1792,17 +2058,52 @@ describe Nendo, "when use hash-table feature " do
     @nendo.evalStr( " (hash-table-num-entries h)" ).should == "1"
     @nendo.evalStr( " (hash-table-clear! h)" ).should == "{}"
     @nendo.evalStr( " (hash-table-num-entries h)" ).should == "0"
-    @nendo.evalStr( " (set! h (hash-table eq? '(\"a\" \"AAA\")   '(\"b\" \"BBB\")   '(\"c\" \"CCC\" 100)))  (hash-table-keys   h)" ).should == "(\"a\" \"b\" \"c\")"
-    @nendo.evalStr( " (set! h (hash-table eq? '(\"a\" \"AAA\")   '(\"b\" \"BBB\")   '(\"c\" \"CCC\" 100)))  (hash-table-values h)" ).should == "((\"AAA\") (\"BBB\") (\"CCC\" 100))"
-    @nendo.evalStr( " (set! h (hash-table eq? '(\"a\" . \"AAA\") '(\"b\" . \"BBB\") '(\"c\" . \"CCC\")))  h" ).should == "{\"a\"=>\"AAA\", \"b\"=>\"BBB\", \"c\"=>\"CCC\"}"
+    @nendo.evalStr( <<EOS
+(set! h (hash-table eq?
+                    '("a" "AAA")
+                    '("b" "BBB")
+                    '("c" "CCC" 100)))
+(hash-table-keys   h)
+EOS
+           ).should == "(\"a\" \"b\" \"c\")"
+    @nendo.evalStr( <<EOS
+(set! h (hash-table eq?
+                    '("a" "AAA")
+                    '("b" "BBB")
+                    '("c" "CCC" 100)))
+(hash-table-values h)
+EOS
+           ).should == "((\"AAA\") (\"BBB\") (\"CCC\" 100))"
+    @nendo.evalStr( <<EOS
+(set! h (hash-table eq?
+                    '("a" . "AAA")
+                    '("b" . "BBB")
+                    '("c" . "CCC")))
+h
+EOS
+           ).should == "{\"a\"=>\"AAA\", \"b\"=>\"BBB\", \"c\"=>\"CCC\"}"
     @nendo.evalStr( " (hash-table-keys       h)" ).should == '("a" "b" "c")'
     @nendo.evalStr( " (hash-table-values     h)" ).should == '("AAA" "BBB" "CCC")'
     @nendo.evalStr( " (hash-table-map        h (lambda (a b) (+ a b)))" ).should == '("aAAA" "bBBB" "cCCC")'
     @nendo.evalStr( " (hash-table-for-each   h (lambda (a b) (+ a b)))" ).should == '("aAAA" "bBBB" "cCCC")'
     @nendo.evalStr( " (set! h (make-hash-table)) " ).should == "{}"
-    @nendo.evalStr( " (set! h (hash-table eq? '(true . 1) '(false . 2) '(nil . 3)))  h" ).should   == "{true=>1, false=>2, nil=>3}"
+    @nendo.evalStr( <<EOS
+(set! h (hash-table eq?
+                    '(true . 1)
+                    '(false . 2)
+                    '(nil . 3)))
+h
+EOS
+           ).should   == "{true=>1, false=>2, nil=>3}"
     @nendo.evalStr( "   (hash-table-keys   h) " ).should                                           == "(#t #f nil)"
-    @nendo.evalStr( " (set! h (hash-table eq? '(1 . true) '(2 . false) '(3 . nil)))  h" ).should   == "{1=>true, 2=>false, 3=>nil}"
+    @nendo.evalStr( <<EOS
+(set! h (hash-table eq?
+                    '(1 . true)
+                    '(2 . false)
+                    '(3 . nil)))
+h
+EOS
+           ).should   == "{1=>true, 2=>false, 3=>nil}"
     @nendo.evalStr( "   (hash-table-keys   h) " ).should                                           == "(1 2 3)"
   end
 end
@@ -1869,64 +2170,145 @@ describe Nendo, "tail call optimization " do
     @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (%syntax (y) x))) " ).should       == "(lambda (x) (%syntax (y) x))"
     @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (syntax-quote x))) " ).should      == "(lambda (x) (syntax-quote x))"
     @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (quote x))) " ).should             == "(lambda (x) 'x)"
-    @nendo.evalStr( "" +
-                    "(%setup-%tailcall-mark"+
-                    "  '(lambda '(x)"+
-                    "    1"+
-                    "    2"+
-                    "    (print \"abc\")))" ).should == "(lambda '(x) 1 2 (%tailcall (print \"abc\")))"
-    @nendo.evalStr( "" +
-                    "(%setup-%tailcall-mark"+
-                    "  '(lambda (x)"+
-                    "     1"+
-                    "     2"+
-                    "     (if #t"+
-                    "         (begin 1 2 (print \"abc\"))"+
-                    "         (begin 1 2 (print \"ABC\")))))" ).should == "(lambda (x) 1 2 (if #t (begin 1 2 (%tailcall (print \"abc\"))) (begin 1 2 (%tailcall (print \"ABC\")))))"
-    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
-                    "   '(define (foo) (foo))"+
-                    "  ))" ).should == "(define foo (lambda () (%tailcall (foo))))"
-    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
-                    "   '(values? (make-values '()))"+
-                    "  ))" ).should == "(%tailcall (values? (make-values '())))"
-    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
-                    "   '(cond (false  1) (false  2))"+
-                    "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) ()))"
-    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
-                    "   '(cond (false 1) (false 2) (else 3))"+
-                    "  ))" ).should == "(if #f (begin 1) (if #f (begin 2) (if #t (begin 3) ())))"
-    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
-                    "   '(and (foo 1) (bar 2))"+
-                    "  ))" ).should == "(if (not (eq? #f (foo 1))) (%tailcall (bar 2)) #f)"
-    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
-                    "   '(or (foo 1) (bar 2))"+
-                    "  ))" ).gsub( /[24]0[0-9][0-9][0-9]/, "X0000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 #f))))"
-    @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
-                    "   '(let loop ((x 1))  1 2 (loop 100))"+
-                    "  ))" ).should == "(letrec ((loop (lambda (x) 1 2 (%tailcall (loop 100))))) (%tailcall (loop 1)))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark
+ '(lambda '(x)
+    1
+    2
+    (print \"abc\")))
+EOS
+           ).should == "(lambda '(x) 1 2 (%tailcall (print \"abc\")))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark
+ '(lambda (x)
+    1
+    2
+    (if #t
+        (begin 1 2 (print "abc"))
+        (begin 1 2 (print "ABC")))))
+EOS
+           ).should == "(lambda (x) 1 2 (if #t (begin 1 2 (%tailcall (print \"abc\"))) (begin 1 2 (%tailcall (print \"ABC\")))))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark (macroexpand
+                        '(define (foo) (foo))
+                        ))
+EOS
+           ).should == "(define foo (lambda () (%tailcall (foo))))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark (macroexpand
+                        '(values? (make-values '()))
+                        ))
+EOS
+           ).should == "(%tailcall (values? (make-values '())))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark (macroexpand
+                        '(cond
+                          (false  1)
+                          (false  2))
+                        ))
+EOS
+           ).should == "(if #f (begin 1) (if #f (begin 2) ()))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark (macroexpand
+                        '(cond
+                          (false 1)
+                          (false 2)
+                          (else 3))
+                        ))
+EOS
+           ).should == "(if #f (begin 1) (if #f (begin 2) (if #t (begin 3) ())))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark (macroexpand
+                        '(and
+                          (foo 1)
+                          (bar 2))
+                        ))
+EOS
+           ).should == "(if (not (eq? #f (foo 1))) (%tailcall (bar 2)) #f)"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark (macroexpand
+                        '(or
+                          (foo 1)
+                          (bar 2))
+                        ))
+EOS
+           ).gsub( /[24]0[0-9][0-9][0-9]/, "X0000" ).should == "(let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 #f))))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark (macroexpand
+                        '(let loop ((x 1))
+                           1
+                           2
+                           (loop 100))
+                        ))
+EOS
+           ).should == "(letrec ((loop (lambda (x) 1 2 (%tailcall (loop 100))))) (%tailcall (loop 1)))"
     @nendo.evalStr( "(%setup-%tailcall-mark (macroexpand "+
                     "   '(let1 aaa 111 aaa)"+
                     "  ))" ).should == "(let ((aaa 111)) aaa)"
-    @nendo.evalStr( "" +
-                    "(%setup-%tailcall-mark"+
-                    "  '(letrec ((func1 "+
-                    "             (lambda (x)"+
-                    "                1"+
-                    "                (func2)))"+
-                    "            (func2 "+
-                    "             (lambda (x)"+
-                    "                2"+
-                    "                (func1))))"+
-                    "     (func1 100)))" ).should == "(letrec ((func1 (lambda (x) 1 (%tailcall (func2)))) (func2 (lambda (x) 2 (%tailcall (func1))))) (%tailcall (func1 100)))"
+    @nendo.evalStr( <<EOS
+(%setup-%tailcall-mark
+ '(letrec ((func1
+            (lambda (x)
+              1
+              (func2)))
+           (func2
+            (lambda (x)
+              2
+              (func1))))
+    (func1 100)))
+EOS
+           ).should == "(letrec ((func1 (lambda (x) 1 (%tailcall (func2)))) (func2 (lambda (x) 2 (%tailcall (func1))))) (%tailcall (func1 100)))"
     @nendo.evalStr( "(set-optimize-level 0) " ).should == "0"
-    lambda { @nendo.evalStr( "(filter (lambda (x) (< x 10)) (range  10000)) " ) }.should               raise_error(SystemStackError)
+    lambda { @nendo.evalStr( <<EOS
+(filter
+ (lambda (x) (< x 10))
+ (range  10000))
+EOS
+                    ) }.should               raise_error(SystemStackError)
     @nendo.evalStr( "(set-optimize-level 1) " ).should == "1"
-    @nendo.evalStr( "(apply + (map        (lambda (x) (* x 2))      (range  10000))) " ).should == "99990000"
-    @nendo.evalStr( "(filter     (lambda (x) (< x 10))              (range  1000)) " ).should == "(0 1 2 3 4 5 6 7 8 9)"
-    @nendo.evalStr( "(filter-map (lambda (x) (when (< x 10) (- x))) (range  1000)) " ).should == "(0 -1 -2 -3 -4 -5 -6 -7 -8 -9)"
-    @nendo.evalStr( "(define str (if #t (car '(\"a\")) (car '(\"b\")))) (sprintf \"A%sZ\" str) " ).should == '"AaZ"'
-    @nendo.evalStr( "(letrec ((str (if #t (+ \"a\" \"A\") '())))   str.class) " ).should == 'String'
-    @nendo.evalStr( "(letrec ((str (if #t (+ \"a\" \"A\") '())))   (+ str \"...\")) " ).should == '"aA..."'
+    @nendo.evalStr( <<EOS
+(apply +
+       (map
+        (lambda (x) (* x 2))
+        (range  10000)))
+EOS
+           ).should == "99990000"
+    @nendo.evalStr( <<EOS
+(filter
+ (lambda (x) (< x 10))
+ (range  1000))
+EOS
+           ).should == "(0 1 2 3 4 5 6 7 8 9)"
+    @nendo.evalStr( <<EOS
+(filter-map
+ (lambda (x)
+   (when (< x 10) (- x)))
+ (range  1000))
+EOS
+           ).should == "(0 -1 -2 -3 -4 -5 -6 -7 -8 -9)"
+    @nendo.evalStr( <<EOS
+(define str
+  (if #t
+      (car '("a"))
+      (car '("b"))))
+(sprintf "A%sZ" str)
+EOS
+           ).should == '"AaZ"'
+    @nendo.evalStr( <<EOS
+(letrec ((str (if #t
+                  (+ "a" "A")
+                  '())))
+  str.class)
+EOS
+           ).should == 'String'
+    @nendo.evalStr( <<EOS
+(letrec ((str
+          (if #t
+              (+ \"a\" \"A\")
+              '())))
+  (+ str \"...\"))
+EOS
+           ).should == '"aA..."'
   end
 end
 
