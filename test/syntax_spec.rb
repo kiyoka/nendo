@@ -265,6 +265,25 @@ EOS
 EOS
                     ) }.should     raise_error( SyntaxError, /syntax-rules/ )
 
+    lambda { @nendo.evalStr( <<EOS
+(let-syntax ((a 100))
+  (a))
+EOS
+                    ) }.should     raise_error( SyntaxError, /syntax-rules/ )
+
+    lambda { @nendo.evalStr( <<EOS
+(let-syntax ((a (syntax-rules-dummy () 1))
+             (b (syntax-rules       () 2)))
+  (list (a) (b)))
+EOS
+                    ) }.should     raise_error( SyntaxError, /syntax-rules/ )
+
+    @nendo.evalStr( <<EOS
+(let-syntax ()
+  (list 1 2))
+EOS
+           ).should == "(1 2)"
+
     @nendo.evalStr( <<EOS
 (let ()
   (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))

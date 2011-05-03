@@ -1965,6 +1965,13 @@ module Nendo
           sexp
         elsif :"let-syntax" == car
           pp "let-syntax : <entry>" if @debug
+          sexp.second.each {|x|
+            if not x.car.second.is_a? Cell
+              raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form"
+            elsif x.car.second.first != :"syntax-rules"
+              raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form"
+            end
+          }
           arr = sexp.second.map { |x|
             [ x.car.car, false, Cell.new( :"syntax-rules",
                                      macroexpandEngine( x.car.cdr.car.cdr, syntaxArray )) ]
