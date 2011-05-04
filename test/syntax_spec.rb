@@ -204,6 +204,23 @@ EOS
     @nendo.evalStr( "(test-syntax 'a \"B\")" ).should          ==  '(a ("B"))'
     @nendo.evalStr( "(test-syntax 'a \"B\" 'C)" ).should       ==  '(a ("B" (C)))'
     @nendo.evalStr( "(test-syntax 'a \"B\" 'C \"d\")" ).should ==  '(a ("B" (C "d")))'
+    lambda { @nendo.evalStr( <<EOS
+(define-syntax dummy-syntax
+  (syntax-rules))
+EOS
+                    ) }.should     raise_error( RuntimeError, /syntax-rules.+\(1\)/ )
+    lambda { @nendo.evalStr( <<EOS
+(define-syntax dummy-syntax
+  (syntax-rules eee))
+EOS
+                    ) }.should     raise_error( RuntimeError, /syntax-rules.+\(2\)/ )
+    lambda { @nendo.evalStr( <<EOS
+(define-syntax dummy-syntax
+  (syntax-rules
+    ((_ arg1)
+     arg1)))
+EOS
+                    ) }.should     raise_error( RuntimeError, /syntax-rules.+\(3\)/ )
   end
 end
 

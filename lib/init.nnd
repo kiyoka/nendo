@@ -1510,6 +1510,12 @@
 (define-syntax syntax-rules
   (er-macro-transformer
    (lambda (expr rename compare)
+     (when (not (pair? (cdr expr)))
+       (error "syntax-rules requires: (syntax-rules (ellipses...) ..patterns..) form (1). but got: " expr))
+     (when (not (or (null? (cadr expr)) (list? (cadr expr))))
+       (error "syntax-rules requires: (syntax-rules (ellipses...) ..patterns..) form (2). but got: " expr))
+     (when (> 3 (length expr))
+       (error "syntax-rules requires: (syntax-rules (ellipses...) ..patterns..) form (3). but got: " expr))
      (let ((ellipse-specified? (identifier? (cadr expr)))
            (count 0)
            (_er-macro-transformer (rename 'er-macro-transformer))
