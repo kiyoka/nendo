@@ -1444,6 +1444,8 @@
       (case _car
         ((quote /nendo/core/quote)
          sexp)
+        ((syntax-quote /nendo/core/syntax-quote)
+         sexp)
         ((let-syntax)
          `(begin
             ,@(%remove-let-syntax-keyword (cddr sexp))))
@@ -1479,6 +1481,10 @@
 (define (identifier=? use-env-x x use-env-y y)
   (eq? x y))
 
+(define (identifier->symbol id)
+  (when (not (symbol? id))
+    (error "Error: identifier->symbol requires only symbol"))
+  id)
 
 ;; readable code for nendo. (original code is chibi-scheme-0.3)
 (define er-macro-transformer

@@ -1312,7 +1312,7 @@ module Nendo
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
-      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax" ]
+      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax", :"let-syntax" ]
       @core_syntax_hash = Hash.new
       @core_syntax_list.each { |x|
         renamed = ("/nendo/core/" + x.to_s).intern
