@@ -339,6 +339,7 @@ describe Nendo, "When use let-syntax in lexical scope " do
   end
   it "should" do
 
+    pending( "let variables affect let-syntax's form." )
     @nendo.evalStr( <<EOS
 (let ((x 'outer))
   (let-syntax ((m (syntax-rules () ((m) x))))
@@ -347,14 +348,15 @@ describe Nendo, "When use let-syntax in lexical scope " do
 EOS
            ).should == "outer"
 
-#    @nendo.evalStr( <<EOS
-#(let ((... 2))
-#  (let-syntax ((s (syntax-rules ()
-#                    ((_ x ...) 'bad)
-#                    ((_ . r) 'ok))))
-#    (s a b c)))
-#EOS
-#           ).should == "ok"
+
+    @nendo.evalStr( <<EOS
+(let ((... 2))
+  (let-syntax ((s (syntax-rules ()
+                    ((_ x ...) 'bad)
+                    ((_ . r) 'ok))))
+    (s a b c)))
+EOS
+           ).should == "ok"
 
   end
 end
