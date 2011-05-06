@@ -52,8 +52,8 @@ describe Nendo, "when read the core syntax keyword " do
     @nendo.evalStr( "(eq?    a macro)" ).should     == '#t'
     @nendo.evalStr( "(define a &block)" ).should    match( /Nendo::LispCoreSyntax/ )
     @nendo.evalStr( "(eq?    a &block)" ).should    == '#t'
-    @nendo.evalStr( "(define a let)" ).should       match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a let)" ).should       == '#t'
+    @nendo.evalStr( "(define a %let)" ).should       match( /Nendo::LispCoreSyntax/ )
+    @nendo.evalStr( "(eq?    a %let)" ).should       == '#t'
     @nendo.evalStr( "(define a letrec)" ).should    match( /Nendo::LispCoreSyntax/ )
     @nendo.evalStr( "(eq?    a letrec)" ).should    == '#t'
     @nendo.evalStr( "(define a set!)" ).should      match( /Nendo::LispCoreSyntax/ )
@@ -328,8 +328,17 @@ EOS
       (list (a 7) (b 8)))))
 EOS
            ).should == "(-6 11)"
+  end
+end
 
-    pending( "let variables affect let-syntax's form." )
+
+describe Nendo, "When use let-syntax in lexical scope " do
+  before do
+    @nendo = Nendo::Core.new(true,true)
+    @nendo.loadInitFile
+  end
+  it "should" do
+
     @nendo.evalStr( <<EOS
 (let ((x 'outer))
   (let-syntax ((m (syntax-rules () ((m) x))))
@@ -338,14 +347,14 @@ EOS
 EOS
            ).should == "outer"
 
-    @nendo.evalStr( <<EOS
-(let ((... 2))
-  (let-syntax ((s (syntax-rules ()
-                    ((_ x ...) 'bad)
-                    ((_ . r) 'ok))))
-    (s a b c)))
-EOS
-           ).should == "ok"
+#    @nendo.evalStr( <<EOS
+#(let ((... 2))
+#  (let-syntax ((s (syntax-rules ()
+#                    ((_ x ...) 'bad)
+#                    ((_ . r) 'ok))))
+#    (s a b c)))
+#EOS
+#           ).should == "ok"
 
   end
 end

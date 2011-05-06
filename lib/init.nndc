@@ -3558,7 +3558,7 @@ trampCall(
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:224"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [
-                        :"let"                        ,
+                        :"%let"                        ,
                           trampCall( self._list_METHOD(  'list',
                               begin
                                 if @global_lisp_binding.has_key?('_list') then
@@ -6696,7 +6696,7 @@ trampCall(
                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:286"] + __e.backtrace ) ; raise __e
                       end                    ,
                   [
-                      :"let"                      ,
+                      :"%let"                      ,
                         begin
                             trampCall(_lst)
                           rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:379"] + __e.backtrace ) ; raise __e
@@ -19263,7 +19263,7 @@ trampCall(
                                              )
                                 end
                             } ; ___lambda.call(
-                                Cell.new(:"quote",Cell.new(:"syntax-quote",Cell.new(:"macro",Cell.new(:"%syntax",Cell.new(:"begin",Cell.new(:"lambda",Cell.new(:"if",Cell.new(:"let",Cell.new(:"letrec",Cell.new(:"define",Cell.new(:"define-syntax")))))))))))
+                                Cell.new(:"quote",Cell.new(:"syntax-quote",Cell.new(:"macro",Cell.new(:"%syntax",Cell.new(:"begin",Cell.new(:"lambda",Cell.new(:"if",Cell.new(:"%let",Cell.new(:"letrec",Cell.new(:"define",Cell.new(:"define-syntax")))))))))))
                                        )
                           end
                       }
@@ -20856,7 +20856,7 @@ trampCall(
                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,
                                                                                                 [
-                                                                                                    :"/nendo/core/let"                                                                                                    ,
+                                                                                                    :"/nendo/core/%let"                                                                                                    ,
                                                                                                       begin
                                                                                                           trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20315)
                                                                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -20875,7 +20875,7 @@ trampCall(
                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                                                           end                                                                                        ,
                                                                                       [
-                                                                                          :"let"                                                                                          ,
+                                                                                          :"%let"                                                                                          ,
                                                                                             begin
                                                                                                 trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20315)
                                                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -25609,28 +25609,28 @@ trampCall(
                                                 Cell.new()                                                ,
                                                   Proc.new { |_vars| 
                                                       begin
-                                                        ___lambda = lambda { |___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20379| 
+                                                        ___lambda = lambda { |___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20373| 
                                                             if ( 
                                                               begin
-                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20379)
+                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20373)
                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                               end
                                                              ) then
                                                                 begin
-                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20379)
+                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20373)
                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                 end
                                                             else
                                                                 begin
-                                                                  ___lambda = lambda { |___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20380| 
+                                                                  ___lambda = lambda { |___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20374| 
                                                                       if ( 
                                                                         begin
-                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20380)
+                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20374)
                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                         end
                                                                        ) then
                                                                           begin
-                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20380)
+                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20374)
                                                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                           end
                                                                       else
@@ -26427,9 +26427,9 @@ trampCall(
                                                              ) then
                                                                 if ( 
                                                                   begin
-                                                                      def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
-                                                                      @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407'] = self.method( :___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407_METHOD )
-                                                                    @___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407 = 
+                                                                      def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                                                                      @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404'] = self.method( :___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404_METHOD )
+                                                                    @___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404 = 
                                                                     trampCall(
                                                                           trampCall( self._assq_METHOD(  'assq',
                                                                               begin
@@ -26485,9 +26485,9 @@ trampCall(
                                                                         }                                                                      ,
                                                                     [
                                                                           begin
-                                                                            if @global_lisp_binding.has_key?('___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407') then
-                                                                              trampCall(@___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407)
-                                                                            else raise NameError.new( "Error: undefined variable ___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407", "___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20407" ) end
+                                                                            if @global_lisp_binding.has_key?('___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404') then
+                                                                              trampCall(@___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404)
+                                                                            else raise NameError.new( "Error: undefined variable ___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404", "___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20404" ) end
                                                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                           end
                                                                     ]
@@ -26710,9 +26710,9 @@ trampCall(
                                                       begin
                                                           if ( 
                                                             begin
-                                                                def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
-                                                                @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399'] = self.method( :___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399_METHOD )
-                                                              @___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399 = 
+                                                                def self.___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                                                                @global_lisp_binding['___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396'] = self.method( :___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396_METHOD )
+                                                              @___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396 = 
                                                               trampCall(
                                                                     trampCall( self._find_METHOD(  'find',
                                                                         begin
@@ -26806,9 +26806,9 @@ trampCall(
                                                                   }                                                                ,
                                                               [
                                                                     begin
-                                                                      if @global_lisp_binding.has_key?('___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399') then
-                                                                        trampCall(@___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399)
-                                                                      else raise NameError.new( "Error: undefined variable ___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399", "___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20399" ) end
+                                                                      if @global_lisp_binding.has_key?('___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396') then
+                                                                        trampCall(@___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396)
+                                                                      else raise NameError.new( "Error: undefined variable ___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396", "___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20396" ) end
                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                     end
                                                               ]

@@ -1098,7 +1098,7 @@ module Nendo
     def _macroexpand_MIMARK1( arg )
       if _pair_QUMARK( arg )
         macroexpandInit( 1 )
-        macroexpandEngine( arg, [] )
+        macroexpandEngine( arg, [], [] )
       else
         arg
       end
@@ -1312,7 +1312,7 @@ module Nendo
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
-      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :let , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax", :"let-syntax" ]
+      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :"%let" , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax", :"let-syntax" ]
       @core_syntax_hash = Hash.new
       @core_syntax_list.each { |x|
         renamed = ("/nendo/core/" + x.to_s).intern
@@ -1896,7 +1896,7 @@ module Nendo
           self.makeClosure( :"&block", sexp.cdr, locals )
         elsif :if == car
           self.makeIf( sexp.cdr,    locals )
-        elsif :let == car
+        elsif :"%let" == car
           self.makeLet( sexp.cdr,   locals )
         elsif :letrec == car
           self.makeLetrec( sexp.cdr,   locals )
@@ -1950,19 +1950,32 @@ module Nendo
       @macroExpandCount = initVal
     end
 
-    def macroexpandEngine( sexp, syntaxArray )
+    def macroexpandEngine( sexp, syntaxArray, lexicalVars )
       #pp [ "##macroexpandEngine_before", write_to_string( sexp ), syntaxArray.map{ |arr| arr[0] } ] if @debug
-      ret = __macroexpandEngine( sexp, syntaxArray )
+      ret = __macroexpandEngine( sexp, syntaxArray, lexicalVars )
       #pp [ "##macroexpandEngine_after ", write_to_string( ret  ), syntaxArray.map{ |arr| arr[0] } ] if @debug
       ret
     end
 
-    def __macroexpandEngine( sexp, syntaxArray )
+    def __macroexpandEngine( sexp, syntaxArray, lexicalVars )
       case sexp
       when Cell
         car = sexp.car
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
+        elsif :"%let" == car or :letrec == car or @core_syntax_hash[ :"%let" ] == car or @core_syntax_hash[ :letrec ] == car
+          p "let?: " + write_to_string( sexp ) if @debug
+          # catch lexical identifiers of `let' and `letrec'.
+          arr = sexp.second.map { |x|
+            p "let values: " + write_to_string( x.car.cdr ) if @debug
+            Cell.new( x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ))
+          }
+          vars = arr.map {|x| x.car}
+          ret = Cell.new( car,
+                     Cell.new( arr.to_list,
+                          macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + vars )))
+          p "result let: " + write_to_string( ret ) if @debug
+          ret
         elsif :"let-syntax" == car
           pp "let-syntax : <entry>" if @debug
           sexp.second.each {|x|
@@ -1974,7 +1987,7 @@ module Nendo
           }
           arr = sexp.second.map { |x|
             [ x.car.car, false, Cell.new( :"syntax-rules",
-                                     macroexpandEngine( x.car.cdr.car.cdr, syntaxArray )) ]
+                                     macroexpandEngine( x.car.cdr.car.cdr, syntaxArray, lexicalVars )) ]
           }.map {|y|
             [ y[0], _eval( y[2] ), y[2] ]
           }
@@ -1983,8 +1996,8 @@ module Nendo
             Cell.new( e[0], Cell.new( e[2] ))
           }.to_list
           ret = Cell.new( :"let-syntax",
-                     Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr )))
-          p "result10: " + write_to_string( ret ) if @debug
+                     Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr, lexicalVars )))
+          p "result let-syntax: " + write_to_string( ret ) if @debug
           ret
         else
           sym = toRubySymbol( car.to_s )
@@ -2002,6 +2015,7 @@ module Nendo
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
+            p "result SYNTAX: " + write_to_string( newSexp ) if @debug
           elsif car.class == Symbol and syntaxArray.map {|arr| arr[0]}.include?( car )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
@@ -2010,14 +2024,14 @@ module Nendo
               raise "can't find valid syntaxObject"
             end
             pp [ "lexical macro expanding (before) ", write_to_string( sexp ), " by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
-            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [ sexp, Cell.new(), (_global_MIMARKvariables( ).to_arr + keys).to_list ] ))
+            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [ sexp, Cell.new(), (_global_MIMARKvariables( ).to_arr + keys + lexicalVars).to_list ] ))
             pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
               if x.car.is_a? Cell
                 if 0 <= @macroExpandCount
-                  macroexpandEngine( x.car, syntaxArray )
+                  macroexpandEngine( x.car, syntaxArray, lexicalVars )
                 else
                   x.car
                 end
@@ -2039,7 +2053,7 @@ module Nendo
       converge = true
       begin
         macroexpandInit( 100000 )
-        newSexp  = macroexpandEngine( sexp, [] )
+        newSexp  = macroexpandEngine( sexp, [], [] )
         converge = _equal_QUMARK( newSexp, sexp )
         sexp = newSexp
       end until converge

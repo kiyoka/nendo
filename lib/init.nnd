@@ -61,8 +61,8 @@
 
 (define %expand-define-form
   (lambda (arg-and-body)
-    (let ((arg  (car arg-and-body))
-          (body (cdr arg-and-body)))
+    (%let ((arg  (car arg-and-body))
+           (body (cdr arg-and-body)))
       ;; (define (func arg...) body)
       (if (not (pair? arg))
           ;; (define var body)
@@ -173,10 +173,10 @@
 ;; basic forms
 ;; ----------------------------------------
 (define (macroexpand sexp)
-  (let ((newsexp (macroexpand-1 sexp)))
-    (if (not (equal? sexp newsexp))
-        (macroexpand newsexp)
-        newsexp)))
+  (%let ((newsexp (macroexpand-1 sexp)))
+     (if (not (equal? sexp newsexp))
+         (macroexpand newsexp)
+         newsexp)))
 
 (define (feedto)
   (error "=> (feedto) appeared outside cond or case."))
@@ -185,9 +185,9 @@
   (macro lst
     (letrec ((case-block
               (lambda (elem . elseblock)
-                (let ((condition (if (eq? 'else (car elem))
-                                     true
-                                     (car elem)))
+                (%let ((condition (if (eq? 'else (car elem))
+                                      true
+                                      (car elem)))
                       (body      (if (null? (cdr elem))
                                      '(#t)
                                      (cdr elem)))
@@ -221,7 +221,7 @@
 (define let1
   (macro (var expr . body)
     (append
-     (list 'let (list (list var expr)))
+     (list '%let (list (list var expr)))
      body)))
 
 (define or
@@ -375,8 +375,8 @@
                  (second x))
                (second lst))))
            
-        ;; don't touch
-        `(let ,@lst))))
+        ;; trasform to internal let syntax (%let)
+        `(%let ,@lst))))
 
 (define if-let1
   (macro (var _expr _then . _else)
@@ -541,9 +541,9 @@
 (define (%internal-define-to-letrec _sym _src)
   (if (not (list? (cadr _src)))
       `(,_sym ,@_src)
-      (let ((body (cdr _src))
-            (defs '())
-            (rest '()))
+      (%let ((body (cdr _src))
+             (defs '())
+             (rest '()))
         (if (not (list? (car body)))
             `(,_sym ,@_src)
             (begin
@@ -554,8 +554,8 @@
                      (set! defs (cons (%expand-define-form (cdr x)) defs))
                      (set! rest (cons x rest))))
                body)
-              (let ((defs (reverse defs))
-                    (rest (reverse rest)))
+              (%let ((defs (reverse defs))
+                     (rest (reverse rest)))
                 (if (< 0 (length defs))
                     `(,_sym
                       ,(car _src)
@@ -1308,7 +1308,7 @@
 ;; ----------------------------------------
 (define (%setup-%tailcall-mark sexp)
   (define (reserved? sym)
-    (let* ([reserved-orig '(quote syntax-quote macro %syntax begin lambda if let letrec define define-syntax)]
+    (let* ([reserved-orig '(quote syntax-quote macro %syntax begin lambda if %let letrec define define-syntax)]
            [reserved (append reserved-orig
                              (map
                               (lambda (orig)
@@ -1395,7 +1395,7 @@
               ,(second sexp)
               ,(setup-proc     (third sexp))
               ,(setup-proc     (fourth sexp))))))
-        ((let /nendo/core/let)
+        ((%let /nendo/core/%let)
          `(,_car
            ,(setup-let-args (second sexp))
            ,@(setup-proc-body (cddr sexp))))
