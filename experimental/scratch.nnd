@@ -7,9 +7,21 @@
 (debug-print-length)
 (debug-print-length 2000)
 
-(let-syntax ((a (+ 1 2)))
-  (a))
+(define-syntax aaa
+  (syntax-rules ()
+    ((a (+ 1 2))
+     (a))))
 
+(pretty-print
+ (macroexpand
+  '(define-syntax nil!
+     (syntax-rules ()
+       ((_ xx)
+        (set! xx '()))
+       ((_ yy)
+        (let-syntax
+            ((zz (+ 1 2))
+             (+ yy zz))))))))
 
 ;;(test 'ok)
 (let ((... 2))
