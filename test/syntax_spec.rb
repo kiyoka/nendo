@@ -238,7 +238,7 @@ describe Nendo, "When use let-syntax" do
                    (set! x '())))))
     (nil! aa)))
 EOS
-           ).should == "(let-syntax ((nil! (syntax-rules () ((_ x) (set! x '()))))) (set! aa '()))"
+           ).should == "(let-syntax ((nil! (%syntax-rules () ((_ x) (set! x '()))))) (set! aa '()))"
 
     @nendo.evalStr( <<EOS
 (define aa 100)
@@ -339,7 +339,6 @@ describe Nendo, "When use let-syntax in lexical scope " do
   end
   it "should" do
 
-    pending( "let variables affect let-syntax's form." )
     @nendo.evalStr( <<EOS
 (let ((x 'outer))
   (let-syntax ((m (syntax-rules () ((m) x))))

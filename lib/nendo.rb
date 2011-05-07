@@ -1957,6 +1957,17 @@ module Nendo
       ret
     end
 
+    # generate nested Let
+    #   (%let ((nest1))
+    #     (%let ((nest2))
+    #       expand_pattern))
+    def __generateNestedLet( lexicalVars, expand_pattern)
+      ret = [ :"%let", [[:nestedLet, 100].to_list].to_list,
+        expand_pattern ].to_list
+      p "generateNestedLet: " + write_to_string( ret )  if @debug
+      ret
+    end
+
     def __macroexpandEngine( sexp, syntaxArray, lexicalVars )
       case sexp
       when Cell
@@ -1967,30 +1978,49 @@ module Nendo
           p "let?: " + write_to_string( sexp ) if @debug
           # catch lexical identifiers of `let' and `letrec'.
           arr = sexp.second.map { |x|
-            p "let values: " + write_to_string( x.car.cdr ) if @debug
-            Cell.new( x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ))
+            [ x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
           }
-          vars = arr.map {|x| x.car}
+          lst = arr.map {|x| Cell.new( x[0], x[1] ) }.to_list
           ret = Cell.new( car,
-                     Cell.new( arr.to_list,
-                          macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + vars )))
+                     Cell.new( lst,
+                          macroexpandEngine( sexp.cdr.cdr, syntaxArray,
+                          if 0 == arr.size then  lexicalVars  else  lexicalVars + [ arr ]  end )))
           p "result let: " + write_to_string( ret ) if @debug
           ret
         elsif :"let-syntax" == car
           pp "let-syntax : <entry>" if @debug
           sexp.second.each {|x|
             if not x.car.second.is_a? Cell
-              raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form"
-            elsif x.car.second.first != :"syntax-rules"
-              raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form"
+              raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form but got: " + write_to_string( x )
+            elsif not ( x.car.second.first == :"syntax-rules" or x.car.second.first == :"%syntax-rules")
+              raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form but got: " + write_to_string( x )
             end
           }
-          arr = sexp.second.map { |x|
-            [ x.car.car, false, Cell.new( :"syntax-rules",
-                                     macroexpandEngine( x.car.cdr.car.cdr, syntaxArray, lexicalVars )) ]
-          }.map {|y|
+          arr_tmp = sexp.second.map { |x|
+            if x.car.second.first == :"%syntax-rules"
+              lst = x.car.second
+              p "before-expand(1): " + write_to_string( lst )  if @debug
+            else
+              patterns = x.car.second.cdr.cdr.map { |elem|
+                let_and_expand = __generateNestedLet( lexicalVars, elem.car.second )
+                pattern = [ elem.car.first, let_and_expand ].to_list
+                p "pattern-for-eval: " + write_to_string( pattern )  if @debug
+                pattern
+              }.to_list
+              # create (%syntax-rules ...) sexp
+              lst = Cell.new( :"%syntax-rules",
+                         Cell.new( x.car.second.second, patterns ))
+              p "before-expand(2): " + write_to_string( lst )  if @debug
+            end
+            [ x.car.car, false, lst ]
+          }
+          arr = arr_tmp.map {|y|
+            p "before-eval: " + write_to_string( y[2] )  if @debug
             [ y[0], _eval( y[2] ), y[2] ]
           }
+          # keywords = ((let-syntax-keyword ( let-syntax-body ))
+          #             (let-syntax-keyword ( let-syntax-body ))
+          #             ..)
           newKeywords = arr.map { |e|
             pp [ "newKeywords: ", e[0], write_to_string( e[2] ) ] if @debug
             Cell.new( e[0], Cell.new( e[2] ))
@@ -2019,12 +2049,17 @@ module Nendo
           elsif car.class == Symbol and syntaxArray.map {|arr| arr[0]}.include?( car )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
-            keys = syntaxArray.reverse.map {|arr| arr[0]}
+            keys    = syntaxArray.reverse.map { |arr| arr[0] }
+            lexkeys = lexicalVars.reverse.map { |arr| arr.map {|x| x[0]} }.flatten
             if not symbol_and_syntaxObj
               raise "can't find valid syntaxObject"
             end
-            pp [ "lexical macro expanding (before) ", write_to_string( sexp ), " by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
-            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [ sexp, Cell.new(), (_global_MIMARKvariables( ).to_arr + keys + lexicalVars).to_list ] ))
+
+            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [
+                                                  sexp,
+                                                  Cell.new(),
+                                                  (_global_MIMARKvariables( ).to_arr + keys + lexkeys).to_list ] ))
+            pp [ "lexical macro expanding (before) ", write_to_string( sexp )," by ", symbol_and_syntaxObj[0], "keys=", keys, "lexkeys=", lexkeys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
             pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
           end
           if _equal_QUMARK( newSexp, sexp )

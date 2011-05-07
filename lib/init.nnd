@@ -1446,7 +1446,7 @@
          sexp)
         ((syntax-quote /nendo/core/syntax-quote)
          sexp)
-        ((let-syntax)
+        ((let-syntax %let-syntax)
          `(begin
             ,@(%remove-let-syntax-keyword (cddr sexp))))
         (else
@@ -1728,5 +1728,6 @@
                 (list (list _error "no expansion for"
                             (list (rename 'strip-syntactic-closures) _expr)))))))))))
 
+(define-syntax %syntax-rules syntax-rules)
 
 ;;[EOS]

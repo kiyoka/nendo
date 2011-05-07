@@ -7,10 +7,31 @@
 (debug-print-length)
 (debug-print-length 2000)
 
-(define-syntax aaa
-  (syntax-rules ()
-    ((a (+ 1 2))
-     (a))))
+(define lst
+  (cddr
+   '(syntax-rules ()
+      ((a) (+ 1 2))
+      ((b) (+ 10 20)))))
+
+(define lst
+  (second
+   (third
+    '(let-syntax ()
+       (syntax-rules ()
+         ((a) (+ 1 2))
+         ((b) (+ 10 20)))))))
+
+(map
+ (lambda (elem)
+   `(
+     ,(first elem)
+     (%let
+      ((key value)
+       (key value))
+      ,(second elem))))
+ (reverse lst))
+   
+     
 
 (pretty-print
  (macroexpand
@@ -21,7 +42,9 @@
        ((_ yy)
         (let-syntax
             ((zz (+ 1 2))
-             (+ yy zz))))))))
+             (+ yy zz))
+          (zz)))))))
+       
 
 ;;(test 'ok)
 (let ((... 2))
@@ -61,11 +84,3 @@
             ((foo args ... penultimate ultimate)
              (list ultimate penultimate args ...)))))
   (foo 1 2 3 4 5))
-
-
-
-
-
-
-
-
