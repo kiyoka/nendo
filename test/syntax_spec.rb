@@ -90,11 +90,11 @@ describe Nendo, "when call make-syntactic-closure " do
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'print  )" ).should                  == 'print'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'if     )" ).should                  == 'if'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'lambda )" ).should                  == 'lambda'
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" ).should                  match( /_gensym_/ )
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" ).should                  match( /_gensym_/ )
-    @nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" ).should       match( /_gensym_/ )
-    @nendo.evalStr( "name" ).should                                                                      match( /_gensym_/ )
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           match( /_gensym_/ )
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" ).should                  == "aaaa"
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" ).should                  == "tmp"
+#    @nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" ).should       == ""
+#    @nendo.evalStr( "name" ).should                                                                      == ""
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           == 'new_global_var'
     @nendo.evalStr( "(define new_global_var 10)" ).should                                                == '10'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           == 'new_global_var'
   end
@@ -221,6 +221,16 @@ EOS
      arg1)))
 EOS
                     ) }.should     raise_error( RuntimeError, /syntax-rules.+\(3\)/ )
+
+    @nendo.evalStr( <<EOS
+(define-syntax dummy-syntax
+  (syntax-rules ()
+    ((_ arg1)
+     'this-is-symbol)))
+(macroexpand
+ '(dummy-syntax 100))
+EOS
+                    ).should     == "'this-is-symbol"
   end
 end
 
@@ -230,6 +240,7 @@ describe Nendo, "When use let-syntax" do
     @nendo.loadInitFile
   end
   it "should" do
+
     @nendo.evalStr( <<EOS
 (macroexpand
  '(let-syntax ((nil!
@@ -239,6 +250,16 @@ describe Nendo, "When use let-syntax" do
     (nil! aa)))
 EOS
            ).should == "(let-syntax ((nil! (%syntax-rules () ((_ x) (set! x '()))))) (set! aa '()))"
+
+    @nendo.evalStr( <<EOS
+(macroexpand
+ '(let-syntax ((dummy-syntax
+                (syntax-rules ()
+                  ((_ x)
+                   'this-is-symbol))))
+    (dummy-syntax 100)))
+EOS
+           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) 'this-is-symbol)))) 'this-is-symbol)"
 
     @nendo.evalStr( <<EOS
 (define aa 100)
@@ -319,6 +340,8 @@ EOS
 EOS
            ).should == "(-6 11)"
 
+    pending()
+
     @nendo.evalStr( <<EOS
 (let ()
   (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
@@ -334,19 +357,12 @@ end
 
 describe Nendo, "When use let-syntax in lexical scope " do
   before do
-    @nendo = Nendo::Core.new(true,true)
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
 
-    @nendo.evalStr( <<EOS
-(let ((x 'outer))
-  (let-syntax ((m (syntax-rules () ((m) x))))
-    (let ((x 'inner))
-      (m))))
-EOS
-           ).should == "outer"
-
+    pending()
 
     @nendo.evalStr( <<EOS
 (let ((... 2))
@@ -356,6 +372,15 @@ EOS
     (s a b c)))
 EOS
            ).should == "ok"
+
+    @nendo.evalStr( <<EOS
+(let ((x 'outer))
+  (let-syntax ((m (syntax-rules () ((m) x))))
+    (let ((x 'inner))
+      (m))))
+EOS
+           ).should == "outer"
+
 
   end
 end

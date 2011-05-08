@@ -1288,6 +1288,7 @@ module Nendo
       @binding = binding
       @debug   = debug
       @trace_debug = false
+      @lexicalVars = []
       @char_table_lisp_to_ruby = {
         # list     (! $ % & * + - . / : < = > ? @ ^ _ ~ ...)
         '!'   => '_EXMARK',
@@ -1957,17 +1958,6 @@ module Nendo
       ret
     end
 
-    # generate nested Let
-    #   (%let ((nest1))
-    #     (%let ((nest2))
-    #       expand_pattern))
-    def __generateNestedLet( lexicalVars, expand_pattern)
-      ret = [ :"%let", [[:nestedLet, 100].to_list].to_list,
-        expand_pattern ].to_list
-      p "generateNestedLet: " + write_to_string( ret )  if @debug
-      ret
-    end
-
     def __macroexpandEngine( sexp, syntaxArray, lexicalVars )
       case sexp
       when Cell
@@ -1983,8 +1973,7 @@ module Nendo
           lst = arr.map {|x| Cell.new( x[0], x[1] ) }.to_list
           ret = Cell.new( car,
                      Cell.new( lst,
-                          macroexpandEngine( sexp.cdr.cdr, syntaxArray,
-                          if 0 == arr.size then  lexicalVars  else  lexicalVars + [ arr ]  end )))
+                          macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + arr )))
           p "result let: " + write_to_string( ret ) if @debug
           ret
         elsif :"let-syntax" == car
@@ -1997,27 +1986,21 @@ module Nendo
             end
           }
           arr_tmp = sexp.second.map { |x|
-            if x.car.second.first == :"%syntax-rules"
-              lst = x.car.second
-              p "before-expand(1): " + write_to_string( lst )  if @debug
-            else
-              patterns = x.car.second.cdr.cdr.map { |elem|
-                let_and_expand = __generateNestedLet( lexicalVars, elem.car.second )
-                pattern = [ elem.car.first, let_and_expand ].to_list
-                p "pattern-for-eval: " + write_to_string( pattern )  if @debug
-                pattern
-              }.to_list
-              # create (%syntax-rules ...) sexp
-              lst = Cell.new( :"%syntax-rules",
-                         Cell.new( x.car.second.second, patterns ))
-              p "before-expand(2): " + write_to_string( lst )  if @debug
-            end
+            lst = Cell.new( :"%syntax-rules", x.car.second.cdr )
+            p "before-expand: " + write_to_string( lst )  if @debug
             [ x.car.car, false, lst ]
           }
-          arr = arr_tmp.map {|y|
-            p "before-eval: " + write_to_string( y[2] )  if @debug
-            [ y[0], _eval( y[2] ), y[2] ]
-          }
+
+          # for eval
+          begin
+            __setupLexicalScopeVariables( lexicalVars )
+            arr = arr_tmp.map {|y|
+              p "before-eval: " + write_to_string( y[2] )  if @debug
+              [ y[0], _eval( y[2] ), y[2] ]
+            }
+            __setupLexicalScopeVariables( [] )
+          end
+
           # keywords = ((let-syntax-keyword ( let-syntax-body ))
           #             (let-syntax-keyword ( let-syntax-body ))
           #             ..)
@@ -2027,7 +2010,8 @@ module Nendo
           }.to_list
           ret = Cell.new( :"let-syntax",
                      Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr, lexicalVars )))
-          p "result let-syntax: " + write_to_string( ret ) if @debug
+          p "before let-syntax: " + write_to_string( sexp.cdr.cdr ) if @debug
+          p "result let-syntax: " + write_to_string( ret          ) if @debug
           ret
         else
           sym = toRubySymbol( car.to_s )
@@ -2050,16 +2034,14 @@ module Nendo
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
             keys    = syntaxArray.reverse.map { |arr| arr[0] }
-            lexkeys = lexicalVars.reverse.map { |arr| arr.map {|x| x[0]} }.flatten
             if not symbol_and_syntaxObj
               raise "can't find valid syntaxObject"
             end
-
             newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [
                                                   sexp,
                                                   Cell.new(),
-                                                  (_global_MIMARKvariables( ).to_arr + keys + lexkeys).to_list ] ))
-            pp [ "lexical macro expanding (before) ", write_to_string( sexp )," by ", symbol_and_syntaxObj[0], "keys=", keys, "lexkeys=", lexkeys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
+                                                  (_global_MIMARKvariables( ).to_arr + keys).to_list ] ))
+            pp [ "lexical macro expanding (before) ", write_to_string( sexp )," by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
             pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
           end
           if _equal_QUMARK( newSexp, sexp )
@@ -2279,15 +2261,26 @@ module Nendo
       true
     end
 
+    def __setupLexicalScopeVariables( lexicalVars )
+      @lexicalVars = lexicalVars.reverse
+    end
+
     def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
       if _pair_QUMARK( identifier )
         raise RuntimeError, "Error: make-syntactic-closure requires symbol only..."
       else
         if mac_env.to_arr.include?( identifier )
-          identifier
+          found = @lexicalVars.find { |x| identifier == x[0] }
+          if found
+            p "lexical var found: " + found[0].to_s + "   sexp: " + write_to_string( found[1] )  if @debug
+            found[1]
+          else
+            identifier
+          end
         else
-          sym = toRubySymbol( identifier ) + _gensym( ).to_s
-          sym.intern
+          identifier
+#          sym = toRubySymbol( identifier ) + _gensym( ).to_s
+#          sym.intern
         end
       end
     end
