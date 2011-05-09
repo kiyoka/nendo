@@ -1877,8 +1877,11 @@ module Nendo
               else
                 sexp.car
               end
-        if :quote == car or :"syntax-quote" == car
-          genQuote( sexp.cdr.car )
+        if :quote == car
+          genQuote( sexp.second )
+        elsif :"syntax-quote" == car
+          [ "Cell.new(:\"syntax-quote\", ", genQuote( sexp.cdr ), ")" ]
+#          genQuote( sexp.second )
         elsif sexp.isDotted
           raise NameError, "Error: can't eval dotted pair."
         elsif sexp.isNull
@@ -1986,7 +1989,8 @@ module Nendo
             end
           }
           arr_tmp = sexp.second.map { |x|
-            lst = Cell.new( :"%syntax-rules", x.car.second.cdr )
+            lst = Cell.new( :"%syntax-rules",
+                       macroexpandEngine( x.car.second.cdr, syntaxArray, lexicalVars ))
             p "before-expand: " + write_to_string( lst )  if @debug
             [ x.car.car, false, lst ]
           }
@@ -2267,8 +2271,12 @@ module Nendo
 
     def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
       if _pair_QUMARK( identifier )
-        raise RuntimeError, "Error: make-syntactic-closure requires symbol only..."
-      else
+        if :"syntax-quote" == identifier.car
+          identifier.second
+        else
+          raise RuntimeError, "Error: make-syntactic-closure requires symbol or (syntax-quote sexp) only. but got: " + write_to_string( identifier )
+        end
+      elsif identifier.is_a? Symbol
         if mac_env.to_arr.include?( identifier )
           found = @lexicalVars.find { |x| identifier == x[0] }
           if found
@@ -2278,15 +2286,17 @@ module Nendo
             identifier
           end
         else
-          identifier
-#          sym = toRubySymbol( identifier ) + _gensym( ).to_s
-#          sym.intern
+          sym = toRubySymbol( identifier ) + _gensym( ).to_s
+          sym.intern
         end
+      else
+        # other type like `Nendo::LispCoreSyntax'
+        identifier
       end
     end
 
   end
-  
+
   class Printer
     def initialize( debug = false )
       @debug    = debug

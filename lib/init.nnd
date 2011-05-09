@@ -1457,10 +1457,36 @@
     sexp)))
 
 
+;; ----------------------------------------
+;; remove phase of `syntax-quote of null'
+;; ----------------------------------------
+(define (%remove-syntax-quote-null sexp)
+  (cond
+   ((not (pair? sexp))
+    sexp)
+   ((null? sexp)
+    '())
+   ((list? sexp)
+    (let1 _car (car sexp)
+      (case _car
+        ((quote /nendo/core/quote)
+         sexp)
+        ((syntax-quote /nendo/core/syntax-quote)
+         (if (null? (cadr sexp))
+             '()
+             sexp))
+        (else
+         (cons
+          (%remove-syntax-quote-null (car sexp))
+          (%remove-syntax-quote-null (cdr sexp)))))))
+   (else
+    sexp)))
+
 
 ;; definition of 'compile-phase'
 (set! %compile-phase-functions
       (list
+       %remove-syntax-quote-null
        %remove-let-syntax-keyword
        %setup-%tailcall-mark
        ))

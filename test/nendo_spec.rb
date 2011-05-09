@@ -532,6 +532,7 @@ describe Nendo, "when use quote and syntax-quote " do
     @nendo.evalStr( " (quote 1)" ).should                                            == "1"
     @nendo.evalStr( " (quote \"str\") " ).should                                     == '"str"'
     @nendo.evalStr( " (quote (1 . 2)) " ).should                                     == "(1 . 2)"
+    pending()
     @nendo.evalStr( " (syntax-quote ())" ).should                                    == "()"
     @nendo.evalStr( " (syntax-quote 1)" ).should                                     == "1"
     @nendo.evalStr( " (syntax-quote \"str\") " ).should                              == '"str"'
