@@ -532,17 +532,16 @@ describe Nendo, "when use quote and syntax-quote " do
     @nendo.evalStr( " (quote 1)" ).should                                            == "1"
     @nendo.evalStr( " (quote \"str\") " ).should                                     == '"str"'
     @nendo.evalStr( " (quote (1 . 2)) " ).should                                     == "(1 . 2)"
-    pending()
-    @nendo.evalStr( " (syntax-quote ())" ).should                                    == "()"
-    @nendo.evalStr( " (syntax-quote 1)" ).should                                     == "1"
-    @nendo.evalStr( " (syntax-quote \"str\") " ).should                              == '"str"'
-    @nendo.evalStr( " (syntax-quote (1 . 2)) " ).should                              == "(1 . 2)"
+    @nendo.evalStr( " (syntax-quote ())" ).should                                    == "(syntax-quote ())"
+    @nendo.evalStr( " (syntax-quote 1)" ).should                                     == "(syntax-quote 1)"
+    @nendo.evalStr( ' (syntax-quote "str") ' ).should                                == '(syntax-quote "str")'
+    @nendo.evalStr( " (syntax-quote (1 . 2)) " ).should                              == "(syntax-quote (1 . 2))"
     @nendo.evalStr( " (quote quote) " ).should                                       == "'"
     @nendo.evalStr( " 'quote " ).should                                              == "'"
     @nendo.evalStr( " ''1 " ).should                                                 == "'1"
     @nendo.evalStr( " (quote syntax-quote) " ).should                                == "syntax-quote"
-    @nendo.evalStr( " (syntax-quote '1) " ).should                                   == "'1"
-    @nendo.evalStr( " (syntax-quote (quote 1)) " ).should                            == "'1"
+    @nendo.evalStr( " (syntax-quote '1) " ).should                                   == "(syntax-quote '1)"
+    @nendo.evalStr( " (syntax-quote (quote 1)) " ).should                            == "(syntax-quote '1)"
     @nendo.evalStr( " (quote (syntax-quote 1)) " ).should                            == "(syntax-quote 1)"
   end
 end
