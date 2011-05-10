@@ -1950,6 +1950,22 @@ module Nendo
       end
     end
 
+
+    # warp sexp by lexicalVars
+    def __wrapNestedLet( sexp, lexicalVars )
+      if 0 == lexicalVars.size
+        sexp
+      else
+        elem  = lexicalVars.shift
+        Cell.new( :"%let",
+             Cell.new(
+                  Cell.new(
+                       Cell.new( elem[0], elem[1] )),
+                  Cell.new( __wrapNestedLet( sexp, lexicalVars ) )))
+      end
+    end
+
+
     def macroexpandInit( initVal )
       @macroExpandCount = initVal
     end
@@ -1961,6 +1977,20 @@ module Nendo
       ret
     end
 
+
+    # args:
+    #
+    #   syntaxArray ... let-syntax's identifiers
+    #                   [
+    #                      [ identifier-name, #<LispSyntax>, sexp_of_(syntax-rules ...), frame_of_let-syntax ],
+    #                        .
+    #                        .
+    #                   ]
+    #   lexicalVars ... let's identifiers
+    #                   [
+    #                      [ identifier-name, macroexpandEngine( let's body ) ],
+    #                   ]
+    #
     def __macroexpandEngine( sexp, syntaxArray, lexicalVars )
       case sexp
       when Cell
@@ -1999,8 +2029,8 @@ module Nendo
           begin
             __setupLexicalScopeVariables( lexicalVars )
             arr = arr_tmp.map {|y|
-              p "before-eval: " + write_to_string( y[2] )  if @debug
-              [ y[0], _eval( y[2] ), y[2] ]
+              p "before-eval(1): " + write_to_string( y[2] )  if @debug
+              [ y[0], _eval(y[2]), y[2], lexicalVars.clone.reverse ]
             }
             __setupLexicalScopeVariables( [] )
           end
@@ -2045,6 +2075,7 @@ module Nendo
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys).to_list ] ))
+            newSexp = __wrapNestedLet( newSexp, symbol_and_syntaxObj[3] )
             pp [ "lexical macro expanding (before) ", write_to_string( sexp )," by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
             pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
           end
@@ -2382,7 +2413,9 @@ module Nendo
     def self.version
       "0.5.0"  ##NENDO-VERSION
     end
-    
+
+    attr_reader :evaluator
+
     def loadInitFile( use_compiled = true )
       done = false
       if use_compiled 

@@ -62,6 +62,27 @@ describe Nendo, "when read the core syntax keyword " do
 end
 
 
+describe Nendo, "when use lib functions for let-syntax " do
+  before do
+    @nendo = Nendo::Core.new()
+  end
+  it "should" do
+    @nendo.evaluator.write_to_string(
+       @nendo.evaluator.__wrapNestedLet( 1000,
+                          [[ :a, Cell.new( 2 ) ]]
+                          )).should == "(%let ((a 2)) 1000)"
+    @nendo.evaluator.write_to_string(
+       @nendo.evaluator.__wrapNestedLet( 1000,
+                          [[ :a, Cell.new( 2 ) ], [ :b, Cell.new( 3 ) ]]
+                          )).should == "(%let ((a 2)) (%let ((b 3)) 1000))"
+    @nendo.evaluator.write_to_string(
+       @nendo.evaluator.__wrapNestedLet( Cell.new( :"+", Cell.new( :a, Cell.new( :b ))),
+                          [[ :a, Cell.new( 2 ) ], [ :b, Cell.new( 3 ) ]]
+                          )).should == "(%let ((a 2)) (%let ((b 3)) (+ a b)))"
+  end
+end
+
+
 describe Nendo, "when use identifier checker " do
   before do
     @nendo = Nendo::Core.new()
@@ -90,11 +111,11 @@ describe Nendo, "when call make-syntactic-closure " do
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'print  )" ).should                  == 'print'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'if     )" ).should                  == 'if'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'lambda )" ).should                  == 'lambda'
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" ).should                  == "aaaa"
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" ).should                  == "tmp"
-#    @nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" ).should       == ""
-#    @nendo.evalStr( "name" ).should                                                                      == ""
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           == 'new_global_var'
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" ).should                  match( /_aaaa_/ )
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" ).should                  match( /_tmp_/ )
+    @nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" ).should       match( /_tmp_/ )
+    @nendo.evalStr( "name" ).should                                                                      match( /_tmp_/ )
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           match( /_new_global_var_/ )
     @nendo.evalStr( "(define new_global_var 10)" ).should                                                == '10'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           == 'new_global_var'
   end
@@ -340,8 +361,6 @@ EOS
 EOS
            ).should == "(-6 11)"
 
-    pending()
-
     @nendo.evalStr( <<EOS
 (let ()
   (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
@@ -362,8 +381,6 @@ describe Nendo, "When use let-syntax in lexical scope " do
   end
   it "should" do
 
-    pending()
-
     @nendo.evalStr( <<EOS
 (let ((... 2))
   (let-syntax ((s (syntax-rules ()
@@ -381,6 +398,45 @@ EOS
 EOS
            ).should == "outer"
 
+  end
+end
+
+describe Nendo, "When use complex let-syntax" do
+  before do
+    @nendo = Nendo::Core.new(true,true)
+    @nendo.loadInitFile
+  end
+  it "should" do
+    pending()
+
+    @nendo.evalStr( <<EOS
+(define-syntax %cut
+  (syntax-rules (<> <...>)
+    ((%cut e? params args)
+     (lambda params args))
+    ((%cut e? (params ...) (args ...) <> . rest)
+     (%cut e? (params ... tmp) (args ... tmp) . rest))
+    ((%cut e? (params ...) (args ...) <...>)
+     (%cut e? (params ... . tmp) (apply args ... tmp)))
+    ((%cut e? (params ...) (args ...) <...> . rest)
+     (error "cut: non-terminal <...>"))
+    ((%cut #t (params ...) (args ...) x . rest)
+     (let ((tmp x)) (%cut #t (params ...) (args ... tmp) . rest)))
+    ((%cut #f (params ...) (args ...) x . rest)
+     (%cut #t (params ...) (args ... x) . rest))))
+EOS
+           ).should     match( /Nendo::LispSyntax/ )
+
+    @nendo.evalStr( <<EOS
+(define-syntax cut
+  (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
+EOS
+           ).should     match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( <<EOS
+(define rassq (cut rassoc <> <> eq?))
+EOS
+           ).should == ""
 
   end
 end
+
