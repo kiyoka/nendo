@@ -1881,7 +1881,6 @@ module Nendo
           genQuote( sexp.second )
         elsif :"syntax-quote" == car
           [ "Cell.new(:\"syntax-quote\", ", genQuote( sexp.cdr ), ")" ]
-#          genQuote( sexp.second )
         elsif sexp.isDotted
           raise NameError, "Error: can't eval dotted pair."
         elsif sexp.isNull
@@ -1998,7 +1997,6 @@ module Nendo
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
         elsif :"%let" == car or :letrec == car or @core_syntax_hash[ :"%let" ] == car or @core_syntax_hash[ :letrec ] == car
-          p "let?: " + write_to_string( sexp ) if @debug
           # catch lexical identifiers of `let' and `letrec'.
           arr = sexp.second.map { |x|
             [ x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
@@ -2007,7 +2005,7 @@ module Nendo
           ret = Cell.new( car,
                      Cell.new( lst,
                           macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + arr )))
-          p "result let: " + write_to_string( ret ) if @debug
+          # p "result let: " + write_to_string( ret ) if @debug
           ret
         elsif :"let-syntax" == car
           pp "let-syntax : <entry>" if @debug
@@ -2305,7 +2303,7 @@ module Nendo
         if :"syntax-quote" == identifier.car
           identifier.second
         else
-          raise RuntimeError, "Error: make-syntactic-closure requires symbol or (syntax-quote sexp) only. but got: " + write_to_string( identifier )
+          raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) only. but got: " + write_to_string( identifier )
         end
       elsif identifier.is_a? Symbol
         if mac_env.to_arr.include?( identifier )
@@ -2321,8 +2319,7 @@ module Nendo
           sym.intern
         end
       else
-        # other type like `Nendo::LispCoreSyntax'
-        identifier
+        raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) type."
       end
     end
 

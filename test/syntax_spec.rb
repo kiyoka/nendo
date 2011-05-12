@@ -235,6 +235,7 @@ EOS
   (syntax-rules eee))
 EOS
                     ) }.should     raise_error( RuntimeError, /syntax-rules.+\(2\)/ )
+
     lambda { @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
   (syntax-rules
@@ -242,6 +243,17 @@ EOS
      arg1)))
 EOS
                     ) }.should     raise_error( RuntimeError, /syntax-rules.+\(3\)/ )
+
+    @nendo.evalStr( <<EOS
+(define this-is-var 1)
+(define-syntax dummy-syntax
+  (syntax-rules ()
+    ((_ arg1)
+     this-is-var)))
+(macroexpand
+ '(dummy-syntax 100))
+EOS
+                    ).should     == "this-is-var"
 
     @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
@@ -252,6 +264,7 @@ EOS
  '(dummy-syntax 100))
 EOS
                     ).should     == "'this-is-symbol"
+
   end
 end
 
@@ -376,7 +389,7 @@ end
 
 describe Nendo, "When use let-syntax in lexical scope " do
   before do
-    @nendo = Nendo::Core.new()
+    @nendo = Nendo::Core.new(true,true)
     @nendo.loadInitFile
   end
   it "should" do
@@ -403,11 +416,10 @@ end
 
 describe Nendo, "When use complex let-syntax" do
   before do
-    @nendo = Nendo::Core.new(true,true)
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
-    pending()
 
     @nendo.evalStr( <<EOS
 (define-syntax %cut
