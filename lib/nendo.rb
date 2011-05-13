@@ -2307,7 +2307,7 @@ module Nendo
     def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
       if _pair_QUMARK( identifier )
         if :"syntax-quote" == identifier.car
-          identifier.second
+          identifier
         else
           raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) only. but got: " + write_to_string( identifier )
         end
