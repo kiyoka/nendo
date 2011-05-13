@@ -526,7 +526,7 @@ trampCall(
                                                                                                                                                                                                                                 trampCall(_x)
                                                                                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-26.nnd:45"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                                             end                                                                                                                                                                                                                          ,
-                                                                                                                                                                                                                          Cell.new()
+                                                                                                                                                                                                                            Cell.new()
                                                                                                                                                                                                                       ]
                                                                                                                                                                                                                                    ))
                                                                                                                                                                                                                 ]
@@ -1097,12 +1097,12 @@ trampCall(
                                                                                                                                                                                                                 trampCall(_x)
                                                                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-26.nnd:45"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                             end                                                                                                                                                                                                          ,
-                                                                                                                                                                                                          Cell.new()
+                                                                                                                                                                                                            Cell.new()
                                                                                                                                                                                                       ]
                                                                                                                                                                                                                    ))
                                                                                                                                                                                                 ]
                                                                                                                                                                                                              ))                                                                                                                                                                                              ,
-                                                                                                                                                                                              Cell.new()
+                                                                                                                                                                                                Cell.new()
                                                                                                                                                                                           ]
                                                                                                                                                                                                        ))                                                                                                                                                                                        ,
                                                                                                                                                                                           trampCall( self._cons_METHOD(  'cons',
@@ -1220,7 +1220,7 @@ trampCall(
                                                                                                                                                                                                                                         :"tmp"
                                                                                                                                                                                                                                     ]
                                                                                                                                                                                                                                                  ))                                                                                                                                                                                                                                  ,
-                                                                                                                                                                                                                                  Cell.new()
+                                                                                                                                                                                                                                    Cell.new()
                                                                                                                                                                                                                               ]
                                                                                                                                                                                                                                            ))
                                                                                                                                                                                                                         ]
@@ -1237,7 +1237,7 @@ trampCall(
                                                                                                                                                                                                                    ))
                                                                                                                                                                                                 ]
                                                                                                                                                                                                              ))                                                                                                                                                                                              ,
-                                                                                                                                                                                              Cell.new()
+                                                                                                                                                                                                Cell.new()
                                                                                                                                                                                           ]
                                                                                                                                                                                                        ))
                                                                                                                                                                                     ]
@@ -1760,7 +1760,7 @@ trampCall(
                                                                                                                                                                               end                                                                                                                                                                            ,
                                                                                                                                                                           [
                                                                                                                                                                               "cut: non-terminal <...>"                                                                                                                                                                              ,
-                                                                                                                                                                              Cell.new()
+                                                                                                                                                                                Cell.new()
                                                                                                                                                                           ]
                                                                                                                                                                                        ))
                                                                                                                                                                     ]
@@ -2436,14 +2436,14 @@ trampCall(
                                                                                                                                                                                                       :"tmp"
                                                                                                                                                                                                   ]
                                                                                                                                                                                                                ))                                                                                                                                                                                                ,
-                                                                                                                                                                                                Cell.new()
+                                                                                                                                                                                                  Cell.new()
                                                                                                                                                                                             ]
                                                                                                                                                                                                          ))
                                                                                                                                                                                       ]
                                                                                                                                                                                                    ))
                                                                                                                                                                                 ]
                                                                                                                                                                                              ))                                                                                                                                                                              ,
-                                                                                                                                                                              Cell.new()
+                                                                                                                                                                                Cell.new()
                                                                                                                                                                           ]
                                                                                                                                                                                        ))
                                                                                                                                                                     ]
@@ -3020,7 +3020,7 @@ trampCall(
                                                                                                                                                                                   :"tmp"
                                                                                                                                                                               ]
                                                                                                                                                                                            ))                                                                                                                                                                            ,
-                                                                                                                                                                            Cell.new()
+                                                                                                                                                                              Cell.new()
                                                                                                                                                                         ]
                                                                                                                                                                                      ))
                                                                                                                                                                   ]
@@ -3078,7 +3078,7 @@ trampCall(
                                                                                                                                                                                         :"tmp"
                                                                                                                                                                                     ]
                                                                                                                                                                                                  ))                                                                                                                                                                                  ,
-                                                                                                                                                                                  Cell.new()
+                                                                                                                                                                                    Cell.new()
                                                                                                                                                                               ]
                                                                                                                                                                                            ))
                                                                                                                                                                         ]
@@ -3510,7 +3510,7 @@ trampCall(
                                                                                                                               trampCall(_args)
                                                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-26.nnd:45"] + __e.backtrace ) ; raise __e
                                                                                                                           end                                                                                                                        ,
-                                                                                                                        Cell.new()
+                                                                                                                          Cell.new()
                                                                                                                     ]
                                                                                                                                  ))
                                                                                                               ]
@@ -3824,7 +3824,7 @@ trampCall(
                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                         [
-                                                            Cell.new()                                                            ,
+                                                              Cell.new()                                                            ,
                                                               trampCall( self._cons_METHOD(  'cons',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cons') then
@@ -3833,7 +3833,7 @@ trampCall(
                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                               [
-                                                                  Cell.new()                                                                  ,
+                                                                    Cell.new()                                                                  ,
                                                                     trampCall( self._map_METHOD(  'map',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('_map') then
@@ -4044,7 +4044,7 @@ trampCall(
                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                         [
-                                                            Cell.new()                                                            ,
+                                                              Cell.new()                                                            ,
                                                               trampCall( self._cons_METHOD(  'cons',
                                                                   begin
                                                                     if @global_lisp_binding.has_key?('_cons') then
@@ -4053,7 +4053,7 @@ trampCall(
                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                               [
-                                                                  Cell.new()                                                                  ,
+                                                                    Cell.new()                                                                  ,
                                                                     trampCall( self._map_METHOD(  'map',
                                                                         begin
                                                                           if @global_lisp_binding.has_key?('_map') then
