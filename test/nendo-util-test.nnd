@@ -43,7 +43,7 @@
 (define dummy-function
  (lambda
   (arg1)
-  (let
+  (%let
    ((var
      (+ arg1 1))) var)))
 "
@@ -52,7 +52,7 @@
        '(define (dummy-function arg1) (let1 var (+ arg1 1) var))
        (disasm 'dummy-function 'source))
 (test* "disasm expanded"
-       '(define dummy-function (lambda (arg1) (let ((var (+ arg1 1))) var)))
+       '(define dummy-function (lambda (arg1) (%let ((var (+ arg1 1))) var)))
        (disasm 'dummy-function 'expanded))
 (test* "disasm ruby-code"
        "

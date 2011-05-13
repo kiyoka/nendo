@@ -411,6 +411,18 @@ EOS
 EOS
            ).should == "outer"
 
+    @nendo.evalStr( <<EOS
+(let ((x 'outer1))
+  (let ((y 'outer2))
+    (let ((z 'outer3))
+      (let-syntax ((m (syntax-rules () ((m) (list x y z)))))
+        (let ((x 'inner1))
+          (let ((y 'inner2))
+            (let ((z 'inner3))
+              (m))))))))
+EOS
+           ).should == "(outer1 outer2 outer3)"
+
   end
 end
 
