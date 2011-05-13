@@ -389,7 +389,7 @@ end
 
 describe Nendo, "When use let-syntax in lexical scope " do
   before do
-    @nendo = Nendo::Core.new(true,true)
+    @nendo = Nendo::Core.new()
     @nendo.loadInitFile
   end
   it "should" do
@@ -444,11 +444,15 @@ EOS
   (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
 EOS
            ).should     match( /Nendo::LispSyntax/ )
+
     @nendo.evalStr( <<EOS
 (define rassq (cut rassoc <> <> eq?))
 EOS
-           ).should == ""
+           ).should     match( /Proc/ )
 
+    @nendo.evalStr( <<EOS
+((cut list 1 <> 3 <>) 2 4)
+EOS
+           ).should     == "(1 2 3 4)"
   end
 end
-

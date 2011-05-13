@@ -1997,6 +1997,7 @@ module Nendo
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
         elsif :"%let" == car or :letrec == car or @core_syntax_hash[ :"%let" ] == car or @core_syntax_hash[ :letrec ] == car
+          p "let?: " + write_to_string( sexp ) if @debug
           # catch lexical identifiers of `let' and `letrec'.
           arr = sexp.second.map { |x|
             [ x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
@@ -2005,7 +2006,7 @@ module Nendo
           ret = Cell.new( car,
                      Cell.new( lst,
                           macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + arr )))
-          # p "result let: " + write_to_string( ret ) if @debug
+          p "result let: " + write_to_string( ret ) if @debug
           ret
         elsif :"let-syntax" == car
           pp "let-syntax : <entry>" if @debug
@@ -2027,6 +2028,10 @@ module Nendo
           begin
             __setupLexicalScopeVariables( lexicalVars )
             arr = arr_tmp.map {|y|
+              p "using let vars: "  if @debug
+              lexicalVars.each {|z|
+                p "    " + z[0].to_s   if @debug
+              }
               p "before-eval(1): " + write_to_string( y[2] )  if @debug
               [ y[0], _eval(y[2]), y[2], lexicalVars.clone.reverse ]
             }
@@ -2069,10 +2074,11 @@ module Nendo
             if not symbol_and_syntaxObj
               raise "can't find valid syntaxObject"
             end
+            vars    = symbol_and_syntaxObj[3].map { |arr| arr[0] }
             newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [
                                                   sexp,
                                                   Cell.new(),
-                                                  (_global_MIMARKvariables( ).to_arr + keys).to_list ] ))
+                                                  (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
             newSexp = __wrapNestedLet( newSexp, symbol_and_syntaxObj[3] )
             pp [ "lexical macro expanding (before) ", write_to_string( sexp )," by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
             pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
