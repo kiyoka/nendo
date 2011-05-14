@@ -478,5 +478,42 @@ EOS
 ((cut list 1 <> 3 <>) 2 4)
 EOS
            ).should     == "(1 2 3 4)"
+
+  @nendo.evalStr( <<EOS
+(define-syntax match-check-identifier
+  (syntax-rules ()
+    ;; fast-case failures, lists and vectors are not identifiers
+    ((_ (x . y) success-k failure-k) failure-k)
+    ((_ #(x ...) success-k failure-k) failure-k)
+    ;; x is an atom
+    ((_ x success-k failure-k)
+     (let-syntax
+         ((sym?
+           (syntax-rules ()
+             ((sym? x sk fk) sk)
+             ;; otherwise x is a non-symbol datum
+             ((sym? y sk fk) fk))))
+       (sym? abracadabra success-k failure-k)))))
+EOS
+         ).should     match( /Nendo::LispSyntax/ )
+
+  @nendo.evalStr( <<EOS
+(match-check-identifier (aa bb) "id" "non-id")
+EOS
+         ).should     == '"non-id"'
+
+  @nendo.evalStr( <<EOS
+(match-check-identifier xx "id" "non-id")
+EOS
+         ).should     == '"id"'
+
+  @nendo.evalStr( <<EOS
+(let ([yy (match-check-identifier xx "id" "non-id")])
+  yy)
+EOS
+         ).should     == '"id"'
+
   end
 end
+
+
