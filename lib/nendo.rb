@@ -2027,14 +2027,15 @@ module Nendo
 
           # for eval
           begin
-            __setupLexicalScopeVariables( lexicalVars )
+            lexvars = lexicalVars.clone
+            __setupLexicalScopeVariables( lexvars )
             arr = arr_tmp.map {|y|
               p "using let vars: "  if @debug
               lexicalVars.each {|z|
                 p "    " + z[0].to_s   if @debug
               }
               p "before-eval(1): " + write_to_string( y[2] )  if @debug
-              [ y[0], _eval(y[2]), y[2], lexicalVars.clone.reverse ]
+              [ y[0], _eval(y[2]), y[2], lexvars ]
             }
             __setupLexicalScopeVariables( [] )
           end
@@ -2303,7 +2304,7 @@ module Nendo
     end
 
     def __setupLexicalScopeVariables( lexicalVars )
-      @lexicalVars = lexicalVars.reverse
+      @lexicalVars = lexicalVars.clone
     end
 
     def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
@@ -2318,7 +2319,10 @@ module Nendo
           found = @lexicalVars.find { |x| identifier == x[0] }
           if found
             p "lexical var found: " + found[0].to_s + "   sexp: " + write_to_string( found[1] )  if @debug
-            found[1]
+            lexvars = @lexicalVars.clone
+            newSexp = __wrapNestedLet( identifier, lexvars )
+            p "   nestedLet sexp: " + write_to_string( newSexp )  if @debug
+            newSexp
           else
             identifier
           end
