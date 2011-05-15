@@ -17,13 +17,15 @@
               (m))))))))
 
 
-(let ((x 'outer1))
+(define z 'top-level-1)
+(let ((x 'outer-1))
   (let ((y x))
     (let ((z y))
       (let-syntax ((m (syntax-rules () ((m) (list z)))))
-        (let ((x 'inner1))
+        (let ((x 'inner-1))
           (let ((y x))
             (let ((z y))
               (m))))))))
+
 
 
