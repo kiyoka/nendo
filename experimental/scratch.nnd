@@ -7,80 +7,23 @@
 (debug-print-length)
 (debug-print-length 2000)
 
-(define lst
-  (cddr
-   '(syntax-rules ()
-      ((a) (+ 1 2))
-      ((b) (+ 10 20)))))
-
-(define lst
-  (second
-   (third
-    '(let-syntax ()
-       (syntax-rules ()
-         ((a) (+ 1 2))
-         ((b) (+ 10 20)))))))
-
-(map
- (lambda (elem)
-   `(
-     ,(first elem)
-     (%let
-      ((key value)
-       (key value))
-      ,(second elem))))
- (reverse lst))
-   
-     
-
-(pretty-print
- (macroexpand
-  '(define-syntax nil!
-     (syntax-rules ()
-       ((_ xx)
-        (set! xx '()))
-       ((_ yy)
-        (let-syntax
-            ((zz (+ 1 2))
-             (+ yy zz))
-          (zz)))))))
-       
-
-;;(test 'ok)
-(let ((... 2))
-  (let-syntax ((s (syntax-rules ()
-                    ((_ x ...) 'bad)
-                    ((_ . r) 'ok))))
-    (s a b c))))
+(let ((x 'outer1))
+  (let ((y 'outer2))
+    (let ((z 'outer3))
+      (let-syntax ((m (syntax-rules () ((m) (list x y z)))))
+        (let ((x 'inner1))
+          (let ((y 'inner2))
+            (let ((z 'inner3))
+              (m))))))))
 
 
-(eq? 'ok (let ()
-           (let-syntax ()
-             (define internal-def 'ok))
-           internal-def))
+(let ((x 'outer1))
+  (let ((y x))
+    (let ((z y))
+      (let-syntax ((m (syntax-rules () ((m) (list z)))))
+        (let ((x 'inner1))
+          (let ((y x))
+            (let ((z y))
+              (m))))))))
 
 
-(eq? 'ok (let ()
-           (letrec-syntax ()
-             (define internal-def 'ok))
-           internal-def))
-
-
-(define-syntax foo
-  (syntax-rules aaa ()
-                ((foo ... args aaa)
-                 (args aaa ...))))
-
-(foo 3 - 5)
-
-(let-syntax
-    ((foo (syntax-rules aaa ()
-                        ((foo ... args aaa)
-                         (args aaa ...)))))
-  (foo 3 - 5))
-
-(let-syntax
-    ((foo (syntax-rules ()
-            ((foo args ... penultimate ultimate)
-             (list ultimate penultimate args ...)))))
-  (foo 1 2 3 4 5))
