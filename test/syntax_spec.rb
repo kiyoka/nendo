@@ -480,6 +480,48 @@ EOS
            ).should     == "(1 2 3 4)"
 
   @nendo.evalStr( <<EOS
+(define-syntax match-check-ellipse
+  (syntax-rules ()
+    ((match-check-ellipse (a . b) success-k failure-k) failure-k)
+    ((match-check-ellipse #(a ...) success-k failure-k) failure-k)
+    ;; matching an atom
+    ((match-check-ellipse id success-k failure-k)
+     (let-syntax ((ellipse? (syntax-rules ()
+                              ((ellipse? (foo id) sk fk) sk)
+                              ((ellipse? other sk fk) fk))))
+       (ellipse? (a b c) success-k failure-k)))))
+EOS
+         ).should     match( /Nendo::LispSyntax/ )
+
+  @nendo.evalStr( <<EOS
+(match-check-ellipse (aa bb) "ellipse" "non-ellipse")
+EOS
+         ).should     == '"non-ellipse"'
+
+  @nendo.evalStr( <<EOS
+(match-check-ellipse xxx "ellipse" "non-ellipse")
+EOS
+         ).should     == '"non-ellipse"'
+
+  @nendo.evalStr( <<EOS
+(match-check-ellipse ... "ellipse" "non-ellipse")
+EOS
+         ).should     == '"ellipse"'
+
+  @nendo.evalStr( <<EOS
+(define-syntax dummy-syntax
+  (syntax-rules ()
+    ((_ arg)
+     (match-check-ellipse arg (result-str "ellipse") (result-str "non-ellipse")))))
+(define-syntax result-str
+  (syntax-rules ()
+    ((_ arg-str)
+     arg-str)))
+(dummy-syntax xxx)
+EOS
+         ).should     == '"non-ellipse"'
+
+  @nendo.evalStr( <<EOS
 (define-syntax match-check-identifier
   (syntax-rules ()
     ;; fast-case failures, lists and vectors are not identifiers
