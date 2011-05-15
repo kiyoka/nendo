@@ -37,7 +37,8 @@
 module Nendo
   require 'stringio'
   require 'digest/sha1'
-  
+  require 'pp'
+
   class Nil
     include Enumerable
     def each()               end
@@ -2064,9 +2065,10 @@ module Nendo
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
+            p "before SYNTAX: name = " + car.to_s + " sexp = "+ write_to_string( sexp ) if @debug
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
-            p "result SYNTAX: " + write_to_string( newSexp ) if @debug
+            p "after  SYNTAX: name = " + car.to_s + " sexp = "+ write_to_string( newSexp ) if @debug
           elsif car.class == Symbol and syntaxArray.map {|arr| arr[0]}.include?( car )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
