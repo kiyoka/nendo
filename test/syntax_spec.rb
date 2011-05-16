@@ -296,6 +296,18 @@ EOS
            ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) 'this-is-symbol)))) 'this-is-symbol)"
 
     @nendo.evalStr( <<EOS
+(macroexpand
+ '(let-syntax ((dummy-syntax
+                (syntax-rules ()
+                  ((_ x)
+                   (begin "this is debug line"
+                          #?.
+                          'this-is-symbol)))))
+    (dummy-syntax 100)))
+EOS
+           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) (begin \"this is debug line\" \"#?. (string):6\" 'this-is-symbol))))) (begin \"this is debug line\" \"#?. (string):6\" 'this-is-symbol))"
+
+    @nendo.evalStr( <<EOS
 (define aa 100)
 (let-syntax ((nil!
               (syntax-rules ()
@@ -507,19 +519,19 @@ EOS
          ).should     match( /Nendo::LispSyntax/ )
 
   @nendo.evalStr( <<EOS
-(match-check-ellipse (aa bb) "ellipse" "non-ellipse")
+(match-check-ellipse (aa bb) (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"non-ellipse"'
+         ).should     == '"#?. (string):1 non-ellipse"'
 
   @nendo.evalStr( <<EOS
-(match-check-ellipse xxx "ellipse" "non-ellipse")
+(match-check-ellipse xxx (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"non-ellipse"'
+         ).should     == '"#?. (string):1 non-ellipse"'
 
   @nendo.evalStr( <<EOS
-(match-check-ellipse ... "ellipse" "non-ellipse")
+(match-check-ellipse ... (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"ellipse"'
+         ).should     == '"#?. (string):1 ellipse"'
 
   @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
@@ -529,10 +541,10 @@ EOS
 (define-syntax result-str
   (syntax-rules ()
     ((_ arg-str)
-     arg-str)))
+     (+ #?. " " arg-str))))
 (dummy-syntax xxx)
 EOS
-         ).should     == '"non-ellipse"'
+         ).should     == '"#?. (string):8 non-ellipse"'
 
   @nendo.evalStr( <<EOS
 (define-syntax match-check-identifier
@@ -547,7 +559,7 @@ EOS
            (syntax-rules ()
              ((sym? x sk fk) sk)
              ;; otherwise x is a non-symbol datum
-             ((sym? y sk fk) fk))))
+             ((sym? y sk fk) (begin #?. fk)))))
        (sym? abracadabra success-k failure-k)))))
 EOS
          ).should     match( /Nendo::LispSyntax/ )

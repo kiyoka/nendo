@@ -1079,6 +1079,16 @@ describe Nendo, "when use #xxxx syntax " do
     @nendo.evalStr( " #!        \n 100" ).should == "100"
     @nendo.evalStr( " #!   123  \n 100" ).should == "100"
     @nendo.evalStr( " '#?=1" ).should == "(debug-print 1 \"(string)\" 1 '1)"
+    @nendo.evalStr( " '#?." ).should == '"#?. (string):1"'
+    @nendo.evalStr( " '#?." ).should == '"#?. (string):1"'
+    @nendo.evalStr( " (begin #?. (+ 1 1))" ).should == "2"
+    @nendo.evalStr( <<EOS
+(begin
+  #?.
+  (+ 1 1)
+  #?. )
+EOS
+ ).should == '"#?. (string):4"'
     @nendo.evalStr( " #b0  " ).should == Integer("0b0").to_s
     @nendo.evalStr( " #b01 " ).should == Integer("0b01").to_s
     @nendo.evalStr( " #b10 " ).should == Integer("0b10").to_s
@@ -1756,6 +1766,8 @@ EOS
     @nendo.evalStr( " (let1 count 0 (unless #t (set! count (+ count 1)) (set! count (+ count 1)))  count) " ).should == "0"
     @nendo.evalStr( " (let1 count 0 (unless #f (set! count (+ count 1)) (set! count (+ count 1)))  count) " ).should == "2"
     @nendo.evalStr( " (if-let1 m (rxmatch #/([0-9]+)/ \"abc100abc\") (rxmatch-substring m 1)) " ).should == '"100"'
+    @nendo.evalStr( " (macroexpand '#?.) " ).should == '"#?. (string):1"'
+    @nendo.evalStr( " (macroexpand '(begin 1 2 #?. 4 5)) " ).should == '(begin 1 2 "#?. (string):1" 4 5)'
   end
 end
 

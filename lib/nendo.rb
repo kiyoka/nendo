@@ -343,6 +343,7 @@ module Nendo
     T_LINEFEED            = :t_linefeed
     T_COMMENT             = :t_comment
     T_DEBUG_PRINT         = :t_debug_print
+    T_MACRO_DEBUG_PRINT   = :t_macro_debug_print
     T_REGEXP              = :t_regexp
   
     # inport is IO class
@@ -511,10 +512,13 @@ module Nendo
               if peekchar( /[=]/ )
                 str = ""
                 T_DEBUG_PRINT
+              elsif peekchar( /[.]/ )
+                str = ""
+                T_MACRO_DEBUG_PRINT
               else
                 str += readwhile( /[^ \t\r\n]/ )
                 raise NameError, sprintf( "Error: unknown #xxxx syntax for Nendo %s", str )
-              end              
+              end
             when "!"
               readwhile( /[^\r\n]/ )
               str = ""
@@ -651,6 +655,8 @@ module Nendo
         :feedto
       when T_DEBUG_PRINT
         "debug-print".intern
+      when T_MACRO_DEBUG_PRINT
+        LispString.new( sprintf( "#?. %s:%d", cur.sourcefile, cur.lineno ))
       when T_KEYWORD
         LispKeyword.new( cur.str )
       else
