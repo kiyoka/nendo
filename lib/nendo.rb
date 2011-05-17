@@ -2025,10 +2025,29 @@ module Nendo
             end
           }
           arr_tmp = sexp.second.map { |x|
-            lst = Cell.new( :"%syntax-rules",
-                       macroexpandEngine( x.car.second.cdr, syntaxArray, lexicalVars ))
-            p "before-expand: " + write_to_string( lst )  if @debug
-            [ x.car.car, false, lst ]
+            rules =  x.car.second
+            p "rules: " + write_to_string( rules )  if @debug
+            ellipse = rules.second
+            p "ellipse: " + write_to_string( ellipse )  if @debug
+            pattern_body_list = rules.cdr.cdr
+            p "pattern_body_list: " + write_to_string( pattern_body_list )  if @debug
+
+            lst = []
+            lst << :"%syntax-rules"
+            lst << ellipse
+            pattern_body_list.each {|xx|
+              pattern_body = xx.car
+              p "pattern_body: " + write_to_string( pattern_body )  if @debug
+              pattern = pattern_body.first
+              p "pattern: " + write_to_string( pattern )  if @debug
+              body = pattern_body.second
+              p "body: " + write_to_string( body )  if @debug
+              new_pattern_body = [ pattern, macroexpandEngine( body, syntaxArray, lexicalVars ) ].to_list
+              p "new_pattern_body: " + write_to_string( new_pattern_body )  if @debug
+              lst << new_pattern_body
+            }
+            p "before-expand: " + write_to_string( lst.to_list )  if @debug
+            [ x.car.car, false, lst.to_list ]
           }
 
           # for eval

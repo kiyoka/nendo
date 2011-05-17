@@ -547,6 +547,16 @@ EOS
          ).should     == '"#?. (string):8 non-ellipse"'
 
   @nendo.evalStr( <<EOS
+(match-check-ellipse ... (match-check-ellipse xxx 'tt 'tf) (match-check-ellipse xxx 'ft 'ff))
+EOS
+         ).should     == 'tf'
+
+  @nendo.evalStr( <<EOS
+(match-check-ellipse yyy (match-check-ellipse xxx 'tt 'tf) (match-check-ellipse xxx 'ft 'ff))
+EOS
+         ).should     == 'ff'
+
+  @nendo.evalStr( <<EOS
 (define-syntax match-check-identifier
   (syntax-rules ()
     ;; fast-case failures, lists and vectors are not identifiers
