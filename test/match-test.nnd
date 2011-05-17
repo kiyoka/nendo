@@ -50,7 +50,7 @@
               (((x . y) ___) (list x y)))
             '((a b c) (1 2 3)))
 
-(pending*   "real ellipses"
+(match-test*   "real ellipses"
             (match '((a . 1) (b . 2) (c . 3))
               (((x . y) ...) (list x y)))
             '((a b c) (1 2 3)))
@@ -112,7 +112,7 @@
               x)
             '#(1 0 3))
 
-(match-test* "single tail"
+(pending*   "single tail"
             (match '((a . 1) (b . 2) (c . 3))
               (((x . y) ... last) (list x y last)))
             '((a b) (1 2) (c . 3)))
