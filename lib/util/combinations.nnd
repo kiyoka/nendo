@@ -1,3 +1,4 @@
+;;;-*- mode: nendo; syntax: scheme -*-;;
 ;;;
 ;;; combinations.scm - combinations and that sort of stuff.
 ;;;
@@ -17,20 +18,8 @@
 ;; Initially written by Alex Shinn.
 ;; Modifided by Shiro Kawai
 
-(define-module util.combinations
-  (use srfi-1)
-  (use util.match)
-  (use gauche.sequence)
-  (export permutations permutations*
-          permutations-for-each permutations*-for-each
-          combinations combinations*
-          combinations-for-each combinations*-for-each
-          power-set-binary power-set power-set-for-each
-          power-set* power-set*-for-each
-          cartesian-product cartesian-product-for-each
-          cartesian-product-right cartesian-product-right-for-each)
-  )
-(select-module util.combinations)
+(use srfi-1)
+(use util.match)
 
 ;;----------------------------------------------------------------
 ;; permuations
