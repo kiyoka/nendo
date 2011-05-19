@@ -1296,6 +1296,7 @@ module Nendo
       @debug   = debug
       @trace_debug = false
       @lexicalVars = []
+      @syntaxHash = {}
       @char_table_lisp_to_ruby = {
         # list     (! $ % & * + - . / : < = > ? @ ^ _ ~ ...)
         '!'   => '_EXMARK',
@@ -1971,7 +1972,6 @@ module Nendo
       end
     end
 
-
     def macroexpandInit( initVal )
       @macroExpandCount = initVal
     end
@@ -2066,12 +2066,19 @@ module Nendo
             lexvars = lexicalVars.clone
             __setupLexicalScopeVariables( lexvars )
             arr = arr_tmp.map {|y|
-              p "using let vars: "  if @debug
-              lexicalVars.each {|z|
-                p "    " + z[0].to_s + "   " +  write_to_string( z[1] ) if @debug
-              }
-              p "before-eval(1): " + write_to_string( y[2] ) if @debug
-              [ y[0], self.lispEval( y[2], "dynamic S-expression ( no source )", 1 ), y[2], lexvars ]
+              keyStr = lexicalVars.map {|z|
+                z[0].to_s + " / " +  write_to_string( z[1] )
+              }.join( " / " )
+              p "using let vars: " + keyStr if @debug
+              keyStr += " // " + write_to_string( y[2] )
+              syntaxClosure = if @syntaxHash.has_key?( keyStr )
+                                p "keyStr(cached): " + keyStr if @debug
+                                @syntaxHash[ keyStr ]
+                              else
+                                p "keyStr( new  ): " + keyStr if @debug
+                                @syntaxHash[ keyStr ] = self.lispEval( y[2], "dynamic S-expression ( no source )", 1 )
+                              end
+              [ y[0], syntaxClosure, y[2], lexvars ]
             }
             __setupLexicalScopeVariables( [] )
           end
