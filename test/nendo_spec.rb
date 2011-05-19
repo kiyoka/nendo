@@ -1042,7 +1042,7 @@ EOS
   '(twice (twice (inc a)))))
 EOS
            ).should ==
-      "(begin (begin (inc a) (inc a)) (begin (inc a) (inc a)))"
+      "(begin (begin (inc a) (inc a)) (twice (inc a)))"
     @nendo.evalStr( <<EOS
 (macroexpand-1
  (macroexpand-1
@@ -1050,7 +1050,7 @@ EOS
    '(twice (twice (inc a))))))
 EOS
            ).should ==
-      "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (begin (inc a) (inc a)))"
+      "(begin (begin (set! a (+ a 1)) (inc a)) (twice (inc a)))"
     @nendo.evalStr( <<EOS
 (macroexpand-1
  (macroexpand-1
@@ -1059,7 +1059,7 @@ EOS
     '(twice (twice (inc a)))))))
 EOS
            ).should ==
-      "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (begin (set! a (+ a 1)) (set! a (+ a 1))))"
+      "(begin (begin (set! a (+ a 1)) (set! a (+ a 1))) (twice (inc a)))"
     @nendo.evalStr( " (set! a 10) (twice (twice (inc a)))" ).should == "14"
   end
 end

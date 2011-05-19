@@ -1976,11 +1976,22 @@ module Nendo
       @macroExpandCount = initVal
     end
 
+    def macroexpandEngineLoop( sexp, syntaxArray, lexicalVars )
+      converge = true
+      begin
+        newSexp  = macroexpandEngine( sexp, syntaxArray, lexicalVars )
+        converge = _equal_QUMARK( newSexp, sexp )
+        sexp = newSexp
+      end until converge or (@macroExpandCount <= 0)
+      sexp
+    end
+
     def macroexpandEngine( sexp, syntaxArray, lexicalVars )
-      #pp [ "##macroexpandEngine_before", write_to_string( sexp ), syntaxArray.map{ |arr| arr[0] } ] if @debug
-      ret = __macroexpandEngine( sexp, syntaxArray, lexicalVars )
-      #pp [ "##macroexpandEngine_after ", write_to_string( ret  ), syntaxArray.map{ |arr| arr[0] } ] if @debug
-      ret
+      if @macroExpandCount <= 0
+        sexp
+      else
+        __macroexpandEngine( sexp, syntaxArray, lexicalVars )
+        end
     end
 
 
@@ -2114,11 +2125,7 @@ module Nendo
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
               if x.car.is_a? Cell
-                if 0 <= @macroExpandCount
-                  macroexpandEngine( x.car, syntaxArray, lexicalVars )
-                else
-                  x.car
-                end
+                macroexpandEngine( x.car, syntaxArray, lexicalVars )
               else
                 x.car
               end
@@ -2133,15 +2140,9 @@ module Nendo
       end
     end
 
-    def macroExpandPhase( sexp )
-      converge = true
-      begin
-        macroexpandInit( 100000 )
-        newSexp  = macroexpandEngine( sexp, [], [] )
-        converge = _equal_QUMARK( newSexp, sexp )
-        sexp = newSexp
-      end until converge
-      sexp
+    def macroexpandPhase( sexp )
+      macroexpandInit( 100000 )
+      macroexpandEngineLoop( sexp, [], [] )
     end
 
     def lexicalSyntaxStripPhase( sexp )
@@ -2185,7 +2186,7 @@ module Nendo
         sourceInfo.setSource( sourcefile, lineno, sexp )
 
         # macro expand phase
-        sexp = macroExpandPhase( sexp )
+        sexp = macroexpandPhase( sexp )
         if @debug
           printf( "\n          expaneded=<<< %s >>>\n", (Printer.new())._print(sexp))
         end
