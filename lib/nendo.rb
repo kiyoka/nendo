@@ -2068,10 +2068,10 @@ module Nendo
             arr = arr_tmp.map {|y|
               p "using let vars: "  if @debug
               lexicalVars.each {|z|
-                p "    " + z[0].to_s   if @debug
+                p "    " + z[0].to_s + "   " +  write_to_string( z[1] ) if @debug
               }
-              p "before-eval(1): " + write_to_string( y[2] )  if @debug
-              [ y[0], _eval(y[2]), y[2], lexvars ]
+              p "before-eval(1): " + write_to_string( y[2] ) if @debug
+              [ y[0], self.lispEval( y[2], "dynamic S-expression ( no source )", 1 ), y[2], lexvars ]
             }
             __setupLexicalScopeVariables( [] )
           end
@@ -2164,7 +2164,7 @@ module Nendo
         end
       }
     end
-  
+
     def displayTopOfCalls( exception )
       STDERR.puts( "\n  <<< Top of calls >>>" )
       strs = []
@@ -2177,7 +2177,7 @@ module Nendo
         STDERR.puts( str )
       }
     end
-      
+
     def lispEval( sexp, sourcefile, lineno )
       begin
         sourceInfo = SourceInfo.new
@@ -2201,7 +2201,7 @@ module Nendo
           end
         end
         sourceInfo.setExpanded( sexp )
-        
+
         arr = [ "trampCall( ", translate( sexp, [], sourceInfo ), " )" ]
         rubyExp = ppRubyExp( 0, arr ).flatten.join
         sourceInfo.setCompiled( rubyExp )
@@ -2237,23 +2237,23 @@ module Nendo
       }
       forward_gensym_counter()
     end
-  
+
     def _load_MIMARKcompiled_MIMARKcode_MIMARKfrom_MIMARKstring( rubyExp )
       eval( rubyExp, @binding )
       forward_gensym_counter()
     end
-    
+
     def __PAMARKload_MIMARKcompiled_MIMARKcode( filename )
       open( filename, "r:utf-8" ) { |f|
         eval( f.read, @binding )
       }
       forward_gensym_counter()
     end
-  
+
     def _clean_MIMARKcompiled_MIMARKcode
       @compiled_code = Hash.new
     end
-    
+
     def _get_MIMARKcompiled_MIMARKcode
       @compiled_code
       ret = Hash.new
@@ -2263,11 +2263,11 @@ module Nendo
       }
       ret.to_list
     end
-  
+
     def _eval( sexp )
       self.lispEval( sexp, "dynamic S-expression ( no source )", 1 )
     end
-  
+
     def _enable_MIMARKidebug()
       @debug = true
     end
