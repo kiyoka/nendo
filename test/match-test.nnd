@@ -165,21 +165,21 @@
               (else #f))
             #f)
 
-(match-test* "sxml tree search"
+(pending*   "sxml tree search"
     (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
       (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
        (list attrs text))
       (else #f))
   '(((href . "http://synthcode.com/")) ("synthcode")))
 
-(match-test* "failed sxml tree search"
+(pending*  "failed sxml tree search"
     (match '(p (ol (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
       (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
        (list attrs text))
       (else #f))
   #f)
 
-(match-test* "collect tree search"
+(pending*  "collect tree search"
     (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
       (((and tag (or 'p 'ul 'li 'b)) *** ('a ('^ attrs ...) text ...))
        (list tag attrs text))
