@@ -1472,9 +1472,7 @@
         ((quote /nendo/core/quote)
          sexp)
         ((syntax-quote /nendo/core/syntax-quote)
-         (if (null? (cadr sexp))
-             '()
-             (list 'quote (cadr sexp))))
+         (list 'quote (cadr sexp)))
         (else
          (cons
           (%remove-syntax-quote-null (car sexp))
@@ -1713,8 +1711,6 @@
                (list _rename (list _quote t)))))
             ((pair? t)
              (cond
-              ((eq? 'quote (car t))
-               (list _quote t))
               ((ellipse-escape? t)
                (if (pair? (cdr t))
                    (if (pair? (cddr t)) (cddr t) (cadr t))
