@@ -215,6 +215,23 @@ module Nendo
     attr_reader :key
   end
 
+  class SyntacticClosure
+    def initialize( originalSymbol, renamedSymbol )
+      @originalSymbol = originalSymbol
+      @renamedSymbol  = renamedSymbol
+    end
+
+    def to_s
+      @renamedSymbol.to_s
+    end
+
+    def sourcefile()  "dynamic S-expression ( no source )"  end
+    def lineno()      1                                     end
+
+
+    attr_reader :originalSymbol, :renamedSymbol
+  end
+
   class SourceInfo
     def initialize
       @varname       = nil
@@ -1075,7 +1092,7 @@ module Nendo
     def _newline(       )          print "\n" end
     def _procedure_QUMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
     def _macro_QUMARK( arg )       (LispMacro == arg.class) end
-    def _symbol_QUMARK(    arg )   (Symbol == arg.class) end
+    def _symbol_QUMARK(    arg )   (arg.is_a? Symbol or arg.is_a? SyntacticClosure) end
     def _keyword_QUMARK(    arg )  (arg.is_a? LispKeyword) end
     def _syntax_QUMARK( arg )      (arg.is_a? LispSyntax)  end
     def _core_MIMARKsyntax_QUMARK( arg )
@@ -1443,29 +1460,33 @@ module Nendo
     end
   
     def toRubySymbol( name )
-      name = name.to_s  if Symbol == name.class
-      if 0 == name.length
-        ""
+      if SyntacticClosure == name.class
+        "_" + name.to_s
       else
-        name.gsub!( Regexp.new( Regexp.escape( '...' )), @char_table_lisp_to_ruby[ '...' ] )
-        arr = name.gsub( /["]/, '' ).split( /[.]/ )
-        tmp = arr[0]
-        tmp.gsub!( /[:][:]/, "  " ) # save '::'
-        @char_table_lisp_to_ruby.each_pair { |key,val|
-          tmp.gsub!( Regexp.new( Regexp.escape( key )), val )
-        }
-        arr[0] = tmp.gsub( /[ ][ ]/, "::" )
-        if arr[0].match( /^[A-Z]/ )
-          # nothing to do
-        elsif arr[0] == ""
-          arr[0] = 'Kernel'
+        name = name.to_s  if Symbol == name.class
+        if 0 == name.length
+          ""
         else
-          arr[0] = '_' + arr[0]
+          name.gsub!( Regexp.new( Regexp.escape( '...' )), @char_table_lisp_to_ruby[ '...' ] )
+          arr = name.gsub( /["]/, '' ).split( /[.]/ )
+          tmp = arr[0]
+          tmp.gsub!( /[:][:]/, "  " ) # save '::'
+          @char_table_lisp_to_ruby.each_pair { |key,val|
+            tmp.gsub!( Regexp.new( Regexp.escape( key )), val )
+          }
+          arr[0] = tmp.gsub( /[ ][ ]/, "::" )
+          if arr[0].match( /^[A-Z]/ )
+            # nothing to do
+          elsif arr[0] == ""
+            arr[0] = 'Kernel'
+          else
+            arr[0] = '_' + arr[0]
+          end
+          arr.join( "." )
         end
-        arr.join( "." )
       end
     end
-  
+
     def isRubyInterface( name )
       name.to_s.match( /[.]/ )
     end
@@ -1821,6 +1842,8 @@ module Nendo
         str += sprintf( "LispKeyword.new( \"%s\" )", sexp.key.to_s )
       when TrueClass, FalseClass, NilClass  # reserved symbols
         str += toRubyValue( sexp )
+      when SyntacticClosure
+        str += sprintf( ":\"%s\"", sexp.originalSymbol.to_s )
       when Nil
         str += "Cell.new()"
       else
@@ -1951,6 +1974,8 @@ module Nendo
           "Nil.new"
         when TrueClass, FalseClass, NilClass  # reserved symbols
           toRubyValue( sexp )
+        when SyntacticClosure
+          toRubySymbol( sexp )
         else
           sexp.to_s
         end
@@ -2017,13 +2042,29 @@ module Nendo
         elsif :"%let" == car or :letrec == car or @core_syntax_hash[ :"%let" ] == car or @core_syntax_hash[ :letrec ] == car
           p "let?: " + write_to_string( sexp ) if @debug
           # catch lexical identifiers of `let' and `letrec'.
-          arr = sexp.second.map { |x|
+          namedLet = (sexp.second.is_a? Symbol or sexp.second.is_a? SyntacticClosure)
+
+          vars_and_body = if namedLet
+                            sexp.cdr.cdr
+                          else
+                            sexp.cdr
+                          end
+
+          p "vars_and_body: " + write_to_string( vars_and_body ) if @debug
+
+          arr = vars_and_body.first.map { |x|
             [ x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
           }
           lst = arr.map {|x| Cell.new( x[0], x[1] ) }.to_list
-          ret = Cell.new( car,
-                     Cell.new( lst,
-                          macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + arr )))
+          body = macroexpandEngine( vars_and_body.cdr, syntaxArray, lexicalVars + arr )
+          ret = if namedLet
+                  Cell.new( car,
+                       Cell.new( sexp.second,
+                            Cell.new( lst, body )))
+                else
+                  Cell.new( car,
+                       Cell.new( lst, body ))
+                end
           p "result let: " + write_to_string( ret ) if @debug
           ret
         elsif :"let-syntax" == car
@@ -2101,10 +2142,10 @@ module Nendo
           if isRubyInterface( sym )
             # do nothing
             sexp
-          elsif car.class == Symbol and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
+          elsif _symbol_QUMARK( car ) and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
             eval( sprintf( "@__macro = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr.to_arr ))
-          elsif car.class == Symbol and eval( sprintf( "(defined? @%s and LispSyntax == @%s.class)", sym,sym ), @binding )
+          elsif _symbol_QUMARK( car ) and eval( sprintf( "(defined? @%s and LispSyntax == @%s.class)", sym,sym ), @binding )
             # expected input is
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
@@ -2114,7 +2155,7 @@ module Nendo
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
 #            p "after  SYNTAX: name = " + car.to_s + " sexp = "+ write_to_string( newSexp )
 #            puts()
-          elsif car.class == Symbol and syntaxArray.map {|arr| arr[0]}.include?( car )
+          elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0]}.include?( car.to_s.intern )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
             keys    = syntaxArray.reverse.map { |arr| arr[0] }
@@ -2151,10 +2192,6 @@ module Nendo
     def macroexpandPhase( sexp )
       macroexpandInit( 100000 )
       macroexpandEngineLoop( sexp, [], [] )
-    end
-
-    def lexicalSyntaxStripPhase( sexp )
-      sexp
     end
 
     def ppRubyExp( level, exp )
@@ -2361,14 +2398,33 @@ module Nendo
             identifier
           end
         else
-          sym = toRubySymbol( identifier ) + _gensym( ).to_s
-          sym.intern
+          sc = SyntacticClosure.new( identifier, (toRubySymbol( identifier ) + _gensym( ).to_s).intern )
+          sc
         end
       else
         raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) type."
       end
     end
 
+    def _strip_MIMARKsyntax_MIMARKquote( sexp )
+      case sexp
+      when Cell
+        if _null_QUMARK( sexp )
+          sexp
+        else
+          car = sexp.car
+          if :"syntax-quote" == car or @core_syntax_hash[ :"syntax-quote" ] == car
+            Cell.new( :quote, sexp.cdr )
+          else
+            Cell.new(
+                 _strip_MIMARKsyntax_MIMARKquote( sexp.car ),
+                 _strip_MIMARKsyntax_MIMARKquote( sexp.cdr ))
+          end
+        end
+      else
+        sexp
+      end
+    end
   end
 
   class Printer
@@ -2424,6 +2480,8 @@ module Nendo
         else
           sexp.to_s
         end
+      when SyntacticClosure
+        sprintf( "#<SyntacticClosure[%s:%s]>", sexp.originalSymbol, sexp.renamedSymbol )
       when Regexp
         "#/" + sexp.source + "/" + (sexp.casefold? ? "i" : "")
       when LispKeyword

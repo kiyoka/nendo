@@ -79,6 +79,12 @@ describe Nendo, "when use lib functions for let-syntax " do
        @nendo.evaluator.__wrapNestedLet( Cell.new( :"+", Cell.new( :a, Cell.new( :b ))),
                           [[ :a, Cell.new( 2 ) ], [ :b, Cell.new( 3 ) ]]
                           )).should == "(%let ((a 2)) (%let ((b 3)) (+ a b)))"
+
+    @nendo.evalStr( "(strip-syntax-quote 'abc)" ).should                    == "abc"
+    @nendo.evalStr( "(strip-syntax-quote '())" ).should                     == "()"
+    @nendo.evalStr( "(strip-syntax-quote '(a (b) ((c))))" ).should          == "(a (b) ((c)))"
+    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote abc))" ).should     == "'abc"
+    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote (syntax-quote abc)))" ).should     == "'(syntax-quote abc)"
   end
 end
 
@@ -111,11 +117,11 @@ describe Nendo, "when call make-syntactic-closure " do
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'print  )" ).should                  == 'print'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'if     )" ).should                  == 'if'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'lambda )" ).should                  == 'lambda'
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" ).should                  match( /_aaaa_/ )
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" ).should                  match( /_tmp_/ )
-    @nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" ).should       match( /_tmp_/ )
-    @nendo.evalStr( "name" ).should                                                                      match( /_tmp_/ )
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           match( /_new_global_var_/ )
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" ).should                  match( /SyntacticClosure.aaaa:_aaaa_/ )
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" ).should                  match( /SyntacticClosure.tmp:_tmp_/ )
+    @nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" ).should       match( /SyntacticClosure.tmp:_tmp_/ )
+    @nendo.evalStr( "name" ).should                                                                      match( /SyntacticClosure.tmp:_tmp_/ )
+    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           match( /SyntacticClosure.new_global_var:_new_global_var_/ )
     @nendo.evalStr( "(define new_global_var 10)" ).should                                                == '10'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           == 'new_global_var'
   end
@@ -145,6 +151,30 @@ describe Nendo, "when use er-macro-transformer " do
     @nendo.loadInitFile
   end
   it "should" do
+    @nendo.evalStr( <<EOS
+(define-syntax test-of-identifier?
+  (er-macro-transformer
+   (lambda (expr rename compare)
+     (cons (rename 'list)
+           (list (identifier? 'rename)
+                 (identifier? 'sym))))))
+test-of-identifier?
+EOS
+           ).should    match( /Nendo::LispSyntax/ )
+
+    @nendo.evalStr( "(test-of-identifier? 1)" ).should       ==  '(#t #t)'
+
+    @nendo.evalStr( <<EOS
+(define-syntax test-of-rename
+  (er-macro-transformer
+   (lambda (expr rename compare)
+     (list (rename 'quote)
+           (rename 'sym)))))
+test-of-rename
+EOS
+           ).should    match( /Nendo::LispSyntax/ )
+    @nendo.evalStr( "(test-of-rename 2)" ).should       ==  'sym'
+
     @nendo.evalStr( <<EOS
 (define-syntax my-or
   (er-macro-transformer
@@ -263,7 +293,16 @@ EOS
 (macroexpand
  '(dummy-syntax 100))
 EOS
-                    ).should     == "'this-is-symbol"
+                    ).should     match( /'#<SyntacticClosure.this-is-symbol:_this/ )
+
+    @nendo.evalStr( <<EOS
+(define-syntax dummy-syntax
+  (syntax-rules ()
+    ((_ arg1)
+     'this-is-symbol)))
+(dummy-syntax 100)
+EOS
+                    ).should     == "this-is-symbol"
 
   end
 end
@@ -293,7 +332,7 @@ EOS
                    'this-is-symbol))))
     (dummy-syntax 100)))
 EOS
-           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) 'this-is-symbol)))) 'this-is-symbol)"
+           ).should   match( /[(]let-syntax [(][(]dummy-syntax [(]%syntax-rules [(][)] [(][(]_ x[)] 'this-is-symbol[)][)][)][)] '#<SyntacticClosure.this-is-symbol/ )
 
     @nendo.evalStr( <<EOS
 (macroexpand
@@ -301,11 +340,10 @@ EOS
                 (syntax-rules ()
                   ((_ x)
                    (begin "this is debug line"
-                          #?.
-                          'this-is-symbol)))))
+                          #?.)))))
     (dummy-syntax 100)))
 EOS
-           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) (begin \"this is debug line\" \"#?. (string):6\" 'this-is-symbol))))) (begin \"this is debug line\" \"#?. (string):6\" 'this-is-symbol))"
+           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) (begin \"this is debug line\" \"#?. (string):6\"))))) (begin \"this is debug line\" \"#?. (string):6\"))"
 
     @nendo.evalStr( <<EOS
 (define aa 100)
