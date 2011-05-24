@@ -225,9 +225,12 @@ module Nendo
       @renamedSymbol.to_s
     end
 
+    def intern
+      @renamedSymbol
+    end
+
     def sourcefile()  "dynamic S-expression ( no source )"  end
     def lineno()      1                                     end
-
 
     attr_reader :originalSymbol, :renamedSymbol
   end
@@ -1696,7 +1699,7 @@ module Nendo
       argsyms = []
       locals = []
       rest = false
-      if Symbol == argform.class
+      if _symbol_QUMARK( argform )
         rest       = argform
       else
         argsyms    = argform.map { |x|  toRubySymbol( x.car ) }
@@ -2042,29 +2045,13 @@ module Nendo
         elsif :"%let" == car or :letrec == car or @core_syntax_hash[ :"%let" ] == car or @core_syntax_hash[ :letrec ] == car
           p "let?: " + write_to_string( sexp ) if @debug
           # catch lexical identifiers of `let' and `letrec'.
-          namedLet = (sexp.second.is_a? Symbol or sexp.second.is_a? SyntacticClosure)
-
-          vars_and_body = if namedLet
-                            sexp.cdr.cdr
-                          else
-                            sexp.cdr
-                          end
-
-          p "vars_and_body: " + write_to_string( vars_and_body ) if @debug
-
-          arr = vars_and_body.first.map { |x|
+          arr = sexp.second.map { |x|
             [ x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
           }
           lst = arr.map {|x| Cell.new( x[0], x[1] ) }.to_list
-          body = macroexpandEngine( vars_and_body.cdr, syntaxArray, lexicalVars + arr )
-          ret = if namedLet
-                  Cell.new( car,
-                       Cell.new( sexp.second,
-                            Cell.new( lst, body )))
-                else
-                  Cell.new( car,
-                       Cell.new( lst, body ))
-                end
+          ret = Cell.new( car,
+                     Cell.new( lst,
+                          macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + arr )))
           p "result let: " + write_to_string( ret ) if @debug
           ret
         elsif :"let-syntax" == car
@@ -2155,7 +2142,7 @@ module Nendo
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
 #            p "after  SYNTAX: name = " + car.to_s + " sexp = "+ write_to_string( newSexp )
 #            puts()
-          elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0]}.include?( car.to_s.intern )
+          elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0].intern}.include?( car.intern )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
             keys    = syntaxArray.reverse.map { |arr| arr[0] }
@@ -2385,8 +2372,10 @@ module Nendo
         else
           raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) only. but got: " + write_to_string( identifier )
         end
-      elsif identifier.is_a? Symbol
-        if mac_env.to_arr.include?( identifier )
+      elsif _symbol_QUMARK( identifier )
+        pp [ "identifier: ", identifier ] if @debug
+        # pp [ "mac_env: ",    mac_env.to_arr ]
+        if mac_env.to_arr.include?( identifier.intern )
           found = @lexicalVars.find { |x| identifier == x[0] }
           if found
             p "lexical var found: " + found[0].to_s + "   sexp: " + write_to_string( found[1] )  if @debug
@@ -2398,8 +2387,7 @@ module Nendo
             identifier
           end
         else
-          sc = SyntacticClosure.new( identifier, (toRubySymbol( identifier ) + _gensym( ).to_s).intern )
-          sc
+          SyntacticClosure.new( identifier, (toRubySymbol( identifier ) + _gensym( ).to_s).intern )
         end
       else
         raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) type."
