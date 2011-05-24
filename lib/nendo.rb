@@ -2178,7 +2178,9 @@ module Nendo
 
     def macroexpandPhase( sexp )
       macroexpandInit( 100000 )
-      macroexpandEngineLoop( sexp, [], [] )
+      _strip_MIMARKlet_MIMARKsyntax_MIMARKkeyword(
+         _strip_MIMARKsyntax_MIMARKquote(
+            macroexpandEngineLoop( sexp, [], [] )))
     end
 
     def ppRubyExp( level, exp )
@@ -2407,6 +2409,29 @@ module Nendo
             Cell.new(
                  _strip_MIMARKsyntax_MIMARKquote( sexp.car ),
                  _strip_MIMARKsyntax_MIMARKquote( sexp.cdr ))
+          end
+        end
+      else
+        sexp
+      end
+    end
+
+    def _strip_MIMARKlet_MIMARKsyntax_MIMARKkeyword( sexp )
+      case sexp
+      when Cell
+        if _null_QUMARK( sexp )
+          sexp
+        else
+          car = sexp.car
+          if :"quote" == car or @core_syntax_hash[ :"quote" ] == car
+            sexp
+          elsif :"let-syntax" == car or @core_syntax_hash[ :"let-syntax" ] == car
+            Cell.new( :begin,
+                 _strip_MIMARKlet_MIMARKsyntax_MIMARKkeyword( sexp.cdr.cdr ))
+          else
+            Cell.new(
+                 _strip_MIMARKlet_MIMARKsyntax_MIMARKkeyword( sexp.car ),
+                 _strip_MIMARKlet_MIMARKsyntax_MIMARKkeyword( sexp.cdr ))
           end
         end
       else

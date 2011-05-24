@@ -84,7 +84,29 @@ describe Nendo, "when use lib functions for let-syntax " do
     @nendo.evalStr( "(strip-syntax-quote '())" ).should                     == "()"
     @nendo.evalStr( "(strip-syntax-quote '(a (b) ((c))))" ).should          == "(a (b) ((c)))"
     @nendo.evalStr( "(strip-syntax-quote '(syntax-quote abc))" ).should     == "'abc"
-    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote (syntax-quote abc)))" ).should     == "'(syntax-quote abc)"
+    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote (syntax-quote abc)))" ).should     == "''abc"
+
+    @nendo.evalStr( "(strip-let-syntax-keyword 'abc)" ).should                    == "abc"
+    @nendo.evalStr( <<EOS
+(strip-let-syntax-keyword
+  '(let-syntax ((nil!
+		 (syntax-rules ()
+			       ((_ x)
+				(set! x '())))))
+	       (nil! aa)))
+EOS
+           ).should     == "(begin (nil! aa))"
+
+    @nendo.evalStr( <<EOS
+(strip-let-syntax-keyword
+ '(let ()
+    (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
+		 (b (syntax-rules () ((_ ?x) (- ?x 8)))))
+		(let-syntax ((a (syntax-rules () ((_ ?y) (b 2))))
+			     (b (syntax-rules () ((_ ?y) (a 3)))))
+			    (list (a 7) (b 8))))))
+EOS
+           ).should     == "(let () (begin (begin (list (a 7) (b 8)))))"
   end
 end
 

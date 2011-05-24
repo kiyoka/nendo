@@ -1430,62 +1430,9 @@
 
 
 
-;; ----------------------------------------
-;; remove phase of `let-syntax'
-;; ----------------------------------------
-(define (%remove-let-syntax-keyword sexp)
-  (cond
-   ((not (pair? sexp))
-    sexp)
-   ((null? sexp)
-    '())
-   ((list? sexp)
-    (let1 _car (car sexp)
-      (case _car
-        ((quote /nendo/core/quote)
-         sexp)
-        ((syntax-quote /nendo/core/syntax-quote)
-         sexp)
-        ((let-syntax %let-syntax)
-         `(begin
-            ,@(%remove-let-syntax-keyword (cddr sexp))))
-        (else
-         (cons
-          (%remove-let-syntax-keyword (car sexp))
-          (%remove-let-syntax-keyword (cdr sexp)))))))
-   (else
-    sexp)))
-
-
-;; ----------------------------------------
-;; remove phase of `syntax-quote of null'
-;; ----------------------------------------
-(define (%remove-syntax-quote-null sexp)
-  (cond
-   ((not (pair? sexp))
-    sexp)
-   ((null? sexp)
-    '())
-   ((list? sexp)
-    (let1 _car (car sexp)
-      (case _car
-        ((quote /nendo/core/quote)
-         sexp)
-        ((syntax-quote /nendo/core/syntax-quote)
-         (list 'quote (cadr sexp)))
-        (else
-         (cons
-          (%remove-syntax-quote-null (car sexp))
-          (%remove-syntax-quote-null (cdr sexp)))))))
-   (else
-    sexp)))
-
-
 ;; definition of 'compile-phase'
 (set! %compile-phase-functions
       (list
-       %remove-syntax-quote-null
-       %remove-let-syntax-keyword
        %setup-%tailcall-mark
        ))
 
