@@ -19263,7 +19263,7 @@ trampCall(
                                              )
                                 end
                             } ; ___lambda.call(
-                                Cell.new(:"quote",Cell.new(:"syntax-quote",Cell.new(:"macro",Cell.new(:"%syntax",Cell.new(:"begin",Cell.new(:"lambda",Cell.new(:"if",Cell.new(:"%let",Cell.new(:"letrec",Cell.new(:"define",Cell.new(:"define-syntax")))))))))))
+                                Cell.new(:"quote",Cell.new(:"quote",Cell.new(:"macro",Cell.new(:"%syntax",Cell.new(:"begin",Cell.new(:"lambda",Cell.new(:"if",Cell.new(:"%let",Cell.new(:"letrec",Cell.new(:"define",Cell.new(:"define-syntax")))))))))))
                                        )
                           end
                       }
@@ -20056,7 +20056,7 @@ trampCall(
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                                             end                                                                          ,
                                                                         [
-                                                                            :"/nendo/core/syntax-quote"                                                                            ,
+                                                                            :"quote"                                                                            ,
                                                                               begin
                                                                                   trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20328)
                                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -20075,7 +20075,7 @@ trampCall(
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
                                                               [
-                                                                  :"syntax-quote"                                                                  ,
+                                                                  :"quote"                                                                  ,
                                                                     begin
                                                                         trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20328)
                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -22023,7 +22023,7 @@ trampCall(
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                   [
-                                                                      :"/nendo/core/syntax-quote"                                                                      ,
+                                                                      :"quote"                                                                      ,
                                                                         begin
                                                                             trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20374)
                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -22042,7 +22042,7 @@ trampCall(
                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                         [
-                                                            :"syntax-quote"                                                            ,
+                                                            :"quote"                                                            ,
                                                               begin
                                                                   trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20374)
                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -22473,7 +22473,7 @@ trampCall(
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                   [
-                                                                      :"/nendo/core/syntax-quote"                                                                      ,
+                                                                      :"quote"                                                                      ,
                                                                         begin
                                                                             trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20389)
                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -22492,7 +22492,7 @@ trampCall(
                                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1203"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
                                                         [
-                                                            :"syntax-quote"                                                            ,
+                                                            :"quote"                                                            ,
                                                               begin
                                                                   trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20389)
                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
@@ -22659,18 +22659,6 @@ trampCall(
                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1486"] + __e.backtrace ) ; raise __e
               end            ,
           [
-                begin
-                  if @global_lisp_binding.has_key?('__PAMARKremove_MIMARKsyntax_MIMARKquote_MIMARKnull') then
-                    trampCall(@__PAMARKremove_MIMARKsyntax_MIMARKquote_MIMARKnull)
-                  else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARKsyntax_MIMARKquote_MIMARKnull", "__PAMARKremove_MIMARKsyntax_MIMARKquote_MIMARKnull" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1487"] + __e.backtrace ) ; raise __e
-                end              ,
-                begin
-                  if @global_lisp_binding.has_key?('__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword') then
-                    trampCall(@__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword)
-                  else raise NameError.new( "Error: undefined variable __PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword", "__PAMARKremove_MIMARKlet_MIMARKsyntax_MIMARKkeyword" ) end
-                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1488"] + __e.backtrace ) ; raise __e
-                end              ,
                 begin
                   if @global_lisp_binding.has_key?('__PAMARKsetup_MIMARK_PAMARKtailcall_MIMARKmark') then
                     trampCall(@__PAMARKsetup_MIMARK_PAMARKtailcall_MIMARKmark)
@@ -28458,7 +28446,7 @@ trampCall(
                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1753"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
-                                :"syntax-quote"
+                                :"quote"
                             ]
                                          ))                          ,
                             trampCall( callProcedure(   'rename',
