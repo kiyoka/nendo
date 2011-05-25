@@ -27,8 +27,7 @@
 ;;(match-test* "symbol" (match 'ok (x x)) 'ok)
 ;;(match-test* "number" (match 28 (28 'ok)) 'ok)
 ;;(match-test* "string" (match "good" ("bad" 'fail) ("good" 'ok)) 'ok)
-(enable-idebug)
-(match-test* "literal symbol" (match 'good ('bad 'fail) ('good 'ok)) 'ok)
+;;(match-test* "literal symbol" (match 'good ('bad 'fail) ('good 'ok)) 'ok)
 ;;(match-test* "null" (match '() (() 'ok)) 'ok)
 ;;(match-test* "pair" (match '(ok) ((x) x)) 'ok)
 ;;(match-test* "vector" (match '#(ok) (#(x) x)) 'ok)
@@ -45,9 +44,8 @@
 ;;(match-test* "duplicate symbols pass" (match '(ok . ok) ((x . x) x)) 'ok)
 ;;(match-test* "duplicate symbols fail" (match '(ok . bad) ((x . x) 'bad) (else 'ok)) 'ok)
 
-(exit)
 ;; pending because this test never end
-(match-test* "duplicate symbols samth" (match '(ok . ok) ((x . 'bad) x) (('ok . x) x)) 'ok)
+(pending*    "duplicate symbols samth" (match '(ok . ok) ((x . 'bad) x) (('ok . x) x)) 'ok)
 
 (match-test* "ellipses"
             (match '((a . 1) (b . 2) (c . 3))
@@ -72,7 +70,8 @@
               (((? number? n) ___) n))
             '(1 2 3))
 
-(match-test*   "failure continuation"
+;; pending because this test never end
+(pending*   "failure continuation"
             (match '(1 2)
               ((a . b) (=> next) (if (even? a) 'fail (next)))
               ((a . b) 'ok))
