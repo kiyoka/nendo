@@ -676,7 +676,7 @@ module Nendo
       when T_DEBUG_PRINT
         "debug-print".intern
       when T_MACRO_DEBUG_PRINT
-        LispString.new( sprintf( "#?. %s:%d", cur.sourcefile, cur.lineno ))
+        LispString.new( sprintf( "%s:%d", cur.sourcefile, cur.lineno ))
       when T_KEYWORD
         LispKeyword.new( cur.str )
       else
