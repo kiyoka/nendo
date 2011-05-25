@@ -387,6 +387,7 @@ EOS
            ).should == "ok"
 
     @nendo.evalStr( <<EOS
+'"internal-def2"
 (let ()
   (let-syntax ()
     (define internal-def 'ok)
