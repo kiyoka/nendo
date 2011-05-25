@@ -365,7 +365,7 @@ EOS
                           #?.)))))
     (dummy-syntax 100)))
 EOS
-           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) (begin \"this is debug line\" \"#?. (string):6\"))))) (begin \"this is debug line\" \"#?. (string):6\"))"
+           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) (begin \"this is debug line\" \"(string):6\"))))) (begin \"this is debug line\" \"(string):6\"))"
 
     @nendo.evalStr( <<EOS
 (define aa 100)
@@ -582,17 +582,17 @@ EOS
   @nendo.evalStr( <<EOS
 (match-check-ellipse (aa bb) (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"#?. (string):1 non-ellipse"'
+         ).should     == '"(string):1 non-ellipse"'
 
   @nendo.evalStr( <<EOS
 (match-check-ellipse xxx (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"#?. (string):1 non-ellipse"'
+         ).should     == '"(string):1 non-ellipse"'
 
   @nendo.evalStr( <<EOS
 (match-check-ellipse ... (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"#?. (string):1 ellipse"'
+         ).should     == '"(string):1 ellipse"'
 
   @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
@@ -605,7 +605,7 @@ EOS
      (+ #?. " " arg-str))))
 (dummy-syntax xxx)
 EOS
-         ).should     == '"#?. (string):8 non-ellipse"'
+         ).should     == '"(string):8 non-ellipse"'
 
   @nendo.evalStr( <<EOS
 (match-check-ellipse ... (match-check-ellipse xxx 'tt 'tf) (match-check-ellipse xxx 'ft 'ff))
