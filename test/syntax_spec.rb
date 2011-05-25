@@ -173,18 +173,41 @@ describe Nendo, "when use er-macro-transformer " do
     @nendo.loadInitFile
   end
   it "should" do
+
     @nendo.evalStr( <<EOS
-(define-syntax test-of-identifier?
+(define-syntax test-of-identifier1?
   (er-macro-transformer
    (lambda (expr rename compare)
      (cons (rename 'list)
            (list (identifier? 'rename)
                  (identifier? 'sym))))))
-test-of-identifier?
+test-of-identifier1?
 EOS
            ).should    match( /Nendo::LispSyntax/ )
 
-    @nendo.evalStr( "(test-of-identifier? 1)" ).should       ==  '(#t #t)'
+    @nendo.evalStr( "(test-of-identifier1? 1)" ).should       ==  '(#t #t)'
+
+    @nendo.evalStr( <<EOS
+(define-syntax test-of-identifier2?
+  (er-macro-transformer
+   (lambda (expr rename compare)
+     (identifier? (cadr expr)))))
+
+(let ((a 1)
+      (b 2)
+      (c 3))
+  (let ((b a))
+    (list
+     a
+     b
+     c
+     (test-of-identifier2? a)
+     (test-of-identifier2? b)
+     (test-of-identifier2? c)
+     (test-of-identifier2? d)
+     (test-of-identifier2? 'e))))
+EOS
+           ).should       ==  '(1 1 3 #t #t #t #t #f)'
 
     @nendo.evalStr( <<EOS
 (define-syntax test-of-rename
@@ -196,6 +219,30 @@ test-of-rename
 EOS
            ).should    match( /Nendo::LispSyntax/ )
     @nendo.evalStr( "(test-of-rename 2)" ).should       ==  'sym'
+
+    @nendo.evalStr( <<EOS
+(define-syntax test-of-identifier=?
+  (er-macro-transformer
+   (lambda (expr rename compare)
+     (let ((_compare (rename 'compare)))
+       (compare
+        (cadr expr)
+        (caddr expr))))))
+(let ((a 1)
+      (b 2)
+      (c 3))
+  (let ((b a))
+    (list
+     a
+     b
+     c
+     (test-of-identifier=? a a)
+     (test-of-identifier=? b b)
+     (test-of-identifier=? c c)
+     (test-of-identifier=? a b)
+     (test-of-identifier=? a c))))
+EOS
+           ).should       ==  '(1 1 3 #t #t #t #f #f)'
 
     @nendo.evalStr( <<EOS
 (define-syntax my-or

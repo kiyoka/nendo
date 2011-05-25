@@ -229,6 +229,14 @@ module Nendo
       @renamedSymbol
     end
 
+#    def ==(other_sc)
+#      if other_sc.is_a? SyntacticClosure
+#        @renamedSymbol == other_sc.renamedSymbol
+#      else
+#        false
+#      end
+#    end
+
     def sourcefile()  "dynamic S-expression ( no source )"  end
     def lineno()      1                                     end
 
