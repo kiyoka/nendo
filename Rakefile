@@ -46,13 +46,13 @@ task :test do
   stage2 =  []
   stage2 << "/bin/rm -f test.record"
   stage2 << "echo "" > test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd     >> test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd  >> test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/json-test.nnd        >> test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd      >> test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd     >> test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd   >> test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/match-test.nnd       >> test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd     | tee -a test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd  | tee -a test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/json-test.nnd        | tee -a test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd      | tee -a test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd     | tee -a test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd   | tee -a test.log"
+  stage2 << "ruby -I ./lib ./bin/nendo ./test/match-test.nnd       | tee -a test.log"
   stage2 << "cat test.record"
   arr = []
   arr += stage1
