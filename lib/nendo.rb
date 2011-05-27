@@ -2044,6 +2044,21 @@ module Nendo
     #                      [ identifier-name, macroexpandEngine( let's body ) ],
     #                   ]
     #
+    #
+    # transformation of syntax-rules:
+    # (%syntax-rules
+    #  ((v1 <<@syntaxHash's key1>>)
+    #   (v2 <<@syntaxHash's key2>>)
+    #   body))
+    #
+    # example:
+    #
+    # (%syntax-rules
+    #  ((v1 "x = 10 // (+ x v1)")
+    #   (v2 "y = 20 // (+ y v2)"))
+    #  (+ v1 v2))
+    #
+    #
     def __macroexpandEngine( sexp, syntaxArray, lexicalVars )
       case sexp
       when Cell
@@ -2089,7 +2104,7 @@ module Nendo
               p "pattern: " + write_to_string( pattern )  if @debug
               body = pattern_body.second
               p "body: " + write_to_string( body )  if @debug
-              new_pattern_body = [ pattern, macroexpandEngine( body, syntaxArray, lexicalVars ) ].to_list
+              new_pattern_body = [ pattern, macroexpandEngineLoop( body, syntaxArray, lexicalVars ) ].to_list
               p "new_pattern_body: " + write_to_string( new_pattern_body )  if @debug
               lst << new_pattern_body
             }
