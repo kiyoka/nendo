@@ -2066,7 +2066,17 @@ module Nendo
     # eval (syntax-rules ...) sexp
     #
     # return:
-    #   key of @syntaxHash
+    #   (%syntax-rules
+    #    ((v1 <<@syntaxHash's key1>>)
+    #     (v2 <<@syntaxHash's key2>>)
+    #     body))
+    #
+    #   example:
+    #   (%syntax-rules
+    #    ((v1 "x = 10 // (+ x v1)")
+    #     (v2 "y = 20 // (+ y v2)"))
+    #    (+ v1 v2))
+    #
     def __evalSyntaxRules( rules, lexicalVars )
       if :"%syntax-rules" == rules.car
         p "(10)rules: " + write_to_string( rules )  if @debug
