@@ -2034,59 +2034,68 @@ module Nendo
     # expand (syntax-rules ...) => (%syntax-rules ...)
     #
     def __expandSyntaxRules( rules, syntaxArray, lexicalVars )
-      p "(1)rules: " + write_to_string( rules )  if @debug
-      ellipse = rules.second
-      p "(1)ellipse: " + write_to_string( ellipse )  if @debug
-      pattern_body_list = rules.cdr.cdr
-      p "(1)pattern_body_list: " + write_to_string( pattern_body_list )  if @debug
+      if :"%syntax-rules" == rules.car
+        p "(1)rules: " + write_to_string( rules )  if @debug
+        rules
+      else
+        p "(2)rules: " + write_to_string( rules )  if @debug
+        ellipse = rules.second
+        p "(2)ellipse: " + write_to_string( ellipse )  if @debug
+        pattern_body_list = rules.cdr.cdr
+        p "(2)pattern_body_list: " + write_to_string( pattern_body_list )  if @debug
 
-      lst = []
-      lst << :"%syntax-rules"
-      lst << ellipse
-      pattern_body_list.each {|xx|
-        pattern_body = xx.car
-        p "(1)pattern_body: " + write_to_string( pattern_body )  if @debug
-        pattern = pattern_body.first
-        p "(1)pattern: " + write_to_string( pattern )  if @debug
-        body = pattern_body.second
-        p "(1)body: " + write_to_string( body )  if @debug
-        new_pattern_body = [ pattern, macroexpandEngineLoop( body, syntaxArray, lexicalVars ) ].to_list
-        p "(1)new_pattern_body: " + write_to_string( new_pattern_body )  if @debug
-        lst << new_pattern_body
-      }
-      p "expaned-syntax-rules: " + write_to_string( lst.to_list )  if @debug
-      lst.to_list
+        lst = []
+        lst << :"syntax-rules"
+        lst << ellipse
+        pattern_body_list.each {|xx|
+          pattern_body = xx.car
+          p "(2)pattern_body: " + write_to_string( pattern_body )  if @debug
+          pattern = pattern_body.first
+          p "(2)pattern: " + write_to_string( pattern )  if @debug
+          body = pattern_body.second
+          p "(2)body: " + write_to_string( body )  if @debug
+          new_pattern_body = [ pattern, macroexpandEngineLoop( body, syntaxArray, lexicalVars ) ].to_list
+          p "(2)new_pattern_body: " + write_to_string( new_pattern_body )  if @debug
+          lst << new_pattern_body
+        }
+        p "expaned-syntax-rules: " + write_to_string( lst.to_list )  if @debug
+        lst.to_list
+      end
     end
 
     # eval (syntax-rules ...) sexp
     #
     # return:
-    #   #<LispSyntax>
+    #   key of @syntaxHash
     def __evalSyntaxRules( rules, lexicalVars )
-      p "(2)rules: " + write_to_string( rules )  if @debug
-
-      __setupLexicalScopeVariables( lexicalVars )
-      keyStr = lexicalVars.map {|z|
-        z[0].to_s + " / " +  write_to_string( z[1] )
-      }.join( " / " )
-      p "using let vars: " + keyStr if @debug
-      keyStr += " // " + write_to_string( rules )
-      lispSyntax = if @syntaxHash.has_key?( keyStr )
-                     p "keyStr(cached): " + keyStr if @debug
-                     @syntaxHash[ keyStr ]
-                   else
-                     p "keyStr( new  ): " + keyStr if @debug
-                     @syntaxHash[ keyStr ] = self.lispEval( rules, "dynamic syntax-rules sexp (no source) ", 1 )
-                   end
-      __setupLexicalScopeVariables( [] )
-      lispSyntax
+      if :"%syntax-rules" == rules.car
+        p "(10)rules: " + write_to_string( rules )  if @debug
+        rules.second
+      else
+        p "(20)rules: " + write_to_string( rules )  if @debug
+        __setupLexicalScopeVariables( lexicalVars )
+        keyStr = lexicalVars.map {|z|
+          z[0].to_s + " / " +  write_to_string( z[1] )
+        }.join( " / " )
+        p "using let vars: " + keyStr if @debug
+        keyStr += " // " + write_to_string( rules )
+        if @syntaxHash.has_key?( keyStr )
+          p "keyStr(cached): " + keyStr if @debug
+        else
+          p "keyStr( new  ): " + keyStr if @debug
+          @syntaxHash[ keyStr ] = [ lexicalVars.clone,
+            self.lispEval( rules, "dynamic syntax-rules sexp (no source) ", 1 ) ]
+        end
+        __setupLexicalScopeVariables( [] )
+        keyStr
+      end
     end
 
     # args:
     #
     #   syntaxArray ... let-syntax's identifiers
     #                   [
-    #                      [ identifier-name, #<LispSyntax>, sexp_of_(syntax-rules ...), frame_of_let-syntax ],
+    #                      [ identifier-name, key of @syntaxHash, sexp of (syntax-rules ...), frame_of_let-syntax ],
     #                        .
     #                        .
     #                   ]
@@ -2129,15 +2138,27 @@ module Nendo
           arr = arr_tmp.map {|x|
             [ x[0], __evalSyntaxRules( x[1], lexicalVars ), x[1], lexicalVars ]
           }
+
+          # trial (expand recursively)
+          arr_tmp = arr.map { |x|
+            [ x[0], __expandSyntaxRules( x[2], syntaxArray + arr, lexicalVars ) ]
+          }
+          arr = arr_tmp.map {|x|
+            [ x[0], __evalSyntaxRules( x[1], lexicalVars ), x[1], lexicalVars ]
+          }
+
           # keywords = ((let-syntax-keyword ( let-syntax-body ))
           #             (let-syntax-keyword ( let-syntax-body ))
           #             ..)
           newKeywords = arr.map { |e|
-            pp [ "newKeywords: ", e[0], write_to_string( e[2] ) ] if @debug
-            Cell.new( e[0], Cell.new( e[2] ))
+            lst = [ e[0], [ :"%syntax-rules", e[1]].to_list ].to_list
+            p "newKeywordList = " + write_to_string( lst )  if @debug
+            lst
           }.to_list
+
           ret = Cell.new( :"let-syntax",
                      Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr, lexicalVars )))
+
           p "before let-syntax: " + write_to_string( sexp.cdr.cdr ) if @debug
           p "result let-syntax: " + write_to_string( ret          ) if @debug
           ret
@@ -2167,12 +2188,14 @@ module Nendo
             if not symbol_and_syntaxObj
               raise "can't find valid syntaxObject"
             end
-            vars    = symbol_and_syntaxObj[3].map { |arr| arr[0] }
-            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], symbol_and_syntaxObj[1], [
+            vars       = symbol_and_syntaxObj[3].map { |arr| arr[0] }
+            lexvars    = @syntaxHash[ symbol_and_syntaxObj[1] ][0]
+            lispSyntax = @syntaxHash[ symbol_and_syntaxObj[1] ][1]
+            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], lispSyntax, [
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
-            newSexp = __wrapNestedLet( newSexp, symbol_and_syntaxObj[3] )
+            newSexp = __wrapNestedLet( newSexp, lexvars )
             pp [ "lexical macro expanding (before) ", write_to_string( sexp )," by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
             pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
           end

@@ -176,7 +176,10 @@
   (%let ((newsexp (macroexpand-1 sexp)))
      (if (not (equal? sexp newsexp))
          (macroexpand newsexp)
-         newsexp)))
+         (strip-let-syntax-keyword
+          (strip-syntax-quote
+           newsexp)))))
+         
 
 (define (feedto)
   (error "=> (feedto) appeared outside cond or case."))

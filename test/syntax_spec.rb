@@ -391,7 +391,7 @@ describe Nendo, "When use let-syntax" do
                    (set! x '())))))
     (nil! aa)))
 EOS
-           ).should == "(let-syntax ((nil! (%syntax-rules () ((_ x) (set! x '()))))) (set! aa '()))"
+           ).should == "(begin (set! aa '()))"
 
     @nendo.evalStr( <<EOS
 (macroexpand
@@ -401,7 +401,7 @@ EOS
                    'this-is-symbol))))
     (dummy-syntax 100)))
 EOS
-           ).should   match( /[(]let-syntax [(][(]dummy-syntax [(]%syntax-rules [(][)] [(][(]_ x[)] 'this-is-symbol[)][)][)][)] '#<SyntacticClosure.this-is-symbol/ )
+           ).should   match( /begin '#<SyntacticClosure.this-is-symbol:/ )
 
     @nendo.evalStr( <<EOS
 (macroexpand
@@ -412,7 +412,7 @@ EOS
                           #?.)))))
     (dummy-syntax 100)))
 EOS
-           ).should == "(let-syntax ((dummy-syntax (%syntax-rules () ((_ x) (begin \"this is debug line\" \"(string):6\"))))) (begin \"this is debug line\" \"(string):6\"))"
+           ).should == "(begin (begin \"this is debug line\" \"(string):6\"))"
 
     @nendo.evalStr( <<EOS
 (define aa 100)
