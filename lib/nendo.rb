@@ -2054,7 +2054,7 @@ module Nendo
           p "(2)pattern: " + write_to_string( pattern )  if @debug
           body = pattern_body.second
           p "(2)body: " + write_to_string( body )  if @debug
-          new_pattern_body = [ pattern, macroexpandEngineLoop( body, syntaxArray, lexicalVars ) ].to_list
+          new_pattern_body = [ pattern, macroexpandEngine( body, syntaxArray, lexicalVars ) ].to_list
           p "(2)new_pattern_body: " + write_to_string( new_pattern_body )  if @debug
           lst << new_pattern_body
         }
