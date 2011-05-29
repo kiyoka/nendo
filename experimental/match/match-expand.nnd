@@ -1,0 +1,7 @@
+;; for nendo 0.5.1
+(use match)
+
+(write
+ (macroexpand
+  '(match 'any (_ 'ok))))
+(newline)
