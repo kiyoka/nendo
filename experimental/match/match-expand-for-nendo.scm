@@ -4,20 +4,48 @@
 ;;   $ chibi-scheme match-expand-for-nendo.scm > match-expanded.nnd
 ;;
 (import (chibi macroexpand))
+(import (srfi 1))
 
-;;(define define-syntax-ex
-;;  (macro (sym body)
-;;    (write
-;;     (list (define-syntax ,sym (macroexpand ,body))))
-;;    (newline)))
+;; copied from
+;;   http://practical-scheme.net/wiliki/wiliki.cgi?Gauche%3APrettyPrint
+(define (pretty-print-sexp s)
+  (define (do-indent level)
+    (for-each
+     (lambda (x)
+       (display " "))
+     (iota level)))
+  (define (pp-parenl)
+    (display "("))
+  (define (pp-parenr)
+    (display ")"))
+  (define (pp-atom e prefix)
+    (if prefix (display " "))
+    (write e))
+  (define (pp-list s level prefix)
+    (and prefix (do-indent level))
+    (pp-parenl)
+    (let loop ((s s)
+               (prefix #f))
+      (if (null? s)
+          (pp-parenr)
+          (let ((e (car s)))
+            (if (list? e)
+                (begin (and prefix (newline))
+                       (pp-list e (+ level 1) prefix))
+                (pp-atom e prefix))
+            (loop (cdr s) #t)))))
+  (if (list? s)
+      (pp-list s 0 #f)
+      (write s))
+  (newline))
+
 
 (define-syntax define-syntax-ex
   (syntax-rules ()
     ((_ sym body)
      (begin
-       (write
+       (pretty-print-sexp
         (list (quote define-syntax) (quote sym) (macroexpand (quote body))))
-       (newline)
        (newline)))))
 
 ;;;-*- mode: nendo; syntax: scheme -*-;;
