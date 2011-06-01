@@ -46,16 +46,16 @@ task :test do
   stage2 =  []
   stage2 << "/bin/rm -f test.record"
   stage2 << "echo "" > test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd     | tee -a test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd  | tee -a test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/json-test.nnd        | tee -a test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd      | tee -a test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd     | tee -a test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd   | tee -a test.log"
-  stage2 << "ruby -I ./lib ./bin/nendo ./test/match-test.nnd       | tee -a test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd     | tee -a test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd  | tee -a test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd        | tee -a test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd      | tee -a test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd     | tee -a test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd   | tee -a test.log"
+#  stage2 << "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd       | tee -a test.log"
   stage2 << "cat test.record"
   arr = []
-  arr += stage1
+#  arr += stage1
   arr += stage2
   arr.each {|str|
     sh str
@@ -97,7 +97,7 @@ task :compile do
   files << "./lib/debug/syslog.nnd"
   files << "./lib/nendo/test.nnd"
   files << "./lib/rfc/json.nnd"
-  files << "./lib/util/match.nnd"
+#  files << "./lib/util/match.nnd"
   files.each {|fn|
     sh sprintf( "time ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
   }

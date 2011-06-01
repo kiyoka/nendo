@@ -2186,11 +2186,9 @@ module Nendo
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
-#            p "before SYNTAX: name = " + car.to_s + " sexp = "+ write_to_string( sexp )
+            p "[SYNTAX]: name=" + sexp.car.to_s + ":sexp = "+ write_to_string( sexp ) if @debug
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
-#            p "after  SYNTAX: name = " + car.to_s + " sexp = "+ write_to_string( newSexp )
-#            puts()
           elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0].intern}.include?( car.intern )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
@@ -2201,13 +2199,13 @@ module Nendo
             vars       = symbol_and_syntaxObj[3].map { |arr| arr[0] }
             lexvars    = @syntaxHash[ symbol_and_syntaxObj[1] ][0]
             lispSyntax = @syntaxHash[ symbol_and_syntaxObj[1] ][1]
+            p "[syntax]: name=" + sexp.car.to_s + ":sexp = "+ write_to_string( sexp ) if @debug
             newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], lispSyntax, [
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
             newSexp = __wrapNestedLet( newSexp, lexvars )
-            pp [ "lexical macro expanding (before) ", write_to_string( sexp )," by ", symbol_and_syntaxObj[0], "keys=", keys, "sexp=", write_to_string( symbol_and_syntaxObj[2]) ] if @debug
-            pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
+            # pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -2426,7 +2424,7 @@ module Nendo
           raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) only. but got: " + write_to_string( identifier )
         end
       elsif _symbol_QUMARK( identifier )
-        pp [ "identifier: ", identifier ] if @debug
+        # pp [ "identifier: ", identifier, "include?=", mac_env.to_arr.include?( identifier.intern ) ]
         # pp [ "mac_env: ",    mac_env.to_arr ]
         if mac_env.to_arr.include?( identifier.intern )
           found = @lexicalVars.find { |x| identifier == x[0] }
@@ -2487,6 +2485,25 @@ module Nendo
         end
       else
         sexp
+      end
+    end
+
+    def _strip_MIMARKsyntactic_MIMARKclosures( sexp )
+      case sexp
+      when Cell
+        if _null_QUMARK( sexp )
+          sexp
+        else
+          Cell.new(
+                 _strip_MIMARKsyntactic_MIMARKclosures( sexp.car ),
+                 _strip_MIMARKsyntactic_MIMARKclosures( sexp.cdr ))
+        end
+      else
+        if sexp.is_a? SyntacticClosure
+          sexp.originalSymbol
+        else
+          sexp
+        end
       end
     end
   end
