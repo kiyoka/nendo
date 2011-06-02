@@ -1,5 +1,13 @@
 ;;;-*- mode: nendo; syntax: scheme -*-;;
 
+
+(define (display-sexp str x)
+  (newline)
+  (display str)
+  (write (strip-syntactic-closures x))
+  (newline)
+  x)
+
 (define-syntax match-syntax-error
  (er-macro-transformer
   (lambda
@@ -25,7 +33,8 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
-   ((lambda
+   (display-sexp "match:expr= " expr)
+    ((lambda
      (tmp)
      (if tmp tmp
       ((lambda
@@ -103,7 +112,7 @@
                                            (cons body body-ls))) v_26))
                                        (cdr v_24))) v_25))
                                    (car v_24)) #f))
-                                (car v_23)) #f)))) nil
+                                (car v_23)) #f)))) #f
                            (lp v_22
                             ()
                             ()))))
@@ -203,7 +212,7 @@
                                             (cons body body-ls))) v_19))
                                         (cdr v_17))) v_18))
                                     (car v_17)) #f))
-                                 (car v_16)) #f)))) nil
+                                 (car v_16)) #f)))) #f
                             (lp v_15
                              ()
                              ()))))
@@ -301,7 +310,7 @@
                                       (cons body body-ls))) v_11))
                                   (cdr v_9))) v_10))
                               (car v_9)) #f))
-                           (car v_8)) #f)))) nil
+                           (car v_8)) #f)))) #f
                       (lp v_7
                        ()
                        ()))))
@@ -345,6 +354,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-next:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -582,6 +592,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-one:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -731,8 +742,10 @@
 (define-syntax match-two
  (er-macro-transformer
   (lambda
-   (expr rename compare)
-   ((lambda
+      (expr rename compare)
+    (display-sexp "match-two:expr= " expr)
+    (display-sexp "match-two:return= "
+                  ((lambda
      (tmp)
      (if tmp tmp
       ((lambda
@@ -3075,12 +3088,13 @@
                (car v_3)) #f))
             (cdr v_1))) v_2))
         (car v_1)) #f))
-     (cdr expr))))))
+     (cdr expr)))))))
 
 (define-syntax match-quasiquote
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-quasiquote:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -4002,6 +4016,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-quasiquote-step:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -4096,6 +4111,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+    (display-sexp "match-drop-ids:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -4123,6 +4139,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-drop-first-arg:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -4158,6 +4175,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-gen-or:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -4334,7 +4352,7 @@
                                                                       (car v_18)) #f))
                                                                    (cdr v_16))) v_17))
                                                                (car v_16)) #f))
-                                                            (car v_15)) #f)))) nil
+                                                            (car v_15)) #f)))) #f
                                                        (lp v_14
                                                         ()
                                                         ()))))
@@ -4357,6 +4375,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-gen-or-step:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -4565,6 +4584,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-gen-ellipses:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -4983,7 +5003,7 @@
                                                                                (car v_43)) #f))
                                                                             (cdr v_41))) v_42))
                                                                         (car v_41)) #f))
-                                                                     (car v_40)) #f)))) nil
+                                                                     (car v_40)) #f)))) #f
                                                                 (lp v_39
                                                                  ()
                                                                  ()))))
@@ -5339,7 +5359,7 @@
                                                                            (car v_20)) #f))
                                                                         (cdr v_18))) v_19))
                                                                     (car v_18)) #f))
-                                                                 (car v_17)) #f)))) nil
+                                                                 (car v_17)) #f)))) #f
                                                             (lp v_16
                                                              ()
                                                              ()))))
@@ -5364,6 +5384,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-verify-no-ellipses:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -5493,6 +5514,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-gen-search:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -5955,7 +5977,7 @@
                                                                            (car v_20)) #f))
                                                                         (cdr v_18))) v_19))
                                                                     (car v_18)) #f))
-                                                                 (car v_17)) #f)))) nil
+                                                                 (car v_17)) #f)))) #f
                                                             (lp v_16
                                                              ()
                                                              ()))))
@@ -5980,6 +6002,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-vector:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -6203,6 +6226,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-vector-two:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -6472,7 +6496,7 @@
                                         (car v_10)) #f))
                                      (cdr v_8))) v_9))
                                  (car v_8)) #f))
-                              (car v_7)) #f)))) nil
+                              (car v_7)) #f)))) #f
                          (lp v_6
                           ()
                           ()))))
@@ -6487,6 +6511,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-vector-step:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -6712,6 +6737,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-gen-vector-ellipses:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -6909,7 +6935,7 @@
                                         (car v_10)) #f))
                                      (cdr v_8))) v_9))
                                  (car v_8)) #f))
-                              (car v_7)) #f)))) nil
+                              (car v_7)) #f)))) #f
                          (lp v_6
                           ()
                           ()))))
@@ -6924,6 +6950,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-vector-tail:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -7032,6 +7059,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-vector-tail-two:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -7313,7 +7341,7 @@
                                                                             (car v_20)) #f))
                                                                          (cdr v_18))) v_19))
                                                                      (car v_18)) #f))
-                                                                  (car v_17)) #f)))) nil
+                                                                  (car v_17)) #f)))) #f
                                                              (lp v_16
                                                               ()
                                                               ()))))
@@ -7338,7 +7366,8 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
-   ((lambda
+   (display-sexp "match-extract-vars:expr= " expr)
+    ((lambda
      (tmp)
      (if tmp tmp
       ((lambda
@@ -7432,7 +7461,7 @@
                                                                                  (cons
                                                                                   (cons
                                                                                    (rename
-                                                                                    (quote new-sym?))
+                                                                                    (quote new-sym2?))
                                                                                    (cons
                                                                                     (cons
                                                                                      (rename
@@ -7445,7 +7474,7 @@
                                                                                        (cons
                                                                                         (cons
                                                                                          (rename
-                                                                                          (quote new-sym?))
+                                                                                          (quote new-sym2?))
                                                                                          (cons p
                                                                                           (cons
                                                                                            (rename
@@ -7464,7 +7493,7 @@
                                                                                         (cons
                                                                                          (cons
                                                                                           (rename
-                                                                                           (quote new-sym?))
+                                                                                           (quote new-sym2?))
                                                                                           (cons
                                                                                            (rename
                                                                                             (quote x))
@@ -7490,7 +7519,7 @@
                                                                                  (cons
                                                                                   (cons
                                                                                    (rename
-                                                                                    (quote new-sym?))
+                                                                                    (quote new-sym2?))
                                                                                    (cons
                                                                                     (rename
                                                                                      (quote random-sym-to-match))
@@ -8282,6 +8311,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-extract-vars-step:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -8393,7 +8423,7 @@
                                                       (car v_14)) #f))
                                                    (cdr v_12))) v_13))
                                                (car v_12)) #f))
-                                            (car v_11)) #f)))) nil
+                                            (car v_11)) #f)))) #f
                                        (lp v_10
                                         ()
                                         ()))))
@@ -8412,6 +8442,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-extract-quasiquote-vars:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -9065,6 +9096,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-extract-quasiquote-vars-step:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -9185,7 +9217,7 @@
                                                              (car v_16)) #f))
                                                           (cdr v_14))) v_15))
                                                       (car v_14)) #f))
-                                                   (car v_13)) #f)))) nil
+                                                   (car v_13)) #f)))) #f
                                               (lp v_12
                                                ()
                                                ()))))
@@ -9206,6 +9238,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-lambda:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -9244,6 +9277,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-lambda*:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -9279,6 +9313,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-let:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -9347,6 +9382,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-letrec:expr= " expr)   
    ((lambda
      (tmp)
      (if tmp tmp
@@ -9385,6 +9421,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-let/helper:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
@@ -9858,7 +9895,7 @@
                                                 (car v_31)) #f))
                                              (cdr v_29))) v_30))
                                          (car v_29)) #f))
-                                      (car v_28)) #f)))) nil
+                                      (car v_28)) #f)))) #f
                                  (lp v_27
                                   ()
                                   ()))))
@@ -9896,7 +9933,7 @@
                                     (car v_23)) #f))
                                  (cdr v_21))) v_22))
                              (car v_21)) #f))
-                          (car v_20)) #f)))) nil
+                          (car v_20)) #f)))) #f
                      (lp v_19
                       ()
                       ()))))
@@ -9994,7 +10031,7 @@
                                  (car v_8)) #f))
                               (cdr v_6))) v_7))
                           (car v_6)) #f))
-                       (car v_5)) #f)))) nil
+                       (car v_5)) #f)))) #f
                   (lp v_4
                    ()
                    ()))))
@@ -10007,6 +10044,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-named-let:expr= " expr)   
    ((lambda
      (tmp)
      (if tmp tmp
@@ -10211,7 +10249,7 @@
                                  (car v_8)) #f))
                               (cdr v_6))) v_7))
                           (car v_6)) #f))
-                       (car v_5)) #f)))) nil
+                       (car v_5)) #f)))) #f
                   (lp v_4
                    ()
                    ()
@@ -10225,6 +10263,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-let*:expr= " expr)   
    ((lambda
      (tmp)
      (if tmp tmp
@@ -10315,8 +10354,9 @@
 (define-syntax match-check-ellipse
  (er-macro-transformer
   (lambda
-   (expr rename compare)
-   ((lambda
+      (expr rename compare)
+    (display-sexp "match-check-ellipse:expr= " expr)
+    ((lambda
      (tmp)
      (if tmp tmp
       ((lambda
@@ -10335,6 +10375,11 @@
                (v_19)
                ((lambda
                  (id)
+                 (begin
+                   (newline)
+                   (display "match-check-ellipse:id= ")
+                   (write id)
+                   (newline))
                  ((lambda
                    (v_20)
                    (if
@@ -10543,6 +10588,7 @@
  (er-macro-transformer
   (lambda
    (expr rename compare)
+   (display-sexp "match-check-identifier:expr= " expr)
    ((lambda
      (tmp)
      (if tmp tmp
