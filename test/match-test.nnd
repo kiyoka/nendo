@@ -7,6 +7,8 @@
 
 (use nendo.test)
 (use util.match)
+;;(use util.match-expanded)
+
 (test-start "match")
 (test-section "match")
 
@@ -19,6 +21,7 @@
   (syntax-rules ()
     ((_ title code result)
      (printf "(pending) [%s]\n" title))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; run tests
@@ -42,35 +45,30 @@
 (match-test* "named pred" (match 28 ((? number? x) (+ x 1))) 29)
 (match-test* "duplicate symbols pass" (match '(ok . ok) ((x . x) x)) 'ok)
 (match-test* "duplicate symbols fail" (match '(ok . bad) ((x . x) 'bad) (else 'ok)) 'ok)
-
-;; pending because this test never end
-(pending*   "duplicate symbols samth" (match '(ok . ok) ((x . 'bad) x) (('ok . x) x)) 'ok)
+(match-test* "duplicate symbols samth" (match '(ok . ok) ((x . 'bad) x) (('ok . x) x)) 'ok)
 
 (match-test* "ellipses"
             (match '((a . 1) (b . 2) (c . 3))
               (((x . y) ___) (list x y)))
             '((a b c) (1 2 3)))
 
-(match-test*   "real ellipses"
+(match-test* "real ellipses"
             (match '((a . 1) (b . 2) (c . 3))
               (((x . y) ...) (list x y)))
             '((a b c) (1 2 3)))
 
-;; /home2/home/kiyoka/work/github/nendo/lib/nendo.rb:2253: stack level too deep (SystemStackError)
-(pending*  "vector ellipses"
+(match-test* "vector ellipses"
             (match '#(1 2 3 (a . 1) (b . 2) (c . 3))
               (#(a b c (hd . tl) ...) (list a b c hd tl)))
             '(1 2 3 (a b c) (1 2 3)))
 
-;; pending because this test never end
-(pending*   "pred ellipses"
+(match-test* "pred ellipses"
             (match '(1 2 3)
               (((? odd? n) ___) n)
               (((? number? n) ___) n))
             '(1 2 3))
 
-;; pending because this test never end
-(pending*   "failure continuation"
+(match-test* "failure continuation"
             (match '(1 2)
               ((a . b) (=> next) (if (even? a) 'fail (next)))
               ((a . b) 'ok))
@@ -98,18 +96,21 @@
             (match '#(1 2 3) (#((get! a) b c) (list (a) b c)))
             '(1 2 3))
 
+;; test setter car, expects (3 . 2) ==> ERROR: GOT (1 . 2)
 (match-test* "setter car"
             (let ((x (cons 1 2)))
               (match x (((set! a) . b) (a 3)))
               x)
             '(3 . 2))
 
+;; test setter cdr, expects (1 . 3) ==> ERROR: GOT (1 . 2)
 (match-test* "setter cdr"
             (let ((x (cons 1 2)))
               (match x ((a . (set! b)) (b 3)))
               x)
             '(1 . 3))
 
+;; test setter vector, expects #(1 0 3) ==> ERROR: GOT #(1 2 3)
 (match-test* "setter vector"
             (let ((x (vector 1 2 3)))
               (match x (#(a (set! b) c) (b 0)))
@@ -122,20 +123,20 @@
               (((x . y) ... last) (list x y last)))
             '((a b) (1 2) (c . 3)))
 
-;; test single tail 2, expects ((a b) (1 2) 3) ==> /Volumes/CaseSensitive/kiyoka/work/github/nendo/lib/nendo.rb:1039:in `_length': TypeError (TypeError)
+;; test single tail 2, expects ((a b) (1 2) 3) ==> ./lib/util/match-expanded.nnd:10601: Error: match: no matching pattern (RuntimeError)
 (pending*   "single tail 2"
             (match '((a . 1) (b . 2) 3)
               (((x . y) ... last) (list x y last)))
             '((a b) (1 2) 3))
 
-;; stack level too deep (SystemStackError)
+;; test multiple tail, expects ((a b) (1 2) (c . 3) (d . 4) (e . 5)) ==> :1: Error: match: no matching pattern (RuntimeError)
 (pending*   "multiple tail"
             (match '((a . 1) (b . 2) (c . 3) (d . 4) (e . 5))
               (((x . y) ... u v w) (list x y u v w)))
             '((a b) (1 2) (c . 3) (d . 4) (e . 5)))
 
 ;; test Riastradh quasiquote, expects (2 3) ==> :1: Error: match: no matching pattern (RuntimeError)
-(pending*   "Riastradh quasiquote"
+(match-test* "Riastradh quasiquote"
             (match '(1 2 3) (`(1 ,b ,c) (list b c)))
             '(2 3))
 
@@ -166,13 +167,15 @@
               (else #f))
             #f)
 
-(pending*   "sxml tree search"
+;; nendo.rb:2319: stack level too deep (SystemStackError)
+(pending* "sxml tree search"
     (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
       (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
        (list attrs text))
       (else #f))
   '(((href . "http://synthcode.com/")) ("synthcode")))
 
+;; nendo.rb:2319: stack level too deep (SystemStackError)
 (pending*  "failed sxml tree search"
     (match '(p (ol (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
       (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
@@ -180,11 +183,12 @@
       (else #f))
   #f)
 
-(pending*  "collect tree search"
-    (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
-      (((and tag (or 'p 'ul 'li 'b)) *** ('a ('^ attrs ...) text ...))
-       (list tag attrs text))
-      (else #f))
-  '((p ul li) ((href . "http://synthcode.com/")) ("synthcode")))
+;; ./test/match-test.nnd:192: Error: undefined variable _tag (NameError)
+;;(pending*  "collect tree search"
+;;    (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
+;;      (((and tag (or 'p 'ul 'li 'b)) *** ('a ('^ attrs ...) text ...))
+;;       (list tag attrs text))
+;;      (else #f))
+;;  '((p ul li) ((href . "http://synthcode.com/")) ("synthcode")))
 
 (test-end)

@@ -2027,7 +2027,7 @@ module Nendo
         sexp
       else
         __macroexpandEngine( sexp, syntaxArray, lexicalVars )
-        end
+      end
     end
 
     #
@@ -2083,8 +2083,19 @@ module Nendo
         rules.second
       else
         p "(20)rules: " + write_to_string( rules )  if @debug
-        __setupLexicalScopeVariables( lexicalVars )
-        keyStr = lexicalVars.map {|z|
+
+        lexvars = lexicalVars.select { |x|
+          if _symbol_MIMARKinclude_QUMARK( rules, x[0].intern )
+            x
+          elsif lexicalVars.find {|y| _symbol_MIMARKinclude_QUMARK( y[1], x[0].intern ) }
+            x
+          else
+            false
+          end
+        }
+
+        __setupLexicalScopeVariables( lexvars )
+        keyStr = lexvars.map {|z|
           z[0].to_s + " / " +  write_to_string( z[1] )
         }.join( " / " )
         p "using let vars: " + keyStr if @debug
@@ -2092,8 +2103,8 @@ module Nendo
         if @syntaxHash.has_key?( keyStr )
           p "keyStr(cached): " + keyStr if @debug
         else
-          p "keyStr( new  ): " + keyStr if @debug
-          @syntaxHash[ keyStr ] = [ lexicalVars.clone,
+          p "keyStr( new  ): " + keyStr + " size=" + @syntaxHash.size.to_s + " keylength=" + keyStr.size.to_s if @debug
+          @syntaxHash[ keyStr ] = [ lexvars,
             self.lispEval( rules, "dynamic syntax-rules sexp (no source) ", 1 ) ]
         end
         __setupLexicalScopeVariables( [] )
@@ -2503,6 +2514,23 @@ module Nendo
           sexp.originalSymbol
         else
           sexp
+        end
+      end
+    end
+
+    def _symbol_MIMARKinclude_QUMARK( sexp, sym )
+      case sexp
+      when Cell
+        if _null_QUMARK( sexp )
+          false
+        else
+          _symbol_MIMARKinclude_QUMARK( sexp.car, sym ) or _symbol_MIMARKinclude_QUMARK( sexp.cdr, sym )
+        end
+      else
+        if _symbol_QUMARK( sexp )
+          sym.intern == sexp.intern
+        else
+          false
         end
       end
     end
