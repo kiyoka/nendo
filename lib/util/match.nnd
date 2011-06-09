@@ -443,11 +443,13 @@
   (syntax-rules ()
     ((_ v () (sk ...) fk i) (sk ... i))
     ((_ v ((pat index) . rest) sk fk i)
-     (let ((w (vector-ref v index)))
-       (match-one w pat ((vector-ref v index) (vector-set! v index))
-                  (match-vector-step v rest sk fk)
-                  fk i)))))
-
+     ((lambda (v1)
+        (let ((w (vector-ref v1 index)))
+          (match-one w pat ((vector-ref v1 index) (vector-set! v1 index))
+                     (match-vector-step v1 rest sk fk)
+                     fk i)))
+      v))))
+    
 ;; With a vector ellipse pattern we first check to see if the vector
 ;; length is at least the required length.
 
