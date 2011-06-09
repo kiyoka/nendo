@@ -289,17 +289,19 @@
              (sk ... i)
              fk))
        ;; simple case, match all elements of the list
-       (let loop ((ls v) (id-ls '()) ...)
-         (cond
-           ((null? ls)
-            (let ((id (reverse id-ls)) ...) (sk ... i)))
-           ((pair? ls)
-            (let ((w (car ls)))
-              (match-one w p ((car ls) (set-car! ls))
-                         (match-drop-ids (loop (cdr ls) (cons id id-ls) ...))
-                         fk i)))
-           (else
-            fk)))))
+       ((lambda (v2)
+          (let loop ((ls v2) (id-ls '()) ...)
+            (cond
+             ((null? ls)
+              (let ((id (reverse id-ls)) ...) (sk ... i)))
+             ((pair? ls)
+              (let ((w (car ls)))
+                (match-one w p ((car ls) (set-car! ls))
+                           (match-drop-ids (loop (cdr ls) (cons id id-ls) ...))
+                           fk i)))
+             (else
+              fk))))
+        v)))
     ((_ v p r g+s (sk ...) fk i ((id id-ls) ...))
      ;; general case, trailing patterns to match, keep track of the
      ;; remaining list length so we don't need any backtracking
@@ -310,21 +312,23 @@
              (len (length ls)))
         (if (< len tail-len)
             fk
-            (let loop ((ls ls) (n len) (id-ls '()) ...)
-              (cond
-                ((= n tail-len)
-                 (let ((id (reverse id-ls)) ...)
-                   (match-one ls r (#f #f) (sk ... i) fk i)))
-                ((pair? ls)
-                 (let ((w (car ls)))
-                   (match-one w p ((car ls) (set-car! ls))
-                              (match-drop-ids
-                               (loop (cdr ls) (- n 1) (cons id id-ls) ...))
-                              fk
-                              i)))
-                (else
-                 fk)))))))))
-
+            ((lambda (ls2)
+               (let loop ((ls2 ls2) (n len) (id-ls '()) ...)
+                 (cond
+                  ((= n tail-len)
+                   (let ((id (reverse id-ls)) ...)
+                     (match-one ls2 r (#f #f) (sk ... i) fk i)))
+                  ((pair? ls2)
+                   (let ((w (car ls2)))
+                     (match-one w p ((car ls2) (set-car! ls2))
+                                (match-drop-ids
+                                 (loop (cdr ls2) (- n 1) (cons id id-ls) ...))
+                                fk
+                                i)))
+                  (else
+                   fk))))
+             ls)))))))
+  
 ;; This is just a safety check.  Although unlike syntax-rules we allow
 ;; trailing patterns after an ellipses, we explicitly disable multiple
 ;; ellipses at the same level.  This is because in the general case

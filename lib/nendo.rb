@@ -2197,9 +2197,11 @@ module Nendo
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
-            p "[SYNTAX]: name=" + sexp.car.to_s + ":sexp = "+ write_to_string( sexp ) if @debug
+            p "[SYNTAX1]: "+ write_to_string( sexp )     if @debug
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
+            p "[SYNTAX2]: "+ write_to_string( newSexp )  if @debug
+            newSexp
           elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0].intern}.include?( car.intern )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
@@ -2210,13 +2212,15 @@ module Nendo
             vars       = symbol_and_syntaxObj[3].map { |arr| arr[0] }
             lexvars    = @syntaxHash[ symbol_and_syntaxObj[1] ][0]
             lispSyntax = @syntaxHash[ symbol_and_syntaxObj[1] ][1]
-            p "[syntax]: name=" + sexp.car.to_s + ":sexp = "+ write_to_string( sexp ) if @debug
+            p "[syntax1]: "+ write_to_string( sexp )      if @debug
             newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], lispSyntax, [
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
+
             newSexp = __wrapNestedLet( newSexp, lexvars )
-            # pp [ "lexical macro expanding (after ) ", write_to_string( newSexp ) ] if @debug
+            p "[syntax2]: " + write_to_string( newSexp )  if @debug
+            newSexp
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -2511,7 +2515,7 @@ module Nendo
         end
       else
         if sexp.is_a? SyntacticClosure
-          sexp.originalSymbol
+          sexp.intern
         else
           sexp
         end

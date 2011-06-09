@@ -147,8 +147,8 @@ describe Nendo, "when call make-syntactic-closure " do
     @nendo.evalStr( "(define new_global_var 10)" ).should                                                == '10'
     @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           == 'new_global_var'
 
-    @nendo.evalStr( "(strip-syntactic-closures name)" ).should                                           == 'tmp'
-    @nendo.evalStr( "(strip-syntactic-closures (list name name))" ).should                               == '(tmp tmp)'
+    @nendo.evalStr( "(strip-syntactic-closures name)" ).should                                           match( /_tmp_/ )
+    @nendo.evalStr( "(strip-syntactic-closures (list name name))" ).should                               match( /[(]_tmp_/ )
   end
 end
 
