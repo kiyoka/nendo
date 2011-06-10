@@ -160,27 +160,27 @@
             #f)
 
 ;; /home2/home/kiyoka/work/github/nendo/lib/nendo.rb:2317: stack level too deep (SystemStackError)
-;;(match-test* "sxml tree search"
-;;    (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
-;;      (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
-;;       (list attrs text))
-;;      (else #f))
-;;  '(((href . "http://synthcode.com/")) ("synthcode")))
+(match-test* "sxml tree search"
+    (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
+      (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
+       (list attrs text))
+      (else #f))
+  '(((href . "http://synthcode.com/")) ("synthcode")))
 
 ;; /home2/home/kiyoka/work/github/nendo/lib/nendo.rb:2317: stack level too deep (SystemStackError)
-;;(match-test*  "failed sxml tree search"
-;;    (match '(p (ol (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
-;;      (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
-;;       (list attrs text))
-;;      (else #f))
-;;  #f)
+(match-test*  "failed sxml tree search"
+    (match '(p (ol (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
+      (((or 'p 'ul 'li 'b) *** ('a ('^ attrs ...) text ...))
+       (list attrs text))
+      (else #f))
+  #f)
 
 ;; ./test/match-test.nnd:192: Error: undefined variable _tag (NameError)
-;;(pending*  "collect tree search"
-;;    (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
-;;      (((and tag (or 'p 'ul 'li 'b)) *** ('a ('^ attrs ...) text ...))
-;;       (list tag attrs text))
-;;      (else #f))
-;;  '((p ul li) ((href . "http://synthcode.com/")) ("synthcode")))
+(match-test* "collect tree search"
+    (match '(p (ul (li a (b c) (a (^ (href . "http://synthcode.com/")) "synthcode") d e f)))
+      (((and tag (or 'p 'ul 'li 'b)) *** ('a ('^ attrs ...) text ...))
+       (list tag attrs text))
+      (else #f))
+  '((p ul li) ((href . "http://synthcode.com/")) ("synthcode")))
 
 (test-end)

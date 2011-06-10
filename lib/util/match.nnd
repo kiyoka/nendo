@@ -164,15 +164,13 @@
     ((match-two v (p *** . q) g+s sk fk i)
      (match-syntax-error "invalid use of ***" (p *** . q)))
     ((match-two v (p . q) g+s sk fk i)
-     ((lambda (v1)
-        (if (pair? v1)
-            (let ((w (car v1)) (x (cdr v1)))
-              (match-one w p ((car v1) (set-car! v1))
-                         (match-one x q ((cdr v1) (set-cdr! v1)) sk fk)
-                         fk
-                         i))
-            fk))
-      v))
+     (if (pair? v)
+         (let ((w (car v)) (x (cdr v)))
+           (match-one w p ((car v) (set-car! v))
+                      (match-one x q ((cdr v) (set-cdr! v)) sk fk)
+                      fk
+                      i))
+         fk))
     ((match-two v #(p ...) g+s . x)
      (match-vector v 0 () (p ...) . x))
     ((match-two v _ g+s (sk ...) fk i) (sk ... i))
@@ -291,19 +289,17 @@
              (sk ... i)
              fk))
        ;; simple case, match all elements of the list
-       ((lambda (v2)
-          (let loop ((ls v2) (id-ls '()) ...)
-            (cond
-             ((null? ls)
-              (let ((id (reverse id-ls)) ...) (sk ... i)))
-             ((pair? ls)
-              (let ((w (car ls)))
-                (match-one w p ((car ls) (set-car! ls))
-                           (match-drop-ids (loop (cdr ls) (cons id id-ls) ...))
-                           fk i)))
-             (else
-              fk))))
-        v)))
+       (let loop ((ls v) (id-ls '()) ...)
+         (cond
+           ((null? ls)
+            (let ((id (reverse id-ls)) ...) (sk ... i)))
+           ((pair? ls)
+            (let ((w (car ls)))
+              (match-one w p ((car ls) (set-car! ls))
+                         (match-drop-ids (loop (cdr ls) (cons id id-ls) ...))
+                         fk i)))
+           (else
+            fk)))))
     ((_ v p r g+s (sk ...) fk i ((id id-ls) ...))
      ;; general case, trailing patterns to match, keep track of the
      ;; remaining list length so we don't need any backtracking
@@ -314,23 +310,21 @@
              (len (length ls)))
         (if (< len tail-len)
             fk
-            ((lambda (ls2)
-               (let loop ((ls2 ls2) (n len) (id-ls '()) ...)
-                 (cond
-                  ((= n tail-len)
-                   (let ((id (reverse id-ls)) ...)
-                     (match-one ls2 r (#f #f) (sk ... i) fk i)))
-                  ((pair? ls2)
-                   (let ((w (car ls2)))
-                     (match-one w p ((car ls2) (set-car! ls2))
-                                (match-drop-ids
-                                 (loop (cdr ls2) (- n 1) (cons id id-ls) ...))
-                                fk
-                                i)))
-                  (else
-                   fk))))
-             ls)))))))
-  
+            (let loop ((ls ls) (n len) (id-ls '()) ...)
+              (cond
+                ((= n tail-len)
+                 (let ((id (reverse id-ls)) ...)
+                   (match-one ls r (#f #f) (sk ... i) fk i)))
+                ((pair? ls)
+                 (let ((w (car ls)))
+                   (match-one w p ((car ls) (set-car! ls))
+                              (match-drop-ids
+                               (loop (cdr ls) (- n 1) (cons id id-ls) ...))
+                              fk
+                              i)))
+                (else
+                 fk)))))))))
+
 ;; This is just a safety check.  Although unlike syntax-rules we allow
 ;; trailing patterns after an ellipses, we explicitly disable multiple
 ;; ellipses at the same level.  This is because in the general case
@@ -443,13 +437,11 @@
   (syntax-rules ()
     ((_ v () (sk ...) fk i) (sk ... i))
     ((_ v ((pat index) . rest) sk fk i)
-     ((lambda (v1)
-        (let ((w (vector-ref v1 index)))
-          (match-one w pat ((vector-ref v1 index) (vector-set! v1 index))
-                     (match-vector-step v1 rest sk fk)
-                     fk i)))
-      v))))
-    
+     (let ((w (vector-ref v index)))
+       (match-one w pat ((vector-ref v index) (vector-set! v index))
+                  (match-vector-step v rest sk fk)
+                  fk i)))))
+
 ;; With a vector ellipse pattern we first check to see if the vector
 ;; length is at least the required length.
 

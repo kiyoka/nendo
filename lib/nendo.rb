@@ -2012,6 +2012,20 @@ module Nendo
       end
     end
 
+    def __removeSameLexicalScopeVariables( frame )
+      frame.select {|x|
+        # search same varname and different value
+        found = frame.any? {|y|
+          x[0] == y[0] and (not _equal_QUMARK( x[1], y[1] ))
+        }
+        if found
+          x
+        else
+          false
+        end
+      }
+    end
+
     def macroexpandInit( initVal )
       @macroExpandCount = initVal
     end
@@ -2221,8 +2235,7 @@ module Nendo
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
-
-            newSexp = __wrapNestedLet( newSexp, lexvars )
+            newSexp = __wrapNestedLet( newSexp, __removeSameLexicalScopeVariables( lexicalVars + lexvars ))
             p "[syntax2]: " + write_to_string( newSexp )  if @debug
             newSexp
           end
