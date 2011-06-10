@@ -33,6 +33,7 @@
 
 
 (use nendo.test)
+(use util.match)
 (test-start "util.combination")
 
 ;;===================================================================
@@ -41,7 +42,6 @@
 
 (test-section "util.combinations")
 (use util.combinations)
-
 
 (test* "permutations (boundary)" '(())
        (permutations '()))
