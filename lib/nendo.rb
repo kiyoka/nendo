@@ -1951,7 +1951,11 @@ module Nendo
             if isDefines( sexp.car )
               translate( sexp, locals, sourceInfo )
             else
-              self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_TAILCALL )
+              if sexp.car.is_a? Cell
+                self.apply( translate( sexp.car, locals, sourceInfo ), sexp.cdr, sexp.car.car.sourcefile, sexp.car.car.lineno, locals, sourceInfo, EXEC_TYPE_ANONYMOUS )
+              else
+                self.apply( sexp.car, sexp.cdr, sexp.car.sourcefile, sexp.car.lineno, locals, sourceInfo, EXEC_TYPE_TAILCALL )
+              end
             end
           else
             raise RuntimeError, "Error: special form tailcall expects function call expression."
