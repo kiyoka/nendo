@@ -686,6 +686,10 @@ describe Nendo, "when call evalStr() with built-in functions" do
     @nendo.evalStr( " (list '(a) '((b c))) " ).should == "((a) ((b c)))"
     @nendo.evalStr( " (list) " ).should == "()"
     @nendo.evalStr( " (list 1) " ).should == "(1)"
+    @nendo.evalStr( " (reverse '(1)) " ).should == "(1)"
+    @nendo.evalStr( " (reverse '(1 2 3)) " ).should == "(3 2 1)"
+    @nendo.evalStr( " (reverse '(1 2 ())) " ).should == "(() 2 1)"
+    @nendo.evalStr( " (reverse (list 1 2 (cdr '(100)))) " ).should == "(() 2 1)"
     @nendo.evalStr( " (define !a 10) !a" ).should == "10"
     @nendo.evalStr( " (define $a 11) $a" ).should == "11"
     @nendo.evalStr( " (define %a 12) %a" ).should == "12"
@@ -906,8 +910,15 @@ EOS
     @nendo.evalStr( " (set! x 0) (if true  (set! x 1) (set! x 2))   x" ).should == "1"
     @nendo.evalStr( " (set! x 0) (if false (set! x 1) (set! x 2))   x" ).should == "2"
     @nendo.evalStr( " (set! func (lambda (arg1) arg1))              (list (func 1) (func 2))" ).should == "(1 2)"
-    @nendo.evalStr( " ((lambda (arg1) arg1)  3)" ).should == "3"
-    @nendo.evalStr( " ((lambda (arg1) arg1)  (+ 1 2 3))" ).should == "6"
+    @nendo.evalStr( " ((lambda (arg1) arg1)    3)" ).should == "3"
+    @nendo.evalStr( " ((lambda (arg1) arg1)    (+ 1 2 3))" ).should == "6"
+    @nendo.evalStr( " ((lambda (arg1 . arg2) arg1) 1 '(2))" ).should == "1"
+    @nendo.evalStr( " ((lambda (arg1 . arg2) arg2) 1 '(2))" ).should == "((2))"
+    @nendo.evalStr( " ((lambda (arg1 . arg2) arg2) 1 '(2 3))" ).should == "((2 3))"
+    @nendo.evalStr( " ((lambda (arg1 . arg2) arg1) '() '())" ).should == "()"
+    @nendo.evalStr( " ((lambda (arg1 . arg2) arg2) '() '())" ).should == "(())"
+    @nendo.evalStr( " ((lambda (arg1 . arg2) arg1) (cdr '(100)) (cdr '(200)))" ).should == "()"
+    @nendo.evalStr( " ((lambda (arg1 . arg2) arg2) (cdr '(100)) (cdr '(200)))" ).should == "(())"
     @nendo.evalStr( " ((if #t + *) 3 4)" ).should == "7"
     @nendo.evalStr( " ((if #f + *) 3 4)" ).should == "12"
     @nendo.evalStr( " (apply1 + '(1 2))" ).should == "3"
@@ -1257,6 +1268,8 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (append '() '(2)) " ).should == "(2)"
     @nendo.evalStr( " (append '(1) '(2)) " ).should == "(1 2)"
     @nendo.evalStr( " (append '(1 2) '(3 4)) " ).should == "(1 2 3 4)"
+    @nendo.evalStr( " (append '(1 2) (cdr '(200))) " ).should == "(1 2)"
+    @nendo.evalStr( " (append (cdr '(100)) '(10 20)) " ).should == "(10 20)"
     @nendo.evalStr( " (pair? '()) " ).should == "#f"
     @nendo.evalStr( " (pair? '(1)) " ).should == "#t"
     @nendo.evalStr( " (pair? '(1 2)) " ).should == "#t"
@@ -1460,6 +1473,10 @@ EOS
     @nendo.evalStr( " (apply + (range 11)) " ).should == "55"
     @nendo.evalStr( " (apply + (map (lambda (x) (+ x 1)) (range 10))) " ).should == "55"
     @nendo.evalStr( " (apply + (append (range 11) '(100))) " ).should == "155"
+    @nendo.evalStr( " (apply cons '(1 2)) " ).should == "(1 . 2)"
+    @nendo.evalStr( " (apply list '(1 2)) " ).should == "(1 2)"
+    @nendo.evalStr( " (apply list (list 1 '())) " ).should == "(1 ())"
+    @nendo.evalStr( " (apply list (list 1 (cdr '(100)))) " ).should == "(1 ())"
     @nendo.evalStr( " (map (lambda (x) 1)  '()) " ).should           == "()"
     @nendo.evalStr( " (map (lambda (x) 1) (to-list '#())) " ).should == "()"
     @nendo.evalStr( " (map (lambda (x) (* x 2)) '(1 2 3)) " ).should == "(2 4 6)"
@@ -1500,6 +1517,43 @@ EOS
  (last-pair _result))
 EOS
            ).should == "(2 4 (20000))"
+
+    @nendo.evalStr( <<EOS
+(list
+ (list* 1)
+ (list* 1 2)
+ (list* 1 2 3)
+ (list* 1 2 3 4))
+EOS
+           ).should == "(1 (1 . 2) (1 2 . 3) (1 2 3 . 4))"
+
+    @nendo.evalStr( <<EOS
+(list
+ (list* '())
+ (list* 1 '())
+ (list* 1   2 '())
+ (list* 1   2   3  '()))
+EOS
+           ).should == "(() (1) (1 2) (1 2 3))"
+
+    @nendo.evalStr( <<EOS
+(list
+ (list* (cdr '(100)))
+ (list* 1   (cdr '(100)))
+ (list* 1   2   (cdr '(100)))
+ (list* 1   2   3    (cdr '(100))))
+EOS
+           ).should == "(() (1) (1 2) (1 2 3))"
+
+    @nendo.evalStr( <<EOS
+(list
+ (list* '())
+ (list* '() '())
+ (list* '() '() '())
+ (list* '() '() '() '()))
+EOS
+           ).should == "(() (()) (() ()) (() () ()))"
+
     @nendo.evalStr( <<EOS
 (define _lst '())
 (for-each

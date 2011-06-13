@@ -81,10 +81,10 @@ module Nendo
     end
     attr_reader :syntaxName
   end
-  
+
   class Cell
     include Enumerable
-  
+
     def initialize( car = Nil.new, cdr = Nil.new )
       @car = car
       @cdr = cdr
@@ -1094,7 +1094,13 @@ module Nendo
     def _le_QUMARK(      a,b )      a <=  b end
     def _eqv_QUMARK(     a,b )      a === b end
     def _car(      cell )          cell.car end
-    def _cdr(      cell )          cell.cdr end
+    def _cdr(      cell )
+      if cell.cdr.is_a? Nil
+        Cell.new
+      else
+        cell.cdr
+      end
+    end
     def _write(  arg  )            printer = Printer.new ; print printer._write( arg ) ; arg end
     def _write_MIMARKto_MIMARKstring(  arg  )  printer = Printer.new ; printer._write( arg )             end
     alias write_to_string _write_MIMARKto_MIMARKstring
@@ -1717,7 +1723,7 @@ module Nendo
         end
       end
       if rest
-        rest       = toRubySymbol( rest ) 
+        rest       = toRubySymbol( rest )
         locals     << rest
         argsyms    << "*__rest__"
         [ locals, sprintf( "|%s| %s = __rest__[0] ; ", argsyms.join( "," ), rest ) ]
@@ -1725,7 +1731,7 @@ module Nendo
         [ locals, sprintf( "|%s|",                     argsyms.join( "," ))        ]
       end
     end
-  
+
     def makeClosure( sym, args, locals )
       first = args.car
       rest  = args.cdr
