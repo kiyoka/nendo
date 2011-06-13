@@ -168,6 +168,8 @@
   (lambda str-lst
     (string-join str-lst "")))
 
+(define (string=? a b)
+  (eq? a b))
 
 ;; ----------------------------------------
 ;; basic forms
@@ -386,6 +388,10 @@
     `(let1 ,var ,_expr
        (if ,var ,_then ,@_else))))
 
+
+(define push!
+  (macro (_lst _val)
+    `(set! ,_lst (append ,_lst (list ,_val)))))
 
 ;; ----------------------------------------
 ;; errorf

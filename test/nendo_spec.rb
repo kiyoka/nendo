@@ -1270,6 +1270,13 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (append '(1 2) '(3 4)) " ).should == "(1 2 3 4)"
     @nendo.evalStr( " (append '(1 2) (cdr '(200))) " ).should == "(1 2)"
     @nendo.evalStr( " (append (cdr '(100)) '(10 20)) " ).should == "(10 20)"
+    @nendo.evalStr( " (define lst '()) " ).should == "()"
+    @nendo.evalStr( " (push! lst 1) " ).should == "(1)"
+    @nendo.evalStr( " lst " ).should == "(1)"
+    @nendo.evalStr( " (push! lst 2) " ).should == "(1 2)"
+    @nendo.evalStr( " lst " ).should == "(1 2)"
+    @nendo.evalStr( " (push! lst 3) " ).should == "(1 2 3)"
+    @nendo.evalStr( " lst " ).should == "(1 2 3)"
     @nendo.evalStr( " (pair? '()) " ).should == "#f"
     @nendo.evalStr( " (pair? '(1)) " ).should == "#t"
     @nendo.evalStr( " (pair? '(1 2)) " ).should == "#t"
@@ -1358,6 +1365,11 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( ' (string-append "a") ' ).should == '"a"'
     @nendo.evalStr( ' (string-append "a" "b") ' ).should == '"ab"'
     @nendo.evalStr( ' (string-append "a" "B" "c" "D" "e") ' ).should == '"aBcDe"'
+    @nendo.evalStr( ' (string=? "ABC" "ABC") ' ).should              == '#t'
+    @nendo.evalStr( ' (string=? "ABC" "ABc") ' ).should              == '#f'
+    @nendo.evalStr( ' (string=? "ABC" "abc") ' ).should              == '#f'
+    @nendo.evalStr( ' (string=? 100 100) ' ).should                  == '#t'
+    @nendo.evalStr( ' (string=? (+ "A" "B") "AB") ' ).should         == '#t'
     @nendo.evalStr( " (to_i    \"22\") " ).should == '22'
     @nendo.evalStr( " (to-i    \"22\") " ).should == '22'
     @nendo.evalStr( " (to_i    \"10000\") " ).should == '10000'
