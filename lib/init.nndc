@@ -7083,7 +7083,18 @@ trampCall(
     @_check_MIMARKarg = 
     trampCall(
           LispMacro.new { |_a,_b,*__rest__| _c = __rest__[0] ;  
-            Cell.new(:"begin")
+              trampCall( self._cons_METHOD(  'cons',
+                  begin
+                    if @global_lisp_binding.has_key?('_cons') then
+                      trampCall(@_cons)
+                    else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:289"] + __e.backtrace ) ; raise __e
+                  end                ,
+              [
+                  :"begin"                  ,
+                  Cell.new()
+              ]
+                           ))
           }
     )
   end
@@ -13993,9 +14004,9 @@ trampCall(
                             end                          ,
                         [
                               begin
-                                if @global_lisp_binding.has_key?('_list_ASMARK') then
-                                  trampCall(@_list_ASMARK)
-                                else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
+                                if @global_lisp_binding.has_key?('_cons_ASMARK') then
+                                  trampCall(@_cons_ASMARK)
+                                else raise NameError.new( "Error: undefined variable _cons_ASMARK", "_cons_ASMARK" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:878"] + __e.backtrace ) ; raise __e
                               end                            ,
                               begin
@@ -15697,7 +15708,18 @@ trampCall(
                                                 trampCall(_val)
                                               rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1016"] + __e.backtrace ) ; raise __e
                                             end                                          ,
-                                          Cell.new(nil)
+                                            trampCall( self._cons_METHOD(  'cons',
+                                                begin
+                                                  if @global_lisp_binding.has_key?('_cons') then
+                                                    trampCall(@_cons)
+                                                  else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:982"] + __e.backtrace ) ; raise __e
+                                                end                                              ,
+                                            [
+                                                nil                                                ,
+                                                Cell.new()
+                                            ]
+                                                         ))
                                       ]
                                                    ))                                    ,
                                     Cell.new()
@@ -17976,7 +17998,18 @@ trampCall(
                               trampCall(_name)
                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1179"] + __e.backtrace ) ; raise __e
                           end                        ,
-                        Cell.new(nil)
+                          trampCall( self._cons_METHOD(  'cons',
+                              begin
+                                if @global_lisp_binding.has_key?('_cons') then
+                                  trampCall(@_cons)
+                                else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1163"] + __e.backtrace ) ; raise __e
+                              end                            ,
+                          [
+                              nil                              ,
+                              Cell.new()
+                          ]
+                                       ))
                     ]
                                  ))
               ]
@@ -23459,7 +23492,18 @@ trampCall(
                                                                                                                                                                                                       trampCall(__quote)
                                                                                                                                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1687"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                   end                                                                                                                                                                                                ,
-                                                                                                                                                                                                Cell.new(Cell.new())
+                                                                                                                                                                                                  trampCall( self._cons_METHOD(  'cons',
+                                                                                                                                                                                                      begin
+                                                                                                                                                                                                        if @global_lisp_binding.has_key?('_cons') then
+                                                                                                                                                                                                          trampCall(@_cons)
+                                                                                                                                                                                                        else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                                                                                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1692"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                      end                                                                                                                                                                                                    ,
+                                                                                                                                                                                                  [
+                                                                                                                                                                                                      Cell.new()                                                                                                                                                                                                      ,
+                                                                                                                                                                                                      Cell.new()
+                                                                                                                                                                                                  ]
+                                                                                                                                                                                                               ))
                                                                                                                                                                                             ]
                                                                                                                                                                                                          ))                                                                                                                                                                                          ,
                                                                                                                                                                                           Cell.new()

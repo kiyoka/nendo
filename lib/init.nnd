@@ -875,7 +875,7 @@
 (define (cons* arg . args)
   (if (null? args)
       arg
-      (cons arg (apply list* args))))
+      (cons arg (apply cons* args))))
 (define list* cons*)
 
 
