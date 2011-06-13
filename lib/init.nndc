@@ -6920,10 +6920,6 @@ trampCall(
                                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:291"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                       [
-                                            begin
-                                                trampCall(__lst)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:394"] + __e.backtrace ) ; raise __e
-                                            end                                          ,
                                             trampCall( self._cons_METHOD(  'cons',
                                                 begin
                                                   if @global_lisp_binding.has_key?('_cons') then
@@ -6932,6 +6928,7 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:291"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                             [
+                                                :"list"                                                ,
                                                   trampCall( self._cons_METHOD(  'cons',
                                                       begin
                                                         if @global_lisp_binding.has_key?('_cons') then
@@ -6940,24 +6937,27 @@ trampCall(
                                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:291"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                   [
-                                                      :"list"                                                      ,
-                                                        trampCall( self._cons_METHOD(  'cons',
-                                                            begin
-                                                              if @global_lisp_binding.has_key?('_cons') then
-                                                                trampCall(@_cons)
-                                                              else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:291"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,
-                                                        [
-                                                              begin
-                                                                  trampCall(__val)
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:394"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,
-                                                            Cell.new()
-                                                        ]
-                                                                     ))
+                                                        begin
+                                                            trampCall(__val)
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:394"] + __e.backtrace ) ; raise __e
+                                                        end                                                      ,
+                                                      Cell.new()
                                                   ]
-                                                               ))                                                ,
+                                                               ))
+                                            ]
+                                                         ))                                          ,
+                                            trampCall( self._cons_METHOD(  'cons',
+                                                begin
+                                                  if @global_lisp_binding.has_key?('_cons') then
+                                                    trampCall(@_cons)
+                                                  else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:291"] + __e.backtrace ) ; raise __e
+                                                end                                              ,
+                                            [
+                                                  begin
+                                                      trampCall(__lst)
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:394"] + __e.backtrace ) ; raise __e
+                                                  end                                                ,
                                                 Cell.new()
                                             ]
                                                          ))

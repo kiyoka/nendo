@@ -1273,10 +1273,12 @@ describe Nendo, "when call functions in init.nnd " do
     @nendo.evalStr( " (define lst '()) " ).should == "()"
     @nendo.evalStr( " (push! lst 1) " ).should == "(1)"
     @nendo.evalStr( " lst " ).should == "(1)"
-    @nendo.evalStr( " (push! lst 2) " ).should == "(1 2)"
-    @nendo.evalStr( " lst " ).should == "(1 2)"
-    @nendo.evalStr( " (push! lst 3) " ).should == "(1 2 3)"
-    @nendo.evalStr( " lst " ).should == "(1 2 3)"
+    @nendo.evalStr( " (push! lst 2) " ).should == "(2 1)"
+    @nendo.evalStr( " lst " ).should == "(2 1)"
+    @nendo.evalStr( " (push! lst 3) " ).should == "(3 2 1)"
+    @nendo.evalStr( " lst " ).should == "(3 2 1)"
+    @nendo.evalStr( ' (push! lst "str") ' ).should == '("str" 3 2 1)'
+    @nendo.evalStr( " lst " ).should == '("str" 3 2 1)'
     @nendo.evalStr( " (pair? '()) " ).should == "#f"
     @nendo.evalStr( " (pair? '(1)) " ).should == "#t"
     @nendo.evalStr( " (pair? '(1 2)) " ).should == "#t"

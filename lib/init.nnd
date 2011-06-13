@@ -391,7 +391,7 @@
 
 (define push!
   (macro (_lst _val)
-    `(set! ,_lst (append ,_lst (list ,_val)))))
+    `(set! ,_lst (append (list ,_val) ,_lst))))
 
 ;; ----------------------------------------
 ;; errorf
