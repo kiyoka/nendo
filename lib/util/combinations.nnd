@@ -19,6 +19,7 @@
 ;; Modifided by Shiro Kawai
 
 (use srfi-1)
+(use srfi-26)
 (use util.match)
 
 ;;----------------------------------------------------------------
@@ -100,7 +101,7 @@
        xs))))
 (define (permutations-for-each proc set)
   (match set
-    [() (undefined)]
+    [() nil]
     [(x) (proc set)]
     [(x1 x2) (proc `(,x1 ,x2)) (proc `(,x2 ,x1))]
     [(x1 x2 x3) (p/each3 proc x1 x2 x3)]
@@ -111,7 +112,7 @@
 (define (permutations*-for-each proc set :optional (eq eqv?))
   (define (rec proc set)
     (match set
-      [() (undefined)]
+      [() nil]
       [(a) (proc set)]
       [(a b) (cond [(eq a b) (proc set)] [else (proc set) (proc `(,b ,a))])]
       [else
