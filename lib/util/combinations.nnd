@@ -46,14 +46,14 @@
     [(a b c)
      `(,set (,a ,c ,b) (,b ,a ,c) (,b ,c ,a) (,c ,a ,b) (,c ,b ,a))]
     [else
-     (reverse!
-      (fold-with-index
-       (lambda (ind elt acc)
-         (fold (lambda (subperm acc) (acons elt subperm acc))
-               acc
-               (permutations (but-kth set ind))))
-       '()
-       set))]))
+     (append-map
+      (lambda (ind head)
+        (map
+         (lambda (rest)
+           (cons head rest))
+         (permutations (but-kth set ind))))
+      (iota (length set))
+      set)]))
 
 ;; permute set, considering equal elements, a.k.a multiset permutations
 (define (permutations* set :optional (eq eqv?))

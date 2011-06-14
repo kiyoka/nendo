@@ -53,7 +53,7 @@ task :test do
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test.log"
-#  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test.log"
   stage2 << "cat test.record"
   arr = []
   arr += stage1
@@ -99,7 +99,7 @@ task :compile do
   files << "./lib/nendo/test.nnd"
   files << "./lib/rfc/json.nnd"
   files << "./lib/util/match.nnd"
-#  files << "./lib/util/combinations.nnd"
+  files << "./lib/util/combinations.nnd"
   files.each {|fn|
     sh sprintf( "time ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
   }
