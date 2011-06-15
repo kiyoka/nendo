@@ -127,6 +127,43 @@
        (let1 r '()
          (permutations-for-each (lambda (p) (push! r p)) '(a b c))
          (reverse r)))
+(test* "permutations-for-each"
+       '((a b c d) (a b d c) (a c b d) (a c d b)
+         (a d b c) (a d c b) (b a c d) (b a d c)
+         (b c a d) (b c d a) (b d a c) (b d c a)
+         (c a b d) (c a d b) (c b a d) (c b d a)
+         (c d a b) (c d b a) (d a b c) (d a c b)
+         (d b a c) (d b c a) (d c a b) (d c b a))
+       (let1 r '()
+         (permutations-for-each (lambda (p) (push! r p)) '(a b c d))
+         (reverse r)))
+(test* "permutations-for-each"
+       (let* ((set '(a b c d e))
+              (all-patterns
+               (append-map
+                (lambda (v1) 
+                  (append-map
+                   (lambda (v2)
+                     (append-map
+                      (lambda (v3)
+                        (append-map
+                         (lambda (v4)
+                           (map
+                            (lambda (v5)
+                              (list v1 v2 v3 v4 v5))
+                            set))
+                         set))
+                      set))
+                   set))
+                set)))
+         (filter
+          (lambda (x)
+            (eq? (length x)
+                 (length (delete-duplicates x))))
+          all-patterns))
+       (let1 r '()
+         (permutations-for-each (lambda (p) (push! r p)) '(a b c d e))
+         (reverse r)))
 (test* "permutations*-for-each"
        '()
        (let1 r '()
