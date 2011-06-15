@@ -880,13 +880,13 @@ module Nendo
     def _equal_QUMARK( a, b )
       if a.is_a? String  and  b.is_a? String
         a === b
-      elsif _null_QUMARK( a ) and _null_QUMARK( b )
-        true
       elsif a.class != b.class
         false
-      elsif a.class == Cell and b.class == Cell
+      elsif a.is_a? Cell
         _equal_QUMARK( a.car, b.car ) and _equal_QUMARK( a.cdr, b.cdr )
-      elsif a.is_a? Proc or b.is_a? Proc
+      elsif _null_QUMARK( a ) and _null_QUMARK( b )
+        true
+      elsif a.is_a? Proc
         a == b
       else
         (a === b)
@@ -2059,30 +2059,21 @@ module Nendo
     #
     def __expandSyntaxRules( rules, syntaxArray, lexicalVars )
       if :"%syntax-rules" == rules.car
-        p "(1)rules: " + write_to_string( rules )  if @debug
         rules
       else
-        p "(2)rules: " + write_to_string( rules )  if @debug
         ellipse = rules.second
-        p "(2)ellipse: " + write_to_string( ellipse )  if @debug
         pattern_body_list = rules.cdr.cdr
-        p "(2)pattern_body_list: " + write_to_string( pattern_body_list )  if @debug
 
         lst = []
         lst << :"syntax-rules"
         lst << ellipse
         pattern_body_list.each {|xx|
           pattern_body = xx.car
-          p "(2)pattern_body: " + write_to_string( pattern_body )  if @debug
           pattern = pattern_body.first
-          p "(2)pattern: " + write_to_string( pattern )  if @debug
           body = pattern_body.second
-          p "(2)body: " + write_to_string( body )  if @debug
           new_pattern_body = [ pattern, macroexpandEngine( body, syntaxArray, lexicalVars ) ].to_list
-          p "(2)new_pattern_body: " + write_to_string( new_pattern_body )  if @debug
           lst << new_pattern_body
         }
-        p "expaned-syntax-rules: " + write_to_string( lst.to_list )  if @debug
         lst.to_list
       end
     end
@@ -2103,11 +2094,8 @@ module Nendo
     #
     def __evalSyntaxRules( rules, lexicalVars )
       if :"%syntax-rules" == rules.car
-        p "(10)rules: " + write_to_string( rules )  if @debug
         rules.second
       else
-        p "(20)rules: " + write_to_string( rules )  if @debug
-
         lexvars = lexicalVars.select { |x|
           if _symbol_MIMARKinclude_QUMARK( rules, x[0].intern )
             x
@@ -2122,12 +2110,10 @@ module Nendo
         keyStr = lexvars.map {|z|
           z[0].to_s + " / " +  write_to_string( z[1] )
         }.join( " / " )
-        p "using let vars: " + keyStr if @debug
         keyStr += " // " + write_to_string( rules )
         if @syntaxHash.has_key?( keyStr )
-          p "keyStr(cached): " + keyStr if @debug
+          true
         else
-          p "keyStr( new  ): " + keyStr + " size=" + @syntaxHash.size.to_s + " keylength=" + keyStr.size.to_s if @debug
           @syntaxHash[ keyStr ] = [ lexvars,
             self.lispEval( rules, "dynamic syntax-rules sexp (no source) ", 1 ) ]
         end
@@ -2157,7 +2143,6 @@ module Nendo
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
         elsif :"%let" == car or :letrec == car or @core_syntax_hash[ :"%let" ] == car or @core_syntax_hash[ :letrec ] == car
-          p "let?: " + write_to_string( sexp ) if @debug
           # catch lexical identifiers of `let' and `letrec'.
           arr = sexp.second.map { |x|
             [ x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
@@ -2166,10 +2151,8 @@ module Nendo
           ret = Cell.new( car,
                      Cell.new( lst,
                           macroexpandEngine( sexp.cdr.cdr, syntaxArray, lexicalVars + arr )))
-          p "result let: " + write_to_string( ret ) if @debug
           ret
         elsif :"let-syntax" == car
-          pp "let-syntax : <entry>" if @debug
           sexp.second.each {|x|
             if not x.car.second.is_a? Cell
               raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form but got: " + write_to_string( x )
@@ -2196,16 +2179,12 @@ module Nendo
           #             (let-syntax-keyword ( let-syntax-body ))
           #             ..)
           newKeywords = arr.map { |e|
-            lst = [ e[0], [ :"%syntax-rules", e[1]].to_list ].to_list
-            p "newKeywordList = " + write_to_string( lst )  if @debug
-            lst
+            [ e[0], [ :"%syntax-rules", e[1]].to_list ].to_list
           }.to_list
 
           ret = Cell.new( :"let-syntax",
                      Cell.new( newKeywords, macroexpandEngine( sexp.cdr.cdr, syntaxArray + arr, lexicalVars )))
 
-          p "before let-syntax: " + write_to_string( sexp.cdr.cdr ) if @debug
-          p "result let-syntax: " + write_to_string( ret          ) if @debug
           ret
         else
           sym = toRubySymbol( car.to_s )
@@ -2221,11 +2200,8 @@ module Nendo
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
-            p "[SYNTAX1]: "+ write_to_string( sexp )     if @debug
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
-            p "[SYNTAX2]: "+ write_to_string( newSexp )  if @debug
-            newSexp
           elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0].intern}.include?( car.intern )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
@@ -2236,14 +2212,11 @@ module Nendo
             vars       = symbol_and_syntaxObj[3].map { |arr| arr[0] }
             lexvars    = @syntaxHash[ symbol_and_syntaxObj[1] ][0]
             lispSyntax = @syntaxHash[ symbol_and_syntaxObj[1] ][1]
-            p "[syntax1]: "+ write_to_string( sexp )      if @debug
             newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], lispSyntax, [
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
             newSexp = __wrapNestedLet( newSexp, __removeSameLexicalScopeVariables( lexicalVars + lexvars ))
-            p "[syntax2]: " + write_to_string( newSexp )  if @debug
-            newSexp
           end
           if _equal_QUMARK( newSexp, sexp )
             sexp.map { |x|
@@ -2467,11 +2440,8 @@ module Nendo
         if mac_env.to_arr.include?( identifier.intern )
           found = @lexicalVars.find { |x| identifier == x[0] }
           if found
-            p "lexical var found: " + found[0].to_s + "   sexp: " + write_to_string( found[1] )  if @debug
             lexvars = @lexicalVars.clone
-            newSexp = __wrapNestedLet( identifier, lexvars )
-            p "   nestedLet sexp: " + write_to_string( newSexp )  if @debug
-            newSexp
+            __wrapNestedLet( identifier, lexvars )
           else
             identifier
           end
