@@ -2541,14 +2541,6 @@ module Nendo
     def __write( sexp, readable )
       getQuoteKeyword = lambda { |x|
         case x
-        when :quote
-          "'"
-        when :quasiquote
-          "`"
-        when :unquote
-          ","
-        when :"unquote-splicing"
-          ",@"
         when :"dot-operator"
           "."
         else

@@ -536,13 +536,13 @@ describe Nendo, "when use quote and syntax-quote " do
     @nendo.evalStr( " (syntax-quote 1)" ).should                                     == "1"
     @nendo.evalStr( ' (syntax-quote "str") ' ).should                                == '"str"'
     @nendo.evalStr( " (syntax-quote (1 . 2)) " ).should                              == "(1 . 2)"
-    @nendo.evalStr( " (quote quote) " ).should                                       == "'"
-    @nendo.evalStr( " 'quote " ).should                                              == "'"
-    @nendo.evalStr( " ''1 " ).should                                                 == "'1"
-    @nendo.evalStr( " (quote syntax-quote) " ).should                                == "'"
-    @nendo.evalStr( " (syntax-quote '1) " ).should                                   == "'1"
-    @nendo.evalStr( " (syntax-quote (quote 1)) " ).should                            == "'1"
-    @nendo.evalStr( " (quote (syntax-quote 1)) " ).should                            == "'1"
+    @nendo.evalStr( " (quote quote) " ).should                                       == "quote"
+    @nendo.evalStr( " 'quote " ).should                                              == "quote"
+    @nendo.evalStr( " ''1 " ).should                                                 == "(quote 1)"
+    @nendo.evalStr( " (quote syntax-quote) " ).should                                == "quote"
+    @nendo.evalStr( " (syntax-quote '1) " ).should                                   == "(quote 1)"
+    @nendo.evalStr( " (syntax-quote (quote 1)) " ).should                            == "(quote 1)"
+    @nendo.evalStr( " (quote (syntax-quote 1)) " ).should                            == "(quote 1)"
   end
 end
 
@@ -565,9 +565,9 @@ describe Nendo, "when read various list expressions" do
     @nendo.evalStr( " '[a (b) ((c)) (((d)))] " ).should == "(a (b) ((c)) (((d))))"
     @nendo.evalStr( " '(a [b] ([c]) (([d]))) " ).should == "(a (b) ((c)) (((d))))"
     @nendo.evalStr( " '[a [b] [[c]] [[[d]]]] " ).should == "(a (b) ((c)) (((d))))"
-    @nendo.evalStr( " '('a)" ).should == "('a)"
-    @nendo.evalStr( " '(''a)" ).should == "(''a)"
-    @nendo.evalStr( " '('a 'b 'c)" ).should == "('a 'b 'c)"
+    @nendo.evalStr( " '('a)" ).should == "((quote a))"
+    @nendo.evalStr( " '(''a)" ).should == "((quote (quote a)))"
+    @nendo.evalStr( " '('a 'b 'c)" ).should == "((quote a) (quote b) (quote c))"
     @nendo.evalStr( ' \'("str") ' ).should == '("str")'
     @nendo.evalStr( ' \'("str" . 1) ' ).should == '("str" . 1)'
     @nendo.evalStr( ' \'(1 . "str") ' ).should == '(1 . "str")'
@@ -577,13 +577,13 @@ describe Nendo, "when read various list expressions" do
     @nendo.evalStr( " 'symbol " ).should == "symbol"
     @nendo.evalStr( " 'SYMBOL " ).should == "SYMBOL"
     @nendo.evalStr( " 'SyMbOl " ).should == "SyMbOl"
-    @nendo.evalStr( " ''a " ).should == "'a"
+    @nendo.evalStr( " ''a " ).should == "(quote a)"
     @nendo.evalStr( " '1 " ).should == "1"
-    @nendo.evalStr( " ''1 " ).should == "'1"
-    @nendo.evalStr( " '''1 " ).should == "''1"
+    @nendo.evalStr( " ''1 " ).should == "(quote 1)"
+    @nendo.evalStr( " '''1 " ).should == "(quote (quote 1))"
     @nendo.evalStr( " '1.1 " ).should == "1.1"
-    @nendo.evalStr( " ''1.1 " ).should == "'1.1"
-    @nendo.evalStr( " '''1.1 " ).should == "''1.1"
+    @nendo.evalStr( " ''1.1 " ).should == "(quote 1.1)"
+    @nendo.evalStr( " '''1.1 " ).should == "(quote (quote 1.1))"
     @nendo.evalStr( " '() " ).should == "()"
     @nendo.evalStr( " '(()) " ).should == "(())"
     @nendo.evalStr( " '((())) " ).should == "((()))"
@@ -594,7 +594,7 @@ describe Nendo, "when read various list expressions" do
     @nendo.evalStr( " '(a . #f) " ).should == "(a . #f)"
     @nendo.evalStr( " '(a . nil) " ).should == "(a . nil)"
     @nendo.evalStr( " '(a b c d e  .  ()) " ).should == "(a b c d e)"
-    @nendo.evalStr( " '(#t #t #f #f nil nil '() '()) " ).should == "(#t #t #f #f nil nil '() '())"
+    @nendo.evalStr( " '(#t #t #f #f nil nil '() '()) " ).should == "(#t #t #f #f nil nil (quote ()) (quote ()))"
   end
 end
 
@@ -1089,7 +1089,7 @@ describe Nendo, "when use #xxxx syntax " do
     @nendo.evalStr( " #!        \n #t" ).should == "#t"
     @nendo.evalStr( " #!        \n 100" ).should == "100"
     @nendo.evalStr( " #!   123  \n 100" ).should == "100"
-    @nendo.evalStr( " '#?=1" ).should == "(debug-print 1 \"(string)\" 1 '1)"
+    @nendo.evalStr( " '#?=1" ).should == "(debug-print 1 \"(string)\" 1 (quote 1))"
     @nendo.evalStr( " '#?." ).should == '"(string):1"'
     @nendo.evalStr( " '#?." ).should == '"(string):1"'
     @nendo.evalStr( " (begin #?. (+ 1 1))" ).should == "2"
@@ -1772,7 +1772,7 @@ describe Nendo, "when use quasiquote macro " do
     @nendo.evalStr( " (set! a 3) `(1 2 ,@(list a)) " ).should == "(1 2 3)"
     @nendo.evalStr( " (set! a 3) `(1 ,@(list 2 a)) " ).should == "(1 2 3)"
     @nendo.evalStr( " (set! a 11) `,a " ).should == "11"
-    @nendo.evalStr( " (set! a 12) ``,a " ).should == "`,a"
+    @nendo.evalStr( " (set! a 12) ``,a " ).should == "(quasiquote (unquote a))"
     @nendo.evalStr( ' (define str "string") str ' ).should == '"string"'
     @nendo.evalStr( ' `(,str) ' ).should == '("string")'
     @nendo.evalStr( ' `("STRING") ' ).should == '("STRING")'
@@ -1783,8 +1783,8 @@ describe Nendo, "when use quasiquote macro " do
     @nendo.evalStr( ' (caar   `(("STRING" ,str))) ' ).should == '"STRING"'
     @nendo.evalStr( ' (string-join `("A" "B" "C" "D")) ' ).should == '"ABCD"'
     @nendo.evalStr( " `(list ,(+ 1 2) 4) " ).should == "(list 3 4)"
-    @nendo.evalStr( " (let ((name 'a)) `(list ,name ',name)) " ).should == "(list a 'a)"
-    @nendo.evalStr( " `(a `(b ,(+ 1 2) ,(foo ,(+ 1 3) d) e) f) " ).should == "(a `(b ,(+ 1 2) ,(foo 4 d) e) f)"
+    @nendo.evalStr( " (let ((name 'a)) `(list ,name ',name)) " ).should == "(list a (quote a))"
+    @nendo.evalStr( " `(a `(b ,(+ 1 2) ,(foo ,(+ 1 3) d) e) f) " ).should == "(a (quasiquote (b (unquote (+ 1 2)) (unquote (foo 4 d)) e)) f)"
     @nendo.evalStr( " `(( foo ,(- 10 3)) ,@(cdr '(c)) . ,(car '(cons))) " ).should == "((foo 7) . cons)"
   end
 end
@@ -1870,7 +1870,7 @@ EOS
     (define (bar x)
       (+ val 10))))
 EOS
-           ).should == "(define main (lambda (argv) (letrec ((result '()) (foo (lambda (x) x)) (val 0) (bar (lambda (x) (+ val 10)))))))"
+           ).should == "(define main (lambda (argv) (letrec ((result (quote ())) (foo (lambda (x) x)) (val 0) (bar (lambda (x) (+ val 10)))))))"
     @nendo.evalStr( <<EOS
 (define (main argv)
   (define (foo x) x)
@@ -2248,8 +2248,8 @@ describe Nendo, "tail call optimization " do
     @nendo.evalStr( " (%setup-%tailcall-mark '(%syntax (x) x)) " ).should                     == "(%syntax (x) x)"
     @nendo.evalStr( " (%setup-%tailcall-mark '(%syntax (a b c) (begin a b c))) " ).should     == "(%syntax (a b c) (begin a b c))"
     @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (%syntax (y) x))) " ).should       == "(lambda (x) (%syntax (y) x))"
-    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (syntax-quote x))) " ).should      == "(lambda (x) 'x)"
-    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (quote x))) " ).should             == "(lambda (x) 'x)"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (syntax-quote x))) " ).should      == "(lambda (x) (quote x))"
+    @nendo.evalStr( " (%setup-%tailcall-mark '(lambda  (x) (quote x))) " ).should             == "(lambda (x) (quote x))"
     @nendo.evalStr( <<EOS
 (%setup-%tailcall-mark
  '(lambda '(x)
@@ -2257,7 +2257,7 @@ describe Nendo, "tail call optimization " do
     2
     (print \"abc\")))
 EOS
-           ).should == "(lambda '(x) 1 2 (%tailcall (print \"abc\")))"
+           ).should == "(lambda (quote (x)) 1 2 (%tailcall (print \"abc\")))"
     @nendo.evalStr( <<EOS
 (%setup-%tailcall-mark
  '(lambda (x)
@@ -2279,7 +2279,7 @@ EOS
                         '(values? (make-values '()))
                         ))
 EOS
-           ).should == "(%tailcall (values? (make-values '())))"
+           ).should == "(%tailcall (values? (make-values (quote ()))))"
     @nendo.evalStr( <<EOS
 (%setup-%tailcall-mark (macroexpand
                         '(cond

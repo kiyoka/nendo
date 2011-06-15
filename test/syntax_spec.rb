@@ -83,8 +83,8 @@ describe Nendo, "when use lib functions for let-syntax " do
     @nendo.evalStr( "(strip-syntax-quote 'abc)" ).should                    == "abc"
     @nendo.evalStr( "(strip-syntax-quote '())" ).should                     == "()"
     @nendo.evalStr( "(strip-syntax-quote '(a (b) ((c))))" ).should          == "(a (b) ((c)))"
-    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote abc))" ).should     == "'abc"
-    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote (syntax-quote abc)))" ).should     == "''abc"
+    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote abc))" ).should     == "(quote abc)"
+    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote (syntax-quote abc)))" ).should     == "(quote (quote abc))"
 
     @nendo.evalStr( "(strip-let-syntax-keyword 'abc)" ).should                    == "abc"
     @nendo.evalStr( <<EOS
@@ -365,7 +365,7 @@ EOS
 (macroexpand
  '(dummy-syntax 100))
 EOS
-                    ).should     match( /'#<SyntacticClosure.this-is-symbol:_this/ )
+                    ).should     match( /quote #<SyntacticClosure.this-is-symbol:_this/ )
 
     @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
@@ -394,7 +394,7 @@ describe Nendo, "When use let-syntax" do
                    (set! x '())))))
     (nil! aa)))
 EOS
-           ).should == "(begin (set! aa '()))"
+           ).should == "(begin (set! aa (quote ())))"
 
     @nendo.evalStr( <<EOS
 (macroexpand
@@ -404,7 +404,7 @@ EOS
                    'this-is-symbol))))
     (dummy-syntax 100)))
 EOS
-           ).should   match( /begin '#<SyntacticClosure.this-is-symbol:/ )
+           ).should   match( /begin [(]quote #<SyntacticClosure.this-is-symbol:/ )
 
     @nendo.evalStr( <<EOS
 (macroexpand
