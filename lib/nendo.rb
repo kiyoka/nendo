@@ -2610,7 +2610,7 @@ module Nendo
     end
 
     def self.version
-      "0.5.0"  ##NENDO-VERSION
+      "0.5.1"  ##NENDO-VERSION
     end
 
     attr_reader :evaluator
