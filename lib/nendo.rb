@@ -1517,23 +1517,26 @@ module Nendo
       }
       name
     end
-  
+
+    def errorMessageOf_toRubyArgument( origname )
+      sprintf( "Error: wrong number of arguments for closure `%s'", origname )
+    end
+
     def toRubyArgument( origname, pred, args )
-      argument_error_message = sprintf( "Error: wrong number of arguments for closure `%s'", origname )
       num = pred.arity
       if 0 == num
-        raise ArgumentError, argument_error_message if 0 != args.length
+        raise ArgumentError, errorMessageOf_toRubyArgument() if 0 != args.length
         []
       elsif 0 < num
         if 0 == args.length
           [ Nil.new ]
         else
-          raise ArgumentError, argument_error_message if num != args.length
+          raise ArgumentError, errorMessageOf_toRubyArgument() if num != args.length
           args
         end
       else
         num = num.abs( )-1
-        raise ArgumentError, argument_error_message if num > args.length
+        raise ArgumentError, errorMessageOf_toRubyArgument() if num > args.length
         params = []
         rest = []
         args.each_with_index { |x,i|
@@ -1555,13 +1558,11 @@ module Nendo
         result
       end
     end
-  
+
     def trampCall( result )
-      while result.is_a? DelayedCallPacket
-        @tmp_origname = result.origname
-        @tmp_pred     = result.pred
-        @tmp_args     = result.args
-        result = eval( sprintf( "self.%s( @tmp_origname, @tmp_pred, @tmp_args )", result.rubysym + "_METHOD" ), @binding )
+      while result.class == DelayedCallPacket
+        name = result.rubysym + "_METHOD"
+        result = __send__( name, result.origname, result.pred, result.args )
       end
       result
     end
