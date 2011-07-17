@@ -1523,39 +1523,46 @@ module Nendo
     end
 
     def toRubyArgument( origname, pred, args )
+      len = args.length
       num = pred.arity
       if 0 == num
-        raise ArgumentError, errorMessageOf_toRubyArgument() if 0 != args.length
+        raise ArgumentError, errorMessageOf_toRubyArgument() if 0 != len
         []
       elsif 0 < num
-        if 0 == args.length
+        if 0 == len
           [ Nil.new ]
         else
-          raise ArgumentError, errorMessageOf_toRubyArgument() if num != args.length
+          raise ArgumentError, errorMessageOf_toRubyArgument() if num != len
           args
         end
       else
         num = num.abs( )-1
-        raise ArgumentError, errorMessageOf_toRubyArgument() if num > args.length
-        params = []
-        rest = []
-        args.each_with_index { |x,i|
-          if i < num
-            params << x
-          else
-            rest   << x
-          end
-        }
-        result = []
-        if 0 < params.length
-          result = params
-        end
-        if 0 == rest.length
+        raise ArgumentError, errorMessageOf_toRubyArgument() if num > len
+        if num == len
+          result = args
           result << Cell.new
+          result
         else
-          result << rest.to_list
+          params = []
+          rest = []
+          args.each_with_index { |x,i|
+            if i < num
+              params << x
+            else
+              rest   << x
+            end
+          }
+          result = []
+          if 0 < params.length
+            result = params
+          end
+          if 0 == rest.length
+            result << Cell.new
+          else
+            result << rest.to_list
+          end
+          result
         end
-        result
       end
     end
 
