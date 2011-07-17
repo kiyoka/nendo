@@ -893,17 +893,10 @@ module Nendo
       end
     end
 
-    def __PLMARK_ARGS0( )
-      0
-    end
-
-    def __PLMARK_ARGS1( first )
-      first
-    end
-
-    def __PLMARK_ARGS2( first, second )
-      first + second
-    end
+    def __PLMARK_ARGS0( )            0           end
+    def __PLMARK_ARGS1( a )          a           end
+    def __PLMARK_ARGS2( a, b )       a + b       end
+    def __PLMARK_ARGS3( a, b, c )    a + b + c   end
 
     def __PLMARK( *args )
       arr = args[0].to_arr
@@ -947,7 +940,12 @@ module Nendo
         end
       end
     end
-  
+
+    def __MIMARK_ARGS0( )            0           end
+    def __MIMARK_ARGS1( a )          -a          end
+    def __MIMARK_ARGS2( a, b )       a - b       end
+    def __MIMARK_ARGS3( a, b, c )    a - b - c   end
+
     def __MIMARK( first, *rest )
       raise TypeError if not _number_QUMARK(first)
       rest = rest[0].to_arr
@@ -1601,7 +1599,7 @@ module Nendo
     end
 
     def replaceDispatchingMethod( rubysym, origname, pred, args )
-      if rubysym
+      if rubysym and (pred.arity < 0)
         rubysym = rubysym.to_s
         case args.length
         when 0
@@ -1616,11 +1614,13 @@ module Nendo
           if @global_lisp_binding.has_key?(rubysym + '_ARGS2')
             pred = self.method( rubysym + '_ARGS2' ).to_proc
           end
+        when 3
+          if @global_lisp_binding.has_key?(rubysym + '_ARGS3')
+            pred = self.method( rubysym + '_ARGS3' ).to_proc
+          end
         end
-        pred
-      else
-        pred
       end
+      pred
     end
 
     def callProcedure( rubysym, origname, pred, args )
