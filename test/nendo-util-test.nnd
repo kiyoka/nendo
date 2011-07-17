@@ -58,7 +58,7 @@
        "
 trampCall( 
   begin
-      def self._dummy_MIMARKfunction_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._dummy_MIMARKfunction_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_dummy_MIMARKfunction', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_dummy_MIMARKfunction'] = self.method( :_dummy_MIMARKfunction_METHOD )
     @_dummy_MIMARKfunction = 
     trampCall(
