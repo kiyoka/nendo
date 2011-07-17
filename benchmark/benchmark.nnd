@@ -48,21 +48,26 @@
 
 
 ;; -------------------- plus --------------------
-(bench-task #f
-            "+ 0arg (nendo version)"
-            (printf " => %d\n" (hundled-times (plus0))))
-
-(bench-task #t
-            "+ 1arg (nendo version)"
-            (printf " => %d\n" (hundled-times (plus1))))
-
-(bench-task #t
-            "+ 2arg (nendo version)"
-            (printf " => %d\n" (hundled-times (plus2))))
-
-(bench-task #f
-            "+ 3arg (nendo version)"
-            (printf " => %d\n" (hundled-times (plus3))))
+(for-each
+ (lambda (level)
+   (set-optimize-level level)
+   (printf " --- optimize level %d ---\n" level)
+   (bench-task #f
+               "+ 0arg (nendo version)"
+               (printf " => %d\n" (hundled-times (plus0))))
+   
+   (bench-task #f
+               "+ 1arg (nendo version)"
+               (printf " => %d\n" (hundled-times (plus1))))
+   
+   (bench-task #f
+               "+ 2arg (nendo version)"
+               (printf " => %d\n" (hundled-times (plus2))))
+   
+   (bench-task #f
+               "+ 3arg (nendo version)"
+               (printf " => %d\n" (hundled-times (plus3)))))
+ '(1 2))
 
 ;; -------------------- tak --------------------
 (bench-task #f

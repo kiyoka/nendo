@@ -1343,6 +1343,7 @@ module Nendo
       @trace_debug = false
       @lexicalVars = []
       @syntaxHash = {}
+      @optimize_level = 2
       @char_table_lisp_to_ruby = {
         # list     (! $ % & * + - . / : < = > ? @ ^ _ ~ ...)
         '!'   => '_EXMARK',
@@ -1407,9 +1408,6 @@ module Nendo
       @call_depth     = 0
       @call_counters  = Hash.new
 
-      # init optimize level
-      @optimize_level = 1
-  
       # compiled ruby code
       #  { 'filename1' => [ 'code1' 'code2' ... ], 
       #    'filename2' => [ 'code1' 'code2' ... ], ... }
@@ -1632,7 +1630,9 @@ module Nendo
         @call_counters[ origname ]  = 1
       end
 
-      pred = replaceDispatchingMethod( rubysym, origname, pred, args )
+      if 1 < self.getOptimizeLevel( )
+        pred = replaceDispatchingMethod( rubysym, origname, pred, args )
+      end
       result = pred.call( *toRubyArgument( origname, pred, args ))
 
       @call_counters[ origname ]   -= 1
