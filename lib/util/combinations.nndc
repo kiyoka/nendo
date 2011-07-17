@@ -50,7 +50,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._but_MIMARKkth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._but_MIMARKkth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_but_MIMARKkth', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_but_MIMARKkth'] = self.method( :_but_MIMARKkth_METHOD )
     @_but_MIMARKkth = 
     trampCall(
@@ -466,7 +466,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._permutations_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._permutations_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_permutations', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_permutations'] = self.method( :_permutations_METHOD )
     @_permutations = 
     trampCall(
@@ -1513,7 +1513,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._permutations_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._permutations_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_permutations_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_permutations_ASMARK'] = self.method( :_permutations_ASMARK_METHOD )
     @_permutations_ASMARK = 
     trampCall(
@@ -1572,7 +1572,7 @@ trampCall(
                         end
                     end
                     begin
-                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_rec', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                         @global_lisp_binding['_rec'] = self.method( :_rec_METHOD )
                       @_rec = 
                       trampCall(
@@ -1609,7 +1609,7 @@ trampCall(
                                                            ))
                                           end
                                       else
-                                          trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81607',
+                                          trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81607',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81607',
                                               begin
                                                   trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81607)
                                                 rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -1732,7 +1732,7 @@ trampCall(
                                                                    )
                                                       end
                                                   else
-                                                      trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81608',
+                                                      trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81608',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81608',
                                                           begin
                                                               trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81608)
                                                             rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -1834,7 +1834,7 @@ trampCall(
                                                                                                       ___lambda = lambda { |_b| 
                                                                                                           begin
                                                                                                               if ( 
-                                                                                                                trampCall( callProcedure(   'eq',
+                                                                                                                trampCall( callProcedure(  '_eq',  'eq',
                                                                                                                     begin
                                                                                                                         trampCall(_eq)
                                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:71"] + __e.backtrace ) ; raise __e
@@ -1942,7 +1942,7 @@ trampCall(
                                                                                                        )
                                                                                           end
                                                                                       else
-                                                                                          trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609',
+                                                                                          trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609',
                                                                                               begin
                                                                                                   trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609)
                                                                                                 rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -1988,7 +1988,7 @@ trampCall(
                                                                                    )
                                                                       end
                                                                   else
-                                                                      trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609',
+                                                                      trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609',
                                                                           begin
                                                                               trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609)
                                                                             rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -2078,7 +2078,7 @@ trampCall(
                                                                                                                        ))
                                                                                                          ) then
                                                                                                             begin
-                                                                                                                trampCall( callProcedure(   'loop',
+                                                                                                                trampCall( callProcedure(  '_loop',  'loop',
                                                                                                                     begin
                                                                                                                         trampCall(_loop)
                                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:73"] + __e.backtrace ) ; raise __e
@@ -2129,7 +2129,7 @@ trampCall(
                                                                                                             true
                                                                                                              ) then
                                                                                                                 begin
-                                                                                                                    trampCall( callProcedure(   'loop',
+                                                                                                                    trampCall( callProcedure(  '_loop',  'loop',
                                                                                                                         begin
                                                                                                                             trampCall(_loop)
                                                                                                                           rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:73"] + __e.backtrace ) ; raise __e
@@ -2277,7 +2277,7 @@ trampCall(
                                                                                                         end
                                                                                                     end
                                                                                                 }
-                                                                                              trampCall( callProcedure(   'loop',
+                                                                                              trampCall( callProcedure(  '_loop',  'loop',
                                                                                                   begin
                                                                                                       trampCall(_loop)
                                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:73"] + __e.backtrace ) ; raise __e
@@ -2359,12 +2359,12 @@ trampCall(
 
 trampCall( 
   begin
-      def self._p_SLMARKeach3_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._p_SLMARKeach3_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_p_SLMARKeach3', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_p_SLMARKeach3'] = self.method( :_p_SLMARKeach3_METHOD )
     @_p_SLMARKeach3 = 
     trampCall(
           Proc.new { |_proc,_x1,_x2,_x3| 
-              trampCall( callProcedure(   'proc',
+              trampCall( callProcedure(  '_proc',  'proc',
                   begin
                       trampCall(_proc)
                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:86"] + __e.backtrace ) ; raise __e
@@ -2415,7 +2415,7 @@ trampCall(
                                  ))
               ]
                            ))
-              trampCall( callProcedure(   'proc',
+              trampCall( callProcedure(  '_proc',  'proc',
                   begin
                       trampCall(_proc)
                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:86"] + __e.backtrace ) ; raise __e
@@ -2466,7 +2466,7 @@ trampCall(
                                  ))
               ]
                            ))
-              trampCall( callProcedure(   'proc',
+              trampCall( callProcedure(  '_proc',  'proc',
                   begin
                       trampCall(_proc)
                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:86"] + __e.backtrace ) ; raise __e
@@ -2517,7 +2517,7 @@ trampCall(
                                  ))
               ]
                            ))
-              trampCall( callProcedure(   'proc',
+              trampCall( callProcedure(  '_proc',  'proc',
                   begin
                       trampCall(_proc)
                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:86"] + __e.backtrace ) ; raise __e
@@ -2568,7 +2568,7 @@ trampCall(
                                  ))
               ]
                            ))
-              trampCall( callProcedure(   'proc',
+              trampCall( callProcedure(  '_proc',  'proc',
                   begin
                       trampCall(_proc)
                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:86"] + __e.backtrace ) ; raise __e
@@ -2678,7 +2678,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._p_SLMARKeach4_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._p_SLMARKeach4_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_p_SLMARKeach4', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_p_SLMARKeach4'] = self.method( :_p_SLMARKeach4_METHOD )
     @_p_SLMARKeach4 = 
     trampCall(
@@ -2692,7 +2692,7 @@ trampCall(
                   end                ,
               [
                     Proc.new { |_xs| 
-                        trampCall( callProcedure(   'proc',
+                        trampCall( callProcedure(  '_proc',  'proc',
                             begin
                                 trampCall(_proc)
                               rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:91"] + __e.backtrace ) ; raise __e
@@ -2742,7 +2742,7 @@ trampCall(
                   end                ,
               [
                     Proc.new { |_xs| 
-                        trampCall( callProcedure(   'proc',
+                        trampCall( callProcedure(  '_proc',  'proc',
                             begin
                                 trampCall(_proc)
                               rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:91"] + __e.backtrace ) ; raise __e
@@ -2792,7 +2792,7 @@ trampCall(
                   end                ,
               [
                     Proc.new { |_xs| 
-                        trampCall( callProcedure(   'proc',
+                        trampCall( callProcedure(  '_proc',  'proc',
                             begin
                                 trampCall(_proc)
                               rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:91"] + __e.backtrace ) ; raise __e
@@ -2842,7 +2842,7 @@ trampCall(
                   end                ,
               [
                     Proc.new { |_xs| 
-                        trampCall( callProcedure(   'proc',
+                        trampCall( callProcedure(  '_proc',  'proc',
                             begin
                                 trampCall(_proc)
                               rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:91"] + __e.backtrace ) ; raise __e
@@ -2891,7 +2891,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._p_SLMARKeach_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._p_SLMARKeach_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_p_SLMARKeach_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_p_SLMARKeach_ASMARK'] = self.method( :_p_SLMARKeach_ASMARK_METHOD )
     @_p_SLMARKeach_ASMARK = 
     trampCall(
@@ -2958,7 +2958,7 @@ trampCall(
                                       end                                    ,
                                   [
                                         Proc.new { |_subperm| 
-                                            trampCall( callProcedure(   'proc',
+                                            trampCall( callProcedure(  '_proc',  'proc',
                                                 begin
                                                     trampCall(_proc)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:98"] + __e.backtrace ) ; raise __e
@@ -3067,7 +3067,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._permutations_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._permutations_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_permutations_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_permutations_MIMARKfor_MIMARKeach'] = self.method( :_permutations_MIMARKfor_MIMARKeach_METHOD )
     @_permutations_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -3316,7 +3316,7 @@ trampCall(
                                                                                   begin
                                                                                     ___lambda = lambda { |_x2| 
                                                                                         begin
-                                                                                            trampCall( callProcedure(   'proc',
+                                                                                            trampCall( callProcedure(  '_proc',  'proc',
                                                                                                 begin
                                                                                                     trampCall(_proc)
                                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
@@ -4124,7 +4124,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._permutations_ASMARK_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._permutations_ASMARK_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_permutations_ASMARK_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_permutations_ASMARK_MIMARKfor_MIMARKeach'] = self.method( :_permutations_ASMARK_MIMARKfor_MIMARKeach_METHOD )
     @_permutations_ASMARK_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -4183,7 +4183,7 @@ trampCall(
                         end
                     end
                     begin
-                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_rec', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                         @global_lisp_binding['_rec'] = self.method( :_rec_METHOD )
                       @_rec = 
                       trampCall(
@@ -4210,7 +4210,7 @@ trampCall(
                                             nil
                                           end
                                       else
-                                          trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82343',
+                                          trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82343',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82343',
                                               begin
                                                   trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82343)
                                                 rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -4295,7 +4295,7 @@ trampCall(
                                                                 begin
                                                                   ___lambda = lambda { |_a| 
                                                                       begin
-                                                                          trampCall( callProcedure(   'proc',
+                                                                          trampCall( callProcedure(  '_proc',  'proc',
                                                                               begin
                                                                                   trampCall(_proc)
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
@@ -4331,7 +4331,7 @@ trampCall(
                                                                    )
                                                       end
                                                   else
-                                                      trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82344',
+                                                      trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82344',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82344',
                                                           begin
                                                               trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82344)
                                                             rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -4433,7 +4433,7 @@ trampCall(
                                                                                                       ___lambda = lambda { |_b| 
                                                                                                           begin
                                                                                                               if ( 
-                                                                                                                trampCall( callProcedure(   'eq',
+                                                                                                                trampCall( callProcedure(  '_eq',  'eq',
                                                                                                                     begin
                                                                                                                         trampCall(_eq)
                                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:124"] + __e.backtrace ) ; raise __e
@@ -4451,7 +4451,7 @@ trampCall(
                                                                                                                              ))
                                                                                                                ) then
                                                                                                                   begin
-                                                                                                                      trampCall( callProcedure(   'proc',
+                                                                                                                      trampCall( callProcedure(  '_proc',  'proc',
                                                                                                                           begin
                                                                                                                               trampCall(_proc)
                                                                                                                             rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
@@ -4469,7 +4469,7 @@ trampCall(
                                                                                                                   true
                                                                                                                    ) then
                                                                                                                       begin
-                                                                                                                          trampCall( callProcedure(   'proc',
+                                                                                                                          trampCall( callProcedure(  '_proc',  'proc',
                                                                                                                               begin
                                                                                                                                   trampCall(_proc)
                                                                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
@@ -4481,7 +4481,7 @@ trampCall(
                                                                                                                                 end
                                                                                                                           ]
                                                                                                                                        ))
-                                                                                                                          trampCall( callProcedure(   'proc',
+                                                                                                                          trampCall( callProcedure(  '_proc',  'proc',
                                                                                                                               begin
                                                                                                                                   trampCall(_proc)
                                                                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
@@ -4544,7 +4544,7 @@ trampCall(
                                                                                                        )
                                                                                           end
                                                                                       else
-                                                                                          trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345',
+                                                                                          trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345',
                                                                                               begin
                                                                                                   trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345)
                                                                                                 rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -4590,7 +4590,7 @@ trampCall(
                                                                                    )
                                                                       end
                                                                   else
-                                                                      trampCall( callProcedure(   '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345',
+                                                                      trampCall( callProcedure(  '__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345',  '_failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345',
                                                                           begin
                                                                               trampCall(__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345)
                                                                             rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -4667,7 +4667,7 @@ trampCall(
                                                                                                                        ))
                                                                                                          ) then
                                                                                                             begin
-                                                                                                                trampCall( callProcedure(   'loop',
+                                                                                                                trampCall( callProcedure(  '_loop',  'loop',
                                                                                                                     begin
                                                                                                                         trampCall(_loop)
                                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:127"] + __e.backtrace ) ; raise __e
@@ -4723,7 +4723,7 @@ trampCall(
                                                                                                                         end                                                                                                                      ,
                                                                                                                     [
                                                                                                                           Proc.new { |_subperm| 
-                                                                                                                              trampCall( callProcedure(   'proc',
+                                                                                                                              trampCall( callProcedure(  '_proc',  'proc',
                                                                                                                                   begin
                                                                                                                                       trampCall(_proc)
                                                                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
@@ -4780,7 +4780,7 @@ trampCall(
                                                                                                                                        ))
                                                                                                                     ]
                                                                                                                                  ))
-                                                                                                                    trampCall( callProcedure(   'loop',
+                                                                                                                    trampCall( callProcedure(  '_loop',  'loop',
                                                                                                                         begin
                                                                                                                             trampCall(_loop)
                                                                                                                           rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:127"] + __e.backtrace ) ; raise __e
@@ -4852,7 +4852,7 @@ trampCall(
                                                                                                         end
                                                                                                     end
                                                                                                 }
-                                                                                              trampCall( callProcedure(   'loop',
+                                                                                              trampCall( callProcedure(  '_loop',  'loop',
                                                                                                   begin
                                                                                                       trampCall(_loop)
                                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:127"] + __e.backtrace ) ; raise __e
@@ -4937,7 +4937,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._combinations_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._combinations_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_combinations', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_combinations'] = self.method( :_combinations_METHOD )
     @_combinations = 
     trampCall(
@@ -5093,7 +5093,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._combinations_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._combinations_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_combinations_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_combinations_ASMARK'] = self.method( :_combinations_ASMARK_METHOD )
     @_combinations_ASMARK = 
     trampCall(
@@ -5152,7 +5152,7 @@ trampCall(
                         end
                     end
                     begin
-                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_rec', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                         @global_lisp_binding['_rec'] = self.method( :_rec_METHOD )
                       @_rec = 
                       trampCall(
@@ -5267,7 +5267,7 @@ trampCall(
                                                                    ))
                                                      ) then
                                                         begin
-                                                            trampCall( callProcedure(   'loop',
+                                                            trampCall( callProcedure(  '_loop',  'loop',
                                                                 begin
                                                                     trampCall(_loop)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:155"] + __e.backtrace ) ; raise __e
@@ -5303,7 +5303,7 @@ trampCall(
                                                         true
                                                          ) then
                                                             begin
-                                                                trampCall( callProcedure(   'loop',
+                                                                trampCall( callProcedure(  '_loop',  'loop',
                                                                     begin
                                                                         trampCall(_loop)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:155"] + __e.backtrace ) ; raise __e
@@ -5465,7 +5465,7 @@ trampCall(
                                                     end
                                                 end
                                             }
-                                          trampCall( callProcedure(   'loop',
+                                          trampCall( callProcedure(  '_loop',  'loop',
                                               begin
                                                   trampCall(_loop)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:155"] + __e.backtrace ) ; raise __e
@@ -5522,7 +5522,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._combinations_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._combinations_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_combinations_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_combinations_MIMARKfor_MIMARKeach'] = self.method( :_combinations_MIMARKfor_MIMARKeach_METHOD )
     @_combinations_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -5581,7 +5581,7 @@ trampCall(
                                 end                              ,
                             [
                                   Proc.new { |_sub_MIMARKcomb| 
-                                      trampCall( callProcedure(   'proc',
+                                      trampCall( callProcedure(  '_proc',  'proc',
                                           begin
                                               trampCall(_proc)
                                             rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:169"] + __e.backtrace ) ; raise __e
@@ -5665,7 +5665,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._combinations_ASMARK_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._combinations_ASMARK_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_combinations_ASMARK_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_combinations_ASMARK_MIMARKfor_MIMARKeach'] = self.method( :_combinations_ASMARK_MIMARKfor_MIMARKeach_METHOD )
     @_combinations_ASMARK_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -5724,7 +5724,7 @@ trampCall(
                         end
                     end
                     begin
-                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                        def self._rec_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_rec', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                         @global_lisp_binding['_rec'] = self.method( :_rec_METHOD )
                       @_rec = 
                       trampCall(
@@ -5755,7 +5755,7 @@ trampCall(
                                   ]
                                                ))
                                  ) then
-                                    trampCall( callProcedure(   'proc',
+                                    trampCall( callProcedure(  '_proc',  'proc',
                                         begin
                                             trampCall(_proc)
                                           rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:187"] + __e.backtrace ) ; raise __e
@@ -5824,7 +5824,7 @@ trampCall(
                                                                    ))
                                                      ) then
                                                         begin
-                                                            trampCall( callProcedure(   'loop',
+                                                            trampCall( callProcedure(  '_loop',  'loop',
                                                                 begin
                                                                     trampCall(_loop)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:186"] + __e.backtrace ) ; raise __e
@@ -5865,7 +5865,7 @@ trampCall(
                                                                     end                                                                  ,
                                                                 [
                                                                       Proc.new { |_sub_MIMARKcomb| 
-                                                                          trampCall( callProcedure(   'proc',
+                                                                          trampCall( callProcedure(  '_proc',  'proc',
                                                                               begin
                                                                                   trampCall(_proc)
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:187"] + __e.backtrace ) ; raise __e
@@ -5951,7 +5951,7 @@ trampCall(
                                                                                    ))
                                                                 ]
                                                                              ))
-                                                                trampCall( callProcedure(   'loop',
+                                                                trampCall( callProcedure(  '_loop',  'loop',
                                                                     begin
                                                                         trampCall(_loop)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:186"] + __e.backtrace ) ; raise __e
@@ -6008,7 +6008,7 @@ trampCall(
                                                     end
                                                 end
                                             }
-                                          trampCall( callProcedure(   'loop',
+                                          trampCall( callProcedure(  '_loop',  'loop',
                                               begin
                                                   trampCall(_loop)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:186"] + __e.backtrace ) ; raise __e
@@ -6068,7 +6068,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._power_MIMARKset_MIMARKbinary_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._power_MIMARKset_MIMARKbinary_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_power_MIMARKset_MIMARKbinary', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_power_MIMARKset_MIMARKbinary'] = self.method( :_power_MIMARKset_MIMARKbinary_METHOD )
     @_power_MIMARKset_MIMARKbinary = 
     trampCall(
@@ -6201,7 +6201,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._power_MIMARKset_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._power_MIMARKset_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_power_MIMARKset', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_power_MIMARKset'] = self.method( :_power_MIMARKset_METHOD )
     @_power_MIMARKset = 
     trampCall(
@@ -6260,7 +6260,7 @@ trampCall(
                                                 end
                                           ]
                                                        ))                                        ,
-                                          trampCall( callProcedure(   'loop',
+                                          trampCall( callProcedure(  '_loop',  'loop',
                                               begin
                                                   trampCall(_loop)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:208"] + __e.backtrace ) ; raise __e
@@ -6325,7 +6325,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._power_MIMARKset_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._power_MIMARKset_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_power_MIMARKset_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_power_MIMARKset_MIMARKfor_MIMARKeach'] = self.method( :_power_MIMARKset_MIMARKfor_MIMARKeach_METHOD )
     @_power_MIMARKset_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -6445,7 +6445,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._power_MIMARKset_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._power_MIMARKset_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_power_MIMARKset_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_power_MIMARKset_ASMARK'] = self.method( :_power_MIMARKset_ASMARK_METHOD )
     @_power_MIMARKset_ASMARK = 
     trampCall(
@@ -6514,7 +6514,7 @@ trampCall(
                                                 end
                                           ]
                                                        ))                                        ,
-                                          trampCall( callProcedure(   'loop',
+                                          trampCall( callProcedure(  '_loop',  'loop',
                                               begin
                                                   trampCall(_loop)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:227"] + __e.backtrace ) ; raise __e
@@ -6579,7 +6579,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._power_MIMARKset_ASMARK_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._power_MIMARKset_ASMARK_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_power_MIMARKset_ASMARK_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_power_MIMARKset_ASMARK_MIMARKfor_MIMARKeach'] = self.method( :_power_MIMARKset_ASMARK_MIMARKfor_MIMARKeach_METHOD )
     @_power_MIMARKset_ASMARK_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -6709,7 +6709,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._cartesian_MIMARKproduct_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._cartesian_MIMARKproduct_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_cartesian_MIMARKproduct', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_cartesian_MIMARKproduct'] = self.method( :_cartesian_MIMARKproduct_METHOD )
     @_cartesian_MIMARKproduct = 
     trampCall(
@@ -6844,7 +6844,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._cartesian_MIMARKproduct_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._cartesian_MIMARKproduct_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_cartesian_MIMARKproduct_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_cartesian_MIMARKproduct_MIMARKfor_MIMARKeach'] = self.method( :_cartesian_MIMARKproduct_MIMARKfor_MIMARKeach_METHOD )
     @_cartesian_MIMARKproduct_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -6893,7 +6893,7 @@ trampCall(
                                 end                              ,
                             [
                                   Proc.new { |_sub_MIMARKprod| 
-                                      trampCall( callProcedure(   'proc',
+                                      trampCall( callProcedure(  '_proc',  'proc',
                                           begin
                                               trampCall(_proc)
                                             rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:259"] + __e.backtrace ) ; raise __e
@@ -6962,7 +6962,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._cartesian_MIMARKproduct_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._cartesian_MIMARKproduct_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_cartesian_MIMARKproduct_MIMARKright', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_cartesian_MIMARKproduct_MIMARKright'] = self.method( :_cartesian_MIMARKproduct_MIMARKright_METHOD )
     @_cartesian_MIMARKproduct_MIMARKright = 
     trampCall(
@@ -7097,7 +7097,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._cartesian_MIMARKproduct_MIMARKright_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._cartesian_MIMARKproduct_MIMARKright_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_cartesian_MIMARKproduct_MIMARKright_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_cartesian_MIMARKproduct_MIMARKright_MIMARKfor_MIMARKeach'] = self.method( :_cartesian_MIMARKproduct_MIMARKright_MIMARKfor_MIMARKeach_METHOD )
     @_cartesian_MIMARKproduct_MIMARKright_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -7146,7 +7146,7 @@ trampCall(
                                 end                              ,
                             [
                                   Proc.new { |_x| 
-                                      trampCall( callProcedure(   'proc',
+                                      trampCall( callProcedure(  '_proc',  'proc',
                                           begin
                                               trampCall(_proc)
                                             rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:286"] + __e.backtrace ) ; raise __e

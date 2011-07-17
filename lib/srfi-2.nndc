@@ -5,7 +5,7 @@
 
 trampCall( 
   begin
-      def self._and_MIMARKlet_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._and_MIMARKlet_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_and_MIMARKlet_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_and_MIMARKlet_ASMARK'] = self.method( :_and_MIMARKlet_ASMARK_METHOD )
     @_and_MIMARKlet_ASMARK = 
     trampCall(
@@ -260,7 +260,7 @@ trampCall(
                                                                                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                 end                                                                                                                              ,
                                                                                                                             [
-                                                                                                                                  trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                  trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                       begin
                                                                                                                                           trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                         rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -293,7 +293,7 @@ trampCall(
                                                                                                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                                   end                                                                                                                                                ,
                                                                                                                                               [
-                                                                                                                                                    trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                                    trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                                         begin
                                                                                                                                                             trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                                           rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -338,7 +338,7 @@ trampCall(
                                                                                                                                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                                   end                                                                                                                                                ,
                                                                                                                                               [
-                                                                                                                                                    trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                                    trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                                         begin
                                                                                                                                                             trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                                           rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -355,7 +355,7 @@ trampCall(
                                                                                                                                                           rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                                         end                                                                                                                                                      ,
                                                                                                                                                     [
-                                                                                                                                                          trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                                          trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                                               begin
                                                                                                                                                                   trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                                                 rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -380,7 +380,7 @@ trampCall(
                                                                                                                                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                     end                                                                                                                                                                  ,
                                                                                                                                                                 [
-                                                                                                                                                                      trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                                                      trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                                                           begin
                                                                                                                                                                               trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                                                             rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -753,7 +753,7 @@ trampCall(
                                                                                                                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                             end                                                                                                                                          ,
                                                                                                                                         [
-                                                                                                                                              trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                              trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                                   begin
                                                                                                                                                       trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                                     rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -826,7 +826,7 @@ trampCall(
                                                                                                                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                                               end                                                                                                                                                            ,
                                                                                                                                                           [
-                                                                                                                                                                trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                                                trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                                                     begin
                                                                                                                                                                         trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                                                       rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -863,7 +863,7 @@ trampCall(
                                                                                                                                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                 end                                                                                                                                                                              ,
                                                                                                                                                                             [
-                                                                                                                                                                                  trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                                                                                                                                  trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                                                                                                                                       begin
                                                                                                                                                                                           trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                                                                                                                                         rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
@@ -1151,7 +1151,7 @@ trampCall(
                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                             [
-                                                                  trampCall( callProcedure(   '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
+                                                                  trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033',
                                                                       begin
                                                                           trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_20033)
                                                                         rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e

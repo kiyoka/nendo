@@ -287,13 +287,13 @@ module Nendo
   end
   
   class DelayedCallPacket
-    def initialize( _origname, _rubysym, _pred, _args )
-      @origname = _origname
+    def initialize( _rubysym, _origname, _pred, _args )
       @rubysym  = _rubysym
+      @origname = _origname
       @pred     = _pred
       @args     = _args
     end
-    attr_reader :origname, :rubysym, :pred, :args
+    attr_reader :rubysym, :origname, :pred, :args
   end
 
   class Token
@@ -892,7 +892,19 @@ module Nendo
         (a === b)
       end
     end
-    
+
+    def __PLMARK_ARGS0( )
+      0
+    end
+
+    def __PLMARK_ARGS1( first )
+      first
+    end
+
+    def __PLMARK_ARGS2( first, second )
+      first + second
+    end
+
     def __PLMARK( *args )
       arr = args[0].to_arr
       case args[0].length
@@ -900,7 +912,7 @@ module Nendo
         0
       else
         __assertFlat( arr )
-        arr.each { |x| 
+        arr.each { |x|
           if not (_number_QUMARK(x) or _string_QUMARK(x))
             ##arr.each { |v| STDERR.printf( "__PLMARK: %s\n", v ) }
             raise TypeError, sprintf( "Error: arg %s is [%s] type",x ,x.class )
@@ -1221,7 +1233,7 @@ module Nendo
     end
   
     def _apply1( first, arg )
-      trampCall( callProcedure( "(apply1 genereate func)", first, arg.to_arr ))
+      trampCall( callProcedure( nil, "(apply1 genereate func)", first, arg.to_arr ))
     end
   
     def _global_MIMARKvariables
@@ -1444,7 +1456,7 @@ module Nendo
     def defMethodStr( name, _log )
       [ "def self." + name.to_s + "_METHOD( origname, pred, args ) ",
         "  lispMethodEntry( origname, " + _log.to_s + " ) ; ",
-        "  ret = callProcedure( origname, pred, args ) ;",
+        "  ret = callProcedure( '" + name.to_s + "', origname, pred, args ) ;",
         "  lispMethodExit( origname,  " + _log.to_s + " ) ; ",
         "  return ret ",
         "end " ].join
@@ -1518,26 +1530,26 @@ module Nendo
       name
     end
 
-    def errorMessageOf_toRubyArgument( origname )
-      sprintf( "Error: wrong number of arguments for closure `%s'", origname )
+    def errorMessageOf_toRubyArgument( origname, no, req, got )
+      sprintf( "Error: [%s] wrong number of arguments for closure `%s' (requires %d, but got %d)", no, origname, req, got )
     end
 
     def toRubyArgument( origname, pred, args )
       len = args.length
       num = pred.arity
       if 0 == num
-        raise ArgumentError, errorMessageOf_toRubyArgument() if 0 != len
+        raise ArgumentError, errorMessageOf_toRubyArgument( origname, 1, num, len ) if 0 != len
         []
       elsif 0 < num
         if 0 == len
           [ Nil.new ]
         else
-          raise ArgumentError, errorMessageOf_toRubyArgument() if num != len
+          raise ArgumentError, errorMessageOf_toRubyArgument( origname, 2, num, len ) if num != len
           args
         end
       else
         num = num.abs( )-1
-        raise ArgumentError, errorMessageOf_toRubyArgument() if num > len
+        raise ArgumentError, errorMessageOf_toRubyArgument( origname, 3, num, len ) if num > len
         if num == len
           result = args
           result << Cell.new
@@ -1568,8 +1580,7 @@ module Nendo
 
     def trampCall( result )
       while result.class == DelayedCallPacket
-        name = result.rubysym + "_METHOD"
-        result = __send__( name, result.origname, result.pred, result.args )
+        result = __send__( result.rubysym + "_METHOD", result.origname, result.pred, result.args )
       end
       result
     end
@@ -1578,36 +1589,60 @@ module Nendo
       if @global_lisp_binding[name].is_a? Proc
         @global_lisp_binding[name].call( args[0], args[1], args[2] )
       else
-        callProcedure( args[0], args[1], args[2] )
+        callProcedure( name, args[0], args[1], args[2] )
       end
     end
     
     def delayCall( rubysym, origname, pred, args )
       case @optimize_level
       when 0 # no optimize
-        callProcedure( origname, pred, args )
+        callProcedure( rubysym, origname, pred, args )
       else # tail call optimization
-        DelayedCallPacket.new( origname, rubysym, pred, args )
+        DelayedCallPacket.new( rubysym, origname, pred, args )
       end
     end
-    
-    def callProcedure( origname, pred, args )
+
+    def replaceDispatchingMethod( rubysym, origname, pred, args )
+      if rubysym
+        rubysym = rubysym.to_s
+        case args.length
+        when 0
+          if @global_lisp_binding.has_key?(rubysym + '_ARGS0')
+            pred = self.method( rubysym + '_ARGS0' ).to_proc
+          end
+        when 1
+          if @global_lisp_binding.has_key?(rubysym + '_ARGS1')
+            pred = self.method( rubysym + '_ARGS1' ).to_proc
+          end
+        when 2
+          if @global_lisp_binding.has_key?(rubysym + '_ARGS2')
+            pred = self.method( rubysym + '_ARGS2' ).to_proc
+          end
+        end
+        pred
+      else
+        pred
+      end
+    end
+
+    def callProcedure( rubysym, origname, pred, args )
       if @call_counters.has_key?( origname )
         @call_counters[ origname ] += 1
       else
         @call_counters[ origname ]  = 1
       end
 
+      pred = replaceDispatchingMethod( rubysym, origname, pred, args )
       result = pred.call( *toRubyArgument( origname, pred, args ))
 
       @call_counters[ origname ]   -= 1
 
       result
     end
-  
+
     # for code generation of Ruby's argument values
     # in case:  str = ","
-    # [1,"2",3] => [ 
+    # [1,"2",3] => [
     #                [ 1,  ","]
     #                ["2", ","]
     #                [ 3 ]
@@ -1673,7 +1708,7 @@ module Nendo
           # Nendo function
           arr = separateWith( args.map { |x| x.car }, "," )
           if EXEC_TYPE_ANONYMOUS == execType
-            [sprintf( "trampCall( callProcedure( 'anonymouse', " ),
+            [sprintf( "trampCall( callProcedure( nil, 'anonymouse', " ),
              [ funcname ] + [ "," ],
              "[", arr, "]",
              "          ))"]
@@ -1684,15 +1719,15 @@ module Nendo
             _call = case execType
                     when EXEC_TYPE_NORMAL
                       if locals.flatten.include?( sym )
-                        [          "trampCall( callProcedure(  ",        "))" ] # local function
+                        [          "trampCall( callProcedure(  '" + sym + "', ", "))" ] # local function
                       else
                         [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
                       end
                     when EXEC_TYPE_TAILCALL
-                      [ sprintf( "delayCall( '%s', ", sym ),    ")"  ]
+                      [ sprintf( "delayCall( '%s', ", sym ),  ")"  ]
                     end
-            [sprintf( "%s '%s',", _call[0], origname ), 
-             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","], 
+            [sprintf( "%s '%s',", _call[0], origname ),
+             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
              "[", arr, "]",
              sprintf( "             %s", _call[1] )]
           end
@@ -2202,14 +2237,14 @@ module Nendo
             sexp
           elsif _symbol_QUMARK( car ) and eval( sprintf( "(defined? @%s and LispMacro == @%s.class)", sym,sym ), @binding )
             eval( sprintf( "@__macro = @%s", sym ), @binding )
-            newSexp = trampCall( callProcedure( sym, @__macro, sexp.cdr.to_arr ))
+            newSexp = trampCall( callProcedure( nil, sym, @__macro, sexp.cdr.to_arr ))
           elsif _symbol_QUMARK( car ) and eval( sprintf( "(defined? @%s and LispSyntax == @%s.class)", sym,sym ), @binding )
             # expected input is
             #   (syntaxName arg1 arg2 ...)
             # will be transformed
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
-            newSexp = trampCall( callProcedure( sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
+            newSexp = trampCall( callProcedure( nil, sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
           elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0].intern}.include?( car.intern )
             # lexical macro expandeding
             symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
@@ -2220,7 +2255,7 @@ module Nendo
             vars       = symbol_and_syntaxObj[3].map { |arr| arr[0] }
             lexvars    = @syntaxHash[ symbol_and_syntaxObj[1] ][0]
             lispSyntax = @syntaxHash[ symbol_and_syntaxObj[1] ][1]
-            newSexp = trampCall( callProcedure( symbol_and_syntaxObj[0], lispSyntax, [
+            newSexp = trampCall( callProcedure( nil, symbol_and_syntaxObj[0], lispSyntax, [
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
@@ -2294,10 +2329,11 @@ module Nendo
         end
 
         # compiling phase written
-        sym = toRubySymbol( "%compile-phase" )
+        origsym = "%compile-phase"
+        sym = toRubySymbol( origsym )
         if ( eval( sprintf( "(defined? @%s and Proc == @%s.class)", sym,sym ), @binding ))
           eval( sprintf( "@___tmp = @%s", sym ), @binding )
-          sexp = trampCall( callProcedure( sym, @___tmp, [ sexp ]))
+          sexp = trampCall( callProcedure( nil, origsym, @___tmp, [ sexp ]))
           if @debug
             printf( "\n          compiled= <<< %s >>>\n", (Printer.new())._print(sexp))
           end
@@ -2420,7 +2456,7 @@ module Nendo
 
       argsStr = (1..(pred.arity)).map { |n| "arg" + n.to_s }.join( "," )
       str = [ "def self." + origname + "(" + argsStr + ")",
-              sprintf( "  trampCall( callProcedure( '%s', @_%s, [ " + argsStr + " ] )) ",
+              sprintf( "  trampCall( callProcedure( nil, '%s', @_%s, [ " + argsStr + " ] )) ",
                        origname, origname ),
               "end ;",
               "def @core." + origname + "(" + argsStr + ")",

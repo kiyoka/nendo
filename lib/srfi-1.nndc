@@ -5,7 +5,7 @@
 
 trampCall( 
   begin
-      def self._xcons_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._xcons_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_xcons', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_xcons'] = self.method( :_xcons_METHOD )
     @_xcons = 
     trampCall(
@@ -36,7 +36,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._make_MIMARKlist_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._make_MIMARKlist_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_make_MIMARKlist', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_make_MIMARKlist'] = self.method( :_make_MIMARKlist_METHOD )
     @_make_MIMARKlist = 
     trampCall(
@@ -245,7 +245,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_MIMARKtabulate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._list_MIMARKtabulate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_list_MIMARKtabulate', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_MIMARKtabulate'] = self.method( :_list_MIMARKtabulate_METHOD )
     @_list_MIMARKtabulate = 
     trampCall(
@@ -312,7 +312,7 @@ trampCall(
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:48"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
-                                              trampCall( callProcedure(   'proc',
+                                              trampCall( callProcedure(  '_proc',  'proc',
                                                   begin
                                                       trampCall(_proc)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:48"] + __e.backtrace ) ; raise __e
@@ -371,7 +371,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._cons_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._cons_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_cons_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_cons_ASMARK'] = self.method( :_cons_ASMARK_METHOD )
     @_cons_ASMARK = 
     trampCall(
@@ -408,7 +408,7 @@ trampCall(
                                         trampCall(_x)
                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:60"] + __e.backtrace ) ; raise __e
                                     end                                  ,
-                                    trampCall( callProcedure(   'recur',
+                                    trampCall( callProcedure(  '_recur',  'recur',
                                         begin
                                             trampCall(_recur)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:59"] + __e.backtrace ) ; raise __e
@@ -481,7 +481,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_MIMARKcopy_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._list_MIMARKcopy_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_list_MIMARKcopy', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_MIMARKcopy'] = self.method( :_list_MIMARKcopy_METHOD )
     @_list_MIMARKcopy = 
     trampCall(
@@ -528,7 +528,7 @@ trampCall(
                                           end
                                     ]
                                                  ))                                  ,
-                                    trampCall( callProcedure(   'recur',
+                                    trampCall( callProcedure(  '_recur',  'recur',
                                         begin
                                             trampCall(_recur)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:67"] + __e.backtrace ) ; raise __e
@@ -583,7 +583,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._iota_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._iota_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_iota', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_iota'] = self.method( :_iota_METHOD )
     @_iota = 
     trampCall(
@@ -913,7 +913,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._circular_MIMARKlist_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._circular_MIMARKlist_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_circular_MIMARKlist', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_circular_MIMARKlist'] = self.method( :_circular_MIMARKlist_METHOD )
     @_circular_MIMARKlist = 
     trampCall(
@@ -981,7 +981,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._proper_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._proper_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_proper_MIMARKlist_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_proper_MIMARKlist_QUMARK'] = self.method( :_proper_MIMARKlist_QUMARK_METHOD )
     @_proper_MIMARKlist_QUMARK = 
     trampCall(
@@ -1205,7 +1205,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._dotted_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._dotted_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_dotted_MIMARKlist_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_dotted_MIMARKlist_QUMARK'] = self.method( :_dotted_MIMARKlist_QUMARK_METHOD )
     @_dotted_MIMARKlist_QUMARK = 
     trampCall(
@@ -1449,7 +1449,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._circular_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._circular_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_circular_MIMARKlist_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_circular_MIMARKlist_QUMARK'] = self.method( :_circular_MIMARKlist_QUMARK_METHOD )
     @_circular_MIMARKlist_QUMARK = 
     trampCall(
@@ -1565,7 +1565,7 @@ trampCall(
                                                                 false
                                                               end
                                                           } ; ___lambda.call(
-                                                                trampCall( callProcedure(   'lp',
+                                                                trampCall( callProcedure(  '_lp',  'lp',
                                                                     begin
                                                                         trampCall(_lp)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:177"] + __e.backtrace ) ; raise __e
@@ -1688,7 +1688,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._list_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_list_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_QUMARK'] = self.method( :_list_QUMARK_METHOD )
     @_list_QUMARK = 
     trampCall(
@@ -1734,7 +1734,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._not_MIMARKpair_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._not_MIMARKpair_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_not_MIMARKpair_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_not_MIMARKpair_QUMARK'] = self.method( :_not_MIMARKpair_QUMARK_METHOD )
     @_not_MIMARKpair_QUMARK = 
     trampCall(
@@ -1771,7 +1771,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._null_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._null_MIMARKlist_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_null_MIMARKlist_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_null_MIMARKlist_QUMARK'] = self.method( :_null_MIMARKlist_QUMARK_METHOD )
     @_null_MIMARKlist_QUMARK = 
     trampCall(
@@ -1846,7 +1846,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._list_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_list_EQMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_EQMARK'] = self.method( :_list_EQMARK_METHOD )
     @_list_EQMARK = 
     trampCall(
@@ -2094,7 +2094,7 @@ trampCall(
                                                                                                         end                                                                                                      ,
                                                                                                     [
                                                                                                         false                                                                                                        ,
-                                                                                                          trampCall( callProcedure(   '=',
+                                                                                                          trampCall( callProcedure(  '__EQMARK',  '=',
                                                                                                               begin
                                                                                                                   trampCall(__EQMARK)
                                                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:209"] + __e.backtrace ) ; raise __e
@@ -2320,7 +2320,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._length_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._length_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_length_PLMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_length_PLMARK'] = self.method( :_length_PLMARK_METHOD )
     @_length_PLMARK = 
     trampCall(
@@ -2559,7 +2559,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._zip_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._zip_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_zip', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_zip'] = self.method( :_zip_METHOD )
     @_zip = 
     trampCall(
@@ -2602,7 +2602,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._first_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._first_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_first', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_first'] = self.method( :_first_METHOD )
     @_first = 
     trampCall(
@@ -2619,7 +2619,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._second_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._second_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_second', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_second'] = self.method( :_second_METHOD )
     @_second = 
     trampCall(
@@ -2636,7 +2636,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._third_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._third_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_third', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_third'] = self.method( :_third_METHOD )
     @_third = 
     trampCall(
@@ -2653,7 +2653,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fourth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._fourth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_fourth', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fourth'] = self.method( :_fourth_METHOD )
     @_fourth = 
     trampCall(
@@ -2670,7 +2670,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fifth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._fifth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_fifth', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fifth'] = self.method( :_fifth_METHOD )
     @_fifth = 
     trampCall(
@@ -2707,7 +2707,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._sixth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._sixth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_sixth', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_sixth'] = self.method( :_sixth_METHOD )
     @_sixth = 
     trampCall(
@@ -2744,7 +2744,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._seventh_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._seventh_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_seventh', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_seventh'] = self.method( :_seventh_METHOD )
     @_seventh = 
     trampCall(
@@ -2781,7 +2781,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._eighth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._eighth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_eighth', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_eighth'] = self.method( :_eighth_METHOD )
     @_eighth = 
     trampCall(
@@ -2818,7 +2818,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._ninth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._ninth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_ninth', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_ninth'] = self.method( :_ninth_METHOD )
     @_ninth = 
     trampCall(
@@ -2865,7 +2865,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._tenth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._tenth_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_tenth', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_tenth'] = self.method( :_tenth_METHOD )
     @_tenth = 
     trampCall(
@@ -2912,7 +2912,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._car_PLMARKcdr_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._car_PLMARKcdr_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_car_PLMARKcdr', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_car_PLMARKcdr'] = self.method( :_car_PLMARKcdr_METHOD )
     @_car_PLMARKcdr = 
     trampCall(
@@ -2963,7 +2963,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._take_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_take', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take'] = self.method( :_take_METHOD )
     @_take = 
     trampCall(
@@ -3014,7 +3014,7 @@ trampCall(
                                           end
                                     ]
                                                  ))                                  ,
-                                    trampCall( callProcedure(   'recur',
+                                    trampCall( callProcedure(  '_recur',  'recur',
                                         begin
                                             trampCall(_recur)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:293"] + __e.backtrace ) ; raise __e
@@ -3083,7 +3083,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._drop_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_drop', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop'] = self.method( :_drop_METHOD )
     @_drop = 
     trampCall(
@@ -3182,7 +3182,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._take_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_take_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_EXMARK'] = self.method( :_take_EXMARK_METHOD )
     @_take_EXMARK = 
     trampCall(
@@ -3262,7 +3262,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._take_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_take_MIMARKright', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_MIMARKright'] = self.method( :_take_MIMARKright_METHOD )
     @_take_MIMARKright = 
     trampCall(
@@ -3374,7 +3374,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._drop_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_drop_MIMARKright', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop_MIMARKright'] = self.method( :_drop_MIMARKright_METHOD )
     @_drop_MIMARKright = 
     trampCall(
@@ -3423,7 +3423,7 @@ trampCall(
                                           end
                                     ]
                                                  ))                                  ,
-                                    trampCall( callProcedure(   'recur',
+                                    trampCall( callProcedure(  '_recur',  'recur',
                                         begin
                                             trampCall(_recur)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:321"] + __e.backtrace ) ; raise __e
@@ -3507,7 +3507,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_MIMARKright_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._drop_MIMARKright_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_drop_MIMARKright_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop_MIMARKright_EXMARK'] = self.method( :_drop_MIMARKright_EXMARK_METHOD )
     @_drop_MIMARKright_EXMARK = 
     trampCall(
@@ -3674,7 +3674,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._split_MIMARKat_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._split_MIMARKat_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_split_MIMARKat', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_split_MIMARKat'] = self.method( :_split_MIMARKat_METHOD )
     @_split_MIMARKat = 
     trampCall(
@@ -3726,7 +3726,7 @@ trampCall(
                                   end                                ,
                               [
                                     Proc.new { || 
-                                        trampCall( callProcedure(   'recur',
+                                        trampCall( callProcedure(  '_recur',  'recur',
                                             begin
                                                 trampCall(_recur)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:387"] + __e.backtrace ) ; raise __e
@@ -3840,7 +3840,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._split_MIMARKat_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._split_MIMARKat_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_split_MIMARKat_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_split_MIMARKat_EXMARK'] = self.method( :_split_MIMARKat_EXMARK_METHOD )
     @_split_MIMARKat_EXMARK = 
     trampCall(
@@ -3974,7 +3974,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._last_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._last_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_last', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_last'] = self.method( :_last_METHOD )
     @_last = 
     trampCall(
@@ -4011,7 +4011,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._last_MIMARKpair_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._last_MIMARKpair_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_last_MIMARKpair', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_last_MIMARKpair'] = self.method( :_last_MIMARKpair_METHOD )
     @_last_MIMARKpair = 
     trampCall(
@@ -4100,7 +4100,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip1_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._unzip1_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_unzip1', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip1'] = self.method( :_unzip1_METHOD )
     @_unzip1 = 
     trampCall(
@@ -4133,7 +4133,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip2_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._unzip2_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_unzip2', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip2'] = self.method( :_unzip2_METHOD )
     @_unzip2 = 
     trampCall(
@@ -4188,7 +4188,7 @@ trampCall(
                                         end                                      ,
                                     [
                                           Proc.new { || 
-                                              trampCall( callProcedure(   'recur',
+                                              trampCall( callProcedure(  '_recur',  'recur',
                                                   begin
                                                       trampCall(_recur)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:417"] + __e.backtrace ) ; raise __e
@@ -4324,7 +4324,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip3_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._unzip3_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_unzip3', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip3'] = self.method( :_unzip3_METHOD )
     @_unzip3 = 
     trampCall(
@@ -4383,7 +4383,7 @@ trampCall(
                                         end                                      ,
                                     [
                                           Proc.new { || 
-                                              trampCall( callProcedure(   'recur',
+                                              trampCall( callProcedure(  '_recur',  'recur',
                                                   begin
                                                       trampCall(_recur)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:425"] + __e.backtrace ) ; raise __e
@@ -4547,7 +4547,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip4_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._unzip4_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_unzip4', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip4'] = self.method( :_unzip4_METHOD )
     @_unzip4 = 
     trampCall(
@@ -4610,7 +4610,7 @@ trampCall(
                                         end                                      ,
                                     [
                                           Proc.new { || 
-                                              trampCall( callProcedure(   'recur',
+                                              trampCall( callProcedure(  '_recur',  'recur',
                                                   begin
                                                       trampCall(_recur)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:434"] + __e.backtrace ) ; raise __e
@@ -4802,7 +4802,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unzip5_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._unzip5_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_unzip5', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unzip5'] = self.method( :_unzip5_METHOD )
     @_unzip5 = 
     trampCall(
@@ -4869,7 +4869,7 @@ trampCall(
                                         end                                      ,
                                     [
                                           Proc.new { || 
-                                              trampCall( callProcedure(   'recur',
+                                              trampCall( callProcedure(  '_recur',  'recur',
                                                   begin
                                                       trampCall(_recur)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:444"] + __e.backtrace ) ; raise __e
@@ -5099,7 +5099,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._append_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_append_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_EXMARK'] = self.method( :_append_EXMARK_METHOD )
     @_append_EXMARK = 
     trampCall(
@@ -5399,7 +5399,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKreverse_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._append_MIMARKreverse_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_append_MIMARKreverse', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKreverse'] = self.method( :_append_MIMARKreverse_METHOD )
     @_append_MIMARKreverse = 
     trampCall(
@@ -5509,7 +5509,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKreverse_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._append_MIMARKreverse_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_append_MIMARKreverse_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKreverse_EXMARK'] = self.method( :_append_MIMARKreverse_EXMARK_METHOD )
     @_append_MIMARKreverse_EXMARK = 
     trampCall(
@@ -5622,7 +5622,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._concatenate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._concatenate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_concatenate', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_concatenate'] = self.method( :_concatenate_METHOD )
     @_concatenate = 
     trampCall(
@@ -5656,7 +5656,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._concatenate_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._concatenate_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_concatenate_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_concatenate_EXMARK'] = self.method( :_concatenate_EXMARK_METHOD )
     @_concatenate_EXMARK = 
     trampCall(
@@ -5690,7 +5690,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcdrs_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self.__PAMARKcdrs_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKcdrs', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcdrs'] = self.method( :__PAMARKcdrs_METHOD )
     @__PAMARKcdrs = 
     trampCall(
@@ -5767,7 +5767,7 @@ trampCall(
                                                               end
                                                         ]
                                                                      ))                                                      ,
-                                                        trampCall( callProcedure(   'recur',
+                                                        trampCall( callProcedure(  '_recur',  'recur',
                                                             begin
                                                                 trampCall(_recur)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:541"] + __e.backtrace ) ; raise __e
@@ -5871,7 +5871,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self.__PAMARKcars_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKcars_PLMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARK'] = self.method( :__PAMARKcars_PLMARK_METHOD )
     @__PAMARKcars_PLMARK = 
     trampCall(
@@ -5918,7 +5918,7 @@ trampCall(
                                           end
                                     ]
                                                  ))                                  ,
-                                    trampCall( callProcedure(   'recur',
+                                    trampCall( callProcedure(  '_recur',  'recur',
                                         begin
                                             trampCall(_recur)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:546"] + __e.backtrace ) ; raise __e
@@ -5983,7 +5983,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARKcdrs_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self.__PAMARKcars_PLMARKcdrs_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKcars_PLMARKcdrs', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARKcdrs'] = self.method( :__PAMARKcars_PLMARKcdrs_METHOD )
     @__PAMARKcars_PLMARKcdrs = 
     trampCall(
@@ -6117,7 +6117,7 @@ trampCall(
                                                                     end                                                                  ,
                                                                 [
                                                                       Proc.new { || 
-                                                                          trampCall( callProcedure(   'recur',
+                                                                          trampCall( callProcedure(  '_recur',  'recur',
                                                                               begin
                                                                                   trampCall(_recur)
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:565"] + __e.backtrace ) ; raise __e
@@ -6260,7 +6260,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARKcdrs_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self.__PAMARKcars_PLMARKcdrs_PLMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKcars_PLMARKcdrs_PLMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARKcdrs_PLMARK'] = self.method( :__PAMARKcars_PLMARKcdrs_PLMARK_METHOD )
     @__PAMARKcars_PLMARKcdrs_PLMARK = 
     trampCall(
@@ -6394,7 +6394,7 @@ trampCall(
                                                                     end                                                                  ,
                                                                 [
                                                                       Proc.new { || 
-                                                                          trampCall( callProcedure(   'recur',
+                                                                          trampCall( callProcedure(  '_recur',  'recur',
                                                                               begin
                                                                                   trampCall(_recur)
                                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:584"] + __e.backtrace ) ; raise __e
@@ -6550,7 +6550,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self.__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest'] = self.method( :__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest_METHOD )
     @__PAMARKcars_PLMARKcdrs_SLMARKno_MIMARKtest = 
     trampCall(
@@ -6634,7 +6634,7 @@ trampCall(
                                                       end                                                    ,
                                                   [
                                                         Proc.new { || 
-                                                            trampCall( callProcedure(   'recur',
+                                                            trampCall( callProcedure(  '_recur',  'recur',
                                                                 begin
                                                                     trampCall(_recur)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:595"] + __e.backtrace ) ; raise __e
@@ -6742,7 +6742,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._count_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._count_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_count', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_count'] = self.method( :_count_METHOD )
     @_count = 
     trampCall(
@@ -6836,7 +6836,7 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
                                                 end
                                             else
-                                                trampCall( callProcedure(   'lp',
+                                                trampCall( callProcedure(  '_lp',  'lp',
                                                     begin
                                                         trampCall(_lp)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
@@ -6991,7 +6991,7 @@ trampCall(
                                         ]
                                                      ))                                      ,
                                         if ( 
-                                          trampCall( callProcedure(   'pred',
+                                          trampCall( callProcedure(  '_pred',  'pred',
                                               begin
                                                   trampCall(_pred)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:617"] + __e.backtrace ) ; raise __e
@@ -7065,7 +7065,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unfold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._unfold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_unfold_MIMARKright', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unfold_MIMARKright'] = self.method( :_unfold_MIMARKright_METHOD )
     @_unfold_MIMARKright = 
     trampCall(
@@ -7081,7 +7081,7 @@ trampCall(
                     _lp                     = 
                       Proc.new { |_seed,_ans| 
                           if ( 
-                            trampCall( callProcedure(   'p',
+                            trampCall( callProcedure(  '_p',  'p',
                                 begin
                                     trampCall(_p)
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:628"] + __e.backtrace ) ; raise __e
@@ -7105,7 +7105,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:629"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
-                                    trampCall( callProcedure(   'g',
+                                    trampCall( callProcedure(  '_g',  'g',
                                         begin
                                             trampCall(_g)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:629"] + __e.backtrace ) ; raise __e
@@ -7125,7 +7125,7 @@ trampCall(
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:630"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                     [
-                                          trampCall( callProcedure(   'f',
+                                          trampCall( callProcedure(  '_f',  'f',
                                               begin
                                                   trampCall(_f)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:630"] + __e.backtrace ) ; raise __e
@@ -7213,7 +7213,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._unfold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._unfold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_unfold', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_unfold'] = self.method( :_unfold_METHOD )
     @_unfold = 
     trampCall(
@@ -7317,7 +7317,7 @@ trampCall(
                                   _recur                                   = 
                                     Proc.new { |_seed| 
                                         if ( 
-                                          trampCall( callProcedure(   'p',
+                                          trampCall( callProcedure(  '_p',  'p',
                                               begin
                                                   trampCall(_p)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:648"] + __e.backtrace ) ; raise __e
@@ -7351,7 +7351,7 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                             [
-                                                  trampCall( callProcedure(   'f',
+                                                  trampCall( callProcedure(  '_f',  'f',
                                                       begin
                                                           trampCall(_f)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
@@ -7363,13 +7363,13 @@ trampCall(
                                                         end
                                                   ]
                                                                ))                                                ,
-                                                  trampCall( callProcedure(   'recur',
+                                                  trampCall( callProcedure(  '_recur',  'recur',
                                                       begin
                                                           trampCall(_recur)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                   [
-                                                        trampCall( callProcedure(   'g',
+                                                        trampCall( callProcedure(  '_g',  'g',
                                                             begin
                                                                 trampCall(_g)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
@@ -7427,7 +7427,7 @@ trampCall(
                         _recur                         = 
                           Proc.new { |_seed| 
                               if ( 
-                                trampCall( callProcedure(   'p',
+                                trampCall( callProcedure(  '_p',  'p',
                                     begin
                                         trampCall(_p)
                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:648"] + __e.backtrace ) ; raise __e
@@ -7450,7 +7450,7 @@ trampCall(
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
-                                        trampCall( callProcedure(   'f',
+                                        trampCall( callProcedure(  '_f',  'f',
                                             begin
                                                 trampCall(_f)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
@@ -7462,13 +7462,13 @@ trampCall(
                                               end
                                         ]
                                                      ))                                      ,
-                                        trampCall( callProcedure(   'recur',
+                                        trampCall( callProcedure(  '_recur',  'recur',
                                             begin
                                                 trampCall(_recur)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
-                                              trampCall( callProcedure(   'g',
+                                              trampCall( callProcedure(  '_g',  'g',
                                                   begin
                                                       trampCall(_g)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:649"] + __e.backtrace ) ; raise __e
@@ -7511,7 +7511,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._fold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_fold', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fold'] = self.method( :_fold_METHOD )
     @_fold = 
     trampCall(
@@ -7588,7 +7588,7 @@ trampCall(
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:662"] + __e.backtrace ) ; raise __e
                                             end
                                         else
-                                            trampCall( callProcedure(   'lp',
+                                            trampCall( callProcedure(  '_lp',  'lp',
                                                 begin
                                                     trampCall(_lp)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:662"] + __e.backtrace ) ; raise __e
@@ -7703,7 +7703,7 @@ trampCall(
                                               end
                                         ]
                                                      ))                                      ,
-                                        trampCall( callProcedure(   'kons',
+                                        trampCall( callProcedure(  '_kons',  'kons',
                                             begin
                                                 trampCall(_kons)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:662"] + __e.backtrace ) ; raise __e
@@ -7762,7 +7762,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._fold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._fold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_fold_MIMARKright', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_fold_MIMARKright'] = self.method( :_fold_MIMARKright_METHOD )
     @_fold_MIMARKright = 
     trampCall(
@@ -7836,7 +7836,7 @@ trampCall(
                                                         trampCall(_lists)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:671"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                    trampCall( callProcedure(   'recur',
+                                                    trampCall( callProcedure(  '_recur',  'recur',
                                                         begin
                                                             trampCall(_recur)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:676"] + __e.backtrace ) ; raise __e
@@ -7939,7 +7939,7 @@ trampCall(
                                                   trampCall(_head)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:676"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                              trampCall( callProcedure(   'recur',
+                                              trampCall( callProcedure(  '_recur',  'recur',
                                                   begin
                                                       trampCall(_recur)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:676"] + __e.backtrace ) ; raise __e
@@ -8007,7 +8007,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._pair_MIMARKfold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._pair_MIMARKfold_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_pair_MIMARKfold_MIMARKright', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_pair_MIMARKfold_MIMARKright'] = self.method( :_pair_MIMARKfold_MIMARKright_METHOD )
     @_pair_MIMARKfold_MIMARKright = 
     trampCall(
@@ -8089,7 +8089,7 @@ trampCall(
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:685"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                     [
-                                                          trampCall( callProcedure(   'recur',
+                                                          trampCall( callProcedure(  '_recur',  'recur',
                                                               begin
                                                                   trampCall(_recur)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
@@ -8192,7 +8192,7 @@ trampCall(
                                             trampCall(_lis)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
                                         end                                      ,
-                                        trampCall( callProcedure(   'recur',
+                                        trampCall( callProcedure(  '_recur',  'recur',
                                             begin
                                                 trampCall(_recur)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:688"] + __e.backtrace ) ; raise __e
@@ -8243,7 +8243,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._pair_MIMARKfold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._pair_MIMARKfold_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_pair_MIMARKfold', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_pair_MIMARKfold'] = self.method( :_pair_MIMARKfold_METHOD )
     @_pair_MIMARKfold = 
     trampCall(
@@ -8438,7 +8438,7 @@ trampCall(
                                                   trampCall(_tail)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:701"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                              trampCall( callProcedure(   'f',
+                                              trampCall( callProcedure(  '_f',  'f',
                                                   begin
                                                       trampCall(_f)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:701"] + __e.backtrace ) ; raise __e
@@ -8504,7 +8504,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._reduce_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._reduce_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_reduce', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_reduce'] = self.method( :_reduce_METHOD )
     @_reduce = 
     trampCall(
@@ -8583,7 +8583,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._reduce_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._reduce_MIMARKright_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_reduce_MIMARKright', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_reduce_MIMARKright'] = self.method( :_reduce_MIMARKright_METHOD )
     @_reduce_MIMARKright = 
     trampCall(
@@ -8641,7 +8641,7 @@ trampCall(
                                             trampCall(_head)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:718"] + __e.backtrace ) ; raise __e
                                         end                                      ,
-                                        trampCall( callProcedure(   'recur',
+                                        trampCall( callProcedure(  '_recur',  'recur',
                                             begin
                                                 trampCall(_recur)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:717"] + __e.backtrace ) ; raise __e
@@ -8735,7 +8735,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._append_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_append_MIMARKmap', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKmap'] = self.method( :_append_MIMARKmap_METHOD )
     @_append_MIMARKmap = 
     trampCall(
@@ -8782,7 +8782,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._append_MIMARKmap_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._append_MIMARKmap_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_append_MIMARKmap_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_append_MIMARKmap_EXMARK'] = self.method( :_append_MIMARKmap_EXMARK_METHOD )
     @_append_MIMARKmap_EXMARK = 
     trampCall(
@@ -8829,7 +8829,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._really_MIMARKappend_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._really_MIMARKappend_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_really_MIMARKappend_MIMARKmap', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_really_MIMARKappend_MIMARKmap'] = self.method( :_really_MIMARKappend_MIMARKmap_METHOD )
     @_really_MIMARKappend_MIMARKmap = 
     trampCall(
@@ -8961,7 +8961,7 @@ trampCall(
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
                                                                 end
                                                             else
-                                                                trampCall( callProcedure(   'appender',
+                                                                trampCall( callProcedure(  '_appender',  'appender',
                                                                     begin
                                                                         trampCall(_appender)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
@@ -8971,7 +8971,7 @@ trampCall(
                                                                           trampCall(_vals)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
-                                                                      trampCall( callProcedure(   'recur',
+                                                                      trampCall( callProcedure(  '_recur',  'recur',
                                                                           begin
                                                                               trampCall(_recur)
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
@@ -9015,7 +9015,7 @@ trampCall(
                                                          )
                                             end
                                         }
-                                      trampCall( callProcedure(   'recur',
+                                      trampCall( callProcedure(  '_recur',  'recur',
                                           begin
                                               trampCall(_recur)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
@@ -9095,7 +9095,7 @@ trampCall(
                                                       trampCall(_vals)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
-                                                  trampCall( callProcedure(   'recur',
+                                                  trampCall( callProcedure(  '_recur',  'recur',
                                                       begin
                                                           trampCall(_recur)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:746"] + __e.backtrace ) ; raise __e
@@ -9135,7 +9135,7 @@ trampCall(
                                                          )
                                         end
                                     } ; ___lambda.call(
-                                          trampCall( callProcedure(   'f',
+                                          trampCall( callProcedure(  '_f',  'f',
                                               begin
                                                   trampCall(_f)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:744"] + __e.backtrace ) ; raise __e
@@ -9200,7 +9200,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._pair_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._pair_MIMARKfor_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_pair_MIMARKfor_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_pair_MIMARKfor_MIMARKeach'] = self.method( :_pair_MIMARKfor_MIMARKeach_METHOD )
     @_pair_MIMARKfor_MIMARKeach = 
     trampCall(
@@ -9359,7 +9359,7 @@ trampCall(
                                ) then
                                   begin
                                     ___lambda = lambda { |_tail| 
-                                        trampCall( callProcedure(   'proc',
+                                        trampCall( callProcedure(  '_proc',  'proc',
                                             begin
                                                 trampCall(_proc)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:763"] + __e.backtrace ) ; raise __e
@@ -9427,7 +9427,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._map_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._map_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_map_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_map_EXMARK'] = self.method( :_map_EXMARK_METHOD )
     @_map_EXMARK = 
     trampCall(
@@ -9551,7 +9551,7 @@ trampCall(
                                                                ))
                                             ]
                                                          ))
-                                            trampCall( callProcedure(   'lp',
+                                            trampCall( callProcedure(  '_lp',  'lp',
                                                 begin
                                                     trampCall(_lp)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:774"] + __e.backtrace ) ; raise __e
@@ -9582,7 +9582,7 @@ trampCall(
                                                ))
                               end
                           }
-                        trampCall( callProcedure(   'lp',
+                        trampCall( callProcedure(  '_lp',  'lp',
                             begin
                                 trampCall(_lp)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:774"] + __e.backtrace ) ; raise __e
@@ -9624,7 +9624,7 @@ trampCall(
                                       trampCall(_pair)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                  trampCall( callProcedure(   'f',
+                                  trampCall( callProcedure(  '_f',  'f',
                                       begin
                                           trampCall(_f)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
@@ -9668,7 +9668,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._filter_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._filter_MIMARKmap_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_filter_MIMARKmap', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_filter_MIMARKmap'] = self.method( :_filter_MIMARKmap_METHOD )
     @_filter_MIMARKmap = 
     trampCall(
@@ -9738,7 +9738,7 @@ trampCall(
                                          ) then
                                             if ( 
                                               begin
-                                                  def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                                                  def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                                                   @global_lisp_binding['___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111'] = self.method( :___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111_METHOD )
                                                 @___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20111 = 
                                                 trampCall(
@@ -9763,7 +9763,7 @@ trampCall(
                                                 )
                                               end
                                              ) then
-                                                trampCall( callProcedure( 'anonymouse', 
+                                                trampCall( callProcedure( nil, 'anonymouse', 
                                                     Proc.new { |_x| 
                                                         trampCall( self._cons_METHOD(  'cons',
                                                             begin
@@ -9777,7 +9777,7 @@ trampCall(
                                                                   trampCall(_x)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:788"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
-                                                              trampCall( callProcedure(   'recur',
+                                                              trampCall( callProcedure(  '_recur',  'recur',
                                                                   begin
                                                                       trampCall(_recur)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:789"] + __e.backtrace ) ; raise __e
@@ -9806,7 +9806,7 @@ trampCall(
                                                 true
                                                  ) then
                                                     begin
-                                                        trampCall( callProcedure(   'recur',
+                                                        trampCall( callProcedure(  '_recur',  'recur',
                                                             begin
                                                                 trampCall(_recur)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:789"] + __e.backtrace ) ; raise __e
@@ -9888,7 +9888,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._map_MIMARKin_MIMARKorder_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._map_MIMARKin_MIMARKorder_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_map_MIMARKin_MIMARKorder', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_map_MIMARKin_MIMARKorder'] = self.method( :_map_MIMARKin_MIMARKorder_METHOD )
     @_map_MIMARKin_MIMARKorder = 
     trampCall(
@@ -9970,7 +9970,7 @@ trampCall(
                                                             trampCall(_x)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:806"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
-                                                        trampCall( callProcedure(   'recur',
+                                                        trampCall( callProcedure(  '_recur',  'recur',
                                                             begin
                                                                 trampCall(_recur)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:806"] + __e.backtrace ) ; raise __e
@@ -10070,7 +10070,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._map_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._map_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_map', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_map'] = self.method( :_map_METHOD )
     @_map = 
     trampCall(
@@ -10087,7 +10087,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._for_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._for_MIMARKeach_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_for_MIMARKeach', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_for_MIMARKeach'] = self.method( :_for_MIMARKeach_METHOD )
     @_for_MIMARKeach = 
     trampCall(
@@ -10104,7 +10104,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._filter_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._filter_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_filter', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_filter'] = self.method( :_filter_METHOD )
     @_filter = 
     trampCall(
@@ -10121,7 +10121,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._filter_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._filter_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_filter_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_filter_EXMARK'] = self.method( :_filter_EXMARK_METHOD )
     @_filter_EXMARK = 
     trampCall(
@@ -10164,7 +10164,7 @@ trampCall(
                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:883"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                 [
-                                      trampCall( callProcedure(   'pred',
+                                      trampCall( callProcedure(  '_pred',  'pred',
                                           begin
                                               trampCall(_pred)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:902"] + __e.backtrace ) ; raise __e
@@ -10239,7 +10239,7 @@ trampCall(
                                                                      ))
                                                        ) then
                                                           if ( 
-                                                            trampCall( callProcedure(   'pred',
+                                                            trampCall( callProcedure(  '_pred',  'pred',
                                                                 begin
                                                                     trampCall(_pred)
                                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:902"] + __e.backtrace ) ; raise __e
@@ -10341,7 +10341,7 @@ trampCall(
                                                                                  ))
                                                                    ) then
                                                                       if ( 
-                                                                        trampCall( callProcedure(   'pred',
+                                                                        trampCall( callProcedure(  '_pred',  'pred',
                                                                             begin
                                                                                 trampCall(_pred)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:902"] + __e.backtrace ) ; raise __e
@@ -10472,7 +10472,7 @@ trampCall(
                                                                    )
                                                       end
                                                   }
-                                                trampCall( callProcedure(   'scan-in',
+                                                trampCall( callProcedure(  '_scan_MIMARKin',  'scan-in',
                                                     begin
                                                         trampCall(_scan_MIMARKin)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:907"] + __e.backtrace ) ; raise __e
@@ -10537,7 +10537,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._partition_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._partition_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_partition', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_partition'] = self.method( :_partition_METHOD )
     @_partition = 
     trampCall(
@@ -10594,7 +10594,7 @@ trampCall(
                                         end                                      ,
                                     [
                                           Proc.new { || 
-                                              trampCall( callProcedure(   'recur',
+                                              trampCall( callProcedure(  '_recur',  'recur',
                                                   begin
                                                       trampCall(_recur)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:921"] + __e.backtrace ) ; raise __e
@@ -10609,7 +10609,7 @@ trampCall(
                                           }                                        ,
                                           Proc.new { |_in,_out| 
                                               if ( 
-                                                trampCall( callProcedure(   'pred',
+                                                trampCall( callProcedure(  '_pred',  'pred',
                                                     begin
                                                         trampCall(_pred)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:922"] + __e.backtrace ) ; raise __e
@@ -10792,7 +10792,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._partition_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._partition_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_partition_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_partition_EXMARK'] = self.method( :_partition_EXMARK_METHOD )
     @_partition_EXMARK = 
     trampCall(
@@ -10859,7 +10859,7 @@ trampCall(
                                                          ))
                                            ) then
                                               if ( 
-                                                trampCall( callProcedure(   'pred',
+                                                trampCall( callProcedure(  '_pred',  'pred',
                                                     begin
                                                         trampCall(_pred)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:987"] + __e.backtrace ) ; raise __e
@@ -11025,7 +11025,7 @@ trampCall(
                                                          ))
                                            ) then
                                               if ( 
-                                                trampCall( callProcedure(   'pred',
+                                                trampCall( callProcedure(  '_pred',  'pred',
                                                     begin
                                                         trampCall(_pred)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:987"] + __e.backtrace ) ; raise __e
@@ -11169,7 +11169,7 @@ trampCall(
                               end
                           }
                         if ( 
-                          trampCall( callProcedure(   'pred',
+                          trampCall( callProcedure(  '_pred',  'pred',
                               begin
                                   trampCall(_pred)
                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:987"] + __e.backtrace ) ; raise __e
@@ -11244,7 +11244,7 @@ trampCall(
                                             end
                                         else
                                             if ( 
-                                              trampCall( callProcedure(   'pred',
+                                              trampCall( callProcedure(  '_pred',  'pred',
                                                   begin
                                                       trampCall(_pred)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:987"] + __e.backtrace ) ; raise __e
@@ -11300,7 +11300,7 @@ trampCall(
                                                 true
                                                  ) then
                                                     begin
-                                                        trampCall( callProcedure(   'scan-out',
+                                                        trampCall( callProcedure(  '_scan_MIMARKout',  'scan-out',
                                                             begin
                                                                 trampCall(_scan_MIMARKout)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:981"] + __e.backtrace ) ; raise __e
@@ -11438,7 +11438,7 @@ trampCall(
                                             end
                                         else
                                             if ( 
-                                              trampCall( callProcedure(   'pred',
+                                              trampCall( callProcedure(  '_pred',  'pred',
                                                   begin
                                                       trampCall(_pred)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:987"] + __e.backtrace ) ; raise __e
@@ -11462,7 +11462,7 @@ trampCall(
                                                            ))
                                              ) then
                                                 begin
-                                                    trampCall( callProcedure(   'scan-in',
+                                                    trampCall( callProcedure(  '_scan_MIMARKin',  'scan-in',
                                                         begin
                                                             trampCall(_scan_MIMARKin)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:988"] + __e.backtrace ) ; raise __e
@@ -11593,7 +11593,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._remove_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._remove_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_remove', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_remove'] = self.method( :_remove_METHOD )
     @_remove = 
     trampCall(
@@ -11615,7 +11615,7 @@ trampCall(
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:994"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
-                              trampCall( callProcedure(   'pred',
+                              trampCall( callProcedure(  '_pred',  'pred',
                                   begin
                                       trampCall(_pred)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:994"] + __e.backtrace ) ; raise __e
@@ -11644,7 +11644,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._remove_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._remove_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_remove_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_remove_EXMARK'] = self.method( :_remove_EXMARK_METHOD )
     @_remove_EXMARK = 
     trampCall(
@@ -11666,7 +11666,7 @@ trampCall(
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:995"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
-                              trampCall( callProcedure(   'pred',
+                              trampCall( callProcedure(  '_pred',  'pred',
                                   begin
                                       trampCall(_pred)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:995"] + __e.backtrace ) ; raise __e
@@ -11695,7 +11695,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._delete_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_delete', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete'] = self.method( :_delete_METHOD )
     @_delete = 
     trampCall(
@@ -11719,7 +11719,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1018"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
-                                    trampCall( callProcedure(   '=',
+                                    trampCall( callProcedure(  '__EQMARK',  '=',
                                         begin
                                             trampCall(__EQMARK)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1018"] + __e.backtrace ) ; raise __e
@@ -11802,7 +11802,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._delete_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_delete_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete_EXMARK'] = self.method( :_delete_EXMARK_METHOD )
     @_delete_EXMARK = 
     trampCall(
@@ -11826,7 +11826,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1022"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
-                                    trampCall( callProcedure(   '=',
+                                    trampCall( callProcedure(  '__EQMARK',  '=',
                                         begin
                                             trampCall(__EQMARK)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1022"] + __e.backtrace ) ; raise __e
@@ -11909,7 +11909,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._member_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._member_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_member', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_member'] = self.method( :_member_METHOD )
     @_member = 
     trampCall(
@@ -11925,7 +11925,7 @@ trampCall(
                         end                      ,
                     [
                           Proc.new { |_y| 
-                              trampCall( callProcedure(   '=',
+                              trampCall( callProcedure(  '__EQMARK',  '=',
                                   begin
                                       trampCall(__EQMARK)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1027"] + __e.backtrace ) ; raise __e
@@ -12006,7 +12006,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_MIMARKduplicates_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._delete_MIMARKduplicates_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_delete_MIMARKduplicates', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete_MIMARKduplicates'] = self.method( :_delete_MIMARKduplicates_METHOD )
     @_delete_MIMARKduplicates = 
     trampCall(
@@ -12091,7 +12091,7 @@ trampCall(
                                                                        )
                                                       end
                                                   } ; ___lambda.call(
-                                                        trampCall( callProcedure(   'recur',
+                                                        trampCall( callProcedure(  '_recur',  'recur',
                                                             begin
                                                                 trampCall(_recur)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1052"] + __e.backtrace ) ; raise __e
@@ -12233,7 +12233,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._delete_MIMARKduplicates_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._delete_MIMARKduplicates_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_delete_MIMARKduplicates_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_delete_MIMARKduplicates_EXMARK'] = self.method( :_delete_MIMARKduplicates_EXMARK_METHOD )
     @_delete_MIMARKduplicates_EXMARK = 
     trampCall(
@@ -12342,7 +12342,7 @@ trampCall(
                                                           end
                                                       end
                                                   } ; ___lambda.call(
-                                                        trampCall( callProcedure(   'recur',
+                                                        trampCall( callProcedure(  '_recur',  'recur',
                                                             begin
                                                                 trampCall(_recur)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1062"] + __e.backtrace ) ; raise __e
@@ -12484,7 +12484,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._assoc_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._assoc_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_assoc', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_assoc'] = self.method( :_assoc_METHOD )
     @_assoc = 
     trampCall(
@@ -12500,7 +12500,7 @@ trampCall(
                         end                      ,
                     [
                           Proc.new { |_entry| 
-                              trampCall( callProcedure(   '=',
+                              trampCall( callProcedure(  '__EQMARK',  '=',
                                   begin
                                       trampCall(__EQMARK)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1076"] + __e.backtrace ) ; raise __e
@@ -12591,7 +12591,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKcons_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._alist_MIMARKcons_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_alist_MIMARKcons', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKcons'] = self.method( :_alist_MIMARKcons_METHOD )
     @_alist_MIMARKcons = 
     trampCall(
@@ -12636,7 +12636,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKcopy_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._alist_MIMARKcopy_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_alist_MIMARKcopy', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKcopy'] = self.method( :_alist_MIMARKcopy_METHOD )
     @_alist_MIMARKcopy = 
     trampCall(
@@ -12703,7 +12703,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKdelete_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._alist_MIMARKdelete_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_alist_MIMARKdelete', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKdelete'] = self.method( :_alist_MIMARKdelete_METHOD )
     @_alist_MIMARKdelete = 
     trampCall(
@@ -12727,7 +12727,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1086"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
-                                    trampCall( callProcedure(   '=',
+                                    trampCall( callProcedure(  '__EQMARK',  '=',
                                         begin
                                             trampCall(__EQMARK)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1086"] + __e.backtrace ) ; raise __e
@@ -12820,7 +12820,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._alist_MIMARKdelete_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._alist_MIMARKdelete_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_alist_MIMARKdelete_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_alist_MIMARKdelete_EXMARK'] = self.method( :_alist_MIMARKdelete_EXMARK_METHOD )
     @_alist_MIMARKdelete_EXMARK = 
     trampCall(
@@ -12844,7 +12844,7 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1090"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
-                                    trampCall( callProcedure(   '=',
+                                    trampCall( callProcedure(  '__EQMARK',  '=',
                                         begin
                                             trampCall(__EQMARK)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1090"] + __e.backtrace ) ; raise __e
@@ -12937,14 +12937,14 @@ trampCall(
 
 trampCall( 
   begin
-      def self._find_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._find_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_find', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_find'] = self.method( :_find_METHOD )
     @_find = 
     trampCall(
           Proc.new { |_pred,_list| 
               if ( 
                 begin
-                    def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+                    def self.___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                     @global_lisp_binding['___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130'] = self.method( :___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130_METHOD )
                   @___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20130 = 
                   trampCall(
@@ -13004,7 +13004,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._find_MIMARKtail_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._find_MIMARKtail_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_find_MIMARKtail', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_find_MIMARKtail'] = self.method( :_find_MIMARKtail_METHOD )
     @_find_MIMARKtail = 
     trampCall(
@@ -13063,7 +13063,7 @@ trampCall(
                                          ))
                            ) then
                               if ( 
-                                trampCall( callProcedure(   'pred',
+                                trampCall( callProcedure(  '_pred',  'pred',
                                     begin
                                         trampCall(_pred)
                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1104"] + __e.backtrace ) ; raise __e
@@ -13142,7 +13142,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_MIMARKwhile_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._take_MIMARKwhile_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_take_MIMARKwhile', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_MIMARKwhile'] = self.method( :_take_MIMARKwhile_METHOD )
     @_take_MIMARKwhile = 
     trampCall(
@@ -13174,7 +13174,7 @@ trampCall(
                               begin
                                 ___lambda = lambda { |_x| 
                                     if ( 
-                                      trampCall( callProcedure(   'pred',
+                                      trampCall( callProcedure(  '_pred',  'pred',
                                           begin
                                               trampCall(_pred)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1112"] + __e.backtrace ) ; raise __e
@@ -13199,7 +13199,7 @@ trampCall(
                                                   trampCall(_x)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1113"] + __e.backtrace ) ; raise __e
                                               end                                            ,
-                                              trampCall( callProcedure(   'recur',
+                                              trampCall( callProcedure(  '_recur',  'recur',
                                                   begin
                                                       trampCall(_recur)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1113"] + __e.backtrace ) ; raise __e
@@ -13269,7 +13269,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._drop_MIMARKwhile_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._drop_MIMARKwhile_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_drop_MIMARKwhile', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_drop_MIMARKwhile'] = self.method( :_drop_MIMARKwhile_METHOD )
     @_drop_MIMARKwhile = 
     trampCall(
@@ -13299,7 +13299,7 @@ trampCall(
                             Cell.new()
                           else
                               if ( 
-                                trampCall( callProcedure(   'pred',
+                                trampCall( callProcedure(  '_pred',  'pred',
                                     begin
                                         trampCall(_pred)
                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1120"] + __e.backtrace ) ; raise __e
@@ -13376,7 +13376,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._take_MIMARKwhile_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._take_MIMARKwhile_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_take_MIMARKwhile_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_take_MIMARKwhile_EXMARK'] = self.method( :_take_MIMARKwhile_EXMARK_METHOD )
     @_take_MIMARKwhile_EXMARK = 
     trampCall(
@@ -13421,7 +13421,7 @@ trampCall(
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1126"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
-                                        trampCall( callProcedure(   'pred',
+                                        trampCall( callProcedure(  '_pred',  'pred',
                                             begin
                                                 trampCall(_pred)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1130"] + __e.backtrace ) ; raise __e
@@ -13492,7 +13492,7 @@ trampCall(
                                       begin
                                         ___lambda = lambda { |_x| 
                                             if ( 
-                                              trampCall( callProcedure(   'pred',
+                                              trampCall( callProcedure(  '_pred',  'pred',
                                                   begin
                                                       trampCall(_pred)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1130"] + __e.backtrace ) ; raise __e
@@ -13505,7 +13505,7 @@ trampCall(
                                               ]
                                                            ))
                                              ) then
-                                                trampCall( callProcedure(   'lp',
+                                                trampCall( callProcedure(  '_lp',  'lp',
                                                     begin
                                                         trampCall(_lp)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1130"] + __e.backtrace ) ; raise __e
@@ -13567,7 +13567,7 @@ trampCall(
                                       end
                                   end
                               }
-                            trampCall( callProcedure(   'lp',
+                            trampCall( callProcedure(  '_lp',  'lp',
                                 begin
                                     trampCall(_lp)
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1130"] + __e.backtrace ) ; raise __e
@@ -13611,7 +13611,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._span_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._span_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_span', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_span'] = self.method( :_span_METHOD )
     @_span = 
     trampCall(
@@ -13654,7 +13654,7 @@ trampCall(
                               begin
                                 ___lambda = lambda { |_x| 
                                     if ( 
-                                      trampCall( callProcedure(   'pred',
+                                      trampCall( callProcedure(  '_pred',  'pred',
                                           begin
                                               trampCall(_pred)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1139"] + __e.backtrace ) ; raise __e
@@ -13676,7 +13676,7 @@ trampCall(
                                             end                                          ,
                                         [
                                               Proc.new { || 
-                                                  trampCall( callProcedure(   'recur',
+                                                  trampCall( callProcedure(  '_recur',  'recur',
                                                       begin
                                                           trampCall(_recur)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1140"] + __e.backtrace ) ; raise __e
@@ -13795,7 +13795,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._span_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._span_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_span_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_span_EXMARK'] = self.method( :_span_EXMARK_METHOD )
     @_span_EXMARK = 
     trampCall(
@@ -13840,7 +13840,7 @@ trampCall(
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1146"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
-                                        trampCall( callProcedure(   'pred',
+                                        trampCall( callProcedure(  '_pred',  'pred',
                                             begin
                                                 trampCall(_pred)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1150"] + __e.backtrace ) ; raise __e
@@ -13950,7 +13950,7 @@ trampCall(
                                           begin
                                             ___lambda = lambda { |_x| 
                                                 if ( 
-                                                  trampCall( callProcedure(   'pred',
+                                                  trampCall( callProcedure(  '_pred',  'pred',
                                                       begin
                                                           trampCall(_pred)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1150"] + __e.backtrace ) ; raise __e
@@ -14072,7 +14072,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._break_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._break_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_break', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_break'] = self.method( :_break_METHOD )
     @_break = 
     trampCall(
@@ -14094,7 +14094,7 @@ trampCall(
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1156"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
-                              trampCall( callProcedure(   'pred',
+                              trampCall( callProcedure(  '_pred',  'pred',
                                   begin
                                       trampCall(_pred)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1156"] + __e.backtrace ) ; raise __e
@@ -14123,7 +14123,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._break_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._break_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_break_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_break_EXMARK'] = self.method( :_break_EXMARK_METHOD )
     @_break_EXMARK = 
     trampCall(
@@ -14145,7 +14145,7 @@ trampCall(
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1157"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
-                              trampCall( callProcedure(   'pred',
+                              trampCall( callProcedure(  '_pred',  'pred',
                                   begin
                                       trampCall(_pred)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1157"] + __e.backtrace ) ; raise __e
@@ -14174,7 +14174,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._any_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._any_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_any', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_any'] = self.method( :_any_METHOD )
     @_any = 
     trampCall(
@@ -14347,7 +14347,7 @@ trampCall(
                                                                             false
                                                                           end
                                                                       } ; ___lambda.call(
-                                                                            trampCall( callProcedure(   'lp',
+                                                                            trampCall( callProcedure(  '_lp',  'lp',
                                                                                 begin
                                                                                     trampCall(_lp)
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1177"] + __e.backtrace ) ; raise __e
@@ -14411,7 +14411,7 @@ trampCall(
                                             ]
                                                          ))
                                         }
-                                      trampCall( callProcedure(   'lp',
+                                      trampCall( callProcedure(  '_lp',  'lp',
                                           begin
                                               trampCall(_lp)
                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1177"] + __e.backtrace ) ; raise __e
@@ -14547,7 +14547,7 @@ trampCall(
                                                         false
                                                       end
                                                   } ; ___lambda.call(
-                                                        trampCall( callProcedure(   'lp',
+                                                        trampCall( callProcedure(  '_lp',  'lp',
                                                             begin
                                                                 trampCall(_lp)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1177"] + __e.backtrace ) ; raise __e
@@ -14587,7 +14587,7 @@ trampCall(
                                                 end
                                             end
                                         } ; ___lambda.call(
-                                              trampCall( callProcedure(   'pred',
+                                              trampCall( callProcedure(  '_pred',  'pred',
                                                   begin
                                                       trampCall(_pred)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1177"] + __e.backtrace ) ; raise __e
@@ -14655,7 +14655,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._every_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._every_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_every', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_every'] = self.method( :_every_METHOD )
     @_every = 
     trampCall(
@@ -14832,7 +14832,7 @@ trampCall(
                                                                           ]
                                                                                        ))
                                                                          ) then
-                                                                            trampCall( callProcedure(   'lp',
+                                                                            trampCall( callProcedure(  '_lp',  'lp',
                                                                                 begin
                                                                                     trampCall(_lp)
                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1204"] + __e.backtrace ) ; raise __e
@@ -14875,7 +14875,7 @@ trampCall(
                                                           ]
                                                                        ))
                                                       }
-                                                    trampCall( callProcedure(   'lp',
+                                                    trampCall( callProcedure(  '_lp',  'lp',
                                                         begin
                                                             trampCall(_lp)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1204"] + __e.backtrace ) ; raise __e
@@ -15009,7 +15009,7 @@ trampCall(
                                                                 end                                                              ,
                                                             [
                                                                 false                                                                ,
-                                                                  trampCall( callProcedure(   'pred',
+                                                                  trampCall( callProcedure(  '_pred',  'pred',
                                                                       begin
                                                                           trampCall(_pred)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1204"] + __e.backtrace ) ; raise __e
@@ -15136,7 +15136,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._list_MIMARKindex_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._list_MIMARKindex_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_list_MIMARKindex', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_list_MIMARKindex'] = self.method( :_list_MIMARKindex_METHOD )
     @_list_MIMARKindex = 
     trampCall(
@@ -15250,7 +15250,7 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1220"] + __e.backtrace ) ; raise __e
                                                 end
                                             else
-                                                trampCall( callProcedure(   'lp',
+                                                trampCall( callProcedure(  '_lp',  'lp',
                                                     begin
                                                         trampCall(_lp)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1220"] + __e.backtrace ) ; raise __e
@@ -15369,7 +15369,7 @@ trampCall(
                                              ))
                                ) then
                                   if ( 
-                                    trampCall( callProcedure(   'pred',
+                                    trampCall( callProcedure(  '_pred',  'pred',
                                         begin
                                             trampCall(_pred)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1220"] + __e.backtrace ) ; raise __e
@@ -15465,7 +15465,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._reverse_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._reverse_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_reverse_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_reverse_EXMARK'] = self.method( :_reverse_EXMARK_METHOD )
     @_reverse_EXMARK = 
     trampCall(
@@ -15575,7 +15575,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self.__PAMARKlset2_LTMARK_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self.__PAMARKlset2_LTMARK_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKlset2_LTMARK_EQMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARKlset2_LTMARK_EQMARK'] = self.method( :__PAMARKlset2_LTMARK_EQMARK_METHOD )
     @__PAMARKlset2_LTMARK_EQMARK = 
     trampCall(
@@ -15626,7 +15626,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_LTMARK_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_LTMARK_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_LTMARK_EQMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_LTMARK_EQMARK'] = self.method( :_lset_LTMARK_EQMARK_METHOD )
     @_lset_LTMARK_EQMARK = 
     trampCall(
@@ -15954,7 +15954,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_EQMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_EQMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_EQMARK'] = self.method( :_lset_EQMARK_METHOD )
     @_lset_EQMARK = 
     trampCall(
@@ -16330,7 +16330,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKadjoin_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKadjoin_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKadjoin', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKadjoin'] = self.method( :_lset_MIMARKadjoin_METHOD )
     @_lset_MIMARKadjoin = 
     trampCall(
@@ -16413,7 +16413,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKunion_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKunion_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKunion', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKunion'] = self.method( :_lset_MIMARKunion_METHOD )
     @_lset_MIMARKunion = 
     trampCall(
@@ -16525,7 +16525,7 @@ trampCall(
                                                             end                                                          ,
                                                         [
                                                               Proc.new { |_x| 
-                                                                  trampCall( callProcedure(   '=',
+                                                                  trampCall( callProcedure(  '__EQMARK',  '=',
                                                                       begin
                                                                           trampCall(__EQMARK)
                                                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1288"] + __e.backtrace ) ; raise __e
@@ -16607,7 +16607,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKunion_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKunion_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKunion_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKunion_EXMARK'] = self.method( :_lset_MIMARKunion_EXMARK_METHOD )
     @_lset_MIMARKunion_EXMARK = 
     trampCall(
@@ -16721,7 +16721,7 @@ trampCall(
                                                                   end                                                                ,
                                                               [
                                                                     Proc.new { |_x| 
-                                                                        trampCall( callProcedure(   '=',
+                                                                        trampCall( callProcedure(  '__EQMARK',  '=',
                                                                             begin
                                                                                 trampCall(__EQMARK)
                                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1303"] + __e.backtrace ) ; raise __e
@@ -16826,7 +16826,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKintersection_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKintersection_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKintersection', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKintersection'] = self.method( :_lset_MIMARKintersection_METHOD )
     @_lset_MIMARKintersection = 
     trampCall(
@@ -16983,7 +16983,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKintersection_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKintersection_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKintersection_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKintersection_EXMARK'] = self.method( :_lset_MIMARKintersection_EXMARK_METHOD )
     @_lset_MIMARKintersection_EXMARK = 
     trampCall(
@@ -17140,7 +17140,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdifference_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKdifference_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKdifference', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdifference'] = self.method( :_lset_MIMARKdifference_METHOD )
     @_lset_MIMARKdifference = 
     trampCall(
@@ -17301,7 +17301,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdifference_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKdifference_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKdifference_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdifference_EXMARK'] = self.method( :_lset_MIMARKdifference_EXMARK_METHOD )
     @_lset_MIMARKdifference_EXMARK = 
     trampCall(
@@ -17462,7 +17462,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKxor_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKxor_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKxor', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKxor'] = self.method( :_lset_MIMARKxor_METHOD )
     @_lset_MIMARKxor = 
     trampCall(
@@ -17686,7 +17686,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKxor_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKxor_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKxor_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKxor_EXMARK'] = self.method( :_lset_MIMARKxor_EXMARK_METHOD )
     @_lset_MIMARKxor_EXMARK = 
     trampCall(
@@ -17926,7 +17926,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdiff_PLMARKintersection_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKdiff_PLMARKintersection_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKdiff_PLMARKintersection', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdiff_PLMARKintersection'] = self.method( :_lset_MIMARKdiff_PLMARKintersection_METHOD )
     @_lset_MIMARKdiff_PLMARKintersection = 
     trampCall(
@@ -18093,7 +18093,7 @@ trampCall(
 
 trampCall( 
   begin
-      def self._lset_MIMARKdiff_PLMARKintersection_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      def self._lset_MIMARKdiff_PLMARKintersection_EXMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_lset_MIMARKdiff_PLMARKintersection_EXMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_lset_MIMARKdiff_PLMARKintersection_EXMARK'] = self.method( :_lset_MIMARKdiff_PLMARKintersection_EXMARK_METHOD )
     @_lset_MIMARKdiff_PLMARKintersection_EXMARK = 
     trampCall(
