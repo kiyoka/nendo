@@ -25,6 +25,17 @@
                        ,proc))))
        (.puts ""))))
 
+(define ten-times
+  (macro (expr)
+    `(begin
+       ,expr ,expr ,expr ,expr ,expr
+       ,expr ,expr ,expr ,expr ,expr)))
+
+(define hundled-times
+  (macro (expr)
+    `(begin
+       (ten-times ,expr) (ten-times ,expr) (ten-times ,expr) (ten-times ,expr) (ten-times ,expr)
+       (ten-times ,expr) (ten-times ,expr) (ten-times ,expr) (ten-times ,expr) (ten-times ,expr))))
 
 ;; -------------------- fact --------------------
 (bench-task #f
@@ -35,6 +46,23 @@
             "fact (nendo version)"
             (printf " => %d\n" (fact 1000)))
 
+
+;; -------------------- plus --------------------
+(bench-task #f
+            "+ 0arg (nendo version)"
+            (printf " => %d\n" (hundled-times (plus0))))
+
+(bench-task #t
+            "+ 1arg (nendo version)"
+            (printf " => %d\n" (hundled-times (plus1))))
+
+(bench-task #t
+            "+ 2arg (nendo version)"
+            (printf " => %d\n" (hundled-times (plus2))))
+
+(bench-task #f
+            "+ 3arg (nendo version)"
+            (printf " => %d\n" (hundled-times (plus3))))
 
 ;; -------------------- tak --------------------
 (bench-task #f
