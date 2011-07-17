@@ -229,14 +229,6 @@ module Nendo
       @renamedSymbol
     end
 
-#    def ==(other_sc)
-#      if other_sc.is_a? SyntacticClosure
-#        @renamedSymbol == other_sc.renamedSymbol
-#      else
-#        false
-#      end
-#    end
-
     def sourcefile()  "dynamic S-expression ( no source )"  end
     def lineno()      1                                     end
 
@@ -1707,29 +1699,95 @@ module Nendo
         else
           # Nendo function
           arr = separateWith( args.map { |x| x.car }, "," )
+          origname = funcname.to_s
+          sym   = toRubySymbol( origname )
           if EXEC_TYPE_ANONYMOUS == execType
             [sprintf( "trampCall( callProcedure( nil, 'anonymouse', " ),
-             [ funcname ] + [ "," ],
-             "[", arr, "]",
-             "          ))"]
+              [ funcname ] + [ "," ],
+              "[", arr, "]",
+              "          ))"]
           else
-            origname = funcname.to_s
-            funcname = funcname.to_s
-            sym      = toRubySymbol( funcname )
-            _call = case execType
-                    when EXEC_TYPE_NORMAL
-                      if locals.flatten.include?( sym )
-                        [          "trampCall( callProcedure(  '" + sym + "', ", "))" ] # local function
-                      else
-                        [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
+            shortcut = false
+            if (execType == EXEC_TYPE_NORMAL) and (not locals.flatten.include?( sym ))
+              shortcut = case origname
+                         when '+'
+                           case arr.length
+                           when 0
+                               [ "__PLMARK_ARGS0(",                                            ")" ]
+                           when 1
+                               [ "__PLMARK_ARGS1(",                arr[0],                     ")" ]
+                           when 2
+                               [ "__PLMARK_ARGS2(",                arr[0], arr[1],             ")" ]
+                           when 3
+                               [ "__PLMARK_ARGS3(",                arr[0], arr[1], arr[2],     ")" ]
+                           else
+                             false
+                           end
+                         when '-'
+                           case arr.length
+                           when 0
+                               [ "__MIMARK_ARGS0(",                                            ")" ]
+                           when 1
+                               [ "__MIMARK_ARGS1(",                arr[0],                     ")" ]
+                           when 2
+                               [ "__MIMARK_ARGS2(",                arr[0], arr[1],             ")" ]
+                           when 3
+                               [ "__MIMARK_ARGS3(",                arr[0], arr[1], arr[2],     ")" ]
+                           else
+                             false
+                           end
+                         when 'car'
+                           [ "_car(",                              arr[0],         ")" ]
+                         when 'cdr'
+                           [ "_cdr(",                              arr[0],         ")" ]
+                         when 'not'
+                           [ "_not(",                              arr[0],         ")" ]
+                         when 'cons'
+                           case arr.length
+                           when 2
+                             [ "_cons(",                             arr[0], arr[1], ")" ]
+                           else
+                             false
+                           end
+                         when '='
+                           [ "__EQMARK(",                          arr[0], arr[1], ")" ]
+                         when '>'
+                           [ "__GTMARK(",                          arr[0], arr[1], ")" ]
+                         when '>='
+                           [ "__GTMARK_EQMARK(",                   arr[0], arr[1], ")" ]
+                         when '<'
+                           [ "__LTMARK(",                          arr[0], arr[1], ")" ]
+                         when '<='
+                           [ "__LTMARK_EQMARK(",                   arr[0], arr[1], ")" ]
+                         when 'eq?'
+                           [ "_eq_QUMARK(",                        arr[0], arr[1], ")" ]
+                         when 'eqv?'
+                           [ "_eqv_QUMARK(",                       arr[0], arr[1], ")" ]
+                         when 'equal?'
+                           [ "_equal_QUMARK(",                     arr[0], arr[1], ")" ]
+                         else
+                           false
+                         end
+            end
+            if shortcut
+              shortcut
+            else
+              _call = case execType
+                      when EXEC_TYPE_NORMAL
+                        if locals.flatten.include?( sym )
+                          [          "trampCall( callProcedure(  '" + sym + "', ", "))" ] # local function
+                        else
+                          [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
+                        end
+                      when EXEC_TYPE_TAILCALL
+                        [ sprintf( "delayCall( '%s', ", sym ),  ")"  ]
                       end
-                    when EXEC_TYPE_TAILCALL
-                      [ sprintf( "delayCall( '%s', ", sym ),  ")"  ]
-                    end
-            [sprintf( "%s '%s',", _call[0], origname ),
-             [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
-             "[", arr, "]",
-             sprintf( "             %s", _call[1] )]
+
+              [sprintf( "%s '%s',", _call[0], origname ),
+                [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
+                "[", arr, "]",
+                sprintf( "             %s", _call[1] )]
+            end
           end
         end
       end

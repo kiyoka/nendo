@@ -76,20 +76,12 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                             [
-                                                  trampCall( self._car_METHOD(  'car',
+                                                  _car(
                                                       begin
-                                                        if @global_lisp_binding.has_key?('_car') then
-                                                          trampCall(@_car)
-                                                        else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_tree)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
-                                                        end
-                                                  ]
-                                                               ))                                                ,
+                                                          trampCall(_tree)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )                                                ,
                                                   begin
                                                       trampCall(_out)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
@@ -102,20 +94,12 @@ trampCall(
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                             [
-                                                  trampCall( self._cdr_METHOD(  'cdr',
+                                                  _cdr(
                                                       begin
-                                                        if @global_lisp_binding.has_key?('_cdr') then
-                                                          trampCall(@_cdr)
-                                                        else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_tree)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
-                                                        end
-                                                  ]
-                                                               ))
+                                                          trampCall(_tree)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )
                                             ]
                                                          )
                                         end

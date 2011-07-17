@@ -37,21 +37,13 @@ trampCall(
                           rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                         end                      ,
                       "%s"                      ,
-                        trampCall( self.__PLMARK_METHOD(  '+',
+                        __PLMARK_ARGS2(
+                          "Nendo: "                          ,
                             begin
-                              if @global_lisp_binding.has_key?('__PLMARK') then
-                                trampCall(@__PLMARK)
-                              else raise NameError.new( "Error: undefined variable __PLMARK", "__PLMARK" ) end
+                                trampCall(_str)
                               rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
-                            end                          ,
-                        [
-                            "Nendo: "                            ,
-                              begin
-                                  trampCall(_str)
-                                rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
-                              end
-                        ]
-                                     ))
+                            end
+                        )
                     )
                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
               end

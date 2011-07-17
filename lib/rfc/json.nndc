@@ -158,54 +158,30 @@ trampCall(
                                   end                                ,
                               [
                                     Proc.new { |_entry| 
-                                        trampCall( self._cons_METHOD(  'cons',
-                                            begin
-                                              if @global_lisp_binding.has_key?('_cons') then
-                                                trampCall(@_cons)
-                                              else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:54"] + __e.backtrace ) ; raise __e
-                                            end                                          ,
-                                        [
-                                              trampCall( self._car_METHOD(  'car',
-                                                  begin
-                                                    if @global_lisp_binding.has_key?('_car') then
-                                                      trampCall(@_car)
-                                                    else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:54"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    begin
-                                                        trampCall(_entry)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
-                                                    end
-                                              ]
-                                                           ))                                            ,
-                                              trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
-                                                  begin
-                                                    if @global_lisp_binding.has_key?('__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist') then
-                                                      trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
-                                                    else raise NameError.new( "Error: undefined variable __PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist", "__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    trampCall( self._cdr_METHOD(  'cdr',
-                                                        begin
-                                                          if @global_lisp_binding.has_key?('_cdr') then
-                                                            trampCall(@_cdr)
-                                                          else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
-                                                        end                                                      ,
-                                                    [
-                                                          begin
-                                                              trampCall(_entry)
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
-                                                          end
-                                                    ]
-                                                                 ))
-                                              ]
-                                                           ))
-                                        ]
-                                                     ))
+                                        _cons(
+                                            _car(
+                                                begin
+                                                    trampCall(_entry)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
+                                                end
+                                            )                                          ,
+                                            trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
+                                                begin
+                                                  if @global_lisp_binding.has_key?('__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist') then
+                                                    trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
+                                                  else raise NameError.new( "Error: undefined variable __PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist", "__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist" ) end
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
+                                                end                                              ,
+                                            [
+                                                  _cdr(
+                                                      begin
+                                                          trampCall(_entry)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )
+                                            ]
+                                                         ))
+                                        )
                                     }                                  ,
                                     trampCall( self._hash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  'hash-table->alist',
                                         begin
@@ -385,54 +361,30 @@ trampCall(
                                         end                                      ,
                                     [
                                           Proc.new { |_entry| 
-                                              trampCall( self._cons_METHOD(  'cons',
-                                                  begin
-                                                    if @global_lisp_binding.has_key?('_cons') then
-                                                      trampCall(@_cons)
-                                                    else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:74"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    trampCall( self._car_METHOD(  'car',
-                                                        begin
-                                                          if @global_lisp_binding.has_key?('_car') then
-                                                            trampCall(@_car)
-                                                          else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:74"] + __e.backtrace ) ; raise __e
-                                                        end                                                      ,
-                                                    [
-                                                          begin
-                                                              trampCall(_entry)
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
-                                                          end
-                                                    ]
-                                                                 ))                                                  ,
-                                                    trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                                                        begin
-                                                          if @global_lisp_binding.has_key?('__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable') then
-                                                            trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
-                                                          else raise NameError.new( "Error: undefined variable __PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable", "__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
-                                                        end                                                      ,
-                                                    [
-                                                          trampCall( self._cdr_METHOD(  'cdr',
-                                                              begin
-                                                                if @global_lisp_binding.has_key?('_cdr') then
-                                                                  trampCall(@_cdr)
-                                                                else raise NameError.new( "Error: undefined variable _cdr", "_cdr" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,
-                                                          [
-                                                                begin
-                                                                    trampCall(_entry)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
-                                                                end
-                                                          ]
-                                                                       ))
-                                                    ]
-                                                                 ))
-                                              ]
-                                                           ))
+                                              _cons(
+                                                  _car(
+                                                      begin
+                                                          trampCall(_entry)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )                                                ,
+                                                  trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                                                      begin
+                                                        if @global_lisp_binding.has_key?('__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable') then
+                                                          trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
+                                                        else raise NameError.new( "Error: undefined variable __PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable", "__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable" ) end
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
+                                                      end                                                    ,
+                                                  [
+                                                        _cdr(
+                                                            begin
+                                                                trampCall(_entry)
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
+                                                            end
+                                                        )
+                                                  ]
+                                                               ))
+                                              )
                                           }                                        ,
                                           begin
                                               trampCall(_obj)
