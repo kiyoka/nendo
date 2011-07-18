@@ -1538,31 +1538,25 @@ module Nendo
       else
         num = num.abs( )-1
         raise ArgumentError, errorMessageOf_toRubyArgument( origname, 3, num, len ) if num > len
-        if num == len
-          result = args
-          result << Cell.new
-          result
-        else
-          params = []
-          rest = []
-          args.each_with_index { |x,i|
-            if i < num
-              params << x
-            else
-              rest   << x
-            end
-          }
-          result = []
-          if 0 < params.length
-            result = params
-          end
-          if 0 == rest.length
-            result << Cell.new
+        params = []
+        rest = []
+        args.each_with_index { |x,i|
+          if i < num
+            params << x
           else
-            result << rest.to_list
+            rest   << x
           end
-          result
+        }
+        result = []
+        if 0 < params.length
+          result = params
         end
+        if 0 == rest.length
+          result << Cell.new
+        else
+          result << rest.to_list
+        end
+        result
       end
     end
 
