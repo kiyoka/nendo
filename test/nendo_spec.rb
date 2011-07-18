@@ -613,6 +613,11 @@ class TestClassForBlockArgument
   def arg5
     yield 10,20,30,40,50
   end
+
+  def arg1_plus_1( arg1 )
+    yield  arg1, 200
+  end
+
 end
 
 describe Nendo, "when use &block(Ruby's block) " do
@@ -628,6 +633,86 @@ describe Nendo, "when use &block(Ruby's block) " do
     @nendo.evalStr( " (testclass.arg5 (&block (a b c d e)  (to-arr (list a b c d e)))) " ).should == "#(10 20 30 40 50)"
   end
 end
+
+describe Nendo, "when call variable length functions" do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    # fixed length
+    @nendo.evalStr( <<EOS
+(define (arg0)          0)
+(define (arg1 a)        a)
+(define (arg2 a b)      b)
+(define (arg3 a b c)    c)
+(define (arg4 a b c d)  d)
+(list
+ (arg0)
+ (arg1 1)
+ (arg2 1 2)
+ (arg3 1 2 3)
+ (arg4 1 2 3 4))
+EOS
+           ).should == "(0 1 2 3 4)"
+
+    @nendo.evalStr( <<EOS
+(define (func-var-arg . arg)    arg)
+(list
+ (func-var-arg)
+ (func-var-arg 1)
+ (func-var-arg 1 2)
+ (func-var-arg 1 2 3)
+ (func-var-arg 1 2 3 4))
+EOS
+           ).should == "(() (1) (1 2) (1 2 3) (1 2 3 4))"
+
+    @nendo.evalStr( <<EOS
+(define (func-var-arg first . rest)    rest)
+(list
+ (func-var-arg 0)
+ (func-var-arg 0 1)
+ (func-var-arg 0 1 2)
+ (func-var-arg 0 1 2 3)
+ (func-var-arg 0 1 2 3 4))
+EOS
+           ).should == "(() (1) (1 2) (1 2 3) (1 2 3 4))"
+
+    @nendo.evalStr( <<EOS
+(define (func-var-arg first second . rest)    (cons second rest))
+(list
+ (func-var-arg "f" "s")
+ (func-var-arg "f" "s" 1)
+ (func-var-arg "f" "s" 1 2)
+ (func-var-arg "f" "s" 1 2 3)
+ (func-var-arg "f" "s" 1 2 3 4))
+EOS
+           ).should == '(("s") ("s" 1) ("s" 1 2) ("s" 1 2 3) ("s" 1 2 3 4))'
+
+    # Ruby method with block
+    @nendo.evalStr( <<EOS
+(define testclass (TestClassForBlockArgument.new))  testclass.class
+(list
+  (testclass.arg1 (&block (a)   (list a)))
+  (testclass.arg2 (&block (a b) (cons a b)))
+  (testclass.arg1_plus_1 "a" (&block (a b)   (list a b)))
+  )
+EOS
+           ).should == '((100) (100 . 200) ("a" 200))'
+
+
+    # Ruby method with block
+    @nendo.evalStr( <<EOS
+(define (read-first-line fobj) (fobj.readline.chomp))
+(let1 filename "./VERSION.yml"
+  (list
+    (with-open filename read-first-line "r")
+    (with-open filename read-first-line)))
+EOS
+           ).should == '("---" "---")'
+  end
+end
+
 
 describe Nendo, "when read various vector expressions" do
   before do
@@ -2044,6 +2129,7 @@ describe Nendo, "when use with-open libraries " do
     @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (f.puts \"Wrote from Nendo.\")) \"w\")  #t", @fn )).should   == "#t"
     @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop))) ", @fn )).should                         == '"Wrote from Nendo."'
     lambda { @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) #t) 1 2 ", @fn )) }.should                          raise_error(RuntimeError)
+    lambda { @nendo.evalStr( sprintf( " (with-open \"%s\" \"string\" 1 2 ", @fn )) }.should                               raise_error(RuntimeError)
   end
 
   after do
