@@ -50,7 +50,7 @@ trampCall(
                                 if @global_lisp_binding.has_key?('_length') then
                                   trampCall(@_length)
                                 else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:65"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
                               end                            ,
                           [
                                 begin
@@ -93,7 +93,7 @@ trampCall(
                                 if @global_lisp_binding.has_key?('_length') then
                                   trampCall(@_length)
                                 else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:65"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
                               end                            ,
                           [
                                 begin
@@ -163,12 +163,12 @@ trampCall(
                                               if @global_lisp_binding.has_key?('_negative_QUMARK') then
                                                 trampCall(@_negative_QUMARK)
                                               else raise NameError.new( "Error: undefined variable _negative_QUMARK", "_negative_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:31"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:27"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
                                               begin
                                                   trampCall(_k)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                               end
                                         ]
                                                      ))
@@ -182,12 +182,12 @@ trampCall(
                                         if @global_lisp_binding.has_key?('_integer_QUMARK') then
                                           trampCall(@_integer_QUMARK)
                                         else raise NameError.new( "Error: undefined variable _integer_QUMARK", "_integer_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:31"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:27"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
                                         begin
                                             trampCall(_k)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                         end
                                   ]
                                                ))
@@ -201,11 +201,11 @@ trampCall(
                               _write_MIMARKto_MIMARKstring(
                                 begin
                                     trampCall(_k)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                 end
                               )
                             rescue => __e 
-                              __e.set_backtrace( ["./lib/util/list.nnd:32"] + __e.backtrace )
+                              __e.set_backtrace( ["./lib/util/list.nnd:28"] + __e.backtrace )
                               raise __e
                             end 
                         end
@@ -218,11 +218,11 @@ trampCall(
                                   __EQMARK(
                                       begin
                                           trampCall(_i)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                       begin
                                           trampCall(_k)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                       end
                                   )
                                  ) then
@@ -232,7 +232,7 @@ trampCall(
                                               if @global_lisp_binding.has_key?('_values') then
                                                 trampCall(@_values)
                                               else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:34"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
                                               trampCall( self._reverse_EXMARK_METHOD(  'reverse!',
@@ -240,18 +240,18 @@ trampCall(
                                                     if @global_lisp_binding.has_key?('_reverse_EXMARK') then
                                                       trampCall(@_reverse_EXMARK)
                                                     else raise NameError.new( "Error: undefined variable _reverse_EXMARK", "_reverse_EXMARK" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:40"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:36"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                               [
                                                     begin
                                                         trampCall(_r)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                     end
                                               ]
                                                            ))                                            ,
                                               begin
                                                   trampCall(_lis)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                               end
                                         ]
                                                      )
@@ -263,12 +263,12 @@ trampCall(
                                             if @global_lisp_binding.has_key?('_null_QUMARK') then
                                               trampCall(@_null_QUMARK)
                                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:37"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:33"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                       [
                                             begin
                                                 trampCall(_lis)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                             end
                                       ]
                                                    ))
@@ -279,13 +279,13 @@ trampCall(
                                                   if @global_lisp_binding.has_key?('_values') then
                                                     trampCall(@_values)
                                                   else raise NameError.new( "Error: undefined variable _values", "_values" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:34"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                             [
                                                   if ( 
                                                     begin
                                                         trampCall(_fill_QUMARK)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:34"] + __e.backtrace ) ; raise __e
                                                     end
                                                    ) then
                                                       trampCall( self._append_EXMARK_METHOD(  'append!',
@@ -293,7 +293,7 @@ trampCall(
                                                             if @global_lisp_binding.has_key?('_append_EXMARK') then
                                                               trampCall(@_append_EXMARK)
                                                             else raise NameError.new( "Error: undefined variable _append_EXMARK", "_append_EXMARK" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                       [
                                                             trampCall( self._reverse_EXMARK_METHOD(  'reverse!',
@@ -301,12 +301,12 @@ trampCall(
                                                                   if @global_lisp_binding.has_key?('_reverse_EXMARK') then
                                                                     trampCall(@_reverse_EXMARK)
                                                                   else raise NameError.new( "Error: undefined variable _reverse_EXMARK", "_reverse_EXMARK" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:40"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:36"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                             [
                                                                   begin
                                                                       trampCall(_r)
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                                   end
                                                             ]
                                                                          ))                                                          ,
@@ -315,22 +315,22 @@ trampCall(
                                                                   if @global_lisp_binding.has_key?('_make_MIMARKlist') then
                                                                     trampCall(@_make_MIMARKlist)
                                                                   else raise NameError.new( "Error: undefined variable _make_MIMARKlist", "_make_MIMARKlist" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                                                 end                                                              ,
                                                             [
                                                                   __MIMARK_ARGS2(
                                                                       begin
                                                                           trampCall(_k)
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                                                       end                                                                    ,
                                                                       begin
                                                                           trampCall(_i)
-                                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                                       end
                                                                   )                                                                ,
                                                                   begin
                                                                       trampCall(_filler)
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:39"] + __e.backtrace ) ; raise __e
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:35"] + __e.backtrace ) ; raise __e
                                                                   end
                                                             ]
                                                                          ))
@@ -342,19 +342,19 @@ trampCall(
                                                             if @global_lisp_binding.has_key?('_reverse_EXMARK') then
                                                               trampCall(@_reverse_EXMARK)
                                                             else raise NameError.new( "Error: undefined variable _reverse_EXMARK", "_reverse_EXMARK" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:40"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:36"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                       [
                                                             begin
                                                                 trampCall(_r)
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                             end
                                                       ]
                                                                    ))
                                                   end                                                ,
                                                   begin
                                                       trampCall(_lis)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                   end
                                             ]
                                                          )
@@ -367,32 +367,32 @@ trampCall(
                                                 delayCall( '_loop',  'loop',
                                                     begin
                                                         trampCall(_loop)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                 [
                                                       __PLMARK_ARGS2(
                                                           begin
                                                               trampCall(_i)
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                         1
                                                       )                                                    ,
                                                       _cdr(
                                                           begin
                                                               trampCall(_lis)
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                           end
                                                       )                                                    ,
                                                       _cons(
                                                           _car(
                                                               begin
                                                                   trampCall(_lis)
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                               end
                                                           )                                                        ,
                                                           begin
                                                               trampCall(_r)
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                                           end
                                                       )
                                                 ]
@@ -407,13 +407,13 @@ trampCall(
                           delayCall( '_loop',  'loop',
                               begin
                                   trampCall(_loop)
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                               end                            ,
                           [
                               0                              ,
                                 begin
                                     trampCall(_lis)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:42"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
                                 end                              ,
                               Cell.new()
                           ]
@@ -454,26 +454,26 @@ trampCall(
                               if @global_lisp_binding.has_key?('_apply') then
                                 trampCall(@_apply)
                               else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:45"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:41"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               begin
                                 if @global_lisp_binding.has_key?('_split_MIMARKat_ASMARK') then
                                   trampCall(@_split_MIMARKat_ASMARK)
                                 else raise NameError.new( "Error: undefined variable _split_MIMARKat_ASMARK", "_split_MIMARKat_ASMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:45"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:41"] + __e.backtrace ) ; raise __e
                               end                            ,
                               begin
                                   trampCall(_lis)
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:45"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:41"] + __e.backtrace ) ; raise __e
                               end                            ,
                               begin
                                   trampCall(_k)
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:45"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:41"] + __e.backtrace ) ; raise __e
                               end                            ,
                               begin
                                   trampCall(_args)
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:45"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:41"] + __e.backtrace ) ; raise __e
                               end
                         ]
                                      ))
@@ -481,7 +481,7 @@ trampCall(
                     Proc.new { |_h,_t| 
                         begin
                             trampCall(_h)
-                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:45"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:41"] + __e.backtrace ) ; raise __e
                         end
                     }
               ]
@@ -534,12 +534,12 @@ trampCall(
                                         if @global_lisp_binding.has_key?('_negative_QUMARK') then
                                           trampCall(@_negative_QUMARK)
                                         else raise NameError.new( "Error: undefined variable _negative_QUMARK", "_negative_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:48"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:44"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
                                         begin
                                             trampCall(_k)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:52"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:48"] + __e.backtrace ) ; raise __e
                                         end
                                   ]
                                                ))
@@ -553,12 +553,12 @@ trampCall(
                                   if @global_lisp_binding.has_key?('_integer_QUMARK') then
                                     trampCall(@_integer_QUMARK)
                                   else raise NameError.new( "Error: undefined variable _integer_QUMARK", "_integer_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:48"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:44"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                   begin
                                       trampCall(_k)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:52"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:48"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          ))
@@ -572,11 +572,11 @@ trampCall(
                         _write_MIMARKto_MIMARKstring(
                           begin
                               trampCall(_k)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:52"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:48"] + __e.backtrace ) ; raise __e
                           end
                         )
                       rescue => __e 
-                        __e.set_backtrace( ["./lib/util/list.nnd:49"] + __e.backtrace )
+                        __e.set_backtrace( ["./lib/util/list.nnd:45"] + __e.backtrace )
                         raise __e
                       end 
                   end
@@ -589,18 +589,18 @@ trampCall(
                             __EQMARK(
                                 begin
                                     trampCall(_i)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 begin
                                     trampCall(_k)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:52"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:48"] + __e.backtrace ) ; raise __e
                                 end
                             )
                            ) then
                               begin
                                   begin
                                       trampCall(_lis)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                                   end
                               end
                           else
@@ -610,12 +610,12 @@ trampCall(
                                       if @global_lisp_binding.has_key?('_null_QUMARK') then
                                         trampCall(@_null_QUMARK)
                                       else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:53"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:49"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                 [
                                       begin
                                           trampCall(_lis)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                                       end
                                 ]
                                              ))
@@ -631,20 +631,20 @@ trampCall(
                                           delayCall( '_loop',  'loop',
                                               begin
                                                   trampCall(_loop)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                           [
                                                 __PLMARK_ARGS2(
                                                     begin
                                                         trampCall(_i)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                   1
                                                 )                                              ,
                                                 _cdr(
                                                     begin
                                                         trampCall(_lis)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                                                     end
                                                 )
                                           ]
@@ -659,13 +659,13 @@ trampCall(
                     delayCall( '_loop',  'loop',
                         begin
                             trampCall(_loop)
-                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [
                         0                        ,
                           begin
                               trampCall(_lis)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
                           end
                     ]
                                  )
@@ -696,7 +696,7 @@ trampCall(
                                 if @global_lisp_binding.has_key?('_length') then
                                   trampCall(@_length)
                                 else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:59"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:55"] + __e.backtrace ) ; raise __e
                               end                            ,
                           [
                                 begin
@@ -739,7 +739,7 @@ trampCall(
                                 if @global_lisp_binding.has_key?('_length') then
                                   trampCall(@_length)
                                 else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:59"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:55"] + __e.backtrace ) ; raise __e
                               end                            ,
                           [
                                 begin
@@ -809,12 +809,12 @@ trampCall(
                                               if @global_lisp_binding.has_key?('_negative_QUMARK') then
                                                 trampCall(@_negative_QUMARK)
                                               else raise NameError.new( "Error: undefined variable _negative_QUMARK", "_negative_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:53"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
                                               begin
                                                   trampCall(_k)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                               end
                                         ]
                                                      ))
@@ -828,12 +828,12 @@ trampCall(
                                         if @global_lisp_binding.has_key?('_integer_QUMARK') then
                                           trampCall(@_integer_QUMARK)
                                         else raise NameError.new( "Error: undefined variable _integer_QUMARK", "_integer_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:53"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
                                         begin
                                             trampCall(_k)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                         end
                                   ]
                                                ))
@@ -847,11 +847,11 @@ trampCall(
                               _write_MIMARKto_MIMARKstring(
                                 begin
                                     trampCall(_k)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                 end
                               )
                             rescue => __e 
-                              __e.set_backtrace( ["./lib/util/list.nnd:58"] + __e.backtrace )
+                              __e.set_backtrace( ["./lib/util/list.nnd:54"] + __e.backtrace )
                               raise __e
                             end 
                         end
@@ -862,11 +862,11 @@ trampCall(
                             __LTMARK_EQMARK(
                                 begin
                                     trampCall(_k)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                 end                              ,
                                 begin
                                     trampCall(_len)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                 end
                             )
                            ) then
@@ -876,21 +876,21 @@ trampCall(
                                         if @global_lisp_binding.has_key?('_drop') then
                                           trampCall(@_drop)
                                         else raise NameError.new( "Error: undefined variable _drop", "_drop" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:60"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:56"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
                                         begin
                                             trampCall(_lis)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:58"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                         __MIMARK_ARGS2(
                                             begin
                                                 trampCall(_len)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                             begin
                                                 trampCall(_k)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                             end
                                         )
                                   ]
@@ -900,7 +900,7 @@ trampCall(
                               if ( 
                                 begin
                                     trampCall(_fill_QUMARK)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                 end
                                ) then
                                   begin
@@ -909,7 +909,7 @@ trampCall(
                                             if @global_lisp_binding.has_key?('_append_EXMARK') then
                                               trampCall(@_append_EXMARK)
                                             else raise NameError.new( "Error: undefined variable _append_EXMARK", "_append_EXMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                       [
                                             trampCall( self._make_MIMARKlist_METHOD(  'make-list',
@@ -917,28 +917,28 @@ trampCall(
                                                   if @global_lisp_binding.has_key?('_make_MIMARKlist') then
                                                     trampCall(@_make_MIMARKlist)
                                                   else raise NameError.new( "Error: undefined variable _make_MIMARKlist", "_make_MIMARKlist" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                             [
                                                   __MIMARK_ARGS2(
                                                       begin
                                                           trampCall(_k)
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
                                                       begin
                                                           trampCall(_len)
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                                       end
                                                   )                                                ,
                                                   begin
                                                       trampCall(_filler)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:57"] + __e.backtrace ) ; raise __e
                                                   end
                                             ]
                                                          ))                                          ,
                                             begin
                                                 trampCall(_lis)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:58"] + __e.backtrace ) ; raise __e
                                             end
                                       ]
                                                    )
@@ -950,7 +950,7 @@ trampCall(
                                       begin
                                           begin
                                               trampCall(_lis)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:58"] + __e.backtrace ) ; raise __e
                                           end
                                       end
                                   else
@@ -964,12 +964,12 @@ trampCall(
                                   if @global_lisp_binding.has_key?('_length') then
                                     trampCall(@_length)
                                   else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:59"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:55"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                   begin
                                       trampCall(_lis)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:58"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          ))
@@ -999,11 +999,11 @@ trampCall(
                       __LTMARK_EQMARK(
                           begin
                               trampCall(_k)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:66"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
                           end                        ,
                           begin
                               trampCall(_len)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:66"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
                           end
                       )
                      ) then
@@ -1012,21 +1012,21 @@ trampCall(
                               if @global_lisp_binding.has_key?('_take') then
                                 trampCall(@_take)
                               else raise NameError.new( "Error: undefined variable _take", "_take" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:66"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               begin
                                   trampCall(_lis)
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:66"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
                               end                            ,
                               __MIMARK_ARGS2(
                                   begin
                                       trampCall(_len)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:66"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
                                   end                                ,
                                   begin
                                       trampCall(_k)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:66"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
                                   end
                               )
                         ]
@@ -1040,12 +1040,12 @@ trampCall(
                             if @global_lisp_binding.has_key?('_length') then
                               trampCall(@_length)
                             else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:65"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                                 trampCall(_lis)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:66"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:62"] + __e.backtrace ) ; raise __e
                             end
                       ]
                                    ))
@@ -1075,12 +1075,12 @@ trampCall(
                                     if @global_lisp_binding.has_key?('_integer_QUMARK') then
                                       trampCall(@_integer_QUMARK)
                                     else raise NameError.new( "Error: undefined variable _integer_QUMARK", "_integer_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:73"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:69"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
                                     begin
                                         trampCall(_k)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                                     end
                               ]
                                            ))
@@ -1092,12 +1092,12 @@ trampCall(
                               if @global_lisp_binding.has_key?('_positive_QUMARK') then
                                 trampCall(@_positive_QUMARK)
                               else raise NameError.new( "Error: undefined variable _positive_QUMARK", "_positive_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:73"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:69"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               begin
                                   trampCall(_k)
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                               end
                         ]
                                      ))
@@ -1112,11 +1112,11 @@ trampCall(
                         _write_MIMARKto_MIMARKstring(
                           begin
                               trampCall(_k)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                           end
                         )
                       rescue => __e 
-                        __e.set_backtrace( ["./lib/util/list.nnd:74"] + __e.backtrace )
+                        __e.set_backtrace( ["./lib/util/list.nnd:70"] + __e.backtrace )
                         raise __e
                       end 
                   end
@@ -1131,12 +1131,12 @@ trampCall(
                                   if @global_lisp_binding.has_key?('_null_QUMARK') then
                                     trampCall(@_null_QUMARK)
                                   else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:77"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:73"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                   begin
                                       trampCall(_lis)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          ))
@@ -1146,12 +1146,12 @@ trampCall(
                                     if @global_lisp_binding.has_key?('_reverse_EXMARK') then
                                       trampCall(@_reverse_EXMARK)
                                     else raise NameError.new( "Error: undefined variable _reverse_EXMARK", "_reverse_EXMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:78"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:74"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
                                     begin
                                         trampCall(_r)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:80"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:76"] + __e.backtrace ) ; raise __e
                                     end
                               ]
                                            )
@@ -1170,26 +1170,26 @@ trampCall(
                                               if @global_lisp_binding.has_key?('_apply') then
                                                 trampCall(@_apply)
                                               else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
                                               begin
                                                 if @global_lisp_binding.has_key?('_split_MIMARKat_ASMARK') then
                                                   trampCall(@_split_MIMARKat_ASMARK)
                                                 else raise NameError.new( "Error: undefined variable _split_MIMARKat_ASMARK", "_split_MIMARKat_ASMARK" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               begin
                                                   trampCall(_lis)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               begin
                                                   trampCall(_k)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               begin
                                                   trampCall(_args)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                                               end
                                         ]
                                                      ))
@@ -1198,21 +1198,21 @@ trampCall(
                                         trampCall( callProcedure(  '_loop',  'loop',
                                             begin
                                                 trampCall(_loop)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:80"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:76"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
                                               begin
                                                   trampCall(_t)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:80"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:76"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                               _cons(
                                                   begin
                                                       trampCall(_h)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:80"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:76"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                                   begin
                                                       trampCall(_r)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:80"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:76"] + __e.backtrace ) ; raise __e
                                                   end
                                               )
                                         ]
@@ -1225,12 +1225,12 @@ trampCall(
                     delayCall( '_loop',  'loop',
                         begin
                             trampCall(_loop)
-                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:80"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:76"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [
                           begin
                               trampCall(_lis)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:79"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
                           end                        ,
                         Cell.new()
                     ]
@@ -1262,12 +1262,12 @@ trampCall(
                                   if @global_lisp_binding.has_key?('_null_QUMARK') then
                                     trampCall(@_null_QUMARK)
                                   else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:91"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                   begin
                                       trampCall(_l)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:90"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          ))
@@ -1277,12 +1277,12 @@ trampCall(
                                     if @global_lisp_binding.has_key?('_reverse_EXMARK') then
                                       trampCall(@_reverse_EXMARK)
                                     else raise NameError.new( "Error: undefined variable _reverse_EXMARK", "_reverse_EXMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:85"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
                                     begin
                                         trampCall(_r)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:90"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
                                     end
                               ]
                                            )
@@ -1290,13 +1290,13 @@ trampCall(
                               delayCall( '_rec',  'rec',
                                   begin
                                       trampCall(_rec)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:93"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
                                     _cdr(
                                         begin
                                             trampCall(_l)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:90"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
                                         end
                                     )                                  ,
                                     trampCall( self._list_ASMARK_METHOD(  'list*',
@@ -1304,22 +1304,22 @@ trampCall(
                                           if @global_lisp_binding.has_key?('_list_ASMARK') then
                                             trampCall(@_list_ASMARK)
                                           else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:90"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                     [
                                           _car(
                                               begin
                                                   trampCall(_l)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:90"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
                                               end
                                           )                                        ,
                                           begin
                                               trampCall(_item)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:90"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                           begin
                                               trampCall(_r)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:90"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
                                           end
                                     ]
                                                  ))
@@ -1333,12 +1333,12 @@ trampCall(
                             if @global_lisp_binding.has_key?('_null_QUMARK') then
                               trampCall(@_null_QUMARK)
                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:91"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                                 trampCall(_lis)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:93"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
                             end
                       ]
                                    ))
@@ -1348,13 +1348,13 @@ trampCall(
                         delayCall( '_rec',  'rec',
                             begin
                                 trampCall(_rec)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:93"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               _cdr(
                                   begin
                                       trampCall(_lis)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:93"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
                                   end
                               )                            ,
                               trampCall( self._list_METHOD(  'list',
@@ -1362,13 +1362,13 @@ trampCall(
                                     if @global_lisp_binding.has_key?('_list') then
                                       trampCall(@_list)
                                     else raise NameError.new( "Error: undefined variable _list", "_list" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:93"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
                                     _car(
                                         begin
                                             trampCall(_lis)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:93"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
                                         end
                                     )
                               ]
@@ -1511,7 +1511,7 @@ trampCall(
                                                                                                          ))
                                                                                           )
                                                                                         rescue => __e 
-                                                                                          __e.set_backtrace( ["./lib/util/list.nnd:74"] + __e.backtrace )
+                                                                                          __e.set_backtrace( ["./lib/util/list.nnd:70"] + __e.backtrace )
                                                                                           raise __e
                                                                                         end 
                                                                                              )
@@ -1529,7 +1529,7 @@ trampCall(
                                                                                                     if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                       trampCall(@_pair_QUMARK)
                                                                                                     else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                   end                                                                                                ,
                                                                                               [
                                                                                                   __v__34__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60136
@@ -1549,7 +1549,7 @@ trampCall(
                                                                                                               if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                                 trampCall(@_pair_QUMARK)
                                                                                                               else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                             end                                                                                                          ,
                                                                                                         [
                                                                                                             __v__35__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60137
@@ -1595,7 +1595,7 @@ trampCall(
                                                                                                                                                       _cons(
                                                                                                                                                           begin
                                                                                                                                                               trampCall(_test)
-                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:121"] + __e.backtrace ) ; raise __e
                                                                                                                                                           end                                                                                                                                                        ,
                                                                                                                                                         Cell.new()
                                                                                                                                                       )
@@ -1624,7 +1624,7 @@ trampCall(
                                                                                                                                                                                ))                                                                                                                                                                ,
                                                                                                                                                                   begin
                                                                                                                                                                       trampCall(_rest)
-                                                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:126"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:122"] + __e.backtrace ) ; raise __e
                                                                                                                                                                   end
                                                                                                                                                               )                                                                                                                                                            ,
                                                                                                                                                             Cell.new()
@@ -1678,7 +1678,7 @@ trampCall(
                                                                                                                                                                                        ))                                                                                                                                                                        ,
                                                                                                                                                                           begin
                                                                                                                                                                               trampCall(_expr)
-                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:127"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:123"] + __e.backtrace ) ; raise __e
                                                                                                                                                                           end
                                                                                                                                                                       )                                                                                                                                                                    ,
                                                                                                                                                                       _cons(
@@ -1777,7 +1777,7 @@ trampCall(
                                                                                           if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                             trampCall(@_pair_QUMARK)
                                                                                           else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                         end                                                                                      ,
                                                                                     [
                                                                                         __v__27__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60129
@@ -1797,7 +1797,7 @@ trampCall(
                                                                                                     if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                       trampCall(@_pair_QUMARK)
                                                                                                     else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                   end                                                                                                ,
                                                                                               [
                                                                                                   __v__28__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60130
@@ -1821,7 +1821,7 @@ trampCall(
                                                                                                                           if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                                             trampCall(@_pair_QUMARK)
                                                                                                                           else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                                         end                                                                                                                      ,
                                                                                                                     [
                                                                                                                         __v__30__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60132
@@ -1882,7 +1882,7 @@ trampCall(
                                                                                                                                                                 _cons(
                                                                                                                                                                     begin
                                                                                                                                                                         trampCall(_test)
-                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:121"] + __e.backtrace ) ; raise __e
                                                                                                                                                                     end                                                                                                                                                                  ,
                                                                                                                                                                   Cell.new()
                                                                                                                                                                 )
@@ -1911,7 +1911,7 @@ trampCall(
                                                                                                                                                                                          ))                                                                                                                                                                          ,
                                                                                                                                                                             begin
                                                                                                                                                                                 trampCall(_rest)
-                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:126"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:122"] + __e.backtrace ) ; raise __e
                                                                                                                                                                             end
                                                                                                                                                                         )                                                                                                                                                                      ,
                                                                                                                                                                       Cell.new()
@@ -1965,7 +1965,7 @@ trampCall(
                                                                                                                                                                                                  ))                                                                                                                                                                                  ,
                                                                                                                                                                                     begin
                                                                                                                                                                                         trampCall(_expr)
-                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:127"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:123"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                     end
                                                                                                                                                                                 )                                                                                                                                                                              ,
                                                                                                                                                                                 _cons(
@@ -2082,7 +2082,7 @@ trampCall(
                                                                                 if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                   trampCall(@_pair_QUMARK)
                                                                                 else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
                                                                           [
                                                                               __v__16__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60118
@@ -2102,7 +2102,7 @@ trampCall(
                                                                                           if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                             trampCall(@_pair_QUMARK)
                                                                                           else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                         end                                                                                      ,
                                                                                     [
                                                                                         __v__17__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60119
@@ -2126,7 +2126,7 @@ trampCall(
                                                                                                                 if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                                   trampCall(@_pair_QUMARK)
                                                                                                                 else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                               end                                                                                                            ,
                                                                                                           [
                                                                                                               __v__19__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60121
@@ -2165,7 +2165,7 @@ trampCall(
                                                                                                                                     if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                                                       trampCall(@_pair_QUMARK)
                                                                                                                                     else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                                                   end                                                                                                                                ,
                                                                                                                               [
                                                                                                                                   __v__21__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60123
@@ -2204,7 +2204,7 @@ trampCall(
                                                                                                                                                         if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                                                                           trampCall(@_pair_QUMARK)
                                                                                                                                                         else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                                                                       end                                                                                                                                                    ,
                                                                                                                                                   [
                                                                                                                                                       __v__23__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60125
@@ -2228,7 +2228,7 @@ trampCall(
                                                                                                                                                                               if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                                                                                                                                                 trampCall(@_null_QUMARK)
                                                                                                                                                                               else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:91"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
                                                                                                                                                                             end                                                                                                                                                                          ,
                                                                                                                                                                         [
                                                                                                                                                                             __v__25__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60127
@@ -2266,7 +2266,7 @@ trampCall(
                                                                                                                                                                                               _cons(
                                                                                                                                                                                                   begin
                                                                                                                                                                                                       trampCall(_test)
-                                                                                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:121"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                   end                                                                                                                                                                                                ,
                                                                                                                                                                                                 Cell.new()
                                                                                                                                                                                               )
@@ -2295,7 +2295,7 @@ trampCall(
                                                                                                                                                                                                                        ))                                                                                                                                                                                                        ,
                                                                                                                                                                                                           begin
                                                                                                                                                                                                               trampCall(_rest)
-                                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:126"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:122"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                           end
                                                                                                                                                                                                       )                                                                                                                                                                                                    ,
                                                                                                                                                                                                     Cell.new()
@@ -2340,7 +2340,7 @@ trampCall(
                                                                                                                                                                                                               _cons(
                                                                                                                                                                                                                   begin
                                                                                                                                                                                                                       trampCall(_proc)
-                                                                                                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:119"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:115"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                                   end                                                                                                                                                                                                                ,
                                                                                                                                                                                                                   _cons(
                                                                                                                                                                                                                       trampCall( callProcedure(  '__rename__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60096',  '_rename__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60096',
@@ -2505,7 +2505,7 @@ trampCall(
                                                                       if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                         trampCall(@_pair_QUMARK)
                                                                       else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                 [
                                                                     __v__7__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60109
@@ -2525,7 +2525,7 @@ trampCall(
                                                                                 if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                   trampCall(@_pair_QUMARK)
                                                                                 else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                               end                                                                            ,
                                                                           [
                                                                               __v__8__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60110
@@ -2549,7 +2549,7 @@ trampCall(
                                                                                                       if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                         trampCall(@_pair_QUMARK)
                                                                                                       else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,
                                                                                                 [
                                                                                                     __v__10__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60112
@@ -2588,7 +2588,7 @@ trampCall(
                                                                                                                           if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                                                                             trampCall(@_pair_QUMARK)
                                                                                                                           else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                                                                         end                                                                                                                      ,
                                                                                                                     [
                                                                                                                         __v__12__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60114
@@ -2612,7 +2612,7 @@ trampCall(
                                                                                                                                                 if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                                                                                                                   trampCall(@_null_QUMARK)
                                                                                                                                                 else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:91"] + __e.backtrace ) ; raise __e
+                                                                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
                                                                                                                                               end                                                                                                                                            ,
                                                                                                                                           [
                                                                                                                                               __v__14__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60116
@@ -2650,7 +2650,7 @@ trampCall(
                                                                                                                                                                 _cons(
                                                                                                                                                                     begin
                                                                                                                                                                         trampCall(_test)
-                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:121"] + __e.backtrace ) ; raise __e
                                                                                                                                                                     end                                                                                                                                                                  ,
                                                                                                                                                                   Cell.new()
                                                                                                                                                                 )
@@ -2679,7 +2679,7 @@ trampCall(
                                                                                                                                                                                          ))                                                                                                                                                                          ,
                                                                                                                                                                             begin
                                                                                                                                                                                 trampCall(_rest)
-                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:126"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:122"] + __e.backtrace ) ; raise __e
                                                                                                                                                                             end
                                                                                                                                                                         )                                                                                                                                                                      ,
                                                                                                                                                                       Cell.new()
@@ -2724,7 +2724,7 @@ trampCall(
                                                                                                                                                                                 _cons(
                                                                                                                                                                                     begin
                                                                                                                                                                                         trampCall(_proc)
-                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:119"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:115"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                     end                                                                                                                                                                                  ,
                                                                                                                                                                                     _cons(
                                                                                                                                                                                         trampCall( callProcedure(  '__rename__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60096',  '_rename__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60096',
@@ -2871,7 +2871,7 @@ trampCall(
                                                             if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                               trampCall(@_pair_QUMARK)
                                                             else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
                                                       [
                                                           __v__2__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60104
@@ -2891,7 +2891,7 @@ trampCall(
                                                                       if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                                         trampCall(@_pair_QUMARK)
                                                                       else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                                                     end                                                                  ,
                                                                 [
                                                                     __v__3__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60105
@@ -2915,7 +2915,7 @@ trampCall(
                                                                                             if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                                                               trampCall(@_null_QUMARK)
                                                                                             else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:91"] + __e.backtrace ) ; raise __e
+                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
                                                                                           end                                                                                        ,
                                                                                       [
                                                                                           __v__5__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60107
@@ -2953,7 +2953,7 @@ trampCall(
                                                                                                             _cons(
                                                                                                                 begin
                                                                                                                     trampCall(_test)
-                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:121"] + __e.backtrace ) ; raise __e
                                                                                                                 end                                                                                                              ,
                                                                                                               Cell.new()
                                                                                                             )
@@ -2982,7 +2982,7 @@ trampCall(
                                                                                                                                      ))                                                                                                                      ,
                                                                                                                         begin
                                                                                                                             trampCall(_rest)
-                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:126"] + __e.backtrace ) ; raise __e
+                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:122"] + __e.backtrace ) ; raise __e
                                                                                                                         end
                                                                                                                     )                                                                                                                  ,
                                                                                                                   Cell.new()
@@ -3128,7 +3128,7 @@ trampCall(
                                                   if @global_lisp_binding.has_key?('_null_QUMARK') then
                                                     trampCall(@_null_QUMARK)
                                                   else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:91"] + __e.backtrace ) ; raise __e
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
                                             [
                                                 __v__1__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60103
@@ -3185,7 +3185,7 @@ trampCall(
                           if @global_lisp_binding.has_key?('_for_MIMARKeach') then
                             trampCall(@_for_MIMARKeach)
                           else raise NameError.new( "Error: undefined variable _for_MIMARKeach", "_for_MIMARKeach" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:133"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [
                           Proc.new { |_x| 
@@ -3194,23 +3194,23 @@ trampCall(
                                     if @global_lisp_binding.has_key?('_hash_MIMARKtable_MIMARKput_EXMARK') then
                                       trampCall(@_hash_MIMARKtable_MIMARKput_EXMARK)
                                     else raise NameError.new( "Error: undefined variable _hash_MIMARKtable_MIMARKput_EXMARK", "_hash_MIMARKtable_MIMARKput_EXMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:133"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
                                     begin
                                         trampCall(_tb)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:138"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:134"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                     _car(
                                         begin
                                             trampCall(_x)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:133"] + __e.backtrace ) ; raise __e
                                         end
                                     )                                  ,
                                     _cdr(
                                         begin
                                             trampCall(_x)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:133"] + __e.backtrace ) ; raise __e
                                         end
                                     )
                               ]
@@ -3218,13 +3218,13 @@ trampCall(
                           }                        ,
                           begin
                               trampCall(_a)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:133"] + __e.backtrace ) ; raise __e
                           end
                     ]
                                  ))
                     begin
                         trampCall(_tb)
-                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:138"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:134"] + __e.backtrace ) ; raise __e
                     end
                 } ; ___lambda.call(
                       trampCall( self._apply_METHOD(  'apply',
@@ -3232,18 +3232,18 @@ trampCall(
                             if @global_lisp_binding.has_key?('_apply') then
                               trampCall(@_apply)
                             else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:136"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:132"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                               if @global_lisp_binding.has_key?('_make_MIMARKhash_MIMARKtable') then
                                 trampCall(@_make_MIMARKhash_MIMARKtable)
                               else raise NameError.new( "Error: undefined variable _make_MIMARKhash_MIMARKtable", "_make_MIMARKhash_MIMARKtable" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:136"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:132"] + __e.backtrace ) ; raise __e
                             end                          ,
                             begin
                                 trampCall(_opt_MIMARKeq)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:136"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:132"] + __e.backtrace ) ; raise __e
                             end
                       ]
                                    ))
@@ -3267,18 +3267,18 @@ trampCall(
                     if @global_lisp_binding.has_key?('_hash_MIMARKtable_MIMARKmap') then
                       trampCall(@_hash_MIMARKtable_MIMARKmap)
                     else raise NameError.new( "Error: undefined variable _hash_MIMARKtable_MIMARKmap", "_hash_MIMARKtable_MIMARKmap" ) end
-                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
+                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
                   end                ,
               [
                     begin
                         trampCall(_h)
-                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
                     end                  ,
                     begin
                       if @global_lisp_binding.has_key?('_cons') then
                         trampCall(@_cons)
                       else raise NameError.new( "Error: undefined variable _cons", "_cons" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:137"] + __e.backtrace ) ; raise __e
                     end
               ]
                            )
@@ -3305,7 +3305,7 @@ trampCall(
                                 if @global_lisp_binding.has_key?('_length') then
                                   trampCall(@_length)
                                 else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:65"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:61"] + __e.backtrace ) ; raise __e
                               end                            ,
                           [
                                 begin
@@ -3345,7 +3345,7 @@ trampCall(
                           if @global_lisp_binding.has_key?('_find') then
                             trampCall(@_find)
                           else raise NameError.new( "Error: undefined variable _find", "_find" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [
                           Proc.new { |_elt| 
@@ -3358,12 +3358,12 @@ trampCall(
                                               if @global_lisp_binding.has_key?('_pair_QUMARK') then
                                                 trampCall(@_pair_QUMARK)
                                               else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
                                               begin
                                                   trampCall(_elt)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                               end
                                         ]
                                                      ))
@@ -3373,18 +3373,18 @@ trampCall(
                                   trampCall( callProcedure(  '_eq',  'eq',
                                       begin
                                           trampCall(_eq)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
                                         _cdr(
                                             begin
                                                 trampCall(_elt)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                             end
                                         )                                      ,
                                         begin
                                             trampCall(_key)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                                         end
                                   ]
                                                ))
@@ -3394,7 +3394,7 @@ trampCall(
                           }                        ,
                           begin
                               trampCall(_alist)
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:145"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:141"] + __e.backtrace ) ; raise __e
                           end
                     ]
                                  )
@@ -3403,7 +3403,7 @@ trampCall(
                         if @global_lisp_binding.has_key?('_equal_QUMARK') then
                           trampCall(@_equal_QUMARK)
                         else raise NameError.new( "Error: undefined variable _equal_QUMARK", "_equal_QUMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:144"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:140"] + __e.backtrace ) ; raise __e
                       end
                            )
               end
@@ -3427,7 +3427,7 @@ trampCall(
                           if @global_lisp_binding.has_key?('_rassoc') then
                             trampCall(@_rassoc)
                           else raise NameError.new( "Error: undefined variable _rassoc", "_rassoc" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:147"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:143"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [
                         __tmp__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60149                        ,
@@ -3441,7 +3441,7 @@ trampCall(
                     if @global_lisp_binding.has_key?('_eq_QUMARK') then
                       trampCall(@_eq_QUMARK)
                     else raise NameError.new( "Error: undefined variable _eq_QUMARK", "_eq_QUMARK" ) end
-                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:147"] + __e.backtrace ) ; raise __e
+                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:143"] + __e.backtrace ) ; raise __e
                   end
                        )
           end
@@ -3464,7 +3464,7 @@ trampCall(
                           if @global_lisp_binding.has_key?('_rassoc') then
                             trampCall(@_rassoc)
                           else raise NameError.new( "Error: undefined variable _rassoc", "_rassoc" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:148"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:144"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [
                         __tmp__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60152                        ,
@@ -3478,7 +3478,7 @@ trampCall(
                     if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                       trampCall(@_eqv_QUMARK)
                     else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:148"] + __e.backtrace ) ; raise __e
+                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:144"] + __e.backtrace ) ; raise __e
                   end
                        )
           end
