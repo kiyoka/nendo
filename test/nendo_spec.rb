@@ -3,7 +3,7 @@
 #
 # nendo_spec.rb -  "RSpec file for nendo language"
 #
-#   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
+#   Copyright (c) 2009-2011  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #
 #   Redistribution and use in source and binary forms, with or without
 #   modification, are permitted provided that the following conditions
@@ -1079,6 +1079,38 @@ EOS
   end
 end
 
+
+describe Nendo, "when redefined built-in functions(1)." do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " (define (+ a b) (list a b))  (+ 1 2)" ).should       == "(1 2)"
+    lambda { @nendo.evalStr( " (define (+ a b) (list a b))  (+ 1 2 3)" ) }.should              raise_error( ArgumentError )
+    @nendo.evalStr( " (define (eq? a b) \"eq?\")  (eq? 1 1)" ).should      == '"eq?"'
+  end
+end
+
+describe Nendo, "when redefined built-in functions(2)." do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " (define (< a b)   \"<\")    (<   1 1)" ).should      == '"<"'
+  end
+end
+
+describe Nendo, "when redefined built-in functions(3)." do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( " (define (car lst) \"car\")  (car '(1 2))" ).should   == '"car"'
+  end
+end
 
 describe Nendo, "when call evalStr() with global and lexical scope variable" do
   before do
