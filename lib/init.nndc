@@ -1760,16 +1760,24 @@ trampCall(
                                   end 
                               else
                                   if ( 
-                                    _eqv_QUMARK(
+                                    trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                         begin
-                                            trampCall(_n)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:153"] + __e.backtrace ) ; raise __e
+                                          if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                            trampCall(@_eqv_QUMARK)
+                                          else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:150"] + __e.backtrace ) ; raise __e
                                         end                                      ,
-                                        begin
-                                            trampCall(_index)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:152"] + __e.backtrace ) ; raise __e
-                                        end
-                                    )
+                                    [
+                                          begin
+                                              trampCall(_n)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:153"] + __e.backtrace ) ; raise __e
+                                          end                                        ,
+                                          begin
+                                              trampCall(_index)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:152"] + __e.backtrace ) ; raise __e
+                                          end
+                                    ]
+                                                 ))
                                    ) then
                                       delayCall( '_car',  'car',
                                           begin
@@ -3453,18 +3461,26 @@ trampCall(
                               end
                           else
                               if ( 
-                                _eqv_QUMARK(
+                                trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                     begin
-                                        trampCall(_l)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:330"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                    begin
-                                      if @global_lisp_binding.has_key?('_vector') then
-                                        trampCall(@_vector)
-                                      else raise NameError.new( "Error: undefined variable _vector", "_vector" ) end
+                                      if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                        trampCall(@_eqv_QUMARK)
+                                      else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                       rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:289"] + __e.backtrace ) ; raise __e
-                                    end
-                                )
+                                    end                                  ,
+                                [
+                                      begin
+                                          trampCall(_l)
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:330"] + __e.backtrace ) ; raise __e
+                                      end                                    ,
+                                      begin
+                                        if @global_lisp_binding.has_key?('_vector') then
+                                          trampCall(@_vector)
+                                        else raise NameError.new( "Error: undefined variable _vector", "_vector" ) end
+                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:289"] + __e.backtrace ) ; raise __e
+                                      end
+                                ]
+                                             ))
                                ) then
                                   trampCall( self._apply_METHOD(  'apply',
                                       begin
@@ -8833,13 +8849,21 @@ trampCall(
                                           false
                                         end
                                     } ; ___lambda.call(
-                                          _eqv_QUMARK(
-                                            0                                            ,
+                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                               begin
-                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20240)
-                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                              end
-                                          )
+                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                  trampCall(@_eqv_QUMARK)
+                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:737"] + __e.backtrace ) ; raise __e
+                                              end                                            ,
+                                          [
+                                              0                                              ,
+                                                begin
+                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20240)
+                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                end
+                                          ]
+                                                       ))
                                                )
                                   end
                                  ) then
@@ -8864,13 +8888,21 @@ trampCall(
                                               false
                                             end
                                         } ; ___lambda.call(
-                                              _eqv_QUMARK(
-                                                1                                                ,
+                                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                   begin
-                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20240)
-                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                  end
-                                              )
+                                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                      trampCall(@_eqv_QUMARK)
+                                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:737"] + __e.backtrace ) ; raise __e
+                                                  end                                                ,
+                                              [
+                                                  1                                                  ,
+                                                    begin
+                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20240)
+                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                    end
+                                              ]
+                                                           ))
                                                    )
                                       end
                                      ) then
@@ -9106,13 +9138,21 @@ trampCall(
                               false
                             end
                         } ; ___lambda.call(
-                              _eqv_QUMARK(
-                                1                                ,
+                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                   begin
-                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20246)
-                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                  end
-                              )
+                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                      trampCall(@_eqv_QUMARK)
+                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:737"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                  1                                  ,
+                                    begin
+                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20246)
+                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                    end
+                              ]
+                                           ))
                                    )
                       end
                      ) then
@@ -9497,13 +9537,21 @@ trampCall(
                                                           false
                                                         end
                                                     } ; ___lambda.call(
-                                                          _eqv_QUMARK(
-                                                            0                                                            ,
+                                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                               begin
-                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20254)
-                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                              end
-                                                          )
+                                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                  trampCall(@_eqv_QUMARK)
+                                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:737"] + __e.backtrace ) ; raise __e
+                                                              end                                                            ,
+                                                          [
+                                                              0                                                              ,
+                                                                begin
+                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20254)
+                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                          ]
+                                                                       ))
                                                                )
                                                   end
                                                  ) then
@@ -9604,13 +9652,21 @@ trampCall(
                                                               false
                                                             end
                                                         } ; ___lambda.call(
-                                                              _eqv_QUMARK(
-                                                                1                                                                ,
+                                                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                   begin
-                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20254)
-                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                  end
-                                                              )
+                                                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                      trampCall(@_eqv_QUMARK)
+                                                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:737"] + __e.backtrace ) ; raise __e
+                                                                  end                                                                ,
+                                                              [
+                                                                  1                                                                  ,
+                                                                    begin
+                                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20254)
+                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                    end
+                                                              ]
+                                                                           ))
                                                                    )
                                                       end
                                                      ) then
@@ -13877,13 +13933,21 @@ trampCall(
               begin
                 ___lambda = lambda { |_kind,_alist| 
                     if ( 
-                      _eqv_QUMARK(
+                      trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                           begin
-                              trampCall(_kind)
+                            if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                              trampCall(@_eqv_QUMARK)
+                            else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
                           end                        ,
-                        :"compiled"
-                      )
+                      [
+                            begin
+                                trampCall(_kind)
+                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                            end                          ,
+                          :"compiled"
+                      ]
+                                   ))
                      ) then
                         begin
                             delayCall( '_assv_MIMARKref',  'assv-ref',
@@ -13904,13 +13968,21 @@ trampCall(
                         end
                     else
                         if ( 
-                          _eqv_QUMARK(
+                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                               begin
-                                  trampCall(_kind)
+                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                  trampCall(@_eqv_QUMARK)
+                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                 rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
                               end                            ,
-                            :"source"
-                          )
+                          [
+                                begin
+                                    trampCall(_kind)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                              :"source"
+                          ]
+                                       ))
                          ) then
                             begin
                                 delayCall( '_assv_MIMARKref',  'assv-ref',
@@ -13931,13 +14003,21 @@ trampCall(
                             end
                         else
                             if ( 
-                              _eqv_QUMARK(
+                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                   begin
-                                      trampCall(_kind)
+                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                      trampCall(@_eqv_QUMARK)
+                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                                :"expanded"
-                              )
+                              [
+                                    begin
+                                        trampCall(_kind)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                  :"expanded"
+                              ]
+                                           ))
                              ) then
                                 begin
                                     delayCall( '_assv_MIMARKref',  'assv-ref',
@@ -13958,13 +14038,21 @@ trampCall(
                                 end
                             else
                                 if ( 
-                                  _eqv_QUMARK(
+                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                       begin
-                                          trampCall(_kind)
+                                        if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                          trampCall(@_eqv_QUMARK)
+                                        else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
                                         rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
                                       end                                    ,
-                                    :"info"
-                                  )
+                                  [
+                                        begin
+                                            trampCall(_kind)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                        end                                      ,
+                                      :"info"
+                                  ]
+                                               ))
                                  ) then
                                     begin
                                         delayCall( '_string_MIMARKjoin',  'string-join',
@@ -15437,24 +15525,40 @@ trampCall(
                                                                     false
                                                                   end
                                                               } ; ___lambda.call(
-                                                                    _eqv_QUMARK(
-                                                                      :"/nendo/core/quote"                                                                      ,
+                                                                    trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                         begin
-                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                        end
-                                                                    )
+                                                                          if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                            trampCall(@_eqv_QUMARK)
+                                                                          else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                        end                                                                      ,
+                                                                    [
+                                                                        :"/nendo/core/quote"                                                                        ,
+                                                                          begin
+                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                          end
+                                                                    ]
+                                                                                 ))
                                                                          )
                                                             end
                                                         end
                                                     } ; ___lambda.call(
-                                                          _eqv_QUMARK(
-                                                            :"quote"                                                            ,
+                                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                               begin
-                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                              end
-                                                          )
+                                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                  trampCall(@_eqv_QUMARK)
+                                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                              end                                                            ,
+                                                          [
+                                                              :"quote"                                                              ,
+                                                                begin
+                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                          ]
+                                                                       ))
                                                                )
                                                   end
                                                  ) then
@@ -15495,24 +15599,40 @@ trampCall(
                                                                         false
                                                                       end
                                                                   } ; ___lambda.call(
-                                                                        _eqv_QUMARK(
-                                                                          :"quote"                                                                          ,
+                                                                        trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                             begin
-                                                                                trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                            end
-                                                                        )
+                                                                              if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                trampCall(@_eqv_QUMARK)
+                                                                              else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                            end                                                                          ,
+                                                                        [
+                                                                            :"quote"                                                                            ,
+                                                                              begin
+                                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                              end
+                                                                        ]
+                                                                                     ))
                                                                              )
                                                                 end
                                                             end
                                                         } ; ___lambda.call(
-                                                              _eqv_QUMARK(
-                                                                :"quote"                                                                ,
+                                                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                   begin
-                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                  end
-                                                              )
+                                                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                      trampCall(@_eqv_QUMARK)
+                                                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                  end                                                                ,
+                                                              [
+                                                                  :"quote"                                                                  ,
+                                                                    begin
+                                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                    end
+                                                              ]
+                                                                           ))
                                                                    )
                                                       end
                                                      ) then
@@ -15553,24 +15673,40 @@ trampCall(
                                                                             false
                                                                           end
                                                                       } ; ___lambda.call(
-                                                                            _eqv_QUMARK(
-                                                                              :"/nendo/core/macro"                                                                              ,
+                                                                            trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                 begin
-                                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                end
-                                                                            )
+                                                                                  if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                    trampCall(@_eqv_QUMARK)
+                                                                                  else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                end                                                                              ,
+                                                                            [
+                                                                                :"/nendo/core/macro"                                                                                ,
+                                                                                  begin
+                                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                  end
+                                                                            ]
+                                                                                         ))
                                                                                  )
                                                                     end
                                                                 end
                                                             } ; ___lambda.call(
-                                                                  _eqv_QUMARK(
-                                                                    :"macro"                                                                    ,
+                                                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                       begin
-                                                                          trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                      end
-                                                                  )
+                                                                        if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                          trampCall(@_eqv_QUMARK)
+                                                                        else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                      end                                                                    ,
+                                                                  [
+                                                                      :"macro"                                                                      ,
+                                                                        begin
+                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                  ]
+                                                                               ))
                                                                        )
                                                           end
                                                          ) then
@@ -15611,24 +15747,40 @@ trampCall(
                                                                                 false
                                                                               end
                                                                           } ; ___lambda.call(
-                                                                                _eqv_QUMARK(
-                                                                                  :"/nendo/core/%syntax"                                                                                  ,
+                                                                                trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                     begin
-                                                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                    end
-                                                                                )
+                                                                                      if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                        trampCall(@_eqv_QUMARK)
+                                                                                      else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                    end                                                                                  ,
+                                                                                [
+                                                                                    :"/nendo/core/%syntax"                                                                                    ,
+                                                                                      begin
+                                                                                          trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                      end
+                                                                                ]
+                                                                                             ))
                                                                                      )
                                                                         end
                                                                     end
                                                                 } ; ___lambda.call(
-                                                                      _eqv_QUMARK(
-                                                                        :"%syntax"                                                                        ,
+                                                                      trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                           begin
-                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                          end
-                                                                      )
+                                                                            if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                              trampCall(@_eqv_QUMARK)
+                                                                            else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                          end                                                                        ,
+                                                                      [
+                                                                          :"%syntax"                                                                          ,
+                                                                            begin
+                                                                                trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                            end
+                                                                      ]
+                                                                                   ))
                                                                            )
                                                               end
                                                              ) then
@@ -15669,24 +15821,40 @@ trampCall(
                                                                                     false
                                                                                   end
                                                                               } ; ___lambda.call(
-                                                                                    _eqv_QUMARK(
-                                                                                      :"/nendo/core/begin"                                                                                      ,
+                                                                                    trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                         begin
-                                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                        end
-                                                                                    )
+                                                                                          if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                            trampCall(@_eqv_QUMARK)
+                                                                                          else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                        end                                                                                      ,
+                                                                                    [
+                                                                                        :"/nendo/core/begin"                                                                                        ,
+                                                                                          begin
+                                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                          end
+                                                                                    ]
+                                                                                                 ))
                                                                                          )
                                                                             end
                                                                         end
                                                                     } ; ___lambda.call(
-                                                                          _eqv_QUMARK(
-                                                                            :"begin"                                                                            ,
+                                                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                               begin
-                                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                              end
-                                                                          )
+                                                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                  trampCall(@_eqv_QUMARK)
+                                                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                              end                                                                            ,
+                                                                          [
+                                                                              :"begin"                                                                              ,
+                                                                                begin
+                                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                end
+                                                                          ]
+                                                                                       ))
                                                                                )
                                                                   end
                                                                  ) then
@@ -15751,24 +15919,40 @@ trampCall(
                                                                                         false
                                                                                       end
                                                                                   } ; ___lambda.call(
-                                                                                        _eqv_QUMARK(
-                                                                                          :"/nendo/core/lambda"                                                                                          ,
+                                                                                        trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                             begin
-                                                                                                trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                            end
-                                                                                        )
+                                                                                              if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                trampCall(@_eqv_QUMARK)
+                                                                                              else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                            end                                                                                          ,
+                                                                                        [
+                                                                                            :"/nendo/core/lambda"                                                                                            ,
+                                                                                              begin
+                                                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                              end
+                                                                                        ]
+                                                                                                     ))
                                                                                              )
                                                                                 end
                                                                             end
                                                                         } ; ___lambda.call(
-                                                                              _eqv_QUMARK(
-                                                                                :"lambda"                                                                                ,
+                                                                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                   begin
-                                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                  end
-                                                                              )
+                                                                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                      trampCall(@_eqv_QUMARK)
+                                                                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                  end                                                                                ,
+                                                                              [
+                                                                                  :"lambda"                                                                                  ,
+                                                                                    begin
+                                                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                    end
+                                                                              ]
+                                                                                           ))
                                                                                    )
                                                                       end
                                                                      ) then
@@ -15857,24 +16041,40 @@ trampCall(
                                                                                             false
                                                                                           end
                                                                                       } ; ___lambda.call(
-                                                                                            _eqv_QUMARK(
-                                                                                              :"/nendo/core/if"                                                                                              ,
+                                                                                            trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                 begin
-                                                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                end
-                                                                                            )
+                                                                                                  if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                    trampCall(@_eqv_QUMARK)
+                                                                                                  else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                end                                                                                              ,
+                                                                                            [
+                                                                                                :"/nendo/core/if"                                                                                                ,
+                                                                                                  begin
+                                                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                  end
+                                                                                            ]
+                                                                                                         ))
                                                                                                  )
                                                                                     end
                                                                                 end
                                                                             } ; ___lambda.call(
-                                                                                  _eqv_QUMARK(
-                                                                                    :"if"                                                                                    ,
+                                                                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                       begin
-                                                                                          trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                      end
-                                                                                  )
+                                                                                        if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                          trampCall(@_eqv_QUMARK)
+                                                                                        else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                      end                                                                                    ,
+                                                                                  [
+                                                                                      :"if"                                                                                      ,
+                                                                                        begin
+                                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                        end
+                                                                                  ]
+                                                                                               ))
                                                                                        )
                                                                           end
                                                                          ) then
@@ -15898,13 +16098,21 @@ trampCall(
                                                                                                 false
                                                                                               end
                                                                                           } ; ___lambda.call(
-                                                                                                _eqv_QUMARK(
-                                                                                                  3                                                                                                  ,
+                                                                                                trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                     begin
-                                                                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20328)
-                                                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                    end
-                                                                                                )
+                                                                                                      if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                        trampCall(@_eqv_QUMARK)
+                                                                                                      else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                    end                                                                                                  ,
+                                                                                                [
+                                                                                                    3                                                                                                    ,
+                                                                                                      begin
+                                                                                                          trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20328)
+                                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                      end
+                                                                                                ]
+                                                                                                             ))
                                                                                                      )
                                                                                         end
                                                                                        ) then
@@ -15983,13 +16191,21 @@ trampCall(
                                                                                                     false
                                                                                                   end
                                                                                               } ; ___lambda.call(
-                                                                                                    _eqv_QUMARK(
-                                                                                                      4                                                                                                      ,
+                                                                                                    trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                         begin
-                                                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20328)
-                                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                        end
-                                                                                                    )
+                                                                                                          if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                            trampCall(@_eqv_QUMARK)
+                                                                                                          else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                        end                                                                                                      ,
+                                                                                                    [
+                                                                                                        4                                                                                                        ,
+                                                                                                          begin
+                                                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20328)
+                                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                          end
+                                                                                                    ]
+                                                                                                                 ))
                                                                                                          )
                                                                                             end
                                                                                            ) then
@@ -16127,24 +16343,40 @@ trampCall(
                                                                                                 false
                                                                                               end
                                                                                           } ; ___lambda.call(
-                                                                                                _eqv_QUMARK(
-                                                                                                  :"/nendo/core/%let"                                                                                                  ,
+                                                                                                trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                     begin
-                                                                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                    end
-                                                                                                )
+                                                                                                      if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                        trampCall(@_eqv_QUMARK)
+                                                                                                      else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                    end                                                                                                  ,
+                                                                                                [
+                                                                                                    :"/nendo/core/%let"                                                                                                    ,
+                                                                                                      begin
+                                                                                                          trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                      end
+                                                                                                ]
+                                                                                                             ))
                                                                                                      )
                                                                                         end
                                                                                     end
                                                                                 } ; ___lambda.call(
-                                                                                      _eqv_QUMARK(
-                                                                                        :"%let"                                                                                        ,
+                                                                                      trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                           begin
-                                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                          end
-                                                                                      )
+                                                                                            if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                              trampCall(@_eqv_QUMARK)
+                                                                                            else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                          end                                                                                        ,
+                                                                                      [
+                                                                                          :"%let"                                                                                          ,
+                                                                                            begin
+                                                                                                trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                            end
+                                                                                      ]
+                                                                                                   ))
                                                                                            )
                                                                               end
                                                                              ) then
@@ -16241,24 +16473,40 @@ trampCall(
                                                                                                     false
                                                                                                   end
                                                                                               } ; ___lambda.call(
-                                                                                                    _eqv_QUMARK(
-                                                                                                      :"/nendo/core/letrec"                                                                                                      ,
+                                                                                                    trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                         begin
-                                                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                        end
-                                                                                                    )
+                                                                                                          if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                            trampCall(@_eqv_QUMARK)
+                                                                                                          else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                        end                                                                                                      ,
+                                                                                                    [
+                                                                                                        :"/nendo/core/letrec"                                                                                                        ,
+                                                                                                          begin
+                                                                                                              trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                          end
+                                                                                                    ]
+                                                                                                                 ))
                                                                                                          )
                                                                                             end
                                                                                         end
                                                                                     } ; ___lambda.call(
-                                                                                          _eqv_QUMARK(
-                                                                                            :"letrec"                                                                                            ,
+                                                                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                               begin
-                                                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                              end
-                                                                                          )
+                                                                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                  trampCall(@_eqv_QUMARK)
+                                                                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                              end                                                                                            ,
+                                                                                          [
+                                                                                              :"letrec"                                                                                              ,
+                                                                                                begin
+                                                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                end
+                                                                                          ]
+                                                                                                       ))
                                                                                                )
                                                                                   end
                                                                                  ) then
@@ -16381,46 +16629,78 @@ trampCall(
                                                                                                                             false
                                                                                                                           end
                                                                                                                       } ; ___lambda.call(
-                                                                                                                            _eqv_QUMARK(
-                                                                                                                              :"/nendo/core/define-syntax"                                                                                                                              ,
+                                                                                                                            trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                                                 begin
-                                                                                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                                                end
-                                                                                                                            )
+                                                                                                                                  if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                                                    trampCall(@_eqv_QUMARK)
+                                                                                                                                  else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                                                end                                                                                                                              ,
+                                                                                                                            [
+                                                                                                                                :"/nendo/core/define-syntax"                                                                                                                                ,
+                                                                                                                                  begin
+                                                                                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                                                  end
+                                                                                                                            ]
+                                                                                                                                         ))
                                                                                                                                  )
                                                                                                                     end
                                                                                                                 end
                                                                                                             } ; ___lambda.call(
-                                                                                                                  _eqv_QUMARK(
-                                                                                                                    :"define-syntax"                                                                                                                    ,
+                                                                                                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                                       begin
-                                                                                                                          trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                                      end
-                                                                                                                  )
+                                                                                                                        if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                                          trampCall(@_eqv_QUMARK)
+                                                                                                                        else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                                      end                                                                                                                    ,
+                                                                                                                  [
+                                                                                                                      :"define-syntax"                                                                                                                      ,
+                                                                                                                        begin
+                                                                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                                        end
+                                                                                                                  ]
+                                                                                                                               ))
                                                                                                                        )
                                                                                                           end
                                                                                                       end
                                                                                                   } ; ___lambda.call(
-                                                                                                        _eqv_QUMARK(
-                                                                                                          :"/nendo/core/define"                                                                                                          ,
+                                                                                                        trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                             begin
-                                                                                                                trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                            end
-                                                                                                        )
+                                                                                                              if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                                trampCall(@_eqv_QUMARK)
+                                                                                                              else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                            end                                                                                                          ,
+                                                                                                        [
+                                                                                                            :"/nendo/core/define"                                                                                                            ,
+                                                                                                              begin
+                                                                                                                  trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                              end
+                                                                                                        ]
+                                                                                                                     ))
                                                                                                              )
                                                                                                 end
                                                                                             end
                                                                                         } ; ___lambda.call(
-                                                                                              _eqv_QUMARK(
-                                                                                                :"define"                                                                                                ,
+                                                                                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                   begin
-                                                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                  end
-                                                                                              )
+                                                                                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                      trampCall(@_eqv_QUMARK)
+                                                                                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                  end                                                                                                ,
+                                                                                              [
+                                                                                                  :"define"                                                                                                  ,
+                                                                                                    begin
+                                                                                                        trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                    end
+                                                                                              ]
+                                                                                                           ))
                                                                                                    )
                                                                                       end
                                                                                      ) then
@@ -16595,24 +16875,40 @@ trampCall(
                                                                                                             false
                                                                                                           end
                                                                                                       } ; ___lambda.call(
-                                                                                                            _eqv_QUMARK(
-                                                                                                              :"/nendo/core/set!"                                                                                                              ,
+                                                                                                            trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                                 begin
-                                                                                                                    trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                                end
-                                                                                                            )
+                                                                                                                  if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                                    trampCall(@_eqv_QUMARK)
+                                                                                                                  else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                                end                                                                                                              ,
+                                                                                                            [
+                                                                                                                :"/nendo/core/set!"                                                                                                                ,
+                                                                                                                  begin
+                                                                                                                      trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                                  end
+                                                                                                            ]
+                                                                                                                         ))
                                                                                                                  )
                                                                                                     end
                                                                                                 end
                                                                                             } ; ___lambda.call(
-                                                                                                  _eqv_QUMARK(
-                                                                                                    :"set!"                                                                                                    ,
+                                                                                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                                                                                       begin
-                                                                                                          trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
-                                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                      end
-                                                                                                  )
+                                                                                                        if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                                                                          trampCall(@_eqv_QUMARK)
+                                                                                                        else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/init.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                                                                      end                                                                                                    ,
+                                                                                                  [
+                                                                                                      :"set!"                                                                                                      ,
+                                                                                                        begin
+                                                                                                            trampCall(___gensym__a6500e12401f98f446352dd5341558873f6aaa73_20301)
+                                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                        end
+                                                                                                  ]
+                                                                                                               ))
                                                                                                        )
                                                                                           end
                                                                                          ) then

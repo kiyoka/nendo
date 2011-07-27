@@ -1645,6 +1645,32 @@ module Nendo
       [ :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ] ].include?( sym )
     end
 
+    def optimizedFunc( origname, rubysym, args )
+      case origname
+      when '+', '-'
+        case args.length
+        when 0
+          [ "#{rubysym}_ARGS0(",                                       ")" ]
+        when 1
+          [ "#{rubysym}_ARGS1(",           args[0],                     ")" ]
+        when 2
+          [ "#{rubysym}_ARGS2(",           args[0], args[1],             ")" ]
+        when 3
+          [ "#{rubysym}_ARGS3(",           args[0], args[1], args[2],     ")" ]
+        else
+          false
+        end
+      when 'car', 'cdr', 'not'
+        raise ArgumentError, "Error: #{origname} requires 1 argument. " unless 1 == args.length
+        [ "#{rubysym}(",              args[0],         ")" ]
+      when 'cons', '=', ">", ">=", "<", "<=", "eq?", "equal?"
+        raise ArgumentError, "Error: #{origname} requires 2 arguments. " unless 2 == args.length
+        [ "#{rubysym}(",            args[0], args[1], ")" ]
+      else
+        false
+      end
+    end
+
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
       if isDefines( funcname )
         ar = args.cdr.map { |x| x.car }
@@ -1701,77 +1727,19 @@ module Nendo
               "[", arr, "]",
               "          ))"]
           else
-            shortcut = false
+            result = false
             if (execType == EXEC_TYPE_NORMAL) and (not locals.flatten.include?( sym ))
-              shortcut = case origname
-                         when '+'
-                           case arr.length
-                           when 0
-                               [ "__PLMARK_ARGS0(",                                            ")" ]
-                           when 1
-                               [ "__PLMARK_ARGS1(",                arr[0],                     ")" ]
-                           when 2
-                               [ "__PLMARK_ARGS2(",                arr[0], arr[1],             ")" ]
-                           when 3
-                               [ "__PLMARK_ARGS3(",                arr[0], arr[1], arr[2],     ")" ]
-                           else
-                             false
-                           end
-                         when '-'
-                           case arr.length
-                           when 0
-                               [ "__MIMARK_ARGS0(",                                            ")" ]
-                           when 1
-                               [ "__MIMARK_ARGS1(",                arr[0],                     ")" ]
-                           when 2
-                               [ "__MIMARK_ARGS2(",                arr[0], arr[1],             ")" ]
-                           when 3
-                               [ "__MIMARK_ARGS3(",                arr[0], arr[1], arr[2],     ")" ]
-                           else
-                             false
-                           end
-                         when 'car'
-                           [ "_car(",                              arr[0],         ")" ]
-                         when 'cdr'
-                           [ "_cdr(",                              arr[0],         ")" ]
-                         when 'not'
-                           [ "_not(",                              arr[0],         ")" ]
-                         when 'cons'
-                           case arr.length
-                           when 2
-                             [ "_cons(",                             arr[0], arr[1], ")" ]
-                           else
-                             false
-                           end
-                         when '='
-                           [ "__EQMARK(",                          arr[0], arr[1], ")" ]
-                         when '>'
-                           [ "__GTMARK(",                          arr[0], arr[1], ")" ]
-                         when '>='
-                           [ "__GTMARK_EQMARK(",                   arr[0], arr[1], ")" ]
-                         when '<'
-                           [ "__LTMARK(",                          arr[0], arr[1], ")" ]
-                         when '<='
-                           [ "__LTMARK_EQMARK(",                   arr[0], arr[1], ")" ]
-                         when 'eq?'
-                           [ "_eq_QUMARK(",                        arr[0], arr[1], ")" ]
-                         when 'eqv?'
-                           [ "_eqv_QUMARK(",                       arr[0], arr[1], ")" ]
-                         when 'equal?'
-                           [ "_equal_QUMARK(",                     arr[0], arr[1], ")" ]
-                         else
-                           false
-                         end
+              result = optimizedFunc( origname, sym, arr )
             end
-            if shortcut
-              shortcut
+            if result
+              result
             else
               _call = case execType
                       when EXEC_TYPE_NORMAL
                         if locals.flatten.include?( sym )
                           [          "trampCall( callProcedure(  '" + sym + "', ", "))" ] # local function
                         else
-                          [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ] # toplevel function
+                          [ sprintf( "trampCall( self.%s_METHOD( ", sym ), "))" ]         # toplevel function
                         end
                       when EXEC_TYPE_TAILCALL
                         [ sprintf( "delayCall( '%s', ", sym ),  ")"  ]

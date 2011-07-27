@@ -74,13 +74,21 @@ trampCall(
                               false
                             end
                         } ; ___lambda.call(
-                              _eqv_QUMARK(
-                                0                                ,
+                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                   begin
-                                      trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
-                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                  end
-                              )
+                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                      trampCall(@_eqv_QUMARK)
+                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:174"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                  0                                  ,
+                                    begin
+                                        trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
+                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                    end
+                              ]
+                                           ))
                                    )
                       end
                      ) then
@@ -118,13 +126,21 @@ trampCall(
                                   false
                                 end
                             } ; ___lambda.call(
-                                  _eqv_QUMARK(
-                                    1                                    ,
+                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                       begin
-                                          trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
-                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                      end
-                                  )
+                                        if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                          trampCall(@_eqv_QUMARK)
+                                        else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                        rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:174"] + __e.backtrace ) ; raise __e
+                                      end                                    ,
+                                  [
+                                      1                                      ,
+                                        begin
+                                            trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
+                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                        end
+                                  ]
+                                               ))
                                        )
                           end
                          ) then
@@ -178,13 +194,21 @@ trampCall(
                                       false
                                     end
                                 } ; ___lambda.call(
-                                      _eqv_QUMARK(
-                                        2                                        ,
+                                      trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                           begin
-                                              trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
-                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                          end
-                                      )
+                                            if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                              trampCall(@_eqv_QUMARK)
+                                            else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:174"] + __e.backtrace ) ; raise __e
+                                          end                                        ,
+                                      [
+                                          2                                          ,
+                                            begin
+                                                trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
+                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                            end
+                                      ]
+                                                   ))
                                            )
                               end
                              ) then
@@ -252,13 +276,21 @@ trampCall(
                                           false
                                         end
                                     } ; ___lambda.call(
-                                          _eqv_QUMARK(
-                                            3                                            ,
+                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                               begin
-                                                  trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
-                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                              end
-                                          )
+                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                  trampCall(@_eqv_QUMARK)
+                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:174"] + __e.backtrace ) ; raise __e
+                                              end                                            ,
+                                          [
+                                              3                                              ,
+                                                begin
+                                                    trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81264)
+                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                end
+                                          ]
+                                                       ))
                                                )
                                   end
                                  ) then

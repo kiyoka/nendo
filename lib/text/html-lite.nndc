@@ -29,13 +29,21 @@ trampCall(
                               false
                             end
                         } ; ___lambda.call(
-                              _eqv_QUMARK(
-                                "<"                                ,
+                              trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                   begin
-                                      trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
-                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                  end
-                              )
+                                    if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                      trampCall(@_eqv_QUMARK)
+                                    else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                  "<"                                  ,
+                                    begin
+                                        trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
+                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                    end
+                              ]
+                                           ))
                                    )
                       end
                      ) then
@@ -60,13 +68,21 @@ trampCall(
                                   false
                                 end
                             } ; ___lambda.call(
-                                  _eqv_QUMARK(
-                                    ">"                                    ,
+                                  trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                       begin
-                                          trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
-                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                      end
-                                  )
+                                        if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                          trampCall(@_eqv_QUMARK)
+                                        else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                      end                                    ,
+                                  [
+                                      ">"                                      ,
+                                        begin
+                                            trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
+                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                        end
+                                  ]
+                                               ))
                                        )
                           end
                          ) then
@@ -91,13 +107,21 @@ trampCall(
                                       false
                                     end
                                 } ; ___lambda.call(
-                                      _eqv_QUMARK(
-                                        "&"                                        ,
+                                      trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                           begin
-                                              trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
-                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                          end
-                                      )
+                                            if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                              trampCall(@_eqv_QUMARK)
+                                            else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                          end                                        ,
+                                      [
+                                          "&"                                          ,
+                                            begin
+                                                trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
+                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                            end
+                                      ]
+                                                   ))
                                            )
                               end
                              ) then
@@ -122,13 +146,21 @@ trampCall(
                                           false
                                         end
                                     } ; ___lambda.call(
-                                          _eqv_QUMARK(
-                                            "\""                                            ,
+                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
                                               begin
-                                                  trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
-                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                              end
-                                          )
+                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                  trampCall(@_eqv_QUMARK)
+                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                              end                                            ,
+                                          [
+                                              "\""                                              ,
+                                                begin
+                                                    trampCall(___gensym__7421c160c97efe3fa4b72b1f1f8b235cd6625c27_20023)
+                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                end
+                                          ]
+                                                       ))
                                                )
                                   end
                                  ) then
@@ -1073,23 +1105,31 @@ trampCall(
                                             )
                                         )
                                        ) then
-                                          _eqv_QUMARK(
-                                              trampCall( self._cadr_METHOD(  'cadr',
-                                                  begin
-                                                    if @global_lisp_binding.has_key?('_cadr') then
-                                                      trampCall(@_cadr)
-                                                    else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
+                                          trampCall( self._eqv_QUMARK_METHOD(  'eqv?',
+                                              begin
+                                                if @global_lisp_binding.has_key?('_eqv_QUMARK') then
+                                                  trampCall(@_eqv_QUMARK)
+                                                else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
+                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                              end                                            ,
+                                          [
+                                                trampCall( self._cadr_METHOD(  'cadr',
                                                     begin
-                                                        trampCall(_elements)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
-                                                    end
-                                              ]
-                                                           ))                                            ,
-                                            LispKeyword.new( "empty" )
-                                          )
+                                                      if @global_lisp_binding.has_key?('_cadr') then
+                                                        trampCall(@_cadr)
+                                                      else raise NameError.new( "Error: undefined variable _cadr", "_cadr" ) end
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
+                                                    end                                                  ,
+                                                [
+                                                      begin
+                                                          trampCall(_elements)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                ]
+                                                             ))                                              ,
+                                              LispKeyword.new( "empty" )
+                                          ]
+                                                       ))
                                       else
                                         false
                                       end
