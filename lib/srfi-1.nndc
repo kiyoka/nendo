@@ -293,20 +293,12 @@ trampCall(
                     _recur                     = 
                       Proc.new { |_x,_rest| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:58"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_rest)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:59"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_rest)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:59"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               delayCall( '_cons',  'cons',
                                   begin
@@ -387,20 +379,12 @@ trampCall(
                     _recur                     = 
                       Proc.new { |_lis| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:66"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_lis)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:68"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_lis)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:68"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               delayCall( '_cons',  'cons',
                                   begin
@@ -586,46 +570,30 @@ trampCall(
                                     trampCall(_start)
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:78"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                                trampCall( self.__ASMARK_METHOD(  '*',
+                                __ASMARK_ARGS2(
+                                    __MIMARK_ARGS2(
+                                        begin
+                                            trampCall(_count)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:82"] + __e.backtrace ) ; raise __e
+                                        end                                      ,
+                                      1
+                                    )                                  ,
                                     begin
-                                      if @global_lisp_binding.has_key?('__ASMARK') then
-                                        trampCall(@__ASMARK)
-                                      else raise NameError.new( "Error: undefined variable __ASMARK", "__ASMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:78"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                [
-                                      __MIMARK_ARGS2(
-                                          begin
-                                              trampCall(_count)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:82"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                        1
-                                      )                                    ,
-                                      begin
-                                          trampCall(_step)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:80"] + __e.backtrace ) ; raise __e
-                                      end
-                                ]
-                                             ))
+                                        trampCall(_step)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:80"] + __e.backtrace ) ; raise __e
+                                    end
+                                )
                             )
                                  )
                     end
                 } ; ___lambda.call(
                       if ( 
-                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                        _pair_QUMARK(
                             begin
-                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                trampCall(@_pair_QUMARK)
-                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
+                                trampCall(_args)
                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:75"] + __e.backtrace ) ; raise __e
-                            end                          ,
-                        [
-                              begin
-                                  trampCall(_args)
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:75"] + __e.backtrace ) ; raise __e
-                              end
-                        ]
-                                     ))
+                            end
+                        )
                        ) then
                           delayCall( '_car',  'car',
                               begin
@@ -649,39 +617,23 @@ trampCall(
                           _not(
                               _eq_QUMARK(
                                 false                                ,
-                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                      begin
-                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                          trampCall(@_pair_QUMARK)
-                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:75"] + __e.backtrace ) ; raise __e
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall(_args)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:75"] + __e.backtrace ) ; raise __e
-                                        end
-                                  ]
-                                               ))
-                              )
-                          )
-                         ) then
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:75"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  _cdr(
+                                  _pair_QUMARK(
                                       begin
                                           trampCall(_args)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:75"] + __e.backtrace ) ; raise __e
                                       end
                                   )
-                            ]
-                                         ))
+                              )
+                          )
+                         ) then
+                            _pair_QUMARK(
+                                _cdr(
+                                    begin
+                                        trampCall(_args)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:75"] + __e.backtrace ) ; raise __e
+                                    end
+                                )
+                            )
                         else
                           false
                         end
@@ -720,34 +672,26 @@ trampCall(
           Proc.new { |_val1,*__rest__| _vals = __rest__[0] ;  
               begin
                 ___lambda = lambda { |_ans| 
-                    trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
-                        begin
-                          if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                            trampCall(@_set_MIMARKcdr_EXMARK)
-                          else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:133"] + __e.backtrace ) ; raise __e
-                        end                      ,
-                    [
-                          trampCall( self._last_MIMARKpair_METHOD(  'last-pair',
+                    _set_MIMARKcdr_EXMARK(
+                        trampCall( self._last_MIMARKpair_METHOD(  'last-pair',
+                            begin
+                              if @global_lisp_binding.has_key?('_last_MIMARKpair') then
+                                trampCall(@_last_MIMARKpair)
+                              else raise NameError.new( "Error: undefined variable _last_MIMARKpair", "_last_MIMARKpair" ) end
+                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:133"] + __e.backtrace ) ; raise __e
+                            end                          ,
+                        [
                               begin
-                                if @global_lisp_binding.has_key?('_last_MIMARKpair') then
-                                  trampCall(@_last_MIMARKpair)
-                                else raise NameError.new( "Error: undefined variable _last_MIMARKpair", "_last_MIMARKpair" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:133"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_ans)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:134"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))                        ,
-                          begin
-                              trampCall(_ans)
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:134"] + __e.backtrace ) ; raise __e
-                          end
-                    ]
-                                 ))
+                                  trampCall(_ans)
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:134"] + __e.backtrace ) ; raise __e
+                              end
+                        ]
+                                     ))                      ,
+                        begin
+                            trampCall(_ans)
+                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:134"] + __e.backtrace ) ; raise __e
+                        end
+                    )
                     begin
                         trampCall(_ans)
                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:134"] + __e.backtrace ) ; raise __e
@@ -783,38 +727,22 @@ trampCall(
                     _lp                     = 
                       Proc.new { |_x,_lag| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:145"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_x)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:150"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_x)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:150"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               begin
                                 ___lambda = lambda { |_x| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:145"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_x)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:150"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_x)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:150"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                           ___lambda = lambda { |_x,_lag| 
@@ -951,38 +879,22 @@ trampCall(
                     _lp                     = 
                       Proc.new { |_x,_lag| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:163"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_x)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_x)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               begin
                                 ___lambda = lambda { |_x| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:163"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_x)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_x)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                           ___lambda = lambda { |_x,_lag| 
@@ -1126,20 +1038,12 @@ trampCall(
                             _not(
                                 _eq_QUMARK(
                                   false                                  ,
-                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                    _pair_QUMARK(
                                         begin
-                                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                            trampCall(@_pair_QUMARK)
-                                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:174"] + __e.backtrace ) ; raise __e
-                                        end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_x)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:177"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                            trampCall(_x)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:177"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
                                 )
                             )
                            ) then
@@ -1149,20 +1053,12 @@ trampCall(
                                       _not(
                                           _eq_QUMARK(
                                             false                                            ,
-                                              trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                              _pair_QUMARK(
                                                   begin
-                                                    if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                      trampCall(@_pair_QUMARK)
-                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:174"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    begin
-                                                        trampCall(_x)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:177"] + __e.backtrace ) ; raise __e
-                                                    end
-                                              ]
-                                                           ))
+                                                      trampCall(_x)
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:177"] + __e.backtrace ) ; raise __e
+                                                  end
+                                              )
                                           )
                                       )
                                      ) then
@@ -1347,20 +1243,12 @@ trampCall(
                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:184"] + __e.backtrace ) ; raise __e
                   end                ,
               [
-                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                    _pair_QUMARK(
                         begin
-                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                            trampCall(@_pair_QUMARK)
-                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
+                            trampCall(_x)
                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:184"] + __e.backtrace ) ; raise __e
-                        end                      ,
-                    [
-                          begin
-                              trampCall(_x)
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:184"] + __e.backtrace ) ; raise __e
-                          end
-                    ]
-                                 ))
+                        end
+                    )
               ]
                            )
           }
@@ -1377,20 +1265,12 @@ trampCall(
     trampCall(
           Proc.new { |_l| 
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:190"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_l)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:192"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_l)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:192"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     false
@@ -1778,38 +1658,22 @@ trampCall(
                     _lp                     = 
                       Proc.new { |_x,_lag,_len| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:226"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_x)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:230"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_x)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:230"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               begin
                                 ___lambda = lambda { |_x,_len| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:226"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_x)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:230"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_x)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:230"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                           ___lambda = lambda { |_x,_lag,_len| 
@@ -2528,38 +2392,30 @@ trampCall(
                 Cell.new()
               else
                   begin
-                      trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
-                          begin
-                            if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                              trampCall(@_set_MIMARKcdr_EXMARK)
-                            else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:303"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            trampCall( self._drop_METHOD(  'drop',
+                      _set_MIMARKcdr_EXMARK(
+                          trampCall( self._drop_METHOD(  'drop',
+                              begin
+                                if @global_lisp_binding.has_key?('_drop') then
+                                  trampCall(@_drop)
+                                else raise NameError.new( "Error: undefined variable _drop", "_drop" ) end
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:303"] + __e.backtrace ) ; raise __e
+                              end                            ,
+                          [
                                 begin
-                                  if @global_lisp_binding.has_key?('_drop') then
-                                    trampCall(@_drop)
-                                  else raise NameError.new( "Error: undefined variable _drop", "_drop" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:303"] + __e.backtrace ) ; raise __e
+                                    trampCall(_lis)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:304"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                            [
-                                  begin
-                                      trampCall(_lis)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:304"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                                  __MIMARK_ARGS2(
-                                      begin
-                                          trampCall(_k)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:303"] + __e.backtrace ) ; raise __e
-                                      end                                    ,
-                                    1
-                                  )
-                            ]
-                                         ))                          ,
-                          Cell.new()
-                      ]
-                                   ))
+                                __MIMARK_ARGS2(
+                                    begin
+                                        trampCall(_k)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:303"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                  1
+                                )
+                          ]
+                                       ))                        ,
+                        Cell.new()
+                      )
                       begin
                           trampCall(_lis)
                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:304"] + __e.backtrace ) ; raise __e
@@ -2586,20 +2442,12 @@ trampCall(
                     _lp                     = 
                       Proc.new { |_lag,_lead| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:313"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_lead)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:314"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_lead)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:314"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               delayCall( '_lp',  'lp',
                                   begin
@@ -2682,20 +2530,12 @@ trampCall(
                     _recur                     = 
                       Proc.new { |_lag,_lead| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:320"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_lead)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:321"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_lead)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:321"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               delayCall( '_cons',  'cons',
                                   begin
@@ -2789,40 +2629,24 @@ trampCall(
               begin
                 ___lambda = lambda { |_lead| 
                     if ( 
-                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                      _pair_QUMARK(
                           begin
-                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                              trampCall(@_pair_QUMARK)
-                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:332"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_lead)
-                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:333"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_lead)
+                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:333"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                      ) then
                         begin
                           ___lambda = lambda { |_lp| 
                               _lp                               = 
                                 Proc.new { |_lag,_lead| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:332"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_lead)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:333"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_lead)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:333"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         delayCall( '_lp',  'lp',
                                             begin
@@ -2846,21 +2670,13 @@ trampCall(
                                                      )
                                     else
                                         begin
-                                            trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                            _set_MIMARKcdr_EXMARK(
                                                 begin
-                                                  if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                    trampCall(@_set_MIMARKcdr_EXMARK)
-                                                  else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                                    trampCall(_lag)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:334"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_lag)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:334"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                                Cell.new()
-                                            ]
-                                                         ))
+                                              Cell.new()
+                                            )
                                             begin
                                                 trampCall(_lis)
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:335"] + __e.backtrace ) ; raise __e
@@ -3099,21 +2915,13 @@ trampCall(
                     ___lambda = lambda { |_prev| 
                         begin
                           ___lambda = lambda { |_suffix| 
-                              trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                              _set_MIMARKcdr_EXMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                      trampCall(@_set_MIMARKcdr_EXMARK)
-                                    else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                      trampCall(_prev)
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:395"] + __e.backtrace ) ; raise __e
                                   end                                ,
-                              [
-                                    begin
-                                        trampCall(_prev)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:395"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                  Cell.new()
-                              ]
-                                           ))
+                                Cell.new()
+                              )
                               delayCall( '_values',  'values',
                                   begin
                                     if @global_lisp_binding.has_key?('_values') then
@@ -3225,20 +3033,12 @@ trampCall(
                           begin
                             ___lambda = lambda { |_tail| 
                                 if ( 
-                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                  _pair_QUMARK(
                                       begin
-                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                          trampCall(@_pair_QUMARK)
-                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
+                                          trampCall(_tail)
                                         rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:405"] + __e.backtrace ) ; raise __e
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall(_tail)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:405"] + __e.backtrace ) ; raise __e
-                                        end
-                                  ]
-                                               ))
+                                      end
+                                  )
                                  ) then
                                     delayCall( '_lp',  'lp',
                                         begin
@@ -4086,20 +3886,12 @@ trampCall(
                       Proc.new { |_lists,_prev| 
                           if ( 
                             _not(
-                                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                _pair_QUMARK(
                                     begin
-                                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                        trampCall(@_pair_QUMARK)
-                                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                [
-                                      begin
-                                          trampCall(_lists)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:460"] + __e.backtrace ) ; raise __e
-                                      end
-                                ]
-                                             ))
+                                        trampCall(_lists)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:460"] + __e.backtrace ) ; raise __e
+                                    end
+                                )
                             )
                            ) then
                               begin
@@ -4111,20 +3903,12 @@ trampCall(
                                 ___lambda = lambda { |_first,_rest| 
                                     if ( 
                                       _not(
-                                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                          _pair_QUMARK(
                                               begin
-                                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                  trampCall(@_pair_QUMARK)
-                                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
-                                              end                                            ,
-                                          [
-                                                begin
-                                                    trampCall(_first)
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:472"] + __e.backtrace ) ; raise __e
-                                                end
-                                          ]
-                                                       ))
+                                                  trampCall(_first)
+                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:472"] + __e.backtrace ) ; raise __e
+                                              end
+                                          )
                                       )
                                      ) then
                                         delayCall( '_lp',  'lp',
@@ -4149,41 +3933,25 @@ trampCall(
                                               _lp2                                               = 
                                                 Proc.new { |_tail_MIMARKcons,_rest| 
                                                     if ( 
-                                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                      _pair_QUMARK(
                                                           begin
-                                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                              trampCall(@_pair_QUMARK)
-                                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
-                                                          end                                                        ,
-                                                      [
-                                                            begin
-                                                                trampCall(_rest)
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:471"] + __e.backtrace ) ; raise __e
-                                                            end
-                                                      ]
-                                                                   ))
+                                                              trampCall(_rest)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:471"] + __e.backtrace ) ; raise __e
+                                                          end
+                                                      )
                                                      ) then
                                                         begin
                                                           ___lambda = lambda { |_next,_rest| 
-                                                              trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                              _set_MIMARKcdr_EXMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                                      trampCall(@_set_MIMARKcdr_EXMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:469"] + __e.backtrace ) ; raise __e
+                                                                      trampCall(_tail_MIMARKcons)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_tail_MIMARKcons)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
-                                                                    end                                                                  ,
-                                                                    begin
-                                                                        trampCall(_next)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
+                                                                  begin
+                                                                      trampCall(_next)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )
                                                               delayCall( '_lp2',  'lp2',
                                                                   begin
                                                                       trampCall(_lp2)
@@ -4191,20 +3959,12 @@ trampCall(
                                                                   end                                                                ,
                                                               [
                                                                     if ( 
-                                                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                                      _pair_QUMARK(
                                                                           begin
-                                                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                              trampCall(@_pair_QUMARK)
-                                                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
+                                                                              trampCall(_next)
                                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
-                                                                          end                                                                        ,
-                                                                      [
-                                                                            begin
-                                                                                trampCall(_next)
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:470"] + __e.backtrace ) ; raise __e
-                                                                            end
-                                                                      ]
-                                                                                   ))
+                                                                          end
+                                                                      )
                                                                      ) then
                                                                         trampCall( self._last_MIMARKpair_METHOD(  'last-pair',
                                                                             begin
@@ -4445,24 +4205,16 @@ trampCall(
                           else
                               begin
                                 ___lambda = lambda { |_next_MIMARKrev| 
-                                    trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                    _set_MIMARKcdr_EXMARK(
                                         begin
-                                          if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                            trampCall(@_set_MIMARKcdr_EXMARK)
-                                          else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:502"] + __e.backtrace ) ; raise __e
+                                            trampCall(_rev_MIMARKhead)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:503"] + __e.backtrace ) ; raise __e
                                         end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_rev_MIMARKhead)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:503"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                          begin
-                                              trampCall(_tail)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:502"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                        begin
+                                            trampCall(_tail)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:502"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
                                     delayCall( '_lp',  'lp',
                                         begin
                                             trampCall(_lp)
@@ -4606,20 +4358,12 @@ trampCall(
                               _recur                               = 
                                 Proc.new { |_lists| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:537"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_lists)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:541"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_lists)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:541"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                           ___lambda = lambda { |_lis| 
@@ -4753,20 +4497,12 @@ trampCall(
                     _recur                     = 
                       Proc.new { |_lists| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
+                                    trampCall(_lists)
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:546"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_lists)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:546"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                end
+                            )
                            ) then
                               delayCall( '_cons',  'cons',
                                   begin
@@ -4878,20 +4614,12 @@ trampCall(
                               _recur                               = 
                                 Proc.new { |_lists| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:560"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_lists)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:561"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_lists)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:561"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                             begin
@@ -5139,20 +4867,12 @@ trampCall(
                               _recur                               = 
                                 Proc.new { |_lists| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:579"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_lists)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:580"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_lists)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:580"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                             begin
@@ -5392,20 +5112,12 @@ trampCall(
                     _recur                     = 
                       Proc.new { |_lists| 
                           if ( 
-                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                            _pair_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                    trampCall(@_pair_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:592"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_lists)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:593"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_lists)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:593"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                                   begin
@@ -5566,20 +5278,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:604"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:609"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:609"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_lp| 
@@ -5961,40 +5665,24 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:640"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_maybe_MIMARKtail_MIMARKgen)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:641"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_maybe_MIMARKtail_MIMARKgen)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:641"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_tail_MIMARKgen| 
                         if ( 
-                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                              begin
-                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                  trampCall(@_pair_QUMARK)
-                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:640"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                _cdr(
-                                    begin
-                                        trampCall(_maybe_MIMARKtail_MIMARKgen)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:641"] + __e.backtrace ) ; raise __e
-                                    end
-                                )
-                          ]
-                                       ))
+                          _pair_QUMARK(
+                              _cdr(
+                                  begin
+                                      trampCall(_maybe_MIMARKtail_MIMARKgen)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:641"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
+                          )
                          ) then
                             delayCall( '_apply',  'apply',
                                 begin
@@ -6239,20 +5927,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:654"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:656"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:656"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_lp| 
@@ -6458,20 +6138,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:667"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:671"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:671"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_recur| 
@@ -6671,20 +6343,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:681"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:685"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:685"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_recur| 
@@ -6883,20 +6547,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:692"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:696"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:696"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_lp| 
@@ -7208,20 +6864,12 @@ trampCall(
                         _recur                         = 
                           Proc.new { |_head,_lis| 
                               if ( 
-                                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                _pair_QUMARK(
                                     begin
-                                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                        trampCall(@_pair_QUMARK)
-                                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:716"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                [
-                                      begin
-                                          trampCall(_lis)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:717"] + __e.backtrace ) ; raise __e
-                                      end
-                                ]
-                                             ))
+                                        trampCall(_lis)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:717"] + __e.backtrace ) ; raise __e
+                                    end
+                                )
                                ) then
                                   delayCall( '_f',  'f',
                                       begin
@@ -7397,20 +7045,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:732"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:733"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:733"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                       begin
@@ -7712,20 +7352,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:755"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:756"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:756"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_lp| 
@@ -7734,20 +7366,12 @@ trampCall(
                               begin
                                 ___lambda = lambda { |_tails| 
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:755"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_tails)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:757"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_tails)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:757"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                             trampCall( self._apply_METHOD(  'apply',
@@ -7915,20 +7539,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:769"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:772"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:772"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_lp| 
@@ -7977,44 +7593,36 @@ trampCall(
                                                          ))
                                         }                                      ,
                                         Proc.new { |_heads,_tails| 
-                                            trampCall( self._set_MIMARKcar_EXMARK_METHOD(  'set-car!',
+                                            _set_MIMARKcar_EXMARK(
                                                 begin
-                                                  if @global_lisp_binding.has_key?('_set_MIMARKcar_EXMARK') then
-                                                    trampCall(@_set_MIMARKcar_EXMARK)
-                                                  else raise NameError.new( "Error: undefined variable _set_MIMARKcar_EXMARK", "_set_MIMARKcar_EXMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
+                                                    trampCall(_lis1)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:778"] + __e.backtrace ) ; raise __e
                                                 end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_lis1)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:778"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                                  trampCall( self._apply_METHOD(  'apply',
+                                                trampCall( self._apply_METHOD(  'apply',
+                                                    begin
+                                                      if @global_lisp_binding.has_key?('_apply') then
+                                                        trampCall(@_apply)
+                                                      else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:773"] + __e.backtrace ) ; raise __e
+                                                    end                                                  ,
+                                                [
                                                       begin
-                                                        if @global_lisp_binding.has_key?('_apply') then
-                                                          trampCall(@_apply)
-                                                        else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:773"] + __e.backtrace ) ; raise __e
+                                                          trampCall(_f)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
                                                       end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_f)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
-                                                        end                                                      ,
-                                                        _car(
-                                                            begin
-                                                                trampCall(_lis1)
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:778"] + __e.backtrace ) ; raise __e
-                                                            end
-                                                        )                                                      ,
-                                                        begin
-                                                            trampCall(_heads)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:773"] + __e.backtrace ) ; raise __e
-                                                        end
-                                                  ]
-                                                               ))
-                                            ]
-                                                         ))
+                                                      _car(
+                                                          begin
+                                                              trampCall(_lis1)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:778"] + __e.backtrace ) ; raise __e
+                                                          end
+                                                      )                                                    ,
+                                                      begin
+                                                          trampCall(_heads)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:773"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                ]
+                                                             ))
+                                            )
                                             trampCall( callProcedure(  '_lp',  'lp',
                                                 begin
                                                     trampCall(_lp)
@@ -8068,34 +7676,26 @@ trampCall(
                       end                    ,
                   [
                         Proc.new { |_pair| 
-                            trampCall( self._set_MIMARKcar_EXMARK_METHOD(  'set-car!',
+                            _set_MIMARKcar_EXMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_set_MIMARKcar_EXMARK') then
-                                    trampCall(@_set_MIMARKcar_EXMARK)
-                                  else raise NameError.new( "Error: undefined variable _set_MIMARKcar_EXMARK", "_set_MIMARKcar_EXMARK" ) end
+                                    trampCall(_pair)
                                   rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
                                 end                              ,
-                            [
-                                  begin
-                                      trampCall(_pair)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                                  trampCall( callProcedure(  '_f',  'f',
-                                      begin
-                                          trampCall(_f)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
-                                      end                                    ,
-                                  [
-                                        _car(
-                                            begin
-                                                trampCall(_pair)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
-                                            end
-                                        )
-                                  ]
-                                               ))
-                            ]
-                                         ))
+                                trampCall( callProcedure(  '_f',  'f',
+                                    begin
+                                        trampCall(_f)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                [
+                                      _car(
+                                          begin
+                                              trampCall(_pair)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:777"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
+                                ]
+                                             ))
+                            )
                         }                      ,
                         begin
                             trampCall(_lis1)
@@ -8124,20 +7724,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:787"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:786"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:786"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_recur| 
@@ -8169,20 +7761,12 @@ trampCall(
                                     }                                  ,
                                     Proc.new { |_cars,_cdrs| 
                                         if ( 
-                                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                          _pair_QUMARK(
                                               begin
-                                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                  trampCall(@_pair_QUMARK)
-                                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:787"] + __e.backtrace ) ; raise __e
-                                              end                                            ,
-                                          [
-                                                begin
-                                                    trampCall(_cars)
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:788"] + __e.backtrace ) ; raise __e
-                                                end
-                                          ]
-                                                       ))
+                                                  trampCall(_cars)
+                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:788"] + __e.backtrace ) ; raise __e
+                                              end
+                                          )
                                          ) then
                                             if ( 
                                               begin
@@ -8328,20 +7912,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:804"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:803"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:803"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_recur| 
@@ -8373,20 +7949,12 @@ trampCall(
                                     }                                  ,
                                     Proc.new { |_cars,_cdrs| 
                                         if ( 
-                                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                          _pair_QUMARK(
                                               begin
-                                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                  trampCall(@_pair_QUMARK)
-                                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:804"] + __e.backtrace ) ; raise __e
-                                              end                                            ,
-                                          [
-                                                begin
-                                                    trampCall(_cars)
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:805"] + __e.backtrace ) ; raise __e
-                                                end
-                                          ]
-                                                       ))
+                                                  trampCall(_cars)
+                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:805"] + __e.backtrace ) ; raise __e
+                                              end
+                                          )
                                          ) then
                                             begin
                                               ___lambda = lambda { |_x| 
@@ -8615,20 +8183,12 @@ trampCall(
                                                 _scan_MIMARKin                                                 = 
                                                   Proc.new { |_prev,_lis| 
                                                       if ( 
-                                                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                        _pair_QUMARK(
                                                             begin
-                                                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                trampCall(@_pair_QUMARK)
-                                                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:901"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,
-                                                        [
-                                                              begin
-                                                                  trampCall(_lis)
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
-                                                              end
-                                                        ]
-                                                                     ))
+                                                                trampCall(_lis)
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
+                                                            end
+                                                        )
                                                        ) then
                                                           if ( 
                                                             trampCall( callProcedure(  '_pred',  'pred',
@@ -8693,20 +8253,12 @@ trampCall(
                                                             _lp                                                             = 
                                                               Proc.new { |_lis| 
                                                                   if ( 
-                                                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                                    _pair_QUMARK(
                                                                         begin
-                                                                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                            trampCall(@_pair_QUMARK)
-                                                                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:901"] + __e.backtrace ) ; raise __e
-                                                                        end                                                                      ,
-                                                                    [
-                                                                          begin
-                                                                              trampCall(_lis)
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
-                                                                          end
-                                                                    ]
-                                                                                 ))
+                                                                            trampCall(_lis)
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                    )
                                                                    ) then
                                                                       if ( 
                                                                         trampCall( callProcedure(  '_pred',  'pred',
@@ -8725,24 +8277,16 @@ trampCall(
                                                                                      ))
                                                                        ) then
                                                                           begin
-                                                                              trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                                              _set_MIMARKcdr_EXMARK(
                                                                                   begin
-                                                                                    if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                                                      trampCall(@_set_MIMARKcdr_EXMARK)
-                                                                                    else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                                                                      trampCall(_prev)
                                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
                                                                                   end                                                                                ,
-                                                                              [
-                                                                                    begin
-                                                                                        trampCall(_prev)
-                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
-                                                                                    end                                                                                  ,
-                                                                                    begin
-                                                                                        trampCall(_lis)
-                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
-                                                                                    end
-                                                                              ]
-                                                                                           ))
+                                                                                  begin
+                                                                                      trampCall(_lis)
+                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:906"] + __e.backtrace ) ; raise __e
+                                                                                  end
+                                                                              )
                                                                               delayCall( '_scan_MIMARKin',  'scan-in',
                                                                                   begin
                                                                                       trampCall(_scan_MIMARKin)
@@ -8967,20 +8511,12 @@ trampCall(
                                                       end                                                    ,
                                                   [
                                                         if ( 
-                                                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                          _pair_QUMARK(
                                                               begin
-                                                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                  trampCall(@_pair_QUMARK)
-                                                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
+                                                                  trampCall(_out)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:924"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,
-                                                          [
-                                                                begin
-                                                                    trampCall(_out)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:924"] + __e.backtrace ) ; raise __e
-                                                                end
-                                                          ]
-                                                                       ))
+                                                              end
+                                                          )
                                                          ) then
                                                             _cons(
                                                                 begin
@@ -9018,20 +8554,12 @@ trampCall(
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:924"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                         if ( 
-                                                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                          _pair_QUMARK(
                                                               begin
-                                                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                  trampCall(@_pair_QUMARK)
-                                                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
+                                                                  trampCall(_in)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:924"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,
-                                                          [
-                                                                begin
-                                                                    trampCall(_in)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:924"] + __e.backtrace ) ; raise __e
-                                                                end
-                                                          ]
-                                                                       ))
+                                                              end
+                                                          )
                                                          ) then
                                                             _cons(
                                                                 begin
@@ -9147,20 +8675,12 @@ trampCall(
                                     _lp                                     = 
                                       Proc.new { |_in_MIMARKprev,_lis| 
                                           if ( 
-                                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                            _pair_QUMARK(
                                                 begin
-                                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                    trampCall(@_pair_QUMARK)
-                                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:986"] + __e.backtrace ) ; raise __e
-                                                end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_lis)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
-                                                  end
-                                            ]
-                                                         ))
+                                                    trampCall(_lis)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
+                                                end
+                                            )
                                            ) then
                                               if ( 
                                                 trampCall( callProcedure(  '_pred',  'pred',
@@ -9198,24 +8718,16 @@ trampCall(
                                                                )
                                               else
                                                   begin
-                                                      trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                      _set_MIMARKcdr_EXMARK(
                                                           begin
-                                                            if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                              trampCall(@_set_MIMARKcdr_EXMARK)
-                                                            else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:973"] + __e.backtrace ) ; raise __e
+                                                              trampCall(_out_MIMARKprev)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:971"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                      [
-                                                            begin
-                                                                trampCall(_out_MIMARKprev)
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:971"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,
-                                                            begin
-                                                                trampCall(_lis)
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
-                                                            end
-                                                      ]
-                                                                   ))
+                                                          begin
+                                                              trampCall(_lis)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
+                                                          end
+                                                      )
                                                       delayCall( '_scan_MIMARKout',  'scan-out',
                                                           begin
                                                               trampCall(_scan_MIMARKout)
@@ -9289,20 +8801,12 @@ trampCall(
                                     _lp                                     = 
                                       Proc.new { |_out_MIMARKprev,_lis| 
                                           if ( 
-                                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                            _pair_QUMARK(
                                                 begin
-                                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                    trampCall(@_pair_QUMARK)
-                                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:986"] + __e.backtrace ) ; raise __e
-                                                end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_lis)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
-                                                  end
-                                            ]
-                                                         ))
+                                                    trampCall(_lis)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
+                                                end
+                                            )
                                            ) then
                                               if ( 
                                                 trampCall( callProcedure(  '_pred',  'pred',
@@ -9321,24 +8825,16 @@ trampCall(
                                                              ))
                                                ) then
                                                   begin
-                                                      trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                      _set_MIMARKcdr_EXMARK(
                                                           begin
-                                                            if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                              trampCall(@_set_MIMARKcdr_EXMARK)
-                                                            else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                                              trampCall(_in_MIMARKprev)
                                                             rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:973"] + __e.backtrace ) ; raise __e
                                                           end                                                        ,
-                                                      [
-                                                            begin
-                                                                trampCall(_in_MIMARKprev)
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:973"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,
-                                                            begin
-                                                                trampCall(_lis)
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
-                                                            end
-                                                      ]
-                                                                   ))
+                                                          begin
+                                                              trampCall(_lis)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:989"] + __e.backtrace ) ; raise __e
+                                                          end
+                                                      )
                                                       delayCall( '_scan_MIMARKin',  'scan-in',
                                                           begin
                                                               trampCall(_scan_MIMARKin)
@@ -9446,20 +8942,12 @@ trampCall(
                                     Proc.new { |_prev_MIMARKl,_l| 
                                         if ( 
                                           _not(
-                                              trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                              _pair_QUMARK(
                                                   begin
-                                                    if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                      trampCall(@_pair_QUMARK)
-                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:986"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    begin
-                                                        trampCall(_l)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
-                                                    end
-                                              ]
-                                                           ))
+                                                      trampCall(_l)
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
+                                                  end
+                                              )
                                           )
                                          ) then
                                             begin
@@ -9600,20 +9088,12 @@ trampCall(
                                     Proc.new { |_prev_MIMARKl,_l| 
                                         if ( 
                                           _not(
-                                              trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                              _pair_QUMARK(
                                                   begin
-                                                    if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                      trampCall(@_pair_QUMARK)
-                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:986"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    begin
-                                                        trampCall(_l)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
-                                                    end
-                                              ]
-                                                           ))
+                                                      trampCall(_l)
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:990"] + __e.backtrace ) ; raise __e
+                                                  end
+                                              )
                                           )
                                          ) then
                                             begin
@@ -10371,42 +9851,26 @@ trampCall(
                                                           end
                                                       else
                                                           begin
-                                                              trampCall( self._set_MIMARKcar_EXMARK_METHOD(  'set-car!',
+                                                              _set_MIMARKcar_EXMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_set_MIMARKcar_EXMARK') then
-                                                                      trampCall(@_set_MIMARKcar_EXMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _set_MIMARKcar_EXMARK", "_set_MIMARKcar_EXMARK" ) end
+                                                                      trampCall(_lis)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1068"] + __e.backtrace ) ; raise __e
+                                                                  end                                                                ,
+                                                                  begin
+                                                                      trampCall(_x)
                                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1066"] + __e.backtrace ) ; raise __e
-                                                                  end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_lis)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1068"] + __e.backtrace ) ; raise __e
-                                                                    end                                                                  ,
-                                                                    begin
-                                                                        trampCall(_x)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1066"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
-                                                              trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                                  end
+                                                              )
+                                                              _set_MIMARKcdr_EXMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                                      trampCall(@_set_MIMARKcdr_EXMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1067"] + __e.backtrace ) ; raise __e
+                                                                      trampCall(_lis)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1068"] + __e.backtrace ) ; raise __e
                                                                   end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_lis)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1068"] + __e.backtrace ) ; raise __e
-                                                                    end                                                                  ,
-                                                                    begin
-                                                                        trampCall(_new_MIMARKtail)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1067"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
+                                                                  begin
+                                                                      trampCall(_new_MIMARKtail)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1067"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )
                                                               begin
                                                                   trampCall(_lis)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1068"] + __e.backtrace ) ; raise __e
@@ -11338,20 +10802,12 @@ trampCall(
                             _lp                             = 
                               Proc.new { |_prev,_rest| 
                                   if ( 
-                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                    _pair_QUMARK(
                                         begin
-                                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                            trampCall(@_pair_QUMARK)
-                                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1128"] + __e.backtrace ) ; raise __e
-                                        end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_rest)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1130"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                            trampCall(_rest)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1130"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
                                    ) then
                                       begin
                                         ___lambda = lambda { |_x| 
@@ -11388,21 +10844,13 @@ trampCall(
                                                 ]
                                                              ))
                                             else
-                                                trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                _set_MIMARKcdr_EXMARK(
                                                     begin
-                                                      if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                        trampCall(@_set_MIMARKcdr_EXMARK)
-                                                      else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                                        trampCall(_prev)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1131"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
-                                                [
-                                                      begin
-                                                          trampCall(_prev)
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1131"] + __e.backtrace ) ; raise __e
-                                                      end                                                    ,
-                                                    Cell.new()
-                                                ]
-                                                             ))
+                                                  Cell.new()
+                                                )
                                             end
                                         } ; ___lambda.call(
                                               _car(
@@ -11783,21 +11231,13 @@ trampCall(
                                                                  )
                                                 else
                                                     begin
-                                                        trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                        _set_MIMARKcdr_EXMARK(
                                                             begin
-                                                              if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                                trampCall(@_set_MIMARKcdr_EXMARK)
-                                                              else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                                                trampCall(_prev)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1151"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
-                                                        [
-                                                              begin
-                                                                  trampCall(_prev)
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1151"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,
-                                                            Cell.new()
-                                                        ]
-                                                                     ))
+                                                          Cell.new()
+                                                        )
                                                         begin
                                                             trampCall(_rest)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1152"] + __e.backtrace ) ; raise __e
@@ -11942,20 +11382,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1168"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1164"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1164"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                       begin
@@ -11992,20 +11424,12 @@ trampCall(
                               _not(
                                   _eq_QUMARK(
                                     false                                    ,
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1168"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_heads)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1170"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_heads)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1170"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                   )
                               )
                              ) then
@@ -12039,20 +11463,12 @@ trampCall(
                                                   }                                                ,
                                                   Proc.new { |_next_MIMARKheads,_next_MIMARKtails| 
                                                       if ( 
-                                                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                        _pair_QUMARK(
                                                             begin
-                                                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                trampCall(@_pair_QUMARK)
-                                                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1168"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,
-                                                        [
-                                                              begin
-                                                                  trampCall(_next_MIMARKheads)
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1169"] + __e.backtrace ) ; raise __e
-                                                              end
-                                                        ]
-                                                                     ))
+                                                                trampCall(_next_MIMARKheads)
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1169"] + __e.backtrace ) ; raise __e
+                                                            end
+                                                        )
                                                        ) then
                                                           begin
                                                             ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20137| 
@@ -12343,20 +11759,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1195"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1191"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1191"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   delayCall( '_call_MIMARKwith_MIMARKvalues',  'call-with-values',
                       begin
@@ -12448,20 +11856,12 @@ trampCall(
                                                                 }                                                              ,
                                                                 Proc.new { |_next_MIMARKheads,_next_MIMARKtails| 
                                                                     if ( 
-                                                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                                      _pair_QUMARK(
                                                                           begin
-                                                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                              trampCall(@_pair_QUMARK)
-                                                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1195"] + __e.backtrace ) ; raise __e
-                                                                          end                                                                        ,
-                                                                      [
-                                                                            begin
-                                                                                trampCall(_next_MIMARKheads)
-                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1196"] + __e.backtrace ) ; raise __e
-                                                                            end
-                                                                      ]
-                                                                                   ))
+                                                                              trampCall(_next_MIMARKheads)
+                                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1196"] + __e.backtrace ) ; raise __e
+                                                                          end
+                                                                      )
                                                                      ) then
                                                                         if ( 
                                                                           _not(
@@ -12556,20 +11956,12 @@ trampCall(
                                   end
                               } ; ___lambda.call(
                                     _not(
-                                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                        _pair_QUMARK(
                                             begin
-                                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                trampCall(@_pair_QUMARK)
-                                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1195"] + __e.backtrace ) ; raise __e
-                                            end                                          ,
-                                        [
-                                              begin
-                                                  trampCall(_heads)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1197"] + __e.backtrace ) ; raise __e
-                                              end
-                                        ]
-                                                     ))
+                                                trampCall(_heads)
+                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1197"] + __e.backtrace ) ; raise __e
+                                            end
+                                        )
                                     )
                                          )
                             end
@@ -12744,20 +12136,12 @@ trampCall(
               begin
               end
               if ( 
-                trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                _pair_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                        trampCall(@_pair_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1213"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_lists)
-                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1212"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_lists)
+                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1212"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                     ___lambda = lambda { |_lp| 
@@ -12792,20 +12176,12 @@ trampCall(
                                           _not(
                                               _eq_QUMARK(
                                                 false                                                ,
-                                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                  _pair_QUMARK(
                                                       begin
-                                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                          trampCall(@_pair_QUMARK)
-                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1213"] + __e.backtrace ) ; raise __e
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_heads)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1214"] + __e.backtrace ) ; raise __e
-                                                        end
-                                                  ]
-                                                               ))
+                                                          trampCall(_heads)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1214"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )
                                               )
                                           )
                                          ) then
@@ -13017,24 +12393,16 @@ trampCall(
                           else
                               begin
                                 ___lambda = lambda { |_tail| 
-                                    trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                    _set_MIMARKcdr_EXMARK(
                                         begin
-                                          if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                            trampCall(@_set_MIMARKcdr_EXMARK)
-                                          else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1235"] + __e.backtrace ) ; raise __e
+                                            trampCall(_lis)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1236"] + __e.backtrace ) ; raise __e
                                         end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_lis)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1236"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                          begin
-                                              trampCall(_ans)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1235"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                        begin
+                                            trampCall(_ans)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1235"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
                                     delayCall( '_lp',  'lp',
                                         begin
                                             trampCall(_lp)
@@ -13322,20 +12690,12 @@ trampCall(
                                                   end
                                               } ; ___lambda.call(
                                                     _not(
-                                                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                        _pair_QUMARK(
                                                             begin
-                                                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                trampCall(@_pair_QUMARK)
-                                                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1257"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,
-                                                        [
-                                                              begin
-                                                                  trampCall(_rest)
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1261"] + __e.backtrace ) ; raise __e
-                                                              end
-                                                        ]
-                                                                     ))
+                                                                trampCall(_rest)
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1261"] + __e.backtrace ) ; raise __e
+                                                            end
+                                                        )
                                                     )
                                                          )
                                             end
@@ -13369,20 +12729,12 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       _not(
-                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                          _pair_QUMARK(
                               begin
-                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                  trampCall(@_pair_QUMARK)
-                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1257"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_lists)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1256"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(_lists)
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1256"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                       )
                            )
               end
@@ -13610,20 +12962,12 @@ trampCall(
                                                   end
                                               } ; ___lambda.call(
                                                     _not(
-                                                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                        _pair_QUMARK(
                                                             begin
-                                                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                trampCall(@_pair_QUMARK)
-                                                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1267"] + __e.backtrace ) ; raise __e
-                                                            end                                                          ,
-                                                        [
-                                                              begin
-                                                                  trampCall(_rest)
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1272"] + __e.backtrace ) ; raise __e
-                                                              end
-                                                        ]
-                                                                     ))
+                                                                trampCall(_rest)
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1272"] + __e.backtrace ) ; raise __e
+                                                            end
+                                                        )
                                                     )
                                                          )
                                             end
@@ -13657,20 +13001,12 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       _not(
-                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                          _pair_QUMARK(
                               begin
-                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                  trampCall(@_pair_QUMARK)
-                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1267"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_lists)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1266"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(_lists)
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1266"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                       )
                            )
               end
@@ -14039,24 +13375,16 @@ trampCall(
                                                                 end
                                                             else
                                                                 begin
-                                                                    trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                                    _set_MIMARKcdr_EXMARK(
                                                                         begin
-                                                                          if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                                            trampCall(@_set_MIMARKcdr_EXMARK)
-                                                                          else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                                                            trampCall(_pair)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1305"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
-                                                                    [
-                                                                          begin
-                                                                              trampCall(_pair)
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1305"] + __e.backtrace ) ; raise __e
-                                                                          end                                                                        ,
-                                                                          begin
-                                                                              trampCall(_ans)
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1306"] + __e.backtrace ) ; raise __e
-                                                                          end
-                                                                    ]
-                                                                                 ))
+                                                                        begin
+                                                                            trampCall(_ans)
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1306"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                    )
                                                                     begin
                                                                         trampCall(_pair)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1305"] + __e.backtrace ) ; raise __e
@@ -15050,24 +14378,16 @@ trampCall(
                                                                 end
                                                             else
                                                                 begin
-                                                                    trampCall( self._set_MIMARKcdr_EXMARK_METHOD(  'set-cdr!',
+                                                                    _set_MIMARKcdr_EXMARK(
                                                                         begin
-                                                                          if @global_lisp_binding.has_key?('_set_MIMARKcdr_EXMARK') then
-                                                                            trampCall(@_set_MIMARKcdr_EXMARK)
-                                                                          else raise NameError.new( "Error: undefined variable _set_MIMARKcdr_EXMARK", "_set_MIMARKcdr_EXMARK" ) end
+                                                                            trampCall(_b_MIMARKpair)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1389"] + __e.backtrace ) ; raise __e
                                                                         end                                                                      ,
-                                                                    [
-                                                                          begin
-                                                                              trampCall(_b_MIMARKpair)
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1389"] + __e.backtrace ) ; raise __e
-                                                                          end                                                                        ,
-                                                                          begin
-                                                                              trampCall(_ans)
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1389"] + __e.backtrace ) ; raise __e
-                                                                          end
-                                                                    ]
-                                                                                 ))
+                                                                        begin
+                                                                            trampCall(_ans)
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1389"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                    )
                                                                     begin
                                                                         trampCall(_b_MIMARKpair)
                                                                       rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1389"] + __e.backtrace ) ; raise __e

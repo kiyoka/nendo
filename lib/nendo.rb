@@ -911,7 +911,12 @@ module Nendo
         end
       end
     end
-    
+
+    def __ASMARK_ARGS0( )            1           end
+    def __ASMARK_ARGS1( a )          a           end
+    def __ASMARK_ARGS2( a, b )       a * b       end
+    def __ASMARK_ARGS3( a, b, c )    a * b * c   end
+
     def __ASMARK( *args )
       arr = args[0].to_arr
       case args[0].length
@@ -948,22 +953,22 @@ module Nendo
         rest.inject(first){|x,y| x-y}
       end
     end
-  
+
     def __SLMARK( first, *rest )
       raise TypeError if not _number_QUMARK(first)
       rest = rest[0].to_arr
       __assertFlat( rest )
-      if 0 == rest.length 
+      if 0 == rest.length
         1 / first
       else
         rest.inject(first){|x,y| x/y}
       end
     end
-    
+
     def __PAMARK( first, *rest )
       _modulo( first, *rest )
     end
-    
+
     def _quotient( first, second )
       raise TypeError if not _number_QUMARK(first)
       raise TypeError if not _number_QUMARK(second)
@@ -975,23 +980,23 @@ module Nendo
       raise TypeError if not _number_QUMARK(second)
       first - _quotient( first, second ) * second
     end
-    
+
     def _modulo( first, *rest )
       raise TypeError if not _number_QUMARK(first)
       rest = rest[0].to_arr
       __assertFlat( rest )
-      if 0 == rest.length 
+      if 0 == rest.length
         1 % first
       else
         rest.inject(first){|x,y| x%y}
       end
     end
-    
+
     def _not( arg )
       arg = false   if Nil == arg.class
       not arg
     end
-    
+
     def _cons( first, second )
       if first.is_a? Nil
         first = Cell.new
@@ -1038,19 +1043,19 @@ module Nendo
         Kernel::exit(arr[0])
       end
     end
-  
+
     def _print( format, *rest )
       print( format, *(rest[0].to_arr) )
     end
-  
+
     def _printf( format, *rest )
       Kernel::printf( format, *(rest[0].to_arr) )
     end
-  
+
     def _sprintf( format, *rest )
       Kernel::sprintf( format, *(rest[0].to_arr) )
     end
-  
+
     def _null_QUMARK( arg )
       if Nil == arg.class
         true
@@ -1121,14 +1126,14 @@ module Nendo
         nil
       end
     end
-    def _pair_QUMARK(      arg )   
+    def _pair_QUMARK(      arg )
       if _null_QUMARK( arg )
         false
       else
         (Cell == arg.class)
       end
     end
-    def __PAMARKlist_QUMARK(      arg )   
+    def __PAMARKlist_QUMARK(      arg )
       if _pair_QUMARK( arg )
         (not arg.lastAtom) and (1 <= arg.to_arr.size) # it means proper list?
       else
@@ -1221,19 +1226,19 @@ module Nendo
       end until s[2]
       ret
     end
-  
+
     def _apply1( first, arg )
       trampCall( callProcedure( nil, "(apply1 genereate func)", first, arg.to_arr ))
     end
-  
+
     def _global_MIMARKvariables
       self.instance_variables.select { |x|
         x.match( /^[@]_[_a-zA-Z]/ )
-      }.map{ |name| 
+      }.map{ |name|
         self.toLispSymbol( name[1..-1] ).intern
       }.to_list
     end
-  
+
     def _make_MIMARKvalues( lst )
       if _pair_QUMARK( lst )
         LispValues.new( lst.to_arr )
@@ -1243,9 +1248,9 @@ module Nendo
         raise ArgumentError, "Error: make-values expects a list argument."
       end
     end
-  
+
     def _values_QUMARK( arg )     arg.is_a? LispValues   end
-  
+
     def _values_MIMARKvalues( arg )
       if _values_QUMARK( arg )
         arg.values.to_list
@@ -1253,7 +1258,7 @@ module Nendo
         raise TypeError, "Error: values-values expects only LispValues object."
       end
     end
-  
+
     def _make_MIMARKkeyword( arg )
       if _symbol_QUMARK(    arg ) or _string_QUMARK(    arg )
         LispKeyword.new( arg.to_s )
@@ -1261,7 +1266,7 @@ module Nendo
         raise TypeError, "Error: make-keyword expects symbol or string object."
       end
     end
-  
+
     def _keyword_MIMARK_GTMARKstring( arg )
       if _keyword_QUMARK(    arg )
         arg.key.to_s
@@ -1269,7 +1274,7 @@ module Nendo
         raise TypeError, "Error: keyword->string expects only keyword object."
       end
     end
-  
+
     def _hash_MIMARKtable_MIMARKget( h, key, *args )
       if h.has_key?(key)
         h[key]
@@ -1282,7 +1287,7 @@ module Nendo
         end
       end
     end
-  
+
     def _hash_MIMARKtable_MIMARKput_EXMARK( h, key, value )
       h[key] = value
     end
@@ -1291,20 +1296,20 @@ module Nendo
       # don't use h.has_key(k), because has_key method undefined on some database bindings. (e.g. KyotoCabinet)
       h[key] ? true : false
     end
-  
+
     # backtrace expects this format "filename:lineno: place message ". e.g.  "init.nnd:10: in aaa macro.".
     def _raise( exception, message, backtrace )
       raise exception, message, [ backtrace ]
     end
-  
+
     def __ASMARKLINE_ASMARK()
       @lastLineno
     end
-  
+
     def __ASMARKFILE_ASMARK()
       @lastSourcefile
     end
-  
+
     def _vector_MIMARKset_EXMARK( v, index, value )
       if !(v.is_a? Array)
         raise TypeError, "Error: vector-set! requires Array as argument v(Lisp's vector).\n"
@@ -1316,8 +1321,8 @@ module Nendo
     end
 
   end
-  
-  
+
+
   # Translate S expression to Ruby expression and Evaluation
   class Evaluator
     include BuiltinFunctions
@@ -1618,7 +1623,7 @@ module Nendo
 
     def optimizedFunc( origname, rubysym, args )
       case origname
-      when '+', '-'
+      when '+', '-', '*'
         case args.length
         when 0
           [ "#{rubysym}_ARGS0(",                                       ")" ]
@@ -1631,10 +1636,15 @@ module Nendo
         else
           false
         end
-      when 'car', 'cdr', 'not', 'null?'
+      when 'car', 'cdr', 'not', 'length', 'null?', 'reverse', 'uniq',
+        'write', 'write-to-string', 'display', 'print',
+        'procedure?', 'macro?', 'symbol?', 'keyword?', 'syntax?', 'core-syntax?',
+        'pair?', '%list?', 'integer?', 'number?', 'string?', 'macroexpand-1',
+        'to-s', 'to-i', 'nil?', 'to-list', 'to-arr',
+        'intern', 'string->symbol', 'symbol->string', 'read-from-string'
         raise ArgumentError, "Error: #{origname} requires 1 argument. "  unless 1 == args.length
         [ "#{rubysym}(",              args[0],         ")" ]
-      when 'cons', '=', ">", ">=", "<", "<=", "eq?", "equal?"
+      when 'cons', '=', ">", ">=", "<", "<=", "eq?", "equal?", 'set-car!', 'set-cdr!'
         raise ArgumentError, "Error: #{origname} requires 2 arguments. " unless 2 == args.length
         [ "#{rubysym}(",            args[0], args[1], ")" ]
       else

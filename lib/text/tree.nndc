@@ -44,20 +44,12 @@ trampCall(
                                     end
                                 else
                                     if ( 
-                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                      _pair_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                              trampCall(@_pair_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_tree)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_tree)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                             trampCall( self._write_MIMARKtree_METHOD(  'write-tree',

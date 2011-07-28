@@ -481,20 +481,12 @@ trampCall(
                                     _not(
                                         _eq_QUMARK(
                                           false                                          ,
-                                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                            _pair_QUMARK(
                                                 begin
-                                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                    trampCall(@_pair_QUMARK)
-                                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_set)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
-                                                  end
-                                            ]
-                                                         ))
+                                                    trampCall(_set)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
+                                                end
+                                            )
                                         )
                                     )
                                    ) then
@@ -561,20 +553,12 @@ trampCall(
                                         ___lambda = lambda { |__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81276| 
                                             begin
                                                 if ( 
-                                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                  _pair_QUMARK(
                                                       begin
-                                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                          trampCall(@_pair_QUMARK)
-                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_set)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
-                                                        end
-                                                  ]
-                                                               ))
+                                                          trampCall(_set)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )
                                                  ) then
                                                     begin
                                                       ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81346,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81347| 
@@ -586,17 +570,9 @@ trampCall(
                                                                         _not(
                                                                             _eq_QUMARK(
                                                                               false                                                                              ,
-                                                                                trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                    begin
-                                                                                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                        trampCall(@_pair_QUMARK)
-                                                                                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                    end                                                                                  ,
-                                                                                [
-                                                                                    __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81347
-                                                                                ]
-                                                                                             ))
+                                                                                _pair_QUMARK(
+                                                                                  __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81347
+                                                                                )
                                                                             )
                                                                         )
                                                                        ) then
@@ -704,20 +680,12 @@ trampCall(
                                                     ___lambda = lambda { |__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81278| 
                                                         begin
                                                             if ( 
-                                                              trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                              _pair_QUMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                      trampCall(@_pair_QUMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                  end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_set)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
+                                                                      trampCall(_set)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )
                                                              ) then
                                                                 begin
                                                                   ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81384,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81385| 
@@ -726,17 +694,9 @@ trampCall(
                                                                             ___lambda = lambda { |_a| 
                                                                                 begin
                                                                                     if ( 
-                                                                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                          begin
-                                                                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                              trampCall(@_pair_QUMARK)
-                                                                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                          end                                                                                        ,
-                                                                                      [
-                                                                                          __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81385
-                                                                                      ]
-                                                                                                   ))
+                                                                                      _pair_QUMARK(
+                                                                                        __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81385
+                                                                                      )
                                                                                      ) then
                                                                                         begin
                                                                                           ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81543,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81544| 
@@ -748,17 +708,9 @@ trampCall(
                                                                                                             _not(
                                                                                                                 _eq_QUMARK(
                                                                                                                   false                                                                                                                  ,
-                                                                                                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                                                        begin
-                                                                                                                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                                                            trampCall(@_pair_QUMARK)
-                                                                                                                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                                        end                                                                                                                      ,
-                                                                                                                    [
-                                                                                                                        __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81544
-                                                                                                                    ]
-                                                                                                                                 ))
+                                                                                                                    _pair_QUMARK(
+                                                                                                                      __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81544
+                                                                                                                    )
                                                                                                                 )
                                                                                                             )
                                                                                                            ) then
@@ -1051,20 +1003,12 @@ trampCall(
                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:55"] + __e.backtrace ) ; raise __e
                                                                                             end                                                                                          ,
                                                                                         [
-                                                                                              trampCall( self._length_METHOD(  'length',
+                                                                                              _length(
                                                                                                   begin
-                                                                                                    if @global_lisp_binding.has_key?('_length') then
-                                                                                                      trampCall(@_length)
-                                                                                                    else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:55"] + __e.backtrace ) ; raise __e
-                                                                                                  end                                                                                                ,
-                                                                                              [
-                                                                                                    begin
-                                                                                                        trampCall(_set)
-                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
-                                                                                                    end
-                                                                                              ]
-                                                                                                           ))
+                                                                                                      trampCall(_set)
+                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:56"] + __e.backtrace ) ; raise __e
+                                                                                                  end
+                                                                                              )
                                                                                         ]
                                                                                                      ))                                                                                      ,
                                                                                         begin
@@ -1123,20 +1067,12 @@ trampCall(
                     if ( 
                       __LTMARK(
                         0                        ,
-                          trampCall( self._length_METHOD(  'length',
+                          _length(
                               begin
-                                if @global_lisp_binding.has_key?('_length') then
-                                  trampCall(@_length)
-                                else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:55"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81606)
-                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81606)
+                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                       )
                      ) then
                         begin
@@ -1211,20 +1147,12 @@ trampCall(
                                                       _not(
                                                           _eq_QUMARK(
                                                             false                                                            ,
-                                                              trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                              _pair_QUMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                      trampCall(@_pair_QUMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                  end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_set)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:79"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
+                                                                      trampCall(_set)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:79"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )
                                                           )
                                                       )
                                                      ) then
@@ -1291,20 +1219,12 @@ trampCall(
                                                           ___lambda = lambda { |__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81609| 
                                                               begin
                                                                   if ( 
-                                                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                                    _pair_QUMARK(
                                                                         begin
-                                                                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                            trampCall(@_pair_QUMARK)
-                                                                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                        end                                                                      ,
-                                                                    [
-                                                                          begin
-                                                                              trampCall(_set)
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:79"] + __e.backtrace ) ; raise __e
-                                                                          end
-                                                                    ]
-                                                                                 ))
+                                                                            trampCall(_set)
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:79"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                    )
                                                                    ) then
                                                                       begin
                                                                         ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81678,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81679| 
@@ -1316,17 +1236,9 @@ trampCall(
                                                                                           _not(
                                                                                               _eq_QUMARK(
                                                                                                 false                                                                                                ,
-                                                                                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                                      begin
-                                                                                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                                          trampCall(@_pair_QUMARK)
-                                                                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                      end                                                                                                    ,
-                                                                                                  [
-                                                                                                      __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81679
-                                                                                                  ]
-                                                                                                               ))
+                                                                                                  _pair_QUMARK(
+                                                                                                    __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81679
+                                                                                                  )
                                                                                               )
                                                                                           )
                                                                                          ) then
@@ -2210,20 +2122,12 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:101"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
-                                    trampCall( self._length_METHOD(  'length',
+                                    _length(
                                         begin
-                                          if @global_lisp_binding.has_key?('_length') then
-                                            trampCall(@_length)
-                                          else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:101"] + __e.backtrace ) ; raise __e
-                                        end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_xs)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:102"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                            trampCall(_xs)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:102"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
                               ]
                                            ))                            ,
                               begin
@@ -2288,20 +2192,12 @@ trampCall(
                                     _not(
                                         _eq_QUMARK(
                                           false                                          ,
-                                            trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                            _pair_QUMARK(
                                                 begin
-                                                  if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                    trampCall(@_pair_QUMARK)
-                                                  else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_set)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                                                  end
-                                            ]
-                                                         ))
+                                                    trampCall(_set)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
+                                                end
+                                            )
                                         )
                                     )
                                    ) then
@@ -2366,20 +2262,12 @@ trampCall(
                                         ___lambda = lambda { |__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81776| 
                                             begin
                                                 if ( 
-                                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                  _pair_QUMARK(
                                                       begin
-                                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                          trampCall(@_pair_QUMARK)
-                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_set)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                                                        end
-                                                  ]
-                                                               ))
+                                                          trampCall(_set)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )
                                                  ) then
                                                     begin
                                                       ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81846,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81847| 
@@ -2391,17 +2279,9 @@ trampCall(
                                                                         _not(
                                                                             _eq_QUMARK(
                                                                               false                                                                              ,
-                                                                                trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                    begin
-                                                                                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                        trampCall(@_pair_QUMARK)
-                                                                                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                    end                                                                                  ,
-                                                                                [
-                                                                                    __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81847
-                                                                                ]
-                                                                                             ))
+                                                                                _pair_QUMARK(
+                                                                                  __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81847
+                                                                                )
                                                                             )
                                                                         )
                                                                        ) then
@@ -2521,20 +2401,12 @@ trampCall(
                                                     ___lambda = lambda { |__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_81778| 
                                                         begin
                                                             if ( 
-                                                              trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                              _pair_QUMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                      trampCall(@_pair_QUMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                  end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_set)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
+                                                                      trampCall(_set)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )
                                                              ) then
                                                                 begin
                                                                   ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81885,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81886| 
@@ -2543,17 +2415,9 @@ trampCall(
                                                                             ___lambda = lambda { |_x1| 
                                                                                 begin
                                                                                     if ( 
-                                                                                      trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                          begin
-                                                                                            if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                              trampCall(@_pair_QUMARK)
-                                                                                            else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                          end                                                                                        ,
-                                                                                      [
-                                                                                          __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81886
-                                                                                      ]
-                                                                                                   ))
+                                                                                      _pair_QUMARK(
+                                                                                        __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81886
+                                                                                      )
                                                                                      ) then
                                                                                         begin
                                                                                           ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82112,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82113| 
@@ -2565,17 +2429,9 @@ trampCall(
                                                                                                             _not(
                                                                                                                 _eq_QUMARK(
                                                                                                                   false                                                                                                                  ,
-                                                                                                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                                                        begin
-                                                                                                                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                                                            trampCall(@_pair_QUMARK)
-                                                                                                                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                                        end                                                                                                                      ,
-                                                                                                                    [
-                                                                                                                        __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82113
-                                                                                                                    ]
-                                                                                                                                 ))
+                                                                                                                    _pair_QUMARK(
+                                                                                                                      __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82113
+                                                                                                                    )
                                                                                                                 )
                                                                                                             )
                                                                                                            ) then
@@ -2704,20 +2560,12 @@ trampCall(
                                                                 ___lambda = lambda { |__failure__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81845| 
                                                                     begin
                                                                         if ( 
-                                                                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                                          _pair_QUMARK(
                                                                               begin
-                                                                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                  trampCall(@_pair_QUMARK)
-                                                                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                              end                                                                            ,
-                                                                          [
-                                                                                begin
-                                                                                    trampCall(_set)
-                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                                                                                end
-                                                                          ]
-                                                                                       ))
+                                                                                  trampCall(_set)
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
+                                                                              end
+                                                                          )
                                                                          ) then
                                                                             begin
                                                                               ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81953,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81954| 
@@ -2726,17 +2574,9 @@ trampCall(
                                                                                         ___lambda = lambda { |_x1| 
                                                                                             begin
                                                                                                 if ( 
-                                                                                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                                      begin
-                                                                                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                                          trampCall(@_pair_QUMARK)
-                                                                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                      end                                                                                                    ,
-                                                                                                  [
-                                                                                                      __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81954
-                                                                                                  ]
-                                                                                                               ))
+                                                                                                  _pair_QUMARK(
+                                                                                                    __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_81954
+                                                                                                  )
                                                                                                  ) then
                                                                                                     begin
                                                                                                       ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82150,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82151| 
@@ -2745,17 +2585,9 @@ trampCall(
                                                                                                                 ___lambda = lambda { |_x2| 
                                                                                                                     begin
                                                                                                                         if ( 
-                                                                                                                          trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                                                              begin
-                                                                                                                                if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                                                                  trampCall(@_pair_QUMARK)
-                                                                                                                                else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                                              end                                                                                                                            ,
-                                                                                                                          [
-                                                                                                                              __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82151
-                                                                                                                          ]
-                                                                                                                                       ))
+                                                                                                                          _pair_QUMARK(
+                                                                                                                            __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82151
+                                                                                                                          )
                                                                                                                          ) then
                                                                                                                             begin
                                                                                                                               ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82279,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82280| 
@@ -2767,17 +2599,9 @@ trampCall(
                                                                                                                                                 _not(
                                                                                                                                                     _eq_QUMARK(
                                                                                                                                                       false                                                                                                                                                      ,
-                                                                                                                                                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                                                                                            begin
-                                                                                                                                                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                                                                                                trampCall(@_pair_QUMARK)
-                                                                                                                                                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                                                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                                                                            end                                                                                                                                                          ,
-                                                                                                                                                        [
-                                                                                                                                                            __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82280
-                                                                                                                                                        ]
-                                                                                                                                                                     ))
+                                                                                                                                                        _pair_QUMARK(
+                                                                                                                                                          __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82280
+                                                                                                                                                        )
                                                                                                                                                     )
                                                                                                                                                 )
                                                                                                                                                ) then
@@ -2949,20 +2773,12 @@ trampCall(
                                                                                                         trampCall(_proc)
                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
                                                                                                     end                                                                                                  ,
-                                                                                                    trampCall( self._length_METHOD(  'length',
+                                                                                                    _length(
                                                                                                         begin
-                                                                                                          if @global_lisp_binding.has_key?('_length') then
-                                                                                                            trampCall(@_length)
-                                                                                                          else raise NameError.new( "Error: undefined variable _length", "_length" ) end
+                                                                                                            trampCall(_set)
                                                                                                           rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                                                                                                        end                                                                                                      ,
-                                                                                                    [
-                                                                                                          begin
-                                                                                                              trampCall(_set)
-                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                                                                                                          end
-                                                                                                    ]
-                                                                                                                 ))                                                                                                  ,
+                                                                                                        end
+                                                                                                    )                                                                                                  ,
                                                                                                     begin
                                                                                                         trampCall(_set)
                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
@@ -3022,20 +2838,12 @@ trampCall(
                     if ( 
                       __LTMARK(
                         0                        ,
-                          trampCall( self._length_METHOD(  'length',
+                          _length(
                               begin
-                                if @global_lisp_binding.has_key?('_length') then
-                                  trampCall(@_length)
-                                else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82342)
-                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82342)
+                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                       )
                      ) then
                         begin
@@ -3100,20 +2908,12 @@ trampCall(
                                                       _not(
                                                           _eq_QUMARK(
                                                             false                                                            ,
-                                                              trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                              _pair_QUMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                      trampCall(@_pair_QUMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                  end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_set)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
+                                                                      trampCall(_set)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )
                                                           )
                                                       )
                                                      ) then
@@ -3178,20 +2978,12 @@ trampCall(
                                                           ___lambda = lambda { |__failure__gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82345| 
                                                               begin
                                                                   if ( 
-                                                                    trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                                                                    _pair_QUMARK(
                                                                         begin
-                                                                          if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                            trampCall(@_pair_QUMARK)
-                                                                          else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                        end                                                                      ,
-                                                                    [
-                                                                          begin
-                                                                              trampCall(_set)
-                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
-                                                                          end
-                                                                    ]
-                                                                                 ))
+                                                                            trampCall(_set)
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:128"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                    )
                                                                    ) then
                                                                       begin
                                                                         ___lambda = lambda { |__w__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82414,__x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82415| 
@@ -3203,17 +2995,9 @@ trampCall(
                                                                                           _not(
                                                                                               _eq_QUMARK(
                                                                                                 false                                                                                                ,
-                                                                                                  trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                                                                      begin
-                                                                                                        if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                                                                          trampCall(@_pair_QUMARK)
-                                                                                                        else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                                                      end                                                                                                    ,
-                                                                                                  [
-                                                                                                      __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82415
-                                                                                                  ]
-                                                                                                               ))
+                                                                                                  _pair_QUMARK(
+                                                                                                    __x__gensym__16b2635cc60d2744f1ec64942b9115d129949ee3_82415
+                                                                                                  )
                                                                                               )
                                                                                           )
                                                                                          ) then
@@ -3751,20 +3535,12 @@ trampCall(
                     if ( 
                       __LTMARK(
                         0                        ,
-                          trampCall( self._length_METHOD(  'length',
+                          _length(
                               begin
-                                if @global_lisp_binding.has_key?('_length') then
-                                  trampCall(@_length)
-                                else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82515)
-                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82515)
+                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                       )
                      ) then
                         begin
@@ -4195,20 +3971,12 @@ trampCall(
                     if ( 
                       __LTMARK(
                         0                        ,
-                          trampCall( self._length_METHOD(  'length',
+                          _length(
                               begin
-                                if @global_lisp_binding.has_key?('_length') then
-                                  trampCall(@_length)
-                                else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:110"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82522)
-                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(___gensym__b9d6aeda230459e5cf994edb81d822212fdcaf01_82522)
+                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                       )
                      ) then
                         begin
@@ -4677,20 +4445,12 @@ trampCall(
                                  )
                     end
                 } ; ___lambda.call(
-                      trampCall( self._length_METHOD(  'length',
+                      _length(
                           begin
-                            if @global_lisp_binding.has_key?('_length') then
-                              trampCall(@_length)
-                            else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:203"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_set)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:207"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_set)
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:207"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                            )
               end
           }
@@ -4781,20 +4541,12 @@ trampCall(
                                  )
                     end
                 } ; ___lambda.call(
-                      trampCall( self._length_METHOD(  'length',
+                      _length(
                           begin
-                            if @global_lisp_binding.has_key?('_length') then
-                              trampCall(@_length)
-                            else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:212"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_set)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:217"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_set)
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:217"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                            )
               end
           }
@@ -4899,20 +4651,12 @@ trampCall(
                                  )
                     end
                 } ; ___lambda.call(
-                      trampCall( self._length_METHOD(  'length',
+                      _length(
                           begin
-                            if @global_lisp_binding.has_key?('_length') then
-                              trampCall(@_length)
-                            else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:222"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_set)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:226"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_set)
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:226"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                            )
               end
           }
@@ -5013,20 +4757,12 @@ trampCall(
                                  )
                     end
                 } ; ___lambda.call(
-                      trampCall( self._length_METHOD(  'length',
+                      _length(
                           begin
-                            if @global_lisp_binding.has_key?('_length') then
-                              trampCall(@_length)
-                            else raise NameError.new( "Error: undefined variable _length", "_length" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:230"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_set)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:235"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_set)
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/combinations.nnd:235"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                            )
               end
           }

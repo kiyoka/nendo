@@ -312,20 +312,12 @@ trampCall(
                       end
                   else
                       if ( 
-                        trampCall( self._pair_QUMARK_METHOD(  'pair?',
+                        _pair_QUMARK(
                             begin
-                              if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                trampCall(@_pair_QUMARK)
-                              else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:70"] + __e.backtrace ) ; raise __e
-                            end                          ,
-                        [
-                              begin
-                                  trampCall(_obj)
-                                rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:78"] + __e.backtrace ) ; raise __e
-                              end
-                        ]
-                                     ))
+                                trampCall(_obj)
+                              rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:78"] + __e.backtrace ) ; raise __e
+                            end
+                        )
                        ) then
                           begin
                               delayCall( '_alist_MIMARK_GTMARKhash_MIMARKtable',  'alist->hash-table',

@@ -226,22 +226,14 @@ trampCall(
                             else raise NameError.new( "Error: undefined variable _html_MIMARKescape", "_html_MIMARKescape" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:51"] + __e.backtrace ) ; raise __e
                           end                        ,
-                          trampCall( self._to_MIMARKlist_METHOD(  'to-list',
+                          _to_MIMARKlist(
                               begin
-                                if @global_lisp_binding.has_key?('_to_MIMARKlist') then
-                                  trampCall(@_to_MIMARKlist)
-                                else raise NameError.new( "Error: undefined variable _to_MIMARKlist", "_to_MIMARKlist" ) end
+                                  trampCall(_string).to_s.split(
+                                      ""
+                                    )
                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_string).to_s.split(
-                                        ""
-                                      )
-                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:52"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                              end
+                          )
                     ]
                                  ))                  ,
                   ""
@@ -425,20 +417,12 @@ trampCall(
                                         rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
-                                        trampCall( self._reverse_METHOD(  'reverse',
+                                        _reverse(
                                             begin
-                                              if @global_lisp_binding.has_key?('_reverse') then
-                                                trampCall(@_reverse)
-                                              else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
+                                                trampCall(_attrs)
                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
-                                            end                                          ,
-                                        [
-                                              begin
-                                                  trampCall(_attrs)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
-                                              end
-                                        ]
-                                                     ))                                      ,
+                                            end
+                                        )                                      ,
                                         begin
                                             trampCall(_args)
                                           rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
@@ -448,22 +432,14 @@ trampCall(
                               end
                           else
                               if ( 
-                                trampCall( self._keyword_QUMARK_METHOD(  'keyword?',
-                                    begin
-                                      if @global_lisp_binding.has_key?('_keyword_QUMARK') then
-                                        trampCall(@_keyword_QUMARK)
-                                      else raise NameError.new( "Error: undefined variable _keyword_QUMARK", "_keyword_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:106"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                [
-                                      _car(
-                                          begin
-                                              trampCall(_args)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                          end
-                                      )
-                                ]
-                                             ))
+                                _keyword_QUMARK(
+                                    _car(
+                                        begin
+                                            trampCall(_args)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
+                                )
                                ) then
                                   begin
                                       if ( 
@@ -485,37 +461,29 @@ trampCall(
                                                     rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                               [
-                                                    trampCall( self._reverse_METHOD(  'reverse',
-                                                        begin
-                                                          if @global_lisp_binding.has_key?('_reverse') then
-                                                            trampCall(@_reverse)
-                                                          else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
-                                                        end                                                      ,
-                                                    [
-                                                          trampCall( self._list_ASMARK_METHOD(  'list*',
+                                                    _reverse(
+                                                        trampCall( self._list_ASMARK_METHOD(  'list*',
+                                                            begin
+                                                              if @global_lisp_binding.has_key?('_list_ASMARK') then
+                                                                trampCall(@_list_ASMARK)
+                                                              else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
+                                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
+                                                            end                                                          ,
+                                                        [
+                                                              _car(
+                                                                  begin
+                                                                      trampCall(_args)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )                                                            ,
+                                                            " "                                                            ,
                                                               begin
-                                                                if @global_lisp_binding.has_key?('_list_ASMARK') then
-                                                                  trampCall(@_list_ASMARK)
-                                                                else raise NameError.new( "Error: undefined variable _list_ASMARK", "_list_ASMARK" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:115"] + __e.backtrace ) ; raise __e
-                                                              end                                                            ,
-                                                          [
-                                                                _car(
-                                                                    begin
-                                                                        trampCall(_args)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                                )                                                              ,
-                                                              " "                                                              ,
-                                                                begin
-                                                                    trampCall(_attrs)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
-                                                                end
-                                                          ]
-                                                                       ))
-                                                    ]
-                                                                 ))                                                  ,
+                                                                  trampCall(_attrs)
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
+                                                              end
+                                                        ]
+                                                                     ))
+                                                    )                                                  ,
                                                     begin
                                                         trampCall(_args)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
@@ -750,20 +718,12 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
                                               end                                            ,
                                           [
-                                                trampCall( self._reverse_METHOD(  'reverse',
+                                                _reverse(
                                                     begin
-                                                      if @global_lisp_binding.has_key?('_reverse') then
-                                                        trampCall(@_reverse)
-                                                      else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
+                                                        trampCall(_attrs)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
-                                                    end                                                  ,
-                                                [
-                                                      begin
-                                                          trampCall(_attrs)
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:120"] + __e.backtrace ) ; raise __e
-                                                      end
-                                                ]
-                                                             ))                                              ,
+                                                    end
+                                                )                                              ,
                                                 begin
                                                     trampCall(_args)
                                                   rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
@@ -835,20 +795,12 @@ trampCall(
                                                                 trampCall(_name)
                                                               rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
                                                             end                                                          ,
-                                                            trampCall( self._write_MIMARKto_MIMARKstring_METHOD(  'write-to-string',
+                                                            _write_MIMARKto_MIMARKstring(
                                                                 begin
-                                                                  if @global_lisp_binding.has_key?('_write_MIMARKto_MIMARKstring') then
-                                                                    trampCall(@_write_MIMARKto_MIMARKstring)
-                                                                  else raise NameError.new( "Error: undefined variable _write_MIMARKto_MIMARKstring", "_write_MIMARKto_MIMARKstring" ) end
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:127"] + __e.backtrace ) ; raise __e
-                                                                end                                                              ,
-                                                            [
-                                                                  begin
-                                                                      trampCall(_args)
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                                  end
-                                                            ]
-                                                                         ))
+                                                                    trampCall(_args)
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                            )
                                                       ]
                                                                    ))
                                                     rescue => __e 
@@ -983,31 +935,23 @@ trampCall(
                 ___lambda = lambda { |_make_MIMARKscheme_MIMARKname| 
                     _make_MIMARKscheme_MIMARKname                     = 
                       Proc.new { |_name| 
-                          trampCall( self._string_MIMARK_GTMARKsymbol_METHOD(  'string->symbol',
-                              begin
-                                if @global_lisp_binding.has_key?('_string_MIMARK_GTMARKsymbol') then
-                                  trampCall(@_string_MIMARK_GTMARKsymbol)
-                                else raise NameError.new( "Error: undefined variable _string_MIMARK_GTMARKsymbol", "_string_MIMARK_GTMARKsymbol" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                trampCall( self._sprintf_METHOD(  'sprintf',
+                          _string_MIMARK_GTMARKsymbol(
+                              trampCall( self._sprintf_METHOD(  'sprintf',
+                                  begin
+                                    if @global_lisp_binding.has_key?('_sprintf') then
+                                      trampCall(@_sprintf)
+                                    else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
+                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                  "html:%s"                                  ,
                                     begin
-                                      if @global_lisp_binding.has_key?('_sprintf') then
-                                        trampCall(@_sprintf)
-                                      else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
+                                        trampCall(_name)
                                       rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                [
-                                    "html:%s"                                    ,
-                                      begin
-                                          trampCall(_name)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:138"] + __e.backtrace ) ; raise __e
-                                      end
-                                ]
-                                             ))
-                          ]
-                                       ))
+                                    end
+                              ]
+                                           ))
+                          )
                       }
                     begin
                       ___lambda = lambda { |_loop| 
@@ -1024,20 +968,12 @@ trampCall(
                                     begin
                                         _cons(
                                           :"begin"                                          ,
-                                            trampCall( self._reverse_METHOD(  'reverse',
+                                            _reverse(
                                                 begin
-                                                  if @global_lisp_binding.has_key?('_reverse') then
-                                                    trampCall(@_reverse)
-                                                  else raise NameError.new( "Error: undefined variable _reverse", "_reverse" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
-                                                end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_r)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
-                                                  end
-                                            ]
-                                                         ))
+                                                    trampCall(_r)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:154"] + __e.backtrace ) ; raise __e
+                                                end
+                                            )
                                         )
                                     end
                                 else
@@ -1046,22 +982,14 @@ trampCall(
                                         _not(
                                             _eq_QUMARK(
                                               false                                              ,
-                                                trampCall( self._pair_QUMARK_METHOD(  'pair?',
-                                                    begin
-                                                      if @global_lisp_binding.has_key?('_pair_QUMARK') then
-                                                        trampCall(@_pair_QUMARK)
-                                                      else raise NameError.new( "Error: undefined variable _pair_QUMARK", "_pair_QUMARK" ) end
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:143"] + __e.backtrace ) ; raise __e
-                                                    end                                                  ,
-                                                [
-                                                      _cdr(
-                                                          begin
-                                                              trampCall(_elements)
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
-                                                          end
-                                                      )
-                                                ]
-                                                             ))
+                                                _pair_QUMARK(
+                                                    _cdr(
+                                                        begin
+                                                            trampCall(_elements)
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
+                                                        end
+                                                    )
+                                                )
                                             )
                                         )
                                        ) then
