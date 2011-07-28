@@ -258,20 +258,12 @@ trampCall(
                                     end
                                 else
                                     if ( 
-                                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                                      _null_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                              trampCall(@_null_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:33"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_lis)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_lis)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:38"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                             delayCall( '_values',  'values',
@@ -605,20 +597,12 @@ trampCall(
                               end
                           else
                               if ( 
-                                trampCall( self._null_QUMARK_METHOD(  'null?',
+                                _null_QUMARK(
                                     begin
-                                      if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                        trampCall(@_null_QUMARK)
-                                      else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:49"] + __e.backtrace ) ; raise __e
-                                    end                                  ,
-                                [
-                                      begin
-                                          trampCall(_lis)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
-                                      end
-                                ]
-                                             ))
+                                        trampCall(_lis)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:50"] + __e.backtrace ) ; raise __e
+                                    end
+                                )
                                ) then
                                   begin
                                     Cell.new()
@@ -1126,20 +1110,12 @@ trampCall(
                     _loop                     = 
                       Proc.new { |_lis,_r| 
                           if ( 
-                            trampCall( self._null_QUMARK_METHOD(  'null?',
+                            _null_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                    trampCall(@_null_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:73"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_lis)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_lis)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:75"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               delayCall( '_reverse_EXMARK',  'reverse!',
                                   begin
@@ -1257,20 +1233,12 @@ trampCall(
                     _rec                     = 
                       Proc.new { |_l,_r| 
                           if ( 
-                            trampCall( self._null_QUMARK_METHOD(  'null?',
+                            _null_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                    trampCall(@_null_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_l)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_l)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:86"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               delayCall( '_reverse_EXMARK',  'reverse!',
                                   begin
@@ -1328,20 +1296,12 @@ trampCall(
                           end
                       }
                     if ( 
-                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                      _null_QUMARK(
                           begin
-                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                              trampCall(@_null_QUMARK)
-                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_lis)
-                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_lis)
+                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:89"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                      ) then
                       Cell.new()
                     else
@@ -2223,17 +2183,9 @@ trampCall(
                                                                                                                                                                 _not(
                                                                                                                                                                     _eq_QUMARK(
                                                                                                                                                                       false                                                                                                                                                                      ,
-                                                                                                                                                                        trampCall( self._null_QUMARK_METHOD(  'null?',
-                                                                                                                                                                            begin
-                                                                                                                                                                              if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                                                                                                                                                trampCall(@_null_QUMARK)
-                                                                                                                                                                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
-                                                                                                                                                                            end                                                                                                                                                                          ,
-                                                                                                                                                                        [
-                                                                                                                                                                            __v__25__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60127
-                                                                                                                                                                        ]
-                                                                                                                                                                                     ))
+                                                                                                                                                                        _null_QUMARK(
+                                                                                                                                                                          __v__25__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60127
+                                                                                                                                                                        )
                                                                                                                                                                     )
                                                                                                                                                                 )
                                                                                                                                                                ) then
@@ -2607,17 +2559,9 @@ trampCall(
                                                                                                                                   _not(
                                                                                                                                       _eq_QUMARK(
                                                                                                                                         false                                                                                                                                        ,
-                                                                                                                                          trampCall( self._null_QUMARK_METHOD(  'null?',
-                                                                                                                                              begin
-                                                                                                                                                if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                                                                                                                  trampCall(@_null_QUMARK)
-                                                                                                                                                else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                                                                                                                rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
-                                                                                                                                              end                                                                                                                                            ,
-                                                                                                                                          [
-                                                                                                                                              __v__14__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60116
-                                                                                                                                          ]
-                                                                                                                                                       ))
+                                                                                                                                          _null_QUMARK(
+                                                                                                                                            __v__14__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60116
+                                                                                                                                          )
                                                                                                                                       )
                                                                                                                                   )
                                                                                                                                  ) then
@@ -2910,17 +2854,9 @@ trampCall(
                                                                               _not(
                                                                                   _eq_QUMARK(
                                                                                     false                                                                                    ,
-                                                                                      trampCall( self._null_QUMARK_METHOD(  'null?',
-                                                                                          begin
-                                                                                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                                                              trampCall(@_null_QUMARK)
-                                                                                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
-                                                                                          end                                                                                        ,
-                                                                                      [
-                                                                                          __v__5__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60107
-                                                                                      ]
-                                                                                                   ))
+                                                                                      _null_QUMARK(
+                                                                                        __v__5__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60107
+                                                                                      )
                                                                                   )
                                                                               )
                                                                              ) then
@@ -3123,17 +3059,9 @@ trampCall(
                                     _not(
                                         _eq_QUMARK(
                                           false                                          ,
-                                            trampCall( self._null_QUMARK_METHOD(  'null?',
-                                                begin
-                                                  if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                    trampCall(@_null_QUMARK)
-                                                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/util/list.nnd:87"] + __e.backtrace ) ; raise __e
-                                                end                                              ,
-                                            [
-                                                __v__1__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60103
-                                            ]
-                                                         ))
+                                            _null_QUMARK(
+                                              __v__1__gensym__8227be2d786434bbe9614615dae7dda9da30680c_60103
+                                            )
                                         )
                                     )
                                    ) then

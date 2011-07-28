@@ -907,20 +907,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:143"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -1357,22 +1349,14 @@ trampCall(
               begin
                 ___lambda = lambda { |_f| 
                     if ( 
-                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                      _null_QUMARK(
                           begin
-                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                              trampCall(@_null_QUMARK)
-                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:143"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                              if @global_lisp_binding.has_key?('__ASMARKdiscrepancy_MIMARKlist_ASMARK') then
-                                trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
-                              else raise NameError.new( "Error: undefined variable __ASMARKdiscrepancy_MIMARKlist_ASMARK", "__ASMARKdiscrepancy_MIMARKlist_ASMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:158"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                            if @global_lisp_binding.has_key?('__ASMARKdiscrepancy_MIMARKlist_ASMARK') then
+                              trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
+                            else raise NameError.new( "Error: undefined variable __ASMARKdiscrepancy_MIMARKlist_ASMARK", "__ASMARKdiscrepancy_MIMARKlist_ASMARK" ) end
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:158"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                      ) then
                         begin
                             trampCall(_f).printf(

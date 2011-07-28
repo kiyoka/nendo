@@ -1584,40 +1584,11 @@ module Nendo
       end
     end
 
-    def replaceDispatchingMethod( rubysym, origname, pred, args )
-      if rubysym and (pred.arity < 0)
-        rubysym = rubysym.to_s
-        case args.length
-        when 0
-          if @global_lisp_binding.has_key?(rubysym + '_ARGS0')
-            pred = self.method( rubysym + '_ARGS0' ).to_proc
-          end
-        when 1
-          if @global_lisp_binding.has_key?(rubysym + '_ARGS1')
-            pred = self.method( rubysym + '_ARGS1' ).to_proc
-          end
-        when 2
-          if @global_lisp_binding.has_key?(rubysym + '_ARGS2')
-            pred = self.method( rubysym + '_ARGS2' ).to_proc
-          end
-        when 3
-          if @global_lisp_binding.has_key?(rubysym + '_ARGS3')
-            pred = self.method( rubysym + '_ARGS3' ).to_proc
-          end
-        end
-      end
-      pred
-    end
-
     def callProcedure( rubysym, origname, pred, args )
       if @call_counters.has_key?( origname )
         @call_counters[ origname ] += 1
       else
         @call_counters[ origname ]  = 1
-      end
-
-      if 1 < self.getOptimizeLevel( )
-        pred = replaceDispatchingMethod( rubysym, origname, pred, args )
       end
       result = pred.call( *toRubyArgument( origname, pred, args ))
 
@@ -1660,8 +1631,8 @@ module Nendo
         else
           false
         end
-      when 'car', 'cdr', 'not'
-        raise ArgumentError, "Error: #{origname} requires 1 argument. " unless 1 == args.length
+      when 'car', 'cdr', 'not', 'null?'
+        raise ArgumentError, "Error: #{origname} requires 1 argument. "  unless 1 == args.length
         [ "#{rubysym}(",              args[0],         ")" ]
       when 'cons', '=', ">", ">=", "<", "<=", "eq?", "equal?"
         raise ArgumentError, "Error: #{origname} requires 2 arguments. " unless 2 == args.length
@@ -1729,7 +1700,9 @@ module Nendo
           else
             result = false
             if (execType == EXEC_TYPE_NORMAL) and (not locals.flatten.include?( sym ))
-              result = optimizedFunc( origname, sym, arr )
+              if 1 < @optimize_level
+                result = optimizedFunc( origname, sym, arr )
+              end
             end
             if result
               result

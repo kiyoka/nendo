@@ -32,20 +32,12 @@ trampCall(
                           _loop                           = 
                             Proc.new { |_tree| 
                                 if ( 
-                                  trampCall( self._null_QUMARK_METHOD(  'null?',
+                                  _null_QUMARK(
                                       begin
-                                        if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                          trampCall(@_null_QUMARK)
-                                        else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:17"] + __e.backtrace ) ; raise __e
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall(_tree)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
-                                        end
-                                  ]
-                                               ))
+                                          trampCall(_tree)
+                                        rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
+                                      end
+                                  )
                                  ) then
                                     begin
                                       true
@@ -142,20 +134,12 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       if ( 
-                        trampCall( self._null_QUMARK_METHOD(  'null?',
+                        _null_QUMARK(
                             begin
-                              if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                trampCall(@_null_QUMARK)
-                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:17"] + __e.backtrace ) ; raise __e
-                            end                          ,
-                        [
-                              begin
-                                  trampCall(_out)
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
-                              end
-                        ]
-                                     ))
+                                trampCall(_out)
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
+                            end
+                        )
                        ) then
                           begin
                               trampCall(STDOUT)

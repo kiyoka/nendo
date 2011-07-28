@@ -41,20 +41,12 @@ trampCall(
     trampCall(
           Proc.new { |_obj| 
               if ( 
-                trampCall( self._null_QUMARK_METHOD(  'null?',
+                _null_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_null_QUMARK') then
-                        trampCall(@_null_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:43"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_obj)
-                        rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:58"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_obj)
+                      rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:58"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                       begin
@@ -230,20 +222,12 @@ trampCall(
     trampCall(
           Proc.new { |_obj| 
               if ( 
-                trampCall( self._null_QUMARK_METHOD(  'null?',
+                _null_QUMARK(
                     begin
-                      if @global_lisp_binding.has_key?('_null_QUMARK') then
-                        trampCall(@_null_QUMARK)
-                      else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:62"] + __e.backtrace ) ; raise __e
-                    end                  ,
-                [
-                      begin
-                          trampCall(_obj)
-                        rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:78"] + __e.backtrace ) ; raise __e
-                      end
-                ]
-                             ))
+                        trampCall(_obj)
+                      rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:78"] + __e.backtrace ) ; raise __e
+                    end
+                )
                ) then
                   begin
                       delayCall( '_make_MIMARKhash_MIMARKtable',  'make-hash-table',
@@ -486,20 +470,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80019| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:62"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80019)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80019)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                     trampCall(STDIN)
@@ -600,20 +576,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80020| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/rfc/json.nnd:62"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80020)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__6e1da08b054bbf0469585c6330e1b00b59b91d4c_80020)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                     trampCall(STDOUT)

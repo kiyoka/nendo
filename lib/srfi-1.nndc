@@ -113,42 +113,26 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       if ( 
-                        trampCall( self._null_QUMARK_METHOD(  'null?',
+                        _null_QUMARK(
                             begin
-                              if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                trampCall(@_null_QUMARK)
-                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:31"] + __e.backtrace ) ; raise __e
-                            end                          ,
-                        [
-                              begin
-                                  trampCall(_maybe_MIMARKelt)
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:33"] + __e.backtrace ) ; raise __e
-                              end
-                        ]
-                                     ))
+                                trampCall(_maybe_MIMARKelt)
+                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:33"] + __e.backtrace ) ; raise __e
+                            end
+                        )
                        ) then
                           begin
                             false
                           end
                       else
                           if ( 
-                            trampCall( self._null_QUMARK_METHOD(  'null?',
-                                begin
-                                  if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                    trampCall(@_null_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:31"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  _cdr(
-                                      begin
-                                          trampCall(_maybe_MIMARKelt)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:33"] + __e.backtrace ) ; raise __e
-                                      end
-                                  )
-                            ]
-                                         ))
+                            _null_QUMARK(
+                                _cdr(
+                                    begin
+                                        trampCall(_maybe_MIMARKelt)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:33"] + __e.backtrace ) ; raise __e
+                                    end
+                                )
+                            )
                            ) then
                               begin
                                   delayCall( '_car',  'car',
@@ -1064,20 +1048,12 @@ trampCall(
                                               rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
-                                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                                              _null_QUMARK(
                                                   begin
-                                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                      trampCall(@_null_QUMARK)
-                                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
+                                                      trampCall(_x)
                                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    begin
-                                                        trampCall(_x)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
-                                                    end
-                                              ]
-                                                           ))
+                                                  end
+                                              )
                                         ]
                                                      )
                                     end
@@ -1099,20 +1075,12 @@ trampCall(
                                     rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
-                                    trampCall( self._null_QUMARK_METHOD(  'null?',
+                                    _null_QUMARK(
                                         begin
-                                          if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                            trampCall(@_null_QUMARK)
-                                          else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
+                                            trampCall(_x)
                                           rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
-                                        end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_x)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:168"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                        end
+                                    )
                               ]
                                            )
                           end
@@ -1429,20 +1397,12 @@ trampCall(
                   end
               else
                   if ( 
-                    trampCall( self._null_QUMARK_METHOD(  'null?',
+                    _null_QUMARK(
                         begin
-                          if @global_lisp_binding.has_key?('_null_QUMARK') then
-                            trampCall(@_null_QUMARK)
-                          else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:191"] + __e.backtrace ) ; raise __e
-                        end                      ,
-                    [
-                          begin
-                              trampCall(_l)
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:192"] + __e.backtrace ) ; raise __e
-                          end
-                    ]
-                                 ))
+                            trampCall(_l)
+                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:192"] + __e.backtrace ) ; raise __e
+                        end
+                    )
                    ) then
                       begin
                         true
@@ -1755,20 +1715,12 @@ trampCall(
                                                       end
                                                   end
                                               } ; ___lambda.call(
-                                                    trampCall( self._null_QUMARK_METHOD(  'null?',
+                                                    _null_QUMARK(
                                                         begin
-                                                          if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                            trampCall(@_null_QUMARK)
-                                                          else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:199"] + __e.backtrace ) ; raise __e
-                                                        end                                                      ,
-                                                    [
-                                                          begin
-                                                              trampCall(_others)
-                                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:207"] + __e.backtrace ) ; raise __e
-                                                          end
-                                                    ]
-                                                                 ))
+                                                            trampCall(_others)
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:207"] + __e.backtrace ) ; raise __e
+                                                        end
+                                                    )
                                                          )
                                             end
                                         }
@@ -1800,20 +1752,12 @@ trampCall(
                         end
                     end
                 } ; ___lambda.call(
-                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                      _null_QUMARK(
                           begin
-                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                              trampCall(@_null_QUMARK)
-                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:199"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_lists)
-                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:198"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_lists)
+                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:198"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                            )
               end
           }
@@ -5688,20 +5632,12 @@ trampCall(
                                         }                                      ,
                                         Proc.new { |_as,_ds| 
                                             if ( 
-                                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                                              _null_QUMARK(
                                                   begin
-                                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                      trampCall(@_null_QUMARK)
-                                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:610"] + __e.backtrace ) ; raise __e
-                                                  end                                                ,
-                                              [
-                                                    begin
-                                                        trampCall(_as)
-                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:612"] + __e.backtrace ) ; raise __e
-                                                    end
-                                              ]
-                                                           ))
+                                                      trampCall(_as)
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:612"] + __e.backtrace ) ; raise __e
+                                                  end
+                                              )
                                              ) then
                                                 begin
                                                     trampCall(_i)
@@ -5976,20 +5912,12 @@ trampCall(
                           begin
                             ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20109| 
                                 if ( 
-                                  trampCall( self._null_QUMARK_METHOD(  'null?',
+                                  _null_QUMARK(
                                       begin
-                                        if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                          trampCall(@_null_QUMARK)
-                                        else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:610"] + __e.backtrace ) ; raise __e
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20109)
-                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                        end
-                                  ]
-                                               ))
+                                          trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20109)
+                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                      end
+                                  )
                                  ) then
                                   Cell.new()
                                 else
@@ -6360,20 +6288,12 @@ trampCall(
                                     }                                  ,
                                     Proc.new { |_cars_PLMARKans,_cdrs| 
                                         if ( 
-                                          trampCall( self._null_QUMARK_METHOD(  'null?',
+                                          _null_QUMARK(
                                               begin
-                                                if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                  trampCall(@_null_QUMARK)
-                                                else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:657"] + __e.backtrace ) ; raise __e
-                                              end                                            ,
-                                          [
-                                                begin
-                                                    trampCall(_cars_PLMARKans)
-                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:658"] + __e.backtrace ) ; raise __e
-                                                end
-                                          ]
-                                                       ))
+                                                  trampCall(_cars_PLMARKans)
+                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:658"] + __e.backtrace ) ; raise __e
+                                              end
+                                          )
                                          ) then
                                             begin
                                                 trampCall(_ans)
@@ -6560,20 +6480,12 @@ trampCall(
                               begin
                                 ___lambda = lambda { |_cdrs| 
                                     if ( 
-                                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                                      _null_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                              trampCall(@_null_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:670"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_cdrs)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:671"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_cdrs)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:671"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                             trampCall(_knil)
@@ -6781,20 +6693,12 @@ trampCall(
                               begin
                                 ___lambda = lambda { |_cdrs| 
                                     if ( 
-                                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                                      _null_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                              trampCall(@_null_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:684"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_cdrs)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:685"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_cdrs)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:685"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                             trampCall(_zero)
@@ -7001,20 +6905,12 @@ trampCall(
                               begin
                                 ___lambda = lambda { |_tails| 
                                     if ( 
-                                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                                      _null_QUMARK(
                                           begin
-                                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                              trampCall(@_null_QUMARK)
-                                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:695"] + __e.backtrace ) ; raise __e
-                                          end                                        ,
-                                      [
-                                            begin
-                                                trampCall(_tails)
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:696"] + __e.backtrace ) ; raise __e
-                                            end
-                                      ]
-                                                   ))
+                                              trampCall(_tails)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:696"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
                                      ) then
                                         begin
                                             trampCall(_ans)
@@ -7548,20 +7444,12 @@ trampCall(
                         }                      ,
                         Proc.new { |_cars,_cdrs| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(_cars)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:736"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(_cars)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:736"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                               Cell.new()
                             else
@@ -7597,20 +7485,12 @@ trampCall(
                                                         }                                                      ,
                                                         Proc.new { |_cars2,_cdrs2| 
                                                             if ( 
-                                                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                                                              _null_QUMARK(
                                                                   begin
-                                                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                                      trampCall(@_null_QUMARK)
-                                                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                                                  end                                                                ,
-                                                              [
-                                                                    begin
-                                                                        trampCall(_cars2)
-                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:739"] + __e.backtrace ) ; raise __e
-                                                                    end
-                                                              ]
-                                                                           ))
+                                                                      trampCall(_cars2)
+                                                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:739"] + __e.backtrace ) ; raise __e
+                                                                  end
+                                                              )
                                                              ) then
                                                                 begin
                                                                     trampCall(_vals)
@@ -10012,20 +9892,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20121| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20121)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20121)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -10111,20 +9983,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20122| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20122)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20122)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -10208,20 +10072,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20123| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20123)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20123)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -10411,20 +10267,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20124| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20124)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20124)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -10638,20 +10486,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20125| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20125)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20125)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -10737,20 +10577,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20126| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20126)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20126)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -10918,20 +10750,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20127| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20127)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20127)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -11019,20 +10843,12 @@ trampCall(
                       begin
                         ___lambda = lambda { |___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20128| 
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:738"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20128)
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(___gensym__d2f54e498a1042043dafdae0618b15c325a30372_20128)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                   if @global_lisp_binding.has_key?('_equal_QUMARK') then
@@ -13958,20 +13774,12 @@ trampCall(
               [
                     Proc.new { |_lis,_ans| 
                         if ( 
-                          trampCall( self._null_QUMARK_METHOD(  'null?',
+                          _null_QUMARK(
                               begin
-                                if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                  trampCall(@_null_QUMARK)
-                                else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1285"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_lis)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1291"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(_lis)
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1291"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                          ) then
                             begin
                                 begin
@@ -13981,20 +13789,12 @@ trampCall(
                             end
                         else
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1285"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(_ans)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1291"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(_ans)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1291"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                     begin
@@ -14136,20 +13936,12 @@ trampCall(
               [
                     Proc.new { |_lis,_ans| 
                         if ( 
-                          trampCall( self._null_QUMARK_METHOD(  'null?',
+                          _null_QUMARK(
                               begin
-                                if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                  trampCall(@_null_QUMARK)
-                                else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1298"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_lis)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1306"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(_lis)
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1306"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                          ) then
                             begin
                                 begin
@@ -14159,20 +13951,12 @@ trampCall(
                             end
                         else
                             if ( 
-                              trampCall( self._null_QUMARK_METHOD(  'null?',
+                              _null_QUMARK(
                                   begin
-                                    if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                      trampCall(@_null_QUMARK)
-                                    else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1298"] + __e.backtrace ) ; raise __e
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(_ans)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1306"] + __e.backtrace ) ; raise __e
-                                    end
-                              ]
-                                           ))
+                                      trampCall(_ans)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1306"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
                              ) then
                                 begin
                                     begin
@@ -14358,20 +14142,12 @@ trampCall(
                         end
                     else
                         if ( 
-                          trampCall( self._null_QUMARK_METHOD(  'null?',
+                          _null_QUMARK(
                               begin
-                                if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                  trampCall(@_null_QUMARK)
-                                else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1314"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_lists)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1316"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(_lists)
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1316"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                          ) then
                             begin
                                 begin
@@ -14515,20 +14291,12 @@ trampCall(
                         end
                     else
                         if ( 
-                          trampCall( self._null_QUMARK_METHOD(  'null?',
+                          _null_QUMARK(
                               begin
-                                if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                  trampCall(@_null_QUMARK)
-                                else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1323"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(_lists)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1325"] + __e.backtrace ) ; raise __e
-                                end
-                          ]
-                                       ))
+                                  trampCall(_lists)
+                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1325"] + __e.backtrace ) ; raise __e
+                              end
+                          )
                          ) then
                             begin
                                 begin
@@ -14646,20 +14414,12 @@ trampCall(
               begin
                 ___lambda = lambda { |_lists| 
                     if ( 
-                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                      _null_QUMARK(
                           begin
-                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                              trampCall(@_null_QUMARK)
-                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1332"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_lists)
-                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1336"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_lists)
+                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1336"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                      ) then
                         begin
                             begin
@@ -14799,20 +14559,12 @@ trampCall(
               begin
                 ___lambda = lambda { |_lists| 
                     if ( 
-                      trampCall( self._null_QUMARK_METHOD(  'null?',
+                      _null_QUMARK(
                           begin
-                            if @global_lisp_binding.has_key?('_null_QUMARK') then
-                              trampCall(@_null_QUMARK)
-                            else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1342"] + __e.backtrace ) ; raise __e
-                          end                        ,
-                      [
-                            begin
-                                trampCall(_lists)
-                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1346"] + __e.backtrace ) ; raise __e
-                            end
-                      ]
-                                   ))
+                              trampCall(_lists)
+                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1346"] + __e.backtrace ) ; raise __e
+                          end
+                      )
                      ) then
                         begin
                             begin
@@ -14992,20 +14744,12 @@ trampCall(
                               }                            ,
                               Proc.new { |_a_MIMARKb,_a_MIMARKint_MIMARKb| 
                                   if ( 
-                                    trampCall( self._null_QUMARK_METHOD(  'null?',
+                                    _null_QUMARK(
                                         begin
-                                          if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                            trampCall(@_null_QUMARK)
-                                          else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1364"] + __e.backtrace ) ; raise __e
-                                        end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_a_MIMARKb)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1367"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                            trampCall(_a_MIMARKb)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1367"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
                                    ) then
                                       begin
                                           trampCall( self._lset_MIMARKdifference_METHOD(  'lset-difference',
@@ -15033,20 +14777,12 @@ trampCall(
                                       end
                                   else
                                       if ( 
-                                        trampCall( self._null_QUMARK_METHOD(  'null?',
+                                        _null_QUMARK(
                                             begin
-                                              if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                trampCall(@_null_QUMARK)
-                                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1364"] + __e.backtrace ) ; raise __e
-                                            end                                          ,
-                                        [
-                                              begin
-                                                  trampCall(_a_MIMARKint_MIMARKb)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1366"] + __e.backtrace ) ; raise __e
-                                              end
-                                        ]
-                                                     ))
+                                                trampCall(_a_MIMARKint_MIMARKb)
+                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1366"] + __e.backtrace ) ; raise __e
+                                            end
+                                        )
                                        ) then
                                           begin
                                               trampCall( self._append_METHOD(  'append',
@@ -15208,20 +14944,12 @@ trampCall(
                               }                            ,
                               Proc.new { |_a_MIMARKb,_a_MIMARKint_MIMARKb| 
                                   if ( 
-                                    trampCall( self._null_QUMARK_METHOD(  'null?',
+                                    _null_QUMARK(
                                         begin
-                                          if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                            trampCall(@_null_QUMARK)
-                                          else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1386"] + __e.backtrace ) ; raise __e
-                                        end                                      ,
-                                    [
-                                          begin
-                                              trampCall(_a_MIMARKb)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1390"] + __e.backtrace ) ; raise __e
-                                          end
-                                    ]
-                                                 ))
+                                            trampCall(_a_MIMARKb)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1390"] + __e.backtrace ) ; raise __e
+                                        end
+                                    )
                                    ) then
                                       begin
                                           trampCall( self._lset_MIMARKdifference_EXMARK_METHOD(  'lset-difference!',
@@ -15249,20 +14977,12 @@ trampCall(
                                       end
                                   else
                                       if ( 
-                                        trampCall( self._null_QUMARK_METHOD(  'null?',
+                                        _null_QUMARK(
                                             begin
-                                              if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                trampCall(@_null_QUMARK)
-                                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1386"] + __e.backtrace ) ; raise __e
-                                            end                                          ,
-                                        [
-                                              begin
-                                                  trampCall(_a_MIMARKint_MIMARKb)
-                                                rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1388"] + __e.backtrace ) ; raise __e
-                                              end
-                                        ]
-                                                     ))
+                                                trampCall(_a_MIMARKint_MIMARKb)
+                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-1.nnd:1388"] + __e.backtrace ) ; raise __e
+                                            end
+                                        )
                                        ) then
                                           begin
                                               trampCall( self._append_EXMARK_METHOD(  'append!',

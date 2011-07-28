@@ -375,20 +375,12 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       if ( 
-                        trampCall( self._null_QUMARK_METHOD(  'null?',
+                        _null_QUMARK(
                             begin
-                              if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                trampCall(@_null_QUMARK)
-                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:94"] + __e.backtrace ) ; raise __e
-                            end                          ,
-                        [
-                              begin
-                                  trampCall(_type)
-                                rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
-                              end
-                        ]
-                                     ))
+                                trampCall(_type)
+                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:99"] + __e.backtrace ) ; raise __e
+                            end
+                        )
                        ) then
                         LispKeyword.new( "html-4.01-strict" )
                       else
@@ -417,20 +409,12 @@ trampCall(
                     _get_MIMARKattr                     = 
                       Proc.new { |_args,_attrs| 
                           if ( 
-                            trampCall( self._null_QUMARK_METHOD(  'null?',
+                            _null_QUMARK(
                                 begin
-                                  if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                    trampCall(@_null_QUMARK)
-                                  else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_args)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                  end
-                            ]
-                                         ))
+                                    trampCall(_args)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                end
+                            )
                            ) then
                               begin
                                   delayCall( '_values',  'values',
@@ -483,22 +467,14 @@ trampCall(
                                ) then
                                   begin
                                       if ( 
-                                        trampCall( self._null_QUMARK_METHOD(  'null?',
-                                            begin
-                                              if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                trampCall(@_null_QUMARK)
-                                              else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
-                                            end                                          ,
-                                        [
-                                              _cdr(
-                                                  begin
-                                                      trampCall(_args)
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                  end
-                                              )
-                                        ]
-                                                     ))
+                                        _null_QUMARK(
+                                            _cdr(
+                                                begin
+                                                    trampCall(_args)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                                end
+                                            )
+                                        )
                                        ) then
                                           begin
                                               delayCall( '_values',  'values',
@@ -836,20 +812,12 @@ trampCall(
                                         Proc.new { |_attr,_args| 
                                             if ( 
                                               _not(
-                                                  trampCall( self._null_QUMARK_METHOD(  'null?',
+                                                  _null_QUMARK(
                                                       begin
-                                                        if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                                          trampCall(@_null_QUMARK)
-                                                        else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:126"] + __e.backtrace ) ; raise __e
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_args)
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
-                                                        end
-                                                  ]
-                                                               ))
+                                                          trampCall(_args)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:131"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  )
                                               )
                                              ) then
                                                 begin
@@ -1046,20 +1014,12 @@ trampCall(
                           _loop                           = 
                             Proc.new { |_elements,_r| 
                                 if ( 
-                                  trampCall( self._null_QUMARK_METHOD(  'null?',
+                                  _null_QUMARK(
                                       begin
-                                        if @global_lisp_binding.has_key?('_null_QUMARK') then
-                                          trampCall(@_null_QUMARK)
-                                        else raise NameError.new( "Error: undefined variable _null_QUMARK", "_null_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:142"] + __e.backtrace ) ; raise __e
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall(_elements)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
-                                        end
-                                  ]
-                                               ))
+                                          trampCall(_elements)
+                                        rescue => __e ; __e.set_backtrace( ["./lib/text/html-lite.nnd:153"] + __e.backtrace ) ; raise __e
+                                      end
+                                  )
                                  ) then
                                     begin
                                         _cons(
