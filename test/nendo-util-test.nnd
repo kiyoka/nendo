@@ -70,21 +70,13 @@ trampCall(
                       rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:32\"] + __e.backtrace ) ; raise __e
                     end
                 } ; ___lambda.call(
-                      trampCall( self.__PLMARK_METHOD(  '+',
+                      __PLMARK_ARGS2(
                           begin
-                            if @global_lisp_binding.has_key?('__PLMARK') then
-                              trampCall(@__PLMARK)
-                            else raise NameError.new( \"Error: undefined variable __PLMARK\", \"__PLMARK\" ) end
+                              trampCall(_arg1)
                             rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:31\"] + __e.backtrace ) ; raise __e
                           end                        ,
-                      [
-                            begin
-                                trampCall(_arg1)
-                              rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:31\"] + __e.backtrace ) ; raise __e
-                            end                          ,
-                          1
-                      ]
-                                   ))
+                        1
+                      )
                            )
               end
           }
