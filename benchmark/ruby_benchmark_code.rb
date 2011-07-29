@@ -1,5 +1,12 @@
 #!/usr/local/bin/ruby
 
+class VersionCheck
+  def isJRuby()
+    defined? JRUBY_VERSION
+  end
+end
+
+
 # takeuchi function ( tarai mawashi bench )
 class RubyBenchmarkCode
 
@@ -14,7 +21,7 @@ class RubyBenchmarkCode
   end
 
   def tak2( x, y, z )
-    @inner_tak = Proc.new { |_x,_y,_z| 
+    @inner_tak = Proc.new { |_x,_y,_z|
       if ( _y >= _x )
         _y
       else
@@ -34,7 +41,7 @@ class RubyBenchmarkCode
     @inner_le  = Proc.new { |_a,_b|
       _a >= _b
     }
-    @inner_tak = Proc.new { |_x,_y,_z| 
+    @inner_tak = Proc.new { |_x,_y,_z|
       if ( @inner_le.call( _y, _x ))
         _y
       else

@@ -6,7 +6,10 @@
 (.load   "./benchmark/ruby_benchmark_code.rb")
 ( load   "./benchmark/nendo_benchmark_code.nnd")
 
-(require "ruby-prof")
+
+(if (VersionCheck.new.isJRuby)
+    (require "jruby-prof")
+    (require "ruby-prof"))
 
 ;; ------------------ macro --------------------
 (define bench-task
@@ -40,11 +43,11 @@
 ;; -------------------- fact --------------------
 (bench-task #f
             "fact (ruby version)"
-            (printf " => %d\n" (RubyBenchmarkCode.new.fact 1000)))
+            (printf " => %d\n" (RubyBenchmarkCode.new.fact 100)))
 
 (bench-task #f
             "fact (nendo version)"
-            (printf " => %d\n" (fact 1000)))
+            (printf " => %d\n" (fact 100)))
 
 
 ;; -------------------- plus --------------------
