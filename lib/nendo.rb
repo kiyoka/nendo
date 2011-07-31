@@ -1535,7 +1535,7 @@ module Nendo
         []
       elsif 0 < num
         if 0 == len
-          [ Nil.new ]
+          raise ArgumentError, errorMessageOf_toRubyArgument( origname, 4, num, len )
         else
           raise ArgumentError, errorMessageOf_toRubyArgument( origname, 2, num, len ) if num != len
           args

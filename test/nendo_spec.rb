@@ -980,14 +980,14 @@ EOS
     @nendo.evalStr( " (letrec ((a 22)(b 33)) (%let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
     @nendo.evalStr( " (letrec  ((a (%let ((b 2))   (+ 100 b))))  a) " ).should == "102"
     @nendo.evalStr( <<EOS
-(letrec ((func1 (lambda (x) 13))
-         (func2 (lambda (x) (* 2 (func1)))))
+(letrec ((func1 (lambda () 13))
+         (func2 (lambda () (* 2 (func1)))))
   (list (func2) (func1)))
 EOS
            ).should == "(26 13)"
     @nendo.evalStr( <<EOS
-(letrec ((func2 (lambda (x) (* 2 (func1))))
-         (func1 (lambda (x) 7)))
+(letrec ((func2 (lambda () (* 2 (func1))))
+         (func1 (lambda () 7)))
   (list (func2) (func1)))
 EOS
     ).should == "(14 7)"
@@ -1015,6 +1015,8 @@ EOS
     @nendo.evalStr( " (apply1 list '(1 2 3))" ).should == "(1 2 3)"
     lambda { @nendo.evalStr( " (error \"My Runtime Error\") " ) }.should                     raise_error( RuntimeError, /My Runtime Error/ )
     lambda { @nendo.evalStr( " (error \"My Runtime Error\" '(a b c)) " ) }.should            raise_error( RuntimeError, /My Runtime Error [(]a b c[)]/ )
+    @nendo.evalStr( "((lambda (arg1) (+ 1 arg1)) 2)" ).should == "3"
+    lambda { @nendo.evalStr( "((lambda (arg1) (+ 1 arg1)))" ) }.should                       raise_error( ArgumentError, /wrong number of arguments/ )
   end
 end
 
@@ -1050,14 +1052,14 @@ EOS
     @nendo.evalStr( " (/nendo/core/letrec ((a 22)(b 33)) (let ((c 44) (d 55))   (+ a b c d))) " ).should == "154"
     @nendo.evalStr( " (/nendo/core/letrec  ((a (let ((b 2))   (+ 100 b))))  a) " ).should                == "102"
     @nendo.evalStr( <<EOS
-(/nendo/core/letrec ((func1 (/nendo/core/lambda (x) 13))
-                     (func2 (/nendo/core/lambda (x) (* 2 (func1)))))
+(/nendo/core/letrec ((func1 (/nendo/core/lambda () 13))
+                     (func2 (/nendo/core/lambda () (* 2 (func1)))))
    (list (func2) (func1)))
 EOS
            ).should == "(26 13)"
     @nendo.evalStr( <<EOS
-(/nendo/core/letrec ((func2 (/nendo/core/lambda (x) (* 2 (func1))))
-                     (func1 (/nendo/core/lambda (x) 7)))
+(/nendo/core/letrec ((func2 (/nendo/core/lambda () (* 2 (func1))))
+                     (func1 (/nendo/core/lambda () 7)))
    (list (func2) (func1)))
 EOS
            ).should == "(14 7)"
@@ -1835,7 +1837,6 @@ EOS
 EOS
            ).should == "()"
     @nendo.evalStr( " (call-with-values * -) " ).should == "-1"
-    @nendo.evalStr( " (receive (a)       (values)           (list a))       " ).should == "()"
     @nendo.evalStr( " (receive (a)       (values 10)        (list a))       " ).should == "(10)"
     @nendo.evalStr( " (receive (a b)     (values 10 20)     (list a b))     " ).should == "(10 20)"
     @nendo.evalStr( " (receive (a b c)   (values 10 20 30)  (list a b c))   " ).should == "(10 20 30)"
@@ -1854,6 +1855,7 @@ EOS
     @nendo.evalStr( " (receive (a b)     (values nil #t)    (cons a b))     " ).should == "(nil . #t)"
     @nendo.evalStr( " (receive (a b)     (values nil #f)    (cons a b))     " ).should == "(nil . #f)"
     @nendo.evalStr( " (receive (a b)     (values nil nil)   (cons a b))     " ).should == "(nil . nil)"
+    lambda { @nendo.evalStr( " (receive (a)       (values)           (list a))       " ) }.should   raise_error( ArgumentError, /wrong number of arguments/ )
   end
 end
 
@@ -1992,7 +1994,7 @@ EOS
 EOS
            ).should == "(define main (lambda (argv) (letrec ((result (quote ())) (foo (lambda (x) x)) (val 0) (bar (lambda (x) (+ val 10)))))))"
     @nendo.evalStr( <<EOS
-(define (main argv)
+(define (main . argv)
   (define (foo x) x)
   (+ 10 20)
   0
