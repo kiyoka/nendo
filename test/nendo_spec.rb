@@ -1856,6 +1856,30 @@ EOS
     @nendo.evalStr( " (receive (a b)     (values nil #f)    (cons a b))     " ).should == "(nil . #f)"
     @nendo.evalStr( " (receive (a b)     (values nil nil)   (cons a b))     " ).should == "(nil . nil)"
     lambda { @nendo.evalStr( " (receive (a)       (values)           (list a))       " ) }.should   raise_error( ArgumentError, /wrong number of arguments/ )
+    lambda { @nendo.evalStr( <<EOS
+(map
+ (lambda (a)   a))
+EOS
+                    ) }.should   raise_error( ArgumentError, /wrong number of arguments/ )
+    lambda { @nendo.evalStr( <<EOS
+(map
+ (lambda () 1)
+ '(1 2 3))
+EOS
+                    ) }.should   raise_error( ArgumentError, /wrong number of arguments/ )
+    lambda { @nendo.evalStr( <<EOS
+(map
+ (lambda (a)   a)
+ '(1 2 3)
+ '(10 20 30))
+EOS
+                    ) }.should   raise_error( ArgumentError, /wrong number of arguments/ )
+    lambda { @nendo.evalStr( <<EOS
+(map
+ (lambda (a b)   (+ a b))
+ '(1 2 3))
+EOS
+                    ) }.should   raise_error( ArgumentError, /wrong number of arguments/ )
   end
 end
 
