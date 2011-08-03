@@ -886,7 +886,7 @@ trampCall(
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:73"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                 [
                                       begin

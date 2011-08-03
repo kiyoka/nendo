@@ -2185,6 +2185,7 @@ describe Nendo, "when use with-open libraries " do
     @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop))) ", @fn )).should                         == '"line1"'
     @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop))) ", @fn )).should                         == '"line1"'
     @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop) (f.readline.chop))) ", @fn )).should       == '"line2"'
+    @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (map (lambda (line) (line.chop)) f))) ", @fn )).should       == '#("line1" "line2" "line3")'
     @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (f.puts \"Wrote from Nendo.\")) \"w\")  #t", @fn )).should   == "#t"
     @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) (f.readline.chop))) ", @fn )).should                         == '"Wrote from Nendo."'
     lambda { @nendo.evalStr( sprintf( " (with-open \"%s\" (lambda (f) #t) 1 2 ", @fn )) }.should                          raise_error(RuntimeError)

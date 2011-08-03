@@ -91,7 +91,7 @@ trampCall(
 
 
 ;;-------------------------------------------------------------------
-(test-section "map for vector")
+(test-section "map for Enumerable")
 
 (test* "map-pable? no"
        #f
@@ -104,6 +104,18 @@ trampCall(
        (%%map-able?
         (lambda (x) x)
         '#(1 2)))
+
+(test* "map-pable? yes"
+       #t
+       (%%map-able?
+        (lambda (x) x)
+        (Range.new 0 100)))
+
+(test* "map-pable? yes"
+       #t
+       (%%map-able?
+        (lambda (x) x)
+        (hash-table eq? '("a" 1) '("b" 2))))
 
 (test* "%%map"
        '#("[a]" "[b]" "[C]")
@@ -138,7 +150,7 @@ trampCall(
         '("5" "6")))
 
 ;;-------------------------------------------------------------------
-(test-section "for-each for vector")
+(test-section "for-each for Enumerable")
 
 (test* "for-each-pable? no"
        #f
@@ -151,6 +163,18 @@ trampCall(
        (%%for-each-able?
         (lambda (x) x)
         '#(1 2)))
+
+(test* "for-each-pable? yes"
+       #t
+       (%%for-each-able?
+        (lambda (x) x)
+        (Range.new 0 100)))
+
+(test* "for-each-pable? yes"
+       #t
+       (%%for-each-able?
+        (lambda (x) x)
+        (hash-table eq? '("a" 1) '("b" 2))))
 
 (test* "%%for-each"
        '("[a]" "[b]" "[C]")
@@ -205,7 +229,7 @@ trampCall(
 
 
 ;;-------------------------------------------------------------------
-(test-section "filter for vector")
+(test-section "filter for Enumerable")
 
 (test* "filter-pable? no"
        #f
@@ -218,6 +242,18 @@ trampCall(
        (%%filter-able?
         (lambda (x) x)
         '#(1 2)))
+
+(test* "filter-pable? yes"
+       #t
+       (%%filter-able?
+        (lambda (x) x)
+        (Range.new 0 100)))
+
+(test* "filter-pable? yes"
+       #t
+       (%%filter-able?
+        (lambda (x) x)
+        (hash-table eq? '("a" 1) '("b" 2))))
 
 (test* "%%filter"
        '#("b")
@@ -251,7 +287,7 @@ trampCall(
 
 
 ;;-------------------------------------------------------------------
-(test-section "vector enable on srfi-1")
+(test-section "Enumerable on srfi-1")
 (use srfi-1)
 
 (test* "map (for vector)"
@@ -260,6 +296,22 @@ trampCall(
         wrap-str
         '#("a" "b" "C")))
 
+(test* "map (for Range)"
+       '#(10 11 12)
+       (map
+        (lambda (x) x)
+        (Range.new 10 12)))
+
+(test* "map (for Enumerator)"
+       '#("[one]" "[two]" "[three]")
+       (map
+        wrap-str
+        (Enumerator.new
+         (&block (v)
+           (v.yield "one")
+           (v.yield "two")
+           (v.yield "three")))))
+           
 
 (test* "for-each (for vector)"
        '("[a]" "[b]" "[C]")
@@ -270,12 +322,50 @@ trampCall(
           '#("a" "b" "C"))
          (reverse result)))
 
+(test* "for-each (for Range)"
+       '(10 11 12)
+       (let1 result '()
+         (for-each
+          (lambda (x) (set! result
+                            (cons x result)))
+          (Range.new 10 12))
+         (reverse result)))
 
-(test* "filter (for vector1)"
+(test* "for-each (for Enumerable)"
+       '("[one]" "[two]" "[three]")
+       (let1 result '()
+         (for-each
+          (lambda (x) (set! result
+                            (cons (wrap-str x) result)))
+          (Enumerator.new
+           (&block (v)
+             (v.yield "one")
+             (v.yield "two")
+             (v.yield "three"))))
+         (reverse result)))
+
+(test* "filter (for vector)"
        '#("b")
        (filter
         (lambda (x) (= "b" x))
         '#("a" "b" "C")))
+
+(test* "filter (for Range)"
+       '#(11)
+       (filter
+        (lambda (x) (= 11 x))
+        (Range.new 10 1000)))
+
+(test* "filter (for Enumerable)"
+       '#("one" "three")
+       (filter
+        (lambda (x) (not (= "two" x)))
+        (Enumerator.new
+         (&block (v)
+           (v.yield "one")
+           (v.yield "two")
+           (v.yield "three")))))
+        
 
 
 ;;===================================================================

@@ -32,10 +32,17 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
 
+
+;; Checking (Ruby's Enumerable?) and (not Nendo's list?)
+(define (%%enumerable? x)
+  (and (x.is_a? Enumerable)
+       (not (x.is_a? Cell))))
+  
+
 ;; higher-order function for vector with Ruby's native method.
 (define (%%map-able? proc . lists)
   (if (= 1 (length lists))
-      (vector? (car lists))
+      (%%enumerable? (car lists))
       #f))
 
 (define (%%map proc vec)
@@ -52,7 +59,7 @@
 
 (define (%%for-each-able? proc . lists)
   (if (= 1 (length lists))
-      (vector? (car lists))
+      (%%enumerable? (car lists))
       #f))
 
 (define (%%for-each proc vec)
@@ -68,7 +75,7 @@
 
 
 (define (%%filter-able? proc lst)
-  (vector? lst))
+  (%%enumerable? lst))
 
 (define (%%filter proc vec)
   (vec.select

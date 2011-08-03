@@ -5,6 +5,57 @@
 
 trampCall( 
   begin
+      def self.__PAMARK_PAMARKenumerable_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARK_PAMARKenumerable_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['__PAMARK_PAMARKenumerable_QUMARK'] = self.method( :__PAMARK_PAMARKenumerable_QUMARK_METHOD )
+    @__PAMARK_PAMARKenumerable_QUMARK = 
+    trampCall(
+          Proc.new { |_x| 
+              if ( 
+                _not(
+                    _eq_QUMARK(
+                      false                      ,
+                        begin
+                            trampCall(_x).is_a?(
+                                  begin
+                                      trampCall(Enumerable)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:38"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:39"] + __e.backtrace ) ; raise __e
+                        end
+                    )
+                )
+               ) then
+                  delayCall( '_not',  'not',
+                      begin
+                        if @global_lisp_binding.has_key?('_not') then
+                          trampCall(@_not)
+                        else raise NameError.new( "Error: undefined variable _not", "_not" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:39"] + __e.backtrace ) ; raise __e
+                      end                    ,
+                  [
+                        begin
+                            trampCall(_x).is_a?(
+                                  begin
+                                      trampCall(Cell)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:39"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:39"] + __e.backtrace ) ; raise __e
+                        end
+                  ]
+                               )
+              else
+                false
+              end
+          }
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
       def self.__PAMARK_PAMARKmap_MIMARKable_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARK_PAMARKmap_MIMARKable_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['__PAMARK_PAMARKmap_MIMARKable_QUMARK'] = self.method( :__PAMARK_PAMARKmap_MIMARKable_QUMARK_METHOD )
     @__PAMARK_PAMARKmap_MIMARKable_QUMARK = 
@@ -16,23 +67,23 @@ trampCall(
                     _length(
                         begin
                             trampCall(_lists)
-                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:38"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:45"] + __e.backtrace ) ; raise __e
                         end
                     )
                 )
                ) then
-                  delayCall( '_vector_QUMARK',  'vector?',
+                  delayCall( '__PAMARK_PAMARKenumerable_QUMARK',  '%%enumerable?',
                       begin
-                        if @global_lisp_binding.has_key?('_vector_QUMARK') then
-                          trampCall(@_vector_QUMARK)
-                        else raise NameError.new( "Error: undefined variable _vector_QUMARK", "_vector_QUMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:38"] + __e.backtrace ) ; raise __e
+                        if @global_lisp_binding.has_key?('__PAMARK_PAMARKenumerable_QUMARK') then
+                          trampCall(@__PAMARK_PAMARKenumerable_QUMARK)
+                        else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKenumerable_QUMARK", "__PAMARK_PAMARKenumerable_QUMARK" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:45"] + __e.backtrace ) ; raise __e
                       end                    ,
                   [
                         _car(
                             begin
                                 trampCall(_lists)
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:38"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:45"] + __e.backtrace ) ; raise __e
                             end
                         )
                   ]
@@ -59,18 +110,18 @@ trampCall(
                             trampCall( callProcedure(  '_proc',  'proc',
                                 begin
                                     trampCall(_proc)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:44"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:51"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                   begin
                                       trampCall(_x)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:44"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:51"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          ))
                         }
                     )
-                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:42"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:49"] + __e.backtrace ) ; raise __e
               end
           }
     )
@@ -93,18 +144,18 @@ trampCall(
                             if @global_lisp_binding.has_key?('_apply') then
                               trampCall(@_apply)
                             else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:50"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:57"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                               if @global_lisp_binding.has_key?('__PAMARK_PAMARKmap_MIMARKable_QUMARK') then
                                 trampCall(@__PAMARK_PAMARKmap_MIMARKable_QUMARK)
                               else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKmap_MIMARKable_QUMARK", "__PAMARK_PAMARKmap_MIMARKable_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:48"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:55"] + __e.backtrace ) ; raise __e
                             end                          ,
                             begin
                                 trampCall(_args)
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:50"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:57"] + __e.backtrace ) ; raise __e
                             end
                       ]
                                    ))
@@ -114,17 +165,17 @@ trampCall(
                               if @global_lisp_binding.has_key?('__PAMARK_PAMARKmap') then
                                 trampCall(@__PAMARK_PAMARKmap)
                               else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKmap", "__PAMARK_PAMARKmap" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:49"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:56"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               begin
                                   trampCall(_proc)
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:49"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:56"] + __e.backtrace ) ; raise __e
                               end                            ,
                               _car(
                                   begin
                                       trampCall(_lists)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:49"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:56"] + __e.backtrace ) ; raise __e
                                   end
                               )
                         ]
@@ -135,18 +186,18 @@ trampCall(
                               if @global_lisp_binding.has_key?('_apply') then
                                 trampCall(@_apply)
                               else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:50"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:57"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               begin
                                 if @global_lisp_binding.has_key?('__PAMARKmap_MIMARKoriginal') then
                                   trampCall(@__PAMARKmap_MIMARKoriginal)
                                 else raise NameError.new( "Error: undefined variable __PAMARKmap_MIMARKoriginal", "__PAMARKmap_MIMARKoriginal" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:50"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:57"] + __e.backtrace ) ; raise __e
                               end                            ,
                               begin
                                   trampCall(_args)
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:50"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:57"] + __e.backtrace ) ; raise __e
                               end
                         ]
                                      )
@@ -155,11 +206,11 @@ trampCall(
                       _cons(
                           begin
                               trampCall(_proc)
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:49"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:56"] + __e.backtrace ) ; raise __e
                           end                        ,
                           begin
                               trampCall(_lists)
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:49"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:56"] + __e.backtrace ) ; raise __e
                           end
                       )
                            )
@@ -183,23 +234,23 @@ trampCall(
                     _length(
                         begin
                             trampCall(_lists)
-                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:55"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:62"] + __e.backtrace ) ; raise __e
                         end
                     )
                 )
                ) then
-                  delayCall( '_vector_QUMARK',  'vector?',
+                  delayCall( '__PAMARK_PAMARKenumerable_QUMARK',  '%%enumerable?',
                       begin
-                        if @global_lisp_binding.has_key?('_vector_QUMARK') then
-                          trampCall(@_vector_QUMARK)
-                        else raise NameError.new( "Error: undefined variable _vector_QUMARK", "_vector_QUMARK" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:55"] + __e.backtrace ) ; raise __e
+                        if @global_lisp_binding.has_key?('__PAMARK_PAMARKenumerable_QUMARK') then
+                          trampCall(@__PAMARK_PAMARKenumerable_QUMARK)
+                        else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKenumerable_QUMARK", "__PAMARK_PAMARKenumerable_QUMARK" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:62"] + __e.backtrace ) ; raise __e
                       end                    ,
                   [
                         _car(
                             begin
                                 trampCall(_lists)
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:55"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:62"] + __e.backtrace ) ; raise __e
                             end
                         )
                   ]
@@ -226,18 +277,18 @@ trampCall(
                             trampCall( callProcedure(  '_proc',  'proc',
                                 begin
                                     trampCall(_proc)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:61"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:68"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                   begin
                                       trampCall(_x)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:61"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:68"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          ))
                         }
                     )
-                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:59"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
               end
           }
     )
@@ -260,18 +311,18 @@ trampCall(
                             if @global_lisp_binding.has_key?('_apply') then
                               trampCall(@_apply)
                             else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:67"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:74"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                               if @global_lisp_binding.has_key?('__PAMARK_PAMARKfor_MIMARKeach_MIMARKable_QUMARK') then
                                 trampCall(@__PAMARK_PAMARKfor_MIMARKeach_MIMARKable_QUMARK)
                               else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKfor_MIMARKeach_MIMARKable_QUMARK", "__PAMARK_PAMARKfor_MIMARKeach_MIMARKable_QUMARK" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:65"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:72"] + __e.backtrace ) ; raise __e
                             end                          ,
                             begin
                                 trampCall(_args)
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:67"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:74"] + __e.backtrace ) ; raise __e
                             end
                       ]
                                    ))
@@ -281,17 +332,17 @@ trampCall(
                               if @global_lisp_binding.has_key?('__PAMARK_PAMARKfor_MIMARKeach') then
                                 trampCall(@__PAMARK_PAMARKfor_MIMARKeach)
                               else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKfor_MIMARKeach", "__PAMARK_PAMARKfor_MIMARKeach" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:73"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               begin
                                   trampCall(_proc)
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:73"] + __e.backtrace ) ; raise __e
                               end                            ,
                               _car(
                                   begin
                                       trampCall(_lists)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:73"] + __e.backtrace ) ; raise __e
                                   end
                               )
                         ]
@@ -302,18 +353,18 @@ trampCall(
                               if @global_lisp_binding.has_key?('_apply') then
                                 trampCall(@_apply)
                               else raise NameError.new( "Error: undefined variable _apply", "_apply" ) end
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:67"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:74"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
                               begin
                                 if @global_lisp_binding.has_key?('__PAMARKfor_MIMARKeach_MIMARKoriginal') then
                                   trampCall(@__PAMARKfor_MIMARKeach_MIMARKoriginal)
                                 else raise NameError.new( "Error: undefined variable __PAMARKfor_MIMARKeach_MIMARKoriginal", "__PAMARKfor_MIMARKeach_MIMARKoriginal" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:67"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:74"] + __e.backtrace ) ; raise __e
                               end                            ,
                               begin
                                   trampCall(_args)
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:67"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:74"] + __e.backtrace ) ; raise __e
                               end
                         ]
                                      )
@@ -322,11 +373,11 @@ trampCall(
                       _cons(
                           begin
                               trampCall(_proc)
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:73"] + __e.backtrace ) ; raise __e
                           end                        ,
                           begin
                               trampCall(_lists)
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:73"] + __e.backtrace ) ; raise __e
                           end
                       )
                            )
@@ -344,17 +395,17 @@ trampCall(
     @__PAMARK_PAMARKfilter_MIMARKable_QUMARK = 
     trampCall(
           Proc.new { |_proc,_lst| 
-              delayCall( '_vector_QUMARK',  'vector?',
+              delayCall( '__PAMARK_PAMARKenumerable_QUMARK',  '%%enumerable?',
                   begin
-                    if @global_lisp_binding.has_key?('_vector_QUMARK') then
-                      trampCall(@_vector_QUMARK)
-                    else raise NameError.new( "Error: undefined variable _vector_QUMARK", "_vector_QUMARK" ) end
-                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:71"] + __e.backtrace ) ; raise __e
+                    if @global_lisp_binding.has_key?('__PAMARK_PAMARKenumerable_QUMARK') then
+                      trampCall(@__PAMARK_PAMARKenumerable_QUMARK)
+                    else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKenumerable_QUMARK", "__PAMARK_PAMARKenumerable_QUMARK" ) end
+                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:78"] + __e.backtrace ) ; raise __e
                   end                ,
               [
                     begin
                         trampCall(_lst)
-                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:71"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:78"] + __e.backtrace ) ; raise __e
                     end
               ]
                            )
@@ -377,18 +428,18 @@ trampCall(
                             trampCall( callProcedure(  '_proc',  'proc',
                                 begin
                                     trampCall(_proc)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:76"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:83"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                   begin
                                       trampCall(_x)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:76"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:83"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          ))
                         }
                     )
-                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:74"] + __e.backtrace ) ; raise __e
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
               end
           }
     )
@@ -409,16 +460,16 @@ trampCall(
                       if @global_lisp_binding.has_key?('__PAMARK_PAMARKfilter_MIMARKable_QUMARK') then
                         trampCall(@__PAMARK_PAMARKfilter_MIMARKable_QUMARK)
                       else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKfilter_MIMARKable_QUMARK", "__PAMARK_PAMARKfilter_MIMARKable_QUMARK" ) end
-                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:79"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:86"] + __e.backtrace ) ; raise __e
                     end                  ,
                 [
                       begin
                           trampCall(_proc)
-                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:88"] + __e.backtrace ) ; raise __e
                       end                    ,
                       begin
                           trampCall(_lst)
-                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:88"] + __e.backtrace ) ; raise __e
                       end
                 ]
                              ))
@@ -428,16 +479,16 @@ trampCall(
                         if @global_lisp_binding.has_key?('__PAMARK_PAMARKfilter') then
                           trampCall(@__PAMARK_PAMARKfilter)
                         else raise NameError.new( "Error: undefined variable __PAMARK_PAMARKfilter", "__PAMARK_PAMARKfilter" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:80"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:87"] + __e.backtrace ) ; raise __e
                       end                    ,
                   [
                         begin
                             trampCall(_proc)
-                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:88"] + __e.backtrace ) ; raise __e
                         end                      ,
                         begin
                             trampCall(_lst)
-                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:88"] + __e.backtrace ) ; raise __e
                         end
                   ]
                                )
@@ -447,16 +498,16 @@ trampCall(
                         if @global_lisp_binding.has_key?('__PAMARKfilter_MIMARKoriginal') then
                           trampCall(@__PAMARKfilter_MIMARKoriginal)
                         else raise NameError.new( "Error: undefined variable __PAMARKfilter_MIMARKoriginal", "__PAMARKfilter_MIMARKoriginal" ) end
-                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:88"] + __e.backtrace ) ; raise __e
                       end                    ,
                   [
                         begin
                             trampCall(_proc)
-                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:88"] + __e.backtrace ) ; raise __e
                         end                      ,
                         begin
                             trampCall(_lst)
-                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:81"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:88"] + __e.backtrace ) ; raise __e
                         end
                   ]
                                )
@@ -477,7 +528,7 @@ trampCall(
             if @global_lisp_binding.has_key?('__PAMARKmap') then
               trampCall(@__PAMARKmap)
             else raise NameError.new( "Error: undefined variable __PAMARKmap", "__PAMARKmap" ) end
-            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:84"] + __e.backtrace ) ; raise __e
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:91"] + __e.backtrace ) ; raise __e
           end
     )
   end
@@ -494,7 +545,7 @@ trampCall(
             if @global_lisp_binding.has_key?('__PAMARKfor_MIMARKeach') then
               trampCall(@__PAMARKfor_MIMARKeach)
             else raise NameError.new( "Error: undefined variable __PAMARKfor_MIMARKeach", "__PAMARKfor_MIMARKeach" ) end
-            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:85"] + __e.backtrace ) ; raise __e
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:92"] + __e.backtrace ) ; raise __e
           end
     )
   end
@@ -511,7 +562,7 @@ trampCall(
             if @global_lisp_binding.has_key?('__PAMARKfilter') then
               trampCall(@__PAMARKfilter)
             else raise NameError.new( "Error: undefined variable __PAMARKfilter", "__PAMARKfilter" ) end
-            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:86"] + __e.backtrace ) ; raise __e
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:93"] + __e.backtrace ) ; raise __e
           end
     )
   end
@@ -533,12 +584,12 @@ trampCall(
                             if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                               trampCall(@_eqv_QUMARK)
                             else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                                 trampCall(_kind)
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                             end                          ,
                           :"compiled"
                       ]
@@ -550,13 +601,13 @@ trampCall(
                                   if @global_lisp_binding.has_key?('_assv_MIMARKref') then
                                     trampCall(@_assv_MIMARKref)
                                   else raise NameError.new( "Error: undefined variable _assv_MIMARKref", "_assv_MIMARKref" ) end
-                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                 end                              ,
                             [
                                 "compiled_str"                                ,
                                   begin
                                       trampCall(_alist)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                   end
                             ]
                                          )
@@ -568,12 +619,12 @@ trampCall(
                                 if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                   trampCall(@_eqv_QUMARK)
                                 else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                               end                            ,
                           [
                                 begin
                                     trampCall(_kind)
-                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                                 end                              ,
                               :"source"
                           ]
@@ -585,13 +636,13 @@ trampCall(
                                       if @global_lisp_binding.has_key?('_assv_MIMARKref') then
                                         trampCall(@_assv_MIMARKref)
                                       else raise NameError.new( "Error: undefined variable _assv_MIMARKref", "_assv_MIMARKref" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                 [
                                     "source"                                    ,
                                       begin
                                           trampCall(_alist)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                       end
                                 ]
                                              )
@@ -603,12 +654,12 @@ trampCall(
                                     if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                       trampCall(@_eqv_QUMARK)
                                     else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
                                     begin
                                         trampCall(_kind)
-                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                   :"expanded"
                               ]
@@ -620,13 +671,13 @@ trampCall(
                                           if @global_lisp_binding.has_key?('_assv_MIMARKref') then
                                             trampCall(@_assv_MIMARKref)
                                           else raise NameError.new( "Error: undefined variable _assv_MIMARKref", "_assv_MIMARKref" ) end
-                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                     [
                                         "expanded"                                        ,
                                           begin
                                               trampCall(_alist)
-                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                           end
                                     ]
                                                  )
@@ -638,12 +689,12 @@ trampCall(
                                         if @global_lisp_binding.has_key?('_eqv_QUMARK') then
                                           trampCall(@_eqv_QUMARK)
                                         else raise NameError.new( "Error: undefined variable _eqv_QUMARK", "_eqv_QUMARK" ) end
-                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                                       end                                    ,
                                   [
                                         begin
                                             trampCall(_kind)
-                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:101"] + __e.backtrace ) ; raise __e
+                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:108"] + __e.backtrace ) ; raise __e
                                         end                                      ,
                                       :"info"
                                   ]
@@ -655,7 +706,7 @@ trampCall(
                                               if @global_lisp_binding.has_key?('_string_MIMARKjoin') then
                                                 trampCall(@_string_MIMARKjoin)
                                               else raise NameError.new( "Error: undefined variable _string_MIMARKjoin", "_string_MIMARKjoin" ) end
-                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:102"] + __e.backtrace ) ; raise __e
+                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:109"] + __e.backtrace ) ; raise __e
                                             end                                          ,
                                         [
                                               trampCall( self._list_METHOD(  'list',
@@ -663,7 +714,7 @@ trampCall(
                                                     if @global_lisp_binding.has_key?('_list') then
                                                       trampCall(@_list)
                                                     else raise NameError.new( "Error: undefined variable _list", "_list" ) end
-                                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:103"] + __e.backtrace ) ; raise __e
+                                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:110"] + __e.backtrace ) ; raise __e
                                                   end                                                ,
                                               [
                                                     trampCall( self._sprintf_METHOD(  'sprintf',
@@ -671,7 +722,7 @@ trampCall(
                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                             trampCall(@_sprintf)
                                                           else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:109"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:116"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                     [
                                                         " file:   %s 
@@ -681,13 +732,13 @@ trampCall(
                                                                 if @global_lisp_binding.has_key?('_assv_MIMARKref') then
                                                                   trampCall(@_assv_MIMARKref)
                                                                 else raise NameError.new( "Error: undefined variable _assv_MIMARKref", "_assv_MIMARKref" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                           [
                                                               "sourcefile"                                                              ,
                                                                 begin
                                                                     trampCall(_alist)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                                 end
                                                           ]
                                                                        ))
@@ -698,7 +749,7 @@ trampCall(
                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                             trampCall(@_sprintf)
                                                           else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:109"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:116"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                     [
                                                         " lineno: %s 
@@ -708,13 +759,13 @@ trampCall(
                                                                 if @global_lisp_binding.has_key?('_assv_MIMARKref') then
                                                                   trampCall(@_assv_MIMARKref)
                                                                 else raise NameError.new( "Error: undefined variable _assv_MIMARKref", "_assv_MIMARKref" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                           [
                                                               "lineno"                                                              ,
                                                                 begin
                                                                     trampCall(_alist)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                                 end
                                                           ]
                                                                        ))
@@ -725,7 +776,7 @@ trampCall(
                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                             trampCall(@_sprintf)
                                                           else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:109"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:116"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                     [
                                                         " source: 
@@ -737,7 +788,7 @@ trampCall(
                                                           if @global_lisp_binding.has_key?('_pretty_MIMARKprint_MIMARKto_MIMARKstring') then
                                                             trampCall(@_pretty_MIMARKprint_MIMARKto_MIMARKstring)
                                                           else raise NameError.new( "Error: undefined variable _pretty_MIMARKprint_MIMARKto_MIMARKstring", "_pretty_MIMARKprint_MIMARKto_MIMARKstring" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:110"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:117"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                     [
                                                           trampCall( self._assv_MIMARKref_METHOD(  'assv-ref',
@@ -745,13 +796,13 @@ trampCall(
                                                                 if @global_lisp_binding.has_key?('_assv_MIMARKref') then
                                                                   trampCall(@_assv_MIMARKref)
                                                                 else raise NameError.new( "Error: undefined variable _assv_MIMARKref", "_assv_MIMARKref" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                           [
                                                               "source"                                                              ,
                                                                 begin
                                                                     trampCall(_alist)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                                 end
                                                           ]
                                                                        ))
@@ -762,7 +813,7 @@ trampCall(
                                                           if @global_lisp_binding.has_key?('_sprintf') then
                                                             trampCall(@_sprintf)
                                                           else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:109"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:116"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                     [
                                                         " expanded: 
@@ -774,7 +825,7 @@ trampCall(
                                                           if @global_lisp_binding.has_key?('_pretty_MIMARKprint_MIMARKto_MIMARKstring') then
                                                             trampCall(@_pretty_MIMARKprint_MIMARKto_MIMARKstring)
                                                           else raise NameError.new( "Error: undefined variable _pretty_MIMARKprint_MIMARKto_MIMARKstring", "_pretty_MIMARKprint_MIMARKto_MIMARKstring" ) end
-                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:110"] + __e.backtrace ) ; raise __e
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:117"] + __e.backtrace ) ; raise __e
                                                         end                                                      ,
                                                     [
                                                           trampCall( self._assv_MIMARKref_METHOD(  'assv-ref',
@@ -782,13 +833,13 @@ trampCall(
                                                                 if @global_lisp_binding.has_key?('_assv_MIMARKref') then
                                                                   trampCall(@_assv_MIMARKref)
                                                                 else raise NameError.new( "Error: undefined variable _assv_MIMARKref", "_assv_MIMARKref" ) end
-                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                               end                                                            ,
                                                           [
                                                               "expanded"                                                              ,
                                                                 begin
                                                                     trampCall(_alist)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:111"] + __e.backtrace ) ; raise __e
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:118"] + __e.backtrace ) ; raise __e
                                                                 end
                                                           ]
                                                                        ))
@@ -823,7 +874,7 @@ trampCall(
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:73"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                 [
                                       begin
@@ -836,7 +887,7 @@ trampCall(
                         } ; ___lambda.call(
                               begin
                                   trampCall(_opt)
-                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:92"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:99"] + __e.backtrace ) ; raise __e
                               end
                                    )
                       end                    ,
@@ -845,13 +896,13 @@ trampCall(
                             if @global_lisp_binding.has_key?('_get_MIMARKsource_MIMARKinfo') then
                               trampCall(@_get_MIMARKsource_MIMARKinfo)
                             else raise NameError.new( "Error: undefined variable _get_MIMARKsource_MIMARKinfo", "_get_MIMARKsource_MIMARKinfo" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:93"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:100"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                                 trampCall(_varname).to_s(
                                   )
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:93"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:100"] + __e.backtrace ) ; raise __e
                             end
                       ]
                                    ))
