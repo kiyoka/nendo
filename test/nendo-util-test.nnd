@@ -189,6 +189,33 @@
         '("a" "b" "C")))
 
 
+;;-------------------------------------------------------------------
+(test-section "vector enable on srfi-1")
+(use srfi-1)
+
+(test* "map (for vector)"
+       '#("[a]" "[b]" "[C]")
+       (map
+        wrap-str
+        '#("a" "b" "C")))
+
+
+(test* "for-each (for vector)"
+       '("[a]" "[b]" "[C]")
+       (let1 result '()
+         (for-each
+          (lambda (x) (set! result
+                            (cons (wrap-str x) result)))
+          '#("a" "b" "C"))
+         (reverse result)))
+
+
+(test* "filter (for vector1)"
+       '#("b")
+       (filter
+        (lambda (x) (= "b" x))
+        '#("a" "b" "C")))
+
 
 ;;-------------------------------------------------------------------
 (test-section "disasm")
