@@ -519,7 +519,7 @@
 	 (append cdrs (list cdr1))))))
 
 
-(define (%map proc . lists)
+(define (%map-original proc . lists)
   (letrec ((result '())
            (%map-arg1
             (lambda (proc lst)
@@ -545,7 +545,8 @@
               (cons (apply proc cars)
                     (if (null? cdrs)
                         '()
-                        (apply %map (cons proc cdrs)))))))))))
+                        (apply %map-original (cons proc cdrs)))))))))))
+(define %map %map-original)
 
 (define (%internal-define-to-letrec _sym _src)
   (if (not (list? (cadr _src)))
@@ -580,7 +581,7 @@
                     `(,_sym ,@_src))))))))
 
 
-(define (%for-each proc . lists)
+(define (%for-each-original proc . lists)
   (define (%for-each-arg1 proc lst)
     (if (null? lst)
         #t
@@ -601,9 +602,10 @@
             (apply proc cars)
             (if (null? cdrs)
                 '()
-                (apply %for-each (cons proc cdrs)))))))))
+                (apply %for-each-original (cons proc cdrs)))))))))
+(define %for-each %for-each-original)
 
-(define (%filter pred lst)
+(define (%filter-original pred lst)
   (define result '())
   (define (%filter-arg1 proc lst)
     (if (null? lst)
@@ -615,6 +617,7 @@
 
   (%filter-arg1 pred lst) ;; tail call optimization version
   (reverse result))
+(define %filter %filter-original)
 
 (define (%filter-map pred lst)
   (define result '())
@@ -1201,29 +1204,6 @@
 ;; ----------------------------------------
 ;; Nendo compiler utility
 ;; ----------------------------------------
-(define (disasm varname . opt)
-  (let ((kind  (get-optional opt 'compiled))
-        (alist (get-source-info (varname.to_s))))
-    (cond
-     ((eqv? kind 'compiled)
-      (assv-ref "compiled_str" alist))
-     ((eqv? kind 'source)
-      (assv-ref "source" alist))
-     ((eqv? kind 'expanded)
-      (assv-ref "expanded" alist))
-     ((eqv? kind 'info)
-      (string-join
-       (list
-        (sprintf " file:   %s \n" (assv-ref "sourcefile" alist))
-        (sprintf " lineno: %s \n" (assv-ref "lineno"     alist))
-        (sprintf " source: \n" )
-        (pretty-print-to-string
-         (assv-ref "source" alist))
-        (sprintf " expanded: \n" )
-        (pretty-print-to-string
-         (assv-ref "expanded" alist))))))))
-
-
 (define (compiled-code-string compiled-code filename)
   (define (compiled-body-string string-list filename)
     (+
@@ -1707,5 +1687,9 @@
                             (list (rename 'strip-syntactic-closures) _expr)))))))))))
 
 (define-syntax %syntax-rules syntax-rules)
+
+
+(use nendo.experimental)
+
 
 ;;[EOS]

@@ -100,6 +100,7 @@ task :compile do
   files << "./lib/rfc/json.nnd"
   files << "./lib/util/match.nnd"
   files << "./lib/util/combinations.nnd"
+  files << "./lib/nendo/experimental.nnd"
   files.each {|fn|
     sh sprintf( "time ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
   }

@@ -865,11 +865,11 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       begin
-                        ___lambda = lambda { |___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004| 
+                        ___lambda = lambda { |___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30009| 
                             if ( 
                               _null_QUMARK(
                                   begin
-                                      trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004)
+                                      trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30009)
                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                   end
                               )
@@ -886,11 +886,11 @@ trampCall(
                                       if @global_lisp_binding.has_key?('_car') then
                                         trampCall(@_car)
                                       else raise NameError.new( "Error: undefined variable _car", "_car" ) end
-                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:66"] + __e.backtrace ) ; raise __e
                                     end                                  ,
                                 [
                                       begin
-                                          trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_20004)
+                                          trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30009)
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end
                                 ]

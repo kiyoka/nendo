@@ -96,21 +96,43 @@
   (bench-task #f
             "for-each  10000 (nendo version)"
             (for-each
-             (lambda (x) x)
+             (lambda (x) (+ 1 x))
              list10000))
 
   (bench-task #f
-            "map  10000 (nendo version)"
+            "map       10000 (nendo version)"
             (map
-             (lambda (x) x)
+             (lambda (x) (+ 1 x))
              list10000))
 
   (bench-task #f
-            "filter  10000 (nendo version)"
+            "filter    10000 (nendo version)"
             (filter
              (lambda (x) (if (< x 100) x false))
              list10000)))
                
-               
+;; ------------- higher-order for vector ----------------
+
+(use nendo.experimental)
+
+(let ([vec10000 (to-arr (range 10000)]])
+  (bench-task #f
+              "for-each  vector 10000 (nendo version)"
+              (for-each
+               (lambda (x) (+ 1 x))
+               vec10000))
+
+  (bench-task #f
+              "map       vector 10000 (nendo version)"
+              (map
+               (lambda (x) (+ 1 x))
+               vec10000))
+  
+  (bench-task #f
+              "filter    vector 10000 (nendo version)"
+              (filter
+               (lambda (x) (if (< x 100) x false))
+               vec10000))
+  )
 
 ;;[EOF]

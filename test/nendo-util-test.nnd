@@ -2,6 +2,7 @@
 ;; test for nendo's core utility
 
 (use nendo.test)
+
 (test-start "nendo's core utility")
 
 ;;===================================================================
@@ -24,6 +25,171 @@
        (pretty-print-to-string test-sexp2))
 
 
+(define (wrap-str str)
+  (+ "[" str "]"))
+
+
+;;-------------------------------------------------------------------
+(test-section "map for vector")
+
+(test* "map-pable? no"
+       #f
+       (%%map-able?
+        (lambda (x) x)
+        ' (1 2)))
+
+(test* "map-pable? yes"
+       #t
+       (%%map-able?
+        (lambda (x) x)
+        '#(1 2)))
+
+(test* "%%map"
+       '#("[a]" "[b]" "[C]")
+       (%%map
+        wrap-str
+        '#("a" "b" "C")))
+
+(test* "%map (for vector)"
+       '#("[a]" "[b]" "[C]")
+       (%map
+        wrap-str
+        '#("a" "b" "C")))
+
+(test* "map (for vector)"
+       '#("[a]" "[b]" "[C]")
+       (map
+        wrap-str
+        '#("a" "b" "C")))
+
+(test* "map (for list)"
+       '("[a]" "[b]" "[C]")
+       (map
+        wrap-str
+        '("a" "b" "C")))
+
+(test* "map (for lists)"
+       '("[1:3:5]" "[2:4:6]")
+       (map
+        (lambda (x y z) (+ "[" x ":" y ":" z "]"))
+        '("1" "2")
+        '("3" "4")
+        '("5" "6")))
+
+;;-------------------------------------------------------------------
+(test-section "for-each for vector")
+
+(test* "for-each-pable? no"
+       #f
+       (%%for-each-able?
+        (lambda (x) x)
+        ' (1 2)))
+
+(test* "for-each-pable? yes"
+       #t
+       (%%for-each-able?
+        (lambda (x) x)
+        '#(1 2)))
+
+(test* "%%for-each"
+       '("[a]" "[b]" "[C]")
+       (let1 result '()
+         (%%for-each
+          (lambda (x) (set! result
+                            (cons (wrap-str x) result)))
+          '#("a" "b" "C"))
+         (reverse result)))
+
+(test* "%for-each (for vector)"
+       '("[a]" "[b]" "[C]")
+       (let1 result '()
+         (%for-each
+          (lambda (x) (set! result
+                            (cons (wrap-str x) result)))
+          '#("a" "b" "C"))
+         (reverse result)))
+
+(test* "for-each (for vector)"
+       '("[a]" "[b]" "[C]")
+       (let1 result '()
+         (for-each
+          (lambda (x) (set! result
+                            (cons (wrap-str x) result)))
+          '#("a" "b" "C"))
+         (reverse result)))
+
+(test* "for-each (for list)"
+       '("[a]" "[b]" "[C]")
+       (let1 result '()
+         (for-each
+          (lambda (x) (set! result
+                            (cons (wrap-str x) result)))
+          '("a" "b" "C"))
+         (reverse result)))
+
+(test* "for-each (for lists)"
+       '("[1:3:5]" "[2:4:6]")
+       (let1 result '()
+         (for-each
+          (lambda (x y z)
+            (set! result
+                  (cons
+                   (+ "[" x ":" y ":" z "]")
+                   result)))
+          
+          '("1" "2")
+          '("3" "4")
+          '("5" "6"))
+         (reverse result)))
+
+
+;;-------------------------------------------------------------------
+(test-section "filter for vector")
+
+(test* "filter-pable? no"
+       #f
+       (%%filter-able?
+        (lambda (x) x)
+        ' (1 2)))
+
+(test* "filter-pable? yes"
+       #t
+       (%%filter-able?
+        (lambda (x) x)
+        '#(1 2)))
+
+(test* "%%filter"
+       '#("b")
+       (%%filter
+        (lambda (x) (= "b" x))
+        '#("a" "b" "C")))
+
+(test* "%filter (for vector)"
+       '#("b")
+       (%filter
+        (lambda (x) (= "b" x))
+        '#("a" "b" "C")))
+
+(test* "filter (for vector1)"
+       '#("b")
+       (filter
+        (lambda (x) (= "b" x))
+        '#("a" "b" "C")))
+
+(test* "filter (for vector2)"
+       '#("a" "C")
+       (filter
+        (lambda (x) (not (= "b" x)))
+        '#("a" "b" "C")))
+
+(test* "filter (for list)"
+       '("C")
+       (filter
+        (lambda (x) (= "C" x))
+        '("a" "b" "C")))
+
+
+
 ;;-------------------------------------------------------------------
 (test-section "disasm")
 
@@ -33,7 +199,7 @@
 
 (test* "disasm info"
 " file:   ./test/nendo-util-test.nnd 
- lineno: 30 
+ lineno: 196 
  source: 
 (define
  (dummy-function arg1)
@@ -67,13 +233,13 @@ trampCall(
                 ___lambda = lambda { |_var| 
                     begin
                         trampCall(_var)
-                      rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:32\"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:198\"] + __e.backtrace ) ; raise __e
                     end
                 } ; ___lambda.call(
                       __PLMARK_ARGS2(
                           begin
                               trampCall(_arg1)
-                            rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:31\"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:197\"] + __e.backtrace ) ; raise __e
                           end                        ,
                         1
                       )
