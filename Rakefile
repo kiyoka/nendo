@@ -53,14 +53,24 @@ task :test do
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test.log"
   stage2 << "cat test.record"
   arr = []
   arr += stage1
   arr += stage2
+  arr.each {|str|
+    sh str
+  }
+end
+
+task :test2 do
+  stage1 =  []
+  stage1 << "/bin/rm -f test.record"
+  stage1 << "echo "" > test2.log"
+  stage1 << "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test2.log"
+  stage1 << "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test2.log"
+  stage1 << "cat test.record"
+  arr = []
+  arr += stage1
   arr.each {|str|
     sh str
   }

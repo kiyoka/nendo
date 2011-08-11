@@ -4,5 +4,3 @@ gem "jeweler"
 gem "json"
 gem "rake"
 
-
-
