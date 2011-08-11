@@ -43,8 +43,8 @@ end
 
 task :test do
   stage1 =  []
-  stage1 << "ruby -I ./lib /usr/local/bin/rspec -b ./test/nendo_spec.rb"
-  stage1 << "ruby -I ./lib /usr/local/bin/rspec -b ./test/syntax_spec.rb"
+  stage1 << "time rspec -I ./lib -b         ./test/nendo_spec.rb"
+  stage1 << "time rspec -I ./lib -b         ./test/syntax_spec.rb"
   stage1 << "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
   stage2 =  []
   stage2 << "/bin/rm -f test.record"
@@ -122,7 +122,7 @@ end
 task :bench do
   sh "ruby --version"
   sh "ruby -I ./lib ./bin/nendo      ./benchmark/benchmark.nnd"
-  sh "ruby /usr/local/bin/nendo      ./benchmark/benchmark.nnd"
+  sh "                    nendo      ./benchmark/benchmark.nnd"
 end
 
 task :clean do
