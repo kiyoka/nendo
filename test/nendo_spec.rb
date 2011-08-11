@@ -2118,8 +2118,7 @@ describe Nendo, "when use dot-operator (.) macro " do
     @nendo.evalStr( " (to-s str.size) " ).should == '"6"'
     @nendo.evalStr( " (to-s 'str.size) " ).should == '"str.size"'
     @nendo.evalStr( " (require \"date\") " ).should == "#f"
-    @nendo.evalStr( " (. (Date.new 0) strftime \"%x\") " ).should == '"01/01/00"'
-    @nendo.evalStr( " (. (Date.new 0) strftime \"%s\") " ).should == '"-62167392000"'
+    @nendo.evalStr( " (. (Date.new 0) strftime \"%F %r\") " ).should == '"0000-01-01 12:00:00 AM"'
     @nendo.evalStr( " (require \"digest/md5\") " ).should == "#f"
     @nendo.evalStr( " (Digest::MD5.hexdigest \"abc\") " ).should ==           '"900150983cd24fb0d6963f7d28e17f72"'
     @nendo.evalStr( " (Digest::MD5.hexdigest \"source text\") " ).should ==   '"20f79a1416626eeacc0bd9a8db87faa2"'
