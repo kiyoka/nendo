@@ -1339,6 +1339,8 @@ module Nendo
       @lexicalVars = []
       @syntaxHash = {}
       @optimize_level = 2
+      @backtrace = {}
+      @backtrace_counter = 1;
       @char_table_lisp_to_ruby = {
         # list     (! $ % & * + - . / : < = > ? @ ^ _ ~ ...)
         '!'   => '_EXMARK',
@@ -1621,6 +1623,20 @@ module Nendo
       [ :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ] ].include?( sym )
     end
 
+    def embedBacktraceInfo( sourcefile, lineno, value )
+      @backtrace[ sprintf( "%s:%s", sourcefile, lineno ) ] = @backtrace_counter
+      @backtrace_counter += 1
+      value
+    end
+
+    def generateEmbedBacktraceInfo( sourcefile, lineno, arr )
+      if sourcefile and lineno
+        [sprintf( 'embedBacktraceInfo( "%s", %s, ', sourcefile, lineno ), [arr], ')' ]
+      else
+        arr
+      end
+    end
+
     def optimizedFunc( origname, rubysym, args )
       case origname
       when '+', '-', '*'
@@ -1728,10 +1744,12 @@ module Nendo
                         [ sprintf( "delayCall( '%s', ", sym ),  ")"  ]
                       end
 
-              [sprintf( "%s '%s',", _call[0], origname ),
+              temp = [
+                sprintf( "%s '%s',", _call[0], origname ),
                 [lispSymbolReference( sym, locals, nil, sourcefile, lineno )] + [","],
                 "[", arr, "]",
                 sprintf( "             %s", _call[1] )]
+              generateEmbedBacktraceInfo( sourcefile, lineno, temp )
             end
           end
         end
@@ -2318,7 +2336,25 @@ module Nendo
       }
     end
 
+    def displayBacktrace( exception )
+      STDERR.puts( "\n  <<< Backtrace of Nendo >>>" )
+      arr = @backtrace.map { |key,val| [key,val] }.sort_by { |x| x[1] }.reverse
+      arr[0...10].each { |x|
+        STDERR.printf( "        from %s \n", x[0] )
+      }
+      STDERR.puts( "          ...\n\n" )
+    end
+
     def lispEval( sexp, sourcefile, lineno )
+      begin
+        lispEvalInternal( sexp, sourcefile, lineno )
+      rescue => e
+        displayBacktrace( e )
+        raise e
+      end
+    end
+
+    def lispEvalInternal( sexp, sourcefile, lineno )
       begin
         sourceInfo = SourceInfo.new
         @lastSourcefile = sourcefile
