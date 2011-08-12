@@ -1628,15 +1628,17 @@ module Nendo
       [ :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ] ].include?( sym )
     end
 
-    def embedBacktraceInfo( sourcefile, lineno, value )
+    def embedBacktraceInfo( sourcefile, lineno )
       @backtrace[ sprintf( "%s:%s", sourcefile, lineno ) ] = @backtrace_counter
       @backtrace_counter += 1
-      value
     end
 
     def generateEmbedBacktraceInfo( sourcefile, lineno, arr )
       if sourcefile and lineno
-        [sprintf( 'embedBacktraceInfo( "%s", %s, ', sourcefile, lineno ), [arr], ')' ]
+        [ "begin",
+          [ sprintf( 'embedBacktraceInfo( "%s", %s ); ', sourcefile, lineno ), arr ],
+          "end"
+        ]
       else
         arr
       end
@@ -1736,7 +1738,7 @@ module Nendo
               end
             end
             if result
-              result
+              generateEmbedBacktraceInfo( sourcefile, lineno, result )
             else
               _call = case execType
                       when EXEC_TYPE_NORMAL

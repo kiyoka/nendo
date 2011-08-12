@@ -9,383 +9,199 @@ trampCall(
       @global_lisp_binding['_and_MIMARKlet_ASMARK'] = self.method( :_and_MIMARKlet_ASMARK_METHOD )
     @_and_MIMARKlet_ASMARK = 
     trampCall(
-          trampCall( self._er_MIMARKmacro_MIMARKtransformer_METHOD(  'er-macro-transformer',
-              begin
-                if @global_lisp_binding.has_key?('_er_MIMARKmacro_MIMARKtransformer') then
-                  trampCall(@_er_MIMARKmacro_MIMARKtransformer)
-                else raise NameError.new( "Error: undefined variable _er_MIMARKmacro_MIMARKtransformer", "_er_MIMARKmacro_MIMARKtransformer" ) end
-                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-              end            ,
-          [
-                Proc.new { |__expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037,__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038,__compare__gensym__de5653c32c493c653ee6557b7cf108e127448746_30039| 
-                    begin
-                      ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30064| 
-                          if ( 
-                            begin
-                                trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30064)
-                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                            end
-                           ) then
-                              begin
-                                  trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30064)
-                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                              end
-                          else
-                              begin
-                                ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30065| 
-                                    if ( 
-                                      begin
-                                          trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30065)
-                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                      end
-                                     ) then
-                                        begin
-                                            trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30065)
-                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                        end
-                                    else
-                                        begin
-                                          ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30066| 
-                                              if ( 
-                                                begin
-                                                    trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30066)
-                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                end
-                                               ) then
-                                                  begin
-                                                      trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30066)
-                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                  end
-                                              else
-                                                  begin
-                                                    ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30067| 
-                                                        if ( 
-                                                          begin
-                                                              trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30067)
-                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                          end
-                                                         ) then
-                                                            begin
-                                                                trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30067)
-                                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                            end
-                                                        else
-                                                          false
-                                                        end
-                                                    } ; ___lambda.call(
-                                                          begin raise RuntimeError, 
-                                                            "no expansion for" ' ' + 
-                                                            _write_MIMARKto_MIMARKstring(
-                                                              trampCall( self._strip_MIMARKsyntactic_MIMARKclosures_METHOD(  'strip-syntactic-closures',
-                                                                  begin
-                                                                    if @global_lisp_binding.has_key?('_strip_MIMARKsyntactic_MIMARKclosures') then
-                                                                      trampCall(@_strip_MIMARKsyntactic_MIMARKclosures)
-                                                                    else raise NameError.new( "Error: undefined variable _strip_MIMARKsyntactic_MIMARKclosures", "_strip_MIMARKsyntactic_MIMARKclosures" ) end
-                                                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
-                                                                  end                                                                ,
-                                                              [
-                                                                  __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
-                                                              ]
-                                                                           ))
-                                                            )
-                                                          rescue => __e 
-                                                            __e.set_backtrace( [":1"] + __e.backtrace )
-                                                            raise __e
-                                                          end 
-                                                               )
-                                                  end
-                                              end
-                                          } ; ___lambda.call(
-                                                begin
-                                                  ___lambda = lambda { |__v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057| 
-                                                      if ( 
-                                                        _not(
-                                                            _eq_QUMARK(
-                                                              false                                                              ,
-                                                                _pair_QUMARK(
-                                                                  __v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057
-                                                                )
-                                                            )
-                                                        )
-                                                       ) then
-                                                          begin
-                                                            ___lambda = lambda { |__v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058| 
-                                                                if ( 
-                                                                  _not(
-                                                                      _eq_QUMARK(
-                                                                        false                                                                        ,
-                                                                          _pair_QUMARK(
-                                                                            __v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058
-                                                                          )
-                                                                      )
-                                                                  )
-                                                                 ) then
-                                                                    begin
-                                                                      ___lambda = lambda { |__v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059| 
-                                                                          if ( 
-                                                                            _not(
-                                                                                _eq_QUMARK(
-                                                                                  false                                                                                  ,
-                                                                                    _pair_QUMARK(
-                                                                                      __v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059
-                                                                                    )
-                                                                                )
-                                                                            )
-                                                                           ) then
-                                                                              begin
-                                                                                ___lambda = lambda { |__v__16__gensym__de5653c32c493c653ee6557b7cf108e127448746_30060| 
-                                                                                    begin
-                                                                                      ___lambda = lambda { |_expr| 
-                                                                                          begin
-                                                                                            ___lambda = lambda { |__v__17__gensym__de5653c32c493c653ee6557b7cf108e127448746_30061| 
-                                                                                                if ( 
-                                                                                                  _not(
-                                                                                                      _eq_QUMARK(
-                                                                                                        false                                                                                                        ,
-                                                                                                          _null_QUMARK(
-                                                                                                            __v__17__gensym__de5653c32c493c653ee6557b7cf108e127448746_30061
-                                                                                                          )
-                                                                                                      )
-                                                                                                  )
-                                                                                                 ) then
-                                                                                                    begin
-                                                                                                      ___lambda = lambda { |__v__18__gensym__de5653c32c493c653ee6557b7cf108e127448746_30062| 
-                                                                                                          begin
-                                                                                                            ___lambda = lambda { |_rest| 
-                                                                                                                begin
-                                                                                                                  ___lambda = lambda { |__v__19__gensym__de5653c32c493c653ee6557b7cf108e127448746_30063| 
-                                                                                                                      begin
-                                                                                                                        ___lambda = lambda { |_body| 
-                                                                                                                            _cons(
-                                                                                                                                trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
-                                                                                                                                    begin
-                                                                                                                                        trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
-                                                                                                                                      rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
-                                                                                                                                    end                                                                                                                                  ,
-                                                                                                                                [
-                                                                                                                                    :"let"
-                                                                                                                                ]
-                                                                                                                                             ))                                                                                                                              ,
-                                                                                                                                _cons(
-                                                                                                                                    _cons(
-                                                                                                                                        _cons(
-                                                                                                                                            trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
-                                                                                                                                                begin
-                                                                                                                                                    trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
-                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
-                                                                                                                                                end                                                                                                                                              ,
-                                                                                                                                            [
-                                                                                                                                                :"tmp"
-                                                                                                                                            ]
-                                                                                                                                                         ))                                                                                                                                          ,
-                                                                                                                                            _cons(
-                                                                                                                                                begin
-                                                                                                                                                    trampCall(_expr)
-                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:41"] + __e.backtrace ) ; raise __e
-                                                                                                                                                end                                                                                                                                              ,
-                                                                                                                                              Cell.new()
-                                                                                                                                            )
-                                                                                                                                        )                                                                                                                                      ,
-                                                                                                                                      Cell.new()
-                                                                                                                                    )                                                                                                                                  ,
-                                                                                                                                    _cons(
-                                                                                                                                        _cons(
-                                                                                                                                            trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
-                                                                                                                                                begin
-                                                                                                                                                    trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
-                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
-                                                                                                                                                end                                                                                                                                              ,
-                                                                                                                                            [
-                                                                                                                                                :"and"
-                                                                                                                                            ]
-                                                                                                                                                         ))                                                                                                                                          ,
-                                                                                                                                            _cons(
-                                                                                                                                                trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
-                                                                                                                                                    begin
-                                                                                                                                                        trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
-                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
-                                                                                                                                                    end                                                                                                                                                  ,
-                                                                                                                                                [
-                                                                                                                                                    :"tmp"
-                                                                                                                                                ]
-                                                                                                                                                             ))                                                                                                                                              ,
-                                                                                                                                                _cons(
-                                                                                                                                                    _cons(
-                                                                                                                                                        trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
-                                                                                                                                                            begin
-                                                                                                                                                                trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
-                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
-                                                                                                                                                            end                                                                                                                                                          ,
-                                                                                                                                                        [
-                                                                                                                                                            :"and-let*"
-                                                                                                                                                        ]
-                                                                                                                                                                     ))                                                                                                                                                      ,
-                                                                                                                                                        _cons(
-                                                                                                                                                            begin
-                                                                                                                                                                trampCall(_rest)
-                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
-                                                                                                                                                            end                                                                                                                                                          ,
-                                                                                                                                                            begin
-                                                                                                                                                                trampCall(_body)
-                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
-                                                                                                                                                            end
-                                                                                                                                                        )
-                                                                                                                                                    )                                                                                                                                                  ,
-                                                                                                                                                  Cell.new()
-                                                                                                                                                )
-                                                                                                                                            )
-                                                                                                                                        )                                                                                                                                      ,
-                                                                                                                                      Cell.new()
-                                                                                                                                    )
-                                                                                                                                )
-                                                                                                                            )
-                                                                                                                        } ; ___lambda.call(
-                                                                                                                            __v__19__gensym__de5653c32c493c653ee6557b7cf108e127448746_30063
-                                                                                                                                   )
-                                                                                                                      end
-                                                                                                                  } ; ___lambda.call(
-                                                                                                                        _cdr(
-                                                                                                                          __v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057
-                                                                                                                        )
-                                                                                                                             )
-                                                                                                                end
-                                                                                                            } ; ___lambda.call(
-                                                                                                                __v__18__gensym__de5653c32c493c653ee6557b7cf108e127448746_30062
-                                                                                                                       )
-                                                                                                          end
-                                                                                                      } ; ___lambda.call(
-                                                                                                            _cdr(
-                                                                                                              __v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058
-                                                                                                            )
-                                                                                                                 )
-                                                                                                    end
-                                                                                                else
-                                                                                                  false
-                                                                                                end
-                                                                                            } ; ___lambda.call(
-                                                                                                  _cdr(
-                                                                                                    __v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059
-                                                                                                  )
-                                                                                                       )
-                                                                                          end
-                                                                                      } ; ___lambda.call(
-                                                                                          __v__16__gensym__de5653c32c493c653ee6557b7cf108e127448746_30060
-                                                                                                 )
-                                                                                    end
-                                                                                } ; ___lambda.call(
-                                                                                      _car(
-                                                                                        __v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059
-                                                                                      )
-                                                                                           )
-                                                                              end
-                                                                          else
-                                                                            false
-                                                                          end
-                                                                      } ; ___lambda.call(
-                                                                            _car(
-                                                                              __v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058
-                                                                            )
-                                                                                 )
-                                                                    end
-                                                                else
-                                                                  false
-                                                                end
-                                                            } ; ___lambda.call(
-                                                                  _car(
-                                                                    __v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057
-                                                                  )
-                                                                       )
-                                                          end
-                                                      else
-                                                        false
+          begin
+            embedBacktraceInfo( "", 1 ); 
+              trampCall( self._er_MIMARKmacro_MIMARKtransformer_METHOD(  'er-macro-transformer',
+                  begin
+                    if @global_lisp_binding.has_key?('_er_MIMARKmacro_MIMARKtransformer') then
+                      trampCall(@_er_MIMARKmacro_MIMARKtransformer)
+                    else raise NameError.new( "Error: undefined variable _er_MIMARKmacro_MIMARKtransformer", "_er_MIMARKmacro_MIMARKtransformer" ) end
+                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                  end                ,
+              [
+                    Proc.new { |__expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037,__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038,__compare__gensym__de5653c32c493c653ee6557b7cf108e127448746_30039| 
+                        begin
+                          ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30064| 
+                              if ( 
+                                begin
+                                    trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30064)
+                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                end
+                               ) then
+                                  begin
+                                      trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30064)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              else
+                                  begin
+                                    ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30065| 
+                                        if ( 
+                                          begin
+                                              trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30065)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                         ) then
+                                            begin
+                                                trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30065)
+                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                            end
+                                        else
+                                            begin
+                                              ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30066| 
+                                                  if ( 
+                                                    begin
+                                                        trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30066)
+                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                    end
+                                                   ) then
+                                                      begin
+                                                          trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30066)
+                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                       end
-                                                  } ; ___lambda.call(
-                                                        _cdr(
-                                                          __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
-                                                        )
-                                                             )
-                                                end
-                                                     )
-                                        end
-                                    end
-                                } ; ___lambda.call(
-                                      begin
-                                        ___lambda = lambda { |__v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048| 
-                                            if ( 
-                                              _not(
-                                                  _eq_QUMARK(
-                                                    false                                                    ,
-                                                      _pair_QUMARK(
-                                                        __v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048
-                                                      )
-                                                  )
-                                              )
-                                             ) then
-                                                begin
-                                                  ___lambda = lambda { |__v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049| 
-                                                      if ( 
-                                                        _not(
-                                                            _eq_QUMARK(
-                                                              false                                                              ,
-                                                                _pair_QUMARK(
-                                                                  __v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049
-                                                                )
-                                                            )
-                                                        )
-                                                       ) then
-                                                          begin
-                                                            ___lambda = lambda { |__v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050| 
-                                                                if ( 
-                                                                  _not(
-                                                                      _eq_QUMARK(
-                                                                        false                                                                        ,
-                                                                          _pair_QUMARK(
-                                                                            __v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050
-                                                                          )
-                                                                      )
-                                                                  )
-                                                                 ) then
-                                                                    begin
-                                                                      ___lambda = lambda { |__v__7__gensym__de5653c32c493c653ee6557b7cf108e127448746_30051| 
+                                                  else
+                                                      begin
+                                                        ___lambda = lambda { |___gensym__de5653c32c493c653ee6557b7cf108e127448746_30067| 
+                                                            if ( 
+                                                              begin
+                                                                  trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30067)
+                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                              end
+                                                             ) then
+                                                                begin
+                                                                    trampCall(___gensym__de5653c32c493c653ee6557b7cf108e127448746_30067)
+                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                            else
+                                                              false
+                                                            end
+                                                        } ; ___lambda.call(
+                                                              begin raise RuntimeError, 
+                                                                "no expansion for" ' ' + 
+                                                                _write_MIMARKto_MIMARKstring(
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      trampCall( self._strip_MIMARKsyntactic_MIMARKclosures_METHOD(  'strip-syntactic-closures',
                                                                           begin
-                                                                            ___lambda = lambda { |_var| 
+                                                                            if @global_lisp_binding.has_key?('_strip_MIMARKsyntactic_MIMARKclosures') then
+                                                                              trampCall(@_strip_MIMARKsyntactic_MIMARKclosures)
+                                                                            else raise NameError.new( "Error: undefined variable _strip_MIMARKsyntactic_MIMARKclosures", "_strip_MIMARKsyntactic_MIMARKclosures" ) end
+                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                          end                                                                        ,
+                                                                      [
+                                                                          __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
+                                                                      ]
+                                                                                   ))
+                                                                  end
+                                                                )
+                                                              rescue => __e 
+                                                                __e.set_backtrace( [":1"] + __e.backtrace )
+                                                                raise __e
+                                                              end 
+                                                                   )
+                                                      end
+                                                  end
+                                              } ; ___lambda.call(
+                                                    begin
+                                                      ___lambda = lambda { |__v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057| 
+                                                          if ( 
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                _not(
+                                                                    begin
+                                                                      embedBacktraceInfo( "", 1 ); 
+                                                                        _eq_QUMARK(
+                                                                          false                                                                          ,
+                                                                            begin
+                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                _pair_QUMARK(
+                                                                                  __v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057
+                                                                                )
+                                                                            end
+                                                                        )
+                                                                    end
+                                                                )
+                                                            end
+                                                           ) then
+                                                              begin
+                                                                ___lambda = lambda { |__v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058| 
+                                                                    if ( 
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                          _not(
+                                                                              begin
+                                                                                embedBacktraceInfo( "", 1 ); 
+                                                                                  _eq_QUMARK(
+                                                                                    false                                                                                    ,
+                                                                                      begin
+                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                          _pair_QUMARK(
+                                                                                            __v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058
+                                                                                          )
+                                                                                      end
+                                                                                  )
+                                                                              end
+                                                                          )
+                                                                      end
+                                                                     ) then
+                                                                        begin
+                                                                          ___lambda = lambda { |__v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059| 
+                                                                              if ( 
                                                                                 begin
-                                                                                  ___lambda = lambda { |__v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052| 
-                                                                                      if ( 
-                                                                                        _not(
+                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                                    _not(
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "", 1 ); 
                                                                                             _eq_QUMARK(
                                                                                               false                                                                                              ,
-                                                                                                _pair_QUMARK(
-                                                                                                  __v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052
-                                                                                                )
-                                                                                            )
-                                                                                        )
-                                                                                       ) then
-                                                                                          begin
-                                                                                            ___lambda = lambda { |__v__9__gensym__de5653c32c493c653ee6557b7cf108e127448746_30053| 
                                                                                                 begin
-                                                                                                  ___lambda = lambda { |_expr| 
+                                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                                    _pair_QUMARK(
+                                                                                                      __v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059
+                                                                                                    )
+                                                                                                end
+                                                                                            )
+                                                                                        end
+                                                                                    )
+                                                                                end
+                                                                               ) then
+                                                                                  begin
+                                                                                    ___lambda = lambda { |__v__16__gensym__de5653c32c493c653ee6557b7cf108e127448746_30060| 
+                                                                                        begin
+                                                                                          ___lambda = lambda { |_expr| 
+                                                                                              begin
+                                                                                                ___lambda = lambda { |__v__17__gensym__de5653c32c493c653ee6557b7cf108e127448746_30061| 
+                                                                                                    if ( 
                                                                                                       begin
-                                                                                                        ___lambda = lambda { |__v__10__gensym__de5653c32c493c653ee6557b7cf108e127448746_30054| 
-                                                                                                            if ( 
-                                                                                                              _not(
+                                                                                                        embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                                                          _not(
+                                                                                                              begin
+                                                                                                                embedBacktraceInfo( "", 1 ); 
                                                                                                                   _eq_QUMARK(
                                                                                                                     false                                                                                                                    ,
-                                                                                                                      _null_QUMARK(
-                                                                                                                        __v__10__gensym__de5653c32c493c653ee6557b7cf108e127448746_30054
-                                                                                                                      )
-                                                                                                                  )
-                                                                                                              )
-                                                                                                             ) then
-                                                                                                                begin
-                                                                                                                  ___lambda = lambda { |__v__11__gensym__de5653c32c493c653ee6557b7cf108e127448746_30055| 
                                                                                                                       begin
-                                                                                                                        ___lambda = lambda { |_rest| 
-                                                                                                                            begin
-                                                                                                                              ___lambda = lambda { |__v__12__gensym__de5653c32c493c653ee6557b7cf108e127448746_30056| 
-                                                                                                                                  begin
-                                                                                                                                    ___lambda = lambda { |_body| 
-                                                                                                                                        _cons(
+                                                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                                                          _null_QUMARK(
+                                                                                                                            __v__17__gensym__de5653c32c493c653ee6557b7cf108e127448746_30061
+                                                                                                                          )
+                                                                                                                      end
+                                                                                                                  )
+                                                                                                              end
+                                                                                                          )
+                                                                                                      end
+                                                                                                     ) then
+                                                                                                        begin
+                                                                                                          ___lambda = lambda { |__v__18__gensym__de5653c32c493c653ee6557b7cf108e127448746_30062| 
+                                                                                                              begin
+                                                                                                                ___lambda = lambda { |_rest| 
+                                                                                                                    begin
+                                                                                                                      ___lambda = lambda { |__v__19__gensym__de5653c32c493c653ee6557b7cf108e127448746_30063| 
+                                                                                                                          begin
+                                                                                                                            ___lambda = lambda { |_body| 
+                                                                                                                                begin
+                                                                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                    _cons(
+                                                                                                                                        begin
+                                                                                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
                                                                                                                                             trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
                                                                                                                                                 begin
                                                                                                                                                     trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
@@ -394,235 +210,677 @@ trampCall(
                                                                                                                                             [
                                                                                                                                                 :"let"
                                                                                                                                             ]
-                                                                                                                                                         ))                                                                                                                                          ,
+                                                                                                                                                         ))
+                                                                                                                                        end                                                                                                                                      ,
+                                                                                                                                        begin
+                                                                                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
                                                                                                                                             _cons(
-                                                                                                                                                _cons(
+                                                                                                                                                begin
+                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
                                                                                                                                                     _cons(
                                                                                                                                                         begin
-                                                                                                                                                            trampCall(_var)
-                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
-                                                                                                                                                        end                                                                                                                                                      ,
-                                                                                                                                                        _cons(
-                                                                                                                                                            begin
-                                                                                                                                                                trampCall(_expr)
-                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:41"] + __e.backtrace ) ; raise __e
-                                                                                                                                                            end                                                                                                                                                          ,
-                                                                                                                                                          Cell.new()
-                                                                                                                                                        )
-                                                                                                                                                    )                                                                                                                                                  ,
-                                                                                                                                                  Cell.new()
-                                                                                                                                                )                                                                                                                                              ,
-                                                                                                                                                _cons(
-                                                                                                                                                    _cons(
-                                                                                                                                                        trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
-                                                                                                                                                            begin
-                                                                                                                                                                trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
-                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
-                                                                                                                                                            end                                                                                                                                                          ,
-                                                                                                                                                        [
-                                                                                                                                                            :"and"
-                                                                                                                                                        ]
-                                                                                                                                                                     ))                                                                                                                                                      ,
-                                                                                                                                                        _cons(
-                                                                                                                                                            begin
-                                                                                                                                                                trampCall(_var)
-                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
-                                                                                                                                                            end                                                                                                                                                          ,
+                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
                                                                                                                                                             _cons(
-                                                                                                                                                                _cons(
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
                                                                                                                                                                     trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
                                                                                                                                                                         begin
                                                                                                                                                                             trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
                                                                                                                                                                           rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                         end                                                                                                                                                                      ,
                                                                                                                                                                     [
-                                                                                                                                                                        :"and-let*"
+                                                                                                                                                                        :"tmp"
                                                                                                                                                                     ]
-                                                                                                                                                                                 ))                                                                                                                                                                  ,
+                                                                                                                                                                                 ))
+                                                                                                                                                                end                                                                                                                                                              ,
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
                                                                                                                                                                     _cons(
                                                                                                                                                                         begin
-                                                                                                                                                                            trampCall(_rest)
-                                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                            trampCall(_expr)
+                                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:41"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                        end                                                                                                                                                                      ,
+                                                                                                                                                                      Cell.new()
+                                                                                                                                                                    )
+                                                                                                                                                                end
+                                                                                                                                                            )
+                                                                                                                                                        end                                                                                                                                                      ,
+                                                                                                                                                      Cell.new()
+                                                                                                                                                    )
+                                                                                                                                                end                                                                                                                                              ,
+                                                                                                                                                begin
+                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                    _cons(
+                                                                                                                                                        begin
+                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                            _cons(
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                    trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
+                                                                                                                                                                        begin
+                                                                                                                                                                            trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
+                                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                        end                                                                                                                                                                      ,
+                                                                                                                                                                    [
+                                                                                                                                                                        :"and"
+                                                                                                                                                                    ]
+                                                                                                                                                                                 ))
+                                                                                                                                                                end                                                                                                                                                              ,
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                    _cons(
+                                                                                                                                                                        begin
+                                                                                                                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                            trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
+                                                                                                                                                                                begin
+                                                                                                                                                                                    trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
+                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                end                                                                                                                                                                              ,
+                                                                                                                                                                            [
+                                                                                                                                                                                :"tmp"
+                                                                                                                                                                            ]
+                                                                                                                                                                                         ))
                                                                                                                                                                         end                                                                                                                                                                      ,
                                                                                                                                                                         begin
-                                                                                                                                                                            trampCall(_body)
-                                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                            _cons(
+                                                                                                                                                                                begin
+                                                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                    _cons(
+                                                                                                                                                                                        begin
+                                                                                                                                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                                            trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
+                                                                                                                                                                                                begin
+                                                                                                                                                                                                    trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
+                                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                end                                                                                                                                                                                              ,
+                                                                                                                                                                                            [
+                                                                                                                                                                                                :"and-let*"
+                                                                                                                                                                                            ]
+                                                                                                                                                                                                         ))
+                                                                                                                                                                                        end                                                                                                                                                                                      ,
+                                                                                                                                                                                        begin
+                                                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                            _cons(
+                                                                                                                                                                                                begin
+                                                                                                                                                                                                    trampCall(_rest)
+                                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                end                                                                                                                                                                                              ,
+                                                                                                                                                                                                begin
+                                                                                                                                                                                                    trampCall(_body)
+                                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                end
+                                                                                                                                                                                            )
+                                                                                                                                                                                        end
+                                                                                                                                                                                    )
+                                                                                                                                                                                end                                                                                                                                                                              ,
+                                                                                                                                                                              Cell.new()
+                                                                                                                                                                            )
                                                                                                                                                                         end
                                                                                                                                                                     )
-                                                                                                                                                                )                                                                                                                                                              ,
-                                                                                                                                                              Cell.new()
+                                                                                                                                                                end
                                                                                                                                                             )
-                                                                                                                                                        )
-                                                                                                                                                    )                                                                                                                                                  ,
-                                                                                                                                                  Cell.new()
-                                                                                                                                                )
+                                                                                                                                                        end                                                                                                                                                      ,
+                                                                                                                                                      Cell.new()
+                                                                                                                                                    )
+                                                                                                                                                end
                                                                                                                                             )
-                                                                                                                                        )
-                                                                                                                                    } ; ___lambda.call(
-                                                                                                                                        __v__12__gensym__de5653c32c493c653ee6557b7cf108e127448746_30056
-                                                                                                                                               )
-                                                                                                                                  end
-                                                                                                                              } ; ___lambda.call(
-                                                                                                                                    _cdr(
-                                                                                                                                      __v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048
+                                                                                                                                        end
                                                                                                                                     )
-                                                                                                                                         )
+                                                                                                                                end
+                                                                                                                            } ; ___lambda.call(
+                                                                                                                                __v__19__gensym__de5653c32c493c653ee6557b7cf108e127448746_30063
+                                                                                                                                       )
+                                                                                                                          end
+                                                                                                                      } ; ___lambda.call(
+                                                                                                                            begin
+                                                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                                                _cdr(
+                                                                                                                                  __v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057
+                                                                                                                                )
                                                                                                                             end
-                                                                                                                        } ; ___lambda.call(
-                                                                                                                            __v__11__gensym__de5653c32c493c653ee6557b7cf108e127448746_30055
-                                                                                                                                   )
-                                                                                                                      end
-                                                                                                                  } ; ___lambda.call(
-                                                                                                                        _cdr(
-                                                                                                                          __v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049
-                                                                                                                        )
-                                                                                                                             )
+                                                                                                                                 )
+                                                                                                                    end
+                                                                                                                } ; ___lambda.call(
+                                                                                                                    __v__18__gensym__de5653c32c493c653ee6557b7cf108e127448746_30062
+                                                                                                                           )
+                                                                                                              end
+                                                                                                          } ; ___lambda.call(
+                                                                                                                begin
+                                                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                                                    _cdr(
+                                                                                                                      __v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058
+                                                                                                                    )
                                                                                                                 end
-                                                                                                            else
-                                                                                                              false
-                                                                                                            end
-                                                                                                        } ; ___lambda.call(
-                                                                                                              _cdr(
-                                                                                                                __v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052
-                                                                                                              )
-                                                                                                                   )
+                                                                                                                     )
+                                                                                                        end
+                                                                                                    else
+                                                                                                      false
+                                                                                                    end
+                                                                                                } ; ___lambda.call(
+                                                                                                      begin
+                                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                                          _cdr(
+                                                                                                            __v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059
+                                                                                                          )
                                                                                                       end
-                                                                                                  } ; ___lambda.call(
-                                                                                                      __v__9__gensym__de5653c32c493c653ee6557b7cf108e127448746_30053
-                                                                                                             )
-                                                                                                end
-                                                                                            } ; ___lambda.call(
-                                                                                                  _car(
-                                                                                                    __v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052
-                                                                                                  )
-                                                                                                       )
+                                                                                                           )
+                                                                                              end
+                                                                                          } ; ___lambda.call(
+                                                                                              __v__16__gensym__de5653c32c493c653ee6557b7cf108e127448746_30060
+                                                                                                     )
+                                                                                        end
+                                                                                    } ; ___lambda.call(
+                                                                                          begin
+                                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                                              _car(
+                                                                                                __v__15__gensym__de5653c32c493c653ee6557b7cf108e127448746_30059
+                                                                                              )
                                                                                           end
-                                                                                      else
-                                                                                        false
-                                                                                      end
-                                                                                  } ; ___lambda.call(
-                                                                                        _cdr(
-                                                                                          __v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050
-                                                                                        )
-                                                                                             )
+                                                                                               )
+                                                                                  end
+                                                                              else
+                                                                                false
+                                                                              end
+                                                                          } ; ___lambda.call(
+                                                                                begin
+                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                                    _car(
+                                                                                      __v__14__gensym__de5653c32c493c653ee6557b7cf108e127448746_30058
+                                                                                    )
                                                                                 end
-                                                                            } ; ___lambda.call(
-                                                                                __v__7__gensym__de5653c32c493c653ee6557b7cf108e127448746_30051
-                                                                                       )
-                                                                          end
-                                                                      } ; ___lambda.call(
-                                                                            _car(
-                                                                              __v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050
-                                                                            )
-                                                                                 )
+                                                                                     )
+                                                                        end
+                                                                    else
+                                                                      false
                                                                     end
-                                                                else
-                                                                  false
+                                                                } ; ___lambda.call(
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                          _car(
+                                                                            __v__13__gensym__de5653c32c493c653ee6557b7cf108e127448746_30057
+                                                                          )
+                                                                      end
+                                                                           )
+                                                              end
+                                                          else
+                                                            false
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "", 1 ); 
+                                                                _cdr(
+                                                                  __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                         )
+                                            end
+                                        end
+                                    } ; ___lambda.call(
+                                          begin
+                                            ___lambda = lambda { |__v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048| 
+                                                if ( 
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                      _not(
+                                                          begin
+                                                            embedBacktraceInfo( "", 1 ); 
+                                                              _eq_QUMARK(
+                                                                false                                                                ,
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      _pair_QUMARK(
+                                                                        __v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048
+                                                                      )
+                                                                  end
+                                                              )
+                                                          end
+                                                      )
+                                                  end
+                                                 ) then
+                                                    begin
+                                                      ___lambda = lambda { |__v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049| 
+                                                          if ( 
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                _not(
+                                                                    begin
+                                                                      embedBacktraceInfo( "", 1 ); 
+                                                                        _eq_QUMARK(
+                                                                          false                                                                          ,
+                                                                            begin
+                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                _pair_QUMARK(
+                                                                                  __v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049
+                                                                                )
+                                                                            end
+                                                                        )
+                                                                    end
+                                                                )
+                                                            end
+                                                           ) then
+                                                              begin
+                                                                ___lambda = lambda { |__v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050| 
+                                                                    if ( 
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                          _not(
+                                                                              begin
+                                                                                embedBacktraceInfo( "", 1 ); 
+                                                                                  _eq_QUMARK(
+                                                                                    false                                                                                    ,
+                                                                                      begin
+                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                          _pair_QUMARK(
+                                                                                            __v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050
+                                                                                          )
+                                                                                      end
+                                                                                  )
+                                                                              end
+                                                                          )
+                                                                      end
+                                                                     ) then
+                                                                        begin
+                                                                          ___lambda = lambda { |__v__7__gensym__de5653c32c493c653ee6557b7cf108e127448746_30051| 
+                                                                              begin
+                                                                                ___lambda = lambda { |_var| 
+                                                                                    begin
+                                                                                      ___lambda = lambda { |__v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052| 
+                                                                                          if ( 
+                                                                                            begin
+                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                                                _not(
+                                                                                                    begin
+                                                                                                      embedBacktraceInfo( "", 1 ); 
+                                                                                                        _eq_QUMARK(
+                                                                                                          false                                                                                                          ,
+                                                                                                            begin
+                                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                                _pair_QUMARK(
+                                                                                                                  __v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052
+                                                                                                                )
+                                                                                                            end
+                                                                                                        )
+                                                                                                    end
+                                                                                                )
+                                                                                            end
+                                                                                           ) then
+                                                                                              begin
+                                                                                                ___lambda = lambda { |__v__9__gensym__de5653c32c493c653ee6557b7cf108e127448746_30053| 
+                                                                                                    begin
+                                                                                                      ___lambda = lambda { |_expr| 
+                                                                                                          begin
+                                                                                                            ___lambda = lambda { |__v__10__gensym__de5653c32c493c653ee6557b7cf108e127448746_30054| 
+                                                                                                                if ( 
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                                                                      _not(
+                                                                                                                          begin
+                                                                                                                            embedBacktraceInfo( "", 1 ); 
+                                                                                                                              _eq_QUMARK(
+                                                                                                                                false                                                                                                                                ,
+                                                                                                                                  begin
+                                                                                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                                                                                      _null_QUMARK(
+                                                                                                                                        __v__10__gensym__de5653c32c493c653ee6557b7cf108e127448746_30054
+                                                                                                                                      )
+                                                                                                                                  end
+                                                                                                                              )
+                                                                                                                          end
+                                                                                                                      )
+                                                                                                                  end
+                                                                                                                 ) then
+                                                                                                                    begin
+                                                                                                                      ___lambda = lambda { |__v__11__gensym__de5653c32c493c653ee6557b7cf108e127448746_30055| 
+                                                                                                                          begin
+                                                                                                                            ___lambda = lambda { |_rest| 
+                                                                                                                                begin
+                                                                                                                                  ___lambda = lambda { |__v__12__gensym__de5653c32c493c653ee6557b7cf108e127448746_30056| 
+                                                                                                                                      begin
+                                                                                                                                        ___lambda = lambda { |_body| 
+                                                                                                                                            begin
+                                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                _cons(
+                                                                                                                                                    begin
+                                                                                                                                                      embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                        trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
+                                                                                                                                                            begin
+                                                                                                                                                                trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
+                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                            end                                                                                                                                                          ,
+                                                                                                                                                        [
+                                                                                                                                                            :"let"
+                                                                                                                                                        ]
+                                                                                                                                                                     ))
+                                                                                                                                                    end                                                                                                                                                  ,
+                                                                                                                                                    begin
+                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                        _cons(
+                                                                                                                                                            begin
+                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                _cons(
+                                                                                                                                                                    begin
+                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                        _cons(
+                                                                                                                                                                            begin
+                                                                                                                                                                                trampCall(_var)
+                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                            end                                                                                                                                                                          ,
+                                                                                                                                                                            begin
+                                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                _cons(
+                                                                                                                                                                                    begin
+                                                                                                                                                                                        trampCall(_expr)
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:41"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                    end                                                                                                                                                                                  ,
+                                                                                                                                                                                  Cell.new()
+                                                                                                                                                                                )
+                                                                                                                                                                            end
+                                                                                                                                                                        )
+                                                                                                                                                                    end                                                                                                                                                                  ,
+                                                                                                                                                                  Cell.new()
+                                                                                                                                                                )
+                                                                                                                                                            end                                                                                                                                                          ,
+                                                                                                                                                            begin
+                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                _cons(
+                                                                                                                                                                    begin
+                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                        _cons(
+                                                                                                                                                                            begin
+                                                                                                                                                                              embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                                trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
+                                                                                                                                                                                    begin
+                                                                                                                                                                                        trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                    end                                                                                                                                                                                  ,
+                                                                                                                                                                                [
+                                                                                                                                                                                    :"and"
+                                                                                                                                                                                ]
+                                                                                                                                                                                             ))
+                                                                                                                                                                            end                                                                                                                                                                          ,
+                                                                                                                                                                            begin
+                                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                _cons(
+                                                                                                                                                                                    begin
+                                                                                                                                                                                        trampCall(_var)
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                    end                                                                                                                                                                                  ,
+                                                                                                                                                                                    begin
+                                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                        _cons(
+                                                                                                                                                                                            begin
+                                                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                                _cons(
+                                                                                                                                                                                                    begin
+                                                                                                                                                                                                      embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                                                        trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
+                                                                                                                                                                                                            begin
+                                                                                                                                                                                                                trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
+                                                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            end                                                                                                                                                                                                          ,
+                                                                                                                                                                                                        [
+                                                                                                                                                                                                            :"and-let*"
+                                                                                                                                                                                                        ]
+                                                                                                                                                                                                                     ))
+                                                                                                                                                                                                    end                                                                                                                                                                                                  ,
+                                                                                                                                                                                                    begin
+                                                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                                        _cons(
+                                                                                                                                                                                                            begin
+                                                                                                                                                                                                                trampCall(_rest)
+                                                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            end                                                                                                                                                                                                          ,
+                                                                                                                                                                                                            begin
+                                                                                                                                                                                                                trampCall(_body)
+                                                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            end
+                                                                                                                                                                                                        )
+                                                                                                                                                                                                    end
+                                                                                                                                                                                                )
+                                                                                                                                                                                            end                                                                                                                                                                                          ,
+                                                                                                                                                                                          Cell.new()
+                                                                                                                                                                                        )
+                                                                                                                                                                                    end
+                                                                                                                                                                                )
+                                                                                                                                                                            end
+                                                                                                                                                                        )
+                                                                                                                                                                    end                                                                                                                                                                  ,
+                                                                                                                                                                  Cell.new()
+                                                                                                                                                                )
+                                                                                                                                                            end
+                                                                                                                                                        )
+                                                                                                                                                    end
+                                                                                                                                                )
+                                                                                                                                            end
+                                                                                                                                        } ; ___lambda.call(
+                                                                                                                                            __v__12__gensym__de5653c32c493c653ee6557b7cf108e127448746_30056
+                                                                                                                                                   )
+                                                                                                                                      end
+                                                                                                                                  } ; ___lambda.call(
+                                                                                                                                        begin
+                                                                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                                                                            _cdr(
+                                                                                                                                              __v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048
+                                                                                                                                            )
+                                                                                                                                        end
+                                                                                                                                             )
+                                                                                                                                end
+                                                                                                                            } ; ___lambda.call(
+                                                                                                                                __v__11__gensym__de5653c32c493c653ee6557b7cf108e127448746_30055
+                                                                                                                                       )
+                                                                                                                          end
+                                                                                                                      } ; ___lambda.call(
+                                                                                                                            begin
+                                                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                                                _cdr(
+                                                                                                                                  __v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049
+                                                                                                                                )
+                                                                                                                            end
+                                                                                                                                 )
+                                                                                                                    end
+                                                                                                                else
+                                                                                                                  false
+                                                                                                                end
+                                                                                                            } ; ___lambda.call(
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                                                                      _cdr(
+                                                                                                                        __v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052
+                                                                                                                      )
+                                                                                                                  end
+                                                                                                                       )
+                                                                                                          end
+                                                                                                      } ; ___lambda.call(
+                                                                                                          __v__9__gensym__de5653c32c493c653ee6557b7cf108e127448746_30053
+                                                                                                                 )
+                                                                                                    end
+                                                                                                } ; ___lambda.call(
+                                                                                                      begin
+                                                                                                        embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                                                          _car(
+                                                                                                            __v__8__gensym__de5653c32c493c653ee6557b7cf108e127448746_30052
+                                                                                                          )
+                                                                                                      end
+                                                                                                           )
+                                                                                              end
+                                                                                          else
+                                                                                            false
+                                                                                          end
+                                                                                      } ; ___lambda.call(
+                                                                                            begin
+                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                _cdr(
+                                                                                                  __v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050
+                                                                                                )
+                                                                                            end
+                                                                                                 )
+                                                                                    end
+                                                                                } ; ___lambda.call(
+                                                                                    __v__7__gensym__de5653c32c493c653ee6557b7cf108e127448746_30051
+                                                                                           )
+                                                                              end
+                                                                          } ; ___lambda.call(
+                                                                                begin
+                                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                                    _car(
+                                                                                      __v__6__gensym__de5653c32c493c653ee6557b7cf108e127448746_30050
+                                                                                    )
+                                                                                end
+                                                                                     )
+                                                                        end
+                                                                    else
+                                                                      false
+                                                                    end
+                                                                } ; ___lambda.call(
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                          _car(
+                                                                            __v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049
+                                                                          )
+                                                                      end
+                                                                           )
+                                                              end
+                                                          else
+                                                            false
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                _car(
+                                                                  __v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                else
+                                                  false
+                                                end
+                                            } ; ___lambda.call(
+                                                  begin
+                                                    embedBacktraceInfo( "", 1 ); 
+                                                      _cdr(
+                                                        __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
+                                                      )
+                                                  end
+                                                       )
+                                          end
+                                               )
+                                  end
+                              end
+                          } ; ___lambda.call(
+                                begin
+                                  ___lambda = lambda { |__v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045| 
+                                      if ( 
+                                        begin
+                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                            _not(
+                                                begin
+                                                  embedBacktraceInfo( "", 1 ); 
+                                                    _eq_QUMARK(
+                                                      false                                                      ,
+                                                        begin
+                                                          embedBacktraceInfo( "", 1 ); 
+                                                            _pair_QUMARK(
+                                                              __v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045
+                                                            )
+                                                        end
+                                                    )
+                                                end
+                                            )
+                                        end
+                                       ) then
+                                          begin
+                                            ___lambda = lambda { |__v__2__gensym__de5653c32c493c653ee6557b7cf108e127448746_30046| 
+                                                if ( 
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                      _not(
+                                                          begin
+                                                            embedBacktraceInfo( "", 1 ); 
+                                                              _eq_QUMARK(
+                                                                false                                                                ,
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      _null_QUMARK(
+                                                                        __v__2__gensym__de5653c32c493c653ee6557b7cf108e127448746_30046
+                                                                      )
+                                                                  end
+                                                              )
+                                                          end
+                                                      )
+                                                  end
+                                                 ) then
+                                                    begin
+                                                      ___lambda = lambda { |__v__3__gensym__de5653c32c493c653ee6557b7cf108e127448746_30047| 
+                                                          begin
+                                                            ___lambda = lambda { |_body| 
+                                                                begin
+                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                    _cons(
+                                                                        begin
+                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                            trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
+                                                                                begin
+                                                                                    trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
+                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                end                                                                              ,
+                                                                            [
+                                                                                :"begin"
+                                                                            ]
+                                                                                         ))
+                                                                        end                                                                      ,
+                                                                        begin
+                                                                            trampCall(_body)
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                    )
                                                                 end
                                                             } ; ___lambda.call(
-                                                                  _car(
-                                                                    __v__5__gensym__de5653c32c493c653ee6557b7cf108e127448746_30049
-                                                                  )
+                                                                __v__3__gensym__de5653c32c493c653ee6557b7cf108e127448746_30047
                                                                        )
                                                           end
-                                                      else
-                                                        false
-                                                      end
-                                                  } ; ___lambda.call(
-                                                        _car(
-                                                          __v__4__gensym__de5653c32c493c653ee6557b7cf108e127448746_30048
-                                                        )
-                                                             )
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "", 1 ); 
+                                                                _cdr(
+                                                                  __v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                else
+                                                  false
                                                 end
-                                            else
-                                              false
-                                            end
-                                        } ; ___lambda.call(
-                                              _cdr(
-                                                __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
-                                              )
-                                                   )
-                                      end
-                                           )
-                              end
-                          end
-                      } ; ___lambda.call(
-                            begin
-                              ___lambda = lambda { |__v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045| 
-                                  if ( 
-                                    _not(
-                                        _eq_QUMARK(
-                                          false                                          ,
-                                            _pair_QUMARK(
-                                              __v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045
-                                            )
-                                        )
-                                    )
-                                   ) then
-                                      begin
-                                        ___lambda = lambda { |__v__2__gensym__de5653c32c493c653ee6557b7cf108e127448746_30046| 
-                                            if ( 
-                                              _not(
-                                                  _eq_QUMARK(
-                                                    false                                                    ,
-                                                      _null_QUMARK(
-                                                        __v__2__gensym__de5653c32c493c653ee6557b7cf108e127448746_30046
+                                            } ; ___lambda.call(
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                      _car(
+                                                        __v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045
                                                       )
-                                                  )
-                                              )
-                                             ) then
-                                                begin
-                                                  ___lambda = lambda { |__v__3__gensym__de5653c32c493c653ee6557b7cf108e127448746_30047| 
-                                                      begin
-                                                        ___lambda = lambda { |_body| 
-                                                            _cons(
-                                                                trampCall( callProcedure(  '__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',  '_rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038',
-                                                                    begin
-                                                                        trampCall(__rename__gensym__de5653c32c493c653ee6557b7cf108e127448746_30038)
-                                                                      rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
-                                                                    end                                                                  ,
-                                                                [
-                                                                    :"begin"
-                                                                ]
-                                                                             ))                                                              ,
-                                                                begin
-                                                                    trampCall(_body)
-                                                                  rescue => __e ; __e.set_backtrace( ["./lib/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
-                                                                end
-                                                            )
-                                                        } ; ___lambda.call(
-                                                            __v__3__gensym__de5653c32c493c653ee6557b7cf108e127448746_30047
-                                                                   )
-                                                      end
-                                                  } ; ___lambda.call(
-                                                        _cdr(
-                                                          __v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045
-                                                        )
-                                                             )
-                                                end
-                                            else
-                                              false
-                                            end
-                                        } ; ___lambda.call(
-                                              _car(
-                                                __v__1__gensym__de5653c32c493c653ee6557b7cf108e127448746_30045
-                                              )
-                                                   )
+                                                  end
+                                                       )
+                                          end
+                                      else
+                                        false
                                       end
-                                  else
-                                    false
-                                  end
-                              } ; ___lambda.call(
-                                    _cdr(
-                                      __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
-                                    )
-                                         )
-                            end
-                                 )
-                    end
-                }
-          ]
-                       ))
+                                  } ; ___lambda.call(
+                                        begin
+                                          embedBacktraceInfo( "", 1 ); 
+                                            _cdr(
+                                              __expr__gensym__de5653c32c493c653ee6557b7cf108e127448746_30037
+                                            )
+                                        end
+                                             )
+                                end
+                                     )
+                        end
+                    }
+              ]
+                           ))
+          end
     )
   end
  )

@@ -4,17 +4,20 @@
 # 
 
 trampCall( 
-  delayCall( '_require',  'require',
-      begin
-        if @global_lisp_binding.has_key?('_require') then
-          trampCall(@_require)
-        else raise NameError.new( "Error: undefined variable _require", "_require" ) end
-        rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:37"] + __e.backtrace ) ; raise __e
-      end    ,
-  [
-      "syslog"
-  ]
-               )
+  begin
+    embedBacktraceInfo( "./lib/debug/syslog.nnd", 37 ); 
+      delayCall( '_require',  'require',
+          begin
+            if @global_lisp_binding.has_key?('_require') then
+              trampCall(@_require)
+            else raise NameError.new( "Error: undefined variable _require", "_require" ) end
+            rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:37"] + __e.backtrace ) ; raise __e
+          end        ,
+      [
+          "syslog"
+      ]
+                   )
+  end
  )
 #--------------------
 
@@ -37,13 +40,16 @@ trampCall(
                           rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
                         end                      ,
                       "%s"                      ,
-                        __PLMARK_ARGS2(
-                          "Nendo: "                          ,
-                            begin
-                                trampCall(_str)
-                              rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
-                            end
-                        )
+                        begin
+                          embedBacktraceInfo( "./lib/debug/syslog.nnd", 41 ); 
+                            __PLMARK_ARGS2(
+                              "Nendo: "                              ,
+                                begin
+                                    trampCall(_str)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
+                                end
+                            )
+                        end
                     )
                 rescue => __e ; __e.set_backtrace( ["./lib/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
               end
