@@ -1341,6 +1341,7 @@ module Nendo
       @optimize_level = 2
       @backtrace = {}
       @backtrace_counter = 1;
+      @displayErrorsFlag = true;
       @char_table_lisp_to_ruby = {
         # list     (! $ % & * + - . / : < = > ? @ ^ _ ~ ...)
         '!'   => '_EXMARK',
@@ -1434,7 +1435,11 @@ module Nendo
     def getOptimizeLevel
       @optimize_level
     end
-  
+
+    def setDisplayErrors( flag )
+      @displayErrorsFlag = flag
+    end
+
     def lispMethodEntry( name, _log )
       @call_depth += 1
       if @trace_debug and _log
@@ -2324,25 +2329,29 @@ module Nendo
     end
 
     def displayTopOfCalls( exception )
-      STDERR.puts( "\n  <<< Top of calls >>>" )
-      strs = []
-      @call_counters.each_key { |funcname|
-        if 0 < @call_counters[ funcname ]
-          strs << sprintf( "  %7d : %-20s", @call_counters[ funcname ], funcname )
-        end
-      }
-      strs.sort.reverse.each { |str|
-        STDERR.puts( str )
-      }
+      if @displayErrorsFlag
+        STDERR.puts( "\n  <<< Top of calls >>>" )
+        strs = []
+        @call_counters.each_key { |funcname|
+          if 0 < @call_counters[ funcname ]
+            strs << sprintf( "  %7d : %-20s", @call_counters[ funcname ], funcname )
+          end
+        }
+        strs.sort.reverse.each { |str|
+          STDERR.puts( str )
+        }
+      end
     end
 
     def displayBacktrace( exception )
-      STDERR.puts( "\n  <<< Backtrace of Nendo >>>" )
-      arr = @backtrace.map { |key,val| [key,val] }.sort_by { |x| x[1] }.reverse
-      arr[0...10].each { |x|
-        STDERR.printf( "        from %s \n", x[0] )
-      }
-      STDERR.puts( "          ...\n\n" )
+      if @displayErrorsFlag
+        STDERR.puts( "\n  <<< Backtrace of Nendo >>>" )
+        arr = @backtrace.map { |key,val| [key,val] }.sort_by { |x| x[1] }.reverse
+        arr[0...10].each { |x|
+          STDERR.printf( "        from %s \n", x[0] )
+        }
+        STDERR.puts( "          ...\n\n" )
+      end
     end
 
     def lispEval( sexp, sourcefile, lineno )
@@ -2726,7 +2735,11 @@ module Nendo
     def setOptimizeLevel( level )
       @evaluator.setOptimizeLevel( level )
     end
-  
+
+    def setDisplayErrors( flag )
+      @evaluator.setDisplayErrors( flag )
+    end
+
     def clean_compiled_code
       @evaluator._clean_MIMARKcompiled_MIMARKcode()
     end

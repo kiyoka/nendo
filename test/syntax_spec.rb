@@ -290,6 +290,7 @@ end
 describe Nendo, "when use syntax-rules " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -382,6 +383,7 @@ end
 describe Nendo, "When use let-syntax" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do

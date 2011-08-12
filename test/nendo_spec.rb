@@ -335,6 +335,7 @@ end
 describe Nendo, "when call evalStr() with `+' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (+ 1) " ).should == "1"
@@ -361,6 +362,7 @@ end
 describe Nendo, "when call evalStr() with `-' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (- 1) " ).should == "-1"
@@ -383,6 +385,7 @@ end
 describe Nendo, "when call evalStr() with `*' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (* 1) " ).should == "1"
@@ -407,6 +410,7 @@ end
 describe Nendo, "when call evalStr() with `/' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (/ 1) " ).should == "1"
@@ -433,6 +437,7 @@ end
 describe Nendo, "when call evalStr() with `%' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (% 1) " ).should == "0"
@@ -455,6 +460,7 @@ end
 describe Nendo, "when call evalStr() with `quotient' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (quotient 2 1) " ).should == "2"
@@ -478,6 +484,7 @@ end
 describe Nendo, "when call evalStr() with `remainder' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (remainder 2 1) " ).should == "0"
@@ -501,6 +508,7 @@ end
 describe Nendo, "when call evalStr() with `modulo' function" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (modulo 2 1) " ).should == "0"
@@ -718,6 +726,7 @@ end
 describe Nendo, "when read various vector expressions" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " '() " ).should == "()"
@@ -743,6 +752,7 @@ end
 describe Nendo, "when call evalStr() with built-in functions" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (car '(1 2 3 4)) " ).should == "1"
@@ -936,6 +946,7 @@ end
 describe Nendo, "when call evalStr() with undefined variable" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     lambda { @nendo.evalStr( " true " ) }.should_not                   raise_error
@@ -952,6 +963,7 @@ end
 describe Nendo, "when call evalStr() with built-in special forms" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
   end
   it "should" do
     @nendo.evalStr( " (begin 1) " ).should == "1"
@@ -1023,6 +1035,7 @@ end
 describe Nendo, "when call evalStr() with built-in special forms (renamed symbol)" do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -1086,6 +1099,7 @@ end
 describe Nendo, "when redefined built-in functions(1)." do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -1201,6 +1215,7 @@ end
 describe Nendo, "when use #xxxx syntax " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -1280,6 +1295,7 @@ end
 describe Nendo, "when use regexp litteral and library functions " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -1794,6 +1810,7 @@ end
 describe Nendo, "when use values " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -1886,6 +1903,7 @@ end
 describe Nendo, "when toplevel variable was overwritten " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -2099,6 +2117,7 @@ end
 describe Nendo, "when use dot-operator (.) macro " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -2172,6 +2191,7 @@ end
 describe Nendo, "when use with-open libraries " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
     @fn = "/tmp/for-with-open.dat"
     open( @fn, "w" ) { |f|
@@ -2199,6 +2219,7 @@ end
 describe Nendo, "when use (use ...) macro " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -2220,6 +2241,7 @@ end
 describe Nendo, "when use keyword feature " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -2261,6 +2283,7 @@ end
 describe Nendo, "when use hash-table feature " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -2338,6 +2361,7 @@ end
 describe Nendo, "when use vector feature " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -2382,6 +2406,7 @@ end
 describe Nendo, "tail call optimization " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
     @nendo.loadInitFile  # to self optimizing.  The init.nnd file will be loaded twice, so `filter' can be optimized on second loading phase.
   end
@@ -2558,6 +2583,7 @@ end
 describe Nendo, "When use :optional argument feature " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
@@ -2581,6 +2607,7 @@ end
 describe Nendo, "when use export-to-ruby macro " do
   before do
     @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
     @nendo.loadInitFile
   end
   it "should" do
