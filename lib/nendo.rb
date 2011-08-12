@@ -2672,6 +2672,12 @@ module Nendo
         "#/" + sexp.source + "/" + (sexp.casefold? ? "i" : "")
       when LispKeyword
         ":" + sexp.key.to_s
+      when LispCoreSyntax
+        "#<Nendo::LispCoreSyntax>"
+      when LispMacro
+        "#<Nendo::LispMacro>"
+      when LispSyntax
+        "#<Nendo::LispSyntax>"
       when Nil
         "()"
       when nil
