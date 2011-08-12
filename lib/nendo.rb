@@ -2347,15 +2347,6 @@ module Nendo
 
     def lispEval( sexp, sourcefile, lineno )
       begin
-        lispEvalInternal( sexp, sourcefile, lineno )
-      rescue => e
-        displayBacktrace( e )
-        raise e
-      end
-    end
-
-    def lispEvalInternal( sexp, sourcefile, lineno )
-      begin
         sourceInfo = SourceInfo.new
         @lastSourcefile = sourcefile
         @lastLineno     = lineno
@@ -2393,6 +2384,9 @@ module Nendo
         eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
       rescue SystemStackError => e
         displayTopOfCalls( e )
+        raise e
+      rescue => e
+        displayBacktrace( e )
         raise e
       end
     end
