@@ -43,8 +43,8 @@ end
 
 task :test do
   stage1 =  []
-  stage1 << "time rspec -I ./lib -b         ./test/nendo_spec.rb"
-  stage1 << "time rspec -I ./lib -b         ./test/syntax_spec.rb"
+  stage1 << "time rspec -I ./lib -b         ./test/nendo_spec.rb    -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  stage1 << "time rspec -I ./lib -b         ./test/syntax_spec.rb   -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
   stage1 << "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
   stage2 =  []
   stage2 << "/bin/rm -f test.record"
