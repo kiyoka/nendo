@@ -7,14 +7,38 @@
 (debug-print-length)
 (debug-print-length 2000)
 
-(map
- (lambda (x)
-   (+ x 2)))
+
+(define-syntax guard
+  (syntax-rules (=>)
+    ((guard (var (clauses ...)) body ...)
+     (%guard
+      var
+      (cond (clauses ...))
+      body ...))
+    ((guard)
+     (error "guard requires (guard (var (clauses-like-cond)) body)"))
+    ((guard var)
+     (error "guard requires (guard (var (clauses-like-cond)) body)"))
+    ((guard var clauses)
+     (error "guard requires (guard (var (clauses-like-cond)) body)"))))
+
+(macroexpand-1
+ (quote
+  (guard
+      (exc
+       ((exc.is_a? RuntimeError)
+        (print "<<RuntimeError>>"))
+       (else
+        (print "other Type")))
+    (print "body1")
+    (print "body2"))))
+
+    
+
+  
+ 
 
 
-(apply (lambda (x) (+ x 2)) '(1))
-
-((lambda (x) (+ x 2)))
 
 
 
