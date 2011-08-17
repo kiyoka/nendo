@@ -1,0 +1,24 @@
+#!/usr/local/bin/nendo
+
+(define (func1 no)
+  (print (+ "no : " no.to_s))
+
+  (guard (var
+          ((var.is_a? NameError)
+           (print "[[NameError]]"))
+          (else
+           (print "exception is " + (var.class.to_s))))
+    (case no
+      ((1)
+       unknown_var)
+      ((2)
+       (+ (Array.new 1)
+          1))
+      ((3)
+       (raise RuntimeError)))))
+
+(func1 1)
+(func1 2)
+(func1 3)
+
+     
