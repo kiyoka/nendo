@@ -58,23 +58,29 @@
 
 (define-syntax guard
   (syntax-rules ()
+    ((guard)
+     (error "guard requires (guard (var (clauses-like-cond)) body ...)"))
+    ((guard var-clauses)
+     (error "guard requires (guard (var (clauses-like-cond)) body ...)"))
     ((guard var-clauses body ...)
      (%guard
       (%guard-clause
        var-clauses)
-      body ...))
-    ((guard)
-     (error "guard requires (guard (var (clauses-like-cond)) body)"))
-    ((guard var)
-     (error "guard requires (guard (var (clauses-like-cond)) body)"))
-    ((guard var clauses)
-     (error "guard requires (guard (var (clauses-like-cond)) body)"))))
+      body ...))))
 
 
-;; error syntax
+;; expect syntax error
 (macroexpand-1
  (quote
   (guard)))
+
+;; expect syntax error
+(macroexpand-1
+ (quote
+  (guard
+      (exc
+       (else
+        (print "other Type"))))))
 
 (macroexpand-2
  (quote
