@@ -30,11 +30,36 @@
       (macroexpand-1 sexp))))))
 
 
+(define-syntax %guard-var
+  (syntax-rules (=> ...)
+    ((%guard-clause (var clauses ...))
+     var)))
+
 (define-syntax %guard-clause
   (syntax-rules (=> ...)
     ((%guard-clause (var clauses ...))
      (case var
-       clauses ...))
+       clauses ...))))
+    
+(macroexpand-1
+ (quote
+  (%guard-var (exc
+               (else (print "ELSE"))))))
+
+(macroexpand-1
+ (quote
+  (%guard-var (exc
+               ((exc.is_a? RuntimeError)
+                (print "<<RuntimeError>>"))
+               (else (print "ELSE"))))))
+(macroexpand-1
+ (quote
+  (%guard-var (exc
+               ((exc.is_a? RuntimeError)
+                (print "<<RuntimeError>>"))
+               (else
+                => (lambda (e)
+                     (printf "Type is [%s]\n" e.class)))))))
 
 (macroexpand-1
  (quote
@@ -64,6 +89,8 @@
      (error "guard requires (guard (var (clauses-like-cond)) body ...)"))
     ((guard var-clauses body ...)
      (%guard
+      (%guard-var
+       var-clauses)
       (%guard-clause
        var-clauses)
       body ...))))
