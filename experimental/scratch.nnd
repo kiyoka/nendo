@@ -129,9 +129,57 @@
     (print "body2"))))
 
     
+(guard
+ (exc (else (sprintf "Type is [%s]" exc.class)))
+ (error "This is RuntimeError"))
 
-  
- 
+(guard
+ (exc (else (sprintf "Type is [%s]" exc.class)))
+ (+ (Array.new) 1))
+
+(guard
+ (exc (else (sprintf "Type is [%s]" exc.class)))
+ (+ (Array.new) 1)
+ (error "This is RuntimeError"))
+
+(guard
+ (exc (else (sprintf "Type is [%s]" exc.class)))
+ (error "This is RuntimeError")
+ (+ (Array.new) 1))
+
+(guard
+ (exc ((exc.is_a? RuntimeError)
+       "Type is RuntimeError")
+      ((exc.is_a? TypeError)
+       "Type is TypeError"))
+ (error "This is RuntimeError")
+ (+ (Array.new) 1))
+
+(guard
+ (exc ((exc.is_a? RuntimeError)
+       "Type is RuntimeError")
+      ((exc.is_a? TypeError)
+       "Type is TypeError"))
+ (+ (Array.new) 1)
+ (error "This is RuntimeError"))
+
+(guard
+ (exc ((exc.is_a? RuntimeError)
+       "Type is RuntimeError"))
+ (+ (Array.new) 1)
+ (error "This is RuntimeError"))
+
+(guard
+ (exc ((exc.is_a? RuntimeError)
+       "Type is RuntimeError"))
+ (error "This is RuntimeError")
+ (+ (Array.new) 1))
+
+
+
+
+    
+       
 
 
 
