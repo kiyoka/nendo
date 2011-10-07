@@ -127,8 +127,8 @@
 (define-syntax %guard-clause
   (syntax-rules (=> ...)
     ((%guard-clause (var clauses ...))
-     (case var
-       clauses ...))))
+     (cond
+      clauses ...))))
 
 (define-syntax guard
   (syntax-rules ()

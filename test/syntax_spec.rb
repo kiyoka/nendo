@@ -751,7 +751,7 @@ EOS
   (%guard-clause (exc
                   (else (print "ELSE"))))))
 EOS
-                    ).should == '(case exc (else (print "ELSE")))'
+                    ).should == '(cond (else (print "ELSE")))'
 
 
     @nendo.evalStr( <<EOS
@@ -762,7 +762,7 @@ EOS
                    (print "<<RuntimeError>>"))
                   (else (print "ELSE"))))))
 EOS
-                    ).should == '(case exc ((exc.is_a? RuntimeError) (print "<<RuntimeError>>")) (else (print "ELSE")))'
+                    ).should == '(cond ((exc.is_a? RuntimeError) (print "<<RuntimeError>>")) (else (print "ELSE")))'
 
     @nendo.evalStr( <<EOS
 (macroexpand-1
@@ -774,7 +774,7 @@ EOS
                    => (lambda (e)
                         (printf "Type is [%s]\n" e.class)))))))
 EOS
-                    ).should == "(case exc ((exc.is_a? RuntimeError) (print \"<<RuntimeError>>\")) (else feedto (lambda (e) (printf \"Type is [%s]\n\" e.class))))"
+                    ).should == "(cond ((exc.is_a? RuntimeError) (print \"<<RuntimeError>>\")) (else feedto (lambda (e) (printf \"Type is [%s]\n\" e.class))))"
 
   end
 end
@@ -815,6 +815,58 @@ EOS
  (+ (Array.new) 1))
 EOS
                     ).should  == '"Type is [RuntimeError]"'
+
+    @nendo.evalStr( <<EOS
+(guard
+    (exc ((exc.is_a? RuntimeError)
+          "Type is [RuntimeError]")
+         ((exc.is_a? TypeError)
+          "Type is [TypeError]")
+         (else
+          "Type is Others"))
+  (error "This is RuntimeError")
+  (+ (Array.new) 1))
+EOS
+                    ).should  == '"Type is [RuntimeError]"'
+
+    @nendo.evalStr( <<EOS
+(guard
+    (exc ((exc.is_a? RuntimeError)
+          "Type is [RuntimeError]")
+         ((exc.is_a? TypeError)
+          "Type is [TypeError]"))
+  (+ (Array.new) 1)
+  (error "This is RuntimeError"))
+EOS
+                    ).should  == '"Type is [TypeError]"'
+
+    @nendo.evalStr( <<EOS
+(guard
+ (exc ((exc.is_a? TypeError)
+       "Type is [TypeError]"))
+ (+ (Array.new) 1)
+ (error "This is RuntimeError"))
+EOS
+                    ).should  == '"Type is [TypeError]"'
+
+    @nendo.evalStr( <<EOS
+(guard
+ (exc ((exc.is_a? RuntimeError)
+       "Type is [RuntimeError]"))
+ (error "This is RuntimeError")
+ (+ (Array.new) 1))
+EOS
+                    ).should  == '"Type is [RuntimeError]"'
+
+    @nendo.evalStr( <<EOS
+(begin
+  (guard
+      (exc ((exc.is_a? RuntimeError)
+            "Type is [RuntimeError]"))
+    (+ (Array.new) 1))
+  \"-END-\")
+EOS
+                    ).should  == '"-END-"'
 
   end
 end
