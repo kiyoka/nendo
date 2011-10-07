@@ -870,3 +870,68 @@ EOS
 
   end
 end
+
+
+
+describe Nendo, "When use guard and raise" do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
+    @nendo.loadInitFile
+  end
+  it "should" do
+    @nendo.evalStr( <<EOS
+(guard
+ (exc ((exc.is_a? TypeError)
+       "[TypeError]")
+      (else
+       "[OtherError]"))
+ (guard
+   (exc (else (+ "a" 1.1)))
+   (error "This is RuntimeError")))
+EOS
+           ).should  == '"[TypeError]"'
+
+    @nendo.evalStr( <<EOS
+(let1 lst '()
+   (guard
+       (exc (else (push! lst 2)))
+     (guard
+         (exc (else (push! lst 1)))
+       (error "Error occur")))
+   lst)
+EOS
+           ).should  == '(1)'
+
+    @nendo.evalStr( <<EOS
+(let1 lst '()
+  (guard
+      (exc (else (push! lst 2)))
+    (guard
+        (exc (else (push! lst 1)
+                   (error "Error occur(2)")))
+      (error "Error occur(1)")))
+  lst)
+EOS
+           ).should  == '(2 1)'
+
+
+    lambda { @nendo.evalStr( <<EOS
+(let1 lst '()
+  (guard
+      (exc (else (push! lst 3)
+                 (errorf "Error occur:%s" (write-to-string lst))))
+    (guard
+        (exc (else (push! lst 2)
+                   (error "Error occur(3)")))
+      (guard
+          (exc (else (push! lst 1)
+                     (error "Error occur(2)")))
+        (error "Error occur(1)"))))
+  #t)
+EOS
+                    ) }.should  raise_error( RuntimeError, /Error occur:[(]3 2 1[)]/ )
+
+  end
+end
+

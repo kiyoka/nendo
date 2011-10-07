@@ -1495,41 +1495,32 @@ trampCall(
                                                                                                             rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                           end                                                                                                        ,
                                                                                                       [
-                                                                                                          :"case"
+                                                                                                          :"cond"
                                                                                                       ]
                                                                                                                    ))
                                                                                                   end                                                                                                ,
                                                                                                   begin
-                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
-                                                                                                      _cons(
+                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 91 ); 
+                                                                                                      trampCall( self._map_METHOD(  'map',
                                                                                                           begin
-                                                                                                              trampCall(_var)
-                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                                                            if @global_lisp_binding.has_key?('_map') then
+                                                                                                              trampCall(@_map)
+                                                                                                            else raise NameError.new( "Error: undefined variable _map", "_map" ) end
+                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:91"] + __e.backtrace ) ; raise __e
                                                                                                           end                                                                                                        ,
-                                                                                                          begin
-                                                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 91 ); 
-                                                                                                              trampCall( self._map_METHOD(  'map',
-                                                                                                                  begin
-                                                                                                                    if @global_lisp_binding.has_key?('_map') then
-                                                                                                                      trampCall(@_map)
-                                                                                                                    else raise NameError.new( "Error: undefined variable _map", "_map" ) end
-                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:91"] + __e.backtrace ) ; raise __e
-                                                                                                                  end                                                                                                                ,
-                                                                                                              [
-                                                                                                                    Proc.new { |_clauses| 
-                                                                                                                        begin
-                                                                                                                            trampCall(_clauses)
-                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:131"] + __e.backtrace ) ; raise __e
-                                                                                                                        end
-                                                                                                                    }                                                                                                                  ,
-                                                                                                                    begin
-                                                                                                                        trampCall(_clauses)
-                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:131"] + __e.backtrace ) ; raise __e
-                                                                                                                    end
-                                                                                                              ]
-                                                                                                                           ))
-                                                                                                          end
-                                                                                                      )
+                                                                                                      [
+                                                                                                            Proc.new { |_clauses| 
+                                                                                                                begin
+                                                                                                                    trampCall(_clauses)
+                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:131"] + __e.backtrace ) ; raise __e
+                                                                                                                end
+                                                                                                            }                                                                                                          ,
+                                                                                                            begin
+                                                                                                                trampCall(_clauses)
+                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:131"] + __e.backtrace ) ; raise __e
+                                                                                                            end
+                                                                                                      ]
+                                                                                                                   ))
                                                                                                   end
                                                                                               )
                                                                                           end

@@ -177,21 +177,31 @@
 
 
 
+(guard
+    (exc ((exc.is_a? RuntimeError)
+          "Type is [RuntimeError]")
+         ((exc.is_a? TypeError)
+          "Type is [TypeError]")
+         (else
+          "Type is Others"))
+  (error "This is RuntimeError")
+  (+ (Array.new) 1))
 
-    
+
+(guard
+    (exc ((exc.is_a? RuntimeError)
+          "Type is [RuntimeError]")
+         ((exc.is_a? TypeError)
+          "Type is [TypeError]"))
+  (+ (Array.new) 1)
+  (error "This is RuntimeError"))
+
+
        
-
-
-
-
-
-
-
-   
- 
-
-
-
-
-
+(begin
+  (guard
+      (exc ((exc.is_a? RuntimeError)
+            "Type is [RuntimeError]"))
+    (+ (Array.new) 1))
+  \"-end-\")
 
