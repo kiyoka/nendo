@@ -82,6 +82,7 @@ module Nendo
     attr_reader :syntaxName
   end
 
+
   class Cell
     include Enumerable
 
@@ -213,6 +214,17 @@ module Nendo
     end
   
     attr_reader :key
+  end
+
+  class NendoTestError
+    def initialize( type = NendoTestError )
+      @type = type
+    end
+
+    def to_s
+      type.to_s
+    end
+    attr_accessor :type
   end
 
   class SyntacticClosure
