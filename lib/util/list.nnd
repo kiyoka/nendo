@@ -58,6 +58,8 @@
           [else lis])))
 
 (define (drop-right* lis k)
+  (when (or (not (integer? k)) (negative? k))
+    (error "index must be non-negative integer" k))
   (let1 len (length lis)
     (if (<= k len) (take lis (- len k)) '())))
 
