@@ -1299,7 +1299,7 @@
 ;; ----------------------------------------
 (define (%setup-%tailcall-mark sexp)
   (define (reserved? sym)
-    (let* ([reserved-orig '(quote syntax-quote macro %syntax begin lambda if %let letrec define define-syntax)]
+    (let* ([reserved-orig '(quote syntax-quote macro %syntax begin lambda if %let letrec define define-syntax %guard)]
            [reserved (append reserved-orig
                              (map
                               (lambda (orig)
@@ -1367,6 +1367,8 @@
         ((macro /nendo/core/macro)
          sexp)
         ((%syntax /nendo/core/%syntax)
+         sexp)
+        ((%guard /nendo/core/%guard)
          sexp)
         ((begin /nendo/core/begin)
          `(,_car

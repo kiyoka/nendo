@@ -2,7 +2,7 @@
 ;;;
 ;;; nendo.test - test framework
 ;;;  
-;;;   Copyright (c) 2000-2009  Shiro Kawai  <shiro@acm.org>
+;;;   Copyright (c) 2000-2010  Shiro Kawai  <shiro@acm.org>
 ;;;   
 ;;;   Redistribution and use in source and binary forms, with or without
 ;;;   modification, are permitted provided that the following conditions
@@ -31,10 +31,28 @@
 ;;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
-;;;  $Id: test.scm,v 1.29 2008-05-10 13:35:56 shirok Exp $
-;;
 ;;   ported by Kiyoka Nishiyama for Nendo.
 ;; 
+(define (test-error? obj) (obj.is_a? Nendo::NendoTestError))
+
+(define (test-error . maybe-class)
+  (let ([cl  (get-optional maybe-class #f)]
+        [err (. Nendo::NendoTestError new)])
+    (when cl
+      (set! err.type    cl))
+    err))
+
+
+(define (test-check expected result)
+  (cond [(test-error? expected)
+         (and (test-error? result)
+              (let ([ex (expected.type)]
+                    [ey (result.type)])
+                (and ex
+                     (eq? ex ey))))]
+        [else (equal? expected result)]))
+
+
 ;; List of discrepancies
 (define *test-record-file* "test.record")
 (define *test-output-file* STDOUT)
@@ -44,6 +62,7 @@
 (define (test-output-file file) (set! *test-output-file* file)) ;;putlic API
 
 (define *test-counts*   (vector 0 0 0 0))
+
 (define (test-count++)  
   (vector-set! *test-counts* 0 (+ (vector-ref *test-counts* 0) 1)))
 (define (test-pass++)
@@ -85,14 +104,17 @@
                  (f.printf "%s" (format-summary)))
                "w")))
 
-(define (test msg expect thunk . compare)
-  (let ((cmp (get-optional compare equal?))
+;; Tests ------------------------------------------------------------
+
+(define (prim-test msg expect thunk . compare)
+  (let ((cmp (if (pair? compare) (car compare) test-check))
         (f   *test-output-file*))
     (f.printf "test %s, expects %s ==> " msg (write-to-string expect))
     (f.flush)
     (test-count++)
-    (let ((r (thunk)))
-      (cond ((cmp expect r)
+    (let* ([r   (thunk)]
+           [ret (cmp expect r)])
+      (cond (ret
              (f.printf "ok\n")
              (test-pass++))
             (else
@@ -101,7 +123,17 @@
                    (cons (list msg expect r) *discrepancy-list*))
              (test-fail++)))
       (f.flush)
-      #t)))
+      ret)))
+
+  
+;; Normal test.
+(define (test msg expect thunk . compare)
+  (apply prim-test msg expect
+         (lambda ()
+           (guard (exc (else
+                        (Nendo::NendoTestError.new (exc.class))))
+             (thunk)))
+         compare))
 
 ;; A convenient macro version
 (define test*

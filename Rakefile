@@ -43,8 +43,9 @@ end
 
 task :test do
   stage1 =  []
-  stage1 << "time rspec -I ./lib -b         ./test/nendo_spec.rb    -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  stage1 << "time rspec -I ./lib -b         ./test/syntax_spec.rb   -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  stage1 << "time rspec -I ./lib -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  stage1 << "time rspec -I ./lib -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  stage1 << "time rspec -I ./lib -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
   stage1 << "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
   stage2 =  []
   stage2 << "/bin/rm -f test.record"
@@ -53,6 +54,8 @@ task :test do
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
   stage2 << "cat test.record"
   arr = []
   arr += stage1

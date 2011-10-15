@@ -82,6 +82,7 @@ module Nendo
     attr_reader :syntaxName
   end
 
+
   class Cell
     include Enumerable
 
@@ -213,6 +214,17 @@ module Nendo
     end
   
     attr_reader :key
+  end
+
+  class NendoTestError
+    def initialize( type = RuntimeError )
+      @type = type
+    end
+
+    def to_s
+      type.to_s
+    end
+    attr_accessor :type
   end
 
   class SyntacticClosure
@@ -1366,7 +1378,7 @@ module Nendo
       }
       @char_table_ruby_to_lisp = @char_table_lisp_to_ruby.invert
 
-      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :"%let" , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax", :"let-syntax" ]
+      @core_syntax_list = [ :quote, :"syntax-quote", :if , :begin , :lambda , :macro , :"&block" , :"%let" , :letrec , :define, :set!, :error, :"%syntax", :"define-syntax", :"let-syntax", :"%guard" ]
       @core_syntax_hash = Hash.new
       @core_syntax_list.each { |x|
         renamed = ("/nendo/core/" + x.to_s).intern
@@ -1897,6 +1909,18 @@ module Nendo
        "end"]
     end
 
+    def makeGuard( args, locals )
+      _var        = toRubySymbol( args.car )
+      _locals     = locals.clone + [_var]
+      _case       = translate( args.cdr.car,         _locals )
+      _thunk      = translate( args.cdr.cdr.car,     _locals )
+      ["begin", 
+       [ _thunk ],
+       "rescue => " + _var,
+       [ _case ],
+       "end" ]
+    end
+
     def apply( car, cdr, sourcefile, lineno, locals, sourceInfo, execType )
       cdr.each { |x| 
         if Cell == x.class
@@ -2022,6 +2046,8 @@ module Nendo
           self.makeLet( sexp.cdr,   locals )
         elsif :letrec == car
           self.makeLetrec( sexp.cdr,   locals )
+        elsif :"%guard" == car
+          self.makeGuard( sexp.cdr,   locals )
         elsif :"%tailcall" == car
           if sexp.cdr.car.is_a? Cell
             sexp = sexp.cdr.car

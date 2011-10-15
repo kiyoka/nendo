@@ -118,3 +118,31 @@
          (assv-ref "expanded" alist))))))))
 
 
+;; guard for Exception
+(define-syntax %guard-var
+  (syntax-rules (=> ...)
+    ((%guard-clause (var clauses ...))
+     var)))
+
+(define-syntax %guard-clause
+  (syntax-rules (=> ...)
+    ((%guard-clause (var clauses ...))
+     (cond
+      clauses ...))))
+
+(define-syntax guard
+  (syntax-rules ()
+    ((guard)
+     (error "guard requires (guard (var (clauses-like-cond)) body ...)"))
+    ((guard var-clauses)
+     (error "guard requires (guard (var (clauses-like-cond)) body ...)"))
+    ((guard var-clauses body ...)
+     (%guard
+      (%guard-var
+       var-clauses)
+      (%guard-clause
+       var-clauses)
+      body ...))))
+
+
+

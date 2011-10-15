@@ -999,13 +999,13 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       begin
-                        ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30006| 
+                        ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30055| 
                             if ( 
                               begin
                                 embedBacktraceInfo( "", 1 ); 
                                   _null_QUMARK(
                                       begin
-                                          trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30006)
+                                          trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30055)
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end
                                   )
@@ -1024,7 +1024,7 @@ trampCall(
                                         end                                      ,
                                     [
                                           begin
-                                              trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30006)
+                                              trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30055)
                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                           end
                                     ]
@@ -1059,6 +1059,1024 @@ trampCall(
                            )
               end
           }
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
+      def self.__PAMARKguard_MIMARKvar_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKguard_MIMARKvar', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['__PAMARKguard_MIMARKvar'] = self.method( :__PAMARKguard_MIMARKvar_METHOD )
+    @__PAMARKguard_MIMARKvar = 
+    trampCall(
+          begin
+            embedBacktraceInfo( "", 1 ); 
+              trampCall( self._er_MIMARKmacro_MIMARKtransformer_METHOD(  'er-macro-transformer',
+                  begin
+                    if @global_lisp_binding.has_key?('_er_MIMARKmacro_MIMARKtransformer') then
+                      trampCall(@_er_MIMARKmacro_MIMARKtransformer)
+                    else raise NameError.new( "Error: undefined variable _er_MIMARKmacro_MIMARKtransformer", "_er_MIMARKmacro_MIMARKtransformer" ) end
+                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                  end                ,
+              [
+                    Proc.new { |__expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30060,__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30061,__compare__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30062| 
+                        begin
+                          ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30073| 
+                              if ( 
+                                begin
+                                    trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30073)
+                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                end
+                               ) then
+                                  begin
+                                      trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30073)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              else
+                                  begin
+                                    ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30074| 
+                                        if ( 
+                                          begin
+                                              trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30074)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                         ) then
+                                            begin
+                                                trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30074)
+                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                            end
+                                        else
+                                          false
+                                        end
+                                    } ; ___lambda.call(
+                                          begin raise RuntimeError, 
+                                            "no expansion for" ' ' + 
+                                            _write_MIMARKto_MIMARKstring(
+                                              begin
+                                                embedBacktraceInfo( "", 1 ); 
+                                                  trampCall( self._strip_MIMARKsyntactic_MIMARKclosures_METHOD(  'strip-syntactic-closures',
+                                                      begin
+                                                        if @global_lisp_binding.has_key?('_strip_MIMARKsyntactic_MIMARKclosures') then
+                                                          trampCall(@_strip_MIMARKsyntactic_MIMARKclosures)
+                                                        else raise NameError.new( "Error: undefined variable _strip_MIMARKsyntactic_MIMARKclosures", "_strip_MIMARKsyntactic_MIMARKclosures" ) end
+                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                      end                                                    ,
+                                                  [
+                                                      __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30060
+                                                  ]
+                                                               ))
+                                              end
+                                            )
+                                          rescue => __e 
+                                            __e.set_backtrace( ["./lib/nendo/experimental.nnd:138"] + __e.backtrace )
+                                            raise __e
+                                          end 
+                                               )
+                                  end
+                              end
+                          } ; ___lambda.call(
+                                begin
+                                  ___lambda = lambda { |__v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30068| 
+                                      if ( 
+                                        begin
+                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                            _not(
+                                                begin
+                                                  embedBacktraceInfo( "", 1 ); 
+                                                    _eq_QUMARK(
+                                                      false                                                      ,
+                                                        begin
+                                                          embedBacktraceInfo( "", 1 ); 
+                                                            _pair_QUMARK(
+                                                              __v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30068
+                                                            )
+                                                        end
+                                                    )
+                                                end
+                                            )
+                                        end
+                                       ) then
+                                          begin
+                                            ___lambda = lambda { |__v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30069| 
+                                                if ( 
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                      _not(
+                                                          begin
+                                                            embedBacktraceInfo( "", 1 ); 
+                                                              _eq_QUMARK(
+                                                                false                                                                ,
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      _pair_QUMARK(
+                                                                        __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30069
+                                                                      )
+                                                                  end
+                                                              )
+                                                          end
+                                                      )
+                                                  end
+                                                 ) then
+                                                    begin
+                                                      ___lambda = lambda { |__v__3__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30070| 
+                                                          begin
+                                                            ___lambda = lambda { |_var| 
+                                                                begin
+                                                                  ___lambda = lambda { |__v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30071| 
+                                                                      if ( 
+                                                                        begin
+                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                            _not(
+                                                                                begin
+                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                    _eq_QUMARK(
+                                                                                      false                                                                                      ,
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                            trampCall( self._list_QUMARK_METHOD(  'list?',
+                                                                                                begin
+                                                                                                  if @global_lisp_binding.has_key?('_list_QUMARK') then
+                                                                                                    trampCall(@_list_QUMARK)
+                                                                                                  else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
+                                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                end                                                                                              ,
+                                                                                            [
+                                                                                                __v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30071
+                                                                                            ]
+                                                                                                         ))
+                                                                                        end
+                                                                                    )
+                                                                                end
+                                                                            )
+                                                                        end
+                                                                       ) then
+                                                                          begin
+                                                                            ___lambda = lambda { |_clauses| 
+                                                                                begin
+                                                                                  ___lambda = lambda { |__v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30072| 
+                                                                                      if ( 
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                                            _not(
+                                                                                                begin
+                                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                                    _eq_QUMARK(
+                                                                                                      false                                                                                                      ,
+                                                                                                        begin
+                                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                                            _null_QUMARK(
+                                                                                                              __v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30072
+                                                                                                            )
+                                                                                                        end
+                                                                                                    )
+                                                                                                end
+                                                                                            )
+                                                                                        end
+                                                                                       ) then
+                                                                                          begin
+                                                                                              trampCall(_var)
+                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:125"] + __e.backtrace ) ; raise __e
+                                                                                          end
+                                                                                      else
+                                                                                        false
+                                                                                      end
+                                                                                  } ; ___lambda.call(
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                            _cdr(
+                                                                                              __v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30068
+                                                                                            )
+                                                                                        end
+                                                                                             )
+                                                                                end
+                                                                            } ; ___lambda.call(
+                                                                                __v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30071
+                                                                                       )
+                                                                          end
+                                                                      else
+                                                                        false
+                                                                      end
+                                                                  } ; ___lambda.call(
+                                                                        begin
+                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                            _cdr(
+                                                                              __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30069
+                                                                            )
+                                                                        end
+                                                                             )
+                                                                end
+                                                            } ; ___lambda.call(
+                                                                __v__3__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30070
+                                                                       )
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                _car(
+                                                                  __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30069
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                else
+                                                  false
+                                                end
+                                            } ; ___lambda.call(
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                      _car(
+                                                        __v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30068
+                                                      )
+                                                  end
+                                                       )
+                                          end
+                                      else
+                                        false
+                                      end
+                                  } ; ___lambda.call(
+                                        begin
+                                          embedBacktraceInfo( "", 1 ); 
+                                            _cdr(
+                                              __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30060
+                                            )
+                                        end
+                                             )
+                                end
+                                     )
+                        end
+                    }
+              ]
+                           ))
+          end
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
+      def self.__PAMARKguard_MIMARKclause_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__PAMARKguard_MIMARKclause', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['__PAMARKguard_MIMARKclause'] = self.method( :__PAMARKguard_MIMARKclause_METHOD )
+    @__PAMARKguard_MIMARKclause = 
+    trampCall(
+          begin
+            embedBacktraceInfo( "", 1 ); 
+              trampCall( self._er_MIMARKmacro_MIMARKtransformer_METHOD(  'er-macro-transformer',
+                  begin
+                    if @global_lisp_binding.has_key?('_er_MIMARKmacro_MIMARKtransformer') then
+                      trampCall(@_er_MIMARKmacro_MIMARKtransformer)
+                    else raise NameError.new( "Error: undefined variable _er_MIMARKmacro_MIMARKtransformer", "_er_MIMARKmacro_MIMARKtransformer" ) end
+                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                  end                ,
+              [
+                    Proc.new { |__expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30075,__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30076,__compare__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30077| 
+                        begin
+                          ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30088| 
+                              if ( 
+                                begin
+                                    trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30088)
+                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                end
+                               ) then
+                                  begin
+                                      trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30088)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              else
+                                  begin
+                                    ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30089| 
+                                        if ( 
+                                          begin
+                                              trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30089)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                         ) then
+                                            begin
+                                                trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30089)
+                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                            end
+                                        else
+                                          false
+                                        end
+                                    } ; ___lambda.call(
+                                          begin raise RuntimeError, 
+                                            "no expansion for" ' ' + 
+                                            _write_MIMARKto_MIMARKstring(
+                                              begin
+                                                embedBacktraceInfo( "", 1 ); 
+                                                  trampCall( self._strip_MIMARKsyntactic_MIMARKclosures_METHOD(  'strip-syntactic-closures',
+                                                      begin
+                                                        if @global_lisp_binding.has_key?('_strip_MIMARKsyntactic_MIMARKclosures') then
+                                                          trampCall(@_strip_MIMARKsyntactic_MIMARKclosures)
+                                                        else raise NameError.new( "Error: undefined variable _strip_MIMARKsyntactic_MIMARKclosures", "_strip_MIMARKsyntactic_MIMARKclosures" ) end
+                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                      end                                                    ,
+                                                  [
+                                                      __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30075
+                                                  ]
+                                                               ))
+                                              end
+                                            )
+                                          rescue => __e 
+                                            __e.set_backtrace( ["./lib/nendo/experimental.nnd:138"] + __e.backtrace )
+                                            raise __e
+                                          end 
+                                               )
+                                  end
+                              end
+                          } ; ___lambda.call(
+                                begin
+                                  ___lambda = lambda { |__v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30083| 
+                                      if ( 
+                                        begin
+                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                            _not(
+                                                begin
+                                                  embedBacktraceInfo( "", 1 ); 
+                                                    _eq_QUMARK(
+                                                      false                                                      ,
+                                                        begin
+                                                          embedBacktraceInfo( "", 1 ); 
+                                                            _pair_QUMARK(
+                                                              __v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30083
+                                                            )
+                                                        end
+                                                    )
+                                                end
+                                            )
+                                        end
+                                       ) then
+                                          begin
+                                            ___lambda = lambda { |__v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30084| 
+                                                if ( 
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                      _not(
+                                                          begin
+                                                            embedBacktraceInfo( "", 1 ); 
+                                                              _eq_QUMARK(
+                                                                false                                                                ,
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      _pair_QUMARK(
+                                                                        __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30084
+                                                                      )
+                                                                  end
+                                                              )
+                                                          end
+                                                      )
+                                                  end
+                                                 ) then
+                                                    begin
+                                                      ___lambda = lambda { |__v__3__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30085| 
+                                                          begin
+                                                            ___lambda = lambda { |_var| 
+                                                                begin
+                                                                  ___lambda = lambda { |__v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30086| 
+                                                                      if ( 
+                                                                        begin
+                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                            _not(
+                                                                                begin
+                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                    _eq_QUMARK(
+                                                                                      false                                                                                      ,
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                            trampCall( self._list_QUMARK_METHOD(  'list?',
+                                                                                                begin
+                                                                                                  if @global_lisp_binding.has_key?('_list_QUMARK') then
+                                                                                                    trampCall(@_list_QUMARK)
+                                                                                                  else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
+                                                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                end                                                                                              ,
+                                                                                            [
+                                                                                                __v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30086
+                                                                                            ]
+                                                                                                         ))
+                                                                                        end
+                                                                                    )
+                                                                                end
+                                                                            )
+                                                                        end
+                                                                       ) then
+                                                                          begin
+                                                                            ___lambda = lambda { |_clauses| 
+                                                                                begin
+                                                                                  ___lambda = lambda { |__v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30087| 
+                                                                                      if ( 
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                                            _not(
+                                                                                                begin
+                                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                                    _eq_QUMARK(
+                                                                                                      false                                                                                                      ,
+                                                                                                        begin
+                                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                                            _null_QUMARK(
+                                                                                                              __v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30087
+                                                                                                            )
+                                                                                                        end
+                                                                                                    )
+                                                                                                end
+                                                                                            )
+                                                                                        end
+                                                                                       ) then
+                                                                                          begin
+                                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                              _cons(
+                                                                                                  begin
+                                                                                                    embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                      trampCall( callProcedure(  '__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30076',  '_rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30076',
+                                                                                                          begin
+                                                                                                              trampCall(__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30076)
+                                                                                                            rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                          end                                                                                                        ,
+                                                                                                      [
+                                                                                                          :"cond"
+                                                                                                      ]
+                                                                                                                   ))
+                                                                                                  end                                                                                                ,
+                                                                                                  begin
+                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 91 ); 
+                                                                                                      trampCall( self._map_METHOD(  'map',
+                                                                                                          begin
+                                                                                                            if @global_lisp_binding.has_key?('_map') then
+                                                                                                              trampCall(@_map)
+                                                                                                            else raise NameError.new( "Error: undefined variable _map", "_map" ) end
+                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:91"] + __e.backtrace ) ; raise __e
+                                                                                                          end                                                                                                        ,
+                                                                                                      [
+                                                                                                            Proc.new { |_clauses| 
+                                                                                                                begin
+                                                                                                                    trampCall(_clauses)
+                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:131"] + __e.backtrace ) ; raise __e
+                                                                                                                end
+                                                                                                            }                                                                                                          ,
+                                                                                                            begin
+                                                                                                                trampCall(_clauses)
+                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:131"] + __e.backtrace ) ; raise __e
+                                                                                                            end
+                                                                                                      ]
+                                                                                                                   ))
+                                                                                                  end
+                                                                                              )
+                                                                                          end
+                                                                                      else
+                                                                                        false
+                                                                                      end
+                                                                                  } ; ___lambda.call(
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                            _cdr(
+                                                                                              __v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30083
+                                                                                            )
+                                                                                        end
+                                                                                             )
+                                                                                end
+                                                                            } ; ___lambda.call(
+                                                                                __v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30086
+                                                                                       )
+                                                                          end
+                                                                      else
+                                                                        false
+                                                                      end
+                                                                  } ; ___lambda.call(
+                                                                        begin
+                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                            _cdr(
+                                                                              __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30084
+                                                                            )
+                                                                        end
+                                                                             )
+                                                                end
+                                                            } ; ___lambda.call(
+                                                                __v__3__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30085
+                                                                       )
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                _car(
+                                                                  __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30084
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                else
+                                                  false
+                                                end
+                                            } ; ___lambda.call(
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                      _car(
+                                                        __v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30083
+                                                      )
+                                                  end
+                                                       )
+                                          end
+                                      else
+                                        false
+                                      end
+                                  } ; ___lambda.call(
+                                        begin
+                                          embedBacktraceInfo( "", 1 ); 
+                                            _cdr(
+                                              __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30075
+                                            )
+                                        end
+                                             )
+                                end
+                                     )
+                        end
+                    }
+              ]
+                           ))
+          end
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
+      def self._guard_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_guard', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_guard'] = self.method( :_guard_METHOD )
+    @_guard = 
+    trampCall(
+          begin
+            embedBacktraceInfo( "", 1 ); 
+              trampCall( self._er_MIMARKmacro_MIMARKtransformer_METHOD(  'er-macro-transformer',
+                  begin
+                    if @global_lisp_binding.has_key?('_er_MIMARKmacro_MIMARKtransformer') then
+                      trampCall(@_er_MIMARKmacro_MIMARKtransformer)
+                    else raise NameError.new( "Error: undefined variable _er_MIMARKmacro_MIMARKtransformer", "_er_MIMARKmacro_MIMARKtransformer" ) end
+                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                  end                ,
+              [
+                    Proc.new { |__expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30090,__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091,__compare__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30092| 
+                        begin
+                          ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30105| 
+                              if ( 
+                                begin
+                                    trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30105)
+                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                end
+                               ) then
+                                  begin
+                                      trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30105)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              else
+                                  begin
+                                    ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30106| 
+                                        if ( 
+                                          begin
+                                              trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30106)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                         ) then
+                                            begin
+                                                trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30106)
+                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                            end
+                                        else
+                                            begin
+                                              ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30107| 
+                                                  if ( 
+                                                    begin
+                                                        trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30107)
+                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                    end
+                                                   ) then
+                                                      begin
+                                                          trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30107)
+                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  else
+                                                      begin
+                                                        ___lambda = lambda { |___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30108| 
+                                                            if ( 
+                                                              begin
+                                                                  trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30108)
+                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                              end
+                                                             ) then
+                                                                begin
+                                                                    trampCall(___gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30108)
+                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                            else
+                                                              false
+                                                            end
+                                                        } ; ___lambda.call(
+                                                              begin raise RuntimeError, 
+                                                                "no expansion for" ' ' + 
+                                                                _write_MIMARKto_MIMARKstring(
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      trampCall( self._strip_MIMARKsyntactic_MIMARKclosures_METHOD(  'strip-syntactic-closures',
+                                                                          begin
+                                                                            if @global_lisp_binding.has_key?('_strip_MIMARKsyntactic_MIMARKclosures') then
+                                                                              trampCall(@_strip_MIMARKsyntactic_MIMARKclosures)
+                                                                            else raise NameError.new( "Error: undefined variable _strip_MIMARKsyntactic_MIMARKclosures", "_strip_MIMARKsyntactic_MIMARKclosures" ) end
+                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                          end                                                                        ,
+                                                                      [
+                                                                          __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30090
+                                                                      ]
+                                                                                   ))
+                                                                  end
+                                                                )
+                                                              rescue => __e 
+                                                                __e.set_backtrace( ["./lib/nendo/experimental.nnd:138"] + __e.backtrace )
+                                                                raise __e
+                                                              end 
+                                                                   )
+                                                      end
+                                                  end
+                                              } ; ___lambda.call(
+                                                    begin
+                                                      ___lambda = lambda { |__v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30102| 
+                                                          if ( 
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                _not(
+                                                                    begin
+                                                                      embedBacktraceInfo( "", 1 ); 
+                                                                        _eq_QUMARK(
+                                                                          false                                                                          ,
+                                                                            begin
+                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                _pair_QUMARK(
+                                                                                  __v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30102
+                                                                                )
+                                                                            end
+                                                                        )
+                                                                    end
+                                                                )
+                                                            end
+                                                           ) then
+                                                              begin
+                                                                ___lambda = lambda { |__v__6__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30103| 
+                                                                    begin
+                                                                      ___lambda = lambda { |_var_MIMARKclauses| 
+                                                                          begin
+                                                                            ___lambda = lambda { |__v__7__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30104| 
+                                                                                if ( 
+                                                                                  begin
+                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                                      _not(
+                                                                                          begin
+                                                                                            embedBacktraceInfo( "", 1 ); 
+                                                                                              _eq_QUMARK(
+                                                                                                false                                                                                                ,
+                                                                                                  begin
+                                                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                                                      trampCall( self._list_QUMARK_METHOD(  'list?',
+                                                                                                          begin
+                                                                                                            if @global_lisp_binding.has_key?('_list_QUMARK') then
+                                                                                                              trampCall(@_list_QUMARK)
+                                                                                                            else raise NameError.new( "Error: undefined variable _list_QUMARK", "_list_QUMARK" ) end
+                                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                                                          end                                                                                                        ,
+                                                                                                      [
+                                                                                                          __v__7__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30104
+                                                                                                      ]
+                                                                                                                   ))
+                                                                                                  end
+                                                                                              )
+                                                                                          end
+                                                                                      )
+                                                                                  end
+                                                                                 ) then
+                                                                                    begin
+                                                                                      ___lambda = lambda { |_body| 
+                                                                                          begin
+                                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                              _cons(
+                                                                                                  begin
+                                                                                                    embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                      trampCall( callProcedure(  '__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',  '_rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',
+                                                                                                          begin
+                                                                                                              trampCall(__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091)
+                                                                                                            rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                          end                                                                                                        ,
+                                                                                                      [
+                                                                                                          :"%guard"
+                                                                                                      ]
+                                                                                                                   ))
+                                                                                                  end                                                                                                ,
+                                                                                                  begin
+                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                      _cons(
+                                                                                                          begin
+                                                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                              _cons(
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                      trampCall( callProcedure(  '__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',  '_rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',
+                                                                                                                          begin
+                                                                                                                              trampCall(__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091)
+                                                                                                                            rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                          end                                                                                                                        ,
+                                                                                                                      [
+                                                                                                                          :"%guard-var"
+                                                                                                                      ]
+                                                                                                                                   ))
+                                                                                                                  end                                                                                                                ,
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                      _cons(
+                                                                                                                          begin
+                                                                                                                              trampCall(_var_MIMARKclauses)
+                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:144"] + __e.backtrace ) ; raise __e
+                                                                                                                          end                                                                                                                        ,
+                                                                                                                        Cell.new()
+                                                                                                                      )
+                                                                                                                  end
+                                                                                                              )
+                                                                                                          end                                                                                                        ,
+                                                                                                          begin
+                                                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                              _cons(
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                      _cons(
+                                                                                                                          begin
+                                                                                                                            embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                              trampCall( callProcedure(  '__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',  '_rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',
+                                                                                                                                  begin
+                                                                                                                                      trampCall(__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091)
+                                                                                                                                    rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                  end                                                                                                                                ,
+                                                                                                                              [
+                                                                                                                                  :"%guard-clause"
+                                                                                                                              ]
+                                                                                                                                           ))
+                                                                                                                          end                                                                                                                        ,
+                                                                                                                          begin
+                                                                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                              _cons(
+                                                                                                                                  begin
+                                                                                                                                      trampCall(_var_MIMARKclauses)
+                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:144"] + __e.backtrace ) ; raise __e
+                                                                                                                                  end                                                                                                                                ,
+                                                                                                                                Cell.new()
+                                                                                                                              )
+                                                                                                                          end
+                                                                                                                      )
+                                                                                                                  end                                                                                                                ,
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 91 ); 
+                                                                                                                      trampCall( self._map_METHOD(  'map',
+                                                                                                                          begin
+                                                                                                                            if @global_lisp_binding.has_key?('_map') then
+                                                                                                                              trampCall(@_map)
+                                                                                                                            else raise NameError.new( "Error: undefined variable _map", "_map" ) end
+                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:91"] + __e.backtrace ) ; raise __e
+                                                                                                                          end                                                                                                                        ,
+                                                                                                                      [
+                                                                                                                            Proc.new { |_body| 
+                                                                                                                                begin
+                                                                                                                                    trampCall(_body)
+                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                                end
+                                                                                                                            }                                                                                                                          ,
+                                                                                                                            begin
+                                                                                                                                trampCall(_body)
+                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                            end
+                                                                                                                      ]
+                                                                                                                                   ))
+                                                                                                                  end
+                                                                                                              )
+                                                                                                          end
+                                                                                                      )
+                                                                                                  end
+                                                                                              )
+                                                                                          end
+                                                                                      } ; ___lambda.call(
+                                                                                          __v__7__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30104
+                                                                                                 )
+                                                                                    end
+                                                                                else
+                                                                                  false
+                                                                                end
+                                                                            } ; ___lambda.call(
+                                                                                  begin
+                                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                                      _cdr(
+                                                                                        __v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30102
+                                                                                      )
+                                                                                  end
+                                                                                       )
+                                                                          end
+                                                                      } ; ___lambda.call(
+                                                                          __v__6__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30103
+                                                                                 )
+                                                                    end
+                                                                } ; ___lambda.call(
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                          _car(
+                                                                            __v__5__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30102
+                                                                          )
+                                                                      end
+                                                                           )
+                                                              end
+                                                          else
+                                                            false
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "", 1 ); 
+                                                                _cdr(
+                                                                  __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30090
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                         )
+                                            end
+                                        end
+                                    } ; ___lambda.call(
+                                          begin
+                                            ___lambda = lambda { |__v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30099| 
+                                                if ( 
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                      _not(
+                                                          begin
+                                                            embedBacktraceInfo( "", 1 ); 
+                                                              _eq_QUMARK(
+                                                                false                                                                ,
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      _pair_QUMARK(
+                                                                        __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30099
+                                                                      )
+                                                                  end
+                                                              )
+                                                          end
+                                                      )
+                                                  end
+                                                 ) then
+                                                    begin
+                                                      ___lambda = lambda { |__v__3__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30100| 
+                                                          begin
+                                                            ___lambda = lambda { |_var_MIMARKclauses| 
+                                                                begin
+                                                                  ___lambda = lambda { |__v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30101| 
+                                                                      if ( 
+                                                                        begin
+                                                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                                                            _not(
+                                                                                begin
+                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                    _eq_QUMARK(
+                                                                                      false                                                                                      ,
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                            _null_QUMARK(
+                                                                                              __v__4__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30101
+                                                                                            )
+                                                                                        end
+                                                                                    )
+                                                                                end
+                                                                            )
+                                                                        end
+                                                                       ) then
+                                                                          begin
+                                                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                              _cons(
+                                                                                  begin
+                                                                                    embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                      trampCall( callProcedure(  '__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',  '_rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',
+                                                                                          begin
+                                                                                              trampCall(__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091)
+                                                                                            rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                          end                                                                                        ,
+                                                                                      [
+                                                                                          :"error"
+                                                                                      ]
+                                                                                                   ))
+                                                                                  end                                                                                ,
+                                                                                  begin
+                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                      _cons(
+                                                                                        "guard requires (guard (var (clauses-like-cond)) body ...)"                                                                                        ,
+                                                                                        Cell.new()
+                                                                                      )
+                                                                                  end
+                                                                              )
+                                                                          end
+                                                                      else
+                                                                        false
+                                                                      end
+                                                                  } ; ___lambda.call(
+                                                                        begin
+                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                            _cdr(
+                                                                              __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30099
+                                                                            )
+                                                                        end
+                                                                             )
+                                                                end
+                                                            } ; ___lambda.call(
+                                                                __v__3__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30100
+                                                                       )
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 73 ); 
+                                                                _car(
+                                                                  __v__2__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30099
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                else
+                                                  false
+                                                end
+                                            } ; ___lambda.call(
+                                                  begin
+                                                    embedBacktraceInfo( "", 1 ); 
+                                                      _cdr(
+                                                        __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30090
+                                                      )
+                                                  end
+                                                       )
+                                          end
+                                               )
+                                  end
+                              end
+                          } ; ___lambda.call(
+                                begin
+                                  ___lambda = lambda { |__v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30098| 
+                                      if ( 
+                                        begin
+                                          embedBacktraceInfo( "./lib/nendo/experimental.nnd", 39 ); 
+                                            _not(
+                                                begin
+                                                  embedBacktraceInfo( "", 1 ); 
+                                                    _eq_QUMARK(
+                                                      false                                                      ,
+                                                        begin
+                                                          embedBacktraceInfo( "", 1 ); 
+                                                            _null_QUMARK(
+                                                              __v__1__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30098
+                                                            )
+                                                        end
+                                                    )
+                                                end
+                                            )
+                                        end
+                                       ) then
+                                          begin
+                                            embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                              _cons(
+                                                  begin
+                                                    embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                      trampCall( callProcedure(  '__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',  '_rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091',
+                                                          begin
+                                                              trampCall(__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30091)
+                                                            rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                          end                                                        ,
+                                                      [
+                                                          :"error"
+                                                      ]
+                                                                   ))
+                                                  end                                                ,
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                      _cons(
+                                                        "guard requires (guard (var (clauses-like-cond)) body ...)"                                                        ,
+                                                        Cell.new()
+                                                      )
+                                                  end
+                                              )
+                                          end
+                                      else
+                                        false
+                                      end
+                                  } ; ___lambda.call(
+                                        begin
+                                          embedBacktraceInfo( "", 1 ); 
+                                            _cdr(
+                                              __expr__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30090
+                                            )
+                                        end
+                                             )
+                                end
+                                     )
+                        end
+                    }
+              ]
+                           ))
+          end
     )
   end
  )
