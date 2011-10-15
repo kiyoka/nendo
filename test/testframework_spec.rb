@@ -45,7 +45,7 @@ describe Nendo, "when use NendoTestError " do
   end
 
   it "should" do
-    @nendoError1.type.should ==           Nendo::NendoTestError
+    @nendoError1.type.should ==           RuntimeError
     @nendoError1.type = @runtimeError.class
     @nendoError1.type.should ==           RuntimeError
     @nendoError1.type = RuntimeError

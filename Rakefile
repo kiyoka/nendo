@@ -54,6 +54,8 @@ task :test do
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
   stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
+  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
   stage2 << "cat test.record"
   arr = []
   arr += stage1

@@ -217,7 +217,7 @@ module Nendo
   end
 
   class NendoTestError
-    def initialize( type = NendoTestError )
+    def initialize( type = RuntimeError )
       @type = type
     end
 
