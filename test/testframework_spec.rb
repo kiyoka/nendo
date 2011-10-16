@@ -34,7 +34,7 @@
 #
 require 'nendo'
 include Nendo
-
+require 'timeout'
 
 describe Nendo, "when use NendoTestError " do
   before do
@@ -50,6 +50,8 @@ describe Nendo, "when use NendoTestError " do
     @nendoError1.type.should ==           RuntimeError
     @nendoError1.type = RuntimeError
     @nendoError1.type.should ==           RuntimeError
+    @nendoError1.type = Timeout::Error
+    @nendoError1.type.should ==           Timeout::Error
     @nendoError2.type.should ==           RuntimeError
   end
 end
@@ -139,8 +141,10 @@ describe Nendo, "when test framework handle exception " do
     @nendo.evalStr( '(test-check   (test-error ArgumentError)  (test-error RuntimeError ))' ).should   ==  '#f'
     @nendo.evalStr( '(test-check   (test-error SyntaxError)    (test-error RuntimeError ))' ).should   ==  '#f'
 
-    @nendo.evalStr( '(test* "exception" (test-error TypeError) (+ 1.1 "str"))' ).should                      ==  '#t'
-    @nendo.evalStr( '(test* "exception" (test-error RuntimeError) (error "[RuntimeError]"))' ).should        ==  '#t'
+    @nendo.evalStr( '(test* "exception" (test-error TypeError)    (+ 1.1 "str"))' ).should                      ==  '#t'
+    @nendo.evalStr( '(test* "exception" (test-error RuntimeError) (+ 1.1 "str"))' ).should                      ==  '#f'
+    @nendo.evalStr( '(test* "exception" (test-error TypeError)    (error "[RuntimeError]"))' ).should           ==  '#f'
+    @nendo.evalStr( '(test* "exception" (test-error RuntimeError) (error "[RuntimeError]"))' ).should           ==  '#t'
 
   end
 end
