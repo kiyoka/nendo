@@ -145,6 +145,9 @@ describe Nendo, "when test framework handle exception " do
     @nendo.evalStr( '(test* "exception" (test-error RuntimeError) (+ 1.1 "str"))' ).should                      ==  '#f'
     @nendo.evalStr( '(test* "exception" (test-error TypeError)    (error "[RuntimeError]"))' ).should           ==  '#f'
     @nendo.evalStr( '(test* "exception" (test-error RuntimeError) (error "[RuntimeError]"))' ).should           ==  '#t'
-
+    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise RuntimeError  "[RuntimeError]"))'  ).should           ==  '#f'
+    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise ArgumentError "[ArgumentError]"))' ).should           ==  '#t'
+    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise TypeError     "[TypeError]"))'     ).should           ==  '#f'
+    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise NoMethodError "[NoMethodError]"))' ).should           ==  '#f'
   end
 end

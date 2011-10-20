@@ -9,5 +9,42 @@
 
 TestError
 
+(let1 cnt 0
+  (begin
+    (set! cnt (+ cnt 1))
+    (set! cnt (+ cnt "string"))))
 
+
+;; unwind-protect for Exceptions
+(let* ([cnt 0]
+       [result (unwind-protect
+                   (begin
+                     (set! cnt (+ cnt 1))
+                     (set! cnt (+ cnt 2))
+                     (+ 1.1 "str")
+                     (set! cnt (+ cnt 3)))
+                 (set! cnt (+ cnt 100)))])
+  (list result cnt))
+
+
+(let* ([cnt 0]
+       [result (unwind-protect
+                   (begin
+                     (set! cnt (+ cnt 10))
+                     (set! cnt (+ cnt 01))
+                     (error "[RuntimeError]")
+                     (set! cnt (+ cnt 02)))
+                 (set! cnt (+ cnt 100)))])
+  (list result cnt))
+
+(let* ([cnt 0]
+       [result (unwind-protect
+                   (begin
+                     (set! cnt (+ cnt 10))
+                     (set! cnt (+ cnt 01))
+                     (guard (exc (else (set! cnt (+ cnt 1000))))
+                       (error "[RuntimeError]"))
+                     (set! cnt (+ cnt 02)))
+                 (set! cnt (+ cnt 100)))])
+  (list result cnt))
 

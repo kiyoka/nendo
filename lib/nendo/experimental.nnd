@@ -118,7 +118,21 @@
          (assv-ref "expanded" alist))))))))
 
 
-;; guard for Exception
+(define-syntax raise
+  (syntax-rules ()
+    ((raise)
+     (error "raise requires (raise exception message [backtrace-str])"))
+    ((raise exc)
+     (%raise exc 
+             (sprintf "%s:%s raised %s" (*FILE*) (*LINE*) exc)
+             (sprintf "%s:%s raised %s" (*FILE*) (*LINE*) exc)))
+    ((raise exc mes)
+     (%raise exc mes (sprintf "%s:%s raised %s" (*FILE*) (*LINE*) exc)))
+    ((raise exc mes backtrace)
+     (%raise exc mes backtrace))))
+
+
+;; guard for Exceptions
 (define-syntax %guard-var
   (syntax-rules (=> ...)
     ((%guard-clause (var clauses ...))
@@ -144,5 +158,21 @@
        var-clauses)
       body ...))))
 
+
+;; unwind-protect for Exceptions
+(define-syntax unwind-protect
+  (syntax-rules ()
+    ((unwind-protect)
+     (error "unwind-protect requires (unwind-protect body cleanup) form."))
+    ((unwind-protect body)
+     (error "unwind-protect requires (unwind-protect body cleanup) form."))
+    ((unwind-protect body cleanup)
+     (let1 temp #f
+         (guard
+             (exc (#t (begin cleanup
+                             temp)))
+           (begin0
+               (set! temp body)
+             cleanup))))))
 
 

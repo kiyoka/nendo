@@ -532,7 +532,7 @@ EOS
 (let ((x 'outer))
   (let-syntax ((m (syntax-rules () ((m) x))))
     (let ((x 'inner))
-      (m))))
+      (m)))) ;; '
 EOS
            ).should == "outer"
 
@@ -560,20 +560,20 @@ EOS
 EOS
            ).should == "outer"
 
-    pending( "nested let fails on limitation of Nendo's let-syntax." )
-
-    @nendo.evalStr( <<EOS
-(define z 'top-level-1)
-(let ((x 'outer1))
-  (let ((y x))
-    (let ((z y))
-      (let-syntax ((m (syntax-rules () ((m) z))))
-        (let ((x 'inner1))
-          (let ((y x))
-            (let ((z y))
-              (m))))))))
-EOS
-           ).should == "outer1"
+#    pending( "nested let fails on limitation of Nendo's let-syntax." )
+#
+#    @nendo.evalStr( <<EOS
+#(define z 'top-level-1)
+#(let ((x 'outer1))
+#  (let ((y x))
+#    (let ((z y))
+#      (let-syntax ((m (syntax-rules () ((m) z))))
+#        (let ((x 'inner1))
+#          (let ((y x))
+#            (let ((z y))
+#              (m))))))))
+#EOS
+#           ).should == "outer1"
 
   end
 end
@@ -931,6 +931,104 @@ EOS
   #t)
 EOS
                     ) }.should  raise_error( RuntimeError, /Error occur:[(]3 2 1[)]/ )
+
+
+    @nendo.evalStr( <<EOS
+(define a
+ (guard
+     (exc (else (exc.message))) ;; line 1
+   (raise RuntimeError)))
+(define b
+ (guard
+     (exc (else (exc.message))) ;; line 5
+   (raise NoMethodError)))
+(define c
+ (guard
+     (exc (else (exc.message))) ;; line 9
+   (raise ArgumentError)))
+(list a b c)
+EOS
+                    ).should  == '("(string):1 raised RuntimeError" "(string):5 raised NoMethodError" "(string):9 raised ArgumentError")'
+
+
+  end
+end
+
+
+describe Nendo, "When use unwind-protect" do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.setDisplayErrors( false )
+    @nendo.loadInitFile
+  end
+
+  it "should" do
+    @nendo.evalStr( "(macroexpand '(unwind-protect 1 2)) ;; '" ).should  match( /[(]%guard #<SyntacticClosure.exc:_exc__gensym/ )
+
+    lambda { @nendo.evalStr( <<EOS
+(let1 cnt 0
+  (begin
+    (set! cnt (+ cnt 1))
+    (set! cnt (+ cnt "string"))
+  ))
+EOS
+                    ) }.should  raise_error( TypeError )
+
+    @nendo.evalStr( <<EOS
+(let1 cnt 0
+  (unwind-protect
+      1
+    2))
+EOS
+           ).should  ==  '1'
+
+    @nendo.evalStr( <<EOS
+(let1 cnt 0
+  (unwind-protect
+      (begin 1 2)
+    3))
+EOS
+           ).should  ==  '2'
+
+    @nendo.evalStr( <<EOS
+(let* ([cnt 0]
+       [result (unwind-protect
+                   (begin
+                     (set! cnt (+ cnt 1))
+                     (set! cnt (+ cnt 2))
+                     (+ 1.1 "str")
+                     (set! cnt (+ cnt 3)))
+                 (set! cnt (+ cnt 100)))])
+  (list result cnt))
+EOS
+           ).should  ==  '(#f 103)'
+
+    @nendo.evalStr( <<EOS
+(let* ([cnt 0]
+       [result (unwind-protect
+                   (begin
+                     (set! cnt (+ cnt 10))
+                     (set! cnt (+ cnt 01))
+                     (error "[RuntimeError]")
+                     (set! cnt (+ cnt 02)))
+                 (set! cnt (+ cnt 100)))])
+  (list result cnt))
+EOS
+           ).should  ==  '(#f 111)'
+
+    @nendo.evalStr( <<EOS
+(let* ([cnt 0]
+       [result (unwind-protect
+                   (begin
+                     (set! cnt (+ cnt 10))
+                     (set! cnt (+ cnt 01))
+                     (guard (exc (else (set! cnt (+ cnt 100))))
+                       (error "[RuntimeError]"))
+                     (set! cnt (+ cnt 02)))
+                 (set! cnt (+ cnt 1000)))])
+  (list result cnt))
+EOS
+           ).should  ==  '(113 1113)'
 
   end
 end

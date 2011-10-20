@@ -311,7 +311,7 @@
                      (else (if (zero? level)
                                (cond ((eq? (car form) 'unquote) (car (cdr form)))
                                      ((eq? (car form) 'unquote-splicing)
-                                      (raise RuntimeError (+ "Error: Unquote-splicing wasn't in a list: " (write-to-string form))
+                                      (%raise RuntimeError (+ "Error: Unquote-splicing wasn't in a list: " (write-to-string form))
                                              (sprintf "%s:%s outside list." (*FILE*) (*LINE*))))
                                      ((and (pair? (car form))
                                            (eq? (car (car form)) 'unquote-splicing))
@@ -331,7 +331,7 @@
 
 (define unquote
   (macro (lst)
-    (raise RuntimeError "Error: unquote appeared outside quasiquote" (sprintf "%s:%s outside quasiquote" (*FILE*) (*LINE*)))))
+    (%raise RuntimeError "Error: unquote appeared outside quasiquote" (sprintf "%s:%s outside quasiquote" (*FILE*) (*LINE*)))))
 
 
 (define unquote-splicing
@@ -856,11 +856,11 @@
                 ,@(cddr lst))))))
     (cond
      ((> 2 (length lst))
-      (raise ArgumentError ". dot-operator requires 2+ arguments." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))
+      (%raise ArgumentError ". dot-operator requires 2+ arguments." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))
      (else
       (if (symbol? (second lst))
           (generate-method-call-form lst)
-          (raise TypeError ". dot-operator requires method name as symbol." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))))))
+          (%raise TypeError ". dot-operator requires method name as symbol." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))))))
 
 
 (define (with-open filename pred . lst)

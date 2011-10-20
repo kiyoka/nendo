@@ -1310,7 +1310,7 @@ module Nendo
     end
 
     # backtrace expects this format "filename:lineno: place message ". e.g.  "init.nnd:10: in aaa macro.".
-    def _raise( exception, message, backtrace )
+    def __PAMARKraise( exception, message, backtrace )
       raise exception, message, [ backtrace ]
     end
 
