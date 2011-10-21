@@ -38,7 +38,15 @@ rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
 
-task :default => [:test] do
+printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
+
+if '1' == ENV[ 'NENDO_CLEAN_TEST' ]
+  task :default => [:clean, :test]
+else
+  task :default => [:test]
+end
+
+task :default do |t|
 end
 
 task :test do
