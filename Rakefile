@@ -40,13 +40,7 @@ end
 
 printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
 
-if '1' == ENV[ 'NENDO_CLEAN_TEST' ]
-  task :default => [:clean, :test]
-else
-  task :default => [:test]
-end
-
-task :default do |t|
+task :default => [:condition_clean, :test] do
 end
 
 task :test do
@@ -140,8 +134,12 @@ task :clean do
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
 end
 
+task :condition_clean do
+  if 1 == ENV[ 'NENDO_CLEAN_TEST' ].to_i
+    sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
+  end
+end
+
 task :repl do
   sh "ruby -I ./lib ./bin/nendo"
 end
-
-

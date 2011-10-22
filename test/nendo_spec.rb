@@ -2500,7 +2500,7 @@ EOS
                           (bar 2))
                         ))
 EOS
-           ).gsub( /[24]0[0-9][0-9][0-9]/, "X0000" ).should == "(%let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (%let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 #f))))"
+           ).gsub( /[0-9][0-9][0-9][0-9][0-9]/, "X0000" ).should == "(%let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (foo 1))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (%let ((__gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 (bar 2))) (if __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 __gensym__fb4e25e49e9fb4e46342224606faf2e3eabf1251_X0000 #f))))"
     @nendo.evalStr( <<EOS
 (%setup-%tailcall-mark (macroexpand
                         '(let loop ((x 1))
