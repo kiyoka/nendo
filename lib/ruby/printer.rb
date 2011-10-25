@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# nendo.rb  -  "printer for nendo"
+# printer.rb  -  "printer for nendo"
 #
 #   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #

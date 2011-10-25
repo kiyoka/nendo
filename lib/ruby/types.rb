@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# nendo.rb  -  "types for nendo core"
+# types.rb  -  "types for nendo core"
 #
 #   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #
