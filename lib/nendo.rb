@@ -37,87 +37,13 @@ require 'ruby/types'
 require 'ruby/reader'
 require 'ruby/builtin_functions'
 require 'ruby/evaluator'
+require 'ruby/printer'
 
 module Nendo
   require 'stringio'
   require 'digest/sha1'
   require 'pp'
 
-  class Printer
-    def initialize( debug = false )
-      @debug    = debug
-    end
-  
-    def __write( sexp, readable )
-      getQuoteKeyword = lambda { |x|
-        case x
-        when :"dot-operator"
-          "."
-        else
-          false
-        end
-      }
-      case sexp
-      when Cell
-        arr = sexp.map { |x| __write( x.car, readable ) }
-        lastAtom = sexp.lastAtom
-        lastAtomStr = lastAtom ? __write( sexp.getLastAtom, readable ) : ""
-        keyword = getQuoteKeyword.call( sexp.car )
-        if keyword
-          keyword + arr[1..-1].join( " " ) + (lastAtom ? " . " + lastAtomStr : "")
-        else
-          "(" +  arr.join( " " ) + (lastAtom ? " . " + lastAtomStr : "") + ")"
-        end
-      when Array # is a vector in the Nendo world.
-        arr = sexp.map { |x| __write( x, readable ) }
-        "#(" + arr.join( " " ) + ")"
-      when true
-        "#t"
-      when false
-        "#f"
-      when Symbol
-        keyword = getQuoteKeyword.call( sexp )
-        if keyword
-          keyword
-        else
-          sprintf( "%s", sexp.to_s )
-        end
-      when String, LispString
-        if readable
-          sprintf( "\"%s\"", LispString.escape( sexp.to_s ))
-        else
-          sexp.to_s
-        end
-      when SyntacticClosure
-        sprintf( "#<SyntacticClosure[%s:%s]>", sexp.originalSymbol, sexp.renamedSymbol )
-      when Regexp
-        "#/" + sexp.source + "/" + (sexp.casefold? ? "i" : "")
-      when LispKeyword
-        ":" + sexp.key.to_s
-      when LispCoreSyntax
-        "#<Nendo::LispCoreSyntax>"
-      when LispMacro
-        "#<Nendo::LispMacro>"
-      when LispSyntax
-        "#<Nendo::LispSyntax>"
-      when Nil
-        "()"
-      when nil
-        "nil"
-      else
-        sprintf( "%s", sexp )
-      end
-    end
-  
-    def _print( sexp )
-      self.__write( sexp, false )
-    end
-    def _write( sexp )
-      self.__write( sexp, true  )
-    end
-  end
-  
-  
   class Core
     def initialize( debug_evaluator = false, debug_printer = false )
       @debug_evaluator = debug_evaluator
