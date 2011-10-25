@@ -47,13 +47,13 @@ module Nendo
         }
       end
     end
-    
+
     def __assertList( funcname, arg )
       if Cell != arg.class
         raise ArgumentError, "Error: %s expects a list argument.\n"
       end
     end
-    
+
     def _equal_QUMARK( a, b )
       if a.is_a? String  and  b.is_a? String
         a === b
@@ -109,7 +109,7 @@ module Nendo
         1
       else
         __assertFlat( arr )
-        arr.each { |x| 
+        arr.each { |x|
           if not _number_QUMARK(x)
             raise TypeError
           end
@@ -132,7 +132,7 @@ module Nendo
       raise TypeError if not _number_QUMARK(first)
       rest = rest[0].to_arr
       __assertFlat( rest )
-      if 0 == rest.length 
+      if 0 == rest.length
         - first
       else
         rest.inject(first){|x,y| x-y}
