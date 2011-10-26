@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "nendo"
-  s.version = "0.5.4"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2011-10-24"
+  s.date = "2011-10-26"
   s.description = "Nendo is a programming language written in Ruby."
   s.email = "kiyoka@sumibi.org"
   s.executables = ["nendo"]
@@ -50,6 +50,13 @@ Gem::Specification.new do |s|
     "lib/nendo/test.nndc",
     "lib/rfc/json.nnd",
     "lib/rfc/json.nndc",
+    "lib/ruby/builtin_functions.rb",
+    "lib/ruby/core.rb",
+    "lib/ruby/evaluator.rb",
+    "lib/ruby/out_of_module.rb",
+    "lib/ruby/printer.rb",
+    "lib/ruby/reader.rb",
+    "lib/ruby/types.rb",
     "lib/srfi-1.nnd",
     "lib/srfi-1.nndc",
     "lib/srfi-2.nnd",

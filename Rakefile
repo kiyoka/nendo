@@ -83,7 +83,7 @@ end
 
 task :compile do
   # Replace Version Number
-  targetFile = "./lib/nendo.rb"
+  targetFile = "./lib/ruby/core.rb"
   vh = Jeweler::VersionHelper.new "."
   (original, modified) = open( targetFile ) {|f|
     lines = f.readlines
