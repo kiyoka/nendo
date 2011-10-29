@@ -135,7 +135,7 @@
 ;; guard for Exceptions
 (define-syntax %guard-var
   (syntax-rules (=> ...)
-    ((%guard-clause (var clauses ...))
+    ((%guard-var (var clauses ...))
      var)))
 
 (define-syntax %guard-clause
