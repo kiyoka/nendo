@@ -142,7 +142,8 @@
   (syntax-rules (=> ...)
     ((%guard-clause (var clauses ...))
      (cond
-      clauses ...))))
+      clauses ...
+      (#t (raise var))))))
 
 (define-syntax guard
   (syntax-rules ()

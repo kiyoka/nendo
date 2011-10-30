@@ -2450,24 +2450,82 @@ trampCall(
                                                                                                                    ))
                                                                                                   end                                                                                                ,
                                                                                                   begin
-                                                                                                    embedBacktraceInfo( "./lib/nendo/experimental.nnd", 91 ); 
-                                                                                                      trampCall( self._map_METHOD(  'map',
+                                                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                                                      trampCall( self._append_METHOD(  'append',
                                                                                                           begin
-                                                                                                            if @global_lisp_binding.has_key?('_map') then
-                                                                                                              trampCall(@_map)
-                                                                                                            else raise NameError.new( "Error: undefined variable _map", "_map" ) end
-                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:91"] + __e.backtrace ) ; raise __e
+                                                                                                            if @global_lisp_binding.has_key?('_append') then
+                                                                                                              trampCall(@_append)
+                                                                                                            else raise NameError.new( "Error: undefined variable _append", "_append" ) end
+                                                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                                                           end                                                                                                        ,
                                                                                                       [
-                                                                                                            Proc.new { |_clauses| 
-                                                                                                                begin
-                                                                                                                    trampCall(_clauses)
-                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:145"] + __e.backtrace ) ; raise __e
-                                                                                                                end
-                                                                                                            }                                                                                                          ,
                                                                                                             begin
-                                                                                                                trampCall(_clauses)
-                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 91 ); 
+                                                                                                                trampCall( self._map_METHOD(  'map',
+                                                                                                                    begin
+                                                                                                                      if @global_lisp_binding.has_key?('_map') then
+                                                                                                                        trampCall(@_map)
+                                                                                                                      else raise NameError.new( "Error: undefined variable _map", "_map" ) end
+                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:91"] + __e.backtrace ) ; raise __e
+                                                                                                                    end                                                                                                                  ,
+                                                                                                                [
+                                                                                                                      Proc.new { |_clauses| 
+                                                                                                                          begin
+                                                                                                                              trampCall(_clauses)
+                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                          end
+                                                                                                                      }                                                                                                                    ,
+                                                                                                                      begin
+                                                                                                                          trampCall(_clauses)
+                                                                                                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:145"] + __e.backtrace ) ; raise __e
+                                                                                                                      end
+                                                                                                                ]
+                                                                                                                             ))
+                                                                                                            end                                                                                                          ,
+                                                                                                            begin
+                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                _cons(
+                                                                                                                    begin
+                                                                                                                      embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                        _cons(
+                                                                                                                          true                                                                                                                          ,
+                                                                                                                            begin
+                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                _cons(
+                                                                                                                                    begin
+                                                                                                                                      embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                        _cons(
+                                                                                                                                            begin
+                                                                                                                                              embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                trampCall( callProcedure(  '__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30155',  '_rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30155',
+                                                                                                                                                    begin
+                                                                                                                                                        trampCall(__rename__gensym__29d1958308f04161c7005d22e2e7d31864eae2bc_30155)
+                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                    end                                                                                                                                                  ,
+                                                                                                                                                [
+                                                                                                                                                    :"raise"
+                                                                                                                                                ]
+                                                                                                                                                             ))
+                                                                                                                                            end                                                                                                                                          ,
+                                                                                                                                            begin
+                                                                                                                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                _cons(
+                                                                                                                                                    begin
+                                                                                                                                                        trampCall(_var)
+                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:146"] + __e.backtrace ) ; raise __e
+                                                                                                                                                    end                                                                                                                                                  ,
+                                                                                                                                                  Cell.new()
+                                                                                                                                                )
+                                                                                                                                            end
+                                                                                                                                        )
+                                                                                                                                    end                                                                                                                                  ,
+                                                                                                                                  Cell.new()
+                                                                                                                                )
+                                                                                                                            end
+                                                                                                                        )
+                                                                                                                    end                                                                                                                  ,
+                                                                                                                  Cell.new()
+                                                                                                                )
                                                                                                             end
                                                                                                       ]
                                                                                                                    ))
@@ -2641,7 +2699,7 @@ trampCall(
                                                                   end
                                                                 )
                                                               rescue => __e 
-                                                                __e.set_backtrace( ["./lib/nendo/experimental.nnd:152"] + __e.backtrace )
+                                                                __e.set_backtrace( ["./lib/nendo/experimental.nnd:153"] + __e.backtrace )
                                                                 raise __e
                                                               end 
                                                                    )
@@ -2742,7 +2800,7 @@ trampCall(
                                                                                                                       _cons(
                                                                                                                           begin
                                                                                                                               trampCall(_var_MIMARKclauses)
-                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:159"] + __e.backtrace ) ; raise __e
                                                                                                                           end                                                                                                                        ,
                                                                                                                         Cell.new()
                                                                                                                       )
@@ -2772,7 +2830,7 @@ trampCall(
                                                                                                                               _cons(
                                                                                                                                   begin
                                                                                                                                       trampCall(_var_MIMARKclauses)
-                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:158"] + __e.backtrace ) ; raise __e
+                                                                                                                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:159"] + __e.backtrace ) ; raise __e
                                                                                                                                   end                                                                                                                                ,
                                                                                                                                 Cell.new()
                                                                                                                               )
@@ -2792,12 +2850,12 @@ trampCall(
                                                                                                                             Proc.new { |_body| 
                                                                                                                                 begin
                                                                                                                                     trampCall(_body)
-                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:159"] + __e.backtrace ) ; raise __e
+                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:160"] + __e.backtrace ) ; raise __e
                                                                                                                                 end
                                                                                                                             }                                                                                                                          ,
                                                                                                                             begin
                                                                                                                                 trampCall(_body)
-                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:159"] + __e.backtrace ) ; raise __e
+                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:160"] + __e.backtrace ) ; raise __e
                                                                                                                             end
                                                                                                                       ]
                                                                                                                                    ))
@@ -3123,7 +3181,7 @@ trampCall(
                                                                   end
                                                                 )
                                                               rescue => __e 
-                                                                __e.set_backtrace( ["./lib/nendo/experimental.nnd:168"] + __e.backtrace )
+                                                                __e.set_backtrace( ["./lib/nendo/experimental.nnd:169"] + __e.backtrace )
                                                                 raise __e
                                                               end 
                                                                    )
@@ -3301,7 +3359,7 @@ trampCall(
                                                                                                                                                                                                       _cons(
                                                                                                                                                                                                           begin
                                                                                                                                                                                                               trampCall(_cleanup)
-                                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:176"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:177"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                           end                                                                                                                                                                                                        ,
                                                                                                                                                                                                           begin
                                                                                                                                                                                                             embedBacktraceInfo( "./lib/nendo/experimental.nnd", 71 ); 
@@ -3391,7 +3449,7 @@ trampCall(
                                                                                                                                                                                                       _cons(
                                                                                                                                                                                                           begin
                                                                                                                                                                                                               trampCall(_body)
-                                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:175"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:176"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                           end                                                                                                                                                                                                        ,
                                                                                                                                                                                                         Cell.new()
                                                                                                                                                                                                       )
@@ -3405,7 +3463,7 @@ trampCall(
                                                                                                                                                                                       _cons(
                                                                                                                                                                                           begin
                                                                                                                                                                                               trampCall(_cleanup)
-                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:176"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:177"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                           end                                                                                                                                                                                        ,
                                                                                                                                                                                         Cell.new()
                                                                                                                                                                                       )

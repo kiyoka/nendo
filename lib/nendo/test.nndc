@@ -59,13 +59,13 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       begin
-                        ___lambda = lambda { |___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30112| 
+                        ___lambda = lambda { |___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30113| 
                             if ( 
                               begin
                                 embedBacktraceInfo( "./lib/nendo/test.nnd", 175 ); 
                                   _null_QUMARK(
                                       begin
-                                          trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30112)
+                                          trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30113)
                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                       end
                                   )
@@ -84,7 +84,7 @@ trampCall(
                                         end                                      ,
                                     [
                                           begin
-                                              trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30112)
+                                              trampCall(___gensym__da296d116d489ba951dcd8991bd44f36a977a621_30113)
                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                           end
                                     ]
@@ -1384,7 +1384,119 @@ trampCall(
                                         end
                                     end
                                 else
-                                    Cell.new()
+                                    if ( 
+                                    true
+                                     ) then
+                                        begin
+                                            begin
+                                              embedBacktraceInfo( "./lib/nendo/experimental.nnd", 132 ); 
+                                                trampCall( self.__PAMARKraise_METHOD(  '%raise',
+                                                    begin
+                                                      if @global_lisp_binding.has_key?('__PAMARKraise') then
+                                                        trampCall(@__PAMARKraise)
+                                                      else raise NameError.new( "Error: undefined variable __PAMARKraise", "__PAMARKraise" ) end
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:132"] + __e.backtrace ) ; raise __e
+                                                    end                                                  ,
+                                                [
+                                                      begin
+                                                          trampCall(_exc)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:133"] + __e.backtrace ) ; raise __e
+                                                      end                                                    ,
+                                                      begin
+                                                        embedBacktraceInfo( "./lib/nendo/test.nnd", 76 ); 
+                                                          trampCall( self._sprintf_METHOD(  'sprintf',
+                                                              begin
+                                                                if @global_lisp_binding.has_key?('_sprintf') then
+                                                                  trampCall(@_sprintf)
+                                                                else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:76"] + __e.backtrace ) ; raise __e
+                                                              end                                                            ,
+                                                          [
+                                                              "%s:%s raised %s"                                                              ,
+                                                                begin
+                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 130 ); 
+                                                                    trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
+                                                                        begin
+                                                                          if @global_lisp_binding.has_key?('__ASMARKFILE_ASMARK') then
+                                                                            trampCall(@__ASMARKFILE_ASMARK)
+                                                                          else raise NameError.new( "Error: undefined variable __ASMARKFILE_ASMARK", "__ASMARKFILE_ASMARK" ) end
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                        end                                                                      ,
+                                                                    [
+                                                                    ]
+                                                                                 ))
+                                                                end                                                              ,
+                                                                begin
+                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 130 ); 
+                                                                    trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
+                                                                        begin
+                                                                          if @global_lisp_binding.has_key?('__ASMARKLINE_ASMARK') then
+                                                                            trampCall(@__ASMARKLINE_ASMARK)
+                                                                          else raise NameError.new( "Error: undefined variable __ASMARKLINE_ASMARK", "__ASMARKLINE_ASMARK" ) end
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                        end                                                                      ,
+                                                                    [
+                                                                    ]
+                                                                                 ))
+                                                                end                                                              ,
+                                                                begin
+                                                                    trampCall(_exc)
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:133"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                          ]
+                                                                       ))
+                                                      end                                                    ,
+                                                      begin
+                                                        embedBacktraceInfo( "./lib/nendo/test.nnd", 76 ); 
+                                                          trampCall( self._sprintf_METHOD(  'sprintf',
+                                                              begin
+                                                                if @global_lisp_binding.has_key?('_sprintf') then
+                                                                  trampCall(@_sprintf)
+                                                                else raise NameError.new( "Error: undefined variable _sprintf", "_sprintf" ) end
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:76"] + __e.backtrace ) ; raise __e
+                                                              end                                                            ,
+                                                          [
+                                                              "%s:%s raised %s"                                                              ,
+                                                                begin
+                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 130 ); 
+                                                                    trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
+                                                                        begin
+                                                                          if @global_lisp_binding.has_key?('__ASMARKFILE_ASMARK') then
+                                                                            trampCall(@__ASMARKFILE_ASMARK)
+                                                                          else raise NameError.new( "Error: undefined variable __ASMARKFILE_ASMARK", "__ASMARKFILE_ASMARK" ) end
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                        end                                                                      ,
+                                                                    [
+                                                                    ]
+                                                                                 ))
+                                                                end                                                              ,
+                                                                begin
+                                                                  embedBacktraceInfo( "./lib/nendo/experimental.nnd", 130 ); 
+                                                                    trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
+                                                                        begin
+                                                                          if @global_lisp_binding.has_key?('__ASMARKLINE_ASMARK') then
+                                                                            trampCall(@__ASMARKLINE_ASMARK)
+                                                                          else raise NameError.new( "Error: undefined variable __ASMARKLINE_ASMARK", "__ASMARKLINE_ASMARK" ) end
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/experimental.nnd:130"] + __e.backtrace ) ; raise __e
+                                                                        end                                                                      ,
+                                                                    [
+                                                                    ]
+                                                                                 ))
+                                                                end                                                              ,
+                                                                begin
+                                                                    trampCall(_exc)
+                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/test.nnd:133"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                          ]
+                                                                       ))
+                                                      end
+                                                ]
+                                                             ))
+                                            end
+                                        end
+                                    else
+                                        Cell.new()
+                                    end
                                 end
                             end
                         }                      ,
