@@ -2138,22 +2138,35 @@ describe Nendo, "when occur illegal syntax. " do
   it "should" do
 
     lambda { @nendo.evalStr( <<EOS
-(let abc 1
+(let abc 1  ;; let1 style form is illegal syntax for let form.
   (print abc))
 EOS
-                    ) }.should  raise_error( SyntaxError )
+                    ) }.should  raise_error( SyntaxError, /^named let requires/ )
 
     lambda { @nendo.evalStr( <<EOS
 (let 1)
 EOS
-                    ) }.should  raise_error( SyntaxError )
+                    ) }.should  raise_error( SyntaxError, /^let requires/  )
 
     lambda { @nendo.evalStr( <<EOS
 (let ())
 EOS
-                    ) }.should  raise_error( SyntaxError )
+                    ) }.should  raise_error( SyntaxError, /^let requires/  )
     @nendo.evalStr( <<EOS
 (let () 1)
+EOS
+           ).should  == '1'
+    lambda { @nendo.evalStr( <<EOS
+(let loop 1)
+EOS
+                    ) }.should  raise_error( SyntaxError, /^named let requires/ )
+
+    lambda { @nendo.evalStr( <<EOS
+(let loop ())
+EOS
+                    ) }.should  raise_error( SyntaxError, /^named let requires/ )
+    @nendo.evalStr( <<EOS
+(let loop () 1)
 EOS
            ).should  == '1'
   end
