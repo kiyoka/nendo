@@ -2130,6 +2130,36 @@ describe Nendo, "when use macros expand some syntax. " do
   end
 end
 
+describe Nendo, "when occur illegal syntax. " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+
+    lambda { @nendo.evalStr( <<EOS
+(let abc 1
+  (print abc))
+EOS
+                    ) }.should  raise_error( SyntaxError )
+
+    lambda { @nendo.evalStr( <<EOS
+(let 1)
+EOS
+                    ) }.should  raise_error( SyntaxError )
+
+    lambda { @nendo.evalStr( <<EOS
+(let ())
+EOS
+                    ) }.should  raise_error( SyntaxError )
+    @nendo.evalStr( <<EOS
+(let () 1)
+EOS
+           ).should  == '1'
+  end
+end
+
+
 describe Nendo, "when use dot-operator (.) macro " do
   before do
     @nendo = Nendo::Core.new()
