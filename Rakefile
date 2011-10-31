@@ -40,7 +40,7 @@ end
 
 printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
 
-task :default => [:condition_clean, :test] do
+task :default => [:condition_clean, :test, :test2] do
 end
 
 task :test do
