@@ -2143,32 +2143,20 @@ describe Nendo, "when occur illegal syntax. " do
 EOS
                     ) }.should  raise_error( SyntaxError, /^named let requires/ )
 
-    lambda { @nendo.evalStr( <<EOS
-(let 1)
-EOS
-                    ) }.should  raise_error( SyntaxError, /^let requires/  )
+    lambda { @nendo.evalStr( "(let 1)"           ) }.should  raise_error( SyntaxError, /^let requires/  )
+    lambda { @nendo.evalStr( "(let ())"          ) }.should  raise_error( SyntaxError, /^let requires/  )
+    @nendo.evalStr(          "(let () 1)"          ).should  == '1'
+    lambda { @nendo.evalStr( "(let loop 1)"      ) }.should  raise_error( SyntaxError, /^named let requires/ )
+    lambda { @nendo.evalStr( "(let loop ())"     ) }.should  raise_error( SyntaxError, /^named let requires/ )
+    @nendo.evalStr(          "(let loop () 1)"     ).should  == '1'
 
-    lambda { @nendo.evalStr( <<EOS
-(let ())
-EOS
-                    ) }.should  raise_error( SyntaxError, /^let requires/  )
-    @nendo.evalStr( <<EOS
-(let () 1)
-EOS
-           ).should  == '1'
-    lambda { @nendo.evalStr( <<EOS
-(let loop 1)
-EOS
-                    ) }.should  raise_error( SyntaxError, /^named let requires/ )
-
-    lambda { @nendo.evalStr( <<EOS
-(let loop ())
-EOS
-                    ) }.should  raise_error( SyntaxError, /^named let requires/ )
-    @nendo.evalStr( <<EOS
-(let loop () 1)
-EOS
-           ).should  == '1'
+    lambda { @nendo.evalStr( "(let1)"                       ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 a)"                     ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 a 1)"                   ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 (a 1)   (print a))"     ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 ((a 1)) (print a))"     ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    @nendo.evalStr(          "(let1 a 123 a)"               ).should  == '123'
+    @nendo.evalStr(          "(let1 b (+ 100 20 3) b)"      ).should  == '123'
   end
 end
 

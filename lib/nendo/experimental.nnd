@@ -176,3 +176,23 @@
              cleanup))))))
 
 
+  ;; syntax check enabled version of let1
+(define nendo-syntax-error SyntaxError)
+(define-syntax let1
+  (syntax-rules (%let)
+    ((let1)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 var)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 var expr)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 (var) expr body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 (var expr) body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 ((var expr)) body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 () body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 var expr body ...)
+     (%let ((var expr)) body ...))))
