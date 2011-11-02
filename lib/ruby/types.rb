@@ -179,7 +179,10 @@ module Nendo
       @ignoreCase = (str[0] == 'i')
     end
     def to_s
-      sprintf( "|%s|", @exp ) + (@ignoreCase ? "i" : "")
+      sprintf( "/%s/", @exp ) + (@ignoreCase ? "i" : "")
+    end
+    def to_readable
+      sprintf( "#/%s/", @exp ) + (@ignoreCase ? "i" : "")
     end
     def escape
       @exp.gsub( /\\/, "\\\\\\\\" )

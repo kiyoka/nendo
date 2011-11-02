@@ -1230,6 +1230,8 @@ describe Nendo, "when use #xxxx syntax " do
     @nendo.evalStr( " '#?." ).should == '"(string):1"'
     @nendo.evalStr( " '#?." ).should == '"(string):1"'
     @nendo.evalStr( " (begin #?. (+ 1 1))" ).should == "2"
+    @nendo.evalStr( " (rxmatch #/[a-z]/ \"abc\")" ).should == "a"
+    @nendo.evalStr( " (quote #?=(rxmatch #/[a-z]/ \"abc\"))" ).should == '(debug-print (rxmatch #/[a-z]/ "abc") "(string)" 1 (quote (rxmatch #/[a-z]/ "abc")))'
     @nendo.evalStr( <<EOS
 (begin
   #?.
