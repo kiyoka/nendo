@@ -83,6 +83,12 @@ module Nendo
         sprintf( "#<SyntacticClosure[%s:%s]>", sexp.originalSymbol, sexp.renamedSymbol )
       when Regexp
         "#/" + sexp.source + "/" + (sexp.casefold? ? "i" : "")
+      when LispRegexp
+        if readable
+          sexp.to_readable
+        else
+          sexp.to_s
+        end
       when LispKeyword
         ":" + sexp.key.to_s
       when LispCoreSyntax

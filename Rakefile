@@ -40,7 +40,7 @@ end
 
 printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
 
-task :default => [:condition_clean, :test] do
+task :default => [:condition_clean, :test, :condition_test2] do
 end
 
 task :test do
@@ -79,6 +79,14 @@ task :test2 do
   arr.each {|str|
     sh str
   }
+end
+
+task :condition_test2 do
+  if 1 == ENV[ 'NENDO_CLEAN_TEST' ].to_i
+    puts "Info: test2 is passed with NENDO_CLEAN_TEST=1 env. because test2 takes too much cpu time."
+  else
+    Rake::Task["test2"].execute
+  end
 end
 
 task :compile do
@@ -136,7 +144,7 @@ end
 
 task :condition_clean do
   if 1 == ENV[ 'NENDO_CLEAN_TEST' ].to_i
-    sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
+    Rake::Task["clean"].execute
   end
 end
 

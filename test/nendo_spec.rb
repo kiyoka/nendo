@@ -1230,6 +1230,8 @@ describe Nendo, "when use #xxxx syntax " do
     @nendo.evalStr( " '#?." ).should == '"(string):1"'
     @nendo.evalStr( " '#?." ).should == '"(string):1"'
     @nendo.evalStr( " (begin #?. (+ 1 1))" ).should == "2"
+    @nendo.evalStr( " (rxmatch #/[a-z]/ \"abc\")" ).should == "a"
+    @nendo.evalStr( " (quote #?=(rxmatch #/[a-z]/ \"abc\"))" ).should == '(debug-print (rxmatch #/[a-z]/ "abc") "(string)" 1 (quote (rxmatch #/[a-z]/ "abc")))'
     @nendo.evalStr( <<EOS
 (begin
   #?.
@@ -2129,6 +2131,37 @@ describe Nendo, "when use macros expand some syntax. " do
                     "                 (loop 100)))" ).should == "(letrec ((loop (lambda (x) 1 2 (loop 100)))) (loop 1))"
   end
 end
+
+describe Nendo, "when occur illegal syntax. " do
+  before do
+    @nendo = Nendo::Core.new()
+    @nendo.loadInitFile
+  end
+  it "should" do
+
+    lambda { @nendo.evalStr( <<EOS
+(let abc 1  ;; let1 style form is illegal syntax for let form.
+  (print abc))
+EOS
+                    ) }.should  raise_error( SyntaxError, /^named let requires/ )
+
+    lambda { @nendo.evalStr( "(let 1)"           ) }.should  raise_error( SyntaxError, /^let requires/  )
+    lambda { @nendo.evalStr( "(let ())"          ) }.should  raise_error( SyntaxError, /^let requires/  )
+    @nendo.evalStr(          "(let () 1)"          ).should  == '1'
+    lambda { @nendo.evalStr( "(let loop 1)"      ) }.should  raise_error( SyntaxError, /^named let requires/ )
+    lambda { @nendo.evalStr( "(let loop ())"     ) }.should  raise_error( SyntaxError, /^named let requires/ )
+    @nendo.evalStr(          "(let loop () 1)"     ).should  == '1'
+
+    lambda { @nendo.evalStr( "(let1)"                       ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 a)"                     ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 a 1)"                   ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 (a 1)   (print a))"     ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    lambda { @nendo.evalStr( "(let1 ((a 1)) (print a))"     ) }.should  raise_error( SyntaxError, /^let1 requires/ )
+    @nendo.evalStr(          "(let1 a 123 a)"               ).should  == '123'
+    @nendo.evalStr(          "(let1 b (+ 100 20 3) b)"      ).should  == '123'
+  end
+end
+
 
 describe Nendo, "when use dot-operator (.) macro " do
   before do

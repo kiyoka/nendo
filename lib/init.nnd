@@ -366,6 +366,23 @@
 ;; named let supporting
 (define let
   (macro lst
+    ;; checking syntax
+    (cond
+     ((symbol? (car lst))
+      ;; named let
+      (when (or (< (length lst) 3)
+                (not (list? (second lst))))
+        (%raise SyntaxError
+                (sprintf "named let requires (let name (bind-list) body ...) form  But got %s" (write-to-string (cons 'let lst)))
+                (sprintf "%s:%s in named let form" (*FILE*) (*LINE*)))))
+     (else
+      (when (or (< (length lst) 2)
+                (not (list? (first lst))))
+        (%raise SyntaxError
+                (sprintf "let requires (let (bind-list) body ...) form  But got %s" (write-to-string (cons 'let lst)))
+                (sprintf "%s:%s in named let form" (*FILE*) (*LINE*))))))
+
+    ;; expanding macro
     (if (symbol? (car lst))
         ;; named let
         `(letrec ((,(first lst)
@@ -383,6 +400,7 @@
         ;; trasform to internal let syntax (%let)
         `(%let ,@lst))))
 
+        
 (define if-let1
   (macro (var _expr _then . _else)
     `(let1 ,var ,_expr
