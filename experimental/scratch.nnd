@@ -8,6 +8,7 @@
 (debug-print-length 2000)
 
 
+;; comment out of source code
 (with-open "sample.rb"
            (lambda (f)
              (for-each
@@ -24,17 +25,20 @@
               f.readline)))
 
 
-(with-open-for-each
- "sample.rb"
- (lambda (line)
-   (print (+ "# " line))))
+(with-open "sample.rb"
+           (lambda (f)
+             (file-for-each
+              (lambda (line)
+                (print (+ "# " line)))
+              f)))
 
-(with-open-for-each
- STDIN
+(file-for-each
  (lambda (line)
-   (print (+ "# " line))))
+   (print (+ "# " line)))
+ STDIN)
+
 
 ;; unix's cat
-(with-open-for-each
- ARGF
- print)
+(file-for-each
+ print
+ ARGF)
