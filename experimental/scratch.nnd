@@ -7,15 +7,34 @@
 (debug-print-length)
 (debug-print-length 2000)
 
-;; unix's cat filename.txt
+
+(with-open "sample.rb"
+           (lambda (f)
+             (for-each
+              (lambda (line)
+                (print (+ "# " (line.chomp))))
+              f)))
+
+
+(with-open "sample.rb"
+           (lambda (f)
+             (port-for-each
+              (lambda (line)
+                (print (+ "# " line)))
+              f.readline)))
+
+
 (with-open-for-each
- "filename.txt"
+ "sample.rb"
  (lambda (line)
-   (print line)))
+   (print (+ "# " line))))
+
+(with-open-for-each
+ STDIN
+ (lambda (line)
+   (print (+ "# " line))))
 
 ;; unix's cat
 (with-open-for-each
- STDIN
+ ARGF
  print)
-
-
