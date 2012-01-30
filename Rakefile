@@ -19,7 +19,10 @@ begin
     gemspec.email = "kiyoka@sumibi.org"
     gemspec.homepage = "http://github.com/kiyoka/nendo"
     gemspec.authors = ["Kiyoka Nishiyama"]
-    gemspec.files = FileList['lib/**/*.rb',
+    gemspec.files = FileList['Rakefile',
+                             '.gemtest',
+                             'VERSION.yml',
+                             'lib/**/*.rb',
                              'lib/**/*.nnd',
                              'lib/**/*.nndc',
                              'bin/*',
