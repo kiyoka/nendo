@@ -35,7 +35,11 @@ begin
                              'emacs/*.el',
                              'benchmark/*.rb',
                              'benchmark/*.nnd'].to_a
-    gemspec.add_development_dependency "rspec"
+    gemspec.add_dependency             "rspec"
+    gemspec.add_dependency             "jeweler"
+    gemspec.add_dependency             "json"
+    gemspec.add_dependency             "rake"
+    gemspec.add_development_dependency "ruby-prof"
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
