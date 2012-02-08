@@ -35,6 +35,12 @@
 require 'nendo'
 include Nendo
 
+describe Nendo, "Ruby version " do
+  it "should" do
+    RUBY_VERSION.match( /^1[.]8/ ).should_not be_true
+  end
+end
+
 describe Cell, "when initialized as '()" do
   before do
     @cell = Cell.new
