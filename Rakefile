@@ -145,13 +145,13 @@ task :bench do
   sh "                    nendo      ./benchmark/benchmark.nnd"
 end
 
-task :clean do
+task :clean_nndc do
   sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
 end
 
 task :condition_clean do
   if 1 == ENV[ 'NENDO_CLEAN_TEST' ].to_i
-    Rake::Task["clean"].execute
+    Rake::Task["clean_nndc"].execute
   end
 end
 
