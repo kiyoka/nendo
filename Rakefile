@@ -21,6 +21,7 @@ begin
     gemspec.authors = ["Kiyoka Nishiyama"]
     gemspec.files = FileList['Rakefile',
                              '.gemtest',
+                             'History.txt',
                              'VERSION.yml',
                              'lib/**/*.rb',
                              'lib/**/*.nnd',
