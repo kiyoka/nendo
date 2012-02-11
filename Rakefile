@@ -121,6 +121,7 @@ task :compile do
 
   # Compile
   sh "/bin/rm -f ./lib/nendo/*.nndc* ./lib/nendo/**/*.nndc*"
+  sh "ruby -rrbconfig -e 'p RbConfig::CONFIG[ \"vendor_dir\" ]'"
   files = []
   files << "./lib/nendo/init.nnd"
   files << "./lib/nendo/srfi-1.nnd"

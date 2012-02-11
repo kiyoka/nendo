@@ -35,6 +35,12 @@
 require 'stringio'
 require 'digest/sha1'
 require 'pp'
+require 'rbconfig'
+if RbConfig::CONFIG[ 'vendor_dir' ]
+  $LOAD_PATH.push( RbConfig::CONFIG[ 'vendor_dir' ] + "/nendo" )
+else
+  $LOAD_PATH.push( "./lib/nendo" )
+end
 require 'nendo/ruby/types'
 require 'nendo/ruby/reader'
 require 'nendo/ruby/builtin_functions'
@@ -42,4 +48,3 @@ require 'nendo/ruby/evaluator'
 require 'nendo/ruby/printer'
 require 'nendo/ruby/core'
 require 'nendo/ruby/out_of_module'
-$LOAD_PATH.push( File.dirname(__FILE__) + "/nendo" )
