@@ -1168,22 +1168,24 @@
 (define (load path)
   (if (rxmatch #/^([.]\/|[.][.]\/|\/)/ path)
       (%load path)
-      (let loop ((load-path *load-path*))
-        (cond ((null? load-path)
-               (errorf "Error: can't load file [%s]\n" path))
-              (else
-               (let1 full-path (+ (car load-path) "/" path)
-                 (cond
-                  ((File.exist? full-path)
-                   (if (rxmatch #/[.]nndc$/ full-path)
-                       (%load-compiled-code full-path)
-                       (%load               full-path)))
-                  ((File.exist? (+ full-path ".nndc"))
-                   (%load-compiled-code (+ full-path ".nndc")))
-                  ((File.exist? (+ full-path ".nnd"))
-                   (%load (+ full-path ".nnd")))
-                  (else
-                   (loop (cdr load-path))))))))))
+      (let1 lp (append (map (lambda (x) (+ x "/nendo")) *load-path*)
+                       *load-path*)
+        (let loop ((load-path lp))
+          (cond ((null? load-path)
+                 (errorf "Error: can't load file [%s]\n" path))
+                (else
+                 (let1 full-path (+ (car load-path) "/" path)
+                   (cond
+                    ((File.exist? full-path)
+                     (if (rxmatch #/[.]nndc$/ full-path)
+                         (%load-compiled-code full-path)
+                         (%load               full-path)))
+                    ((File.exist? (+ full-path ".nndc"))
+                     (%load-compiled-code (+ full-path ".nndc")))
+                    ((File.exist? (+ full-path ".nnd"))
+                     (%load (+ full-path ".nnd")))
+                    (else
+                     (loop (cdr load-path)))))))))))
 
 (define (add-load-path path . afterp)
   (set! *load-path*
