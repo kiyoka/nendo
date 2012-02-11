@@ -25747,16 +25747,16 @@ trampCall(
 
 trampCall( 
   begin
-    embedBacktraceInfo( "./lib/nendo/init.nnd", 1285 ); 
+    embedBacktraceInfo( "./lib/nendo/init.nnd", 1712 ); 
       delayCall( '_load',  'load',
           begin
             if @global_lisp_binding.has_key?('_load') then
               trampCall(@_load)
             else raise NameError.new( "Error: undefined variable _load", "_load" ) end
-            rescue => __e ; __e.set_backtrace( ["./lib/nendo/init.nnd:1285"] + __e.backtrace ) ; raise __e
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/init.nnd:1712"] + __e.backtrace ) ; raise __e
           end        ,
       [
-          "nendo/experimental"
+          "./lib/nendo/nendo/experimental.nnd"
       ]
                    )
   end
