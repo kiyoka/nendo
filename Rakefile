@@ -99,7 +99,7 @@ end
 
 task :compile do
   # Replace Version Number
-  targetFile = "./lib/ruby/core.rb"
+  targetFile = "./lib/nendo/ruby/core.rb"
   vh = Jeweler::VersionHelper.new "."
   (original, modified) = open( targetFile ) {|f|
     lines = f.readlines
@@ -120,21 +120,21 @@ task :compile do
   end
 
   # Compile
-  sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
+  sh "/bin/rm -f ./lib/nendo/*.nndc* ./lib/nendo/**/*.nndc*"
   files = []
-  files << "./lib/init.nnd"
-  files << "./lib/srfi-1.nnd"
-  files << "./lib/srfi-2.nnd"
-  files << "./lib/srfi-26.nnd"
-  files << "./lib/util/list.nnd"
-  files << "./lib/text/html-lite.nnd"
-  files << "./lib/text/tree.nnd"
-  files << "./lib/debug/syslog.nnd"
-  files << "./lib/nendo/test.nnd"
-  files << "./lib/rfc/json.nnd"
-  files << "./lib/util/match.nnd"
-  files << "./lib/util/combinations.nnd"
-  files << "./lib/nendo/experimental.nnd"
+  files << "./lib/nendo/init.nnd"
+  files << "./lib/nendo/srfi-1.nnd"
+  files << "./lib/nendo/srfi-2.nnd"
+  files << "./lib/nendo/srfi-26.nnd"
+  files << "./lib/nendo/util/list.nnd"
+  files << "./lib/nendo/text/html-lite.nnd"
+  files << "./lib/nendo/text/tree.nnd"
+  files << "./lib/nendo/debug/syslog.nnd"
+  files << "./lib/nendo/nendo/test.nnd"
+  files << "./lib/nendo/rfc/json.nnd"
+  files << "./lib/nendo/util/match.nnd"
+  files << "./lib/nendo/util/combinations.nnd"
+  files << "./lib/nendo/nendo/experimental.nnd"
   files.each {|fn|
     sh sprintf( "time ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
   }
@@ -147,7 +147,7 @@ task :bench do
 end
 
 task :clean_nndc do
-  sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
+  sh "/bin/rm -f ./lib/**/*.nndc* ./lib/**/**/*.nndc*"
 end
 
 task :condition_clean do
@@ -157,5 +157,5 @@ task :condition_clean do
 end
 
 task :repl do
-  sh "ruby -I ./lib ./bin/nendo"
+  sh "ruby -I ./lib -I ./lib/nendo  ./bin/nendo"
 end
