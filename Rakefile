@@ -39,8 +39,6 @@ begin
     gemspec.add_dependency             "rspec"
     gemspec.add_dependency             "json"
     gemspec.add_dependency             "rake"
-    gemspec.add_development_dependency "jeweler"
-    gemspec.add_development_dependency "ruby-prof"
   end
 rescue LoadError
   puts 'Jeweler not available. If you want to build a gemfile, please install with "sudo gem install jeweler"'
