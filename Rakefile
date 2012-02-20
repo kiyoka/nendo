@@ -46,52 +46,44 @@ end
 
 printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
 
-task :default => [:condition_clean, :test, :condition_test2] do
+task :default => [:condition_clean, :test, :condition_test3] do
 end
 
-task :test do
-  stage1 =  []
-  stage1 << "time ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  stage1 << "time ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  stage1 << "time ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  stage1 << "time ruby  -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
-  stage2 =  []
-  stage2 << "/bin/rm -f test.record"
-  stage2 << "echo "" > test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd              >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
-  stage2 << "cat test.record"
-  arr = []
-  arr += stage1
-  arr += stage2
-  arr.each {|str|
-    sh str
-  }
+task :test    => [:test1, :test2] do
+end
+
+task :test1 do
+  sh "time ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "time ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "time ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
 end
 
 task :test2 do
-  stage1 =  []
-  stage1 << "/bin/rm -f test.record"
-  stage1 << "echo "" > test2.log"
-  stage1 << "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test2.log"
-  stage1 << "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test2.log"
-  stage1 << "cat test.record"
-  arr = []
-  arr += stage1
-  arr.each {|str|
-    sh str
-  }
+  sh "/bin/rm -f test.record"
+  sh "echo "" > test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd              >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
+  sh "cat test.record"
 end
 
-task :condition_test2 do
+task :test3 do
+  sh "/bin/rm -f test.record"
+  sh "echo "" > test3.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test3.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test3.log"
+  sh "cat test.record"
+end
+
+task :condition_test3 do
   if 1 == ENV[ 'NENDO_CLEAN_TEST' ].to_i
-    puts "Info: test2 is passed with NENDO_CLEAN_TEST=1 env. because test2 takes too much cpu time."
+    puts "Info: test3 is passed with NENDO_CLEAN_TEST=1 env. because test3 takes too much cpu time."
   else
-    Rake::Task["test2"].execute
+    Rake::Task["test3"].execute
   end
 end
 
