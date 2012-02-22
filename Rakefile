@@ -23,6 +23,8 @@ begin
                              '.gemtest',
                              'History.txt',
                              'VERSION.yml',
+                             'README',
+                             'COPYING',
                              'lib/**/*.rb',
                              'lib/**/*.nnd',
                              'lib/**/*.nndc',
