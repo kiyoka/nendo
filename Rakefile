@@ -122,6 +122,7 @@ task :compile do
   files << "./lib/nendo/util/list.nnd"
   files << "./lib/nendo/text/html-lite.nnd"
   files << "./lib/nendo/text/tree.nnd"
+  files << "./lib/nendo/debug/null.nnd"
   files << "./lib/nendo/debug/syslog.nnd"
   files << "./lib/nendo/nendo/test.nnd"
   files << "./lib/nendo/rfc/json.nnd"
