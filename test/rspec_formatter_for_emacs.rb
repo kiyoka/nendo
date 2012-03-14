@@ -4,6 +4,7 @@ require 'rspec/core/formatters/progress_formatter'
 # ruby bin/spec xxxxx.rb -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter
 class CustomFormatter < RSpec::Core::Formatters::ProgressFormatter
   def backtrace_line(line)
+    return nil if configuration.cleaned_from_backtrace?(line)
     str = line.gsub(/([^:]*\.rb):([0-9]+):in /) do
       path   = "#{$1}"
       lineno = "#{$2}"
