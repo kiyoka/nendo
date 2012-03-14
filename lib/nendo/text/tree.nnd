@@ -1,0 +1,25 @@
+;;-*- mode: nendo; syntax: scheme -*-;;
+;;;
+;;; text/tree.scm - lightweight text generation
+;;;
+;;;  Public Domain.
+;;;  $Id: 
+;;;
+;;;  ported for Nendo language by Kiyoka Nishiyama.
+
+(require "stringio")
+
+(define (write-tree tree . out)
+  (let1 out (if (null? out)
+                STDOUT
+                (car out))
+    (let loop ((tree tree))
+      (cond ((null? tree))
+            ((pair? tree) (write-tree (car tree) out) (loop (cdr tree)))
+            (else
+             (out.print tree))))))
+
+(define (tree->string tree)
+  (let1 sio (StringIO.new "")
+    (write-tree tree sio)
+    (sio.string)))

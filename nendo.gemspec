@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "nendo"
-  s.version = "0.6.2"
+  s.version = "0.6.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2012-01-31"
+  s.date = "2012-02-26"
   s.description = "Nendo is a programming language written in Ruby."
   s.email = "kiyoka@sumibi.org"
   s.executables = ["nendo"]
@@ -18,6 +18,9 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".gemtest",
+    "COPYING",
+    "History.txt",
+    "README",
     "Rakefile",
     "VERSION.yml",
     "benchmark/benchmark.nnd",
@@ -42,40 +45,42 @@ Gem::Specification.new do |s|
     "example/html-lite-sample.nnd",
     "example/nqueen.nnd",
     "example/twitterTL.nnd",
-    "lib/debug/syslog.nnd",
-    "lib/debug/syslog.nndc",
-    "lib/init.nnd",
-    "lib/init.nndc",
     "lib/nendo.rb",
-    "lib/nendo/experimental.nnd",
-    "lib/nendo/experimental.nndc",
-    "lib/nendo/test.nnd",
-    "lib/nendo/test.nndc",
-    "lib/rfc/json.nnd",
-    "lib/rfc/json.nndc",
-    "lib/ruby/builtin_functions.rb",
-    "lib/ruby/core.rb",
-    "lib/ruby/evaluator.rb",
-    "lib/ruby/out_of_module.rb",
-    "lib/ruby/printer.rb",
-    "lib/ruby/reader.rb",
-    "lib/ruby/types.rb",
-    "lib/srfi-1.nnd",
-    "lib/srfi-1.nndc",
-    "lib/srfi-2.nnd",
-    "lib/srfi-2.nndc",
-    "lib/srfi-26.nnd",
-    "lib/srfi-26.nndc",
-    "lib/text/html-lite.nnd",
-    "lib/text/html-lite.nndc",
-    "lib/text/tree.nnd",
-    "lib/text/tree.nndc",
-    "lib/util/combinations.nnd",
-    "lib/util/combinations.nndc",
-    "lib/util/list.nnd",
-    "lib/util/list.nndc",
-    "lib/util/match.nnd",
-    "lib/util/match.nndc",
+    "lib/nendo/debug/null.nnd",
+    "lib/nendo/debug/null.nndc",
+    "lib/nendo/debug/syslog.nnd",
+    "lib/nendo/debug/syslog.nndc",
+    "lib/nendo/init.nnd",
+    "lib/nendo/init.nndc",
+    "lib/nendo/nendo/experimental.nnd",
+    "lib/nendo/nendo/experimental.nndc",
+    "lib/nendo/nendo/test.nnd",
+    "lib/nendo/nendo/test.nndc",
+    "lib/nendo/rfc/json.nnd",
+    "lib/nendo/rfc/json.nndc",
+    "lib/nendo/ruby/builtin_functions.rb",
+    "lib/nendo/ruby/core.rb",
+    "lib/nendo/ruby/evaluator.rb",
+    "lib/nendo/ruby/out_of_module.rb",
+    "lib/nendo/ruby/printer.rb",
+    "lib/nendo/ruby/reader.rb",
+    "lib/nendo/ruby/types.rb",
+    "lib/nendo/srfi-1.nnd",
+    "lib/nendo/srfi-1.nndc",
+    "lib/nendo/srfi-2.nnd",
+    "lib/nendo/srfi-2.nndc",
+    "lib/nendo/srfi-26.nnd",
+    "lib/nendo/srfi-26.nndc",
+    "lib/nendo/text/html-lite.nnd",
+    "lib/nendo/text/html-lite.nndc",
+    "lib/nendo/text/tree.nnd",
+    "lib/nendo/text/tree.nndc",
+    "lib/nendo/util/combinations.nnd",
+    "lib/nendo/util/combinations.nndc",
+    "lib/nendo/util/list.nnd",
+    "lib/nendo/util/list.nndc",
+    "lib/nendo/util/match.nnd",
+    "lib/nendo/util/match.nndc",
     "test/json-test.nnd",
     "test/match-test.nnd",
     "test/nendo-util-test.nnd",
@@ -92,46 +97,25 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/kiyoka/nendo"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.11"
+  s.rubygems_version = "1.8.17"
   s.summary = "Nendo is a dialect of Lisp."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rspec>, [">= 0"])
-      s.add_runtime_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
-      s.add_runtime_dependency(%q<rake>, [">= 0"])
-      s.add_runtime_dependency(%q<ruby-prof>, [">= 0"])
-      s.add_runtime_dependency(%q<rspec>, [">= 0"])
-      s.add_runtime_dependency(%q<jeweler>, [">= 0"])
-      s.add_runtime_dependency(%q<json>, [">= 0"])
-      s.add_runtime_dependency(%q<rake>, [">= 0"])
-      s.add_development_dependency(%q<ruby-prof>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<ruby-prof>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
-      s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<ruby-prof>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<ruby-prof>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<json>, [">= 0"])
-    s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<ruby-prof>, [">= 0"])
   end
 end
 

@@ -1,0 +1,199 @@
+;;-*- mode: nendo; syntax: scheme -*-;;
+;;;
+;;; nendo.experimental - experimental API for init.nnd
+;;;  
+;;;   Copyright (c) 2011-2011  Kiyoka Nishiyama  <kiyoka@sumibi.org>
+;;;   
+;;;   Redistribution and use in source and binary forms, with or without
+;;;   modification, are permitted provided that the following conditions
+;;;   are met:
+;;;   
+;;;   1. Redistributions of source code must retain the above copyright
+;;;      notice, this list of conditions and the following disclaimer.
+;;;  
+;;;   2. Redistributions in binary form must reproduce the above copyright
+;;;      notice, this list of conditions and the following disclaimer in the
+;;;      documentation and/or other materials provided with the distribution.
+;;;  
+;;;   3. Neither the name of the authors nor the names of its contributors
+;;;      may be used to endorse or promote products derived from this
+;;;      software without specific prior written permission.
+;;;  
+;;;   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+;;;   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+;;;   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+;;;   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+;;;   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+;;;   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+;;;   TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+;;;   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+;;;   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+;;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+;;;  
+
+
+;; Checking (Ruby's Enumerable?) and (not Nendo's list?)
+(define (%%enumerable? x)
+  (and (x.is_a? Enumerable)
+       (not (x.is_a? Cell))))
+  
+
+;; higher-order function for vector with Ruby's native method.
+(define (%%map-able? proc . lists)
+  (if (= 1 (length lists))
+      (%%enumerable? (car lists))
+      #f))
+
+(define (%%map proc vec)
+  (vec.map
+   (&block (x)
+     (proc x))))
+
+(define (%map proc . lists)
+  (let1 args (cons proc lists)
+    (if (apply %%map-able? args)
+        (%%map proc (car lists))
+        (apply %map-original args))))
+
+
+(define (%%for-each-able? proc . lists)
+  (if (= 1 (length lists))
+      (%%enumerable? (car lists))
+      #f))
+
+(define (%%for-each proc vec)
+  (vec.each
+   (&block (x)
+     (proc x))))
+
+(define (%for-each proc . lists)
+  (let1 args (cons proc lists)
+    (if (apply %%for-each-able? args)
+        (%%for-each proc (car lists))
+        (apply %for-each-original args))))
+
+
+(define (%%filter-able? proc lst)
+  (%%enumerable? lst))
+
+(define (%%filter proc vec)
+  (vec.select
+   (&block (x)
+     (proc x))))
+
+(define (%filter proc lst)
+  (if (%%filter-able?   proc lst)
+      (%%filter         proc lst)
+      (%filter-original proc lst)))
+
+
+(define map         %map)
+(define for-each    %for-each)
+(define filter      %filter)
+
+
+
+;; dis-assembler
+(define (disasm varname . opt)
+  (let ((kind  (get-optional opt 'compiled))
+        (alist (get-source-info (varname.to_s))))
+    (cond
+     ((eqv? kind 'compiled)
+      (assv-ref "compiled_str" alist))
+     ((eqv? kind 'source)
+      (assv-ref "source" alist))
+     ((eqv? kind 'expanded)
+      (assv-ref "expanded" alist))
+     ((eqv? kind 'info)
+      (string-join
+       (list
+        (sprintf " file:   %s \n" (assv-ref "sourcefile" alist))
+        (sprintf " lineno: %s \n" (assv-ref "lineno"     alist))
+        (sprintf " source: \n" )
+        (pretty-print-to-string
+         (assv-ref "source" alist))
+        (sprintf " expanded: \n" )
+        (pretty-print-to-string
+         (assv-ref "expanded" alist))))))))
+
+
+(define-syntax raise
+  (syntax-rules ()
+    ((raise)
+     (error "raise requires (raise exception message [backtrace-str])"))
+    ((raise exc)
+     (%raise exc 
+             (sprintf "%s:%s raised %s" (*FILE*) (*LINE*) exc)
+             (sprintf "%s:%s raised %s" (*FILE*) (*LINE*) exc)))
+    ((raise exc mes)
+     (%raise exc mes (sprintf "%s:%s raised %s" (*FILE*) (*LINE*) exc)))
+    ((raise exc mes backtrace)
+     (%raise exc mes backtrace))))
+
+
+;; guard for Exceptions
+(define-syntax %guard-var
+  (syntax-rules (=> ...)
+    ((%guard-var (var clauses ...))
+     var)))
+
+(define-syntax %guard-clause
+  (syntax-rules (=> ...)
+    ((%guard-clause (var clauses ...))
+     (cond
+      clauses ...
+      (#t (raise var))))))
+
+(define-syntax guard
+  (syntax-rules ()
+    ((guard)
+     (error "guard requires (guard (var (clauses-like-cond)) body ...)"))
+    ((guard var-clauses)
+     (error "guard requires (guard (var (clauses-like-cond)) body ...)"))
+    ((guard var-clauses body ...)
+     (%guard
+      (%guard-var
+       var-clauses)
+      (%guard-clause
+       var-clauses)
+      body ...))))
+
+
+;; unwind-protect for Exceptions
+(define-syntax unwind-protect
+  (syntax-rules ()
+    ((unwind-protect)
+     (error "unwind-protect requires (unwind-protect body cleanup) form."))
+    ((unwind-protect body)
+     (error "unwind-protect requires (unwind-protect body cleanup) form."))
+    ((unwind-protect body cleanup)
+     (let1 temp #f
+         (guard
+             (exc (#t (begin cleanup
+                             temp)))
+           (begin0
+               (set! temp body)
+             cleanup))))))
+
+
+  ;; syntax check enabled version of let1
+(define nendo-syntax-error SyntaxError)
+(define-syntax let1
+  (syntax-rules (%let)
+    ((let1)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 var)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 var expr)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 (var) expr body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 (var expr) body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 ((var expr)) body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 () body ...)
+     (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
+    ((let1 var expr body ...)
+     (%let ((var expr)) body ...))))

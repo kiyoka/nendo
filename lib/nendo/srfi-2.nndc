@@ -1,0 +1,891 @@
+#
+#    This file is nendo's compiled library file. 
+#    generated  "nendo -c src" command. 
+# 
+
+trampCall( 
+  begin
+      def self._and_MIMARKlet_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_and_MIMARKlet_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_and_MIMARKlet_ASMARK'] = self.method( :_and_MIMARKlet_ASMARK_METHOD )
+    @_and_MIMARKlet_ASMARK = 
+    trampCall(
+          begin
+            embedBacktraceInfo( "", 1 ); 
+              trampCall( self._er_MIMARKmacro_MIMARKtransformer_METHOD(  'er-macro-transformer',
+                  begin
+                    if @global_lisp_binding.has_key?('_er_MIMARKmacro_MIMARKtransformer') then
+                      trampCall(@_er_MIMARKmacro_MIMARKtransformer)
+                    else raise NameError.new( "Error: undefined variable _er_MIMARKmacro_MIMARKtransformer", "_er_MIMARKmacro_MIMARKtransformer" ) end
+                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                  end                ,
+              [
+                    Proc.new { |__expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30193,__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194,__compare__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30195| 
+                        begin
+                          ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30220| 
+                              if ( 
+                                begin
+                                    trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30220)
+                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                end
+                               ) then
+                                  begin
+                                      trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30220)
+                                    rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                  end
+                              else
+                                  begin
+                                    ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30221| 
+                                        if ( 
+                                          begin
+                                              trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30221)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                         ) then
+                                            begin
+                                                trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30221)
+                                              rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                            end
+                                        else
+                                            begin
+                                              ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30222| 
+                                                  if ( 
+                                                    begin
+                                                        trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30222)
+                                                      rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                    end
+                                                   ) then
+                                                      begin
+                                                          trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30222)
+                                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                  else
+                                                      begin
+                                                        ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30223| 
+                                                            if ( 
+                                                              begin
+                                                                  trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30223)
+                                                                rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                              end
+                                                             ) then
+                                                                begin
+                                                                    trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30223)
+                                                                  rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                end
+                                                            else
+                                                              false
+                                                            end
+                                                        } ; ___lambda.call(
+                                                              begin raise RuntimeError, 
+                                                                "no expansion for" ' ' + 
+                                                                _write_MIMARKto_MIMARKstring(
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      trampCall( self._strip_MIMARKsyntactic_MIMARKclosures_METHOD(  'strip-syntactic-closures',
+                                                                          begin
+                                                                            if @global_lisp_binding.has_key?('_strip_MIMARKsyntactic_MIMARKclosures') then
+                                                                              trampCall(@_strip_MIMARKsyntactic_MIMARKclosures)
+                                                                            else raise NameError.new( "Error: undefined variable _strip_MIMARKsyntactic_MIMARKclosures", "_strip_MIMARKsyntactic_MIMARKclosures" ) end
+                                                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                                                          end                                                                        ,
+                                                                      [
+                                                                          __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30193
+                                                                      ]
+                                                                                   ))
+                                                                  end
+                                                                )
+                                                              rescue => __e 
+                                                                __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:169"] + __e.backtrace )
+                                                                raise __e
+                                                              end 
+                                                                   )
+                                                      end
+                                                  end
+                                              } ; ___lambda.call(
+                                                    begin
+                                                      ___lambda = lambda { |__v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213| 
+                                                          if ( 
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                _not(
+                                                                    begin
+                                                                      embedBacktraceInfo( "", 1 ); 
+                                                                        _eq_QUMARK(
+                                                                          false                                                                          ,
+                                                                            begin
+                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                _pair_QUMARK(
+                                                                                  __v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213
+                                                                                )
+                                                                            end
+                                                                        )
+                                                                    end
+                                                                )
+                                                            end
+                                                           ) then
+                                                              begin
+                                                                ___lambda = lambda { |__v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214| 
+                                                                    if ( 
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                          _not(
+                                                                              begin
+                                                                                embedBacktraceInfo( "", 1 ); 
+                                                                                  _eq_QUMARK(
+                                                                                    false                                                                                    ,
+                                                                                      begin
+                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                          _pair_QUMARK(
+                                                                                            __v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214
+                                                                                          )
+                                                                                      end
+                                                                                  )
+                                                                              end
+                                                                          )
+                                                                      end
+                                                                     ) then
+                                                                        begin
+                                                                          ___lambda = lambda { |__v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30215| 
+                                                                              if ( 
+                                                                                begin
+                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                                    _not(
+                                                                                        begin
+                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                            _eq_QUMARK(
+                                                                                              false                                                                                              ,
+                                                                                                begin
+                                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                                    _pair_QUMARK(
+                                                                                                      __v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30215
+                                                                                                    )
+                                                                                                end
+                                                                                            )
+                                                                                        end
+                                                                                    )
+                                                                                end
+                                                                               ) then
+                                                                                  begin
+                                                                                    ___lambda = lambda { |__v__16__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30216| 
+                                                                                        begin
+                                                                                          ___lambda = lambda { |_expr| 
+                                                                                              begin
+                                                                                                ___lambda = lambda { |__v__17__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30217| 
+                                                                                                    if ( 
+                                                                                                      begin
+                                                                                                        embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                                                          _not(
+                                                                                                              begin
+                                                                                                                embedBacktraceInfo( "", 1 ); 
+                                                                                                                  _eq_QUMARK(
+                                                                                                                    false                                                                                                                    ,
+                                                                                                                      begin
+                                                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                                                          _null_QUMARK(
+                                                                                                                            __v__17__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30217
+                                                                                                                          )
+                                                                                                                      end
+                                                                                                                  )
+                                                                                                              end
+                                                                                                          )
+                                                                                                      end
+                                                                                                     ) then
+                                                                                                        begin
+                                                                                                          ___lambda = lambda { |__v__18__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30218| 
+                                                                                                              begin
+                                                                                                                ___lambda = lambda { |_rest| 
+                                                                                                                    begin
+                                                                                                                      ___lambda = lambda { |__v__19__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30219| 
+                                                                                                                          begin
+                                                                                                                            ___lambda = lambda { |_body| 
+                                                                                                                                begin
+                                                                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                    _cons(
+                                                                                                                                        begin
+                                                                                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                            trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                begin
+                                                                                                                                                    trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                end                                                                                                                                              ,
+                                                                                                                                            [
+                                                                                                                                                :"let"
+                                                                                                                                            ]
+                                                                                                                                                         ))
+                                                                                                                                        end                                                                                                                                      ,
+                                                                                                                                        begin
+                                                                                                                                          embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                            _cons(
+                                                                                                                                                begin
+                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                    _cons(
+                                                                                                                                                        begin
+                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                            _cons(
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                    trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                                        begin
+                                                                                                                                                                            trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                        end                                                                                                                                                                      ,
+                                                                                                                                                                    [
+                                                                                                                                                                        :"tmp"
+                                                                                                                                                                    ]
+                                                                                                                                                                                 ))
+                                                                                                                                                                end                                                                                                                                                              ,
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                    _cons(
+                                                                                                                                                                        begin
+                                                                                                                                                                            trampCall(_expr)
+                                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:41"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                        end                                                                                                                                                                      ,
+                                                                                                                                                                      Cell.new()
+                                                                                                                                                                    )
+                                                                                                                                                                end
+                                                                                                                                                            )
+                                                                                                                                                        end                                                                                                                                                      ,
+                                                                                                                                                      Cell.new()
+                                                                                                                                                    )
+                                                                                                                                                end                                                                                                                                              ,
+                                                                                                                                                begin
+                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                    _cons(
+                                                                                                                                                        begin
+                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                            _cons(
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                    trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                                        begin
+                                                                                                                                                                            trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                                          rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                        end                                                                                                                                                                      ,
+                                                                                                                                                                    [
+                                                                                                                                                                        :"and"
+                                                                                                                                                                    ]
+                                                                                                                                                                                 ))
+                                                                                                                                                                end                                                                                                                                                              ,
+                                                                                                                                                                begin
+                                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                    _cons(
+                                                                                                                                                                        begin
+                                                                                                                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                            trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                                                begin
+                                                                                                                                                                                    trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                end                                                                                                                                                                              ,
+                                                                                                                                                                            [
+                                                                                                                                                                                :"tmp"
+                                                                                                                                                                            ]
+                                                                                                                                                                                         ))
+                                                                                                                                                                        end                                                                                                                                                                      ,
+                                                                                                                                                                        begin
+                                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                            _cons(
+                                                                                                                                                                                begin
+                                                                                                                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                    _cons(
+                                                                                                                                                                                        begin
+                                                                                                                                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                                            trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                                                                begin
+                                                                                                                                                                                                    trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                end                                                                                                                                                                                              ,
+                                                                                                                                                                                            [
+                                                                                                                                                                                                :"and-let*"
+                                                                                                                                                                                            ]
+                                                                                                                                                                                                         ))
+                                                                                                                                                                                        end                                                                                                                                                                                      ,
+                                                                                                                                                                                        begin
+                                                                                                                                                                                          embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                            _cons(
+                                                                                                                                                                                                begin
+                                                                                                                                                                                                    trampCall(_rest)
+                                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                end                                                                                                                                                                                              ,
+                                                                                                                                                                                                begin
+                                                                                                                                                                                                    trampCall(_body)
+                                                                                                                                                                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                end
+                                                                                                                                                                                            )
+                                                                                                                                                                                        end
+                                                                                                                                                                                    )
+                                                                                                                                                                                end                                                                                                                                                                              ,
+                                                                                                                                                                              Cell.new()
+                                                                                                                                                                            )
+                                                                                                                                                                        end
+                                                                                                                                                                    )
+                                                                                                                                                                end
+                                                                                                                                                            )
+                                                                                                                                                        end                                                                                                                                                      ,
+                                                                                                                                                      Cell.new()
+                                                                                                                                                    )
+                                                                                                                                                end
+                                                                                                                                            )
+                                                                                                                                        end
+                                                                                                                                    )
+                                                                                                                                end
+                                                                                                                            } ; ___lambda.call(
+                                                                                                                                __v__19__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30219
+                                                                                                                                       )
+                                                                                                                          end
+                                                                                                                      } ; ___lambda.call(
+                                                                                                                            begin
+                                                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                                                _cdr(
+                                                                                                                                  __v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213
+                                                                                                                                )
+                                                                                                                            end
+                                                                                                                                 )
+                                                                                                                    end
+                                                                                                                } ; ___lambda.call(
+                                                                                                                    __v__18__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30218
+                                                                                                                           )
+                                                                                                              end
+                                                                                                          } ; ___lambda.call(
+                                                                                                                begin
+                                                                                                                  embedBacktraceInfo( "", 1 ); 
+                                                                                                                    _cdr(
+                                                                                                                      __v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214
+                                                                                                                    )
+                                                                                                                end
+                                                                                                                     )
+                                                                                                        end
+                                                                                                    else
+                                                                                                      false
+                                                                                                    end
+                                                                                                } ; ___lambda.call(
+                                                                                                      begin
+                                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                                          _cdr(
+                                                                                                            __v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30215
+                                                                                                          )
+                                                                                                      end
+                                                                                                           )
+                                                                                              end
+                                                                                          } ; ___lambda.call(
+                                                                                              __v__16__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30216
+                                                                                                     )
+                                                                                        end
+                                                                                    } ; ___lambda.call(
+                                                                                          begin
+                                                                                            embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                                                              _car(
+                                                                                                __v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30215
+                                                                                              )
+                                                                                          end
+                                                                                               )
+                                                                                  end
+                                                                              else
+                                                                                false
+                                                                              end
+                                                                          } ; ___lambda.call(
+                                                                                begin
+                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                                                    _car(
+                                                                                      __v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214
+                                                                                    )
+                                                                                end
+                                                                                     )
+                                                                        end
+                                                                    else
+                                                                      false
+                                                                    end
+                                                                } ; ___lambda.call(
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                                          _car(
+                                                                            __v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213
+                                                                          )
+                                                                      end
+                                                                           )
+                                                              end
+                                                          else
+                                                            false
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "", 1 ); 
+                                                                _cdr(
+                                                                  __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30193
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                         )
+                                            end
+                                        end
+                                    } ; ___lambda.call(
+                                          begin
+                                            ___lambda = lambda { |__v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30204| 
+                                                if ( 
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                      _not(
+                                                          begin
+                                                            embedBacktraceInfo( "", 1 ); 
+                                                              _eq_QUMARK(
+                                                                false                                                                ,
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      _pair_QUMARK(
+                                                                        __v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30204
+                                                                      )
+                                                                  end
+                                                              )
+                                                          end
+                                                      )
+                                                  end
+                                                 ) then
+                                                    begin
+                                                      ___lambda = lambda { |__v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30205| 
+                                                          if ( 
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                _not(
+                                                                    begin
+                                                                      embedBacktraceInfo( "", 1 ); 
+                                                                        _eq_QUMARK(
+                                                                          false                                                                          ,
+                                                                            begin
+                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                _pair_QUMARK(
+                                                                                  __v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30205
+                                                                                )
+                                                                            end
+                                                                        )
+                                                                    end
+                                                                )
+                                                            end
+                                                           ) then
+                                                              begin
+                                                                ___lambda = lambda { |__v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30206| 
+                                                                    if ( 
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                          _not(
+                                                                              begin
+                                                                                embedBacktraceInfo( "", 1 ); 
+                                                                                  _eq_QUMARK(
+                                                                                    false                                                                                    ,
+                                                                                      begin
+                                                                                        embedBacktraceInfo( "", 1 ); 
+                                                                                          _pair_QUMARK(
+                                                                                            __v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30206
+                                                                                          )
+                                                                                      end
+                                                                                  )
+                                                                              end
+                                                                          )
+                                                                      end
+                                                                     ) then
+                                                                        begin
+                                                                          ___lambda = lambda { |__v__7__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30207| 
+                                                                              begin
+                                                                                ___lambda = lambda { |_var| 
+                                                                                    begin
+                                                                                      ___lambda = lambda { |__v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30208| 
+                                                                                          if ( 
+                                                                                            begin
+                                                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                                                _not(
+                                                                                                    begin
+                                                                                                      embedBacktraceInfo( "", 1 ); 
+                                                                                                        _eq_QUMARK(
+                                                                                                          false                                                                                                          ,
+                                                                                                            begin
+                                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                                _pair_QUMARK(
+                                                                                                                  __v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30208
+                                                                                                                )
+                                                                                                            end
+                                                                                                        )
+                                                                                                    end
+                                                                                                )
+                                                                                            end
+                                                                                           ) then
+                                                                                              begin
+                                                                                                ___lambda = lambda { |__v__9__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30209| 
+                                                                                                    begin
+                                                                                                      ___lambda = lambda { |_expr| 
+                                                                                                          begin
+                                                                                                            ___lambda = lambda { |__v__10__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30210| 
+                                                                                                                if ( 
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                                                                                      _not(
+                                                                                                                          begin
+                                                                                                                            embedBacktraceInfo( "", 1 ); 
+                                                                                                                              _eq_QUMARK(
+                                                                                                                                false                                                                                                                                ,
+                                                                                                                                  begin
+                                                                                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                                                                                      _null_QUMARK(
+                                                                                                                                        __v__10__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30210
+                                                                                                                                      )
+                                                                                                                                  end
+                                                                                                                              )
+                                                                                                                          end
+                                                                                                                      )
+                                                                                                                  end
+                                                                                                                 ) then
+                                                                                                                    begin
+                                                                                                                      ___lambda = lambda { |__v__11__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30211| 
+                                                                                                                          begin
+                                                                                                                            ___lambda = lambda { |_rest| 
+                                                                                                                                begin
+                                                                                                                                  ___lambda = lambda { |__v__12__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30212| 
+                                                                                                                                      begin
+                                                                                                                                        ___lambda = lambda { |_body| 
+                                                                                                                                            begin
+                                                                                                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                _cons(
+                                                                                                                                                    begin
+                                                                                                                                                      embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                        trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                            begin
+                                                                                                                                                                trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                            end                                                                                                                                                          ,
+                                                                                                                                                        [
+                                                                                                                                                            :"let"
+                                                                                                                                                        ]
+                                                                                                                                                                     ))
+                                                                                                                                                    end                                                                                                                                                  ,
+                                                                                                                                                    begin
+                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                        _cons(
+                                                                                                                                                            begin
+                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                _cons(
+                                                                                                                                                                    begin
+                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                        _cons(
+                                                                                                                                                                            begin
+                                                                                                                                                                                trampCall(_var)
+                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                            end                                                                                                                                                                          ,
+                                                                                                                                                                            begin
+                                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                _cons(
+                                                                                                                                                                                    begin
+                                                                                                                                                                                        trampCall(_expr)
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:41"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                    end                                                                                                                                                                                  ,
+                                                                                                                                                                                  Cell.new()
+                                                                                                                                                                                )
+                                                                                                                                                                            end
+                                                                                                                                                                        )
+                                                                                                                                                                    end                                                                                                                                                                  ,
+                                                                                                                                                                  Cell.new()
+                                                                                                                                                                )
+                                                                                                                                                            end                                                                                                                                                          ,
+                                                                                                                                                            begin
+                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                _cons(
+                                                                                                                                                                    begin
+                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                        _cons(
+                                                                                                                                                                            begin
+                                                                                                                                                                              embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                                trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                                                    begin
+                                                                                                                                                                                        trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                    end                                                                                                                                                                                  ,
+                                                                                                                                                                                [
+                                                                                                                                                                                    :"and"
+                                                                                                                                                                                ]
+                                                                                                                                                                                             ))
+                                                                                                                                                                            end                                                                                                                                                                          ,
+                                                                                                                                                                            begin
+                                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                _cons(
+                                                                                                                                                                                    begin
+                                                                                                                                                                                        trampCall(_var)
+                                                                                                                                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                    end                                                                                                                                                                                  ,
+                                                                                                                                                                                    begin
+                                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                        _cons(
+                                                                                                                                                                                            begin
+                                                                                                                                                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                                _cons(
+                                                                                                                                                                                                    begin
+                                                                                                                                                                                                      embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                                                                                                                                                        trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                                                                                                                                            begin
+                                                                                                                                                                                                                trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            end                                                                                                                                                                                                          ,
+                                                                                                                                                                                                        [
+                                                                                                                                                                                                            :"and-let*"
+                                                                                                                                                                                                        ]
+                                                                                                                                                                                                                     ))
+                                                                                                                                                                                                    end                                                                                                                                                                                                  ,
+                                                                                                                                                                                                    begin
+                                                                                                                                                                                                      embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                                                                                                                                                        _cons(
+                                                                                                                                                                                                            begin
+                                                                                                                                                                                                                trampCall(_rest)
+                                                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            end                                                                                                                                                                                                          ,
+                                                                                                                                                                                                            begin
+                                                                                                                                                                                                                trampCall(_body)
+                                                                                                                                                                                                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                                                                                                                                                            end
+                                                                                                                                                                                                        )
+                                                                                                                                                                                                    end
+                                                                                                                                                                                                )
+                                                                                                                                                                                            end                                                                                                                                                                                          ,
+                                                                                                                                                                                          Cell.new()
+                                                                                                                                                                                        )
+                                                                                                                                                                                    end
+                                                                                                                                                                                )
+                                                                                                                                                                            end
+                                                                                                                                                                        )
+                                                                                                                                                                    end                                                                                                                                                                  ,
+                                                                                                                                                                  Cell.new()
+                                                                                                                                                                )
+                                                                                                                                                            end
+                                                                                                                                                        )
+                                                                                                                                                    end
+                                                                                                                                                )
+                                                                                                                                            end
+                                                                                                                                        } ; ___lambda.call(
+                                                                                                                                            __v__12__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30212
+                                                                                                                                                   )
+                                                                                                                                      end
+                                                                                                                                  } ; ___lambda.call(
+                                                                                                                                        begin
+                                                                                                                                          embedBacktraceInfo( "", 1 ); 
+                                                                                                                                            _cdr(
+                                                                                                                                              __v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30204
+                                                                                                                                            )
+                                                                                                                                        end
+                                                                                                                                             )
+                                                                                                                                end
+                                                                                                                            } ; ___lambda.call(
+                                                                                                                                __v__11__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30211
+                                                                                                                                       )
+                                                                                                                          end
+                                                                                                                      } ; ___lambda.call(
+                                                                                                                            begin
+                                                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                                                _cdr(
+                                                                                                                                  __v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30205
+                                                                                                                                )
+                                                                                                                            end
+                                                                                                                                 )
+                                                                                                                    end
+                                                                                                                else
+                                                                                                                  false
+                                                                                                                end
+                                                                                                            } ; ___lambda.call(
+                                                                                                                  begin
+                                                                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                                                                      _cdr(
+                                                                                                                        __v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30208
+                                                                                                                      )
+                                                                                                                  end
+                                                                                                                       )
+                                                                                                          end
+                                                                                                      } ; ___lambda.call(
+                                                                                                          __v__9__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30209
+                                                                                                                 )
+                                                                                                    end
+                                                                                                } ; ___lambda.call(
+                                                                                                      begin
+                                                                                                        embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                                                                          _car(
+                                                                                                            __v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30208
+                                                                                                          )
+                                                                                                      end
+                                                                                                           )
+                                                                                              end
+                                                                                          else
+                                                                                            false
+                                                                                          end
+                                                                                      } ; ___lambda.call(
+                                                                                            begin
+                                                                                              embedBacktraceInfo( "", 1 ); 
+                                                                                                _cdr(
+                                                                                                  __v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30206
+                                                                                                )
+                                                                                            end
+                                                                                                 )
+                                                                                    end
+                                                                                } ; ___lambda.call(
+                                                                                    __v__7__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30207
+                                                                                           )
+                                                                              end
+                                                                          } ; ___lambda.call(
+                                                                                begin
+                                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                                                    _car(
+                                                                                      __v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30206
+                                                                                    )
+                                                                                end
+                                                                                     )
+                                                                        end
+                                                                    else
+                                                                      false
+                                                                    end
+                                                                } ; ___lambda.call(
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                                          _car(
+                                                                            __v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30205
+                                                                          )
+                                                                      end
+                                                                           )
+                                                              end
+                                                          else
+                                                            false
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                                _car(
+                                                                  __v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30204
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                else
+                                                  false
+                                                end
+                                            } ; ___lambda.call(
+                                                  begin
+                                                    embedBacktraceInfo( "", 1 ); 
+                                                      _cdr(
+                                                        __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30193
+                                                      )
+                                                  end
+                                                       )
+                                          end
+                                               )
+                                  end
+                              end
+                          } ; ___lambda.call(
+                                begin
+                                  ___lambda = lambda { |__v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201| 
+                                      if ( 
+                                        begin
+                                          embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                            _not(
+                                                begin
+                                                  embedBacktraceInfo( "", 1 ); 
+                                                    _eq_QUMARK(
+                                                      false                                                      ,
+                                                        begin
+                                                          embedBacktraceInfo( "", 1 ); 
+                                                            _pair_QUMARK(
+                                                              __v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201
+                                                            )
+                                                        end
+                                                    )
+                                                end
+                                            )
+                                        end
+                                       ) then
+                                          begin
+                                            ___lambda = lambda { |__v__2__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202| 
+                                                if ( 
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 39 ); 
+                                                      _not(
+                                                          begin
+                                                            embedBacktraceInfo( "", 1 ); 
+                                                              _eq_QUMARK(
+                                                                false                                                                ,
+                                                                  begin
+                                                                    embedBacktraceInfo( "", 1 ); 
+                                                                      _null_QUMARK(
+                                                                        __v__2__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202
+                                                                      )
+                                                                  end
+                                                              )
+                                                          end
+                                                      )
+                                                  end
+                                                 ) then
+                                                    begin
+                                                      ___lambda = lambda { |__v__3__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30203| 
+                                                          begin
+                                                            ___lambda = lambda { |_body| 
+                                                                begin
+                                                                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 71 ); 
+                                                                    _cons(
+                                                                        begin
+                                                                          embedBacktraceInfo( "dynamic S-expression ( no source )", 1 ); 
+                                                                            trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194',
+                                                                                begin
+                                                                                    trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30194)
+                                                                                  rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
+                                                                                end                                                                              ,
+                                                                            [
+                                                                                :"begin"
+                                                                            ]
+                                                                                         ))
+                                                                        end                                                                      ,
+                                                                        begin
+                                                                            trampCall(_body)
+                                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
+                                                                        end
+                                                                    )
+                                                                end
+                                                            } ; ___lambda.call(
+                                                                __v__3__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30203
+                                                                       )
+                                                          end
+                                                      } ; ___lambda.call(
+                                                            begin
+                                                              embedBacktraceInfo( "", 1 ); 
+                                                                _cdr(
+                                                                  __v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201
+                                                                )
+                                                            end
+                                                                 )
+                                                    end
+                                                else
+                                                  false
+                                                end
+                                            } ; ___lambda.call(
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 73 ); 
+                                                      _car(
+                                                        __v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201
+                                                      )
+                                                  end
+                                                       )
+                                          end
+                                      else
+                                        false
+                                      end
+                                  } ; ___lambda.call(
+                                        begin
+                                          embedBacktraceInfo( "", 1 ); 
+                                            _cdr(
+                                              __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30193
+                                            )
+                                        end
+                                             )
+                                end
+                                     )
+                        end
+                    }
+              ]
+                           ))
+          end
+    )
+  end
+ )
+
+
+# -------------------------------------------------------
+# [EOF]
+# -------------------------------------------------------

@@ -21,7 +21,10 @@ begin
     gemspec.authors = ["Kiyoka Nishiyama"]
     gemspec.files = FileList['Rakefile',
                              '.gemtest',
+                             'History.txt',
                              'VERSION.yml',
+                             'README',
+                             'COPYING',
                              'lib/**/*.rb',
                              'lib/**/*.nnd',
                              'lib/**/*.nndc',
@@ -35,70 +38,60 @@ begin
                              'emacs/*.el',
                              'benchmark/*.rb',
                              'benchmark/*.nnd'].to_a
-    gemspec.add_dependency             "rspec"
-    gemspec.add_dependency             "jeweler"
+    gemspec.add_development_dependency "rspec"
+    gemspec.add_development_dependency "rake"
     gemspec.add_dependency             "json"
-    gemspec.add_dependency             "rake"
-    gemspec.add_development_dependency "ruby-prof"
   end
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install jeweler"
+  puts 'Jeweler not available. If you want to build a gemfile, please install with "sudo gem install jeweler"'
 end
 
 printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
 
-task :default => [:condition_clean, :test, :condition_test2] do
+task :default => [:condition_clean, :test, :condition_test3] do
 end
 
-task :test do
-  stage1 =  []
-  stage1 << "time rspec -I ./lib -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  stage1 << "time rspec -I ./lib -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  stage1 << "time rspec -I ./lib -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  stage1 << "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
-  stage2 =  []
-  stage2 << "/bin/rm -f test.record"
-  stage2 << "echo "" > test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd              >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
-  stage2 << "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
-  stage2 << "cat test.record"
-  arr = []
-  arr += stage1
-  arr += stage2
-  arr.each {|str|
-    sh str
-  }
+task :test    => [:test1, :test2] do
+end
+
+task :test1 do
+  sh "time ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "time ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "time ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
 end
 
 task :test2 do
-  stage1 =  []
-  stage1 << "/bin/rm -f test.record"
-  stage1 << "echo "" > test2.log"
-  stage1 << "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test2.log"
-  stage1 << "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test2.log"
-  stage1 << "cat test.record"
-  arr = []
-  arr += stage1
-  arr.each {|str|
-    sh str
-  }
+  sh "/bin/rm -f test.record"
+  sh "echo "" > test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd              >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
+  sh "cat test.record"
 end
 
-task :condition_test2 do
+task :test3 do
+  sh "/bin/rm -f test.record"
+  sh "echo "" > test3.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test3.log"
+  sh "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test3.log"
+  sh "cat test.record"
+end
+
+task :condition_test3 do
   if 1 == ENV[ 'NENDO_CLEAN_TEST' ].to_i
-    puts "Info: test2 is passed with NENDO_CLEAN_TEST=1 env. because test2 takes too much cpu time."
+    puts "Info: test3 is passed with NENDO_CLEAN_TEST=1 env. because test3 takes too much cpu time."
   else
-    Rake::Task["test2"].execute
+    Rake::Task["test3"].execute
   end
 end
 
 task :compile do
   # Replace Version Number
-  targetFile = "./lib/ruby/core.rb"
+  targetFile = "./lib/nendo/ruby/core.rb"
   vh = Jeweler::VersionHelper.new "."
   (original, modified) = open( targetFile ) {|f|
     lines = f.readlines
@@ -119,21 +112,23 @@ task :compile do
   end
 
   # Compile
-  sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
+  sh "/bin/rm -f ./lib/nendo/*.nndc* ./lib/nendo/**/*.nndc*"
+  sh "ruby -rrbconfig -e 'p RbConfig::CONFIG[ \"vendor_dir\" ]'"
   files = []
-  files << "./lib/init.nnd"
-  files << "./lib/srfi-1.nnd"
-  files << "./lib/srfi-2.nnd"
-  files << "./lib/srfi-26.nnd"
-  files << "./lib/util/list.nnd"
-  files << "./lib/text/html-lite.nnd"
-  files << "./lib/text/tree.nnd"
-  files << "./lib/debug/syslog.nnd"
-  files << "./lib/nendo/test.nnd"
-  files << "./lib/rfc/json.nnd"
-  files << "./lib/util/match.nnd"
-  files << "./lib/util/combinations.nnd"
-  files << "./lib/nendo/experimental.nnd"
+  files << "./lib/nendo/init.nnd"
+  files << "./lib/nendo/srfi-1.nnd"
+  files << "./lib/nendo/srfi-2.nnd"
+  files << "./lib/nendo/srfi-26.nnd"
+  files << "./lib/nendo/util/list.nnd"
+  files << "./lib/nendo/text/html-lite.nnd"
+  files << "./lib/nendo/text/tree.nnd"
+  files << "./lib/nendo/debug/null.nnd"
+  files << "./lib/nendo/debug/syslog.nnd"
+  files << "./lib/nendo/nendo/test.nnd"
+  files << "./lib/nendo/rfc/json.nnd"
+  files << "./lib/nendo/util/match.nnd"
+  files << "./lib/nendo/util/combinations.nnd"
+  files << "./lib/nendo/nendo/experimental.nnd"
   files.each {|fn|
     sh sprintf( "time ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
   }
@@ -145,16 +140,16 @@ task :bench do
   sh "                    nendo      ./benchmark/benchmark.nnd"
 end
 
-task :clean do
-  sh "/bin/rm -f ./lib/*.nndc* ./lib/**/*.nndc*"
+task :clean_nndc do
+  sh "/bin/rm -f ./lib/**/*.nndc* ./lib/**/**/*.nndc*"
 end
 
 task :condition_clean do
   if 1 == ENV[ 'NENDO_CLEAN_TEST' ].to_i
-    Rake::Task["clean"].execute
+    Rake::Task["clean_nndc"].execute
   end
 end
 
 task :repl do
-  sh "ruby -I ./lib ./bin/nendo"
+  sh "ruby -I ./lib -I ./lib/nendo  ./bin/nendo"
 end

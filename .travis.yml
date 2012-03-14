@@ -1,3 +1,5 @@
+language: ruby
+
 rvm:
  - 1.9.2
  - 1.9.3
@@ -5,3 +7,6 @@ rvm:
 env:
  - NENDO_CLEAN_TEST=0
 # - NENDO_CLEAN_TEST=1
+
+gemfile:
+ - gemfiles/Gemfile
