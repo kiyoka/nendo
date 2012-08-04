@@ -13,24 +13,162 @@ TestError
   (let ((arr (. Array new)))
     (arr.respond_to? (. "lazy" to_sym))))
 
-(define *lazy-form* #f)
+(define (lazy-enabled-platform) *lazy-enabled-platform*)
+
+(set! *lazy-enabled-platform* #f)
 
 (define-syntax lazy
   (syntax-rules ()
     ((lazy)
      (error "lazy requires (lazy s-expression)"))
     ((lazy s-exp)
-     (if (not *lazy-enabled-platform*)
-         s-exp
-         (let1 *lazy-form* #t
-           s-exp)))
-    ((lazy s-exp rest ...)
+     (let-syntax
+         ((map
+           (syntax-rules (%lazy-map)
+             ((map)
+              (error "map requires (map func lst ...)"))
+             ((map func)
+              (error "map requires (map func lst ...)"))
+             ((map func       lst1)
+              (%lazy-map func lst1))
+             ((map func       lst1 lst2)
+              (%lazy-map func lst1 lst2))
+             ((map func       lst1 lst2 lst3)
+              (%lazy-map func lst1 lst2 lst3))))
+             
+          (for-each
+           (syntax-rules (%lazy-for-each)
+             ((for-each)
+              (error "for-each requires (for-each func lst ...)"))
+             ((for-each func)
+              (error "for-each requires (for-each func lst ...)"))
+             ((for-each func       lst1)
+              (%lazy-for-each func lst1))
+             ((for-each func       lst1 lst2)
+              (%lazy-for-each func lst1 lst2))
+             ((for-each func       lst1 lst2 lst3)
+              (%lazy-for-each func lst1 lst2 lst3))
+             ))
+          (filter
+           (syntax-rules (%lazy-filter)
+             ((filter)
+              (error "filter requires (filter func lst ...)"))
+             ((filter func)
+              (error "filter requires (filter func lst ...)"))
+             ((filter func       lst1)
+              (%lazy-filter func lst1))
+             ((filter func       lst1 lst2)
+              (%lazy-filter func lst1 lst2))
+             ((filter func       lst1 lst2 lst3)
+              (%lazy-filter func lst1 lst2 lst3))
+             )))
+       s-exp))
+    ((lazy s-exp other)
      (error "lazy requires (lazy s-expression)"))))
+
+
+(macroexpand
+ '(lazy
+   (map
+    (lambda (num)
+      (+ num 1))
+    '(1 2 3))))
+
+(macroexpand
+ '(lazy
+   (let ((aaa 10)
+         (total 0))
+     (list
+      (map
+       (lambda (num)
+         (+ num 1))
+       '(1 2 3))
+      (for-each
+       (lambda (num)
+         (set! total (+ total num)))
+       '(1 2 3))
+      total
+      (filter
+       (lambda (num)
+         (= num aaa))
+       (range 100))))))
+
+
+(lazy
+ (map
+  (lambda (num)
+    (+ num 1))
+  '(1 2 3)))
+
+(lazy
+ (map
+  (lambda (num num2)
+    (+ num 1))
+  '(1 2 3)
+  '(4 5 6)))
+
+(lazy
+ (map
+  (lambda (num num2 num3)
+    (+ num 1))
+  '(1 2 3)
+  '(4 5 6)
+  '(7 8 9)))
+
+(lazy
+ (map
+  (lambda (num num2 num3 num4)
+    (+ num 1))
+  '(1 2 3)
+  '(4 5 6)
+  '(7 8 9)
+  '(0 0 0)))
+
+
+(lazy
+ (let ((aaa 10)
+       (total 0))
+   (list
+    (map
+     (lambda (num)
+       (+ num 1))
+     '(1 2 3))
+    (for-each
+     (lambda (num)
+       (set! total (+ total num)))
+     '(1 2 3))
+    total
+    (filter
+     (lambda (num)
+       (= num aaa))
+     (range 100)))))
+
+
+
+(define map %map)
+
+(define %lazy-map %map)
+
+;; simple map test
+(map
+ (lambda (num)
+   (+ num 1))
+ '(1 2 3))
+
+(macroexpand
+ '(map
+   (lambda (num)
+     (+ num 1))
+   '(1 2 3)))
+
+
 
 
 ;; check some syntax error
 (macroexpand
  '(lazy (+ 1 1)))
+
+
 
 (macroexpand
  '(lazy))
@@ -38,28 +176,7 @@ TestError
 (macroexpand
  '(lazy 1 2))
 
-
-(define (%%map proc vec)
-  (if *lazy-form*
-      (begin
-        #?="lazy ON"
-        (vec.lazy.map
-         (&block (x)
-           (proc x))))
-      (begin
-        #?="lazy OFF"
-        (vec.map
-         (&block (x)
-           (proc x))))))
-
-
-
-
-
-
-
-
-
-
+(macroexpand
+ '(lazy 1 2 3))
 
 
