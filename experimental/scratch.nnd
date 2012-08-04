@@ -9,42 +9,57 @@
 
 TestError
 
-(let1 cnt 0
-  (begin
-    (set! cnt (+ cnt 1))
-    (set! cnt (+ cnt "string"))))
+(define *lazy-enabled-platform*
+  (let ((arr (. Array new)))
+    (arr.respond_to? (. "lazy" to_sym))))
+
+(define *lazy-form* #f)
+
+(define-syntax lazy
+  (syntax-rules ()
+    ((lazy)
+     (error "lazy requires (lazy s-expression)"))
+    ((lazy s-exp)
+     (if (not *lazy-enabled-platform*)
+         s-exp
+         (let1 *lazy-form* #t
+           s-exp)))
+    ((lazy s-exp rest ...)
+     (error "lazy requires (lazy s-expression)"))))
 
 
-;; unwind-protect for Exceptions
-(let* ([cnt 0]
-       [result (unwind-protect
-                   (begin
-                     (set! cnt (+ cnt 1))
-                     (set! cnt (+ cnt 2))
-                     (+ 1.1 "str")
-                     (set! cnt (+ cnt 3)))
-                 (set! cnt (+ cnt 100)))])
-  (list result cnt))
+;; check some syntax error
+(macroexpand
+ '(lazy (+ 1 1)))
+
+(macroexpand
+ '(lazy))
+
+(macroexpand
+ '(lazy 1 2))
 
 
-(let* ([cnt 0]
-       [result (unwind-protect
-                   (begin
-                     (set! cnt (+ cnt 10))
-                     (set! cnt (+ cnt 01))
-                     (error "[RuntimeError]")
-                     (set! cnt (+ cnt 02)))
-                 (set! cnt (+ cnt 100)))])
-  (list result cnt))
+(define (%%map proc vec)
+  (if *lazy-form*
+      (begin
+        #?="lazy ON"
+        (vec.lazy.map
+         (&block (x)
+           (proc x))))
+      (begin
+        #?="lazy OFF"
+        (vec.map
+         (&block (x)
+           (proc x))))))
 
-(let* ([cnt 0]
-       [result (unwind-protect
-                   (begin
-                     (set! cnt (+ cnt 10))
-                     (set! cnt (+ cnt 01))
-                     (guard (exc (else (set! cnt (+ cnt 1000))))
-                       (error "[RuntimeError]"))
-                     (set! cnt (+ cnt 02)))
-                 (set! cnt (+ cnt 100)))])
-  (list result cnt))
+
+
+
+
+
+
+
+
+
+
 
