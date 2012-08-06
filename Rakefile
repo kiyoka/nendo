@@ -125,10 +125,11 @@ task :compile do
   files << "./lib/nendo/debug/null.nnd"
   files << "./lib/nendo/debug/syslog.nnd"
   files << "./lib/nendo/nendo/test.nnd"
+  files << "./lib/nendo/nendo/lazy.nnd"
   files << "./lib/nendo/rfc/json.nnd"
-  files << "./lib/nendo/util/match.nnd"
-  files << "./lib/nendo/util/combinations.nnd"
-  files << "./lib/nendo/nendo/experimental.nnd"
+#  files << "./lib/nendo/util/match.nnd"
+#  files << "./lib/nendo/util/combinations.nnd"
+#  files << "./lib/nendo/nendo/experimental.nnd"
   files.each {|fn|
     sh sprintf( "time ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
   }

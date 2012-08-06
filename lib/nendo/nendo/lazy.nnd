@@ -1,22 +1,37 @@
 ;;-*- mode: nendo; syntax: scheme -*-;;
-;; -----------------
-(enable-idebug)
-(disable-idebug)
-(exit)
-
-(debug-print-length)
-(debug-print-length 2000)
-
-TestError
-
-(define *lazy-enabled-platform*
-  (let ((arr (. Array new)))
-    (arr.respond_to? (. "lazy" to_sym))))
-
-(define (lazy-enabled-platform) *lazy-enabled-platform*)
-
-(set! *lazy-enabled-platform* #f)
-
+;;;
+;;; nendo.lazy - test framework
+;;;  
+;;;   Copyright (c) 2012-2012  Kiyoka Nishiyama  <kiyoka@sumibi.org>
+;;;   
+;;;   Redistribution and use in source and binary forms, with or without
+;;;   modification, are permitted provided that the following conditions
+;;;   are met:
+;;;   
+;;;   1. Redistributions of source code must retain the above copyright
+;;;      notice, this list of conditions and the following disclaimer.
+;;;  
+;;;   2. Redistributions in binary form must reproduce the above copyright
+;;;      notice, this list of conditions and the following disclaimer in the
+;;;      documentation and/or other materials provided with the distribution.
+;;;  
+;;;   3. Neither the name of the authors nor the names of its contributors
+;;;      may be used to endorse or promote products derived from this
+;;;      software without specific prior written permission.
+;;;  
+;;;   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+;;;   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+;;;   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+;;;   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+;;;   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+;;;   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+;;;   TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+;;;   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+;;;   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+;;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+;;;  
+;; 
 (define-syntax lazy
   (syntax-rules ()
     ((lazy)
@@ -65,106 +80,4 @@ TestError
        s-exp))
     ((lazy s-exp other)
      (error "lazy requires (lazy s-expression)"))))
-
-
-(macroexpand
- '(lazy
-   (map
-    (lambda (num)
-      (+ num 1))
-    '(1 2 3))))
-
-(macroexpand
- '(lazy
-   (let ((aaa 10)
-         (total 0))
-     (list
-      (map
-       (lambda (num)
-         (+ num 1))
-       '(1 2 3))
-      (for-each
-       (lambda (num)
-         (set! total (+ total num)))
-       '(1 2 3))
-      total
-      (filter
-       (lambda (num)
-         (= num aaa))
-       (range 100))))))
-
-
-(lazy
- (map
-  (lambda (num)
-    (+ num 1))
-  '(1 2 3)))
-
-(lazy
- (map
-  (lambda (num num2)
-    (+ num 1))
-  '(1 2 3)
-  '(4 5 6)))
-
-(lazy
- (map
-  (lambda (num num2 num3)
-    (+ num 1))
-  '(1 2 3)
-  '(4 5 6)
-  '(7 8 9)))
-
-(lazy
- (map
-  (lambda (num num2 num3 num4)
-    (+ num 1))
-  '(1 2 3)
-  '(4 5 6)
-  '(7 8 9)
-  '(0 0 0)))
-
-
-(lazy
- (let ((aaa 10))
-   (filter
-    (lambda (num)
-      (= num aaa))
-    (range 10000))))
-
-
-(define map %map)
-
-(define %lazy-map %map)
-
-;; simple map test
-(map
- (lambda (num)
-   (+ num 1))
- '(1 2 3))
-
-(macroexpand
- '(map
-   (lambda (num)
-     (+ num 1))
-   '(1 2 3)))
-
-
-
-
-;; check some syntax error
-(macroexpand
- '(lazy (+ 1 1)))
-
-
-
-(macroexpand
- '(lazy))
-
-(macroexpand
- '(lazy 1 2))
-
-(macroexpand
- '(lazy 1 2 3))
-
 

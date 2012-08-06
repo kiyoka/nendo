@@ -32,6 +32,29 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
 
+;; for nendo.lazy
+(define *lazy-enabled-platform*
+  (let ((arr (. Array new)))
+    (arr.respond_to? (. "lazy" to_sym)))) ;; Check the Emumerable#lazy method
+(define (lazy-enabled-platform) *lazy-enabled-platform*)
+
+
+(define (with-open filename pred . lst)
+  (let1 opt (get-optional lst #f)
+    (when (< 1 (length lst))
+      (error "with-open requires 2 or 3 arguments."))
+    (when (not (procedure? pred))
+      (error "with-open requires procedure as pred argument."))
+    (if opt
+        (.open filename opt (&block (f) (pred
+                                         (if (lazy-enabled-platform)
+                                             f.lazy
+                                             f))))
+        (.open filename     (&block (f) (pred
+                                         (if (lazy-enabled-platform)
+                                             f.lazy
+                                             f)))))))
+
 
 ;; Checking (Ruby's Enumerable?) and (not Nendo's list?)
 (define (%%enumerable? x)
@@ -56,6 +79,14 @@
         (%%map proc (car lists))
         (apply %map-original args))))
 
+(define (%lazy-map proc . lists)
+  (let1 args (cons proc lists)
+    (if (apply %%map-able? args)
+        (if (lazy-enabled-platform)
+            (%%map proc (. (car lists) lazy))
+            (%%map proc (car lists)))
+        (apply %map-original args))))
+
 
 (define (%%for-each-able? proc . lists)
   (if (= 1 (length lists))
@@ -73,6 +104,14 @@
         (%%for-each proc (car lists))
         (apply %for-each-original args))))
 
+(define (%lazy-for-each proc . lists)
+  (let1 args (cons proc lists)
+    (if (apply %%for-each-able? args)
+        (if (lazy-enabled-platform)
+            (%%for-each proc (. (car lists) lazy))
+            (%%for-each proc (car lists)))
+        (apply %for-each-original args))))
+
 
 (define (%%filter-able? proc lst)
   (%%enumerable? lst))
@@ -85,6 +124,13 @@
 (define (%filter proc lst)
   (if (%%filter-able?   proc lst)
       (%%filter         proc lst)
+      (%filter-original proc lst)))
+
+(define (%lazy-filter proc lst)
+  (if (%%filter-able?   proc lst)
+      (if (lazy-enabled-platform)
+          (%%for-each proc (. (car lst) lazy))
+          (%%for-each proc lst))
       (%filter-original proc lst)))
 
 

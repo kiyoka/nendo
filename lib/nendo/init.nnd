@@ -881,17 +881,6 @@
           (%raise TypeError ". dot-operator requires method name as symbol." (sprintf "%s:%s in dot-operator" (*FILE*) (*LINE*))))))))
 
 
-(define (with-open filename pred . lst)
-  (let1 opt (get-optional lst #f)
-    (when (< 1 (length lst))
-      (error "with-open requires 2 or 3 arguments."))
-    (when (not (procedure? pred))
-      (error "with-open requires procedure as pred argument."))
-    (if opt
-        (.open filename opt (&block (f) (pred f)))
-        (.open filename     (&block (f) (pred f))))))
-
-
 ;; ----------------------------------------
 ;; List library functions
 ;; ----------------------------------------
