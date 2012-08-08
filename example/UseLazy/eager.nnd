@@ -1,0 +1,26 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+;; print the peek memory usage of this process.
+(define (print-peek-memory)
+  (with-open "|cat /proc/#{Process.pid}/status"
+             (lambda (f)
+               (print (+ "=> " (car (to-list (f.readlines.grep #/vmpeak/i))))))))
+
+(define (main argv)
+  (with-open
+   "bigdata.txt"
+   (lambda (f)
+     (let* ((lines (f.readlines))
+            (lst   (map
+                    (lambda (line)
+                      (+ "<" line.chomp ">"))
+                    lines)))
+       (for-each print lst))))
+
+  (print-peek-memory))
+
+
+
+

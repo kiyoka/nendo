@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2012-02-26"
+  s.date = "2012-08-08"
   s.description = "Nendo is a programming language written in Ruby."
   s.email = "kiyoka@sumibi.org"
   s.executables = ["nendo"]
@@ -97,7 +97,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/kiyoka/nendo"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.17"
+  s.rubygems_version = "1.8.24"
   s.summary = "Nendo is a dialect of Lisp."
 
   if s.respond_to? :specification_version then

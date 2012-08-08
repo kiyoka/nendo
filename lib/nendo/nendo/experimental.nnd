@@ -32,6 +32,19 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
 
+;; for nendo.lazy
+(define *ruby-lazy-enabled-platform*
+  (let ((arr (. Array new)))
+    (arr.respond_to? (. "lazy" to_sym)))) ;; Check the Emumerable#lazy method
+(define (ruby-lazy-enabled-platform) *ruby-lazy-enabled-platform*)
+
+
+(define (ruby-lazy enumerable)
+  (if (and (ruby-lazy-enabled-platform)
+           (enumerable.is_a? Enumerable))
+      (. enumerable lazy)
+      enumerable))
+
 
 ;; Checking (Ruby's Enumerable?) and (not Nendo's list?)
 (define (%%enumerable? x)
