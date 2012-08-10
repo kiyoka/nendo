@@ -39,11 +39,29 @@
 (define (ruby-lazy-enabled-platform) *ruby-lazy-enabled-platform*)
 
 
-(define (ruby-lazy enumerable)
+(define (lazy-vector enumerable)
   (if (and (ruby-lazy-enabled-platform)
            (enumerable.is_a? Enumerable))
       (. enumerable lazy)
       enumerable))
+
+(define (lazy-vector? v)
+  (if (ruby-lazy-enabled-platform)
+      (v.is_a? Enumerator::Lazy)
+      #f))
+
+(define (vector? v)
+  (or (v.is_a? Array)
+      (lazy-vector? v)))
+  
+(define (vector->list v)
+  (let1 v (if (lazy-vector? v)
+              (v.to_a)
+              v)
+    (let loop ((n (pred (vector-length v))) (l '()))
+      (if (= n -1)
+          l
+          (loop (pred n) (cons (vector-ref v n) l))))))
 
 
 ;; Checking (Ruby's Enumerable?) and (not Nendo's list?)

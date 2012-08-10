@@ -6,7 +6,7 @@
 (define (print-peek-memory)
   (with-open "|cat /proc/#{Process.pid}/status"
              (lambda (f)
-               (print (+ "=> " (car (to-list (f.readlines.grep #/vmpeak/i))))))))
+               (STDERR.puts (+ "=> " (car (to-list (f.readlines.grep #/vmpeak/i))))))))
 
 (define (main argv)
   (with-open
