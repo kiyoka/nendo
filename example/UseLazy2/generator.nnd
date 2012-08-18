@@ -1,0 +1,29 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+
+;; print the peek memory usage of this process.
+(define (print-peek-memory)
+  (with-open "|cat /proc/#{Process.pid}/status"
+             (lambda (f)
+               (STDERR.puts (+ "=> " (car (to-list (f.readlines.grep #/vmpeak/i))))))))
+
+(define (main argv)
+  (with-open
+   "nums.txt"
+   (lambda (f)
+     (printf "sum = %d\n"
+             (fold
+              (lambda (item result)
+                (+ (item.to_i) result))
+              0
+              (filter
+               (lambda (x) (x.match #/[0-9]+/))
+               (f.lines))))))
+
+  (print-peek-memory))
+
+
+
+
+
