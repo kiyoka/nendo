@@ -408,13 +408,13 @@ trampCall(
 (test-section "lazy-vector for Enumerable")
 
 (let1 arr '#(1 2 3)
-  (test* "lazy-vector? (1)"
+  (test* "lazy-vector is a kind of vector? (1)"
          #t
          (vector? arr))
-  (test* "lazy-vector? (2)"
+  (test* "lazy-vector is a kind of vector? (2)"
          #t
          (vector? (lazy-vector arr)))
-  (test* "lazy-vector? (3)"
+  (test* "lazy-vector is a kind of vector? (3)"
          #t
          (vector? (lazy-vector (lazy-vector arr)))))
   
