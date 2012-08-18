@@ -1776,6 +1776,11 @@ EOS
     @nendo.evalStr( " (filter-map (lambda (x) (= x 100))     '(1 2 3)) " ).should == "()"
     @nendo.evalStr( " (filter-map (lambda (x) (= x 2))       '(1 2 3)) " ).should == "(#t)"
     @nendo.evalStr( " (filter-map (lambda (x) (not (= x 2))) '(1 2 3)) " ).should == "(#t #t)"
+    @nendo.evalStr( " (fold (lambda (x y) x y)       0 '()) " ).should            == "0"
+    @nendo.evalStr( " (fold (lambda (x y) (+ x y))   0  '(1 2 3)) " ).should      == "6"
+    @nendo.evalStr( " (fold (lambda (x y) (+ x y))   1  '(2 3 4)) " ).should      == "10"
+    @nendo.evalStr( " (fold (lambda (x y) (* x y))   1  '(2 3 4 5)) " ).should    == "120"
+    @nendo.evalStr( " (fold (lambda (x y) (* x y))   0  '(2 3 4 5)) " ).should    == "0"
     @nendo.evalStr( <<EOS
 (filter-map
  (lambda (x)

@@ -370,6 +370,39 @@ trampCall(
            (v.yield "three")))))
         
 
+(test* "fold (for vector)"
+       120
+       (fold
+        (lambda (item result) (* item result))
+        1
+        '#(1 2 3 4 5)))
+
+(test* "fold (for Range)"
+       5050
+       (fold
+        (lambda (item result) (+ item result))
+        1
+        (Range.new 2 100)))
+
+(test* "fold (for string vector)"
+       "a/b/c/d/e/f/g/h"
+       (fold
+        (lambda (item result) (+ result "/" item))
+        "a"
+        (. "bcdefgh" split "")))
+
+(test* "fold (for Enumerable)"
+       "one:two:three:four"
+       (fold
+        (lambda (item result) (+ result ":" item))
+        "one"
+        (Enumerator.new
+         (&block (v)
+           (v.yield "two")
+           (v.yield "three")
+           (v.yield "four")
+           ))))
+        
 
 ;;-------------------------------------------------------------------
 (test-section "lazy-vector for Enumerable")

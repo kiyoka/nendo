@@ -657,10 +657,8 @@
 	  (if (null? cars+ans) ans ; Done.
 	      (lp cdrs (apply kons cars+ans)))))
 	    
-      (let lp ((lis lis1) (ans knil))			; Fast path
-	(if (null-list? lis) ans
-	    (lp (cdr lis) (kons (car lis) ans))))))
-
+      ;; Fast path
+      (%fold kons knil lis1)))
 
 (define (fold-right kons knil lis1 . lists)
   (check-arg procedure? kons fold-right)

@@ -119,10 +119,33 @@
       (%filter-original proc lst)))
 
 
+(define (%%fold-able? proc knil lst)
+  (%%enumerable? lst))
+
+(define (%%fold proc knil vec)
+  (vec.inject knil
+              (&block (result item)
+                (proc item result))))
+
+(define (%fold-original proc knil lis1)
+  (define (null-list? l)
+    (cond ((pair? l) #f)
+          ((null? l) #t)
+          (else (error "null-list?: argument out of domain" l))))
+  (check-arg procedure? proc %fold-original)
+  (let lp ((lis lis1) (ans knil))
+    (if (null-list? lis) ans
+        (lp (cdr lis) (proc (car lis) ans)))))
+
+(define (%fold proc knil lst)
+  (if (%%fold-able?   proc knil lst)
+      (%%fold         proc knil lst)
+      (%fold-original proc knil lst)))
+
 (define map         %map)
 (define for-each    %for-each)
 (define filter      %filter)
-
+(define fold        %fold)
 
 
 ;; dis-assembler
