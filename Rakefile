@@ -11,7 +11,7 @@
 
 require 'rake'
 begin
-  require 'jeweler'
+  require 'jeweler2'
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "nendo"
     gemspec.summary = "Nendo is a dialect of Lisp."
@@ -43,7 +43,7 @@ begin
     gemspec.add_dependency             "json"
   end
 rescue LoadError
-  puts 'Jeweler not available. If you want to build a gemfile, please install with "sudo gem install jeweler"'
+  puts 'Jeweler2 not available. If you want to build a gemfile, please install with "sudo gem install jeweler2"'
 end
 
 printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
@@ -71,6 +71,7 @@ task :test2 do
   sh "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
   sh "cat test.record"
+  sh "grep ' 0 failed, ' test.record  > /dev/null"
 end
 
 task :test3 do
@@ -79,6 +80,7 @@ task :test3 do
   sh "ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test3.log"
   sh "ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test3.log"
   sh "cat test.record"
+  sh "grep ' 0 failed, ' test.record > /dev/null"
 end
 
 task :condition_test3 do

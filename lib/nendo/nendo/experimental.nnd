@@ -58,10 +58,10 @@
   (let1 v (if (lazy-vector? v)
               (v.to_a)
               v)
-    (let loop ((n (pred (vector-length v))) (l '()))
-      (if (= n -1)
-          l
-          (loop (pred n) (cons (vector-ref v n) l))))))
+    v.to_list))
+
+
+
 
 
 ;; Checking (Ruby's Enumerable?) and (not Nendo's list?)

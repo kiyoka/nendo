@@ -438,11 +438,11 @@ trampCall(
       (test* "lazy-vector? (for Ruby-2.0)"
              #t
              (lazy-vector? (lazy-vector STDIN)))
-      (test* "size of lazy-vector"
-             (test-error NoMethodError)
+      (test* "size of lazy-vector (for Ruby-2.0)"
+             10
              (vec.size))
-      (test* "size of lazy-vector"
-             (test-error NoMethodError)
+      (test* "size of lazy-vector (for Ruby-2.0)"
+             10
              (vector-length vec))
       (test* "index of lazy-vector"
              (test-error NoMethodError)
