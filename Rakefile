@@ -55,29 +55,29 @@ task :test    => [:test1, :test2] do
 end
 
 task :test1 do
-  sh "time ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  sh "time ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  sh "time ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
+  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
 end
 
 task :test2 do
   sh "/bin/rm -f test.record"
   sh "echo "" > test.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd              >> test.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd              >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
   sh "cat test.record"
 end
 
 task :test3 do
   sh "/bin/rm -f test.record"
   sh "echo "" > test3.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test3.log"
-  sh "time ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test3.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test3.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test3.log"
   sh "cat test.record"
 end
 
@@ -130,7 +130,7 @@ task :compile do
   files << "./lib/nendo/util/combinations.nnd"
   files << "./lib/nendo/nendo/experimental.nnd"
   files.each {|fn|
-    sh sprintf( "time ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
+    sh sprintf( "ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
   }
 end
 
