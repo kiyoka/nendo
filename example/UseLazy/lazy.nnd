@@ -12,7 +12,7 @@
   (with-open
    "bigdata.txt"
    (lambda (f)
-     (let* ((lines (lazy-vector f.lines))
+     (let* ((lines (ruby-lazy f.lines))
             (lst   (map
                     (lambda (line)
                       (+ "<" line.chomp ">"))

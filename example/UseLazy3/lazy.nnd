@@ -8,22 +8,19 @@
              (lambda (f)
                (STDERR.puts (+ "=> " (car (to-list (f.readlines.grep #/vmpeak/i))))))))
 
+
+(define (readlines io)
+  (if (not (io.is_a? IO))
+      (raise ArgumentError "readlines expects IO object.")
+      (ruby-lazy (io.each_line))))
+
+
 (define (main argv)
   (with-open
-   "nums.txt"
+   "/tmp/bigdata.txt"
    (lambda (f)
-     (printf "sum = %d\n"
-             (fold
-              (lambda (item result)
-                (+ (item.to_i) result))
-              0
-              (filter
-               (lambda (x) (x.match #/[0-9]+/))
-               (ruby-lazy (f.lines)))))))
-
+     (for-each print
+               (map
+                (lambda (line) (+ "<" line ">"))
+                (readlines f)))))
   (print-peek-memory))
-
-
-
-
-

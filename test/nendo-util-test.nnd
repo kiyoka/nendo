@@ -405,55 +405,55 @@ trampCall(
         
 
 ;;-------------------------------------------------------------------
-(test-section "lazy-vector for Enumerable")
+(test-section "ruby-lazy for Enumerable")
 
 (let1 arr '#(1 2 3)
-  (test* "lazy-vector is a kind of vector? (1)"
+  (test* "ruby-lazy is a kind of vector? (1)"
          #t
          (vector? arr))
-  (test* "lazy-vector is a kind of vector? (2)"
+  (test* "ruby-lazy is a kind of vector? (2)"
          #t
-         (vector? (lazy-vector arr)))
-  (test* "lazy-vector is a kind of vector? (3)"
+         (vector? (ruby-lazy arr)))
+  (test* "ruby-lazy is a kind of vector? (3)"
          #t
-         (vector? (lazy-vector (lazy-vector arr)))))
+         (vector? (ruby-lazy (ruby-lazy arr)))))
   
 (if (ruby-lazy-enabled-platform)
     ;; Ruby 2.0
     (let ((arr '#(1 2 3))
-          (vec (lazy-vector '#( 1 2 3 4 5 6 7 8 9 10 ))))
+          (vec (ruby-lazy '#( 1 2 3 4 5 6 7 8 9 10 ))))
 
-      (test* "lazy-vector? (for Ruby-2.0)"
+      (test* "ruby-lazy? (for Ruby-2.0)"
              #f
-             (lazy-vector? arr))
-      (test* "lazy-vector? (for Ruby-2.0)"
+             (ruby-lazy? arr))
+      (test* "ruby-lazy? (for Ruby-2.0)"
              #t
-             (lazy-vector? (lazy-vector arr)))
-      (test* "lazy-vector? (for Ruby-2.0)"
+             (ruby-lazy? (ruby-lazy arr)))
+      (test* "ruby-lazy? (for Ruby-2.0)"
              #t
-             (lazy-vector? (lazy-vector (lazy-vector arr))))
-      (test* "lazy-vector? (for Ruby-2.0)"
+             (ruby-lazy? (ruby-lazy (ruby-lazy arr))))
+      (test* "ruby-lazy? (for Ruby-2.0)"
              #f
-             (lazy-vector? STDIN))
-      (test* "lazy-vector? (for Ruby-2.0)"
+             (ruby-lazy? STDIN))
+      (test* "ruby-lazy? (for Ruby-2.0)"
              #t
-             (lazy-vector? (lazy-vector STDIN)))
-      (test* "size of lazy-vector (for Ruby-2.0)"
+             (ruby-lazy? (ruby-lazy STDIN)))
+      (test* "size of ruby-lazy (for Ruby-2.0)"
              10
              (vec.size))
-      (test* "size of lazy-vector (for Ruby-2.0)"
+      (test* "size of ruby-lazy (for Ruby-2.0)"
              10
              (vector-length vec))
-      (test* "index of lazy-vector"
+      (test* "index of ruby-lazy"
              (test-error NoMethodError)
              (vector-ref vec 2))
-      (test* "lazy-vector to list"
+      (test* "ruby-lazy to list"
              '(1 2 3 4 5 6 7 8 9 10)
              (vector->list vec))
-      (test* "size of lazy-vector"
+      (test* "size of ruby-lazy"
              10
              (length (vector->list vec)))
-      (test* "index of lazy-vector"
+      (test* "index of ruby-lazy"
              3
              (vector-ref (list->vector (vector->list vec)) 2))
       (test* "vector-equal?"
@@ -464,29 +464,29 @@ trampCall(
              (vector-equal? (list->vector (vector->list vec)) (list->vector (range 10 1))))
       (test* "vector-length"
              (test-error TypeError)
-             (length (lazy-vector (make-vector 100))))
+             (length (ruby-lazy (make-vector 100))))
       (test* "vector-length"
              100
-             (length (vector->list (lazy-vector (make-vector 100)))))
+             (length (vector->list (ruby-lazy (make-vector 100)))))
       )
 
     ;; Ruby 1.9.x
     (let1 arr '#(1 2 3)
-      (test* "lazy-vector? (for Ruby 1.9.x)"
+      (test* "ruby-lazy? (for Ruby 1.9.x)"
              #f
-             (lazy-vector? arr))
-      (test* "lazy-vector? (for Ruby 1.9.x)"
+             (ruby-lazy? arr))
+      (test* "ruby-lazy? (for Ruby 1.9.x)"
              #f
-             (lazy-vector? (lazy-vector arr)))
-      (test* "lazy-vector? (for Ruby 1.9.x)"
+             (ruby-lazy? (ruby-lazy arr)))
+      (test* "ruby-lazy? (for Ruby 1.9.x)"
              #f
-             (lazy-vector? (lazy-vector (lazy-vector arr))))
-      (test* "lazy-vector? (for Ruby 1.9.x)"
+             (ruby-lazy? (ruby-lazy (ruby-lazy arr))))
+      (test* "ruby-lazy? (for Ruby 1.9.x)"
              #f
-             (lazy-vector? STDIN))
-      (test* "lazy-vector? (for Ruby 1.9.x)"
+             (ruby-lazy? STDIN))
+      (test* "ruby-lazy? (for Ruby 1.9.x)"
              #f
-             (lazy-vector? (lazy-vector STDIN)))
+             (ruby-lazy? (ruby-lazy STDIN)))
       ))
 
   

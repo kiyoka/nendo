@@ -39,23 +39,23 @@
 (define (ruby-lazy-enabled-platform) *ruby-lazy-enabled-platform*)
 
 
-(define (lazy-vector enumerable)
+(define (ruby-lazy enumerable)
   (if (and (ruby-lazy-enabled-platform)
            (enumerable.is_a? Enumerable))
       (. enumerable lazy)
       enumerable))
 
-(define (lazy-vector? v)
+(define (ruby-lazy? v)
   (if (ruby-lazy-enabled-platform)
       (v.is_a? Enumerator::Lazy)
       #f))
 
 (define (vector? v)
   (or (v.is_a? Array)
-      (lazy-vector? v)))
+      (ruby-lazy? v)))
   
 (define (vector->list v)
-  (let1 v (if (lazy-vector? v)
+  (let1 v (if (ruby-lazy? v)
               (v.to_a)
               v)
     v.to_list))
@@ -251,3 +251,15 @@
      (raise nendo-syntax-error "let1 requires (let1 var expr body ...) form."))
     ((let1 var expr body ...)
      (%let ((var expr)) body ...))))
+
+
+(define (readlines io)
+  (if (not (io.is_a? IO))
+      (raise ArgumentError "readlines expects IO object.")
+      (ruby-lazy (io.each_line))))
+
+
+(define (readchars io)
+  (if (not (io.is_a? IO))
+      (raise ArgumentError "readlines expects IO object.")
+      (ruby-lazy (io.each_char))))

@@ -55,9 +55,9 @@ task :test    => [:test1, :test2] do
 end
 
 task :test1 do
-  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb          -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  sh "ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb         -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
-  sh "ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb  -r ./test/rspec_formatter_for_emacs.rb -f CustomFormatter"
+  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb         "
+  sh "ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb        "
+  sh "ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb "
   sh "ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
 end
 

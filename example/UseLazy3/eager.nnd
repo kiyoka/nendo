@@ -10,20 +10,10 @@
 
 (define (main argv)
   (with-open
-   "nums.txt"
+   "/tmp/bigdata.txt"
    (lambda (f)
-     (printf "sum = %d\n"
-             (fold
-              (lambda (item result)
-                (+ (item.to_i) result))
-              0
-              (filter
-               (lambda (x) (x.match #/[0-9]+/))
-               (ruby-lazy (f.lines)))))))
-
+     (for-each print
+               (map
+                (lambda (line) (+ "<" line ">"))
+                (f.readlines)))))
   (print-peek-memory))
-
-
-
-
-
