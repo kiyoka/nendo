@@ -807,9 +807,26 @@
       ;; Fast path.
       (%map f lis1)))
 
+
+;;; For-each F across lists, guaranteeing to go left-to-right.
+;;; same like as map-in-order.
+
+(define (for-each-in-order f lis1 . lists)
+  (check-arg procedure? f map-in-order)
+  (if (pair? lists)
+      (let recur ((lists (cons lis1 lists)))
+	(receive (cars cdrs) (%cars+cdrs lists)
+	  (if (pair? cars)
+	      (let ((x (apply f cars)))		; Do head first,
+		(cons x (recur cdrs)))		; then tail.
+	      '())))
+	    
+      ;; Fast path.
+      (%for-each f lis1)))
+
 ;;; We extend MAP to handle arguments of unequal length.
 (define map map-in-order)
-(define for-each map-in-order)
+(define for-each for-each-in-order)
 
 ;;; filter, remove, partition
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

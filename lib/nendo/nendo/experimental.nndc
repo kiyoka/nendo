@@ -69,7 +69,7 @@ trampCall(
               if ( 
                 if ( 
                   begin
-                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 263 ); 
+                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 265 ); 
                       _not(
                           begin
                             embedBacktraceInfo( "", 1 ); 
@@ -6248,18 +6248,38 @@ trampCall(
               else
                   begin
                     embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 259 ); 
-                      delayCall( '_ruby_MIMARKlazy',  'ruby-lazy',
+                      delayCall( '_map',  'map',
                           begin
-                            if @global_lisp_binding.has_key?('_ruby_MIMARKlazy') then
-                              trampCall(@_ruby_MIMARKlazy)
-                            else raise NameError.new( "Error: undefined variable _ruby_MIMARKlazy", "_ruby_MIMARKlazy" ) end
+                            if @global_lisp_binding.has_key?('_map') then
+                              trampCall(@_map)
+                            else raise NameError.new( "Error: undefined variable _map", "_map" ) end
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:259"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
+                            Proc.new { |_x| 
+                                begin
+                                    trampCall(_x).chomp(
+                                      )
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:260"] + __e.backtrace ) ; raise __e
+                                end
+                            }                          ,
                             begin
-                                trampCall(_io).each_line(
-                                  )
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:259"] + __e.backtrace ) ; raise __e
+                              embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 261 ); 
+                                trampCall( self._ruby_MIMARKlazy_METHOD(  'ruby-lazy',
+                                    begin
+                                      if @global_lisp_binding.has_key?('_ruby_MIMARKlazy') then
+                                        trampCall(@_ruby_MIMARKlazy)
+                                      else raise NameError.new( "Error: undefined variable _ruby_MIMARKlazy", "_ruby_MIMARKlazy" ) end
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:261"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                [
+                                      begin
+                                          trampCall(_io).each_line(
+                                            )
+                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:261"] + __e.backtrace ) ; raise __e
+                                      end
+                                ]
+                                             ))
                             end
                       ]
                                    )
@@ -6280,16 +6300,16 @@ trampCall(
           Proc.new { |_io| 
               if ( 
                 begin
-                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 263 ); 
+                  embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 265 ); 
                     _not(
                         begin
                             trampCall(_io).is_a?(
                                   begin
                                       trampCall(IO)
-                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:263"] + __e.backtrace ) ; raise __e
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:265"] + __e.backtrace ) ; raise __e
                                   end
                               )
-                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:263"] + __e.backtrace ) ; raise __e
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:265"] + __e.backtrace ) ; raise __e
                         end
                     )
                 end
@@ -6306,7 +6326,7 @@ trampCall(
                       [
                             begin
                                 trampCall(ArgumentError)
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:264"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:266"] + __e.backtrace ) ; raise __e
                             end                          ,
                           "readlines expects IO object."                          ,
                             begin
@@ -6348,7 +6368,7 @@ trampCall(
                                       end                                    ,
                                       begin
                                           trampCall(ArgumentError)
-                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:264"] + __e.backtrace ) ; raise __e
+                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:266"] + __e.backtrace ) ; raise __e
                                       end
                                 ]
                                              ))
@@ -6358,19 +6378,19 @@ trampCall(
                   end
               else
                   begin
-                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 265 ); 
+                    embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 267 ); 
                       delayCall( '_ruby_MIMARKlazy',  'ruby-lazy',
                           begin
                             if @global_lisp_binding.has_key?('_ruby_MIMARKlazy') then
                               trampCall(@_ruby_MIMARKlazy)
                             else raise NameError.new( "Error: undefined variable _ruby_MIMARKlazy", "_ruby_MIMARKlazy" ) end
-                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:265"] + __e.backtrace ) ; raise __e
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:267"] + __e.backtrace ) ; raise __e
                           end                        ,
                       [
                             begin
                                 trampCall(_io).each_char(
                                   )
-                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:265"] + __e.backtrace ) ; raise __e
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:267"] + __e.backtrace ) ; raise __e
                             end
                       ]
                                    )

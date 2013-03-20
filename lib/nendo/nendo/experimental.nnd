@@ -147,7 +147,6 @@
 (define filter      %filter)
 (define fold        %fold)
 
-
 ;; dis-assembler
 (define (disasm varname . opt)
   (let ((kind  (get-optional opt 'compiled))
@@ -256,7 +255,9 @@
 (define (readlines io)
   (if (not (io.is_a? IO))
       (raise ArgumentError "readlines expects IO object.")
-      (ruby-lazy (io.each_line))))
+      (map
+       (lambda (x) (x.chomp))
+       (ruby-lazy (io.each_line)))))
 
 
 (define (readchars io)
