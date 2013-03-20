@@ -344,8 +344,6 @@ module Nendo
     def _to_list( arg )                 _to_MIMARKlist( arg ) end
     def _to_MIMARKlist( arg )
       case arg
-      when Enumerator::Lazy
-        arg.to_a.to_list
       when Enumerator
         arg.to_list
       when Array
