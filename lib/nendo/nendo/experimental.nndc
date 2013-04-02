@@ -42,9 +42,9 @@ trampCall(
 
 trampCall( 
   begin
-      def self._ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
-      @global_lisp_binding['_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform'] = self.method( :_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_METHOD )
-    @_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform = 
+      def self._ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK'] = self.method( :_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK_METHOD )
+    @_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK = 
     trampCall(
           Proc.new { || 
               begin
@@ -77,11 +77,11 @@ trampCall(
                                 false                                ,
                                   begin
                                     embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 43 ); 
-                                      trampCall( self._ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_METHOD(  'ruby-lazy-enabled-platform',
+                                      trampCall( self._ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK_METHOD(  'ruby-lazy-enabled-platform?',
                                           begin
-                                            if @global_lisp_binding.has_key?('_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform') then
-                                              trampCall(@_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform)
-                                            else raise NameError.new( "Error: undefined variable _ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform", "_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform" ) end
+                                            if @global_lisp_binding.has_key?('_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK') then
+                                              trampCall(@_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK)
+                                            else raise NameError.new( "Error: undefined variable _ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK", "_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK" ) end
                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:43"] + __e.backtrace ) ; raise __e
                                           end                                        ,
                                       [
@@ -133,11 +133,11 @@ trampCall(
               if ( 
                 begin
                   embedBacktraceInfo( "./lib/nendo/nendo/experimental.nnd", 49 ); 
-                    trampCall( self._ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_METHOD(  'ruby-lazy-enabled-platform',
+                    trampCall( self._ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK_METHOD(  'ruby-lazy-enabled-platform?',
                         begin
-                          if @global_lisp_binding.has_key?('_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform') then
-                            trampCall(@_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform)
-                          else raise NameError.new( "Error: undefined variable _ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform", "_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform" ) end
+                          if @global_lisp_binding.has_key?('_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK') then
+                            trampCall(@_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK)
+                          else raise NameError.new( "Error: undefined variable _ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK", "_ruby_MIMARKlazy_MIMARKenabled_MIMARKplatform_QUMARK" ) end
                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/nendo/experimental.nnd:49"] + __e.backtrace ) ; raise __e
                         end                      ,
                     [

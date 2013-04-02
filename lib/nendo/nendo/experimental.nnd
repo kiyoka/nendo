@@ -36,17 +36,17 @@
 (define *ruby-lazy-enabled-platform*
   (let ((arr (. Array new)))
     (arr.respond_to? (. "lazy" to_sym)))) ;; Check the Emumerable#lazy method
-(define (ruby-lazy-enabled-platform) *ruby-lazy-enabled-platform*)
+(define (ruby-lazy-enabled-platform?) *ruby-lazy-enabled-platform*)
 
 
 (define (ruby-lazy enumerable)
-  (if (and (ruby-lazy-enabled-platform)
+  (if (and (ruby-lazy-enabled-platform?)
            (enumerable.is_a? Enumerable))
       (. enumerable lazy)
       enumerable))
 
 (define (ruby-lazy? v)
-  (if (ruby-lazy-enabled-platform)
+  (if (ruby-lazy-enabled-platform?)
       (v.is_a? Enumerator::Lazy)
       #f))
 
