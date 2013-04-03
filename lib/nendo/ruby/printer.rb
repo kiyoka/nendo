@@ -101,6 +101,8 @@ module Nendo
         "()"
       when nil
         "nil"
+      when Hash
+        sexp.to_s
       else
         sprintf( "%s", sexp )
       end
