@@ -11,22 +11,30 @@
     (require "jruby-prof")
     (require "ruby-prof"))
 
+(define results '())
+(define (bench-puts str)
+  #t)
+(define (bench-printf format str)
+  #t)
+
 ;; ------------------ macro --------------------
 (define bench-task
   (macro (profile-flag title proc)
     `(begin
-       (.puts ,title)
-       (.puts Benchmark::CAPTION)
+       (bench-puts ,title)
+       (bench-puts Benchmark::CAPTION)
        ,(if profile-flag
             `(let* ((result (RubyProf.profile
                              (&block ()
                                ,proc)))
                     (printer (RubyProf::GraphPrinter.new result)))
                (printer.print STDOUT))
-            `(.puts (Benchmark.measure
-                     (&block ()
-                       ,proc))))
-       (.puts ""))))
+            `(let1 str (Benchmark.measure
+                        (&block ()
+                          ,proc))
+               (push! results (cons ,title str))
+               (bench-puts str)))
+       (bench-puts ""))))
 
 (define ten-times
   (macro (expr)
@@ -43,96 +51,103 @@
 ;; -------------------- fact --------------------
 (bench-task #f
             "fact (ruby version)"
-            (printf " => %d\n" (RubyBenchmarkCode.new.fact 100)))
+            (bench-printf " => %d\n" (RubyBenchmarkCode.new.fact 100)))
 
 (bench-task #f
             "fact (nendo version)"
-            (printf " => %d\n" (fact 100)))
+            (bench-printf " => %d\n" (fact 100)))
 
 
 ;; -------------------- plus --------------------
 (for-each
  (lambda (level)
    (set-optimize-level level)
-   (printf " --- optimize level %d ---\n" level)
+   (bench-printf " --- optimize level %d ---\n" level)
    (bench-task #f
                "+ 0arg (nendo version)"
-               (printf " => %d\n" (hundled-times (plus0))))
+               (bench-printf " => %d\n" (hundled-times (plus0))))
    
    (bench-task #f
                "+ 1arg (nendo version)"
-               (printf " => %d\n" (hundled-times (plus1))))
+               (bench-printf " => %d\n" (hundled-times (plus1))))
    
    (bench-task #f
                "+ 2arg (nendo version)"
-               (printf " => %d\n" (hundled-times (plus2))))
+               (bench-printf " => %d\n" (hundled-times (plus2))))
    
    (bench-task #f
                "+ 3arg (nendo version)"
-               (printf " => %d\n" (hundled-times (plus3)))))
+               (bench-printf " => %d\n" (hundled-times (plus3)))))
  '(1 2))
 (print "--------------------")
 
 ;; -------------------- tak --------------------
 (bench-task #f
             "tak   (ruby version)"
-            (printf " => %d\n" (RubyBenchmarkCode.new.tak  10 5 0)))
+            (bench-printf " => %d\n" (RubyBenchmarkCode.new.tak  10 5 0)))
 
 (bench-task #f
             "tak2  (ruby version)"
-            (printf " => %d\n" (RubyBenchmarkCode.new.tak2 10 5 0)))
+            (bench-printf " => %d\n" (RubyBenchmarkCode.new.tak2 10 5 0)))
 
 (bench-task #f
             "tak3  (ruby version)"
-            (printf " => %d\n" (RubyBenchmarkCode.new.tak3 10 5 0)))
+            (bench-printf " => %d\n" (RubyBenchmarkCode.new.tak3 10 5 0)))
 
 (bench-task #f
             "tak   (nendo version)"
-            (printf " => %d\n" (tak 10 5 0)))
+            (bench-printf " => %d\n" (tak 10 5 0)))
 
 ;; -------------------- higher-order --------------------
-(let ([list10000 (range 10000)])
+(let ([list100000 (range 100000)])
 
   (bench-task #f
-            "for-each  10000 (nendo version)"
+            "for-each  100000 (nendo version)"
             (for-each
              (lambda (x) (+ 1 x))
-             list10000))
+             list100000))
 
   (bench-task #f
-            "map       10000 (nendo version)"
+            "map       100000 (nendo version)"
             (map
              (lambda (x) (+ 1 x))
-             list10000))
+             list100000))
 
   (bench-task #f
-            "filter    10000 (nendo version)"
+            "filter    100000 (nendo version)"
             (filter
              (lambda (x) (if (< x 100) x false))
-             list10000)))
+             list100000)))
                
 ;; ------------- higher-order for vector ----------------
 
 (use nendo.experimental)
 
-(let ([vec10000 (to-arr (range 10000)]])
+(let ([vec100000 (to-arr (range 100000)]])
   (bench-task #f
-              "for-each  vector 10000 (nendo version)"
+              "for-each  vector 100000 (nendo version)"
               (for-each
                (lambda (x) (+ 1 x))
-               vec10000))
+               vec100000))
 
   (bench-task #f
-              "map       vector 10000 (nendo version)"
+              "map       vector 100000 (nendo version)"
               (map
                (lambda (x) (+ 1 x))
-               vec10000))
+               vec100000))
   
   (bench-task #f
-              "filter    vector 10000 (nendo version)"
+              "filter    vector 100000 (nendo version)"
               (filter
                (lambda (x) (if (< x 100) x false))
-               vec10000))
+               vec100000))
   )
+
+;; ----- print results -------
+(print "-------------------- results --------------------")
+(for-each
+ (lambda (x)
+   (printf "%40s\t%s" (car x) (cdr x)))
+ (reverse results))
 
 ;;[EOF]
