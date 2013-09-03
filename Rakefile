@@ -3,7 +3,7 @@
 # Release Engineering
 #   1. edit the VERSION.yml file
 #   2. rake compile  &&   rake
-#   3. rake gemspec  &&   rake build
+#   3. rake gemspec  &&   gem build nendo.gemspec
 #      to generate nendo-x.x.x.gem
 #   4. install nendo-x.x.x.gem to clean environment and test
 #   5. rake release
@@ -17,6 +17,7 @@ begin
     gemspec.summary = "Nendo is a dialect of Lisp."
     gemspec.description = "Nendo is a programming language written in Ruby."
     gemspec.email = "kiyoka@sumibi.org"
+    gemspec.license = 'New BSD'
     gemspec.homepage = "http://github.com/kiyoka/nendo"
     gemspec.authors = ["Kiyoka Nishiyama"]
     gemspec.files = FileList['Rakefile',
@@ -38,6 +39,7 @@ begin
                              'emacs/*.el',
                              'benchmark/*.rb',
                              'benchmark/*.nnd'].to_a
+    gemspec.rdoc_options += [ '-x', 'match.nndc' ]
     gemspec.add_development_dependency "rspec"
     gemspec.add_development_dependency "rake"
     gemspec.add_dependency             "json"
