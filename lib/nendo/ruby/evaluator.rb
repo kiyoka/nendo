@@ -50,8 +50,8 @@ module Nendo
       @lexicalVars = []
       @syntaxHash = {}
       @optimize_level = 2
-      @backtrace = {}
-      @backtrace_counter = 1;
+      @backtrace = []
+      @backtrace_last = ""
       @displayErrorsFlag = true;
       @char_table_lisp_to_ruby = {
         # list     (! $ % & * + - . / : < = > ? @ ^ _ ~ ...)
@@ -340,8 +340,15 @@ module Nendo
     end
 
     def embedBacktraceInfo( sourcefile, lineno )
-      @backtrace[ sprintf( "%s:%s", sourcefile, lineno ) ] = @backtrace_counter
-      @backtrace_counter += 1
+      str = sourcefile + ":" + lineno.to_s
+      if @backtrace_last != str
+        @backtrace << str
+        if ( 10 < @backtrace.size )
+          @backtrace.shift
+        end
+        #p @backtrace
+      end
+      @backtrace_last = str
     end
 
     def generateEmbedBacktraceInfo( sourcefile, lineno, arr )
@@ -1073,9 +1080,8 @@ module Nendo
     def displayBacktrace( exception )
       if @displayErrorsFlag
         STDERR.puts( "\n  <<< Backtrace of Nendo >>>" )
-        arr = @backtrace.map { |key,val| [key,val] }.sort_by { |x| x[1] }.reverse
-        arr[0...10].each { |x|
-          STDERR.printf( "        from %s \n", x[0] )
+        @backtrace.reverse.each { |x|
+          STDERR.printf( "        from %s \n", x )
         }
         STDERR.puts( "          ...\n\n" )
       end
