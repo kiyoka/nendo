@@ -41,6 +41,8 @@ module Nendo
     EXEC_TYPE_ANONYMOUS = 2
     EXEC_TYPE_TAILCALL  = 3
 
+    attr_accessor :runtimeCheck
+
     def initialize( core, debug = false )
       @core    = core
       @indent  = "  "
@@ -50,6 +52,7 @@ module Nendo
       @lexicalVars = []
       @syntaxHash = {}
       @optimize_level = 2
+      @runtimeCheck = true
       @backtrace = []
       @backtrace_last = ""
       @displayErrorsFlag = true;
@@ -354,7 +357,11 @@ module Nendo
     def generateEmbedBacktraceInfo( sourcefile, lineno, arr )
       if sourcefile and lineno
         [ "begin",
-          [ sprintf( 'embedBacktraceInfo( "%s", %s ); ', sourcefile, lineno ), arr ],
+          if @runtimeCheck
+            [ sprintf( 'embedBacktraceInfo( "%s", %s ); ', sourcefile, lineno ), arr ]
+          else
+            [arr]
+          end,
           "end"
         ]
       else
@@ -696,15 +703,23 @@ module Nendo
                    end
       if global_cap
         ["begin",
-         [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
-          expression,
-          sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
-          sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
+         if @runtimeCheck
+           [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
+            expression,
+            sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
+            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )]
+         else
+           [expression]
+         end,
          "end"]
       else
         ["begin",
-         [expression,
-          sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )],
+         if @runtimeCheck         
+           [expression,
+            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )]
+         else
+           [expression]
+         end,
          "end"]
       end
     end

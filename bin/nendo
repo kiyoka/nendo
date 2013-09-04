@@ -50,6 +50,8 @@ def userOptionEater
       i += 1
     when '-V'
       i += 1
+    when '-d'
+      i += 1
     when '-l'
       i += 2
     when '-O'
@@ -79,6 +81,7 @@ def main
                         [ '-q', GetoptLong::NO_ARGUMENT ],
                         [ '-c', GetoptLong::NO_ARGUMENT ],
                         [ '-V', GetoptLong::NO_ARGUMENT ],
+                        [ '-d', GetoptLong::NO_ARGUMENT ],
                         [ '-l', GetoptLong::REQUIRED_ARGUMENT ],
                         [ '-O', GetoptLong::REQUIRED_ARGUMENT ]
                         ).each { |opt, arg|
@@ -106,6 +109,9 @@ def main
       -O:
         set optimize level. (0:no optimize,   1:tail call optimize)
 
+      -d:
+        disable runtime check.
+
       EOF
       exit 0
     when '-V'
@@ -123,6 +129,8 @@ def main
       STDERR.printf( "loaded file [%s]\n", arg )
     when '-O'
       core.setOptimizeLevel( arg.to_i )
+    when '-d'
+      core.disableRuntimeCheck( )
     end
   }
 

@@ -82,6 +82,10 @@ module Nendo
       @evaluator.setOptimizeLevel( level )
     end
 
+    def disableRuntimeCheck( )
+      @evaluator.runtimeCheck = false
+    end
+
     def setDisplayErrors( flag )
       @evaluator.setDisplayErrors( flag )
     end

@@ -134,7 +134,7 @@ task :compile do
   files << "./lib/nendo/util/combinations.nnd"
   files << "./lib/nendo/nendo/experimental.nnd"
   files.each {|fn|
-    sh sprintf( "ruby -I ./lib ./bin/nendo -c %s > %s", fn, fn + "c" )
+    sh sprintf( "ruby -I ./lib ./bin/nendo -d -c %s > %s", fn, fn + "c" )
   }
 end
 
