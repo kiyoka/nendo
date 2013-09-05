@@ -24,7 +24,7 @@ begin
                              '.gemtest',
                              'History.txt',
                              'VERSION.yml',
-                             'README',
+                             'README.md',
                              'COPYING',
                              'lib/**/*.rb',
                              'lib/**/*.nnd',
