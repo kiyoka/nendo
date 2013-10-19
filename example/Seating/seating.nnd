@@ -16,9 +16,6 @@
 (use srfi-1)
 (use nendo.test)
 
-(define (seating-problem input)
-  )
-
 
 ;; ３つのリストを生成して隣りをチェックする
 ;;  ("#" "-" "-" "-" "-")  ; left
@@ -61,9 +58,9 @@
      chair-list
      right)))
 
+
 #?=(get-empty-level-list '("-" "-" "-"))
 #?=(get-empty-level-list '("-" "-" "-" "-"))
-
 #?=(get-empty-level-list '("A" "-" "-" "-"))
 #?=(get-empty-level-list '("A" "-" "A"))
 
@@ -87,6 +84,7 @@
 #?=(sit "A" "---")
 #?=(sit "B" "A--")
 #?=(sit "C" "A-B")
+
 
 (define (leave person seats)
   (seats.sub person.upcase "-"))
