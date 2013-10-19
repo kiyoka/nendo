@@ -1,0 +1,161 @@
+#!/bin/sh
+:; #-*- mode: nendo; syntax: scheme -*-;;
+:; exec /usr/local/bin/nendo $0 $*
+;; -*- coding: utf-8 -*-
+;;
+;; http://nabetani.sakura.ne.jp/hena/ord7selectchair/
+;;   「のんびり座りたい 」 問題
+;; [input]      [output]
+;; 1:Aa 	-
+;; 2:AB 	AB
+;; 2:AaB 	B-
+;; 2:AZa 	-Z
+;;  .
+;;  .
+;;  .
+(use srfi-1)
+(use nendo.test)
+
+(define (seating-problem input)
+  )
+
+
+;; ３つのリストを生成して隣りをチェックする
+;;  ("#" "-" "-" "-" "-")  ; left
+;;  ("-" "-" "-" "-")      ; here
+;;  ("-" "-" "-" "#")      ; right
+(define (get-empty-level left here right)
+  (if (not (= "-" here))
+      0
+      (+
+       (if (or
+            (= "-" left)
+            (= "#" left))
+           1
+           0)
+       (if (= "-" here)
+           1
+           0)
+       (if (or
+            (= "-" right)
+            (= "#" right))
+           1
+           0))))
+
+#?=(get-empty-level "-" "-" "-")
+#?=(get-empty-level "A" "-" "-")
+#?=(get-empty-level "A" "-" "B")
+#?=(get-empty-level "A" "B" "C")
+#?=(get-empty-level "#" "-" "-")
+#?=(get-empty-level "#" "-" "#")
+#?=(get-empty-level "-" "D" "-")
+      
+  
+(define (get-empty-level-list chair-list)
+  (let ([left  (cons "#" chair-list)]
+        [right (reverse (cons "#" (reverse (cdr chair-list))))])
+    (map
+     (lambda (a b c)
+       (get-empty-level a b c))
+     left
+     chair-list
+     right)))
+
+#?=(get-empty-level-list '("-" "-" "-"))
+#?=(get-empty-level-list '("-" "-" "-" "-"))
+
+#?=(get-empty-level-list '("A" "-" "-" "-"))
+#?=(get-empty-level-list '("A" "-" "A"))
+
+
+(define (sit person seats)
+  (let* ([chair-list (to-list (seats.split ""))]
+         [empty-level-list (get-empty-level-list chair-list)]
+         [max-level (car (reverse (sort empty-level-list)))]
+         [result '()])
+    (for-each
+     (lambda (level chair)
+       (if (= level max-level)
+           (begin
+            (set! max-level -1)
+            (push! result person))
+           (push! result chair)))
+     empty-level-list
+     chair-list)
+    (string-join (reverse result) "")))
+
+#?=(sit "A" "---")
+#?=(sit "B" "A--")
+#?=(sit "C" "A-B")
+
+(define (leave person seats)
+  (seats.sub person.upcase "-"))
+
+#?=(leave "a" "A")
+#?=(leave "b" "AB-")
+#?=(leave "c" "ACB")
+
+
+(define (seating input)
+  (let* ([lst (to-list (input.split ":"))]
+         [chairs (to-i (first lst))]
+         [series (second lst)])
+    (let ([seats (. (make-vector chairs "-") join)])
+      (for-each
+       (lambda (person)
+         ;;(printf "info: %s %s\n" person seats)
+         (set! seats 
+               (if (person.match #/[a-z]/)
+                   (leave person seats)
+                   (sit   person seats))))
+       (series.split ""))
+      seats)))
+
+
+    
+;;===================================================================
+(test-start "seating")
+
+(test* "1:A"  "A"
+       (seating "1:A"))
+(test* "2:AB"  "AB"
+       (seating "2:AB"))
+(test* "2:AaB"  "B-"
+       (seating "2:AaB"))
+(test* "2:AZa" "-Z"
+       (seating "2:AZa"))
+(test* "2:AZz"  "A-"
+       (seating "2:AZz"))
+(test* "3:ABC"  "ACB"
+       (seating "3:ABC"))
+(test* "3:ABCa"  "-CB"
+       (seating "3:ABCa"))
+(test* "4:ABCD"  "ADBC"
+       (seating "4:ABCD"))
+(test* "4:ABCbBD"  "ABDC"
+       (seating "4:ABCbBD"))
+(test* "4:ABCDabcA"  "-D-A"
+       (seating "4:ABCDabcA"))
+(test* "5:NEXUS"  "NUESX"
+       (seating "5:NEXUS"))
+(test* "5:ZYQMyqY"  "ZM-Y-"
+       (seating "5:ZYQMyqY"))
+(test* "5:ABCDbdXYc"  "AYX--"
+       (seating "5:ABCDbdXYc"))
+(test* "6:FUTSAL"  "FAULTS"
+       (seating "6:FUTSAL"))
+(test* "6:ABCDEbcBC"  "AECB-D"
+       (seating "6:ABCDEbcBC"))
+(test* "7:FMTOWNS"  "FWMNTSO"
+       (seating "7:FMTOWNS"))
+(test* "7:ABCDEFGabcdfXYZ"  "YE-X-GZ"
+       (seating "7:ABCDEFGabcdfXYZ"))
+(test* "10:ABCDEFGHIJ"  "AGBHCIDJEF"
+       (seating "10:ABCDEFGHIJ"))
+
+(test-end)
+          
+      
+      
+         
+  
