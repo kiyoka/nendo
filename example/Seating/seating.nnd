@@ -3,16 +3,22 @@
 :; exec /usr/local/bin/nendo $0 $*
 ;; -*- coding: utf-8 -*-
 ;;
-;; http://nabetani.sakura.ne.jp/hena/ord7selectchair/
+;; 問題の説明:
+;;   http://nabetani.sakura.ne.jp/hena/ord7selectchair/
 ;;   「のんびり座りたい 」 問題
-;; [input]      [output]
-;; 1:Aa 	-
-;; 2:AB 	AB
-;; 2:AaB 	B-
-;; 2:AZa 	-Z
-;;  .
-;;  .
-;;  .
+;;   [input]      [output]
+;;   1:Aa 	-
+;;   2:AB 	AB
+;;   2:AaB 	B-
+;;   2:AZa 	-Z
+;;    .
+;;    .
+;;    .
+;;
+;; 実行方法:
+;;   gem install nendo
+;;   nendo ./seating.nnd
+;;
 (use srfi-1)
 (use nendo.test)
 
@@ -35,14 +41,6 @@
            1
            0))))
 
-#?=(get-empty-level "-" "-" "-")
-#?=(get-empty-level "A" "-" "-")
-#?=(get-empty-level "A" "-" "B")
-#?=(get-empty-level "A" "B" "C")
-#?=(get-empty-level "#" "-" "-")
-#?=(get-empty-level "#" "-" "#")
-#?=(get-empty-level "-" "D" "-")
-      
   
 ;; ３つのリストを生成して隣りをチェックする
 ;;  ("#" "-" "-" "-" "-")  ; left
@@ -57,12 +55,6 @@
      left
      chair-list
      right)))
-
-
-#?=(get-empty-level-list '("-" "-" "-"))
-#?=(get-empty-level-list '("-" "-" "-" "-"))
-#?=(get-empty-level-list '("A" "-" "-" "-"))
-#?=(get-empty-level-list '("A" "-" "A"))
 
 
 (define (sit person seats)
@@ -81,17 +73,9 @@
      chair-list)
     (string-join (reverse result) "")))
 
-#?=(sit "A" "---")
-#?=(sit "B" "A--")
-#?=(sit "C" "A-B")
-
 
 (define (leave person seats)
   (seats.sub person.upcase "-"))
-
-#?=(leave "a" "A")
-#?=(leave "b" "AB-")
-#?=(leave "c" "ACB")
 
 
 (define (seating input)
@@ -114,46 +98,87 @@
 ;;===================================================================
 (test-start "seating")
 
-(test* "1:A"  "A"
+(test* "get-empty-level 1"  3
+       (get-empty-level "-" "-" "-"))
+(test* "get-empty-level 2"  2
+       (get-empty-level "A" "-" "-"))
+(test* "get-empty-level 3"  1
+       (get-empty-level "A" "-" "B"))
+(test* "get-empty-level 4"  0
+       (get-empty-level "A" "B" "C"))
+(test* "get-empty-level 5"  3
+       (get-empty-level "#" "-" "-"))
+(test* "get-empty-level 6"  3
+       (get-empty-level "#" "-" "#"))
+(test* "get-empty-level 7"  0
+       (get-empty-level "-" "D" "-"))
+
+(test* "get-empty-level-list 1" '(3 3 3)
+       (get-empty-level-list '("-" "-" "-")))
+(test* "get-empty-level-list 2" '(3 3 3 3)
+       (get-empty-level-list '("-" "-" "-" "-")))
+(test* "get-empty-level-list 3" '(0 2 3 3)
+       (get-empty-level-list '("A" "-" "-" "-")))
+(test* "get-empty-level-list 4" '(0 1 0)
+       (get-empty-level-list '("A" "-" "B")))
+(test* "get-empty-level-list 5" '(0 0 0)
+       (get-empty-level-list '("A" "B" "C")))
+
+(test* "sit 1" "A--"
+       (sit "A" "---"))
+(test* "sit 2" "A-B"
+       (sit "B" "A--"))
+(test* "sit 3" "ACB"
+       (sit "C" "A-B"))
+(test* "sit 4" "ABC-Z-DEF"
+       (sit "Z" "ABC---DEF"))
+
+(test* "leave 1" "-"
+       (leave "a" "A"))
+(test* "leave 2" "A--"
+       (leave "b" "AB-"))
+(test* "leave 3" "-BC"
+       (leave "a" "ABC"))
+(test* "leave 4" "A-C"
+       (leave "b" "ABC"))
+(test* "leave 5" "AB-"
+       (leave "c" "ABC"))
+
+(test* "input 1:A"  "A"
        (seating "1:A"))
-(test* "2:AB"  "AB"
+(test* "input 2:AB"  "AB"
        (seating "2:AB"))
-(test* "2:AaB"  "B-"
+(test* "input 2:AaB"  "B-"
        (seating "2:AaB"))
-(test* "2:AZa" "-Z"
+(test* "input 2:AZa" "-Z"
        (seating "2:AZa"))
-(test* "2:AZz"  "A-"
+(test* "input 2:AZz"  "A-"
        (seating "2:AZz"))
-(test* "3:ABC"  "ACB"
+(test* "input 3:ABC"  "ACB"
        (seating "3:ABC"))
-(test* "3:ABCa"  "-CB"
+(test* "input 3:ABCa"  "-CB"
        (seating "3:ABCa"))
-(test* "4:ABCD"  "ADBC"
+(test* "input 4:ABCD"  "ADBC"
        (seating "4:ABCD"))
-(test* "4:ABCbBD"  "ABDC"
+(test* "input 4:ABCbBD"  "ABDC"
        (seating "4:ABCbBD"))
-(test* "4:ABCDabcA"  "-D-A"
+(test* "input 4:ABCDabcA"  "-D-A"
        (seating "4:ABCDabcA"))
-(test* "5:NEXUS"  "NUESX"
+(test* "input 5:NEXUS"  "NUESX"
        (seating "5:NEXUS"))
-(test* "5:ZYQMyqY"  "ZM-Y-"
+(test* "input 5:ZYQMyqY"  "ZM-Y-"
        (seating "5:ZYQMyqY"))
-(test* "5:ABCDbdXYc"  "AYX--"
+(test* "input 5:ABCDbdXYc"  "AYX--"
        (seating "5:ABCDbdXYc"))
-(test* "6:FUTSAL"  "FAULTS"
+(test* "input 6:FUTSAL"  "FAULTS"
        (seating "6:FUTSAL"))
-(test* "6:ABCDEbcBC"  "AECB-D"
+(test* "input 6:ABCDEbcBC"  "AECB-D"
        (seating "6:ABCDEbcBC"))
-(test* "7:FMTOWNS"  "FWMNTSO"
+(test* "input 7:FMTOWNS"  "FWMNTSO"
        (seating "7:FMTOWNS"))
-(test* "7:ABCDEFGabcdfXYZ"  "YE-X-GZ"
+(test* "input 7:ABCDEFGabcdfXYZ"  "YE-X-GZ"
        (seating "7:ABCDEFGabcdfXYZ"))
-(test* "10:ABCDEFGHIJ"  "AGBHCIDJEF"
+(test* "input 10:ABCDEFGHIJ"  "AGBHCIDJEF"
        (seating "10:ABCDEFGHIJ"))
 
 (test-end)
-          
-      
-      
-         
-  
