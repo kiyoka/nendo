@@ -40,9 +40,9 @@ begin
                              'benchmark/*.rb',
                              'benchmark/*.nnd'].to_a
     gemspec.rdoc_options += [ '-x', 'match.nndc' ]
-    gemspec.add_development_dependency "rspec"
-    gemspec.add_development_dependency "rake"
-    gemspec.add_dependency             "json"
+#    gemspec.add_development_dependency "rspec", "~> 2.0.0", ">= 2.0.0"
+#    gemspec.add_development_dependency "rake", ">= 10.0.0"
+#    gemspec.add_dependency             "json"
   end
 rescue LoadError
   puts 'Jeweler2 not available. If you want to build a gemfile, please install with "sudo gem install jeweler2"'

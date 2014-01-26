@@ -32,15 +32,27 @@
 #   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 #   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
 class Symbol
-  def setLispToken( token )
-    @token = token
-  end
-  def sourcefile
-    @token ? @token.sourcefile : ""
-  end
-  def lineno
-    @token ? @token.lineno : 1
+  if RUBY_VERSION >= "2.1.0"
+    def setLispToken( token )
+    end
+    def sourcefile
+      ""
+    end
+    def lineno
+      1
+    end
+  else
+    def setLispToken( token )
+      @token = token
+    end
+    def sourcefile
+      @token ? @token.sourcefile : ""
+    end
+    def lineno
+      @token ? @token.lineno : 1
+    end
   end
 end
 
