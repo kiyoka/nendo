@@ -279,12 +279,20 @@ module Nendo
     def __GTMARK_EQMARK(      a,b ) a >=  b end
     def __LTMARK(      a,b )        a <   b end
     def __LTMARK_EQMARK(      a,b ) a <=  b end
-    def _eq_QUMARK(      a,b )      a ==  b end
+    def _eq_QUMARK(      a,b )
+      a = a.intern if a.class == ParsedSymbol
+      b = b.intern if b.class == ParsedSymbol
+      a ==  b
+    end
     def _gt_QUMARK(      a,b )      a >   b end
     def _ge_QUMARK(      a,b )      a >=  b end
     def _lt_QUMARK(      a,b )      a <   b end
     def _le_QUMARK(      a,b )      a <=  b end
-    def _eqv_QUMARK(     a,b )      a === b end
+    def _eqv_QUMARK(     a,b )
+      a = a.intern if a.class == ParsedSymbol
+      b = b.intern if b.class == ParsedSymbol
+      a === b
+    end
     def _car(      cell )          cell.car end
     def _cdr(      cell )
       if cell.cdr.is_a? Nil
@@ -301,7 +309,7 @@ module Nendo
     def _newline(       )          print "\n" end
     def _procedure_QUMARK( arg )   ((Proc == arg.class) or (Method == arg.class)) end
     def _macro_QUMARK( arg )       (LispMacro == arg.class) end
-    def _symbol_QUMARK(    arg )   (arg.is_a? Symbol or arg.is_a? SyntacticClosure) end
+    def _symbol_QUMARK(    arg )   (arg.is_a? Symbol or arg.is_a? SyntacticClosure or arg.is_a? ParsedSymbol) end
     def _keyword_QUMARK(    arg )  (arg.is_a? LispKeyword) end
     def _syntax_QUMARK( arg )      (arg.is_a? LispSyntax)  end
     def _core_MIMARKsyntax_QUMARK( arg )

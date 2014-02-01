@@ -764,7 +764,7 @@ trampCall(
                                                                            ))
                                                           end
                                                         rescue => __e 
-                                                          __e.set_backtrace( ["./lib/nendo/text/html-lite.nnd:99"] + __e.backtrace )
+                                                          __e.set_backtrace( [":1"] + __e.backtrace )
                                                           raise __e
                                                         end 
                                                     end

@@ -206,7 +206,8 @@ module Nendo
       if SyntacticClosure == name.class
         "_" + name.to_s
       else
-        name = name.to_s  if Symbol == name.class
+        name = name.to_s   if Symbol == name.class
+        name = name.to_s   if ParsedSymbol == name.class
         if 0 == name.length
           ""
         else
@@ -235,7 +236,8 @@ module Nendo
     end
 
     def toLispSymbol( name )
-      name = name.to_s  if Symbol == name.class
+      name = name.to_s   if Symbol == name.class
+      name = name.to_s   if ParsedSymbol == name.class
       raise ArgumentError, sprintf( "Error: `%s' is not a lisp symbol", name ) if not ('_' == name[0])
       name = name[1..-1]
       @char_table_ruby_to_lisp.each_pair { |key,val|
@@ -339,7 +341,9 @@ module Nendo
     end
 
     def isDefines( sym )
-      [ :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ] ].include?( sym )
+      sym = castParsedSymbol( sym )
+      result = [ :define, :set!, :"define-syntax", @core_syntax_hash[ :define ], @core_syntax_hash[ :set! ], @core_syntax_hash[ :"define-syntax" ] ].include?( sym )
+      return result
     end
 
     def embedBacktraceInfo( sourcefile, lineno )
@@ -401,6 +405,7 @@ module Nendo
     end
 
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
+      funcname = castParsedSymbol( funcname )
       if isDefines( funcname )
         ar = args.cdr.map { |x| x.car }
         variable_sym = toRubySymbol( args.car.to_s.sub( /^:/, "" ))
@@ -661,6 +666,8 @@ module Nendo
         str += "[" +  arr.join(",") + "]"
       when Symbol
         str += sprintf( ":\"%s\"", sexp.to_s )
+      when ParsedSymbol
+        str += sprintf( ":\"%s\"", sexp.to_s )
       when String, LispString
         str += sprintf( "\"%s\"", LispString.escape( sexp ))
       when LispKeyword
@@ -733,14 +740,28 @@ module Nendo
     #            (print (+ a b c))))
     #         => locals must be  [["_a" "_b"]["_c"]] value.
     def translate( sexp, locals, sourceInfo = nil )
+      sexp = castParsedSymbol( sexp )
       case sexp
       when Cell
         inv = @core_syntax_hash.invert
-        car = if inv.has_key?( sexp.car )
-                inv[ sexp.car ]
-              else
-                sexp.car
-              end
+#        if sexp.car.to_s.match( /begin/ ) and sexp.car.to_s.match( /core/ )
+#          p inv
+#          p inv.keys
+#          p sexp.car.class
+#          p castParsedSymbol( sexp.car ).intern, inv.has_key?( castParsedSymbol( sexp.car ).intern )
+#          p inv[ castParsedSymbol( sexp.car ).intern ]
+#        end
+        if ParsedSymbol == sexp.car.class or Symbol == sexp.car.class
+          car = if inv.has_key?( castParsedSymbol( sexp.car ).intern )
+                  inv[ castParsedSymbol( sexp.car ).intern ]
+                else
+                  castParsedSymbol( sexp.car )
+                end
+        else
+          car = sexp.car
+        end
+        car = castParsedSymbol( car )
+
         if :quote == car
           genQuote( sexp.second )
         elsif :"syntax-quote" == car
@@ -794,6 +815,10 @@ module Nendo
       else
         case sexp
         when Symbol
+          sym = sexp.to_s
+          sym = toRubySymbol( sym )
+          lispSymbolReference( sym, locals, nil, sexp.sourcefile, sexp.lineno )
+        when ParsedSymbol
           sym = sexp.to_s
           sym = toRubySymbol( sym )
           lispSymbolReference( sym, locals, nil, sexp.sourcefile, sexp.lineno )
@@ -955,15 +980,16 @@ module Nendo
     #
     #
     def __macroexpandEngine( sexp, syntaxArray, lexicalVars )
+      sexp == castParsedSymbol( sexp )
       case sexp
       when Cell
-        car = sexp.car
+        car = castParsedSymbol( sexp.car )
         if :quote == car or :"syntax-quote" == car or @core_syntax_hash[ :quote ] == car or @core_syntax_hash[ :"syntax-quote" ] == car
           sexp
         elsif :"%let" == car or :letrec == car or @core_syntax_hash[ :"%let" ] == car or @core_syntax_hash[ :letrec ] == car
           # catch lexical identifiers of `let' and `letrec'.
           arr = sexp.second.map { |x|
-            [ x.car.car, macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
+            [ castParsedSymbol( x.car.car ), macroexpandEngine( x.car.cdr, syntaxArray, lexicalVars ) ]
           }
           lst = arr.map {|x| Cell.new( x[0], x[1] ) }.to_list
           ret = Cell.new( car,
@@ -974,30 +1000,30 @@ module Nendo
           sexp.second.each {|x|
             if not x.car.second.is_a? Cell
               raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form but got: " + write_to_string( x )
-            elsif not ( x.car.second.first == :"syntax-rules" or x.car.second.first == :"%syntax-rules")
+            elsif not ( castParsedSymbol( x.car.second.first ) == :"syntax-rules" or castParsedSymbol( x.car.second.first ) == :"%syntax-rules")
               raise SyntaxError, "Error: let-syntax get only '((name (syntax-rules ...)))' form but got: " + write_to_string( x )
             end
           }
           arr_tmp = sexp.second.map { |x|
-            [ x.car.first, __expandSyntaxRules( x.car.second, syntaxArray, lexicalVars ) ]
+            [ castParsedSymbol( x.car.first ), castParsedSymbol( __expandSyntaxRules( x.car.second, syntaxArray, lexicalVars )) ]
           }
           arr = arr_tmp.map {|x|
-            [ x[0], __evalSyntaxRules( x[1], lexicalVars ), x[1], lexicalVars ]
+            [ castParsedSymbol( x[0] ), castParsedSymbol( __evalSyntaxRules( x[1], lexicalVars )), castParsedSymbol( x[1] ), castParsedSymbol( lexicalVars ) ]
           }
 
           # trial (expand recursively)
           arr_tmp = arr.map { |x|
-            [ x[0], __expandSyntaxRules( x[2], syntaxArray + arr, lexicalVars ) ]
+            [ castParsedSymbol( x[0] ), castParsedSymbol( __expandSyntaxRules( x[2], syntaxArray + arr, lexicalVars )) ]
           }
           arr = arr_tmp.map {|x|
-            [ x[0], __evalSyntaxRules( x[1], lexicalVars ), x[1], lexicalVars ]
+            [ castParsedSymbol( x[0] ), castParsedSymbol( __evalSyntaxRules( x[1], lexicalVars )), castParsedSymbol( x[1] ), castParsedSymbol( lexicalVars ) ]
           }
 
           # keywords = ((let-syntax-keyword ( let-syntax-body ))
           #             (let-syntax-keyword ( let-syntax-body ))
           #             ..)
           newKeywords = arr.map { |e|
-            [ e[0], [ :"%syntax-rules", e[1]].to_list ].to_list
+            [ castParsedSymbol(e[0]), [ :"%syntax-rules", e[1]].to_list ].to_list
           }.to_list
 
           ret = Cell.new( :"let-syntax",
@@ -1005,6 +1031,7 @@ module Nendo
 
           ret
         else
+          car = castParsedSymbol( car )
           sym = toRubySymbol( car.to_s )
           newSexp = sexp
           if isRubyInterface( sym )
@@ -1020,17 +1047,21 @@ module Nendo
             #   (syntaxName (syntaxName arg1 arg2 ...) () (global-variables))
             eval( sprintf( "@__syntax = @%s", sym ), @binding )
             newSexp = trampCall( callProcedure( nil, sym, @__syntax, [ sexp, Cell.new(), _global_MIMARKvariables( ) ] ))
-          elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr| arr[0].intern}.include?( car.intern )
+          elsif _symbol_QUMARK( car ) and syntaxArray.map {|arr|
+              arr[0].intern
+            }.include?( car.intern )
             # lexical macro expandeding
-            symbol_and_syntaxObj = syntaxArray.reverse.find {|arr| car == arr[0]}
-            keys    = syntaxArray.reverse.map { |arr| arr[0] }
+            symbol_and_syntaxObj = syntaxArray.reverse.find {|arr|
+              car == castParsedSymbol( arr[0] )
+            }
+            keys    = syntaxArray.reverse.map { |arr| castParsedSymbol( arr[0] ) }
             if not symbol_and_syntaxObj
               raise "can't find valid syntaxObject"
             end
-            vars       = symbol_and_syntaxObj[3].map { |arr| arr[0] }
+            vars       = symbol_and_syntaxObj[3].map { |arr| castParsedSymbol( arr[0] ) }
             lexvars    = @syntaxHash[ symbol_and_syntaxObj[1] ][0]
             lispSyntax = @syntaxHash[ symbol_and_syntaxObj[1] ][1]
-            newSexp = trampCall( callProcedure( nil, symbol_and_syntaxObj[0], lispSyntax, [
+            newSexp = trampCall( callProcedure( nil, castParsedSymbol( symbol_and_syntaxObj[0] ), lispSyntax, [
                                                   sexp,
                                                   Cell.new(),
                                                   (_global_MIMARKvariables( ).to_arr + keys + vars).to_list ] ))
@@ -1051,6 +1082,14 @@ module Nendo
         end
       else
         sexp
+      end
+    end
+
+    def castParsedSymbol( arg )
+      if arg.class == ParsedSymbol
+        arg.intern
+      else
+        arg
       end
     end
 
@@ -1263,7 +1302,7 @@ module Nendo
 
     def _make_MIMARKsyntactic_MIMARKclosure( mac_env, use_env, identifier )
       if _pair_QUMARK( identifier )
-        if :"syntax-quote" == identifier.car
+        if :"syntax-quote" == castParsedSymbol( identifier.car )
           identifier
         else
           raise TypeError, "make-syntactic-closure requires symbol or (syntax-quote sexp) only. but got: " + write_to_string( identifier )
@@ -1294,6 +1333,7 @@ module Nendo
           sexp
         else
           car = sexp.car
+          car = castParsedSymbol( car )
           if :"syntax-quote" == car or @core_syntax_hash[ :"syntax-quote" ] == car
             Cell.new( :quote, sexp.cdr )
           else

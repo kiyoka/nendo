@@ -245,6 +245,30 @@ module Nendo
     attr_reader :originalSymbol, :renamedSymbol
   end
 
+  class ParsedSymbol
+    attr_reader :sourcefile, :lineno
+    def initialize( sym, sourcefile, lineno )
+      @sym           = sym
+      @sourcefile    = sourcefile
+      @lineno        = lineno
+    end
+
+    def to_s
+      @sym.to_s
+    end
+
+    def intern
+      @sym
+    end
+
+    def ==( other )
+      if (other.class == Symbol) or (other.class == ParsedSymbol)
+        @sym == other.intern
+      end
+      false
+    end
+  end
+
   class SourceInfo
     def initialize
       @varname       = nil

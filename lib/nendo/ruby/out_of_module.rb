@@ -33,14 +33,11 @@
 #   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class Symbol
-  def setLispToken( token )
-    @token = token
-  end
   def sourcefile
-    @token ? @token.sourcefile : ""
+    ""
   end
   def lineno
-    @token ? @token.lineno : 1
+    1
   end
 end
 

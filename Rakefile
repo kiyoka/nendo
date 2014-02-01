@@ -58,6 +58,8 @@ end
 
 task :test1 do
   sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb         "
+  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec_2.rb         "
+  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec_3.rb         "
   sh "ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb        "
   sh "ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb "
   sh "ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"

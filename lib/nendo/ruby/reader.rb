@@ -374,7 +374,6 @@ module Nendo
       case cur.kind
       when T_SYMBOL
         sym = cur.str.intern
-        sym.setLispToken( cur )
         case sym
         when :true
           true
@@ -383,7 +382,7 @@ module Nendo
         when :nil
           nil
         else
-          sym
+          ParsedSymbol.new( sym, cur.sourcefile, cur.lineno )
         end
       when T_NUM
         if cur.str.match( /[.]/ ) # floating point
