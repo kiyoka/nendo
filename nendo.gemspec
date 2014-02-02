@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "nendo"
-  s.version = "0.6.6"
+  s.version = "0.6.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2013-09-05"
+  s.date = "2014-02-02"
   s.description = "Nendo is a programming language written in Ruby."
   s.email = "kiyoka@sumibi.org"
   s.executables = ["nendo"]
@@ -85,6 +85,8 @@ Gem::Specification.new do |s|
     "test/match-test.nnd",
     "test/nendo-util-test.nnd",
     "test/nendo_spec.rb",
+    "test/nendo_spec_2.rb",
+    "test/nendo_spec_3.rb",
     "test/rspec_formatter_for_emacs.rb",
     "test/srfi-1-test.nnd",
     "test/srfi-2-test.nnd",
@@ -99,34 +101,7 @@ Gem::Specification.new do |s|
   s.licenses = ["New BSD"]
   s.rdoc_options = ["-x", "match.nndc"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "2.0.3"
+  s.rubygems_version = "2.0.14"
   s.summary = "Nendo is a dialect of Lisp."
-
-  if s.respond_to? :specification_version then
-    s.specification_version = 4
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_runtime_dependency(%q<json>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_runtime_dependency(%q<json>, [">= 0"])
-    else
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<json>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<json>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<json>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<json>, [">= 0"])
-  end
 end
 
