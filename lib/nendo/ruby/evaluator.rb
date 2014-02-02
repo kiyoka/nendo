@@ -739,8 +739,8 @@ module Nendo
     #        (let ((c 3))
     #            (print (+ a b c))))
     #         => locals must be  [["_a" "_b"]["_c"]] value.
-    def translate( sexp, locals, sourceInfo = nil )
-      sexp = castParsedSymbol( sexp )
+    def translate( sexpArg, locals, sourceInfo = nil )
+      sexp = castParsedSymbol( sexpArg )
       case sexp
       when Cell
         inv = @core_syntax_hash.invert
@@ -813,7 +813,7 @@ module Nendo
       when Array
         raise RuntimeError, "Error: can't eval unquoted vector."
       else
-        case sexp
+        case sexpArg
         when Symbol
           sym = sexp.to_s
           sym = toRubySymbol( sym )
@@ -821,7 +821,7 @@ module Nendo
         when ParsedSymbol
           sym = sexp.to_s
           sym = toRubySymbol( sym )
-          lispSymbolReference( sym, locals, nil, sexp.sourcefile, sexp.lineno )
+          lispSymbolReference( sym, locals, nil, sexpArg.sourcefile, sexpArg.lineno )
         when Fixnum
           sexp.to_s
         when String, LispString

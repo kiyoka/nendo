@@ -55,6 +55,8 @@ module Nendo
     end
 
     def _equal_QUMARK( a, b )
+      a = a.intern if a.class == ParsedSymbol
+      b = b.intern if b.class == ParsedSymbol
       if a.is_a? String  and  b.is_a? String
         a === b
       elsif a.class != b.class
