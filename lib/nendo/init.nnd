@@ -1325,11 +1325,11 @@
                               (lambda (orig)
                                 (string->symbol (+ "/nendo/core/" (symbol->string orig))))
                               reserved-orig))]
-           [sym2 (if (eq? sym.class ParsedSymbol)
-                     (intern sym)
-                     sym)]
+           [cast-sym (if (eq? sym.class ParsedSymbol)
+                           (intern sym)
+                           sym)]
            )
-      (memq sym2 reserved)))
+      (memq cast-sym reserved)))
     
   (define (setup-let-args args)
     (map

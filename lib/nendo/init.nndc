@@ -14118,7 +14118,7 @@ trampCall(
                                 begin
                                   ___lambda = lambda { |_reserved| 
                                       begin
-                                        ___lambda = lambda { |_sym2| 
+                                        ___lambda = lambda { |_cast_MIMARKsym| 
                                             begin
                                                 delayCall( '_memq',  'memq',
                                                     begin
@@ -14126,7 +14126,7 @@ trampCall(
                                                     end                                                  ,
                                                 [
                                                       begin
-                                                          trampCall(_sym2)
+                                                          trampCall(_cast_MIMARKsym)
                                                       end                                                    ,
                                                       begin
                                                           trampCall(_reserved)
