@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2014-02-02"
+  s.date = "2014-02-05"
   s.description = "Nendo is a programming language written in Ruby."
   s.email = "kiyoka@sumibi.org"
   s.executables = ["nendo"]
