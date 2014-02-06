@@ -276,7 +276,7 @@ module Nendo
         (0..num-1).to_a.to_list
       end
     end
-    def __EQMARK(      a,b )        a ==  b end
+    def __EQMARK(      a,b )        _eq_QUMARK( a, b ) end
     def __GTMARK(      a,b )        a >   b end
     def __GTMARK_EQMARK(      a,b ) a >=  b end
     def __LTMARK(      a,b )        a <   b end

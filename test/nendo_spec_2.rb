@@ -408,6 +408,8 @@ describe Nendo, "when call evalStr() with built-in functions" do
     @nendo.evalStr( ' (read-from-string "1") ' ).should == '1'
     @nendo.evalStr( ' (read-from-string "(+ 1 2)") ' ).should == '(+ 1 2)'
     @nendo.evalStr( ' (read-from-string "(\"Aa\" \"Bb\" \"Cc\")") ' ).should == '("Aa" "Bb" "Cc")'
+    @nendo.evalStr( ' (eq? \'Aa (car (read-from-string "(Aa Bb Cc)"))) ' ).should == '#t'
+    @nendo.evalStr( ' (=   \'Aa (car (read-from-string "(Aa Bb Cc)"))) ' ).should == '#t'
     lambda { @nendo.evalStr( ' (read-from-string 100) ' ) }.should  raise_error(TypeError)
     @nendo.evalStr( ' (write-to-string 1) ' ).should == '"1"'
     @nendo.evalStr( ' (write-to-string \'(+ 1 2)) ' ).should == '"(+ 1 2)"'
@@ -1815,6 +1817,11 @@ describe Nendo, "when use keyword feature " do
     @nendo.evalStr( " (eqv? :a :a) " ).should == "#t"
     @nendo.evalStr( ' (eq?  :a (intern ":a")) ' ).should == "#f"
     @nendo.evalStr( ' (eqv? :a (intern ":a")) ' ).should == "#f"
+    @nendo.evalStr( ' (eq?  :a (intern  "a")) ' ).should == "#f"
+    @nendo.evalStr( ' (eqv? :a (intern  "a")) ' ).should == "#f"
+    @nendo.evalStr( " (=    :a :a) " ).should == "#t"
+    @nendo.evalStr( ' (=    :a (intern ":a")) ' ).should == "#f"
+    @nendo.evalStr( ' (=    :a (intern  "a")) ' ).should == "#f"
     @nendo.evalStr( ' (keyword? (make-keyword "a")) ' ).should == "#t"
     @nendo.evalStr( " :a " ).should == ":a"
     @nendo.evalStr( " ::a " ).should == "::a"
