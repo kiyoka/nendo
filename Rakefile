@@ -69,6 +69,8 @@ task :test2 do
   sh "ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./test/record-test.nnd               >> test.log"
+#  sh "ruby -I ./lib ./bin/nendo ./test/srfi-9-test.nnd               >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
   sh "cat test.record"
@@ -130,6 +132,7 @@ task :compile do
   files << "./lib/nendo/nendo/test.nnd"
   files << "./lib/nendo/rfc/json.nnd"
   files << "./lib/nendo/util/match.nnd"
+  files << "./lib/nendo/util/record.nnd"
   files << "./lib/nendo/util/combinations.nnd"
   files << "./lib/nendo/nendo/experimental.nnd"
   files.each {|fn|

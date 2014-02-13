@@ -1,0 +1,492 @@
+#
+#    This file is nendo's compiled library file. 
+#    generated  "nendo -c src" command. 
+# 
+
+trampCall( 
+  begin
+      def self._record_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_record_QUMARK'] = self.method( :_record_QUMARK_METHOD )
+    @_record_QUMARK = 
+    trampCall(
+          Proc.new { |_type| 
+              begin
+                  trampCall(_type).is_a?(
+                        begin
+                            trampCall(Record)
+                        end
+                    )
+              end
+          }
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
+      def self._record_MIMARKconstructor_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKconstructor', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_record_MIMARKconstructor'] = self.method( :_record_MIMARKconstructor_METHOD )
+    @_record_MIMARKconstructor = 
+    trampCall(
+          Proc.new { |_rtd,*__rest__| _rest_MIMARKtags = __rest__[0] ;  
+              begin
+                ___lambda = lambda { |_arg_MIMARKcount,_tags| 
+                    Proc.new { |*__rest__| _args = __rest__[0] ;  
+                        if ( 
+                          begin
+                              __EQMARK(
+                                  begin
+                                      _length(
+                                          begin
+                                              trampCall(_args)
+                                          end
+                                      )
+                                  end                                ,
+                                  begin
+                                      trampCall(_arg_MIMARKcount)
+                                  end
+                              )
+                          end
+                         ) then
+                            begin
+                              ___lambda = lambda { |_new| 
+                                  begin
+                                      trampCall( self._for_MIMARKeach_METHOD(  'for-each',
+                                          begin
+                                              trampCall(@_for_MIMARKeach)
+                                          end                                        ,
+                                      [
+                                            Proc.new { |_tag,_arg| 
+                                                begin
+                                                    trampCall(_new).set!(
+                                                          begin
+                                                              trampCall(_tag)
+                                                          end                                                        ,
+                                                          begin
+                                                              trampCall(_arg)
+                                                          end
+                                                      )
+                                                end
+                                            }                                          ,
+                                            begin
+                                                trampCall(_tags)
+                                            end                                          ,
+                                            begin
+                                                trampCall(_args)
+                                            end
+                                      ]
+                                                   ))
+                                  end
+                                  begin
+                                      trampCall(_new)
+                                  end
+                              } ; ___lambda.call(
+                                    begin
+                                        trampCall( self._make_MIMARKrecord_MIMARKtype_METHOD(  'make-record-type',
+                                            begin
+                                                trampCall(@_make_MIMARKrecord_MIMARKtype)
+                                            end                                          ,
+                                        [
+                                              begin
+                                                  trampCall(_rtd).typename
+                                              end                                            ,
+                                              begin
+                                                  trampCall(_tags)
+                                              end
+                                        ]
+                                                     ))
+                                    end
+                                         )
+                            end
+                        else
+                            begin
+                                delayCall( '__PAMARKraise',  '%raise',
+                                    begin
+                                        trampCall(@__PAMARKraise)
+                                    end                                  ,
+                                [
+                                      begin
+                                          trampCall(ArgumentError)
+                                      end                                    ,
+                                      begin
+                                          trampCall( self._sprintf_METHOD(  'sprintf',
+                                              begin
+                                                  trampCall(@_sprintf)
+                                              end                                            ,
+                                          [
+                                              "wrong number of arguments to constructor [%s] [%s]"                                              ,
+                                                begin
+                                                    trampCall(_rtd)
+                                                end                                              ,
+                                                begin
+                                                    trampCall(_args)
+                                                end
+                                          ]
+                                                       ))
+                                      end                                    ,
+                                      begin
+                                          trampCall( self._sprintf_METHOD(  'sprintf',
+                                              begin
+                                                  trampCall(@_sprintf)
+                                              end                                            ,
+                                          [
+                                              "%s:%s raised %s"                                              ,
+                                                begin
+                                                    trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
+                                                        begin
+                                                            trampCall(@__ASMARKFILE_ASMARK)
+                                                        end                                                      ,
+                                                    [
+                                                    ]
+                                                                 ))
+                                                end                                              ,
+                                                begin
+                                                    trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
+                                                        begin
+                                                            trampCall(@__ASMARKLINE_ASMARK)
+                                                        end                                                      ,
+                                                    [
+                                                    ]
+                                                                 ))
+                                                end                                              ,
+                                                begin
+                                                    trampCall(ArgumentError)
+                                                end
+                                          ]
+                                                       ))
+                                      end
+                                ]
+                                             )
+                            end
+                        end
+                    }
+                } ; ___lambda.call(
+                      begin
+                          _length(
+                              begin
+                                  _car(
+                                      begin
+                                          trampCall(_rest_MIMARKtags)
+                                      end
+                                  )
+                              end
+                          )
+                      end                    ,
+                      begin
+                          _car(
+                              begin
+                                  trampCall(_rest_MIMARKtags)
+                              end
+                          )
+                      end
+                           )
+              end
+          }
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
+      def self._record_MIMARKpredicate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKpredicate', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_record_MIMARKpredicate'] = self.method( :_record_MIMARKpredicate_METHOD )
+    @_record_MIMARKpredicate = 
+    trampCall(
+          Proc.new { |_type| 
+              Proc.new { |_thing| 
+                  if ( 
+                    begin
+                        _not(
+                            begin
+                                _eq_QUMARK(
+                                  false                                  ,
+                                    begin
+                                        trampCall( self._record_QUMARK_METHOD(  'record?',
+                                            begin
+                                                trampCall(@_record_QUMARK)
+                                            end                                          ,
+                                        [
+                                              begin
+                                                  trampCall(_type)
+                                              end
+                                        ]
+                                                     ))
+                                    end
+                                )
+                            end
+                        )
+                    end
+                   ) then
+                      if ( 
+                        begin
+                            _not(
+                                begin
+                                    _eq_QUMARK(
+                                      false                                      ,
+                                        begin
+                                            trampCall( self._record_QUMARK_METHOD(  'record?',
+                                                begin
+                                                    trampCall(@_record_QUMARK)
+                                                end                                              ,
+                                            [
+                                                  begin
+                                                      trampCall(_thing)
+                                                  end
+                                            ]
+                                                         ))
+                                        end
+                                    )
+                                end
+                            )
+                        end
+                       ) then
+                          begin
+                              delayCall( '_eq_QUMARK',  'eq?',
+                                  begin
+                                      trampCall(@_eq_QUMARK)
+                                  end                                ,
+                              [
+                                    begin
+                                        trampCall(_type).typename
+                                    end                                  ,
+                                    begin
+                                        trampCall(_thing).typename
+                                    end
+                              ]
+                                           )
+                          end
+                      else
+                        false
+                      end
+                  else
+                    false
+                  end
+              }
+          }
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
+      def self._record_MIMARKaccessor_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKaccessor', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_record_MIMARKaccessor'] = self.method( :_record_MIMARKaccessor_METHOD )
+    @_record_MIMARKaccessor = 
+    trampCall(
+          Proc.new { |_type,_tag| 
+              Proc.new { |_thing| 
+                  if ( 
+                    trampCall( callProcedure( nil, 'anonymouse', 
+                        begin
+                            trampCall( self._record_MIMARKpredicate_METHOD(  'record-predicate',
+                                begin
+                                    trampCall(@_record_MIMARKpredicate)
+                                end                              ,
+                            [
+                                  begin
+                                      trampCall(_type)
+                                  end
+                            ]
+                                         ))
+                        end                      ,
+                    [
+                          begin
+                              trampCall(_thing)
+                          end
+                    ]
+                              ))
+                   ) then
+                      begin
+                          trampCall(_thing).get(
+                                begin
+                                    trampCall(_tag)
+                                end
+                            )
+                      end
+                  else
+                      begin
+                          delayCall( '__PAMARKraise',  '%raise',
+                              begin
+                                  trampCall(@__PAMARKraise)
+                              end                            ,
+                          [
+                                begin
+                                    trampCall(ArgumentError)
+                                end                              ,
+                                begin
+                                    trampCall( self._sprintf_METHOD(  'sprintf',
+                                        begin
+                                            trampCall(@_sprintf)
+                                        end                                      ,
+                                    [
+                                        "accessor applied to bad value [%s] [%s] [%s]"                                        ,
+                                          begin
+                                              trampCall(_type)
+                                          end                                        ,
+                                          begin
+                                              trampCall(_tag)
+                                          end                                        ,
+                                          begin
+                                              trampCall(_thing)
+                                          end
+                                    ]
+                                                 ))
+                                end                              ,
+                                begin
+                                    trampCall( self._sprintf_METHOD(  'sprintf',
+                                        begin
+                                            trampCall(@_sprintf)
+                                        end                                      ,
+                                    [
+                                        "%s:%s raised %s"                                        ,
+                                          begin
+                                              trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
+                                                  begin
+                                                      trampCall(@__ASMARKFILE_ASMARK)
+                                                  end                                                ,
+                                              [
+                                              ]
+                                                           ))
+                                          end                                        ,
+                                          begin
+                                              trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
+                                                  begin
+                                                      trampCall(@__ASMARKLINE_ASMARK)
+                                                  end                                                ,
+                                              [
+                                              ]
+                                                           ))
+                                          end                                        ,
+                                          begin
+                                              trampCall(ArgumentError)
+                                          end
+                                    ]
+                                                 ))
+                                end
+                          ]
+                                       )
+                      end
+                  end
+              }
+          }
+    )
+  end
+ )
+#--------------------
+
+trampCall( 
+  begin
+      def self._record_MIMARKmodifier_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKmodifier', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+      @global_lisp_binding['_record_MIMARKmodifier'] = self.method( :_record_MIMARKmodifier_METHOD )
+    @_record_MIMARKmodifier = 
+    trampCall(
+          Proc.new { |_type,_tag| 
+              Proc.new { |_thing,_value| 
+                  if ( 
+                    trampCall( callProcedure( nil, 'anonymouse', 
+                        begin
+                            trampCall( self._record_MIMARKpredicate_METHOD(  'record-predicate',
+                                begin
+                                    trampCall(@_record_MIMARKpredicate)
+                                end                              ,
+                            [
+                                  begin
+                                      trampCall(_type)
+                                  end
+                            ]
+                                         ))
+                        end                      ,
+                    [
+                          begin
+                              trampCall(_thing)
+                          end
+                    ]
+                              ))
+                   ) then
+                      begin
+                          trampCall(_thing).set!(
+                                begin
+                                    trampCall(_tag)
+                                end                              ,
+                                begin
+                                    trampCall(_value)
+                                end
+                            )
+                      end
+                  else
+                      begin
+                          delayCall( '__PAMARKraise',  '%raise',
+                              begin
+                                  trampCall(@__PAMARKraise)
+                              end                            ,
+                          [
+                                begin
+                                    trampCall(ArgumentError)
+                                end                              ,
+                                begin
+                                    trampCall( self._sprintf_METHOD(  'sprintf',
+                                        begin
+                                            trampCall(@_sprintf)
+                                        end                                      ,
+                                    [
+                                        "modifier applied to bad value [%s] [%s] [%s]"                                        ,
+                                          begin
+                                              trampCall(_type)
+                                          end                                        ,
+                                          begin
+                                              trampCall(_tag)
+                                          end                                        ,
+                                          begin
+                                              trampCall(_thing)
+                                          end
+                                    ]
+                                                 ))
+                                end                              ,
+                                begin
+                                    trampCall( self._sprintf_METHOD(  'sprintf',
+                                        begin
+                                            trampCall(@_sprintf)
+                                        end                                      ,
+                                    [
+                                        "%s:%s raised %s"                                        ,
+                                          begin
+                                              trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
+                                                  begin
+                                                      trampCall(@__ASMARKFILE_ASMARK)
+                                                  end                                                ,
+                                              [
+                                              ]
+                                                           ))
+                                          end                                        ,
+                                          begin
+                                              trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
+                                                  begin
+                                                      trampCall(@__ASMARKLINE_ASMARK)
+                                                  end                                                ,
+                                              [
+                                              ]
+                                                           ))
+                                          end                                        ,
+                                          begin
+                                              trampCall(ArgumentError)
+                                          end
+                                    ]
+                                                 ))
+                                end
+                          ]
+                                       )
+                      end
+                  end
+              }
+          }
+    )
+  end
+ )
+
+
+# -------------------------------------------------------
+# [EOF]
+# -------------------------------------------------------

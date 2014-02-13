@@ -103,3 +103,19 @@ describe Nendo, "when use export-to-ruby macro " do
     @nendo.nendo_function7( 7,6,5,4,3,2,1 ).should === [ 7,6,5,4,3,2,1 ]
   end
 end
+
+
+describe Record, "when use Nendo::Record" do
+  before do
+    @rec = Nendo::Record.new( "rec1", [:a,:b,:c] )
+    @rec.slots[:c] = "C"
+  end
+  it "should" do
+    @rec.typename.should == "rec1"
+    @rec.slots[:a].should  be_false
+    @rec.slots[:b].should  be_false
+    @rec.slots[:c].should  == "C"
+    @rec.set!( :a, "A" ).should == "A"
+    @rec.get( :a ).should == "A"
+  end
+end

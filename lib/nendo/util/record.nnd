@@ -32,3 +32,39 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;
 
+(define (record? type)
+  (type.is_a? Record))
+
+(define (record-constructor rtd . rest-tags)
+  (let ([arg-count (length (car rest-tags))]
+        [tags (car rest-tags)])
+    (lambda args
+      (if (= (length args)
+             arg-count)
+          (let1 new (make-record-type rtd.typename tags)
+            (for-each
+             (lambda (tag arg)
+               (new.set! tag arg))
+             tags
+             args)
+            new)
+          (raise ArgumentError (sprintf "wrong number of arguments to constructor [%s] [%s]" rtd args))))))
+
+(define (record-predicate type)
+  (lambda (thing)
+    (and (record? type)
+         (record? thing)
+         (eq? type.typename thing.typename))))
+
+(define (record-accessor type tag)
+  (lambda (thing)
+    (if ((record-predicate type) thing)
+        (thing.get tag)
+        (raise ArgumentError (sprintf "accessor applied to bad value [%s] [%s] [%s]" type tag thing)))))
+
+(define (record-modifier type tag)
+  (lambda (thing value)
+    (if ((record-predicate type) thing)
+        (thing.set! tag value)
+        (raise ArgumentError (sprintf "modifier applied to bad value [%s] [%s] [%s]" type tag thing)))))
+

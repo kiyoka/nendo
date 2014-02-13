@@ -333,4 +333,31 @@ module Nendo
     attr_accessor :kind, :str, :sourcefile, :lineno, :column
   end
 
+  class Record
+    attr_reader :typename, :slots
+
+    def initialize( typename, fields )
+      @slots = Hash.new
+      @typename = typename
+      fields.each { |key|
+        @slots[key] = false
+      }
+    end
+
+    def set!( key, value )
+      if @slots.has_key?( key )
+        @slots[key] = value
+      else
+        raise ArgumentError, sprintf( "Record <%s> doesn't have key[%s]", typename, key )
+      end
+    end
+
+    def get( key )
+      if @slots.has_key?( key )
+        @slots[key]
+      else
+        raise ArgumentError, sprintf( "Record <%s> doesn't have key[%s]", typename, key )
+      end
+    end
+  end
 end
