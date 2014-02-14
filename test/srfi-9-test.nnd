@@ -1,0 +1,65 @@
+;;-*- mode: nendo; syntax: scheme -*-;;
+;;
+;; srfi-9-test.nnd - test suite for srfi-9
+;;  
+;;   Copyright (c) 2000-2010  Shiro Kawai  <shiro@acm.org>
+;;   
+;;   Redistribution and use in source and binary forms, with or without
+;;   modification, are permitted provided that the following conditions
+;;   are met:
+;;   
+;;   1. Redistributions of source code must retain the above copyright
+;;      notice, this list of conditions and the following disclaimer.
+;;  
+;;   2. Redistributions in binary form must reproduce the above copyright
+;;      notice, this list of conditions and the following disclaimer in the
+;;      documentation and/or other materials provided with the distribution.
+;;  
+;;   3. Neither the name of the authors nor the names of its contributors
+;;      may be used to endorse or promote products derived from this
+;;      software without specific prior written permission.
+;;  
+;;   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+;;   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+;;   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+;;   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+;;   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+;;   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+;;   TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+;;   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+;;   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+;;   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+;; Ported from Gauche by Kiyoka Nishiyama
+
+
+(use nendo.test)
+(test-start "srfi-9")
+
+;;===================================================================
+;;-------------------------------------------------------------------
+(test-section "srfi-9")
+(use srfi-9)
+(test-module 'srfi-9)
+
+
+(define-record-type <pare>
+  (kons x y)
+  pare?
+  (x kar set-kar!)
+  (y kdr))
+
+(test* "srfi-9 (1)" #t (pare? (kons 1 2)))
+(test* "srfi-9 (2)" #f (pare? (cons 1 2)))
+(test* "srfi-9 (3)" 1 (kar (kons 1 2)))
+(test* "srfi-9 (4)" 2 (kdr (kons 1 2)))
+(test* "srfi-9 (5)" 3 (let ((k (kons 1 2)))
+                        (set-kar! k 3)
+                        (kar k)))
+(test* "srfi-9 (6)" '("car" 2)  (let ((k (kons 1 2)))
+                              (set-kar! k "car")
+                              (list (kar k) (kdr k))))
+
+;;===================================================================
+(test-end)

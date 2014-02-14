@@ -51,6 +51,10 @@
        (let1 new-record (make-record-type "my-record" '(a b c))
          (to-list (new-record.slots.keys))))
 
+(test* "make-record-type" "my-record"
+       (let1 new-record (make-record-type 'my-record '(a b c))
+         new-record.typename))
+
 (define rtd1 (make-record-type "my-record1" '(a b c)))
 (define rtd2 (make-record-type "my-record2" '(a b c)))
 (define make-my-record (record-constructor rtd1 '(a b c)))
