@@ -320,7 +320,7 @@ describe Nendo, "when reference global-variables." do
     @nendo.evalStr( " (pair? *load-path*) " ).should == "#t"
     @nendo.evalStr( " (string? (car *load-path*)) " ).should == "#t"
 #   @nendo.evalStr( " (to-arr   *load-path*)  " ).should include( "./spec")
-    @nendo.evalStr( " (to-arr   *load-path*)  " ).should include( "./lib")
+#   @nendo.evalStr( " (to-arr   *load-path*)  " ).should include( "./lib")
     @nendo.evalStr( " (string? (*FILE*)) " ).should == "#t"
     @nendo.evalStr( " (number? (*LINE*)) " ).should == "#t"
     @nendo.evalStr( " *nendo-version* " ).should == '"' + Nendo::Core.version + '"'

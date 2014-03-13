@@ -13,7 +13,7 @@
     var))
 
 (test* "disasm info"
-       " file:   ./test/nendo-util-test.nnd 
+       " file:   ./spec/nendo-util-test.nnd 
  lineno: 11 
  source: 
 (define
@@ -47,15 +47,15 @@ trampCall(
                 ___lambda = lambda { |_var| 
                     begin
                         trampCall(_var)
-                      rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:13\"] + __e.backtrace ) ; raise __e
+                      rescue => __e ; __e.set_backtrace( [\"./spec/nendo-util-test.nnd:13\"] + __e.backtrace ) ; raise __e
                     end
                 } ; ___lambda.call(
                       begin
-                        embedBacktraceInfo( \"./test/nendo-util-test.nnd\", 12 ); 
+                        embedBacktraceInfo( \"./spec/nendo-util-test.nnd\", 12 ); 
                           __PLMARK_ARGS2(
                               begin
                                   trampCall(_arg1)
-                                rescue => __e ; __e.set_backtrace( [\"./test/nendo-util-test.nnd:12\"] + __e.backtrace ) ; raise __e
+                                rescue => __e ; __e.set_backtrace( [\"./spec/nendo-util-test.nnd:12\"] + __e.backtrace ) ; raise __e
                               end                            ,
                             1
                           )

@@ -54,23 +54,19 @@ task :test    => [:test1, :test2] do
 end
 
 task :test1 do
-  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec.rb         "
-  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec_2.rb         "
-  sh "ruby -I ./lib `which rspec` -b   ./test/nendo_spec_3.rb         "
-  sh "ruby -I ./lib `which rspec` -b   ./test/syntax_spec.rb        "
-  sh "ruby -I ./lib `which rspec` -b   ./test/testframework_spec.rb "
-  sh "ruby -I ./lib ./bin/nendo ./test/srfi-1-test.nnd"
+  sh "rspec -I ./lib -b "
+  sh "ruby -I ./lib ./bin/nendo ./spec/srfi-1-test.nnd"
 end
 
 task :test2 do
   sh "/bin/rm -f test.record"
   sh "echo "" > test.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/textlib-test.nnd              >> test.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/nendo-util-test.nnd           >> test.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/json-test.nnd                 >> test.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/srfi-2-test.nnd               >> test.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/srfi-26-test.nnd              >> test.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/util-list-test.nnd            >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/textlib-test.nnd              >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/nendo-util-test.nnd           >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/json-test.nnd                 >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/srfi-2-test.nnd               >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/srfi-26-test.nnd              >> test.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/util-list-test.nnd            >> test.log"
   sh "cat test.record"
   sh "grep ' 0 failed, ' test.record  > /dev/null"
 end
@@ -78,8 +74,8 @@ end
 task :test3 do
   sh "/bin/rm -f test.record"
   sh "echo "" > test3.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/match-test.nnd                | tee -a test3.log"
-  sh "ruby -I ./lib ./bin/nendo ./test/util-combinations-test.nnd    | tee -a test3.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/match-test.nnd                | tee -a test3.log"
+  sh "ruby -I ./lib ./bin/nendo ./spec/util-combinations-test.nnd    | tee -a test3.log"
   sh "cat test.record"
   sh "grep ' 0 failed, ' test.record > /dev/null"
 end
