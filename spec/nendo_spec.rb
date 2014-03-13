@@ -37,7 +37,7 @@ include Nendo
 
 describe Nendo, "Ruby version " do
   it "should" do
-    RUBY_VERSION.match( /^1[.]8/ ).should_not be_true
+    expect(RUBY_VERSION.match( /^1[.]8/ )).not_to be_true
   end
 end
 
@@ -47,14 +47,14 @@ describe Cell, "when initialized as '()" do
   end
 
   it "should" do
-    @cell.isNull.should be_true
-    @cell.length.should == 0
-    @cell.size.should == 0
-    @cell.to_arr.should == []
-    @cell.class.should == Cell
-    @cell.map{ |x| x }.should == []
-    @cell.lastAtom.should be_false
-    @cell.getLastAtom.class.should == Nil
+    expect(@cell.isNull).to be_true
+    expect(@cell.length).to eq(0)
+    expect(@cell.size).to eq(0)
+    expect(@cell.to_arr).to eq([])
+    expect(@cell.class).to eq(Cell)
+    expect(@cell.map{ |x| x }).to eq([])
+    expect(@cell.lastAtom).to be_false
+    expect(@cell.getLastAtom.class).to eq(Nil)
   end
 end
 
@@ -64,16 +64,16 @@ describe Cell, "when initialized as '(100)" do
   end
 
   it "should" do
-    @cell.isNull.should_not be_true
-    @cell.length.should == 1
-    @cell.size.should == 1
-    @cell.car.should == 100
-    @cell.cdr.class.should == Nil
-    @cell.to_arr.should == [ 100 ]
-    @cell.lastCell.car.should == 100
-    @cell.lastCell.cdr.class.should == Nil
-    @cell.lastAtom.should be_false
-    @cell.getLastAtom.class.should == Nil
+    expect(@cell.isNull).not_to be_true
+    expect(@cell.length).to eq(1)
+    expect(@cell.size).to eq(1)
+    expect(@cell.car).to eq(100)
+    expect(@cell.cdr.class).to eq(Nil)
+    expect(@cell.to_arr).to eq([ 100 ])
+    expect(@cell.lastCell.car).to eq(100)
+    expect(@cell.lastCell.cdr.class).to eq(Nil)
+    expect(@cell.lastAtom).to be_false
+    expect(@cell.getLastAtom.class).to eq(Nil)
   end
 end
 
@@ -83,17 +83,17 @@ describe Cell, "when initialized as '(100 . 200)" do
   end
 
   it "should" do
-    @cell.isNull.should_not be_true
-    @cell.isDotted.should be_true
-    @cell.length.should == 1
-    @cell.size.should == 1
-    @cell.car.should == 100
-    @cell.cdr.should == 200
-    @cell.to_arr.should == [ 100 ]
-    @cell.lastCell.car.should == 100
-    @cell.lastCell.cdr.should == 200
-    @cell.lastAtom.should be_true
-    @cell.getLastAtom.should == 200
+    expect(@cell.isNull).not_to be_true
+    expect(@cell.isDotted).to be_true
+    expect(@cell.length).to eq(1)
+    expect(@cell.size).to eq(1)
+    expect(@cell.car).to eq(100)
+    expect(@cell.cdr).to eq(200)
+    expect(@cell.to_arr).to eq([ 100 ])
+    expect(@cell.lastCell.car).to eq(100)
+    expect(@cell.lastCell.cdr).to eq(200)
+    expect(@cell.lastAtom).to be_true
+    expect(@cell.getLastAtom).to eq(200)
   end
 end
 
@@ -103,30 +103,30 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
   end
 
   it "should" do
-    @cell.isNull.should_not   be_true
-    @cell.isDotted.should_not be_true
-    @cell.length.should == 2
-    @cell.size.should == 2
-    @cell.car.should == 100
-    @cell.cdr.car.should == 200
-    @cell.cdr.cdr.should == 300
-    @cell.to_arr.should == [ 100, 200 ]
-    @cell.lastCell.car.should == 200
-    @cell.lastCell.cdr.should == 300
-    @cell.lastAtom.should be_true
-    @cell.getLastAtom.should == 300
+    expect(@cell.isNull).not_to   be_true
+    expect(@cell.isDotted).not_to be_true
+    expect(@cell.length).to eq(2)
+    expect(@cell.size).to eq(2)
+    expect(@cell.car).to eq(100)
+    expect(@cell.cdr.car).to eq(200)
+    expect(@cell.cdr.cdr).to eq(300)
+    expect(@cell.to_arr).to eq([ 100, 200 ])
+    expect(@cell.lastCell.car).to eq(200)
+    expect(@cell.lastCell.cdr).to eq(300)
+    expect(@cell.lastAtom).to be_true
+    expect(@cell.getLastAtom).to eq(300)
   end
 end
 
 describe Nendo, "Ruby's arity rules " do
   it "should" do
-    Proc.new {}.arity.should <= 0
-    Proc.new {||}.arity.should == 0
-    Proc.new {|a|}.arity.should == 1
-    Proc.new {|a,b|}.arity.should == 2
-    Proc.new {|a,b,c|}.arity.should == 3
-    Proc.new {|*a|}.arity.should == -1
-    Proc.new {|a,*b|}.arity.should == -2
+    expect(Proc.new {}.arity).to be <= 0
+    expect(Proc.new {||}.arity).to eq(0)
+    expect(Proc.new {|a|}.arity).to eq(1)
+    expect(Proc.new {|a,b|}.arity).to eq(2)
+    expect(Proc.new {|a,b,c|}.arity).to eq(3)
+    expect(Proc.new {|*a|}.arity).to eq(-1)
+    expect(Proc.new {|a,*b|}.arity).to eq(-2)
   end
 end
 
@@ -138,7 +138,7 @@ describe Nendo, "Ruby's lexical closure " do
       lambda2.call( 'X' )
       val
     }
-    lambda1.call( 'A' ).should == 'a'
+    expect(lambda1.call( 'A' )).to eq('a')
   end
 end
 
@@ -147,17 +147,17 @@ describe Nendo, "Japanese characters in regex " do
     @matchData = "ABC漢字あいうえお漢字ABC".match( /([あ-ん])([あ-ん])([あ-ん])([あ-ん])([あ-ん])/ )
   end
   it "should" do
-    @matchData.should be_true
-    @matchData[0].should == "あいうえお"
-    @matchData[1].should == "あ"
+    expect(@matchData).to be_true
+    expect(@matchData[0]).to eq("あいうえお")
+    expect(@matchData[1]).to eq("あ")
   end
 end
 
 
 describe Nendo, "Ruby's undefined instance variable " do
   it "should" do
-    @undefined_variable.should be_nil
-    defined?( @undefined_variable ).should be_nil
+    expect(@undefined_variable).to be_nil
+    expect(defined?( @undefined_variable )).to be_nil
   end
 end
 
@@ -166,59 +166,59 @@ describe Evaluator, "When use Evaluator's util methods" do
     @evaluator = Evaluator.new(Nendo::Core.new())
   end
   it "should" do
-    @evaluator.toRubySymbol( "a" ).should == "_a"
-    @evaluator.toRubySymbol( "a_b_c" ).should == "_a_b_c"
-    @evaluator.toRubySymbol( "_a_b_c_" ).should == "__a_b_c_"
-    @evaluator.toRubySymbol( '!' ).should  == '__EXMARK'
-    @evaluator.toRubySymbol( '$' ).should  == '__DOMARK'
-    @evaluator.toRubySymbol( '%' ).should  == '__PAMARK'
-    @evaluator.toRubySymbol( '&' ).should  == '__ANMARK'
-    @evaluator.toRubySymbol( '*' ).should  == '__ASMARK'
-    @evaluator.toRubySymbol( '+' ).should  == '__PLMARK'
-    @evaluator.toRubySymbol( '-' ).should  == '__MIMARK'
-    @evaluator.toRubySymbol( '/' ).should  == '__SLMARK'
-    @evaluator.toRubySymbol( ':' ).should  == '__COMARK'
-    @evaluator.toRubySymbol( '::' ).should == '_::'
-    @evaluator.toRubySymbol( '<' ).should  == '__LTMARK'
-    @evaluator.toRubySymbol( '=' ).should  == '__EQMARK'
-    @evaluator.toRubySymbol( '>' ).should  == '__GTMARK'
-    @evaluator.toRubySymbol( '?' ).should  == '__QUMARK'
-    @evaluator.toRubySymbol( '@' ).should  == '__ATMARK'
-    @evaluator.toRubySymbol( '^' ).should  == '__NKMARK'
-    @evaluator.toRubySymbol( "_" ).should  == "__"
-    @evaluator.toRubySymbol( '~' ).should  == '__CHMARK'
-    @evaluator.toRubySymbol( '...' ).should  == '__DOTDOTDOT'
-    @evaluator.toRubySymbol( '<...>' ).should  == '__LTMARK_DOTDOTDOT_GTMARK'
-    @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
-    @evaluator.toRubySymbol( "a?" ).should == "_a_QUMARK"
-    @evaluator.toRubySymbol( "a!" ).should == "_a_EXMARK"
-    @evaluator.toRubySymbol( "a?b" ).should == "_a_QUMARKb"
-    @evaluator.toRubySymbol( "a!b" ).should == "_a_EXMARKb"
-    @evaluator.toRubySymbol( "a-b" ).should == "_a_MIMARKb"
-    @evaluator.toRubySymbol( "a-b-c" ).should == "_a_MIMARKb_MIMARKc"
-    @evaluator.toRubySymbol( "-a-b-c" ).should == "__MIMARKa_MIMARKb_MIMARKc"
-    @evaluator.toRubySymbol( "-a-!-b" ).should == "__MIMARKa_MIMARK_EXMARK_MIMARKb"
-    @evaluator.toRubySymbol( "-a-!-?b" ).should == "__MIMARKa_MIMARK_EXMARK_MIMARK_QUMARKb"
-    @evaluator.toRubySymbol( "a.b" ).should == "_a.b"
-    @evaluator.toRubySymbol( "aa.bb" ).should == "_aa.bb"
-    @evaluator.toRubySymbol( "aa.bb.cc" ).should == "_aa.bb.cc"
-    @evaluator.toLispSymbol( "_a_QUMARK" ).should == "a?"
-    @evaluator.toLispSymbol( "_a_EXMARK" ).should == "a!"
-    @evaluator.toLispSymbol( "_a_b" ).should == "a_b"
-    @evaluator.toLispSymbol( "_a_b_c" ).should == "a_b_c"
-    @evaluator.toLispSymbol( "_A_B_C" ).should == "A_B_C"
-    @evaluator.toLispSymbol( "__DOTDOTDOT" ).should == "..."
-    @evaluator.toLispSymbol( "__LTMARK_DOTDOTDOT_GTMARK" ).should == "<...>"
-    @evaluator.toRubyValue( "a" ).should == "a"
-    @evaluator.toRubyValue( "b" ).should == "b"
-    @evaluator.toRubyValue( "true" ).should == "true"
-    @evaluator.toRubyValue( "nil" ).should == "nil"
-    @evaluator.toRubyValue( "false" ).should == "false"
-    @evaluator.toRubyValue( :a ).should == "a"
-    @evaluator.toRubyValue( :b ).should == "b"
-    @evaluator.toRubyValue( true ).should == "true"
-    @evaluator.toRubyValue( nil ).should == "nil"
-    @evaluator.toRubyValue( false ).should == "false"
+    expect(@evaluator.toRubySymbol( "a" )).to eq("_a")
+    expect(@evaluator.toRubySymbol( "a_b_c" )).to eq("_a_b_c")
+    expect(@evaluator.toRubySymbol( "_a_b_c_" )).to eq("__a_b_c_")
+    expect(@evaluator.toRubySymbol( '!' )).to  eq('__EXMARK')
+    expect(@evaluator.toRubySymbol( '$' )).to  eq('__DOMARK')
+    expect(@evaluator.toRubySymbol( '%' )).to  eq('__PAMARK')
+    expect(@evaluator.toRubySymbol( '&' )).to  eq('__ANMARK')
+    expect(@evaluator.toRubySymbol( '*' )).to  eq('__ASMARK')
+    expect(@evaluator.toRubySymbol( '+' )).to  eq('__PLMARK')
+    expect(@evaluator.toRubySymbol( '-' )).to  eq('__MIMARK')
+    expect(@evaluator.toRubySymbol( '/' )).to  eq('__SLMARK')
+    expect(@evaluator.toRubySymbol( ':' )).to  eq('__COMARK')
+    expect(@evaluator.toRubySymbol( '::' )).to eq('_::')
+    expect(@evaluator.toRubySymbol( '<' )).to  eq('__LTMARK')
+    expect(@evaluator.toRubySymbol( '=' )).to  eq('__EQMARK')
+    expect(@evaluator.toRubySymbol( '>' )).to  eq('__GTMARK')
+    expect(@evaluator.toRubySymbol( '?' )).to  eq('__QUMARK')
+    expect(@evaluator.toRubySymbol( '@' )).to  eq('__ATMARK')
+    expect(@evaluator.toRubySymbol( '^' )).to  eq('__NKMARK')
+    expect(@evaluator.toRubySymbol( "_" )).to  eq("__")
+    expect(@evaluator.toRubySymbol( '~' )).to  eq('__CHMARK')
+    expect(@evaluator.toRubySymbol( '...' )).to  eq('__DOTDOTDOT')
+    expect(@evaluator.toRubySymbol( '<...>' )).to  eq('__LTMARK_DOTDOTDOT_GTMARK')
+    expect(@evaluator.toRubySymbol( "a?" )).to eq("_a_QUMARK")
+    expect(@evaluator.toRubySymbol( "a?" )).to eq("_a_QUMARK")
+    expect(@evaluator.toRubySymbol( "a!" )).to eq("_a_EXMARK")
+    expect(@evaluator.toRubySymbol( "a?b" )).to eq("_a_QUMARKb")
+    expect(@evaluator.toRubySymbol( "a!b" )).to eq("_a_EXMARKb")
+    expect(@evaluator.toRubySymbol( "a-b" )).to eq("_a_MIMARKb")
+    expect(@evaluator.toRubySymbol( "a-b-c" )).to eq("_a_MIMARKb_MIMARKc")
+    expect(@evaluator.toRubySymbol( "-a-b-c" )).to eq("__MIMARKa_MIMARKb_MIMARKc")
+    expect(@evaluator.toRubySymbol( "-a-!-b" )).to eq("__MIMARKa_MIMARK_EXMARK_MIMARKb")
+    expect(@evaluator.toRubySymbol( "-a-!-?b" )).to eq("__MIMARKa_MIMARK_EXMARK_MIMARK_QUMARKb")
+    expect(@evaluator.toRubySymbol( "a.b" )).to eq("_a.b")
+    expect(@evaluator.toRubySymbol( "aa.bb" )).to eq("_aa.bb")
+    expect(@evaluator.toRubySymbol( "aa.bb.cc" )).to eq("_aa.bb.cc")
+    expect(@evaluator.toLispSymbol( "_a_QUMARK" )).to eq("a?")
+    expect(@evaluator.toLispSymbol( "_a_EXMARK" )).to eq("a!")
+    expect(@evaluator.toLispSymbol( "_a_b" )).to eq("a_b")
+    expect(@evaluator.toLispSymbol( "_a_b_c" )).to eq("a_b_c")
+    expect(@evaluator.toLispSymbol( "_A_B_C" )).to eq("A_B_C")
+    expect(@evaluator.toLispSymbol( "__DOTDOTDOT" )).to eq("...")
+    expect(@evaluator.toLispSymbol( "__LTMARK_DOTDOTDOT_GTMARK" )).to eq("<...>")
+    expect(@evaluator.toRubyValue( "a" )).to eq("a")
+    expect(@evaluator.toRubyValue( "b" )).to eq("b")
+    expect(@evaluator.toRubyValue( "true" )).to eq("true")
+    expect(@evaluator.toRubyValue( "nil" )).to eq("nil")
+    expect(@evaluator.toRubyValue( "false" )).to eq("false")
+    expect(@evaluator.toRubyValue( :a )).to eq("a")
+    expect(@evaluator.toRubyValue( :b )).to eq("b")
+    expect(@evaluator.toRubyValue( true )).to eq("true")
+    expect(@evaluator.toRubyValue( nil )).to eq("nil")
+    expect(@evaluator.toRubyValue( false )).to eq("false")
   end
 end
 
@@ -227,24 +227,24 @@ describe Nendo, "when call evalStr() with literals" do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evalStr( " 1 " ).should == "1"
-    @nendo.evalStr( " 100000 " ).should == "100000"
-    @nendo.evalStr( " 1.1 " ).should == "1.1"
-    @nendo.evalStr( " 1.0 " ).should == "1.0"
-    @nendo.evalStr( ' "a" ' ).should == '"a"'
-    @nendo.evalStr( ' "\n" ' ).should == "\"\n\""
-    @nendo.evalStr( ' "\r" ' ).should == "\"\\r\""
-    @nendo.evalStr( ' "\t" ' ).should == "\"\\t\""
-    @nendo.evalStr( ' "a" ' ).should == '"a"'
-    @nendo.evalStr( ' "a\"b" ' ).should == '"a\"b"'
-    @nendo.evalStr( " true " ).should == "#t"
-    @nendo.evalStr( " false " ).should == "#f"
-    @nendo.evalStr( " nil " ).should == "nil"
-    @nendo.evalStr( " #t " ).should == "#t"
-    @nendo.evalStr( " #f " ).should == "#f"
+    expect(@nendo.evalStr( " 1 " )).to eq("1")
+    expect(@nendo.evalStr( " 100000 " )).to eq("100000")
+    expect(@nendo.evalStr( " 1.1 " )).to eq("1.1")
+    expect(@nendo.evalStr( " 1.0 " )).to eq("1.0")
+    expect(@nendo.evalStr( ' "a" ' )).to eq('"a"')
+    expect(@nendo.evalStr( ' "\n" ' )).to eq("\"\n\"")
+    expect(@nendo.evalStr( ' "\r" ' )).to eq("\"\\r\"")
+    expect(@nendo.evalStr( ' "\t" ' )).to eq("\"\\t\"")
+    expect(@nendo.evalStr( ' "a" ' )).to eq('"a"')
+    expect(@nendo.evalStr( ' "a\"b" ' )).to eq('"a\"b"')
+    expect(@nendo.evalStr( " true " )).to eq("#t")
+    expect(@nendo.evalStr( " false " )).to eq("#f")
+    expect(@nendo.evalStr( " nil " )).to eq("nil")
+    expect(@nendo.evalStr( " #t " )).to eq("#t")
+    expect(@nendo.evalStr( " #f " )).to eq("#f")
     pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
-    @nendo.evalStr( ' "日本語" ' ).should == '"日本語"'
-    @nendo.evalStr( ' "日\"本\"語" ' ).should == '"日\"本\"語"'
+    expect(@nendo.evalStr( ' "日本語" ' )).to eq('"日本語"')
+    expect(@nendo.evalStr( ' "日\"本\"語" ' )).to eq('"日\"本\"語"')
   end
 end
 
@@ -253,62 +253,62 @@ describe Nendo, "when call evalStr() with comparative operators" do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evalStr( " (= 1 1) " ).should == "#t"
-    @nendo.evalStr( " (= 1 2) " ).should == "#f"
-    @nendo.evalStr( " (= #t #t) " ).should == "#t"
-    @nendo.evalStr( " (= #f #f) " ).should == "#t"
-    @nendo.evalStr( " (= true true) " ).should == "#t"
-    @nendo.evalStr( " (= false false) " ).should == "#t"
-    @nendo.evalStr( " (= #t true) " ).should == "#t"
-    @nendo.evalStr( " (= #f false) " ).should == "#t"
-    @nendo.evalStr( " (= #t #f) " ).should == "#f"
-    @nendo.evalStr( " (= true false) " ).should == "#f"
-    @nendo.evalStr( " (eq? 1 1) " ).should == "#t"
-    @nendo.evalStr( " (eq? 1 2) " ).should == "#f"
-    @nendo.evalStr( " (eq? 'a 'a) " ).should == "#t"
-    @nendo.evalStr( " (eq? 'b 'b) " ).should == "#t"
-    @nendo.evalStr( " (eq? 'a-b 'a-b) " ).should == "#t"
-    @nendo.evalStr( " (eq? 'a_b 'a-b) " ).should == "#f"
-    @nendo.evalStr( " (eq? 'a-b 'a_b) " ).should == "#f"
-    @nendo.evalStr( " (eq? 'a-b (intern \"a-b\")) " ).should == "#t"
-    @nendo.evalStr( " (eq? 'a_b (intern \"a-b\")) " ).should == "#f"
-    @nendo.evalStr( " (eq? 'a-b (intern \"a_b\")) " ).should == "#f"
-    @nendo.evalStr( " (=   1 1) " ).should == "#t"
-    @nendo.evalStr( " (=   1 2) " ).should == "#f"
-    @nendo.evalStr( " (=   'a 'a) " ).should == "#t"
-    @nendo.evalStr( " (=   'b 'b) " ).should == "#t"
-    @nendo.evalStr( " (=   'a-b 'a-b) " ).should == "#t"
-    @nendo.evalStr( " (=   'a_b 'a-b) " ).should == "#f"
-    @nendo.evalStr( " (=   'a-b 'a_b) " ).should == "#f"
-    @nendo.evalStr( " (=   'a-b (intern \"a-b\")) " ).should == "#t"
-    @nendo.evalStr( " (=   'a_b (intern \"a-b\")) " ).should == "#f"
-    @nendo.evalStr( " (=   'a-b (intern \"a_b\")) " ).should == "#f"
-    @nendo.evalStr( " (< 1 1) " ).should == "#f"
-    @nendo.evalStr( " (< 1 2) " ).should == "#t"
-    @nendo.evalStr( " (> 1 1) " ).should == "#f"
-    @nendo.evalStr( " (> 2 1) " ).should == "#t"
-    @nendo.evalStr( " (<= 1 0) " ).should == "#f"
-    @nendo.evalStr( " (<= 1 1) " ).should == "#t"
-    @nendo.evalStr( " (<= 1 2) " ).should == "#t"
-    @nendo.evalStr( " (>= 0 1) " ).should == "#f"
-    @nendo.evalStr( " (>= 1 1) " ).should == "#t"
-    @nendo.evalStr( " (equal? 1 1) " ).should == "#t"
-    @nendo.evalStr( " (equal? 1 2) " ).should == "#f"
-    @nendo.evalStr( " (equal? 2 2) " ).should == "#t"
-    @nendo.evalStr( " (equal? '() '()) " ).should == "#t"
-    @nendo.evalStr( " (equal? '(1) '(1)) " ).should == "#t"
-    @nendo.evalStr( " (equal? '(1) '(2)) " ).should == "#f"
-    @nendo.evalStr( " (equal? '(1 2 3) '(1 2 3)) " ).should == "#t"
-    @nendo.evalStr( " (equal? '(1 2 . 3) '(1 2 . 3)) " ).should == "#t"
-    @nendo.evalStr( " (equal? '(1 2 (3)) '(1 2 (3))) " ).should == "#t"
-    @nendo.evalStr( " (equal? '(1 2 (3)) '(1 2 (4))) " ).should == "#f"
-    @nendo.evalStr( " (equal? '(1 2 (3 (4))) '(1 2 (3 (4)))) " ).should == "#t"
-    @nendo.evalStr( " (equal? '((1) 2 3 4) '((2) 2 3 4)) " ).should == "#f"
-    @nendo.evalStr( " (equal? \"aaa\" \"aaa\") " ).should == "#t"
-    @nendo.evalStr( " (equal? \"aaa\" \"aax\") " ).should == "#f"
-    @nendo.evalStr( " (equal? '(\"aaa\") '(\"aaa\")) " ).should == "#t"
-    @nendo.evalStr( " (equal? '(\"aaa\" (1)) '(\"aaa\" (1))) " ).should == "#t"
-    @nendo.evalStr( " (equal? '(\"aaa\" (1)) '(\"aaa\" (2))) " ).should == "#f"
+    expect(@nendo.evalStr( " (= 1 1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (= 1 2) " )).to eq("#f")
+    expect(@nendo.evalStr( " (= #t #t) " )).to eq("#t")
+    expect(@nendo.evalStr( " (= #f #f) " )).to eq("#t")
+    expect(@nendo.evalStr( " (= true true) " )).to eq("#t")
+    expect(@nendo.evalStr( " (= false false) " )).to eq("#t")
+    expect(@nendo.evalStr( " (= #t true) " )).to eq("#t")
+    expect(@nendo.evalStr( " (= #f false) " )).to eq("#t")
+    expect(@nendo.evalStr( " (= #t #f) " )).to eq("#f")
+    expect(@nendo.evalStr( " (= true false) " )).to eq("#f")
+    expect(@nendo.evalStr( " (eq? 1 1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (eq? 1 2) " )).to eq("#f")
+    expect(@nendo.evalStr( " (eq? 'a 'a) " )).to eq("#t")
+    expect(@nendo.evalStr( " (eq? 'b 'b) " )).to eq("#t")
+    expect(@nendo.evalStr( " (eq? 'a-b 'a-b) " )).to eq("#t")
+    expect(@nendo.evalStr( " (eq? 'a_b 'a-b) " )).to eq("#f")
+    expect(@nendo.evalStr( " (eq? 'a-b 'a_b) " )).to eq("#f")
+    expect(@nendo.evalStr( " (eq? 'a-b (intern \"a-b\")) " )).to eq("#t")
+    expect(@nendo.evalStr( " (eq? 'a_b (intern \"a-b\")) " )).to eq("#f")
+    expect(@nendo.evalStr( " (eq? 'a-b (intern \"a_b\")) " )).to eq("#f")
+    expect(@nendo.evalStr( " (=   1 1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (=   1 2) " )).to eq("#f")
+    expect(@nendo.evalStr( " (=   'a 'a) " )).to eq("#t")
+    expect(@nendo.evalStr( " (=   'b 'b) " )).to eq("#t")
+    expect(@nendo.evalStr( " (=   'a-b 'a-b) " )).to eq("#t")
+    expect(@nendo.evalStr( " (=   'a_b 'a-b) " )).to eq("#f")
+    expect(@nendo.evalStr( " (=   'a-b 'a_b) " )).to eq("#f")
+    expect(@nendo.evalStr( " (=   'a-b (intern \"a-b\")) " )).to eq("#t")
+    expect(@nendo.evalStr( " (=   'a_b (intern \"a-b\")) " )).to eq("#f")
+    expect(@nendo.evalStr( " (=   'a-b (intern \"a_b\")) " )).to eq("#f")
+    expect(@nendo.evalStr( " (< 1 1) " )).to eq("#f")
+    expect(@nendo.evalStr( " (< 1 2) " )).to eq("#t")
+    expect(@nendo.evalStr( " (> 1 1) " )).to eq("#f")
+    expect(@nendo.evalStr( " (> 2 1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (<= 1 0) " )).to eq("#f")
+    expect(@nendo.evalStr( " (<= 1 1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (<= 1 2) " )).to eq("#t")
+    expect(@nendo.evalStr( " (>= 0 1) " )).to eq("#f")
+    expect(@nendo.evalStr( " (>= 1 1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? 1 1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? 1 2) " )).to eq("#f")
+    expect(@nendo.evalStr( " (equal? 2 2) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '() '()) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '(1) '(1)) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '(1) '(2)) " )).to eq("#f")
+    expect(@nendo.evalStr( " (equal? '(1 2 3) '(1 2 3)) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '(1 2 . 3) '(1 2 . 3)) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '(1 2 (3)) '(1 2 (3))) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '(1 2 (3)) '(1 2 (4))) " )).to eq("#f")
+    expect(@nendo.evalStr( " (equal? '(1 2 (3 (4))) '(1 2 (3 (4)))) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '((1) 2 3 4) '((2) 2 3 4)) " )).to eq("#f")
+    expect(@nendo.evalStr( " (equal? \"aaa\" \"aaa\") " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? \"aaa\" \"aax\") " )).to eq("#f")
+    expect(@nendo.evalStr( " (equal? '(\"aaa\") '(\"aaa\")) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '(\"aaa\" (1)) '(\"aaa\" (1))) " )).to eq("#t")
+    expect(@nendo.evalStr( " (equal? '(\"aaa\" (1)) '(\"aaa\" (2))) " )).to eq("#f")
   end
 end
 
@@ -317,14 +317,14 @@ describe Nendo, "when reference global-variables." do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evalStr( " (pair? *load-path*) " ).should == "#t"
-    @nendo.evalStr( " (string? (car *load-path*)) " ).should == "#t"
+    expect(@nendo.evalStr( " (pair? *load-path*) " )).to eq("#t")
+    expect(@nendo.evalStr( " (string? (car *load-path*)) " )).to eq("#t")
 #   @nendo.evalStr( " (to-arr   *load-path*)  " ).should include( "./spec")
 #   @nendo.evalStr( " (to-arr   *load-path*)  " ).should include( "./lib")
-    @nendo.evalStr( " (string? (*FILE*)) " ).should == "#t"
-    @nendo.evalStr( " (number? (*LINE*)) " ).should == "#t"
-    @nendo.evalStr( " *nendo-version* " ).should == '"' + Nendo::Core.version + '"'
-    @nendo.evalStr( " (string? *nendo-version*) " ).should == "#t"
+    expect(@nendo.evalStr( " (string? (*FILE*)) " )).to eq("#t")
+    expect(@nendo.evalStr( " (number? (*LINE*)) " )).to eq("#t")
+    expect(@nendo.evalStr( " *nendo-version* " )).to eq('"' + Nendo::Core.version + '"')
+    expect(@nendo.evalStr( " (string? *nendo-version*) " )).to eq("#t")
   end
 end
 
@@ -333,21 +333,21 @@ describe Nendo, "when call evalStr() with boolean operators" do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evalStr( " true " ).should == "#t"
-    @nendo.evalStr( " false " ).should == "#f"
-    @nendo.evalStr( " #t " ).should == "#t"
-    @nendo.evalStr( " #f " ).should == "#f"
-    @nendo.evalStr( " (not true) " ).should == "#f"
-    @nendo.evalStr( " (not #t) " ).should == "#f"
-    @nendo.evalStr( " (not 1) " ).should == "#f"
-    @nendo.evalStr( " (not false) " ).should == "#t"
-    @nendo.evalStr( " (not #f) " ).should == "#t"
-    @nendo.evalStr( " (not \"str\") " ).should == "#f"
-    @nendo.evalStr( " (not not) " ).should == "#f"
-    @nendo.evalStr( " (not (not true)) " ).should == "#t"
-    @nendo.evalStr( " (not (not #t)) " ).should == "#t"
-    @nendo.evalStr( " (not '()) " ).should == "#f"
-    @nendo.evalStr( " (not '(1)) " ).should == "#f"
+    expect(@nendo.evalStr( " true " )).to eq("#t")
+    expect(@nendo.evalStr( " false " )).to eq("#f")
+    expect(@nendo.evalStr( " #t " )).to eq("#t")
+    expect(@nendo.evalStr( " #f " )).to eq("#f")
+    expect(@nendo.evalStr( " (not true) " )).to eq("#f")
+    expect(@nendo.evalStr( " (not #t) " )).to eq("#f")
+    expect(@nendo.evalStr( " (not 1) " )).to eq("#f")
+    expect(@nendo.evalStr( " (not false) " )).to eq("#t")
+    expect(@nendo.evalStr( " (not #f) " )).to eq("#t")
+    expect(@nendo.evalStr( " (not \"str\") " )).to eq("#f")
+    expect(@nendo.evalStr( " (not not) " )).to eq("#f")
+    expect(@nendo.evalStr( " (not (not true)) " )).to eq("#t")
+    expect(@nendo.evalStr( " (not (not #t)) " )).to eq("#t")
+    expect(@nendo.evalStr( " (not '()) " )).to eq("#f")
+    expect(@nendo.evalStr( " (not '(1)) " )).to eq("#f")
   end
 end
 
@@ -357,21 +357,21 @@ describe Nendo, "when call evalStr() with `+' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (+ 1) " ).should == "1"
-    @nendo.evalStr( " (+ 1 1) " ).should == "2"
-    @nendo.evalStr( " (+ 1 1 1 1 1 1 1 1 1 1) " ).should == "10"
-    @nendo.evalStr( " (+ 1 2 3 4 5) " ).should == "15"
-    @nendo.evalStr( " (+ 1 (+ 2 (+ 3 (+ 4 (+ 5))))) " ).should == "15"
-    @nendo.evalStr( " (+ 1   1.1) " ).should == "2.1"
-    @nendo.evalStr( " (+ 1.1 1.2) " ).should == "2.3"
-    @nendo.evalStr( " (+ \"a\" ) " ).should == '"a"'
-    @nendo.evalStr( " (+ \"a\" \"B\" \"c\" ) " ).should == '"aBc"'
-    @nendo.evalStr( " (+) " ).should == "0"
-    lambda { @nendo.evalStr( " (+ 1 '() ) " ) }.should       raise_error(TypeError)
-    lambda { @nendo.evalStr( " (+ 1.1 '() ) " ) }.should     raise_error(TypeError)
-    lambda { @nendo.evalStr( " (+ 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
-    lambda { @nendo.evalStr( " (+ \"a\" 1) " ) }.should      raise_error(TypeError)
-    lambda { @nendo.evalStr( " (+ \"a\" 1.1) " ) }.should    raise_error(TypeError)
+    expect(@nendo.evalStr( " (+ 1) " )).to eq("1")
+    expect(@nendo.evalStr( " (+ 1 1) " )).to eq("2")
+    expect(@nendo.evalStr( " (+ 1 1 1 1 1 1 1 1 1 1) " )).to eq("10")
+    expect(@nendo.evalStr( " (+ 1 2 3 4 5) " )).to eq("15")
+    expect(@nendo.evalStr( " (+ 1 (+ 2 (+ 3 (+ 4 (+ 5))))) " )).to eq("15")
+    expect(@nendo.evalStr( " (+ 1   1.1) " )).to eq("2.1")
+    expect(@nendo.evalStr( " (+ 1.1 1.2) " )).to eq("2.3")
+    expect(@nendo.evalStr( " (+ \"a\" ) " )).to eq('"a"')
+    expect(@nendo.evalStr( " (+ \"a\" \"B\" \"c\" ) " )).to eq('"aBc"')
+    expect(@nendo.evalStr( " (+) " )).to eq("0")
+    expect { @nendo.evalStr( " (+ 1 '() ) " ) }.to       raise_error(TypeError)
+    expect { @nendo.evalStr( " (+ 1.1 '() ) " ) }.to     raise_error(TypeError)
+    expect { @nendo.evalStr( " (+ 1.1 \"a\" ) " ) }.to   raise_error(TypeError)
+    expect { @nendo.evalStr( " (+ \"a\" 1) " ) }.to      raise_error(TypeError)
+    expect { @nendo.evalStr( " (+ \"a\" 1.1) " ) }.to    raise_error(TypeError)
 #    pending( "Optimized `+' function does not raise TypeError" )
 #    lambda { @nendo.evalStr( " (+ '() ) " ) }.should         raise_error(TypeError)
 #    lambda { @nendo.evalStr( " (+ '(1) ) " ) }.should        raise_error(TypeError)
@@ -384,17 +384,17 @@ describe Nendo, "when call evalStr() with `-' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (- 1) " ).should == "-1"
-    @nendo.evalStr( " (- 2 1) " ).should == "1"
-    @nendo.evalStr( " (- 2 5) " ).should == "-3"
-    @nendo.evalStr( " (- 100 1 1 1 1 1 1 1 1 1 1) " ).should == "90"
-    @nendo.evalStr( " (- 100 (- 10 3)) " ).should == "93"
-    @nendo.evalStr( " (- 1.1 1) " ).should == (1.1-1).to_s
-    @nendo.evalStr( " (- 1.3 1.1) " ).should == (1.3-1.1).to_s
-    @nendo.evalStr( " (-) " ).should == "0"
-    lambda { @nendo.evalStr( " (- 1 '() ) " ) }.should       raise_error(TypeError)
-    lambda { @nendo.evalStr( " (- 1.1 '() ) " ) }.should     raise_error(TypeError)
-    lambda { @nendo.evalStr( " (- 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+    expect(@nendo.evalStr( " (- 1) " )).to eq("-1")
+    expect(@nendo.evalStr( " (- 2 1) " )).to eq("1")
+    expect(@nendo.evalStr( " (- 2 5) " )).to eq("-3")
+    expect(@nendo.evalStr( " (- 100 1 1 1 1 1 1 1 1 1 1) " )).to eq("90")
+    expect(@nendo.evalStr( " (- 100 (- 10 3)) " )).to eq("93")
+    expect(@nendo.evalStr( " (- 1.1 1) " )).to eq((1.1-1).to_s)
+    expect(@nendo.evalStr( " (- 1.3 1.1) " )).to eq((1.3-1.1).to_s)
+    expect(@nendo.evalStr( " (-) " )).to eq("0")
+    expect { @nendo.evalStr( " (- 1 '() ) " ) }.to       raise_error(TypeError)
+    expect { @nendo.evalStr( " (- 1.1 '() ) " ) }.to     raise_error(TypeError)
+    expect { @nendo.evalStr( " (- 1.1 \"a\" ) " ) }.to   raise_error(TypeError)
 #    pending( "Optimized `-' function does not raise TypeError" )
 #    lambda { @nendo.evalStr( " (- '(1) ) " ) }.should        raise_error(TypeError)
 #    lambda { @nendo.evalStr( " (- '() ) " ) }.should         raise_error(TypeError)
@@ -407,14 +407,14 @@ describe Nendo, "when call evalStr() with `*' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (* 1) " ).should == "1"
-    @nendo.evalStr( " (* 2 1) " ).should == "2"
-    @nendo.evalStr( " (* 2 5) " ).should == "10"
-    @nendo.evalStr( " (* 1 2 3 4 5 6 7 8 9 10) " ).should == "3628800"
-    @nendo.evalStr( " (* 100 (* 10 10 10)) " ).should == "100000"
-    @nendo.evalStr( " (* 1.1 1) " ).should == "1.1"
-    @nendo.evalStr( " (* 1.3 1.1) " ).should == (1.3*1.1).to_s
-    @nendo.evalStr( " (*) " ).should == "1"
+    expect(@nendo.evalStr( " (* 1) " )).to eq("1")
+    expect(@nendo.evalStr( " (* 2 1) " )).to eq("2")
+    expect(@nendo.evalStr( " (* 2 5) " )).to eq("10")
+    expect(@nendo.evalStr( " (* 1 2 3 4 5 6 7 8 9 10) " )).to eq("3628800")
+    expect(@nendo.evalStr( " (* 100 (* 10 10 10)) " )).to eq("100000")
+    expect(@nendo.evalStr( " (* 1.1 1) " )).to eq("1.1")
+    expect(@nendo.evalStr( " (* 1.3 1.1) " )).to eq((1.3*1.1).to_s)
+    expect(@nendo.evalStr( " (*) " )).to eq("1")
 #    pending( "Optimized `*' function does not raise TypeError" )
 #    lambda { @nendo.evalStr( " (* \"a\" 1) " ) }.should      raise_error(TypeError)
 #    lambda { @nendo.evalStr( " (* \"a\" 1.1) " ) }.should    raise_error(TypeError)
@@ -432,24 +432,27 @@ describe Nendo, "when call evalStr() with `/' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (/ 1) " ).should == "1"
-    @nendo.evalStr( " (/ 1.1) " ).should ==
+    expect(@nendo.evalStr( " (/ 1) " )).to eq("1")
+    expect(@nendo.evalStr( " (/ 1.1) " )).to eq(
       (1/1.1).to_s
-    @nendo.evalStr( " (/ 2 1) " ).should == "2"
-    @nendo.evalStr( " (/ 2 2) " ).should == "1"
-    @nendo.evalStr( " (/ 2 2.0) " ).should == "1.0"
-    @nendo.evalStr( " (/ 2 5.0) " ).should == "0.4"
-    @nendo.evalStr( " (/ 10.0 2 2 2 2 2 2 2 2 2 2) " ).should == "0.009765625"
-    @nendo.evalStr( " (/ 100 (/ 100 10) 10) " ).should == "1"
-    @nendo.evalStr( " (/ 1 1.11) " ).should ==
+    )
+    expect(@nendo.evalStr( " (/ 2 1) " )).to eq("2")
+    expect(@nendo.evalStr( " (/ 2 2) " )).to eq("1")
+    expect(@nendo.evalStr( " (/ 2 2.0) " )).to eq("1.0")
+    expect(@nendo.evalStr( " (/ 2 5.0) " )).to eq("0.4")
+    expect(@nendo.evalStr( " (/ 10.0 2 2 2 2 2 2 2 2 2 2) " )).to eq("0.009765625")
+    expect(@nendo.evalStr( " (/ 100 (/ 100 10) 10) " )).to eq("1")
+    expect(@nendo.evalStr( " (/ 1 1.11) " )).to eq(
       (1/1.11).to_s
-    @nendo.evalStr( " (/ 1.3 1.1) " ).should ==
+    )
+    expect(@nendo.evalStr( " (/ 1.3 1.1) " )).to eq(
       (1.3/1.1).to_s
-    lambda { @nendo.evalStr( " (/ 1 '() ) " ) }.should      raise_error(TypeError)
-    lambda { @nendo.evalStr( " (/ 1.1 '() ) " ) }.should    raise_error(TypeError)
-    lambda { @nendo.evalStr( " (/) " ) }.should             raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (/ '() ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.evalStr( " (/ 1.1 \"a\" ) " ) }.should  raise_error(TypeError)
+    )
+    expect { @nendo.evalStr( " (/ 1 '() ) " ) }.to      raise_error(TypeError)
+    expect { @nendo.evalStr( " (/ 1.1 '() ) " ) }.to    raise_error(TypeError)
+    expect { @nendo.evalStr( " (/) " ) }.to             raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (/ '() ) " ) }.to        raise_error(TypeError)
+    expect { @nendo.evalStr( " (/ 1.1 \"a\" ) " ) }.to  raise_error(TypeError)
   end
 end
 
@@ -459,20 +462,20 @@ describe Nendo, "when call evalStr() with `%' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (% 1) " ).should == "0"
-    @nendo.evalStr( " (% 1.1) " ).should == "1.0"
-    @nendo.evalStr( " (% 2 1) " ).should == "0"
-    @nendo.evalStr( " (% 2 2) " ).should == "0"
-    @nendo.evalStr( " (% 2 2.0) " ).should == "0.0"
-    @nendo.evalStr( " (% 2 5.0) " ).should == "2.0"
-    @nendo.evalStr( " (% 100 (% 103 10)) " ).should == "1"
-    @nendo.evalStr( " (% 1 1.11) " ).should == "1.0"
-    @nendo.evalStr( " (% 1.3 1.1) " ).should == (1.3%1.1).to_s
-    lambda { @nendo.evalStr( " (% 1 '() ) " ) }.should       raise_error(TypeError)
-    lambda { @nendo.evalStr( " (% 1.1 '() ) " ) }.should     raise_error(TypeError)
-    lambda { @nendo.evalStr( " (\%) " ) }.should             raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (\% '() ) " ) }.should        raise_error(TypeError)
-    lambda { @nendo.evalStr( " (\% 1.1 \"a\" ) " ) }.should  raise_error(TypeError)
+    expect(@nendo.evalStr( " (% 1) " )).to eq("0")
+    expect(@nendo.evalStr( " (% 1.1) " )).to eq("1.0")
+    expect(@nendo.evalStr( " (% 2 1) " )).to eq("0")
+    expect(@nendo.evalStr( " (% 2 2) " )).to eq("0")
+    expect(@nendo.evalStr( " (% 2 2.0) " )).to eq("0.0")
+    expect(@nendo.evalStr( " (% 2 5.0) " )).to eq("2.0")
+    expect(@nendo.evalStr( " (% 100 (% 103 10)) " )).to eq("1")
+    expect(@nendo.evalStr( " (% 1 1.11) " )).to eq("1.0")
+    expect(@nendo.evalStr( " (% 1.3 1.1) " )).to eq((1.3%1.1).to_s)
+    expect { @nendo.evalStr( " (% 1 '() ) " ) }.to       raise_error(TypeError)
+    expect { @nendo.evalStr( " (% 1.1 '() ) " ) }.to     raise_error(TypeError)
+    expect { @nendo.evalStr( " (\%) " ) }.to             raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (\% '() ) " ) }.to        raise_error(TypeError)
+    expect { @nendo.evalStr( " (\% 1.1 \"a\" ) " ) }.to  raise_error(TypeError)
   end
 end
 
@@ -482,21 +485,21 @@ describe Nendo, "when call evalStr() with `quotient' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (quotient 2 1) " ).should == "2"
-    @nendo.evalStr( " (quotient 2 2) " ).should == "1"
-    @nendo.evalStr( " (quotient 2 2.0) " ).should == "1"
-    @nendo.evalStr( " (quotient 2 5.0) " ).should == "0"
-    @nendo.evalStr( " (quotient 1 1.11) " ).should == "0"
-    @nendo.evalStr( " (quotient  10  3) " ).should == "3"
-    @nendo.evalStr( " (quotient -10  3) " ).should == "-3"
-    @nendo.evalStr( " (quotient  10 -3) " ).should == "-3"
-    @nendo.evalStr( " (quotient  10 -2) " ).should == "-5"
-    lambda { @nendo.evalStr( " (quotient 1 ) " ) }.should           raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (quotient 1.1 ) " ) }.should         raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (quotient) " ) }.should              raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (quotient '() ) " ) }.should         raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (quotient 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
-    lambda { @nendo.evalStr( " (quotient \"a\" 1.1 ) " ) }.should   raise_error(TypeError)
+    expect(@nendo.evalStr( " (quotient 2 1) " )).to eq("2")
+    expect(@nendo.evalStr( " (quotient 2 2) " )).to eq("1")
+    expect(@nendo.evalStr( " (quotient 2 2.0) " )).to eq("1")
+    expect(@nendo.evalStr( " (quotient 2 5.0) " )).to eq("0")
+    expect(@nendo.evalStr( " (quotient 1 1.11) " )).to eq("0")
+    expect(@nendo.evalStr( " (quotient  10  3) " )).to eq("3")
+    expect(@nendo.evalStr( " (quotient -10  3) " )).to eq("-3")
+    expect(@nendo.evalStr( " (quotient  10 -3) " )).to eq("-3")
+    expect(@nendo.evalStr( " (quotient  10 -2) " )).to eq("-5")
+    expect { @nendo.evalStr( " (quotient 1 ) " ) }.to           raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (quotient 1.1 ) " ) }.to         raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (quotient) " ) }.to              raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (quotient '() ) " ) }.to         raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (quotient 1.1 \"a\" ) " ) }.to   raise_error(TypeError)
+    expect { @nendo.evalStr( " (quotient \"a\" 1.1 ) " ) }.to   raise_error(TypeError)
   end
 end
 
@@ -506,21 +509,21 @@ describe Nendo, "when call evalStr() with `remainder' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (remainder 2 1) " ).should == "0"
-    @nendo.evalStr( " (remainder 2 2) " ).should == "0"
-    @nendo.evalStr( " (remainder 2 2.0) " ).should == "0.0"
-    @nendo.evalStr( " (remainder 2 5.0) " ).should == "2.0"
-    @nendo.evalStr( " (remainder 1 1.11) " ).should == "1.0"
-    @nendo.evalStr( " (remainder  10  3) " ).should == "1"
-    @nendo.evalStr( " (remainder -10  3) " ).should == "-1"
-    @nendo.evalStr( " (remainder  10 -3) " ).should == "1"
-    @nendo.evalStr( " (remainder -10 -3) " ).should == "-1"
-    @nendo.evalStr( " (remainder  10 -2) " ).should == "0"
-    lambda { @nendo.evalStr( " (remainder 1 '() ) " ) }.should       raise_error(TypeError)
-    lambda { @nendo.evalStr( " (remainder 1.1 '() ) " ) }.should     raise_error(TypeError)
-    lambda { @nendo.evalStr( " (remainder) " ) }.should              raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (remainder '() ) " ) }.should         raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (remainder 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+    expect(@nendo.evalStr( " (remainder 2 1) " )).to eq("0")
+    expect(@nendo.evalStr( " (remainder 2 2) " )).to eq("0")
+    expect(@nendo.evalStr( " (remainder 2 2.0) " )).to eq("0.0")
+    expect(@nendo.evalStr( " (remainder 2 5.0) " )).to eq("2.0")
+    expect(@nendo.evalStr( " (remainder 1 1.11) " )).to eq("1.0")
+    expect(@nendo.evalStr( " (remainder  10  3) " )).to eq("1")
+    expect(@nendo.evalStr( " (remainder -10  3) " )).to eq("-1")
+    expect(@nendo.evalStr( " (remainder  10 -3) " )).to eq("1")
+    expect(@nendo.evalStr( " (remainder -10 -3) " )).to eq("-1")
+    expect(@nendo.evalStr( " (remainder  10 -2) " )).to eq("0")
+    expect { @nendo.evalStr( " (remainder 1 '() ) " ) }.to       raise_error(TypeError)
+    expect { @nendo.evalStr( " (remainder 1.1 '() ) " ) }.to     raise_error(TypeError)
+    expect { @nendo.evalStr( " (remainder) " ) }.to              raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (remainder '() ) " ) }.to         raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (remainder 1.1 \"a\" ) " ) }.to   raise_error(TypeError)
   end
 end
 
@@ -530,22 +533,22 @@ describe Nendo, "when call evalStr() with `modulo' function" do
     @nendo.setDisplayErrors( false )
   end
   it "should" do
-    @nendo.evalStr( " (modulo 2 1) " ).should == "0"
-    @nendo.evalStr( " (modulo 2 2) " ).should == "0"
-    @nendo.evalStr( " (modulo 2 2.0) " ).should == "0.0"
-    @nendo.evalStr( " (modulo 2 5.0) " ).should == "2.0"
-    @nendo.evalStr( " (modulo 100 (modulo 103 10)) " ).should == "1"
-    @nendo.evalStr( " (modulo 1 1.11) " ).should == "1.0"
-    @nendo.evalStr( " (modulo  10  3) " ).should == "1"
-    @nendo.evalStr( " (modulo -10  3) " ).should == "2"
-    @nendo.evalStr( " (modulo  10 -3) " ).should == "-2"
-    @nendo.evalStr( " (modulo -10 -3) " ).should == "-1"
-    @nendo.evalStr( " (modulo  10 -2) " ).should == "0"
-    lambda { @nendo.evalStr( " (modulo 1 '() ) " ) }.should       raise_error(TypeError)
-    lambda { @nendo.evalStr( " (modulo 1.1 '() ) " ) }.should     raise_error(TypeError)
-    lambda { @nendo.evalStr( " (modulo) " ) }.should              raise_error(ArgumentError)
-    lambda { @nendo.evalStr( " (modulo '() ) " ) }.should         raise_error(TypeError)
-    lambda { @nendo.evalStr( " (modulo 1.1 \"a\" ) " ) }.should   raise_error(TypeError)
+    expect(@nendo.evalStr( " (modulo 2 1) " )).to eq("0")
+    expect(@nendo.evalStr( " (modulo 2 2) " )).to eq("0")
+    expect(@nendo.evalStr( " (modulo 2 2.0) " )).to eq("0.0")
+    expect(@nendo.evalStr( " (modulo 2 5.0) " )).to eq("2.0")
+    expect(@nendo.evalStr( " (modulo 100 (modulo 103 10)) " )).to eq("1")
+    expect(@nendo.evalStr( " (modulo 1 1.11) " )).to eq("1.0")
+    expect(@nendo.evalStr( " (modulo  10  3) " )).to eq("1")
+    expect(@nendo.evalStr( " (modulo -10  3) " )).to eq("2")
+    expect(@nendo.evalStr( " (modulo  10 -3) " )).to eq("-2")
+    expect(@nendo.evalStr( " (modulo -10 -3) " )).to eq("-1")
+    expect(@nendo.evalStr( " (modulo  10 -2) " )).to eq("0")
+    expect { @nendo.evalStr( " (modulo 1 '() ) " ) }.to       raise_error(TypeError)
+    expect { @nendo.evalStr( " (modulo 1.1 '() ) " ) }.to     raise_error(TypeError)
+    expect { @nendo.evalStr( " (modulo) " ) }.to              raise_error(ArgumentError)
+    expect { @nendo.evalStr( " (modulo '() ) " ) }.to         raise_error(TypeError)
+    expect { @nendo.evalStr( " (modulo 1.1 \"a\" ) " ) }.to   raise_error(TypeError)
   end
 end
 

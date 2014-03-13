@@ -45,14 +45,14 @@ describe Nendo, "when use NendoTestError " do
   end
 
   it "should" do
-    @nendoError1.type.should ==           RuntimeError
+    expect(@nendoError1.type).to eq(RuntimeError)
     @nendoError1.type = @runtimeError.class
-    @nendoError1.type.should ==           RuntimeError
+    expect(@nendoError1.type).to eq(RuntimeError)
     @nendoError1.type = RuntimeError
-    @nendoError1.type.should ==           RuntimeError
+    expect(@nendoError1.type).to eq(RuntimeError)
     @nendoError1.type = Timeout::Error
-    @nendoError1.type.should ==           Timeout::Error
-    @nendoError2.type.should ==           RuntimeError
+    expect(@nendoError1.type).to eq(Timeout::Error)
+    expect(@nendoError2.type).to eq(RuntimeError)
   end
 end
 
@@ -65,13 +65,13 @@ describe Nendo, "when use test function " do
   end
 
   it "should" do
-    @nendo.evalStr( '(test-section "(test)")' ).should  ==  '"(test)"'
+    expect(@nendo.evalStr( '(test-section "(test)")' )).to  eq('"(test)"')
 
-    @nendo.evalStr( '(test "true false" #t (lambda () #t))' ).should             ==  '#t'
-    @nendo.evalStr( '(test "true false" #f (lambda () #f))' ).should             ==  '#t'
-    @nendo.evalStr( '(test "number" 0 (lambda () 0))' ).should                   ==  '#t'
-    @nendo.evalStr( '(test "number" 0 (lambda () 1))' ).should                   ==  '#f'
-    @nendo.evalStr( '(test "string" "ab" (lambda () (+ "a" "b")))' ).should      ==  '#t'
+    expect(@nendo.evalStr( '(test "true false" #t (lambda () #t))' )).to             eq('#t')
+    expect(@nendo.evalStr( '(test "true false" #f (lambda () #f))' )).to             eq('#t')
+    expect(@nendo.evalStr( '(test "number" 0 (lambda () 0))' )).to                   eq('#t')
+    expect(@nendo.evalStr( '(test "number" 0 (lambda () 1))' )).to                   eq('#f')
+    expect(@nendo.evalStr( '(test "string" "ab" (lambda () (+ "a" "b")))' )).to      eq('#t')
   end
 end
 
@@ -83,27 +83,27 @@ describe Nendo, "when use test* function " do
   end
 
   it "should" do
-    @nendo.evalStr( '(test-section "(test*)")' ).should  ==  '"(test*)"'
+    expect(@nendo.evalStr( '(test-section "(test*)")' )).to  eq('"(test*)"')
 
-    @nendo.evalStr( '(test* "true false" #t #t)' ).should                        ==  '#t'
-    @nendo.evalStr( '(test* "true false" #f #f)' ).should                        ==  '#t'
-    @nendo.evalStr( '(test* "number" 0 0)' ).should                              ==  '#t'
-    @nendo.evalStr( '(test* "number" 0 1)' ).should                              ==  '#f'
-    @nendo.evalStr( '(test* "string" "ab" (+ "a" "b"))' ).should                 ==  '#t'
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( '(test* "true false" #t #t)' )).to                        eq('#t')
+    expect(@nendo.evalStr( '(test* "true false" #f #f)' )).to                        eq('#t')
+    expect(@nendo.evalStr( '(test* "number" 0 0)' )).to                              eq('#t')
+    expect(@nendo.evalStr( '(test* "number" 0 1)' )).to                              eq('#f')
+    expect(@nendo.evalStr( '(test* "string" "ab" (+ "a" "b"))' )).to                 eq('#t')
+    expect(@nendo.evalStr( <<EOS
 (test* "eq?"     '(a b) '(a b)  eq?)
 EOS
-           ).should               ==  '#f'
+           )).to               eq('#f')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (test* "eqv?"     '(a b) '(a b) eqv?)
 EOS
-           ).should               ==  '#f'
+           )).to               eq('#f')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (test* "equal?"   '(a b) '(a b)     )
 EOS
-           ).should               ==  '#t'
+           )).to               eq('#t')
 
   end
 end
@@ -117,37 +117,37 @@ describe Nendo, "when test framework handle exception " do
   end
 
   it "should" do
-    @nendo.evalStr( '(test-section "exceptions")' ).should  ==  '"exceptions"'
+    expect(@nendo.evalStr( '(test-section "exceptions")' )).to  eq('"exceptions"')
 
-    @nendo.evalStr( '(. (test-error ) class)' ).should                     ==  'Nendo::NendoTestError'
-    @nendo.evalStr( '(. (test-error RuntimeError)  class)' ).should        ==  'Nendo::NendoTestError'
+    expect(@nendo.evalStr( '(. (test-error ) class)' )).to                     eq('Nendo::NendoTestError')
+    expect(@nendo.evalStr( '(. (test-error RuntimeError)  class)' )).to        eq('Nendo::NendoTestError')
 
-    @nendo.evalStr( '(. (test-error RuntimeError)  type)' ).should         ==  'RuntimeError'
-    @nendo.evalStr( '(. (test-error ArgumentError) type)' ).should         ==  'ArgumentError'
-    @nendo.evalStr( '(. (test-error SyntaxError)   type)' ).should         ==  'SyntaxError'
+    expect(@nendo.evalStr( '(. (test-error RuntimeError)  type)' )).to         eq('RuntimeError')
+    expect(@nendo.evalStr( '(. (test-error ArgumentError) type)' )).to         eq('ArgumentError')
+    expect(@nendo.evalStr( '(. (test-error SyntaxError)   type)' )).to         eq('SyntaxError')
 
-    @nendo.evalStr( '(test-error? (test-error))               ' ).should   ==  '#t'
-    @nendo.evalStr( '(test-error? (test-error RuntimeError))  ' ).should   ==  '#t'
-    @nendo.evalStr( '(test-error? (test-error ArgumentError)) ' ).should   ==  '#t'
-    @nendo.evalStr( '(test-error? (test-error SyntaxError))   ' ).should   ==  '#t'
+    expect(@nendo.evalStr( '(test-error? (test-error))               ' )).to   eq('#t')
+    expect(@nendo.evalStr( '(test-error? (test-error RuntimeError))  ' )).to   eq('#t')
+    expect(@nendo.evalStr( '(test-error? (test-error ArgumentError)) ' )).to   eq('#t')
+    expect(@nendo.evalStr( '(test-error? (test-error SyntaxError))   ' )).to   eq('#t')
 
-    @nendo.evalStr( '(test-check   (test-error RuntimeError)   (test-error RuntimeError ))' ).should   ==  '#t'
-    @nendo.evalStr( '(test-check   1                           (test-error RuntimeError ))' ).should   ==  '#f'
-    @nendo.evalStr( '(test-check   (test-error RuntimeError)   1                         )' ).should   ==  '#f'
-    @nendo.evalStr( '(test-check   1                           1                         )' ).should   ==  '#t'
-    @nendo.evalStr( '(test-check   1                           2                         )' ).should   ==  '#f'
-    @nendo.evalStr( '(test-check   (test-error RuntimeError)   (test-error ArgumentError))' ).should   ==  '#f'
-    @nendo.evalStr( '(test-check   (test-error RuntimeError)   (test-error SyntaxError  ))' ).should   ==  '#f'
-    @nendo.evalStr( '(test-check   (test-error ArgumentError)  (test-error RuntimeError ))' ).should   ==  '#f'
-    @nendo.evalStr( '(test-check   (test-error SyntaxError)    (test-error RuntimeError ))' ).should   ==  '#f'
+    expect(@nendo.evalStr( '(test-check   (test-error RuntimeError)   (test-error RuntimeError ))' )).to   eq('#t')
+    expect(@nendo.evalStr( '(test-check   1                           (test-error RuntimeError ))' )).to   eq('#f')
+    expect(@nendo.evalStr( '(test-check   (test-error RuntimeError)   1                         )' )).to   eq('#f')
+    expect(@nendo.evalStr( '(test-check   1                           1                         )' )).to   eq('#t')
+    expect(@nendo.evalStr( '(test-check   1                           2                         )' )).to   eq('#f')
+    expect(@nendo.evalStr( '(test-check   (test-error RuntimeError)   (test-error ArgumentError))' )).to   eq('#f')
+    expect(@nendo.evalStr( '(test-check   (test-error RuntimeError)   (test-error SyntaxError  ))' )).to   eq('#f')
+    expect(@nendo.evalStr( '(test-check   (test-error ArgumentError)  (test-error RuntimeError ))' )).to   eq('#f')
+    expect(@nendo.evalStr( '(test-check   (test-error SyntaxError)    (test-error RuntimeError ))' )).to   eq('#f')
 
-    @nendo.evalStr( '(test* "exception" (test-error TypeError)    (+ 1.1 "str"))' ).should                      ==  '#t'
-    @nendo.evalStr( '(test* "exception" (test-error RuntimeError) (+ 1.1 "str"))' ).should                      ==  '#f'
-    @nendo.evalStr( '(test* "exception" (test-error TypeError)    (error "[RuntimeError]"))' ).should           ==  '#f'
-    @nendo.evalStr( '(test* "exception" (test-error RuntimeError) (error "[RuntimeError]"))' ).should           ==  '#t'
-    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise RuntimeError  "[RuntimeError]"))'  ).should           ==  '#f'
-    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise ArgumentError "[ArgumentError]"))' ).should           ==  '#t'
-    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise TypeError     "[TypeError]"))'     ).should           ==  '#f'
-    @nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise NoMethodError "[NoMethodError]"))' ).should           ==  '#f'
+    expect(@nendo.evalStr( '(test* "exception" (test-error TypeError)    (+ 1.1 "str"))' )).to                      eq('#t')
+    expect(@nendo.evalStr( '(test* "exception" (test-error RuntimeError) (+ 1.1 "str"))' )).to                      eq('#f')
+    expect(@nendo.evalStr( '(test* "exception" (test-error TypeError)    (error "[RuntimeError]"))' )).to           eq('#f')
+    expect(@nendo.evalStr( '(test* "exception" (test-error RuntimeError) (error "[RuntimeError]"))' )).to           eq('#t')
+    expect(@nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise RuntimeError  "[RuntimeError]"))'  )).to           eq('#f')
+    expect(@nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise ArgumentError "[ArgumentError]"))' )).to           eq('#t')
+    expect(@nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise TypeError     "[TypeError]"))'     )).to           eq('#f')
+    expect(@nendo.evalStr( '(test* "exception" (test-error ArgumentError)    (raise NoMethodError "[NoMethodError]"))' )).to           eq('#f')
   end
 end

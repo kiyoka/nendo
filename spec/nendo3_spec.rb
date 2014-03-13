@@ -41,12 +41,12 @@ describe Nendo, "When use optional argument parser " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " (get-optional '() 100) " ).should == "100"
-    @nendo.evalStr( " (get-optional '(1) 100) " ).should == "1"
-    @nendo.evalStr( " (get-optional '(2) 100) " ).should == "2"
-    @nendo.evalStr( " (get-optional '(3 4) 100) " ).should == "3"
-    @nendo.evalStr( " (get-optional '() #t) " ).should == "#t"
-    @nendo.evalStr( " (get-optional '() #f) " ).should == "#f"
+    expect(@nendo.evalStr( " (get-optional '() 100) " )).to eq("100")
+    expect(@nendo.evalStr( " (get-optional '(1) 100) " )).to eq("1")
+    expect(@nendo.evalStr( " (get-optional '(2) 100) " )).to eq("2")
+    expect(@nendo.evalStr( " (get-optional '(3 4) 100) " )).to eq("3")
+    expect(@nendo.evalStr( " (get-optional '() #t) " )).to eq("#t")
+    expect(@nendo.evalStr( " (get-optional '() #f) " )).to eq("#f")
   end
 end
 
@@ -57,19 +57,19 @@ describe Nendo, "When use :optional argument feature " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( '(define (func arg1 arg2) (list arg1 arg2))    (func 1 2)' ).should ==                                    "(1 2)"
-    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3))  (func 1 2)' ).should ==            "(1 2 #f)"
-    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3))  (func 1 2)' ).should ==            "(1 2 #t)"
-    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2)' ).should ==            "(1 2 3)"
-    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3))  (func 1 2 30)' ).should ==         "(1 2 30)"
-    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3))  (func 1 2 40)' ).should ==         "(1 2 40)"
-    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 50)' ).should ==         "(1 2 50)"
-    @nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 "String")' ).should ==   '(1 2 "String")'
+    expect(@nendo.evalStr( '(define (func arg1 arg2) (list arg1 arg2))    (func 1 2)' )).to eq("(1 2)")
+    expect(@nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3))  (func 1 2)' )).to eq("(1 2 #f)")
+    expect(@nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3))  (func 1 2)' )).to eq("(1 2 #t)")
+    expect(@nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2)' )).to eq("(1 2 3)")
+    expect(@nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3))  (func 1 2 30)' )).to eq("(1 2 30)")
+    expect(@nendo.evalStr( '(define (func arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3))  (func 1 2 40)' )).to eq("(1 2 40)")
+    expect(@nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 50)' )).to eq("(1 2 50)")
+    expect(@nendo.evalStr( '(define (func arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3))  (func 1 2 "String")' )).to eq('(1 2 "String")')
 
-    @nendo.evalStr( '(define func (lambda (arg1 arg2) (list arg1 arg2)))   (func 1 2)' ).should ==                            '(1 2)'
-    lambda { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.should   raise_error( RuntimeError, /handle keyword argument/ )
-    lambda { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.should   raise_error( RuntimeError, /handle keyword argument/ )
-    lambda { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.should   raise_error( RuntimeError, /handle keyword argument/ )
+    expect(@nendo.evalStr( '(define func (lambda (arg1 arg2) (list arg1 arg2)))   (func 1 2)' )).to eq('(1 2)')
+    expect { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3 #f))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.to   raise_error( RuntimeError, /handle keyword argument/ )
+    expect { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3 #t))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.to   raise_error( RuntimeError, /handle keyword argument/ )
+    expect { @nendo.evalStr( '(define func (lambda (arg1 arg2 :optional (arg3  3))  (list arg1 arg2 arg3)))  (func 1 2)' ) }.to   raise_error( RuntimeError, /handle keyword argument/ )
   end
 end
 
@@ -81,25 +81,25 @@ describe Nendo, "when use export-to-ruby macro " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( " (define (nendo_function0  ) 0)  #t" ).should == "#t"
-    @nendo.evalStr( " (define (nendo_function1 x) (+ x 1))  #t" ).should == "#t"
-    @nendo.evalStr( " (define (nendo_function2 x y) (* x y))  #t" ).should == "#t"
-    @nendo.evalStr( " (define (nendo_function7 a b c d e f g) (to-arr (list a b c d e f g)))  #t" ).should == "#t"
-    @nendo.evalStr( " (export-to-ruby nendo_function0) " ).should == "#t"
-    @nendo.evalStr( " (export-to-ruby nendo_function1) " ).should == "#t"
-    @nendo.evalStr( " (export-to-ruby nendo_function2) " ).should == "#t"
-    @nendo.evalStr( " (export-to-ruby nendo_function7) " ).should == "#t"
-    @nendo.evalStr( " (macroexpand '(export-to-ruby nendo_function1)) " ).should == '(%export-to-ruby "nendo_function1" nendo_function1)'
-    @nendo.evalStr( " (macroexpand '(export-to-ruby nendo_function7)) " ).should == '(%export-to-ruby "nendo_function7" nendo_function7)'
-    @nendo.evalStr( " (define (a-func0) 0)  #t" ).should == "#t"
-    lambda { @nendo.evalStr( " (export-to-ruby a-func0) " ) }.should         raise_error(ArgumentError)
-    @nendo.evalStr( " (define (clone) 0)  #t" ).should == "#t"
-    lambda { @nendo.evalStr( " (export-to-ruby clone) " ) }.should           raise_error(RuntimeError)
-    @nendo.evalStr( " (define variable_a 0)  #t" ).should == "#t"
-    lambda { @nendo.evalStr( " (export-to-ruby variable_a) " ) }.should      raise_error(ArgumentError)
-    @nendo.nendo_function0.should == 0
-    @nendo.nendo_function1( 10 ).should == 11
-    @nendo.nendo_function2( 8, 9 ).should == 72
-    @nendo.nendo_function7( 7,6,5,4,3,2,1 ).should === [ 7,6,5,4,3,2,1 ]
+    expect(@nendo.evalStr( " (define (nendo_function0  ) 0)  #t" )).to eq("#t")
+    expect(@nendo.evalStr( " (define (nendo_function1 x) (+ x 1))  #t" )).to eq("#t")
+    expect(@nendo.evalStr( " (define (nendo_function2 x y) (* x y))  #t" )).to eq("#t")
+    expect(@nendo.evalStr( " (define (nendo_function7 a b c d e f g) (to-arr (list a b c d e f g)))  #t" )).to eq("#t")
+    expect(@nendo.evalStr( " (export-to-ruby nendo_function0) " )).to eq("#t")
+    expect(@nendo.evalStr( " (export-to-ruby nendo_function1) " )).to eq("#t")
+    expect(@nendo.evalStr( " (export-to-ruby nendo_function2) " )).to eq("#t")
+    expect(@nendo.evalStr( " (export-to-ruby nendo_function7) " )).to eq("#t")
+    expect(@nendo.evalStr( " (macroexpand '(export-to-ruby nendo_function1)) " )).to eq('(%export-to-ruby "nendo_function1" nendo_function1)')
+    expect(@nendo.evalStr( " (macroexpand '(export-to-ruby nendo_function7)) " )).to eq('(%export-to-ruby "nendo_function7" nendo_function7)')
+    expect(@nendo.evalStr( " (define (a-func0) 0)  #t" )).to eq("#t")
+    expect { @nendo.evalStr( " (export-to-ruby a-func0) " ) }.to         raise_error(ArgumentError)
+    expect(@nendo.evalStr( " (define (clone) 0)  #t" )).to eq("#t")
+    expect { @nendo.evalStr( " (export-to-ruby clone) " ) }.to           raise_error(RuntimeError)
+    expect(@nendo.evalStr( " (define variable_a 0)  #t" )).to eq("#t")
+    expect { @nendo.evalStr( " (export-to-ruby variable_a) " ) }.to      raise_error(ArgumentError)
+    expect(@nendo.nendo_function0).to eq(0)
+    expect(@nendo.nendo_function1( 10 )).to eq(11)
+    expect(@nendo.nendo_function2( 8, 9 )).to eq(72)
+    expect(@nendo.nendo_function7( 7,6,5,4,3,2,1 )).to be === [ 7,6,5,4,3,2,1 ]
   end
 end

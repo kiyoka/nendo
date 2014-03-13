@@ -41,23 +41,23 @@ describe Nendo, "when read the core syntax keyword " do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evalStr( "(define a 1)" ).should         == '1'
-    @nendo.evalStr( "(define a if)" ).should        match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a if)" ).should        == '#t'
-    @nendo.evalStr( "(define a begin)" ).should     match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a begin)" ).should     == '#t'
-    @nendo.evalStr( "(define a lambda)" ).should    match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a lambda)" ).should    == '#t'
-    @nendo.evalStr( "(define a macro)" ).should     match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a macro)" ).should     == '#t'
-    @nendo.evalStr( "(define a &block)" ).should    match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a &block)" ).should    == '#t'
-    @nendo.evalStr( "(define a %let)" ).should       match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a %let)" ).should       == '#t'
-    @nendo.evalStr( "(define a letrec)" ).should    match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a letrec)" ).should    == '#t'
-    @nendo.evalStr( "(define a set!)" ).should      match( /Nendo::LispCoreSyntax/ )
-    @nendo.evalStr( "(eq?    a set!)" ).should      == '#t'
+    expect(@nendo.evalStr( "(define a 1)" )).to         eq('1')
+    expect(@nendo.evalStr( "(define a if)" )).to        match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a if)" )).to        eq('#t')
+    expect(@nendo.evalStr( "(define a begin)" )).to     match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a begin)" )).to     eq('#t')
+    expect(@nendo.evalStr( "(define a lambda)" )).to    match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a lambda)" )).to    eq('#t')
+    expect(@nendo.evalStr( "(define a macro)" )).to     match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a macro)" )).to     eq('#t')
+    expect(@nendo.evalStr( "(define a &block)" )).to    match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a &block)" )).to    eq('#t')
+    expect(@nendo.evalStr( "(define a %let)" )).to       match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a %let)" )).to       eq('#t')
+    expect(@nendo.evalStr( "(define a letrec)" )).to    match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a letrec)" )).to    eq('#t')
+    expect(@nendo.evalStr( "(define a set!)" )).to      match( /Nendo::LispCoreSyntax/ )
+    expect(@nendo.evalStr( "(eq?    a set!)" )).to      eq('#t')
   end
 end
 
@@ -67,27 +67,27 @@ describe Nendo, "when use lib functions for let-syntax " do
     @nendo = Nendo::Core.new()
   end
   it "should" do
-    @nendo.evaluator.write_to_string(
+    expect(@nendo.evaluator.write_to_string(
        @nendo.evaluator.__wrapNestedLet( 1000,
                           [[ :a, Cell.new( 2 ) ]]
-                          )).should == "(%let ((a 2)) 1000)"
-    @nendo.evaluator.write_to_string(
+                          ))).to eq("(%let ((a 2)) 1000)")
+    expect(@nendo.evaluator.write_to_string(
        @nendo.evaluator.__wrapNestedLet( 1000,
                           [[ :a, Cell.new( 2 ) ], [ :b, Cell.new( 3 ) ]]
-                          )).should == "(%let ((a 2)) (%let ((b 3)) 1000))"
-    @nendo.evaluator.write_to_string(
+                          ))).to eq("(%let ((a 2)) (%let ((b 3)) 1000))")
+    expect(@nendo.evaluator.write_to_string(
        @nendo.evaluator.__wrapNestedLet( Cell.new( :"+", Cell.new( :a, Cell.new( :b ))),
                           [[ :a, Cell.new( 2 ) ], [ :b, Cell.new( 3 ) ]]
-                          )).should == "(%let ((a 2)) (%let ((b 3)) (+ a b)))"
+                          ))).to eq("(%let ((a 2)) (%let ((b 3)) (+ a b)))")
 
-    @nendo.evalStr( "(strip-syntax-quote 'abc)" ).should                    == "abc"
-    @nendo.evalStr( "(strip-syntax-quote '())" ).should                     == "()"
-    @nendo.evalStr( "(strip-syntax-quote '(a (b) ((c))))" ).should          == "(a (b) ((c)))"
-    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote abc))" ).should     == "(quote abc)"
-    @nendo.evalStr( "(strip-syntax-quote '(syntax-quote (syntax-quote abc)))" ).should     == "(quote (quote abc))"
+    expect(@nendo.evalStr( "(strip-syntax-quote 'abc)" )).to                    eq("abc")
+    expect(@nendo.evalStr( "(strip-syntax-quote '())" )).to                     eq("()")
+    expect(@nendo.evalStr( "(strip-syntax-quote '(a (b) ((c))))" )).to          eq("(a (b) ((c)))")
+    expect(@nendo.evalStr( "(strip-syntax-quote '(syntax-quote abc))" )).to     eq("(quote abc)")
+    expect(@nendo.evalStr( "(strip-syntax-quote '(syntax-quote (syntax-quote abc)))" )).to     eq("(quote (quote abc))")
 
-    @nendo.evalStr( "(strip-let-syntax-keyword 'abc)" ).should                    == "abc"
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( "(strip-let-syntax-keyword 'abc)" )).to                    eq("abc")
+    expect(@nendo.evalStr( <<EOS
 (strip-let-syntax-keyword
   '(let-syntax ((nil!
 		 (syntax-rules ()
@@ -95,9 +95,9 @@ describe Nendo, "when use lib functions for let-syntax " do
 				(set! x '())))))
 	       (nil! aa)))
 EOS
-           ).should     == "(begin (nil! aa))"
+           )).to     eq("(begin (nil! aa))")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (strip-let-syntax-keyword
  '(let ()
     (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
@@ -106,7 +106,7 @@ EOS
 			     (b (syntax-rules () ((_ ?y) (a 3)))))
 			    (list (a 7) (b 8))))))
 EOS
-           ).should     == "(let () (begin (begin (list (a 7) (b 8)))))"
+           )).to     eq("(let () (begin (begin (list (a 7) (b 8)))))")
   end
 end
 
@@ -117,15 +117,15 @@ describe Nendo, "when use identifier checker " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( "(symbol? 'a)" ).should                                     == '#t'
-    @nendo.evalStr( "(identifier? 'a)" ).should                                 == '#t'
-    @nendo.evalStr( "(identifier? 'identifier)" ).should                        == '#t'
-    @nendo.evalStr( "(identifier? 'lambda)" ).should                            == '#t'
-    @nendo.evalStr( "(identifier? 10)" ).should                                 == '#f'
-    @nendo.evalStr( "(identifier? \"str\")" ).should                            == '#f'
-    @nendo.evalStr( "(identifier=? '() 'lambda '() 'lambda)" ).should           == '#t'
-    @nendo.evalStr( "(identifier=? '() 'define '() 'lambda)" ).should           == '#f'
-    @nendo.evalStr( "(identifier=? '() 'if '() '/nendo/macroenv/if)" ).should   == '#f'
+    expect(@nendo.evalStr( "(symbol? 'a)" )).to                                     eq('#t')
+    expect(@nendo.evalStr( "(identifier? 'a)" )).to                                 eq('#t')
+    expect(@nendo.evalStr( "(identifier? 'identifier)" )).to                        eq('#t')
+    expect(@nendo.evalStr( "(identifier? 'lambda)" )).to                            eq('#t')
+    expect(@nendo.evalStr( "(identifier? 10)" )).to                                 eq('#f')
+    expect(@nendo.evalStr( "(identifier? \"str\")" )).to                            eq('#f')
+    expect(@nendo.evalStr( "(identifier=? '() 'lambda '() 'lambda)" )).to           eq('#t')
+    expect(@nendo.evalStr( "(identifier=? '() 'define '() 'lambda)" )).to           eq('#f')
+    expect(@nendo.evalStr( "(identifier=? '() 'if '() '/nendo/macroenv/if)" )).to   eq('#f')
   end
 end
 
@@ -136,19 +136,19 @@ describe Nendo, "when call make-syntactic-closure " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'print  )" ).should                  == 'print'
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'if     )" ).should                  == 'if'
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'lambda )" ).should                  == 'lambda'
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" ).should                  match( /SyntacticClosure.aaaa:_aaaa_/ )
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" ).should                  match( /SyntacticClosure.tmp:_tmp_/ )
-    @nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" ).should       match( /SyntacticClosure.tmp:_tmp_/ )
-    @nendo.evalStr( "name" ).should                                                                      match( /SyntacticClosure.tmp:_tmp_/ )
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           match( /SyntacticClosure.new_global_var:_new_global_var_/ )
-    @nendo.evalStr( "(define new_global_var 10)" ).should                                                == '10'
-    @nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" ).should           == 'new_global_var'
+    expect(@nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'print  )" )).to                  eq('print')
+    expect(@nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'if     )" )).to                  eq('if')
+    expect(@nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'lambda )" )).to                  eq('lambda')
+    expect(@nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'aaaa   )" )).to                  match( /SyntacticClosure.aaaa:_aaaa_/ )
+    expect(@nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'tmp    )" )).to                  match( /SyntacticClosure.tmp:_tmp_/ )
+    expect(@nendo.evalStr( "(define name (make-syntactic-closure (global-variables) '() 'tmp ))" )).to       match( /SyntacticClosure.tmp:_tmp_/ )
+    expect(@nendo.evalStr( "name" )).to                                                                      match( /SyntacticClosure.tmp:_tmp_/ )
+    expect(@nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" )).to           match( /SyntacticClosure.new_global_var:_new_global_var_/ )
+    expect(@nendo.evalStr( "(define new_global_var 10)" )).to                                                eq('10')
+    expect(@nendo.evalStr( "(make-syntactic-closure (global-variables) '() 'new_global_var)" )).to           eq('new_global_var')
 
-    @nendo.evalStr( "(strip-syntactic-closures name)" ).should                                           match( /_tmp_/ )
-    @nendo.evalStr( "(strip-syntactic-closures (list name name))" ).should                               match( /[(]_tmp_/ )
+    expect(@nendo.evalStr( "(strip-syntactic-closures name)" )).to                                           match( /_tmp_/ )
+    expect(@nendo.evalStr( "(strip-syntactic-closures (list name name))" )).to                               match( /[(]_tmp_/ )
   end
 end
 
@@ -159,13 +159,13 @@ describe Nendo, "when use core syntax " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( "(if                        #t 1 2)" ).should                        == '1'
-    @nendo.evalStr( "(if                        #f 1 2)" ).should                        == '2'
-    @nendo.evalStr( "(/nendo/core/if            #t 1 2)" ).should                        == '1'
-    @nendo.evalStr( "(/nendo/core/if            #f 1 2)" ).should                        == '2'
-    @nendo.evalStr( "(begin                      1 2 3)" ).should                        == '3'
-    @nendo.evalStr( "(/nendo/core/begin          1 2 3)" ).should                        == '3'
-    @nendo.evalStr( "(car (memq '/nendo/core/begin (global-variables)))" ).should        == '/nendo/core/begin'
+    expect(@nendo.evalStr( "(if                        #t 1 2)" )).to                        eq('1')
+    expect(@nendo.evalStr( "(if                        #f 1 2)" )).to                        eq('2')
+    expect(@nendo.evalStr( "(/nendo/core/if            #t 1 2)" )).to                        eq('1')
+    expect(@nendo.evalStr( "(/nendo/core/if            #f 1 2)" )).to                        eq('2')
+    expect(@nendo.evalStr( "(begin                      1 2 3)" )).to                        eq('3')
+    expect(@nendo.evalStr( "(/nendo/core/begin          1 2 3)" )).to                        eq('3')
+    expect(@nendo.evalStr( "(car (memq '/nendo/core/begin (global-variables)))" )).to        eq('/nendo/core/begin')
   end
 end
 
@@ -177,7 +177,7 @@ describe Nendo, "when use er-macro-transformer " do
   end
   it "should" do
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax test-of-identifier1?
   (er-macro-transformer
    (lambda (expr rename compare)
@@ -186,11 +186,11 @@ describe Nendo, "when use er-macro-transformer " do
                  (identifier? 'sym))))))
 test-of-identifier1?
 EOS
-           ).should    match( /Nendo::LispSyntax/ )
+           )).to    match( /Nendo::LispSyntax/ )
 
-    @nendo.evalStr( "(test-of-identifier1? 1)" ).should       ==  '(#t #t)'
+    expect(@nendo.evalStr( "(test-of-identifier1? 1)" )).to       eq('(#t #t)')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax test-of-identifier2?
   (er-macro-transformer
    (lambda (expr rename compare)
@@ -210,9 +210,9 @@ EOS
      (test-of-identifier2? d)
      (test-of-identifier2? 'e))))
 EOS
-           ).should       ==  '(1 1 3 #t #t #t #t #f)'
+           )).to       eq('(1 1 3 #t #t #t #t #f)')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax test-of-rename
   (er-macro-transformer
    (lambda (expr rename compare)
@@ -220,10 +220,10 @@ EOS
            (rename 'sym)))))
 test-of-rename
 EOS
-           ).should    match( /Nendo::LispSyntax/ )
-    @nendo.evalStr( "(test-of-rename 2)" ).should       ==  'sym'
+           )).to    match( /Nendo::LispSyntax/ )
+    expect(@nendo.evalStr( "(test-of-rename 2)" )).to       eq('sym')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax test-of-identifier=?
   (er-macro-transformer
    (lambda (expr rename compare)
@@ -245,9 +245,9 @@ EOS
      (test-of-identifier=? a b)
      (test-of-identifier=? a c))))
 EOS
-           ).should       ==  '(1 1 3 #t #t #t #f #f)'
+           )).to       eq('(1 1 3 #t #t #t #f #f)')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax my-or
   (er-macro-transformer
    (lambda (expr rename compare)
@@ -260,13 +260,13 @@ EOS
                         (cons (rename 'my-or) (cddr expr)))))))))
 my-or
 EOS
-           ).should    match( /Nendo::LispSyntax/ )
-    @nendo.evalStr( "(my-or 1 2)" ).should                  ==  '1'
-    @nendo.evalStr( "(my-or #f 100 200)" ).should           ==  '100'
-    @nendo.evalStr( "(my-or #f #f #f #f 500)" ).should      ==  '500'
-    @nendo.evalStr( "(my-or #f #f #f #f #f)" ).should       ==  '#f'
+           )).to    match( /Nendo::LispSyntax/ )
+    expect(@nendo.evalStr( "(my-or 1 2)" )).to                  eq('1')
+    expect(@nendo.evalStr( "(my-or #f 100 200)" )).to           eq('100')
+    expect(@nendo.evalStr( "(my-or #f #f #f #f 500)" )).to      eq('500')
+    expect(@nendo.evalStr( "(my-or #f #f #f #f #f)" )).to       eq('#f')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax my-and
   (er-macro-transformer
    (lambda (expr rename compare)
@@ -277,12 +277,12 @@ EOS
                        #f))))))
 my-and
 EOS
-           ).should    match( /Nendo::LispSyntax/ )
-    @nendo.evalStr( "(my-and 1 2)" ).should                 ==  '2'
-    @nendo.evalStr( "(my-and 1 2 3 4)" ).should             ==  '4'
-    @nendo.evalStr( "(my-and #t #t #t #t 500)" ).should     ==  '500'
-    @nendo.evalStr( "(my-and 1  2  3  4 #f)" ).should       ==  '#f'
-    @nendo.evalStr( "(my-and 1  2 #f  4  5)" ).should       ==  '#f'
+           )).to    match( /Nendo::LispSyntax/ )
+    expect(@nendo.evalStr( "(my-and 1 2)" )).to                 eq('2')
+    expect(@nendo.evalStr( "(my-and 1 2 3 4)" )).to             eq('4')
+    expect(@nendo.evalStr( "(my-and #t #t #t #t 500)" )).to     eq('500')
+    expect(@nendo.evalStr( "(my-and 1  2  3  4 #f)" )).to       eq('#f')
+    expect(@nendo.evalStr( "(my-and 1  2 #f  4  5)" )).to       eq('#f')
   end
 end
 
@@ -294,19 +294,19 @@ describe Nendo, "when use syntax-rules " do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax nil!
   (syntax-rules ()
     ((_ x)
      (set! x '()))))
 nil!
 EOS
-           ).should    match( /Nendo::LispSyntax/ )
-    @nendo.evalStr( "(define a 1)  a" ).should                 ==  '1'
-    @nendo.evalStr( "(nil! a)      a" ).should                 ==  '()'
-    @nendo.evalStr( "(set! a 2)    a" ).should                 ==  '2'
-    @nendo.evalStr( "(nil! a)      a" ).should                 ==  '()'
-    @nendo.evalStr( <<EOS
+           )).to    match( /Nendo::LispSyntax/ )
+    expect(@nendo.evalStr( "(define a 1)  a" )).to                 eq('1')
+    expect(@nendo.evalStr( "(nil! a)      a" )).to                 eq('()')
+    expect(@nendo.evalStr( "(set! a 2)    a" )).to                 eq('2')
+    expect(@nendo.evalStr( "(nil! a)      a" )).to                 eq('()')
+    expect(@nendo.evalStr( <<EOS
 (define-syntax test-syntax
   (syntax-rules ()
     ((_ a)
@@ -317,37 +317,37 @@ EOS
      (list a (list b (list c ...))))))
 test-syntax
 EOS
-           ).should    match( /Nendo::LispSyntax/ )
-    @nendo.evalStr( "(test-syntax 1)" ).should                 ==  '(1)'
-    @nendo.evalStr( "(test-syntax 1 2)" ).should               ==  '(1 (2))'
-    @nendo.evalStr( "(test-syntax 1 2 3)" ).should             ==  '(1 (2 (3)))'
-    @nendo.evalStr( "(test-syntax 1 2 3 4)" ).should           ==  '(1 (2 (3 4)))'
-    @nendo.evalStr( "(test-syntax 1 2 3 4 5)" ).should         ==  '(1 (2 (3 4 5)))'
-    @nendo.evalStr( "(test-syntax 1 2 3 4 5 6)" ).should       ==  '(1 (2 (3 4 5 6)))'
-    @nendo.evalStr( "(test-syntax 'a)" ).should                ==  '(a)'
-    @nendo.evalStr( "(test-syntax 'a \"B\")" ).should          ==  '(a ("B"))'
-    @nendo.evalStr( "(test-syntax 'a \"B\" 'C)" ).should       ==  '(a ("B" (C)))'
-    @nendo.evalStr( "(test-syntax 'a \"B\" 'C \"d\")" ).should ==  '(a ("B" (C "d")))'
-    lambda { @nendo.evalStr( <<EOS
+           )).to    match( /Nendo::LispSyntax/ )
+    expect(@nendo.evalStr( "(test-syntax 1)" )).to                 eq('(1)')
+    expect(@nendo.evalStr( "(test-syntax 1 2)" )).to               eq('(1 (2))')
+    expect(@nendo.evalStr( "(test-syntax 1 2 3)" )).to             eq('(1 (2 (3)))')
+    expect(@nendo.evalStr( "(test-syntax 1 2 3 4)" )).to           eq('(1 (2 (3 4)))')
+    expect(@nendo.evalStr( "(test-syntax 1 2 3 4 5)" )).to         eq('(1 (2 (3 4 5)))')
+    expect(@nendo.evalStr( "(test-syntax 1 2 3 4 5 6)" )).to       eq('(1 (2 (3 4 5 6)))')
+    expect(@nendo.evalStr( "(test-syntax 'a)" )).to                eq('(a)')
+    expect(@nendo.evalStr( "(test-syntax 'a \"B\")" )).to          eq('(a ("B"))')
+    expect(@nendo.evalStr( "(test-syntax 'a \"B\" 'C)" )).to       eq('(a ("B" (C)))')
+    expect(@nendo.evalStr( "(test-syntax 'a \"B\" 'C \"d\")" )).to eq('(a ("B" (C "d")))')
+    expect { @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
   (syntax-rules))
 EOS
-                    ) }.should     raise_error( RuntimeError, /syntax-rules.+\(1\)/ )
-    lambda { @nendo.evalStr( <<EOS
+                    ) }.to     raise_error( RuntimeError, /syntax-rules.+\(1\)/ )
+    expect { @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
   (syntax-rules eee))
 EOS
-                    ) }.should     raise_error( RuntimeError, /syntax-rules.+\(2\)/ )
+                    ) }.to     raise_error( RuntimeError, /syntax-rules.+\(2\)/ )
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
   (syntax-rules
     ((_ arg1)
      arg1)))
 EOS
-                    ) }.should     raise_error( RuntimeError, /syntax-rules.+\(3\)/ )
+                    ) }.to     raise_error( RuntimeError, /syntax-rules.+\(3\)/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define this-is-var 1)
 (define-syntax dummy-syntax
   (syntax-rules ()
@@ -356,9 +356,9 @@ EOS
 (macroexpand
  '(dummy-syntax 100))
 EOS
-                    ).should     == "this-is-var"
+                    )).to     eq("this-is-var")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
   (syntax-rules ()
     ((_ arg1)
@@ -366,16 +366,16 @@ EOS
 (macroexpand
  '(dummy-syntax 100))
 EOS
-                    ).should     match( /quote #<SyntacticClosure.this-is-symbol:_this/ )
+                    )).to     match( /quote #<SyntacticClosure.this-is-symbol:_this/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
   (syntax-rules ()
     ((_ arg1)
      'this-is-symbol)))
 (dummy-syntax 100)
 EOS
-                    ).should     == "this-is-symbol"
+                    )).to     eq("this-is-symbol")
 
   end
 end
@@ -388,7 +388,7 @@ describe Nendo, "When use let-syntax" do
   end
   it "should" do
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand
  '(let-syntax ((nil!
                 (syntax-rules ()
@@ -396,9 +396,9 @@ describe Nendo, "When use let-syntax" do
                    (set! x '())))))
     (nil! aa)))
 EOS
-           ).should == "(begin (set! aa (quote ())))"
+           )).to eq("(begin (set! aa (quote ())))")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand
  '(let-syntax ((dummy-syntax
                 (syntax-rules ()
@@ -406,9 +406,9 @@ EOS
                    'this-is-symbol))))
     (dummy-syntax 100)))
 EOS
-           ).should   match( /begin [(]quote #<SyntacticClosure.this-is-symbol:/ )
+           )).to   match( /begin [(]quote #<SyntacticClosure.this-is-symbol:/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand
  '(let-syntax ((dummy-syntax
                 (syntax-rules ()
@@ -417,9 +417,9 @@ EOS
                           #?.)))))
     (dummy-syntax 100)))
 EOS
-           ).should == "(begin (begin \"this is debug line\" \"(string):6\"))"
+           )).to eq("(begin (begin \"this is debug line\" \"(string):6\"))")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define aa 100)
 (let-syntax ((nil!
               (syntax-rules ()
@@ -428,68 +428,68 @@ EOS
   (nil! aa))
 aa
 EOS
-           ).should == "()"
+           )).to eq("()")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ()
   (let-syntax ()
     (define internal-def 'ok)
     internal-def))
 EOS
-           ).should == "ok"
+           )).to eq("ok")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 '"internal-def2"
 (let ()
   (let-syntax ()
     (define internal-def 'ok)
     internal-def))
 EOS
-           ).should == "ok"
+           )).to eq("ok")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let-syntax
     ((foo (syntax-rules ()
             ((foo args ... penultimate ultimate)
              (list ultimate penultimate args ...)))))
   (foo 1 2 3 4 5))
 EOS
-           ).should == "(5 4 1 2 3)"
+           )).to eq("(5 4 1 2 3)")
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (let-syntax ((a (+ 1 2)))
   (a))
 EOS
-                    ) }.should     raise_error( SyntaxError, /syntax-rules/ )
+                    ) }.to     raise_error( SyntaxError, /syntax-rules/ )
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (let-syntax ((a 100))
   (a))
 EOS
-                    ) }.should     raise_error( SyntaxError, /syntax-rules/ )
+                    ) }.to     raise_error( SyntaxError, /syntax-rules/ )
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (let-syntax ((a (syntax-rules-dummy () 1))
              (b (syntax-rules       () 2)))
   (list (a) (b)))
 EOS
-                    ) }.should     raise_error( SyntaxError, /syntax-rules/ )
+                    ) }.to     raise_error( SyntaxError, /syntax-rules/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let-syntax ()
   (list 1 2))
 EOS
-           ).should == "(1 2)"
+           )).to eq("(1 2)")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ()
   (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
                (b (syntax-rules () ((_ ?x) (- ?x 8)))))
     (list (a 7) (b 8))))
 EOS
-           ).should == "(15 0)"
+           )).to eq("(15 0)")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ()
   (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
                (b (syntax-rules () ((_ ?x) (- ?x 8)))))
@@ -497,9 +497,9 @@ EOS
                  (bb (syntax-rules () ((_ ?x) (a 3)))))
       (list (aa 7) (bb 8)))))
 EOS
-           ).should == "(-6 11)"
+           )).to eq("(-6 11)")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ()
   (let-syntax ((a (syntax-rules () ((_ ?x) (+ ?x 8))))
                (b (syntax-rules () ((_ ?x) (- ?x 8)))))
@@ -507,7 +507,7 @@ EOS
                  (b (syntax-rules () ((_ ?y) (a 3)))))
       (list (a 7) (b 8)))))
 EOS
-           ).should == "(-6 11)"
+           )).to eq("(-6 11)")
   end
 end
 
@@ -519,24 +519,24 @@ describe Nendo, "When use let-syntax in lexical scope " do
   end
   it "should" do
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ((... 2))
   (let-syntax ((s (syntax-rules ()
                     ((_ x ...) 'bad)
                     ((_ . r) 'ok))))
     (s a b c)))
 EOS
-           ).should == "ok"
+           )).to eq("ok")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ((x 'outer))
   (let-syntax ((m (syntax-rules () ((m) x))))
     (let ((x 'inner))
       (m)))) ;; '
 EOS
-           ).should == "outer"
+           )).to eq("outer")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ((x 'outer1))
   (let ((y 'outer2))
     (let ((z 'outer3))
@@ -546,9 +546,9 @@ EOS
             (let ((z 'inner3))
               (m))))))))
 EOS
-           ).should == "(outer1 outer2 outer3)"
+           )).to eq("(outer1 outer2 outer3)")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let ((x 'outer))
   (let-syntax ((with-x
                 (syntax-rules ()
@@ -558,7 +558,7 @@ EOS
     (let ((x 'inner))
       (with-x z (z)))))
 EOS
-           ).should == "outer"
+           )).to eq("outer")
 
 #    pending( "nested let fails on limitation of Nendo's let-syntax." )
 #
@@ -585,7 +585,7 @@ describe Nendo, "When use complex let-syntax" do
   end
   it "should" do
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax %cut
   (syntax-rules (<> <...>)
     ((%cut e? params args)
@@ -601,25 +601,25 @@ describe Nendo, "When use complex let-syntax" do
     ((%cut #f (params ...) (args ...) x . rest)
      (%cut #t (params ...) (args ... x) . rest))))
 EOS
-           ).should     match( /Nendo::LispSyntax/ )
+           )).to     match( /Nendo::LispSyntax/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define-syntax cut
   (syntax-rules () ((cut args ...) (%cut #f () () args ...))))
 EOS
-           ).should     match( /Nendo::LispSyntax/ )
+           )).to     match( /Nendo::LispSyntax/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define rassq (cut rassoc <> <> eq?))
 EOS
-           ).should     match( /Proc/ )
+           )).to     match( /Proc/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 ((cut list 1 <> 3 <>) 2 4)
 EOS
-           ).should     == "(1 2 3 4)"
+           )).to     eq("(1 2 3 4)")
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (define-syntax match-check-ellipse
   (syntax-rules ()
     ((match-check-ellipse (a . b) success-k failure-k) failure-k)
@@ -631,24 +631,24 @@ EOS
                               ((ellipse? other sk fk) fk))))
        (ellipse? (a b c) success-k failure-k)))))
 EOS
-         ).should     match( /Nendo::LispSyntax/ )
+         )).to     match( /Nendo::LispSyntax/ )
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (match-check-ellipse (aa bb) (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"(string):1 non-ellipse"'
+         )).to     eq('"(string):1 non-ellipse"')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (match-check-ellipse xxx (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"(string):1 non-ellipse"'
+         )).to     eq('"(string):1 non-ellipse"')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (match-check-ellipse ... (+ #?. " ellipse") (+ #?. " non-ellipse"))
 EOS
-         ).should     == '"(string):1 ellipse"'
+         )).to     eq('"(string):1 ellipse"')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (define-syntax dummy-syntax
   (syntax-rules ()
     ((_ arg)
@@ -659,19 +659,19 @@ EOS
      (+ #?. " " arg-str))))
 (dummy-syntax xxx)
 EOS
-         ).should     == '"(string):8 non-ellipse"'
+         )).to     eq('"(string):8 non-ellipse"')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (match-check-ellipse ... (match-check-ellipse xxx 'tt 'tf) (match-check-ellipse xxx 'ft 'ff))
 EOS
-         ).should     == 'tf'
+         )).to     eq('tf')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (match-check-ellipse yyy (match-check-ellipse xxx 'tt 'tf) (match-check-ellipse xxx 'ft 'ff))
 EOS
-         ).should     == 'ff'
+         )).to     eq('ff')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (define-syntax match-check-identifier
   (syntax-rules ()
     ;; fast-case failures, lists and vectors are not identifiers
@@ -687,23 +687,23 @@ EOS
              ((sym? y sk fk) (begin #?. fk)))))
        (sym? abracadabra success-k failure-k)))))
 EOS
-         ).should     match( /Nendo::LispSyntax/ )
+         )).to     match( /Nendo::LispSyntax/ )
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (match-check-identifier (aa bb) "id" "non-id")
 EOS
-         ).should     == '"non-id"'
+         )).to     eq('"non-id"')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (match-check-identifier xx "id" "non-id")
 EOS
-         ).should     == '"id"'
+         )).to     eq('"id"')
 
-  @nendo.evalStr( <<EOS
+  expect(@nendo.evalStr( <<EOS
 (let ([yy (match-check-identifier xx "id" "non-id")])
   yy)
 EOS
-         ).should     == '"id"'
+         )).to     eq('"id"')
 
   end
 end
@@ -715,15 +715,15 @@ describe Nendo, "When expand guard special form" do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-var (exc
                (else (print "ELSE"))))))
 EOS
-                    ).should == "exc"
+                    )).to eq("exc")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-var (exc
@@ -731,9 +731,9 @@ EOS
                 (print "<<RuntimeError>>"))
                (else (print "ELSE"))))))
 EOS
-                    ).should == "exc"
+                    )).to eq("exc")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-var (exc
@@ -743,18 +743,18 @@ EOS
                 => (lambda (e)
                      (printf "Type is [%s]\n" e.class)))))))
 EOS
-                    ).should == "exc"
+                    )).to eq("exc")
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-clause (exc
                   (else (print "ELSE"))))))
 EOS
-                    ).should match( /^[(]cond.+else.+print.+ELSE.+[(]#t [(]raise.+exc[)][)][)]$/ )
+                    )).to match( /^[(]cond.+else.+print.+ELSE.+[(]#t [(]raise.+exc[)][)][)]$/ )
 
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-clause (exc
@@ -762,25 +762,25 @@ EOS
                    (print "<<RuntimeError>>"))
                   (else (print "ELSE"))))))
 EOS
-                    ).should match( /^[(]cond.+exc.is_a.+RuntimeError.+<<RuntimeError>>.+else.+print.+ELSE.+[(]#t [(]raise.+exc[)][)][)]$/ )
+                    )).to match( /^[(]cond.+exc.is_a.+RuntimeError.+<<RuntimeError>>.+else.+print.+ELSE.+[(]#t [(]raise.+exc[)][)][)]$/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-clause (exc
                   ((exc.is_a? RuntimeError)
                    (print "<<RuntimeError>>"))))))
 EOS
-                    ).should match( /^[(]cond.+exc.is_a.+RuntimeError.+<<RuntimeError>>.+[(]#t [(]raise.+exc[)][)][)]$/ )
+                    )).to match( /^[(]cond.+exc.is_a.+RuntimeError.+<<RuntimeError>>.+[(]#t [(]raise.+exc[)][)][)]$/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-clause (exc))))
 EOS
-                    ).should match( /^[(]cond.+[(]#t [(]raise.+exc[)][)][)]$/ )
+                    )).to match( /^[(]cond.+[(]#t [(]raise.+exc[)][)][)]$/ )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (macroexpand-1
  (quote
   (%guard-clause (exc
@@ -790,7 +790,7 @@ EOS
                    => (lambda (e)
                         (sprintf "Type is [%s]" e.class)))))))
 EOS
-                    ).should match( /^[(]cond.+exc.is_a.+RuntimeError.+print.+RuntimeError.+else.+feedto.+[(]#t [(]raise exc[)][)][)]$/ )
+                    )).to match( /^[(]cond.+exc.is_a.+RuntimeError.+print.+RuntimeError.+else.+feedto.+[(]#t [(]raise exc[)][)][)]$/ )
 
 
   end
@@ -804,37 +804,37 @@ describe Nendo, "When use guard special form" do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
  (exc (else (sprintf "Type is [%s]" (exc.class))))
  (error "This is RuntimeError"))
 EOS
-                    ).should  == '"Type is [RuntimeError]"'
+                    )).to  eq('"Type is [RuntimeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
  (exc (else (sprintf "Type is [%s]" exc.class)))
  (+ (Array.new) 1))
 EOS
-                    ).should  == '"Type is [TypeError]"'
+                    )).to  eq('"Type is [TypeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
  (exc (else (sprintf "Type is [%s]" exc.class)))
  (+ (Array.new) 1)
  (error "This is RuntimeError"))
 EOS
-                    ).should  == '"Type is [TypeError]"'
+                    )).to  eq('"Type is [TypeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
  (exc (else (sprintf "Type is [%s]" exc.class)))
  (error "This is RuntimeError")
  (+ (Array.new) 1))
 EOS
-                    ).should  == '"Type is [RuntimeError]"'
+                    )).to  eq('"Type is [RuntimeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
     (exc ((exc.is_a? RuntimeError)
           "Type is [RuntimeError]")
@@ -845,9 +845,9 @@ EOS
   (error "This is RuntimeError")
   (+ (Array.new) 1))
 EOS
-                    ).should  == '"Type is [RuntimeError]"'
+                    )).to  eq('"Type is [RuntimeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
     (exc ((exc.is_a? RuntimeError)
           "Type is [RuntimeError]")
@@ -856,34 +856,34 @@ EOS
   (+ (Array.new) 1)
   (error "This is RuntimeError"))
 EOS
-                    ).should  == '"Type is [TypeError]"'
+                    )).to  eq('"Type is [TypeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
  (exc ((exc.is_a? TypeError)
        "Type is [TypeError]"))
  (+ (Array.new) 1)
  (error "This is RuntimeError"))
 EOS
-                    ).should  == '"Type is [TypeError]"'
+                    )).to  eq('"Type is [TypeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
  (exc ((exc.is_a? RuntimeError)
        "Type is [RuntimeError]"))
  (error "This is RuntimeError")
  (+ (Array.new) 1))
 EOS
-                    ).should  == '"Type is [RuntimeError]"'
+                    )).to  eq('"Type is [RuntimeError]"')
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (guard
    (exc)
   (error "This is RuntimeError"))
 EOS
-                    ) }.should  raise_error( RuntimeError )
+                    ) }.to  raise_error( RuntimeError )
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (begin
   (guard
       (exc ((exc.is_a? RuntimeError)
@@ -891,7 +891,7 @@ EOS
     (+ (Array.new) 1))
   \"-END-\")
 EOS
-                    ) }.should  raise_error( TypeError )
+                    ) }.to  raise_error( TypeError )
 
   end
 end
@@ -905,7 +905,7 @@ describe Nendo, "When use guard and raise" do
     @nendo.loadInitFile
   end
   it "should" do
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (guard
  (exc ((exc.is_a? TypeError)
        "[TypeError]")
@@ -915,9 +915,9 @@ describe Nendo, "When use guard and raise" do
    (exc (else (+ "a" 1.1)))
    (error "This is RuntimeError")))
 EOS
-           ).should  == '"[TypeError]"'
+           )).to  eq('"[TypeError]"')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let1 lst '()
    (guard
        (exc (else (push! lst 2)))
@@ -926,9 +926,9 @@ EOS
        (error "Error occur")))
    lst)
 EOS
-           ).should  == '(1)'
+           )).to  eq('(1)')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let1 lst '()
   (guard
       (exc (else (push! lst 2)))
@@ -938,10 +938,10 @@ EOS
       (error "Error occur(1)")))
   lst)
 EOS
-           ).should  == '(2 1)'
+           )).to  eq('(2 1)')
 
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (let1 lst '()
   (guard
       (exc (else (push! lst 3)
@@ -955,10 +955,10 @@ EOS
         (error "Error occur(1)"))))
   #t)
 EOS
-                    ) }.should  raise_error( RuntimeError, /Error occur:[(]3 2 1[)]/ )
+                    ) }.to  raise_error( RuntimeError, /Error occur:[(]3 2 1[)]/ )
 
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (define a
  (guard
      (exc (else (exc.message))) ;; line 1
@@ -973,7 +973,7 @@ EOS
    (raise ArgumentError)))
 (list a b c)
 EOS
-                    ).should  == '("(string):1 raised RuntimeError" "(string):5 raised NoMethodError" "(string):9 raised ArgumentError")'
+                    )).to  eq('("(string):1 raised RuntimeError" "(string):5 raised NoMethodError" "(string):9 raised ArgumentError")')
 
 
   end
@@ -988,34 +988,34 @@ describe Nendo, "When use unwind-protect" do
   end
 
   it "should" do
-    @nendo.evalStr( "(macroexpand '(unwind-protect 1 2)) ;; '" ).should  match( /[(]%guard #<SyntacticClosure.exc:_exc__gensym/ )
+    expect(@nendo.evalStr( "(macroexpand '(unwind-protect 1 2)) ;; '" )).to  match( /[(]%guard #<SyntacticClosure.exc:_exc__gensym/ )
 
-    lambda { @nendo.evalStr( <<EOS
+    expect { @nendo.evalStr( <<EOS
 (let1 cnt 0
   (begin
     (set! cnt (+ cnt 1))
     (set! cnt (+ cnt "string"))
   ))
 EOS
-                    ) }.should  raise_error( TypeError )
+                    ) }.to  raise_error( TypeError )
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let1 cnt 0
   (unwind-protect
       1
     2))
 EOS
-           ).should  ==  '1'
+           )).to  eq('1')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let1 cnt 0
   (unwind-protect
       (begin 1 2)
     3))
 EOS
-           ).should  ==  '2'
+           )).to  eq('2')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let* ([cnt 0]
        [result (unwind-protect
                    (begin
@@ -1026,9 +1026,9 @@ EOS
                  (set! cnt (+ cnt 100)))])
   (list result cnt))
 EOS
-           ).should  ==  '(#f 103)'
+           )).to  eq('(#f 103)')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let* ([cnt 0]
        [result (unwind-protect
                    (begin
@@ -1039,9 +1039,9 @@ EOS
                  (set! cnt (+ cnt 100)))])
   (list result cnt))
 EOS
-           ).should  ==  '(#f 111)'
+           )).to  eq('(#f 111)')
 
-    @nendo.evalStr( <<EOS
+    expect(@nendo.evalStr( <<EOS
 (let* ([cnt 0]
        [result (unwind-protect
                    (begin
@@ -1053,7 +1053,7 @@ EOS
                  (set! cnt (+ cnt 1000)))])
   (list result cnt))
 EOS
-           ).should  ==  '(113 1113)'
+           )).to  eq('(113 1113)')
 
   end
 end
