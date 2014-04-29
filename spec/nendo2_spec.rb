@@ -1038,7 +1038,7 @@ describe Nendo, "when call functions in init.nnd " do
     expect(@nendo.evalStr( " (memq 'd '(a b c d)) " )).to eq("(d)")
     expect(@nendo.evalStr( " (memq 'e '(a b c d)) " )).to eq("#f")
     expect(@nendo.evalStr( " (memq 'e '(a b c d . e)) " )).to eq("#f")
-    expect(@nendo.evalStr( ' (memq "b" \'("a" "b" "c" "d")) ' )).to eq('("b" "c" "d")')
+    expect(@nendo.evalStr( ' (memq "b" \'("a" "b" "c" "d")) ' )).to eq('#f')
     expect(@nendo.evalStr( ' (memv "b" \'("a" "b" "c" "d")) ' )).to eq('("b" "c" "d")')
     expect(@nendo.evalStr( ' (memv "c" \'("a" "b" "c" "d")) ' )).to eq('("c" "d")')
     expect(@nendo.evalStr( ' (memv "d" \'("a" "b" "c" "d")) ' )).to eq('("d")')

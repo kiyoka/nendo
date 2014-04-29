@@ -2204,9 +2204,9 @@ trampCall(
     trampCall(
           Proc.new { |_a,_b| 
               begin
-                  delayCall( '_eq_QUMARK',  'eq?',
+                  delayCall( '_equal_QUMARK',  'equal?',
                       begin
-                          trampCall(@_eq_QUMARK)
+                          trampCall(@_equal_QUMARK)
                       end                    ,
                   [
                         begin

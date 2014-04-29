@@ -58,7 +58,7 @@ module Nendo
       a = a.intern if a.class == ParsedSymbol
       b = b.intern if b.class == ParsedSymbol
       if a.is_a? String  and  b.is_a? String
-        a === b
+        a == b
       elsif a.class != b.class
         false
       elsif a.is_a? Cell
@@ -68,7 +68,7 @@ module Nendo
       elsif a.is_a? Proc
         a == b
       else
-        (a === b)
+        (a == b)
       end
     end
 
@@ -276,7 +276,7 @@ module Nendo
         (0..num-1).to_a.to_list
       end
     end
-    def __EQMARK(      a,b )        _eq_QUMARK( a, b ) end
+    def __EQMARK(      a,b )        _equal_QUMARK( a, b ) end
     def __GTMARK(      a,b )        a >   b end
     def __GTMARK_EQMARK(      a,b ) a >=  b end
     def __LTMARK(      a,b )        a <   b end
@@ -284,7 +284,7 @@ module Nendo
     def _eq_QUMARK(      a,b )
       a = a.intern if a.class == ParsedSymbol
       b = b.intern if b.class == ParsedSymbol
-      a ==  b
+      a.equal?( b )
     end
     def _gt_QUMARK(      a,b )      a >   b end
     def _ge_QUMARK(      a,b )      a >=  b end
@@ -293,7 +293,7 @@ module Nendo
     def _eqv_QUMARK(     a,b )
       a = a.intern if a.class == ParsedSymbol
       b = b.intern if b.class == ParsedSymbol
-      a === b
+      a == b
     end
     def _car(      cell )          cell.car end
     def _cdr(      cell )

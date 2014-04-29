@@ -197,13 +197,17 @@ module Nendo
 
     def ==(other)
       if other.is_a? LispKeyword
-        self.key == other.key
+        self.key.intern == other.key.intern
       else
         false
       end
     end
 
     def ===(other)
+      self.==(other)
+    end
+
+    def equal?(other)
       self.==(other)
     end
 
