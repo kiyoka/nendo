@@ -360,14 +360,16 @@ module Nendo
 
     def generateEmbedBacktraceInfo( sourcefile, lineno, arr )
       if sourcefile and lineno
-        [ "begin",
-          if @runtimeCheck
-            [ sprintf( 'embedBacktraceInfo( "%s", %s ); ', sourcefile, lineno ), arr ]
-          else
-            [arr]
-          end,
-          "end"
-        ]
+        if @runtimeCheck
+          ["begin",
+           [
+             sprintf( 'embedBacktraceInfo( "%s", %s );', sourcefile, lineno ),
+             arr],
+           "end"
+          ]
+        else
+          [arr]
+        end
       else
         arr
       end
@@ -413,7 +415,7 @@ module Nendo
         if global_cap and sourceInfo
           sourceInfo.setVarname( toLispSymbol( variable_sym ))
         end
-        [ "begin",
+        [ "begin #execFunc",
           [
            if global_cap
              [
@@ -509,7 +511,7 @@ module Nendo
       if ar.size < 2
         ar
       else
-        ["begin", ar, "end"]
+        ["begin  #makeBegin", ar, "end"]
       end
     end
 
@@ -595,7 +597,7 @@ module Nendo
         }
         lambda_head = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
       end
-      ["begin",
+      ["begin #makeLet",
        [lambda_head,
         rest.map { |e|  translate( e.car, locals.clone + [argsyms] ) },
         sprintf( "} ; %s.call(", _name ),
@@ -621,7 +623,7 @@ module Nendo
         }
         lambda_head = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
       end
-      ["begin",
+      ["begin #makeLetrec",
        [lambda_head,
         argsyms.zip( argvals ).map { |x| [ x[0], " = ", x[1] ] },
         rest.map { |e|  translate( e.car, locals.clone + [argsyms] ) },
@@ -636,7 +638,7 @@ module Nendo
       _locals     = locals.clone + [_var]
       _case       = translate( args.cdr.car,         _locals )
       _thunk      = translate( args.cdr.cdr.car,     _locals )
-      ["begin",
+      ["begin #makeGuard",
        [ _thunk ],
        "rescue => " + _var,
        [ _case ],

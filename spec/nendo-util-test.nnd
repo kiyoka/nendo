@@ -37,13 +37,13 @@
 (test* "disasm ruby-code"
        "
 trampCall( 
-  begin
+  begin #execFunc
       def self._dummy_MIMARKfunction_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_dummy_MIMARKfunction', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
       @global_lisp_binding['_dummy_MIMARKfunction'] = self.method( :_dummy_MIMARKfunction_METHOD )
     @_dummy_MIMARKfunction = 
     trampCall(
           Proc.new { |_arg1| 
-              begin
+              begin #makeLet
                 ___lambda = lambda { |_var| 
                     begin
                         trampCall(_var)
@@ -51,7 +51,7 @@ trampCall(
                     end
                 } ; ___lambda.call(
                       begin
-                        embedBacktraceInfo( \"./spec/nendo-util-test.nnd\", 12 ); 
+                        embedBacktraceInfo( \"./spec/nendo-util-test.nnd\", 12 );
                           __PLMARK_ARGS2(
                               begin
                                   trampCall(_arg1)
