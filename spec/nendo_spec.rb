@@ -37,7 +37,7 @@ include Nendo
 
 describe Nendo, "Ruby version " do
   it "should" do
-    expect(RUBY_VERSION.match( /^1[.]8/ )).not_to be_true
+    expect(RUBY_VERSION.match( /^1[.]8/ )).not_to be true
   end
 end
 
@@ -47,13 +47,13 @@ describe Cell, "when initialized as '()" do
   end
 
   it "should" do
-    expect(@cell.isNull).to be_true
+    expect(@cell.isNull).to be true
     expect(@cell.length).to eq(0)
     expect(@cell.size).to eq(0)
     expect(@cell.to_arr).to eq([])
     expect(@cell.class).to eq(Cell)
     expect(@cell.map{ |x| x }).to eq([])
-    expect(@cell.lastAtom).to be_false
+    expect(@cell.lastAtom).to be false
     expect(@cell.getLastAtom.class).to eq(Nil)
   end
 end
@@ -64,7 +64,7 @@ describe Cell, "when initialized as '(100)" do
   end
 
   it "should" do
-    expect(@cell.isNull).not_to be_true
+    expect(@cell.isNull).not_to be true
     expect(@cell.length).to eq(1)
     expect(@cell.size).to eq(1)
     expect(@cell.car).to eq(100)
@@ -72,7 +72,7 @@ describe Cell, "when initialized as '(100)" do
     expect(@cell.to_arr).to eq([ 100 ])
     expect(@cell.lastCell.car).to eq(100)
     expect(@cell.lastCell.cdr.class).to eq(Nil)
-    expect(@cell.lastAtom).to be_false
+    expect(@cell.lastAtom).to be false
     expect(@cell.getLastAtom.class).to eq(Nil)
   end
 end
@@ -83,8 +83,8 @@ describe Cell, "when initialized as '(100 . 200)" do
   end
 
   it "should" do
-    expect(@cell.isNull).not_to be_true
-    expect(@cell.isDotted).to be_true
+    expect(@cell.isNull).not_to be true
+    expect(@cell.isDotted).to be true
     expect(@cell.length).to eq(1)
     expect(@cell.size).to eq(1)
     expect(@cell.car).to eq(100)
@@ -92,7 +92,7 @@ describe Cell, "when initialized as '(100 . 200)" do
     expect(@cell.to_arr).to eq([ 100 ])
     expect(@cell.lastCell.car).to eq(100)
     expect(@cell.lastCell.cdr).to eq(200)
-    expect(@cell.lastAtom).to be_true
+    expect(@cell.lastAtom).to be true
     expect(@cell.getLastAtom).to eq(200)
   end
 end
@@ -103,8 +103,8 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
   end
 
   it "should" do
-    expect(@cell.isNull).not_to   be_true
-    expect(@cell.isDotted).not_to be_true
+    expect(@cell.isNull).not_to   be true
+    expect(@cell.isDotted).not_to be true
     expect(@cell.length).to eq(2)
     expect(@cell.size).to eq(2)
     expect(@cell.car).to eq(100)
@@ -113,7 +113,7 @@ describe Cell, "when initialized as '(cons 100 (cons 200 300)) " do
     expect(@cell.to_arr).to eq([ 100, 200 ])
     expect(@cell.lastCell.car).to eq(200)
     expect(@cell.lastCell.cdr).to eq(300)
-    expect(@cell.lastAtom).to be_true
+    expect(@cell.lastAtom).to be true
     expect(@cell.getLastAtom).to eq(300)
   end
 end
@@ -147,7 +147,7 @@ describe Nendo, "Japanese characters in regex " do
     @matchData = "ABC漢字あいうえお漢字ABC".match( /([あ-ん])([あ-ん])([あ-ん])([あ-ん])([あ-ん])/ )
   end
   it "should" do
-    expect(@matchData).to be_true
+    expect(@matchData).not_to be_nil
     expect(@matchData[0]).to eq("あいうえお")
     expect(@matchData[1]).to eq("あ")
   end
