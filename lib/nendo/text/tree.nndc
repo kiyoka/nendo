@@ -6,9 +6,7 @@
 trampCall( 
   begin
       delayCall( '_require',  'require',
-          begin
-              trampCall(@_require)
-          end        ,
+          trampCall(@_require)        ,
       [
           "stringio"
       ]
@@ -33,56 +31,40 @@ trampCall(
                                 if ( 
                                   begin
                                       _null_QUMARK(
-                                          begin
-                                              trampCall(_tree)
-                                          end
+                                          trampCall(_tree)
                                       )
                                   end
                                  ) then
-                                    begin
-                                      true
-                                    end
+                                    true
                                 else
                                     if ( 
                                       begin
                                           _pair_QUMARK(
-                                              begin
-                                                  trampCall(_tree)
-                                              end
+                                              trampCall(_tree)
                                           )
                                       end
                                      ) then
                                         begin
                                             begin
                                                 trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
-                                                    begin
-                                                        trampCall(@_write_MIMARKtree)
-                                                    end                                                  ,
+                                                    trampCall(@_write_MIMARKtree)                                                  ,
                                                 [
                                                       begin
                                                           _car(
-                                                              begin
-                                                                  trampCall(_tree)
-                                                              end
+                                                              trampCall(_tree)
                                                           )
                                                       end                                                    ,
-                                                      begin
-                                                          trampCall(_out)
-                                                      end
+                                                      trampCall(_out)
                                                 ]
                                                              ))
                                             end
                                             begin
                                                 delayCall( '_loop',  'loop',
-                                                    begin
-                                                        trampCall(_loop)
-                                                    end                                                  ,
+                                                    trampCall(_loop)                                                  ,
                                                 [
                                                       begin
                                                           _cdr(
-                                                              begin
-                                                                  trampCall(_tree)
-                                                              end
+                                                              trampCall(_tree)
                                                           )
                                                       end
                                                 ]
@@ -93,15 +75,9 @@ trampCall(
                                         if ( 
                                         true
                                          ) then
-                                            begin
-                                                begin
-                                                    trampCall(_out).print(
-                                                          begin
-                                                              trampCall(_tree)
-                                                          end
-                                                      )
-                                                end
-                                            end
+                                              trampCall(_out).print(
+                                                    trampCall(_tree)
+                                                )
                                         else
                                             Cell.new()
                                         end
@@ -110,13 +86,9 @@ trampCall(
                             }
                           begin
                               delayCall( '_loop',  'loop',
-                                  begin
-                                      trampCall(_loop)
-                                  end                                ,
+                                  trampCall(_loop)                                ,
                               [
-                                    begin
-                                        trampCall(_tree)
-                                    end
+                                    trampCall(_tree)
                               ]
                                            )
                           end
@@ -128,25 +100,17 @@ trampCall(
                       if ( 
                         begin
                             _null_QUMARK(
-                                begin
-                                    trampCall(_out)
-                                end
+                                trampCall(_out)
                             )
                         end
                        ) then
-                          begin
-                              trampCall(STDOUT)
-                          end
+                          trampCall(STDOUT)
                       else
                           begin
                               delayCall( '_car',  'car',
-                                  begin
-                                      trampCall(@_car)
-                                  end                                ,
+                                  trampCall(@_car)                                ,
                               [
-                                    begin
-                                        trampCall(_out)
-                                    end
+                                    trampCall(_out)
                               ]
                                            )
                           end
@@ -170,29 +134,19 @@ trampCall(
                 ___lambda = lambda { |_sio| 
                     begin
                         trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
-                            begin
-                                trampCall(@_write_MIMARKtree)
-                            end                          ,
+                            trampCall(@_write_MIMARKtree)                          ,
                         [
-                              begin
-                                  trampCall(_tree)
-                              end                            ,
-                              begin
-                                  trampCall(_sio)
-                              end
+                              trampCall(_tree)                            ,
+                              trampCall(_sio)
                         ]
                                      ))
                     end
-                    begin
-                        trampCall(_sio).string(
-                          )
-                    end
+                    trampCall(_sio).string(
+                      )
                 } ; ___lambda.call(
-                      begin
-                          trampCall(StringIO).new(
-                              ""
-                            )
-                      end
+                      trampCall(StringIO).new(
+                          ""
+                        )
                            )
               end
           }

@@ -135,8 +135,8 @@ end
 
 task :bench do
   sh "ruby --version"
-  sh "ruby -I ./lib ./bin/nendo      ./benchmark/benchmark.nnd"
-  sh "                    nendo      ./benchmark/benchmark.nnd"
+  sh "ruby -I ./lib ./bin/nendo        ./benchmark/benchmark.nnd"
+  sh "ruby -I ./lib ./bin/nendo -d     ./benchmark/benchmark.nnd"
 end
 
 task :clean_nndc do

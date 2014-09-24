@@ -6,9 +6,7 @@
 trampCall( 
   begin
       delayCall( '_require',  'require',
-          begin
-              trampCall(@_require)
-          end        ,
+          trampCall(@_require)        ,
       [
           "syslog"
       ]
@@ -24,30 +22,20 @@ trampCall(
     @_debug_MIMARKprint_MIMARKoutput_MIMARKfunc = 
     trampCall(
           Proc.new { |_str| 
-              begin
-                  trampCall(Syslog).open(
-                    )
-              end
-              begin
-                  trampCall(Syslog).log(
-                        begin
-                            trampCall(Syslog::LOG_WARNING)
-                        end                      ,
-                      "%s"                      ,
-                        begin
-                            __PLMARK_ARGS2(
-                              "Nendo: "                              ,
-                                begin
-                                    trampCall(_str)
-                                end
-                            )
-                        end
-                    )
-              end
-              begin
-                  trampCall(Syslog).close(
-                    )
-              end
+              trampCall(Syslog).open(
+                )
+              trampCall(Syslog).log(
+                    trampCall(Syslog::LOG_WARNING)                  ,
+                  "%s"                  ,
+                    begin
+                        __PLMARK_ARGS2(
+                          "Nendo: "                          ,
+                            trampCall(_str)
+                        )
+                    end
+                )
+              trampCall(Syslog).close(
+                )
           }
     )
   end

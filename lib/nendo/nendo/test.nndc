@@ -10,13 +10,9 @@ trampCall(
     @_test_MIMARKerror_QUMARK = 
     trampCall(
           Proc.new { |_obj| 
-              begin
-                  trampCall(_obj).is_a?(
-                        begin
-                            trampCall(Nendo::NendoTestError)
-                        end
-                    )
-              end
+              trampCall(_obj).is_a?(
+                    trampCall(Nendo::NendoTestError)
+                )
           }
     )
   end
@@ -33,34 +29,24 @@ trampCall(
               begin
                 ___lambda = lambda { |_cl,_err| 
                     if ( 
-                      begin
-                          trampCall(_cl)
-                      end
+                      trampCall(_cl)
                      ) then
-                        begin
-                            begin
-                              
-                              _err.type = 
-                              trampCall(
-                                    begin
-                                        trampCall(_cl)
-                                    end
-                              )
-                            end
-                        end
+                          begin
+                            
+                            _err.type = 
+                            trampCall(
+                                  trampCall(_cl)
+                            )
+                          end
                     end
-                    begin
-                        trampCall(_err)
-                    end
+                    trampCall(_err)
                 } ; ___lambda.call(
                       begin
                         ___lambda = lambda { |___gensym__5d616449e4cd5ff7562e60dbfcf1c628e32cc41d_30178| 
                             if ( 
                               begin
                                   _null_QUMARK(
-                                      begin
-                                          trampCall(___gensym__5d616449e4cd5ff7562e60dbfcf1c628e32cc41d_30178)
-                                      end
+                                      trampCall(___gensym__5d616449e4cd5ff7562e60dbfcf1c628e32cc41d_30178)
                                   )
                               end
                              ) then
@@ -68,27 +54,19 @@ trampCall(
                             else
                                 begin
                                     delayCall( '_car',  'car',
-                                        begin
-                                            trampCall(@_car)
-                                        end                                      ,
+                                        trampCall(@_car)                                      ,
                                     [
-                                          begin
-                                              trampCall(___gensym__5d616449e4cd5ff7562e60dbfcf1c628e32cc41d_30178)
-                                          end
+                                          trampCall(___gensym__5d616449e4cd5ff7562e60dbfcf1c628e32cc41d_30178)
                                     ]
                                                  )
                                 end
                             end
                         } ; ___lambda.call(
-                              begin
-                                  trampCall(_maybe_MIMARKclass)
-                              end
+                              trampCall(_maybe_MIMARKclass)
                                    )
                       end                    ,
-                      begin
-                          trampCall(Nendo::NendoTestError).new(
-                            )
-                      end
+                      trampCall(Nendo::NendoTestError).new(
+                        )
                            )
               end
           }
@@ -107,111 +85,81 @@ trampCall(
               if ( 
                 begin
                     trampCall( self._test_MIMARKerror_QUMARK_METHOD(  'test-error?',
-                        begin
-                            trampCall(@_test_MIMARKerror_QUMARK)
-                        end                      ,
+                        trampCall(@_test_MIMARKerror_QUMARK)                      ,
                     [
-                          begin
-                              trampCall(_expected)
-                          end
+                          trampCall(_expected)
                     ]
                                  ))
                 end
                ) then
-                  begin
-                      if ( 
+                    if ( 
+                      begin
+                          _not(
+                              begin
+                                  _eq_QUMARK(
+                                    false                                    ,
+                                      begin
+                                          trampCall( self._test_MIMARKerror_QUMARK_METHOD(  'test-error?',
+                                              trampCall(@_test_MIMARKerror_QUMARK)                                            ,
+                                          [
+                                                trampCall(_result)
+                                          ]
+                                                       ))
+                                      end
+                                  )
+                              end
+                          )
+                      end
+                     ) then
                         begin
-                            _not(
+                          ___lambda = lambda { |_ex,_ey| 
+                              if ( 
                                 begin
-                                    _eq_QUMARK(
-                                      false                                      ,
+                                    _not(
                                         begin
-                                            trampCall( self._test_MIMARKerror_QUMARK_METHOD(  'test-error?',
-                                                begin
-                                                    trampCall(@_test_MIMARKerror_QUMARK)
-                                                end                                              ,
-                                            [
-                                                  begin
-                                                      trampCall(_result)
-                                                  end
-                                            ]
-                                                         ))
+                                            _eq_QUMARK(
+                                              false                                              ,
+                                                trampCall(_ex)
+                                            )
                                         end
                                     )
                                 end
-                            )
+                               ) then
+                                  begin
+                                      delayCall( '_eq_QUMARK',  'eq?',
+                                          trampCall(@_eq_QUMARK)                                        ,
+                                      [
+                                            trampCall(_ex)                                          ,
+                                            trampCall(_ey)
+                                      ]
+                                                   )
+                                  end
+                              else
+                                false
+                              end
+                          } ; ___lambda.call(
+                                trampCall(_expected).type(
+                                  )                              ,
+                                trampCall(_result).type(
+                                  )
+                                     )
                         end
-                       ) then
-                          begin
-                            ___lambda = lambda { |_ex,_ey| 
-                                if ( 
-                                  begin
-                                      _not(
-                                          begin
-                                              _eq_QUMARK(
-                                                false                                                ,
-                                                  begin
-                                                      trampCall(_ex)
-                                                  end
-                                              )
-                                          end
-                                      )
-                                  end
-                                 ) then
-                                    begin
-                                        delayCall( '_eq_QUMARK',  'eq?',
-                                            begin
-                                                trampCall(@_eq_QUMARK)
-                                            end                                          ,
-                                        [
-                                              begin
-                                                  trampCall(_ex)
-                                              end                                            ,
-                                              begin
-                                                  trampCall(_ey)
-                                              end
-                                        ]
-                                                     )
-                                    end
-                                else
-                                  false
-                                end
-                            } ; ___lambda.call(
-                                  begin
-                                      trampCall(_expected).type(
-                                        )
-                                  end                                ,
-                                  begin
-                                      trampCall(_result).type(
-                                        )
-                                  end
-                                       )
-                          end
-                      else
-                        false
-                      end
-                  end
+                    else
+                      false
+                    end
               else
                   if ( 
                   true
                    ) then
-                      begin
-                          begin
-                              delayCall( '_equal_QUMARK',  'equal?',
-                                  begin
-                                      trampCall(@_equal_QUMARK)
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall(_expected)
-                                    end                                  ,
-                                    begin
-                                        trampCall(_result)
-                                    end
-                              ]
-                                           )
-                          end
-                      end
+                        begin
+                            delayCall( '_equal_QUMARK',  'equal?',
+                                trampCall(@_equal_QUMARK)                              ,
+                            [
+                                  trampCall(_expected)                                ,
+                                  trampCall(_result)
+                            ]
+                                         )
+                        end
                   else
                       Cell.new()
                   end
@@ -240,9 +188,7 @@ trampCall(
       @global_lisp_binding['__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK'] = self.method( :__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK_METHOD )
     @__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK = 
     trampCall(
-          begin
-              trampCall(STDOUT)
-          end
+          trampCall(STDOUT)
     )
   end
  )
@@ -272,9 +218,7 @@ trampCall(
                   @global_lisp_binding['__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK'] = self.method( :__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK_METHOD )
                 @__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK = 
                 trampCall(
-                      begin
-                          trampCall(_file)
-                      end
+                      trampCall(_file)
                 )
               end
           }
@@ -295,9 +239,7 @@ trampCall(
                   @global_lisp_binding['__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK'] = self.method( :__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK_METHOD )
                 @__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK = 
                 trampCall(
-                      begin
-                          trampCall(_file)
-                      end
+                      trampCall(_file)
                 )
               end
           }
@@ -314,9 +256,7 @@ trampCall(
     trampCall(
           begin
               trampCall( self._vector_METHOD(  'vector',
-                  begin
-                      trampCall(@_vector)
-                  end                ,
+                  trampCall(@_vector)                ,
               [
                   0                  ,
                   0                  ,
@@ -339,25 +279,17 @@ trampCall(
           Proc.new { || 
               begin
                   delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
-                      begin
-                          trampCall(@_vector_MIMARKset_EXMARK)
-                      end                    ,
+                      trampCall(@_vector_MIMARKset_EXMARK)                    ,
                   [
-                        begin
-                            trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                        end                      ,
+                        trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                      ,
                       0                      ,
                         begin
                             __PLMARK_ARGS2(
                                 begin
                                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                        begin
-                                            trampCall(@_vector_MIMARKref)
-                                        end                                      ,
+                                        trampCall(@_vector_MIMARKref)                                      ,
                                     [
-                                          begin
-                                              trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                          end                                        ,
+                                          trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                        ,
                                         0
                                     ]
                                                  ))
@@ -383,25 +315,17 @@ trampCall(
           Proc.new { || 
               begin
                   delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
-                      begin
-                          trampCall(@_vector_MIMARKset_EXMARK)
-                      end                    ,
+                      trampCall(@_vector_MIMARKset_EXMARK)                    ,
                   [
-                        begin
-                            trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                        end                      ,
+                        trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                      ,
                       1                      ,
                         begin
                             __PLMARK_ARGS2(
                                 begin
                                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                        begin
-                                            trampCall(@_vector_MIMARKref)
-                                        end                                      ,
+                                        trampCall(@_vector_MIMARKref)                                      ,
                                     [
-                                          begin
-                                              trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                          end                                        ,
+                                          trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                        ,
                                         1
                                     ]
                                                  ))
@@ -427,25 +351,17 @@ trampCall(
           Proc.new { || 
               begin
                   delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
-                      begin
-                          trampCall(@_vector_MIMARKset_EXMARK)
-                      end                    ,
+                      trampCall(@_vector_MIMARKset_EXMARK)                    ,
                   [
-                        begin
-                            trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                        end                      ,
+                        trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                      ,
                       2                      ,
                         begin
                             __PLMARK_ARGS2(
                                 begin
                                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                        begin
-                                            trampCall(@_vector_MIMARKref)
-                                        end                                      ,
+                                        trampCall(@_vector_MIMARKref)                                      ,
                                     [
-                                          begin
-                                              trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                          end                                        ,
+                                          trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                        ,
                                         2
                                     ]
                                                  ))
@@ -471,25 +387,17 @@ trampCall(
           Proc.new { || 
               begin
                   delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
-                      begin
-                          trampCall(@_vector_MIMARKset_EXMARK)
-                      end                    ,
+                      trampCall(@_vector_MIMARKset_EXMARK)                    ,
                   [
-                        begin
-                            trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                        end                      ,
+                        trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                      ,
                       3                      ,
                         begin
                             __PLMARK_ARGS2(
                                 begin
                                     trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                        begin
-                                            trampCall(@_vector_MIMARKref)
-                                        end                                      ,
+                                        trampCall(@_vector_MIMARKref)                                      ,
                                     [
-                                          begin
-                                              trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                          end                                        ,
+                                          trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                        ,
                                         3
                                     ]
                                                  ))
@@ -515,60 +423,42 @@ trampCall(
           Proc.new { || 
               begin
                   delayCall( '_sprintf',  'sprintf',
-                      begin
-                          trampCall(@_sprintf)
-                      end                    ,
+                      trampCall(@_sprintf)                    ,
                   [
                       "Total: %5d tests, %5d passed, %5d failed, %5d aborted.
 "                      ,
                         begin
                             trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                begin
-                                    trampCall(@_vector_MIMARKref)
-                                end                              ,
+                                trampCall(@_vector_MIMARKref)                              ,
                             [
-                                  begin
-                                      trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                  end                                ,
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
                                 0
                             ]
                                          ))
                         end                      ,
                         begin
                             trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                begin
-                                    trampCall(@_vector_MIMARKref)
-                                end                              ,
+                                trampCall(@_vector_MIMARKref)                              ,
                             [
-                                  begin
-                                      trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                  end                                ,
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
                                 1
                             ]
                                          ))
                         end                      ,
                         begin
                             trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                begin
-                                    trampCall(@_vector_MIMARKref)
-                                end                              ,
+                                trampCall(@_vector_MIMARKref)                              ,
                             [
-                                  begin
-                                      trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                  end                                ,
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
                                 2
                             ]
                                          ))
                         end                      ,
                         begin
                             trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                begin
-                                    trampCall(@_vector_MIMARKref)
-                                end                              ,
+                                trampCall(@_vector_MIMARKref)                              ,
                             [
-                                  begin
-                                      trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                  end                                ,
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
                                 3
                             ]
                                          ))
@@ -598,9 +488,7 @@ trampCall(
                                 false                                ,
                                   begin
                                       _string_QUMARK(
-                                          begin
-                                              trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
-                                          end
+                                          trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
                                       )
                                   end
                               )
@@ -608,129 +496,91 @@ trampCall(
                       )
                   end
                  ) then
-                    begin
-                        trampCall(File).exist?(
-                              begin
-                                  trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
-                              end
-                          )
-                    end
+                    trampCall(File).exist?(
+                          trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
+                      )
                 else
                   false
                 end
                ) then
-                  begin
-                      begin
-                          trampCall( self._with_MIMARKopen_METHOD(  'with-open',
-                              begin
-                                  trampCall(@_with_MIMARKopen)
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
-                                end                              ,
-                                Proc.new { |_f| 
-                                    begin
-                                      ___lambda = lambda { |_m| 
-                                          if ( 
-                                            begin
-                                                trampCall(_m)
-                                            end
-                                           ) then
+                    begin
+                        trampCall( self._with_MIMARKopen_METHOD(  'with-open',
+                            trampCall(@_with_MIMARKopen)                          ,
+                        [
+                              trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)                            ,
+                              Proc.new { |_f| 
+                                  begin
+                                    ___lambda = lambda { |_m| 
+                                        if ( 
+                                          trampCall(_m)
+                                         ) then
                                               begin
-                                                  begin
-                                                      trampCall( self._for_MIMARKeach_METHOD(  'for-each',
-                                                          begin
-                                                              trampCall(@_for_MIMARKeach)
-                                                          end                                                        ,
-                                                      [
-                                                            Proc.new { |_i| 
-                                                                begin
-                                                                    trampCall( self._vector_MIMARKset_EXMARK_METHOD(  'vector-set!',
-                                                                        begin
-                                                                            trampCall(@_vector_MIMARKset_EXMARK)
-                                                                        end                                                                      ,
-                                                                    [
-                                                                          begin
-                                                                              trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                                                          end                                                                        ,
-                                                                          begin
-                                                                              trampCall(_i)
-                                                                          end                                                                        ,
-                                                                          begin
-                                                                              _to_MIMARKi(
-                                                                                  begin
-                                                                                      trampCall( self._rxmatch_MIMARKsubstring_METHOD(  'rxmatch-substring',
-                                                                                          begin
-                                                                                              trampCall(@_rxmatch_MIMARKsubstring)
-                                                                                          end                                                                                        ,
-                                                                                      [
-                                                                                            begin
-                                                                                                trampCall(_m)
-                                                                                            end                                                                                          ,
-                                                                                            begin
-                                                                                                __PLMARK_ARGS2(
-                                                                                                    begin
-                                                                                                        trampCall(_i)
-                                                                                                    end                                                                                                  ,
-                                                                                                  1
-                                                                                                )
-                                                                                            end
-                                                                                      ]
-                                                                                                   ))
-                                                                                  end
-                                                                              )
-                                                                          end
-                                                                    ]
-                                                                                 ))
-                                                                end
-                                                            }                                                          ,
-                                                          Cell.new(0,Cell.new(1,Cell.new(2,Cell.new(3))))
-                                                      ]
-                                                                   ))
-                                                  end
+                                                  trampCall( self._for_MIMARKeach_METHOD(  'for-each',
+                                                      trampCall(@_for_MIMARKeach)                                                    ,
+                                                  [
+                                                        Proc.new { |_i| 
+                                                            begin
+                                                                trampCall( self._vector_MIMARKset_EXMARK_METHOD(  'vector-set!',
+                                                                    trampCall(@_vector_MIMARKset_EXMARK)                                                                  ,
+                                                                [
+                                                                      trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                                                    ,
+                                                                      trampCall(_i)                                                                    ,
+                                                                      begin
+                                                                          _to_MIMARKi(
+                                                                              begin
+                                                                                  trampCall( self._rxmatch_MIMARKsubstring_METHOD(  'rxmatch-substring',
+                                                                                      trampCall(@_rxmatch_MIMARKsubstring)                                                                                    ,
+                                                                                  [
+                                                                                        trampCall(_m)                                                                                      ,
+                                                                                        begin
+                                                                                            __PLMARK_ARGS2(
+                                                                                                trampCall(_i)                                                                                              ,
+                                                                                              1
+                                                                                            )
+                                                                                        end
+                                                                                  ]
+                                                                                               ))
+                                                                              end
+                                                                          )
+                                                                      end
+                                                                ]
+                                                                             ))
+                                                            end
+                                                        }                                                      ,
+                                                      Cell.new(0,Cell.new(1,Cell.new(2,Cell.new(3))))
+                                                  ]
+                                                               ))
                                               end
+                                        end
+                                    } ; ___lambda.call(
+                                          begin
+                                              trampCall( self._rxmatch_METHOD(  'rxmatch',
+                                                  trampCall(@_rxmatch)                                                ,
+                                              [
+                                                  Regexp.new( "Total:\\s+(\\d+)\\s+tests,\\s+(\\d+)\\s+passed,\\s+(\\d+)\\s+failed,\\s+(\\d+)\\s+aborted")                                                  ,
+                                                    trampCall(_f).readline.chomp(
+                                                      )
+                                              ]
+                                                           ))
                                           end
-                                      } ; ___lambda.call(
-                                            begin
-                                                trampCall( self._rxmatch_METHOD(  'rxmatch',
-                                                    begin
-                                                        trampCall(@_rxmatch)
-                                                    end                                                  ,
-                                                [
-                                                    Regexp.new( "Total:\\s+(\\d+)\\s+tests,\\s+(\\d+)\\s+passed,\\s+(\\d+)\\s+failed,\\s+(\\d+)\\s+aborted")                                                    ,
-                                                      begin
-                                                          trampCall(_f).readline.chomp(
-                                                            )
-                                                      end
-                                                ]
-                                                             ))
-                                            end
-                                                 )
-                                    end
-                                }
-                          ]
-                                       ))
-                      end
-                  end
+                                               )
+                                  end
+                              }
+                        ]
+                                     ))
+                    end
               end
               begin
                 ___lambda = lambda { |_orig_MIMARKabort| 
                     begin
                         trampCall( self._vector_MIMARKset_EXMARK_METHOD(  'vector-set!',
-                            begin
-                                trampCall(@_vector_MIMARKset_EXMARK)
-                            end                          ,
+                            trampCall(@_vector_MIMARKset_EXMARK)                          ,
                         [
-                              begin
-                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                              end                            ,
+                              trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                            ,
                             3                            ,
                               begin
                                   __PLMARK_ARGS2(
-                                      begin
-                                          trampCall(_orig_MIMARKabort)
-                                      end                                    ,
+                                      trampCall(_orig_MIMARKabort)                                    ,
                                     1
                                   )
                               end
@@ -739,39 +589,27 @@ trampCall(
                     end
                     begin
                         trampCall( self._write_MIMARKsummary_METHOD(  'write-summary',
-                            begin
-                                trampCall(@_write_MIMARKsummary)
-                            end                          ,
+                            trampCall(@_write_MIMARKsummary)                          ,
                         [
                         ]
                                      ))
                     end
                     begin
                         delayCall( '_vector_MIMARKset_EXMARK',  'vector-set!',
-                            begin
-                                trampCall(@_vector_MIMARKset_EXMARK)
-                            end                          ,
+                            trampCall(@_vector_MIMARKset_EXMARK)                          ,
                         [
-                              begin
-                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                              end                            ,
+                              trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                            ,
                             3                            ,
-                              begin
-                                  trampCall(_orig_MIMARKabort)
-                              end
+                              trampCall(_orig_MIMARKabort)
                         ]
                                      )
                     end
                 } ; ___lambda.call(
                       begin
                           trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                              begin
-                                  trampCall(@_vector_MIMARKref)
-                              end                            ,
+                              trampCall(@_vector_MIMARKref)                            ,
                           [
-                                begin
-                                    trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)
-                                end                              ,
+                                trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                              ,
                               3
                           ]
                                        ))
@@ -794,43 +632,31 @@ trampCall(
               if ( 
                 begin
                     _string_QUMARK(
-                        begin
-                            trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
-                        end
+                        trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
                     )
                 end
                ) then
-                  begin
-                      begin
-                          delayCall( '_with_MIMARKopen',  'with-open',
-                              begin
-                                  trampCall(@_with_MIMARKopen)
-                              end                            ,
-                          [
-                                begin
-                                    trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
-                                end                              ,
-                                Proc.new { |_f| 
-                                    begin
-                                        trampCall(_f).printf(
-                                            "%s"                                            ,
-                                              begin
-                                                  trampCall( self._format_MIMARKsummary_METHOD(  'format-summary',
-                                                      begin
-                                                          trampCall(@_format_MIMARKsummary)
-                                                      end                                                    ,
-                                                  [
-                                                  ]
-                                                               ))
-                                              end
-                                          )
-                                    end
-                                }                              ,
-                              "w"
-                          ]
-                                       )
-                      end
-                  end
+                    begin
+                        delayCall( '_with_MIMARKopen',  'with-open',
+                            trampCall(@_with_MIMARKopen)                          ,
+                        [
+                              trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)                            ,
+                              Proc.new { |_f| 
+                                  trampCall(_f).printf(
+                                      "%s"                                      ,
+                                        begin
+                                            trampCall( self._format_MIMARKsummary_METHOD(  'format-summary',
+                                                trampCall(@_format_MIMARKsummary)                                              ,
+                                            [
+                                            ]
+                                                         ))
+                                        end
+                                    )
+                              }                            ,
+                            "w"
+                        ]
+                                     )
+                    end
               end
           }
     )
@@ -847,30 +673,20 @@ trampCall(
           Proc.new { |_msg,_expect,_thunk,*__rest__| _compare = __rest__[0] ;  
               begin
                 ___lambda = lambda { |_cmp,_f| 
-                    begin
-                        trampCall(_f).printf(
-                            "test %s, expects %s ==> "                            ,
-                              begin
-                                  trampCall(_msg)
-                              end                            ,
-                              begin
-                                  _write_MIMARKto_MIMARKstring(
-                                      begin
-                                          trampCall(_expect)
-                                      end
-                                  )
-                              end
-                          )
-                    end
-                    begin
-                        trampCall(_f).flush(
-                          )
-                    end
+                    trampCall(_f).printf(
+                        "test %s, expects %s ==> "                        ,
+                          trampCall(_msg)                        ,
+                          begin
+                              _write_MIMARKto_MIMARKstring(
+                                  trampCall(_expect)
+                              )
+                          end
+                      )
+                    trampCall(_f).flush(
+                      )
                     begin
                         trampCall( self._test_MIMARKcount_PLMARK_PLMARK_METHOD(  'test-count++',
-                            begin
-                                trampCall(@_test_MIMARKcount_PLMARK_PLMARK)
-                            end                          ,
+                            trampCall(@_test_MIMARKcount_PLMARK_PLMARK)                          ,
                         [
                         ]
                                      ))
@@ -880,22 +696,16 @@ trampCall(
                           begin
                             ___lambda = lambda { |_ret| 
                                 if ( 
-                                  begin
-                                      trampCall(_ret)
-                                  end
+                                  trampCall(_ret)
                                  ) then
                                     begin
-                                        begin
-                                            trampCall(_f).printf(
-                                                "ok
+                                        trampCall(_f).printf(
+                                            "ok
 "
-                                              )
-                                        end
+                                          )
                                         begin
                                             trampCall( self._test_MIMARKpass_PLMARK_PLMARK_METHOD(  'test-pass++',
-                                                begin
-                                                    trampCall(@_test_MIMARKpass_PLMARK_PLMARK)
-                                                end                                              ,
+                                                trampCall(@_test_MIMARKpass_PLMARK_PLMARK)                                              ,
                                             [
                                             ]
                                                          ))
@@ -906,19 +716,15 @@ trampCall(
                                     true
                                      ) then
                                         begin
-                                            begin
-                                                trampCall(_f).printf(
-                                                    "ERROR: GOT %s
-"                                                    ,
-                                                      begin
-                                                          _write_MIMARKto_MIMARKstring(
-                                                              begin
-                                                                  trampCall(_r)
-                                                              end
-                                                          )
-                                                      end
-                                                  )
-                                            end
+                                            trampCall(_f).printf(
+                                                "ERROR: GOT %s
+"                                                ,
+                                                  begin
+                                                      _write_MIMARKto_MIMARKstring(
+                                                          trampCall(_r)
+                                                      )
+                                                  end
+                                              )
                                             begin
                                                 def self.__ASMARKdiscrepancy_MIMARKlist_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__ASMARKdiscrepancy_MIMARKlist_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                                                 @global_lisp_binding['__ASMARKdiscrepancy_MIMARKlist_ASMARK'] = self.method( :__ASMARKdiscrepancy_MIMARKlist_ASMARK_METHOD )
@@ -928,34 +734,22 @@ trampCall(
                                                         _cons(
                                                             begin
                                                                 trampCall( self._list_METHOD(  'list',
-                                                                    begin
-                                                                        trampCall(@_list)
-                                                                    end                                                                  ,
+                                                                    trampCall(@_list)                                                                  ,
                                                                 [
-                                                                      begin
-                                                                          trampCall(_msg)
-                                                                      end                                                                    ,
-                                                                      begin
-                                                                          trampCall(_expect)
-                                                                      end                                                                    ,
-                                                                      begin
-                                                                          trampCall(_r)
-                                                                      end
+                                                                      trampCall(_msg)                                                                    ,
+                                                                      trampCall(_expect)                                                                    ,
+                                                                      trampCall(_r)
                                                                 ]
                                                                              ))
                                                             end                                                          ,
-                                                            begin
-                                                                trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
-                                                            end
+                                                            trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                                                         )
                                                     end
                                               )
                                             end
                                             begin
                                                 trampCall( self._test_MIMARKfail_PLMARK_PLMARK_METHOD(  'test-fail++',
-                                                    begin
-                                                        trampCall(@_test_MIMARKfail_PLMARK_PLMARK)
-                                                    end                                                  ,
+                                                    trampCall(@_test_MIMARKfail_PLMARK_PLMARK)                                                  ,
                                                 [
                                                 ]
                                                              ))
@@ -965,26 +759,16 @@ trampCall(
                                         Cell.new()
                                     end
                                 end
-                                begin
-                                    trampCall(_f).flush(
-                                      )
-                                end
-                                begin
-                                    trampCall(_ret)
-                                end
+                                trampCall(_f).flush(
+                                  )
+                                trampCall(_ret)
                             } ; ___lambda.call(
                                   begin
                                       trampCall( callProcedure(  '_cmp',  'cmp',
-                                          begin
-                                              trampCall(_cmp)
-                                          end                                        ,
+                                          trampCall(_cmp)                                        ,
                                       [
-                                            begin
-                                                trampCall(_expect)
-                                            end                                          ,
-                                            begin
-                                                trampCall(_r)
-                                            end
+                                            trampCall(_expect)                                          ,
+                                            trampCall(_r)
                                       ]
                                                    ))
                                   end
@@ -993,9 +777,7 @@ trampCall(
                       } ; ___lambda.call(
                             begin
                                 trampCall( callProcedure(  '_thunk',  'thunk',
-                                    begin
-                                        trampCall(_thunk)
-                                    end                                  ,
+                                    trampCall(_thunk)                                  ,
                                 [
                                 ]
                                              ))
@@ -1006,32 +788,22 @@ trampCall(
                       if ( 
                         begin
                             _pair_QUMARK(
-                                begin
-                                    trampCall(_compare)
-                                end
+                                trampCall(_compare)
                             )
                         end
                        ) then
                           begin
                               delayCall( '_car',  'car',
-                                  begin
-                                      trampCall(@_car)
-                                  end                                ,
+                                  trampCall(@_car)                                ,
                               [
-                                    begin
-                                        trampCall(_compare)
-                                    end
+                                    trampCall(_compare)
                               ]
                                            )
                           end
                       else
-                          begin
-                              trampCall(@_test_MIMARKcheck)
-                          end
+                          trampCall(@_test_MIMARKcheck)
                       end                    ,
-                      begin
-                          trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)
-                      end
+                      trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)
                            )
               end
           }
@@ -1049,26 +821,16 @@ trampCall(
           Proc.new { |_msg,_expect,_thunk,*__rest__| _compare = __rest__[0] ;  
               begin
                   delayCall( '_apply',  'apply',
-                      begin
-                          trampCall(@_apply)
-                      end                    ,
+                      trampCall(@_apply)                    ,
                   [
-                        begin
-                            trampCall(@_prim_MIMARKtest)
-                        end                      ,
-                        begin
-                            trampCall(_msg)
-                        end                      ,
-                        begin
-                            trampCall(_expect)
-                        end                      ,
+                        trampCall(@_prim_MIMARKtest)                      ,
+                        trampCall(_msg)                      ,
+                        trampCall(_expect)                      ,
                         Proc.new { || 
                             begin
                                 begin
                                     trampCall( callProcedure(  '_thunk',  'thunk',
-                                        begin
-                                            trampCall(_thunk)
-                                        end                                      ,
+                                        trampCall(_thunk)                                      ,
                                     [
                                     ]
                                                  ))
@@ -1077,105 +839,75 @@ trampCall(
                                 if ( 
                                 true
                                  ) then
-                                    begin
-                                        begin
-                                            trampCall(Nendo::NendoTestError).new(
-                                                  begin
-                                                      trampCall(_exc).class(
-                                                        )
-                                                  end
+                                      trampCall(Nendo::NendoTestError).new(
+                                            trampCall(_exc).class(
                                               )
-                                        end
-                                    end
+                                        )
                                 else
                                     if ( 
                                     true
                                      ) then
-                                        begin
-                                            begin
-                                                trampCall( self.__PAMARKraise_METHOD(  '%raise',
+                                          begin
+                                              trampCall( self.__PAMARKraise_METHOD(  '%raise',
+                                                  trampCall(@__PAMARKraise)                                                ,
+                                              [
+                                                    trampCall(_exc)                                                  ,
                                                     begin
-                                                        trampCall(@__PAMARKraise)
+                                                        trampCall( self._sprintf_METHOD(  'sprintf',
+                                                            trampCall(@_sprintf)                                                          ,
+                                                        [
+                                                            "%s:%s raised %s"                                                            ,
+                                                              begin
+                                                                  trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
+                                                                      trampCall(@__ASMARKFILE_ASMARK)                                                                    ,
+                                                                  [
+                                                                  ]
+                                                                               ))
+                                                              end                                                            ,
+                                                              begin
+                                                                  trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
+                                                                      trampCall(@__ASMARKLINE_ASMARK)                                                                    ,
+                                                                  [
+                                                                  ]
+                                                                               ))
+                                                              end                                                            ,
+                                                              trampCall(_exc)
+                                                        ]
+                                                                     ))
                                                     end                                                  ,
-                                                [
-                                                      begin
-                                                          trampCall(_exc)
-                                                      end                                                    ,
-                                                      begin
-                                                          trampCall( self._sprintf_METHOD(  'sprintf',
+                                                    begin
+                                                        trampCall( self._sprintf_METHOD(  'sprintf',
+                                                            trampCall(@_sprintf)                                                          ,
+                                                        [
+                                                            "%s:%s raised %s"                                                            ,
                                                               begin
-                                                                  trampCall(@_sprintf)
+                                                                  trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
+                                                                      trampCall(@__ASMARKFILE_ASMARK)                                                                    ,
+                                                                  [
+                                                                  ]
+                                                                               ))
                                                               end                                                            ,
-                                                          [
-                                                              "%s:%s raised %s"                                                              ,
-                                                                begin
-                                                                    trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
-                                                                        begin
-                                                                            trampCall(@__ASMARKFILE_ASMARK)
-                                                                        end                                                                      ,
-                                                                    [
-                                                                    ]
-                                                                                 ))
-                                                                end                                                              ,
-                                                                begin
-                                                                    trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
-                                                                        begin
-                                                                            trampCall(@__ASMARKLINE_ASMARK)
-                                                                        end                                                                      ,
-                                                                    [
-                                                                    ]
-                                                                                 ))
-                                                                end                                                              ,
-                                                                begin
-                                                                    trampCall(_exc)
-                                                                end
-                                                          ]
-                                                                       ))
-                                                      end                                                    ,
-                                                      begin
-                                                          trampCall( self._sprintf_METHOD(  'sprintf',
                                                               begin
-                                                                  trampCall(@_sprintf)
+                                                                  trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
+                                                                      trampCall(@__ASMARKLINE_ASMARK)                                                                    ,
+                                                                  [
+                                                                  ]
+                                                                               ))
                                                               end                                                            ,
-                                                          [
-                                                              "%s:%s raised %s"                                                              ,
-                                                                begin
-                                                                    trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
-                                                                        begin
-                                                                            trampCall(@__ASMARKFILE_ASMARK)
-                                                                        end                                                                      ,
-                                                                    [
-                                                                    ]
-                                                                                 ))
-                                                                end                                                              ,
-                                                                begin
-                                                                    trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
-                                                                        begin
-                                                                            trampCall(@__ASMARKLINE_ASMARK)
-                                                                        end                                                                      ,
-                                                                    [
-                                                                    ]
-                                                                                 ))
-                                                                end                                                              ,
-                                                                begin
-                                                                    trampCall(_exc)
-                                                                end
-                                                          ]
-                                                                       ))
-                                                      end
-                                                ]
-                                                             ))
-                                            end
-                                        end
+                                                              trampCall(_exc)
+                                                        ]
+                                                                     ))
+                                                    end
+                                              ]
+                                                           ))
+                                          end
                                     else
                                         Cell.new()
                                     end
                                 end
                             end
                         }                      ,
-                        begin
-                            trampCall(_compare)
-                        end
+                        trampCall(_compare)
                   ]
                                )
               end
@@ -1197,14 +929,10 @@ trampCall(
                     :"test"                    ,
                       begin
                           _cons(
-                              begin
-                                  trampCall(_msg)
-                              end                            ,
+                              trampCall(_msg)                            ,
                               begin
                                   _cons(
-                                      begin
-                                          trampCall(_expect)
-                                      end                                    ,
+                                      trampCall(_expect)                                    ,
                                       begin
                                           _cons(
                                               begin
@@ -1215,9 +943,7 @@ trampCall(
                                                             Cell.new()                                                            ,
                                                               begin
                                                                   _cons(
-                                                                      begin
-                                                                          trampCall(_form)
-                                                                      end                                                                    ,
+                                                                      trampCall(_form)                                                                    ,
                                                                     Cell.new()
                                                                   )
                                                               end
@@ -1225,9 +951,7 @@ trampCall(
                                                       end
                                                   )
                                               end                                            ,
-                                              begin
-                                                  trampCall(_compare)
-                                              end
+                                              trampCall(_compare)
                                           )
                                       end
                                   )
@@ -1251,30 +975,20 @@ trampCall(
           Proc.new { |_num,_char| 
               begin
                   delayCall( '_string_MIMARKjoin',  'string-join',
-                      begin
-                          trampCall(@_string_MIMARKjoin)
-                      end                    ,
+                      trampCall(@_string_MIMARKjoin)                    ,
                   [
                         begin
                             trampCall( self._map_METHOD(  'map',
-                                begin
-                                    trampCall(@_map)
-                                end                              ,
+                                trampCall(@_map)                              ,
                             [
                                   Proc.new { |_x| 
-                                      begin
-                                          trampCall(_char)
-                                      end
+                                      trampCall(_char)
                                   }                                ,
                                   begin
                                       trampCall( self._range_METHOD(  'range',
-                                          begin
-                                              trampCall(@_range)
-                                          end                                        ,
+                                          trampCall(@_range)                                        ,
                                       [
-                                            begin
-                                                trampCall(_num)
-                                            end
+                                            trampCall(_num)
                                       ]
                                                    ))
                                   end
@@ -1299,59 +1013,41 @@ trampCall(
           Proc.new { |_msg| 
               begin
                 ___lambda = lambda { |_f,_msglen| 
-                    begin
-                        trampCall(_f).printf(
-                            "<%s>%s
-"                            ,
-                              begin
-                                  trampCall(_msg)
-                              end                            ,
-                              begin
-                                  trampCall( self._make_MIMARKpadding_MIMARKstring_METHOD(  'make-padding-string',
-                                      begin
-                                          trampCall(@_make_MIMARKpadding_MIMARKstring)
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall( self._max_METHOD(  'max',
-                                                begin
-                                                    trampCall(@_max)
-                                                end                                              ,
-                                            [
-                                                5                                                ,
-                                                  begin
-                                                      __MIMARK_ARGS2(
-                                                        77                                                        ,
-                                                          begin
-                                                              trampCall(_msglen)
-                                                          end
-                                                      )
-                                                  end
-                                            ]
-                                                         ))
-                                        end                                      ,
-                                      "-"
-                                  ]
-                                               ))
-                              end
-                          )
-                    end
-                    begin
-                        trampCall(_msg)
-                    end
+                    trampCall(_f).printf(
+                        "<%s>%s
+"                        ,
+                          trampCall(_msg)                        ,
+                          begin
+                              trampCall( self._make_MIMARKpadding_MIMARKstring_METHOD(  'make-padding-string',
+                                  trampCall(@_make_MIMARKpadding_MIMARKstring)                                ,
+                              [
+                                    begin
+                                        trampCall( self._max_METHOD(  'max',
+                                            trampCall(@_max)                                          ,
+                                        [
+                                            5                                            ,
+                                              begin
+                                                  __MIMARK_ARGS2(
+                                                    77                                                    ,
+                                                      trampCall(_msglen)
+                                                  )
+                                              end
+                                        ]
+                                                     ))
+                                    end                                  ,
+                                  "-"
+                              ]
+                                           ))
+                          end
+                      )
+                    trampCall(_msg)
                 } ; ___lambda.call(
-                      begin
-                          trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)
-                      end                    ,
+                      trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)                    ,
                       begin
                           trampCall( self._string_MIMARKlength_METHOD(  'string-length',
-                              begin
-                                  trampCall(@_string_MIMARKlength)
-                              end                            ,
+                              trampCall(@_string_MIMARKlength)                            ,
                           [
-                                begin
-                                    trampCall(_msg)
-                                end
+                                trampCall(_msg)
                           ]
                                        ))
                       end
@@ -1376,36 +1072,24 @@ trampCall(
                       ___lambda = lambda { |_pad| 
                           begin
                             ___lambda = lambda { |_f| 
-                                begin
-                                    trampCall(_f).printf(
-                                        "%s%s"                                        ,
-                                          begin
-                                              trampCall(_s)
-                                          end                                        ,
-                                          begin
-                                              trampCall(_pad)
-                                          end
-                                      )
-                                end
-                                begin
-                                    trampCall(_f).flush(
-                                      )
-                                end
+                                trampCall(_f).printf(
+                                    "%s%s"                                    ,
+                                      trampCall(_s)                                    ,
+                                      trampCall(_pad)
+                                  )
+                                trampCall(_f).flush(
+                                  )
                                 begin
                                     trampCall( self._read_MIMARKsummary_METHOD(  'read-summary',
-                                        begin
-                                            trampCall(@_read_MIMARKsummary)
-                                        end                                      ,
+                                        trampCall(@_read_MIMARKsummary)                                      ,
                                     [
                                     ]
                                                  ))
                                 end
-                                begin
-                                    trampCall(_f).printf(
-                                        "
+                                trampCall(_f).printf(
+                                    "
 "
-                                      )
-                                end
+                                  )
                                 begin
                                     def self.__ASMARKdiscrepancy_MIMARKlist_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__ASMARKdiscrepancy_MIMARKlist_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
                                     @global_lisp_binding['__ASMARKdiscrepancy_MIMARKlist_ASMARK'] = self.method( :__ASMARKdiscrepancy_MIMARKlist_ASMARK_METHOD )
@@ -1416,83 +1100,59 @@ trampCall(
                                 end
                                 begin
                                   ___lambda = lambda { |_msglen| 
-                                      begin
-                                          trampCall(_f).printf(
-                                              "Testing %s %s
-"                                              ,
-                                                begin
-                                                    trampCall(_msg)
-                                                end                                              ,
-                                                begin
-                                                    trampCall( self._make_MIMARKpadding_MIMARKstring_METHOD(  'make-padding-string',
-                                                        begin
-                                                            trampCall(@_make_MIMARKpadding_MIMARKstring)
-                                                        end                                                      ,
-                                                    [
-                                                          begin
-                                                              trampCall( self._max_METHOD(  'max',
-                                                                  begin
-                                                                      trampCall(@_max)
-                                                                  end                                                                ,
-                                                              [
-                                                                  5                                                                  ,
-                                                                    begin
-                                                                        __MIMARK_ARGS2(
-                                                                          70                                                                          ,
-                                                                            begin
-                                                                                trampCall(_msglen)
-                                                                            end
-                                                                        )
-                                                                    end
-                                                              ]
-                                                                           ))
-                                                          end                                                        ,
-                                                        "-"
-                                                    ]
-                                                                 ))
-                                                end
-                                            )
-                                      end
-                                      begin
-                                          trampCall(_f).flush(
-                                            )
-                                      end
+                                      trampCall(_f).printf(
+                                          "Testing %s %s
+"                                          ,
+                                            trampCall(_msg)                                          ,
+                                            begin
+                                                trampCall( self._make_MIMARKpadding_MIMARKstring_METHOD(  'make-padding-string',
+                                                    trampCall(@_make_MIMARKpadding_MIMARKstring)                                                  ,
+                                                [
+                                                      begin
+                                                          trampCall( self._max_METHOD(  'max',
+                                                              trampCall(@_max)                                                            ,
+                                                          [
+                                                              5                                                              ,
+                                                                begin
+                                                                    __MIMARK_ARGS2(
+                                                                      70                                                                      ,
+                                                                        trampCall(_msglen)
+                                                                    )
+                                                                end
+                                                          ]
+                                                                       ))
+                                                      end                                                    ,
+                                                    "-"
+                                                ]
+                                                             ))
+                                            end
+                                        )
+                                      trampCall(_f).flush(
+                                        )
                                   } ; ___lambda.call(
                                         begin
                                             trampCall( self._string_MIMARKlength_METHOD(  'string-length',
-                                                begin
-                                                    trampCall(@_string_MIMARKlength)
-                                                end                                              ,
+                                                trampCall(@_string_MIMARKlength)                                              ,
                                             [
-                                                  begin
-                                                      trampCall(_msg)
-                                                  end
+                                                  trampCall(_msg)
                                             ]
                                                          ))
                                         end
                                              )
                                 end
-                                begin
-                                    trampCall(_msg)
-                                end
+                                trampCall(_msg)
                             } ; ___lambda.call(
-                                  begin
-                                      trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)
-                                  end
+                                  trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)
                                        )
                           end
                       } ; ___lambda.call(
                             begin
                                 trampCall( self._make_MIMARKpadding_MIMARKstring_METHOD(  'make-padding-string',
-                                    begin
-                                        trampCall(@_make_MIMARKpadding_MIMARKstring)
-                                    end                                  ,
+                                    trampCall(@_make_MIMARKpadding_MIMARKstring)                                  ,
                                 [
                                       begin
                                           trampCall( self._max_METHOD(  'max',
-                                              begin
-                                                  trampCall(@_max)
-                                              end                                            ,
+                                              trampCall(@_max)                                            ,
                                           [
                                               3                                              ,
                                                 begin
@@ -1500,13 +1160,9 @@ trampCall(
                                                       65                                                      ,
                                                         begin
                                                             trampCall( self._string_MIMARKlength_METHOD(  'string-length',
-                                                                begin
-                                                                    trampCall(@_string_MIMARKlength)
-                                                                end                                                              ,
+                                                                trampCall(@_string_MIMARKlength)                                                              ,
                                                             [
-                                                                  begin
-                                                                      trampCall(_s)
-                                                                  end
+                                                                  trampCall(_s)
                                                             ]
                                                                          ))
                                                         end
@@ -1524,14 +1180,10 @@ trampCall(
                 } ; ___lambda.call(
                       begin
                           trampCall( self._sprintf_METHOD(  'sprintf',
-                              begin
-                                  trampCall(@_sprintf)
-                              end                            ,
+                              trampCall(@_sprintf)                            ,
                           [
                               "Testing %s ... "                              ,
-                                begin
-                                    trampCall(_msg)
-                                end
+                                trampCall(_msg)
                           ]
                                        ))
                       end
@@ -1555,90 +1207,66 @@ trampCall(
                     if ( 
                       begin
                           _null_QUMARK(
-                              begin
-                                  trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
-                              end
+                              trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                           )
                       end
                      ) then
-                        begin
-                            trampCall(_f).printf(
-                                "passed.
+                        trampCall(_f).printf(
+                            "passed.
 "
-                              )
-                        end
+                          )
                     else
                         begin
-                            begin
-                                trampCall(_f).printf(
-                                    "failed.
+                            trampCall(_f).printf(
+                                "failed.
 discrepancies found.  Errors are:
 "
-                                  )
-                            end
+                              )
                             begin
                                 trampCall( self._for_MIMARKeach_METHOD(  'for-each',
-                                    begin
-                                        trampCall(@_for_MIMARKeach)
-                                    end                                  ,
+                                    trampCall(@_for_MIMARKeach)                                  ,
                                 [
                                       Proc.new { |_r| 
-                                          begin
-                                              trampCall(_f).printf(
-                                                  "test %s: expects %s => got %s
-"                                                  ,
-                                                    begin
-                                                        trampCall( self._first_METHOD(  'first',
-                                                            begin
-                                                                trampCall(@_first)
-                                                            end                                                          ,
-                                                        [
-                                                              begin
+                                          trampCall(_f).printf(
+                                              "test %s: expects %s => got %s
+"                                              ,
+                                                begin
+                                                    trampCall( self._first_METHOD(  'first',
+                                                        trampCall(@_first)                                                      ,
+                                                    [
+                                                          trampCall(_r)
+                                                    ]
+                                                                 ))
+                                                end                                              ,
+                                                begin
+                                                    _write_MIMARKto_MIMARKstring(
+                                                        begin
+                                                            trampCall( self._second_METHOD(  'second',
+                                                                trampCall(@_second)                                                              ,
+                                                            [
                                                                   trampCall(_r)
-                                                              end
-                                                        ]
-                                                                     ))
-                                                    end                                                  ,
-                                                    begin
-                                                        _write_MIMARKto_MIMARKstring(
-                                                            begin
-                                                                trampCall( self._second_METHOD(  'second',
-                                                                    begin
-                                                                        trampCall(@_second)
-                                                                    end                                                                  ,
-                                                                [
-                                                                      begin
-                                                                          trampCall(_r)
-                                                                      end
-                                                                ]
-                                                                             ))
-                                                            end
-                                                        )
-                                                    end                                                  ,
-                                                    begin
-                                                        _write_MIMARKto_MIMARKstring(
-                                                            begin
-                                                                trampCall( self._third_METHOD(  'third',
-                                                                    begin
-                                                                        trampCall(@_third)
-                                                                    end                                                                  ,
-                                                                [
-                                                                      begin
-                                                                          trampCall(_r)
-                                                                      end
-                                                                ]
-                                                                             ))
-                                                            end
-                                                        )
-                                                    end
-                                                )
-                                          end
+                                                            ]
+                                                                         ))
+                                                        end
+                                                    )
+                                                end                                              ,
+                                                begin
+                                                    _write_MIMARKto_MIMARKstring(
+                                                        begin
+                                                            trampCall( self._third_METHOD(  'third',
+                                                                trampCall(@_third)                                                              ,
+                                                            [
+                                                                  trampCall(_r)
+                                                            ]
+                                                                         ))
+                                                        end
+                                                    )
+                                                end
+                                            )
                                       }                                    ,
                                       begin
                                           _reverse(
-                                              begin
-                                                  trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
-                                              end
+                                              trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                                           )
                                       end
                                 ]
@@ -1647,38 +1275,26 @@ discrepancies found.  Errors are:
                         end
                     end
                     if ( 
-                      begin
-                          trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
-                      end
+                      trampCall(@__ASMARKtest_MIMARKrecord_MIMARKfile_ASMARK)
                      ) then
-                        begin
-                            begin
-                                trampCall( self._write_MIMARKsummary_METHOD(  'write-summary',
-                                    begin
-                                        trampCall(@_write_MIMARKsummary)
-                                    end                                  ,
-                                [
-                                ]
-                                             ))
-                            end
-                        end
+                          begin
+                              trampCall( self._write_MIMARKsummary_METHOD(  'write-summary',
+                                  trampCall(@_write_MIMARKsummary)                                ,
+                              [
+                              ]
+                                           ))
+                          end
                     end
                     begin
                         delayCall( '_length',  'length',
-                            begin
-                                trampCall(@_length)
-                            end                          ,
+                            trampCall(@_length)                          ,
                         [
-                              begin
-                                  trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
-                              end
+                              trampCall(@__ASMARKdiscrepancy_MIMARKlist_ASMARK)
                         ]
                                      )
                     end
                 } ; ___lambda.call(
-                      begin
-                          trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)
-                      end
+                      trampCall(@__ASMARKtest_MIMARKoutput_MIMARKfile_ASMARK)
                            )
               end
           }
@@ -1694,9 +1310,7 @@ trampCall(
     @_test_MIMARKmodule = 
     trampCall(
           Proc.new { |_module_MIMARKname| 
-              begin
-                  trampCall(_module_MIMARKname)
-              end
+              trampCall(_module_MIMARKname)
           }
     )
   end

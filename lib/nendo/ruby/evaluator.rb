@@ -506,7 +506,11 @@ module Nendo
       ar = args.map { |e|
         translate( e.car, locals )
       }
-      ["begin", ar, "end"]
+      if ar.size < 2
+        ar
+      else
+        ["begin", ar, "end"]
+      end
     end
 
     # returns [ argsyms[], string ]
@@ -709,25 +713,25 @@ module Nendo
                      [trampCallCap( sprintf( "%s%s", global_cap, sym ))]
                    end
       if global_cap
-        ["begin",
-         if @runtimeCheck
+        if @runtimeCheck
+          ["begin",
            [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
             expression,
             sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', variable_sym, variable_sym ),
-            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )]
-         else
-           [expression]
-         end,
-         "end"]
+            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
+           "end"]
+        else
+          expression
+        end
       else
-        ["begin",
-         if @runtimeCheck         
+        if @runtimeCheck
+          ["begin",
            [expression,
-            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )]
-         else
-           [expression]
-         end,
-         "end"]
+            sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e', sourcefile, lineno )],
+           "end"]
+        else
+          expression
+        end
       end
     end
 

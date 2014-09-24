@@ -6,9 +6,7 @@
 trampCall( 
   begin
       delayCall( '_require',  'require',
-          begin
-              trampCall(@_require)
-          end        ,
+          trampCall(@_require)        ,
       [
           "json"
       ]
@@ -20,9 +18,7 @@ trampCall(
 trampCall( 
   begin
       delayCall( '_load',  'load',
-          begin
-              trampCall(@_load)
-          end        ,
+          trampCall(@_load)        ,
       [
           "util/list"
       ]
@@ -41,154 +37,108 @@ trampCall(
               if ( 
                 begin
                     _null_QUMARK(
-                        begin
-                            trampCall(_obj)
-                        end
+                        trampCall(_obj)
                     )
                 end
                ) then
-                  begin
-                      begin
-                          trampCall(_obj)
-                      end
-                  end
+                    trampCall(_obj)
               else
                   if ( 
                     begin
                         trampCall( self._vector_QUMARK_METHOD(  'vector?',
-                            begin
-                                trampCall(@_vector_QUMARK)
-                            end                          ,
+                            trampCall(@_vector_QUMARK)                          ,
                         [
-                              begin
-                                  trampCall(_obj)
-                              end
+                              trampCall(_obj)
                         ]
                                      ))
                     end
                    ) then
-                      begin
-                          begin
-                              delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
+                        begin
+                            delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
+                                trampCall(@_list_MIMARK_GTMARKvector)                              ,
+                            [
                                   begin
-                                      trampCall(@_list_MIMARK_GTMARKvector)
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall( self._map_METHOD(  'map',
+                                      trampCall( self._map_METHOD(  'map',
+                                          trampCall(@_map)                                        ,
+                                      [
+                                            Proc.new { |_x| 
+                                                begin
+                                                    trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
+                                                        trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                                                      ,
+                                                    [
+                                                          trampCall(_x)
+                                                    ]
+                                                                 ))
+                                                end
+                                            }                                          ,
                                             begin
-                                                trampCall(@_map)
-                                            end                                          ,
-                                        [
-                                              Proc.new { |_x| 
-                                                  begin
-                                                      trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
-                                                          begin
-                                                              trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
-                                                          end                                                        ,
-                                                      [
-                                                            begin
-                                                                trampCall(_x)
-                                                            end
-                                                      ]
-                                                                   ))
-                                                  end
-                                              }                                            ,
-                                              begin
-                                                  trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
-                                                      begin
-                                                          trampCall(@_vector_MIMARK_GTMARKlist)
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_obj)
-                                                        end
-                                                  ]
-                                                               ))
-                                              end
-                                        ]
-                                                     ))
-                                    end
-                              ]
-                                           )
-                          end
-                      end
+                                                trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
+                                                    trampCall(@_vector_MIMARK_GTMARKlist)                                                  ,
+                                                [
+                                                      trampCall(_obj)
+                                                ]
+                                                             ))
+                                            end
+                                      ]
+                                                   ))
+                                  end
+                            ]
+                                         )
+                        end
                   else
                       if ( 
                         begin
                             trampCall( self._hash_MIMARKtable_QUMARK_METHOD(  'hash-table?',
-                                begin
-                                    trampCall(@_hash_MIMARKtable_QUMARK)
-                                end                              ,
+                                trampCall(@_hash_MIMARKtable_QUMARK)                              ,
                             [
-                                  begin
-                                      trampCall(_obj)
-                                  end
+                                  trampCall(_obj)
                             ]
                                          ))
                         end
                        ) then
-                          begin
-                              begin
-                                  delayCall( '_map',  'map',
-                                      begin
-                                          trampCall(@_map)
-                                      end                                    ,
-                                  [
-                                        Proc.new { |_entry| 
-                                            begin
-                                                _cons(
-                                                    begin
-                                                        _car(
-                                                            begin
-                                                                trampCall(_entry)
-                                                            end
-                                                        )
-                                                    end                                                  ,
-                                                    begin
-                                                        trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
-                                                            begin
-                                                                trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
-                                                            end                                                          ,
-                                                        [
-                                                              begin
-                                                                  _cdr(
-                                                                      begin
-                                                                          trampCall(_entry)
-                                                                      end
-                                                                  )
-                                                              end
-                                                        ]
-                                                                     ))
-                                                    end
-                                                )
-                                            end
-                                        }                                      ,
-                                        begin
-                                            trampCall( self._hash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  'hash-table->alist',
-                                                begin
-                                                    trampCall(@_hash_MIMARKtable_MIMARK_GTMARKalist)
-                                                end                                              ,
-                                            [
+                            begin
+                                delayCall( '_map',  'map',
+                                    trampCall(@_map)                                  ,
+                                [
+                                      Proc.new { |_entry| 
+                                          begin
+                                              _cons(
                                                   begin
-                                                      trampCall(_obj)
+                                                      _car(
+                                                          trampCall(_entry)
+                                                      )
+                                                  end                                                ,
+                                                  begin
+                                                      trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
+                                                          trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                                                        ,
+                                                      [
+                                                            begin
+                                                                _cdr(
+                                                                    trampCall(_entry)
+                                                                )
+                                                            end
+                                                      ]
+                                                                   ))
                                                   end
-                                            ]
-                                                         ))
-                                        end
-                                  ]
-                                               )
-                              end
-                          end
+                                              )
+                                          end
+                                      }                                    ,
+                                      begin
+                                          trampCall( self._hash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  'hash-table->alist',
+                                              trampCall(@_hash_MIMARKtable_MIMARK_GTMARKalist)                                            ,
+                                          [
+                                                trampCall(_obj)
+                                          ]
+                                                       ))
+                                      end
+                                ]
+                                             )
+                            end
                       else
                           if ( 
                           true
                            ) then
-                              begin
-                                  begin
-                                      trampCall(_obj)
-                                  end
-                              end
+                                trampCall(_obj)
                           else
                               Cell.new()
                           end
@@ -211,155 +161,111 @@ trampCall(
               if ( 
                 begin
                     _null_QUMARK(
-                        begin
-                            trampCall(_obj)
-                        end
+                        trampCall(_obj)
                     )
                 end
                ) then
-                  begin
-                      begin
-                          delayCall( '_make_MIMARKhash_MIMARKtable',  'make-hash-table',
-                              begin
-                                  trampCall(@_make_MIMARKhash_MIMARKtable)
-                              end                            ,
-                          [
-                          ]
-                                       )
-                      end
-                  end
+                    begin
+                        delayCall( '_make_MIMARKhash_MIMARKtable',  'make-hash-table',
+                            trampCall(@_make_MIMARKhash_MIMARKtable)                          ,
+                        [
+                        ]
+                                     )
+                    end
               else
                   if ( 
                     begin
                         trampCall( self._vector_QUMARK_METHOD(  'vector?',
-                            begin
-                                trampCall(@_vector_QUMARK)
-                            end                          ,
+                            trampCall(@_vector_QUMARK)                          ,
                         [
-                              begin
-                                  trampCall(_obj)
-                              end
+                              trampCall(_obj)
                         ]
                                      ))
                     end
                    ) then
-                      begin
-                          begin
-                              delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
+                        begin
+                            delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
+                                trampCall(@_list_MIMARK_GTMARKvector)                              ,
+                            [
                                   begin
-                                      trampCall(@_list_MIMARK_GTMARKvector)
-                                  end                                ,
-                              [
-                                    begin
-                                        trampCall( self._map_METHOD(  'map',
+                                      trampCall( self._map_METHOD(  'map',
+                                          trampCall(@_map)                                        ,
+                                      [
+                                            Proc.new { |_x| 
+                                                begin
+                                                    trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                                                        trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                                                      ,
+                                                    [
+                                                          trampCall(_x)
+                                                    ]
+                                                                 ))
+                                                end
+                                            }                                          ,
                                             begin
-                                                trampCall(@_map)
-                                            end                                          ,
-                                        [
-                                              Proc.new { |_x| 
-                                                  begin
-                                                      trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                                                          begin
-                                                              trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
-                                                          end                                                        ,
-                                                      [
-                                                            begin
-                                                                trampCall(_x)
-                                                            end
-                                                      ]
-                                                                   ))
-                                                  end
-                                              }                                            ,
-                                              begin
-                                                  trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
-                                                      begin
-                                                          trampCall(@_vector_MIMARK_GTMARKlist)
-                                                      end                                                    ,
-                                                  [
-                                                        begin
-                                                            trampCall(_obj)
-                                                        end
-                                                  ]
-                                                               ))
-                                              end
-                                        ]
-                                                     ))
-                                    end
-                              ]
-                                           )
-                          end
-                      end
+                                                trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
+                                                    trampCall(@_vector_MIMARK_GTMARKlist)                                                  ,
+                                                [
+                                                      trampCall(_obj)
+                                                ]
+                                                             ))
+                                            end
+                                      ]
+                                                   ))
+                                  end
+                            ]
+                                         )
+                        end
                   else
                       if ( 
                         begin
                             _pair_QUMARK(
-                                begin
-                                    trampCall(_obj)
-                                end
+                                trampCall(_obj)
                             )
                         end
                        ) then
-                          begin
-                              begin
-                                  delayCall( '_alist_MIMARK_GTMARKhash_MIMARKtable',  'alist->hash-table',
+                            begin
+                                delayCall( '_alist_MIMARK_GTMARKhash_MIMARKtable',  'alist->hash-table',
+                                    trampCall(@_alist_MIMARK_GTMARKhash_MIMARKtable)                                  ,
+                                [
                                       begin
-                                          trampCall(@_alist_MIMARK_GTMARKhash_MIMARKtable)
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall( self._map_METHOD(  'map',
-                                                begin
-                                                    trampCall(@_map)
-                                                end                                              ,
-                                            [
-                                                  Proc.new { |_entry| 
-                                                      begin
-                                                          _cons(
-                                                              begin
-                                                                  _car(
+                                          trampCall( self._map_METHOD(  'map',
+                                              trampCall(@_map)                                            ,
+                                          [
+                                                Proc.new { |_entry| 
+                                                    begin
+                                                        _cons(
+                                                            begin
+                                                                _car(
+                                                                    trampCall(_entry)
+                                                                )
+                                                            end                                                          ,
+                                                            begin
+                                                                trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                                                                    trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                                                                  ,
+                                                                [
                                                                       begin
-                                                                          trampCall(_entry)
+                                                                          _cdr(
+                                                                              trampCall(_entry)
+                                                                          )
                                                                       end
-                                                                  )
-                                                              end                                                            ,
-                                                              begin
-                                                                  trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                                                                      begin
-                                                                          trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
-                                                                      end                                                                    ,
-                                                                  [
-                                                                        begin
-                                                                            _cdr(
-                                                                                begin
-                                                                                    trampCall(_entry)
-                                                                                end
-                                                                            )
-                                                                        end
-                                                                  ]
-                                                                               ))
-                                                              end
-                                                          )
-                                                      end
-                                                  }                                                ,
-                                                  begin
-                                                      trampCall(_obj)
-                                                  end
-                                            ]
-                                                         ))
-                                        end
-                                  ]
-                                               )
-                              end
-                          end
+                                                                ]
+                                                                             ))
+                                                            end
+                                                        )
+                                                    end
+                                                }                                              ,
+                                                trampCall(_obj)
+                                          ]
+                                                       ))
+                                      end
+                                ]
+                                             )
+                            end
                       else
                           if ( 
                           true
                            ) then
-                              begin
-                                  begin
-                                      trampCall(_obj)
-                                  end
-                              end
+                                trampCall(_obj)
                           else
                               Cell.new()
                           end
@@ -381,17 +287,11 @@ trampCall(
           Proc.new { |_str| 
               begin
                   delayCall( '__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist',  '%json:hash-table->alist',
-                      begin
-                          trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
-                      end                    ,
+                      trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                    ,
                   [
-                        begin
-                            trampCall(JSON).parse(
-                                  begin
-                                      trampCall(_str)
-                                  end
-                              )
-                        end
+                        trampCall(JSON).parse(
+                              trampCall(_str)
+                          )
                   ]
                                )
               end
@@ -414,21 +314,15 @@ trampCall(
                       ___lambda = lambda { |_str| 
                           begin
                               delayCall( '_parse_MIMARKjson_MIMARKstring',  'parse-json-string',
-                                  begin
-                                      trampCall(@_parse_MIMARKjson_MIMARKstring)
-                                  end                                ,
+                                  trampCall(@_parse_MIMARKjson_MIMARKstring)                                ,
                               [
-                                    begin
-                                        trampCall(_str)
-                                    end
+                                    trampCall(_str)
                               ]
                                            )
                           end
                       } ; ___lambda.call(
-                            begin
-                                trampCall(__).read(
-                                  )
-                            end
+                            trampCall(__).read(
+                              )
                                  )
                     end
                 } ; ___lambda.call(
@@ -437,33 +331,23 @@ trampCall(
                             if ( 
                               begin
                                   _null_QUMARK(
-                                      begin
-                                          trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
-                                      end
+                                      trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
                                   )
                               end
                              ) then
-                                begin
-                                    trampCall(STDIN)
-                                end
+                                trampCall(STDIN)
                             else
                                 begin
                                     delayCall( '_car',  'car',
-                                        begin
-                                            trampCall(@_car)
-                                        end                                      ,
+                                        trampCall(@_car)                                      ,
                                     [
-                                          begin
-                                              trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
-                                          end
+                                          trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
                                     ]
                                                  )
                                 end
                             end
                         } ; ___lambda.call(
-                              begin
-                                  trampCall(_io)
-                              end
+                              trampCall(_io)
                                    )
                       end
                            )
@@ -481,22 +365,16 @@ trampCall(
     @_construct_MIMARKjson_MIMARKstring = 
     trampCall(
           Proc.new { |_obj| 
-              begin
-                  trampCall(JSON).dump(
-                        begin
-                            trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                                begin
-                                    trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
-                                end                              ,
-                            [
-                                  begin
-                                      trampCall(_obj)
-                                  end
-                            ]
-                                         ))
-                        end
-                    )
-              end
+              trampCall(JSON).dump(
+                    begin
+                        trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                            trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                          ,
+                        [
+                              trampCall(_obj)
+                        ]
+                                     ))
+                    end
+                )
           }
     )
   end
@@ -512,55 +390,39 @@ trampCall(
           Proc.new { |_obj,*__rest__| _io = __rest__[0] ;  
               begin
                 ___lambda = lambda { |__| 
-                    begin
-                        trampCall(__).print(
-                              begin
-                                  trampCall( self._construct_MIMARKjson_MIMARKstring_METHOD(  'construct-json-string',
-                                      begin
-                                          trampCall(@_construct_MIMARKjson_MIMARKstring)
-                                      end                                    ,
-                                  [
-                                        begin
-                                            trampCall(_obj)
-                                        end
-                                  ]
-                                               ))
-                              end
-                          )
-                    end
+                    trampCall(__).print(
+                          begin
+                              trampCall( self._construct_MIMARKjson_MIMARKstring_METHOD(  'construct-json-string',
+                                  trampCall(@_construct_MIMARKjson_MIMARKstring)                                ,
+                              [
+                                    trampCall(_obj)
+                              ]
+                                           ))
+                          end
+                      )
                 } ; ___lambda.call(
                       begin
                         ___lambda = lambda { |___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189| 
                             if ( 
                               begin
                                   _null_QUMARK(
-                                      begin
-                                          trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
-                                      end
+                                      trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
                                   )
                               end
                              ) then
-                                begin
-                                    trampCall(STDOUT)
-                                end
+                                trampCall(STDOUT)
                             else
                                 begin
                                     delayCall( '_car',  'car',
-                                        begin
-                                            trampCall(@_car)
-                                        end                                      ,
+                                        trampCall(@_car)                                      ,
                                     [
-                                          begin
-                                              trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
-                                          end
+                                          trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
                                     ]
                                                  )
                                 end
                             end
                         } ; ___lambda.call(
-                              begin
-                                  trampCall(_io)
-                              end
+                              trampCall(_io)
                                    )
                       end
                            )
