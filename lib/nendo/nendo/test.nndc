@@ -260,16 +260,16 @@ trampCall(
                 [
                       trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                    ,
                     0                    ,
-                        __PLMARK_ARGS2(
-                              trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                  trampCall(@_vector_MIMARKref)                                ,
-                              [
-                                    trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                  ,
-                                  0
-                              ]
-                                           ))                          ,
-                          1
-                        )
+                        ( 
+                            trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
+                                trampCall(@_vector_MIMARKref)                              ,
+                            [
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
+                                0
+                            ]
+                                         ))                        +
+                        1
+                         ) 
                 ]
                              )
           }
@@ -290,16 +290,16 @@ trampCall(
                 [
                       trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                    ,
                     1                    ,
-                        __PLMARK_ARGS2(
-                              trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                  trampCall(@_vector_MIMARKref)                                ,
-                              [
-                                    trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                  ,
-                                  1
-                              ]
-                                           ))                          ,
-                          1
-                        )
+                        ( 
+                            trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
+                                trampCall(@_vector_MIMARKref)                              ,
+                            [
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
+                                1
+                            ]
+                                         ))                        +
+                        1
+                         ) 
                 ]
                              )
           }
@@ -320,16 +320,16 @@ trampCall(
                 [
                       trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                    ,
                     2                    ,
-                        __PLMARK_ARGS2(
-                              trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                  trampCall(@_vector_MIMARKref)                                ,
-                              [
-                                    trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                  ,
-                                  2
-                              ]
-                                           ))                          ,
-                          1
-                        )
+                        ( 
+                            trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
+                                trampCall(@_vector_MIMARKref)                              ,
+                            [
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
+                                2
+                            ]
+                                         ))                        +
+                        1
+                         ) 
                 ]
                              )
           }
@@ -350,16 +350,16 @@ trampCall(
                 [
                       trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                    ,
                     3                    ,
-                        __PLMARK_ARGS2(
-                              trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
-                                  trampCall(@_vector_MIMARKref)                                ,
-                              [
-                                    trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                  ,
-                                  3
-                              ]
-                                           ))                          ,
-                          1
-                        )
+                        ( 
+                            trampCall( self._vector_MIMARKref_METHOD(  'vector-ref',
+                                trampCall(@_vector_MIMARKref)                              ,
+                            [
+                                  trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                                ,
+                                3
+                            ]
+                                         ))                        +
+                        1
+                         ) 
                 ]
                              )
           }
@@ -465,10 +465,10 @@ trampCall(
                                                                             trampCall(@_rxmatch_MIMARKsubstring)                                                                          ,
                                                                         [
                                                                               trampCall(_m)                                                                            ,
-                                                                                __PLMARK_ARGS2(
-                                                                                    trampCall(_i)                                                                                  ,
-                                                                                  1
-                                                                                )
+                                                                                ( 
+                                                                                  trampCall(_i)                                                                                +
+                                                                                1
+                                                                                 ) 
                                                                         ]
                                                                                      ))
                                                                   )
@@ -501,10 +501,10 @@ trampCall(
                       [
                             trampCall(@__ASMARKtest_MIMARKcounts_ASMARK)                          ,
                           3                          ,
-                              __PLMARK_ARGS2(
-                                  trampCall(_orig_MIMARKabort)                                ,
-                                1
-                              )
+                              ( 
+                                trampCall(_orig_MIMARKabort)                              +
+                              1
+                               ) 
                       ]
                                    ))
                       trampCall( self._write_MIMARKsummary_METHOD(  'write-summary',
@@ -872,10 +872,10 @@ trampCall(
                                         trampCall(@_max)                                      ,
                                     [
                                         5                                        ,
-                                            __MIMARK_ARGS2(
-                                              77                                              ,
-                                                trampCall(_msglen)
-                                            )
+                                            ( 
+                                            77                                            -
+                                              trampCall(_msglen)
+                                             ) 
                                     ]
                                                  ))                                ,
                                 "-"
@@ -949,10 +949,10 @@ trampCall(
                                                           trampCall(@_max)                                                        ,
                                                       [
                                                           5                                                          ,
-                                                              __MIMARK_ARGS2(
-                                                                70                                                                ,
-                                                                  trampCall(_msglen)
-                                                              )
+                                                              ( 
+                                                              70                                                              -
+                                                                trampCall(_msglen)
+                                                               ) 
                                                       ]
                                                                    ))                                                  ,
                                                   "-"
@@ -983,15 +983,15 @@ trampCall(
                                           trampCall(@_max)                                        ,
                                       [
                                           3                                          ,
-                                              __MIMARK_ARGS2(
-                                                65                                                ,
-                                                    trampCall( self._string_MIMARKlength_METHOD(  'string-length',
-                                                        trampCall(@_string_MIMARKlength)                                                      ,
-                                                    [
-                                                          trampCall(_s)
-                                                    ]
-                                                                 ))
-                                              )
+                                              ( 
+                                              65                                              -
+                                                  trampCall( self._string_MIMARKlength_METHOD(  'string-length',
+                                                      trampCall(@_string_MIMARKlength)                                                    ,
+                                                  [
+                                                        trampCall(_s)
+                                                  ]
+                                                               ))
+                                               ) 
                                       ]
                                                    ))                                  ,
                                   " "

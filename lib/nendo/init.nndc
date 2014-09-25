@@ -1051,10 +1051,10 @@ trampCall(
     trampCall(
           Proc.new { |_n| 
               if ( 
-                  __GTMARK_EQMARK(
-                      trampCall(_n)                    ,
-                    0
-                  )
+                  ( 
+                    trampCall(_n)                  >=
+                  0
+                   ) 
                ) then
                   trampCall(_n)
               else
@@ -1083,10 +1083,10 @@ trampCall(
                 [
                       Proc.new { |_a,_b| 
                           if ( 
-                              __GTMARK(
-                                  trampCall(_a)                                ,
-                                  trampCall(_b)
-                              )
+                              ( 
+                                trampCall(_a)                              >
+                                trampCall(_b)
+                               ) 
                            ) then
                               trampCall(_a)
                           else
@@ -1119,10 +1119,10 @@ trampCall(
                 [
                       Proc.new { |_a,_b| 
                           if ( 
-                              __LTMARK(
-                                  trampCall(_a)                                ,
-                                  trampCall(_b)
-                              )
+                              ( 
+                                trampCall(_a)                              <
+                                trampCall(_b)
+                               ) 
                            ) then
                               trampCall(_a)
                           else
@@ -1235,10 +1235,10 @@ trampCall(
                                             trampCall(_nth_MIMARKiter)                                          ,
                                         [
                                               trampCall(_n)                                            ,
-                                                __PLMARK_ARGS2(
-                                                    trampCall(_index)                                                  ,
-                                                  1
-                                                )                                            ,
+                                                ( 
+                                                  trampCall(_index)                                                +
+                                                1
+                                                 )                                             ,
                                                 _cdr(
                                                     trampCall(_lst)
                                                 )
@@ -1679,12 +1679,12 @@ trampCall(
                                               )
                                         end                                      ,
                                         if ( 
-                                            __LTMARK(
-                                              0                                              ,
-                                                  _length(
-                                                      trampCall(_elseblock)
-                                                  )
-                                            )
+                                            ( 
+                                            0                                            <
+                                                _length(
+                                                    trampCall(_elseblock)
+                                                )
+                                             ) 
                                          ) then
                                             trampCall(_elseblock)
                                         else
@@ -2444,10 +2444,10 @@ trampCall(
                                               trampCall( callProcedure(  '_foo',  'foo',
                                                   trampCall(_foo)                                                ,
                                               [
-                                                      __PLMARK_ARGS2(
-                                                          trampCall(_level)                                                        ,
-                                                        1
-                                                      )                                                  ,
+                                                      ( 
+                                                        trampCall(_level)                                                      +
+                                                      1
+                                                       )                                                   ,
                                                       _cdr(
                                                           trampCall(_form)
                                                       )
@@ -2493,12 +2493,12 @@ trampCall(
                                                             trampCall(@__PAMARKraise)                                                          ,
                                                         [
                                                               trampCall(RuntimeError)                                                            ,
-                                                                __PLMARK_ARGS2(
-                                                                  "Error: Unquote-splicing wasn't in a list: "                                                                  ,
-                                                                      _write_MIMARKto_MIMARKstring(
-                                                                          trampCall(_form)
-                                                                      )
-                                                                )                                                            ,
+                                                                ( 
+                                                                "Error: Unquote-splicing wasn't in a list: "                                                                +
+                                                                    _write_MIMARKto_MIMARKstring(
+                                                                        trampCall(_form)
+                                                                    )
+                                                                 )                                                             ,
                                                                 trampCall( self._sprintf_METHOD(  'sprintf',
                                                                     trampCall(@_sprintf)                                                                  ,
                                                                 [
@@ -2616,10 +2616,10 @@ trampCall(
                                                             trampCall( callProcedure(  '_foo',  'foo',
                                                                 trampCall(_foo)                                                              ,
                                                             [
-                                                                    __MIMARK_ARGS2(
-                                                                        trampCall(_level)                                                                      ,
-                                                                      1
-                                                                    )                                                                ,
+                                                                    ( 
+                                                                      trampCall(_level)                                                                    -
+                                                                    1
+                                                                     )                                                                 ,
                                                                     _cdr(
                                                                         trampCall(_form)
                                                                     )
@@ -2644,10 +2644,10 @@ trampCall(
                                                                 trampCall( callProcedure(  '_foo',  'foo',
                                                                     trampCall(_foo)                                                                  ,
                                                                 [
-                                                                        __MIMARK_ARGS2(
-                                                                            trampCall(_level)                                                                          ,
-                                                                          1
-                                                                        )                                                                    ,
+                                                                        ( 
+                                                                          trampCall(_level)                                                                        -
+                                                                        1
+                                                                         )                                                                     ,
                                                                         _cdr(
                                                                             trampCall(_form)
                                                                         )
@@ -3011,12 +3011,12 @@ trampCall(
                                 end
                             end
                         } ; ___lambda.call(
-                                __LTMARK(
-                                      _length(
-                                          trampCall(_lst)
-                                      )                                  ,
-                                  3
-                                )
+                                ( 
+                                    _length(
+                                        trampCall(_lst)
+                                    )                                <
+                                3
+                                 ) 
                                    )
                       end
                      ) then
@@ -3094,12 +3094,12 @@ trampCall(
                                     end
                                 end
                             } ; ___lambda.call(
-                                    __LTMARK(
-                                          _length(
-                                              trampCall(_lst)
-                                          )                                      ,
-                                      2
-                                    )
+                                    ( 
+                                        _length(
+                                            trampCall(_lst)
+                                        )                                    <
+                                    2
+                                     ) 
                                        )
                           end
                          ) then
@@ -3496,12 +3496,12 @@ trampCall(
                                                                                                                                                     trampCall(_x)
                                                                                                                                               else
                                                                                                                                                   if ( 
-                                                                                                                                                      __LTMARK(
-                                                                                                                                                            _length(
-                                                                                                                                                                trampCall(_x)
-                                                                                                                                                            )                                                                                                                                                        ,
-                                                                                                                                                        3
-                                                                                                                                                      )
+                                                                                                                                                      ( 
+                                                                                                                                                          _length(
+                                                                                                                                                              trampCall(_x)
+                                                                                                                                                          )                                                                                                                                                      <
+                                                                                                                                                      3
+                                                                                                                                                       ) 
                                                                                                                                                    ) then
                                                                                                                                                           _car(
                                                                                                                                                               trampCall(_x)
@@ -4438,12 +4438,12 @@ trampCall(
                                 begin #makeLet
                                   ___lambda = lambda { |_defs,_rest| 
                                       if ( 
-                                          __LTMARK(
-                                            0                                            ,
-                                                _length(
-                                                    trampCall(_defs)
-                                                )
-                                          )
+                                          ( 
+                                          0                                          <
+                                              _length(
+                                                  trampCall(_defs)
+                                              )
+                                           ) 
                                        ) then
                                             delayCall( '_cons',  'cons',
                                                 trampCall(@_cons)                                              ,
@@ -5961,12 +5961,12 @@ trampCall(
                                   false
                                 end
                             } ; ___lambda.call(
-                                    __GTMARK_EQMARK(
-                                      2                                      ,
-                                          _length(
-                                              trampCall(_kv_MIMARKlist)
-                                          )
-                                    )
+                                    ( 
+                                    2                                    >=
+                                        _length(
+                                            trampCall(_kv_MIMARKlist)
+                                        )
+                                     ) 
                                        )
                           end
                       end
@@ -6237,25 +6237,25 @@ trampCall(
                                  ) then
                                       _cons(
                                             _string_MIMARK_GTMARKsymbol(
-                                                  __PLMARK_ARGS3(
-                                                        _to_MIMARKs(
-                                                              trampCall( self._first_METHOD(  'first',
-                                                                  trampCall(@_first)                                                                ,
-                                                              [
-                                                                    trampCall(_lst)
-                                                              ]
-                                                                           ))
-                                                        )                                                    ,
-                                                    "."                                                    ,
-                                                        _to_MIMARKs(
-                                                              trampCall( self._second_METHOD(  'second',
-                                                                  trampCall(@_second)                                                                ,
-                                                              [
-                                                                    trampCall(_lst)
-                                                              ]
-                                                                           ))
-                                                        )
-                                                  )
+                                                  ( 
+                                                      _to_MIMARKs(
+                                                            trampCall( self._first_METHOD(  'first',
+                                                                trampCall(@_first)                                                              ,
+                                                            [
+                                                                  trampCall(_lst)
+                                                            ]
+                                                                         ))
+                                                      )                                                  +
+                                                  "."                                                  +
+                                                      _to_MIMARKs(
+                                                            trampCall( self._second_METHOD(  'second',
+                                                                trampCall(@_second)                                                              ,
+                                                            [
+                                                                  trampCall(_lst)
+                                                            ]
+                                                                         ))
+                                                      )
+                                                   ) 
                                             )                                        ,
                                             trampCall( self._cddr_METHOD(  'cddr',
                                                 trampCall(@_cddr)                                              ,
@@ -6286,20 +6286,20 @@ trampCall(
                                                   _cons(
                                                         _cons(
                                                               _string_MIMARK_GTMARKsymbol(
-                                                                    __PLMARK_ARGS3(
-                                                                          _to_MIMARKs(
-                                                                              trampCall(_tmp)
-                                                                          )                                                                      ,
-                                                                      "."                                                                      ,
-                                                                          _to_MIMARKs(
-                                                                                trampCall( self._second_METHOD(  'second',
-                                                                                    trampCall(@_second)                                                                                  ,
-                                                                                [
-                                                                                      trampCall(_lst)
-                                                                                ]
-                                                                                             ))
-                                                                          )
-                                                                    )
+                                                                    ( 
+                                                                        _to_MIMARKs(
+                                                                            trampCall(_tmp)
+                                                                        )                                                                    +
+                                                                    "."                                                                    +
+                                                                        _to_MIMARKs(
+                                                                              trampCall( self._second_METHOD(  'second',
+                                                                                  trampCall(@_second)                                                                                ,
+                                                                              [
+                                                                                    trampCall(_lst)
+                                                                              ]
+                                                                                           ))
+                                                                        )
+                                                                     ) 
                                                               )                                                          ,
                                                               trampCall( self._cddr_METHOD(  'cddr',
                                                                   trampCall(@_cddr)                                                                ,
@@ -6323,12 +6323,12 @@ trampCall(
                           end
                       }
                     if ( 
-                        __GTMARK(
-                          2                          ,
-                              _length(
-                                  trampCall(_lst)
-                              )
-                        )
+                        ( 
+                        2                        >
+                            _length(
+                                trampCall(_lst)
+                            )
+                         ) 
                      ) then
                             trampCall( self.__PAMARKraise_METHOD(  '%raise',
                                 trampCall(@__PAMARKraise)                              ,
@@ -6422,12 +6422,12 @@ trampCall(
               begin #makeLet
                 ___lambda = lambda { |_opt| 
                     if ( 
-                        __LTMARK(
-                          1                          ,
-                              _length(
-                                  trampCall(_lst)
-                              )
-                        )
+                        ( 
+                        1                        <
+                            _length(
+                                trampCall(_lst)
+                            )
+                         ) 
                      ) then
                           begin raise RuntimeError, 
                           "with-open requires 2 or 3 arguments."
@@ -6962,17 +6962,17 @@ trampCall(
                     _not(
                           _eq_QUMARK(
                             false                            ,
-                                __LTMARK_EQMARK(
-                                  0                                  ,
-                                    trampCall(_index)
-                                )
+                                ( 
+                                0                                <=
+                                  trampCall(_index)
+                                 ) 
                           )
                     )
                  ) then
-                      __LTMARK(
-                          trampCall(_index)                        ,
-                          trampCall(_v).size
-                      )
+                      ( 
+                        trampCall(_index)                      <
+                        trampCall(_v).size
+                       ) 
                 else
                   false
                 end
@@ -7414,10 +7414,10 @@ trampCall(
                             trampCall(_x)
                       else
                           if ( 
-                              __LTMARK(
-                                  trampCall(@__ASMARKdebug_MIMARKprint_MIMARKlength_ASMARK)                                ,
-                                  trampCall(_x).length
-                              )
+                              ( 
+                                trampCall(@__ASMARKdebug_MIMARKprint_MIMARKlength_ASMARK)                              <
+                                trampCall(_x).length
+                               ) 
                            ) then
                                 begin #makeLet
                                   ___lambda = lambda { |_n| 
@@ -7709,10 +7709,10 @@ trampCall(
                                                           [
                                                                 trampCall(_f)                                                              ,
                                                                 trampCall(_e)                                                              ,
-                                                                  __PLMARK_ARGS2(
-                                                                      trampCall(_level)                                                                    ,
-                                                                    1
-                                                                  )                                                              ,
+                                                                  ( 
+                                                                    trampCall(_level)                                                                  +
+                                                                  1
+                                                                   )                                                               ,
                                                                 trampCall(_prefix)
                                                           ]
                                                                        ))
@@ -8398,37 +8398,37 @@ trampCall(
                                                     else
                                                         if ( 
                                                           trampCall(File).exist?(
-                                                                  __PLMARK_ARGS2(
-                                                                      trampCall(_full_MIMARKpath)                                                                    ,
-                                                                    ".nndc"
-                                                                  )
+                                                                  ( 
+                                                                    trampCall(_full_MIMARKpath)                                                                  +
+                                                                  ".nndc"
+                                                                   ) 
                                                             )
                                                          ) then
                                                                 delayCall( '__PAMARKload_MIMARKcompiled_MIMARKcode',  '%load-compiled-code',
                                                                     trampCall(@__PAMARKload_MIMARKcompiled_MIMARKcode)                                                                  ,
                                                                 [
-                                                                        __PLMARK_ARGS2(
-                                                                            trampCall(_full_MIMARKpath)                                                                          ,
-                                                                          ".nndc"
-                                                                        )
+                                                                        ( 
+                                                                          trampCall(_full_MIMARKpath)                                                                        +
+                                                                        ".nndc"
+                                                                         ) 
                                                                 ]
                                                                              )
                                                         else
                                                             if ( 
                                                               trampCall(File).exist?(
-                                                                      __PLMARK_ARGS2(
-                                                                          trampCall(_full_MIMARKpath)                                                                        ,
-                                                                        ".nnd"
-                                                                      )
+                                                                      ( 
+                                                                        trampCall(_full_MIMARKpath)                                                                      +
+                                                                      ".nnd"
+                                                                       ) 
                                                                 )
                                                              ) then
                                                                     delayCall( '__PAMARKload',  '%load',
                                                                         trampCall(@__PAMARKload)                                                                      ,
                                                                     [
-                                                                            __PLMARK_ARGS2(
-                                                                                trampCall(_full_MIMARKpath)                                                                              ,
-                                                                              ".nnd"
-                                                                            )
+                                                                            ( 
+                                                                              trampCall(_full_MIMARKpath)                                                                            +
+                                                                            ".nnd"
+                                                                             ) 
                                                                     ]
                                                                                  )
                                                             else
@@ -8450,13 +8450,13 @@ trampCall(
                                                         end
                                                     end
                                                 } ; ___lambda.call(
-                                                        __PLMARK_ARGS3(
-                                                              _car(
-                                                                  trampCall(_load_MIMARKpath)
-                                                              )                                                          ,
-                                                          "/"                                                          ,
-                                                            trampCall(_path)
-                                                        )
+                                                        ( 
+                                                            _car(
+                                                                trampCall(_load_MIMARKpath)
+                                                            )                                                        +
+                                                        "/"                                                        +
+                                                          trampCall(_path)
+                                                         ) 
                                                            )
                                               end
                                         else
@@ -8482,10 +8482,10 @@ trampCall(
                                         trampCall(@_map)                                      ,
                                     [
                                           Proc.new { |_x| 
-                                                __PLMARK_ARGS2(
-                                                    trampCall(_x)                                                  ,
-                                                  "/nendo"
-                                                )
+                                                ( 
+                                                  trampCall(_x)                                                +
+                                                "/nendo"
+                                                 ) 
                                           }                                        ,
                                           trampCall(@__ASMARKload_MIMARKpath_ASMARK)
                                     ]
@@ -8874,19 +8874,19 @@ trampCall(
                                           true
                                            ) then
                                                 trampCall(_f).puts(
-                                                        __PLMARK_ARGS3(
-                                                              trampCall( self._string_MIMARKjoin_METHOD(  'string-join',
-                                                                  trampCall(@_string_MIMARKjoin)                                                                ,
-                                                              [
-                                                                  Cell.new("#",Cell.new("#    This file is nendo's compiled library file. ",Cell.new("#    generated  \"nendo -c src\" command. ",Cell.new("# "))))                                                                  ,
-                                                                  "
+                                                        ( 
+                                                            trampCall( self._string_MIMARKjoin_METHOD(  'string-join',
+                                                                trampCall(@_string_MIMARKjoin)                                                              ,
+                                                            [
+                                                                Cell.new("#",Cell.new("#    This file is nendo's compiled library file. ",Cell.new("#    generated  \"nendo -c src\" command. ",Cell.new("# "))))                                                                ,
+                                                                "
 "
-                                                              ]
-                                                                           ))                                                          ,
-                                                          "
-"                                                          ,
-                                                            trampCall(_str)
-                                                        )
+                                                            ]
+                                                                         ))                                                        +
+                                                        "
+"                                                        +
+                                                          trampCall(_str)
+                                                         ) 
                                                   )
                                           else
                                               Cell.new()
@@ -9080,12 +9080,12 @@ trampCall(
                                                   [
                                                         Proc.new { |_orig| 
                                                               _string_MIMARK_GTMARKsymbol(
-                                                                    __PLMARK_ARGS2(
-                                                                      "/nendo/core/"                                                                      ,
-                                                                          _symbol_MIMARK_GTMARKstring(
-                                                                              trampCall(_orig)
-                                                                          )
-                                                                    )
+                                                                    ( 
+                                                                    "/nendo/core/"                                                                    +
+                                                                        _symbol_MIMARK_GTMARKstring(
+                                                                            trampCall(_orig)
+                                                                        )
+                                                                     ) 
                                                               )
                                                         }                                                      ,
                                                         trampCall(_reserved_MIMARKorig)
@@ -9187,12 +9187,12 @@ trampCall(
                                           )
                                     )
                                  ) then
-                                      __LTMARK(
-                                        0                                        ,
-                                            _length(
-                                                trampCall(_sexp)
-                                            )
-                                      )
+                                      ( 
+                                      0                                      <
+                                          _length(
+                                              trampCall(_sexp)
+                                          )
+                                       ) 
                                 else
                                   false
                                 end
@@ -10655,12 +10655,12 @@ trampCall(
                             end 
                       end
                       if ( 
-                          __GTMARK(
-                            3                            ,
-                                _length(
-                                    trampCall(_expr)
-                                )
-                          )
+                          ( 
+                          3                          >
+                              _length(
+                                  trampCall(_expr)
+                              )
+                           ) 
                        ) then
                             begin raise RuntimeError, 
                               "syntax-rules requires: (syntax-rules (ellipses...) ..patterns..) form (3). but got: " ' ' + 
@@ -10756,10 +10756,10 @@ trampCall(
                                           
                                           _count = 
                                           trampCall(
-                                                  __PLMARK_ARGS2(
-                                                      trampCall(_count)                                                    ,
-                                                    1
-                                                  )
+                                                  ( 
+                                                    trampCall(_count)                                                  +
+                                                  1
+                                                   ) 
                                           )
                                         end
                                           trampCall( callProcedure(  '_rename',  'rename',
@@ -11263,10 +11263,10 @@ trampCall(
                                                                                                                             _car(
                                                                                                                                 trampCall(_p)
                                                                                                                             )                                                                                                                        ,
-                                                                                                                            __PLMARK_ARGS2(
-                                                                                                                              1                                                                                                                              ,
-                                                                                                                                trampCall(_dim)
-                                                                                                                            )
+                                                                                                                            ( 
+                                                                                                                            1                                                                                                                            +
+                                                                                                                              trampCall(_dim)
+                                                                                                                             ) 
                                                                                                                       )                                                                                                                  ,
                                                                                                                     trampCall(_vars)
                                                                                                                 )
@@ -11402,10 +11402,10 @@ trampCall(
                                                                                                                                     trampCall(_w)
                                                                                                                               ]
                                                                                                                                            ))                                                                                                                          ,
-                                                                                                                              __PLMARK_ARGS2(
-                                                                                                                                  trampCall(_dim)                                                                                                                                ,
-                                                                                                                                1
-                                                                                                                              )                                                                                                                          ,
+                                                                                                                              ( 
+                                                                                                                                trampCall(_dim)                                                                                                                              +
+                                                                                                                              1
+                                                                                                                               )                                                                                                                           ,
                                                                                                                           Cell.new()                                                                                                                          ,
                                                                                                                             Proc.new { |__| 
                                                                                                                                   _cons(
@@ -11485,10 +11485,10 @@ trampCall(
                                                                                                                   _car(
                                                                                                                       trampCall(_p)
                                                                                                                   )                                                                                                              ,
-                                                                                                                  __PLMARK_ARGS2(
-                                                                                                                      trampCall(_dim)                                                                                                                    ,
-                                                                                                                    1
-                                                                                                                  )
+                                                                                                                  ( 
+                                                                                                                    trampCall(_dim)                                                                                                                  +
+                                                                                                                  1
+                                                                                                                   ) 
                                                                                                           ]
                                                                                                                        ))
                                                                                                              )
@@ -11830,17 +11830,17 @@ trampCall(
                                             ]
                                                          ))
                                          ) then
-                                              __PLMARK_ARGS2(
-                                                1                                                ,
-                                                    trampCall( self._ellipse_MIMARKdepth_METHOD(  'ellipse-depth',
-                                                        trampCall(@_ellipse_MIMARKdepth)                                                      ,
-                                                    [
-                                                            _cdr(
-                                                                trampCall(_x)
-                                                            )
-                                                    ]
-                                                                 ))
-                                              )
+                                              ( 
+                                              1                                              +
+                                                  trampCall( self._ellipse_MIMARKdepth_METHOD(  'ellipse-depth',
+                                                      trampCall(@_ellipse_MIMARKdepth)                                                    ,
+                                                  [
+                                                          _cdr(
+                                                              trampCall(_x)
+                                                          )
+                                                  ]
+                                                               ))
+                                               ) 
                                         else
                                           0
                                         end
@@ -11937,10 +11937,10 @@ trampCall(
                                                                         _car(
                                                                             trampCall(_x)
                                                                         )                                                                    ,
-                                                                        __PLMARK_ARGS2(
-                                                                            trampCall(_dim)                                                                          ,
-                                                                          1
-                                                                        )                                                                    ,
+                                                                        ( 
+                                                                          trampCall(_dim)                                                                        +
+                                                                        1
+                                                                         )                                                                     ,
                                                                       trampCall(_vars)
                                                                 ]
                                                                              ))
@@ -12072,12 +12072,12 @@ trampCall(
                                                                  ) then
                                                                     trampCall( callProcedure( nil, 'anonymouse', 
                                                                         Proc.new { |_cell| 
-                                                                              __GTMARK_EQMARK(
-                                                                                    _cdr(
-                                                                                        trampCall(_cell)
-                                                                                    )                                                                                ,
-                                                                                  trampCall(_dim)
-                                                                              )
+                                                                              ( 
+                                                                                  _cdr(
+                                                                                      trampCall(_cell)
+                                                                                  )                                                                              >=
+                                                                                trampCall(_dim)
+                                                                               ) 
                                                                         }                                                                      ,
                                                                     [
                                                                           trampCall(@___gensym__f28d97254eae7310ad1652f5536a07a6f8508817_30553)
@@ -12220,12 +12220,12 @@ trampCall(
                                                               trampCall( callProcedure( nil, 'anonymouse', 
                                                                   Proc.new { |_cell| 
                                                                       if ( 
-                                                                          __LTMARK_EQMARK(
-                                                                                _cdr(
-                                                                                    trampCall(_cell)
-                                                                                )                                                                            ,
-                                                                              trampCall(_dim)
-                                                                          )
+                                                                          ( 
+                                                                              _cdr(
+                                                                                  trampCall(_cell)
+                                                                              )                                                                          <=
+                                                                            trampCall(_dim)
+                                                                           ) 
                                                                        ) then
                                                                           trampCall(_t)
                                                                       else
@@ -12393,10 +12393,10 @@ trampCall(
                                                                                                                                       trampCall( callProcedure(  '___gensym__f28d97254eae7310ad1652f5536a07a6f8508817_30557',  '__gensym__f28d97254eae7310ad1652f5536a07a6f8508817_30557',
                                                                                                                                           trampCall(___gensym__f28d97254eae7310ad1652f5536a07a6f8508817_30557)                                                                                                                                        ,
                                                                                                                                       [
-                                                                                                                                              __MIMARK_ARGS2(
-                                                                                                                                                  trampCall(_d)                                                                                                                                                ,
-                                                                                                                                                1
-                                                                                                                                              )                                                                                                                                          ,
+                                                                                                                                              ( 
+                                                                                                                                                trampCall(_d)                                                                                                                                              -
+                                                                                                                                              1
+                                                                                                                                               )                                                                                                                                           ,
                                                                                                                                               trampCall( self._list_METHOD(  'list',
                                                                                                                                                   trampCall(@_list)                                                                                                                                                ,
                                                                                                                                               [
@@ -12508,10 +12508,10 @@ trampCall(
                                                                                                  )
                                                                                     end
                                                                                 } ; ___lambda.call(
-                                                                                        __PLMARK_ARGS2(
-                                                                                            trampCall(_dim)                                                                                          ,
-                                                                                            trampCall(_depth)
-                                                                                        )
+                                                                                        ( 
+                                                                                          trampCall(_dim)                                                                                        +
+                                                                                          trampCall(_depth)
+                                                                                         ) 
                                                                                            )
                                                                               end
                                                                           } ; ___lambda.call(

@@ -375,37 +375,6 @@ module Nendo
       end
     end
 
-    def optimizedFunc( origname, rubysym, args )
-      case origname
-      when '+', '-', '*'
-        case args.length
-        when 0
-          [ "#{rubysym}_ARGS0(",                                       ")" ]
-        when 1
-          [ "#{rubysym}_ARGS1(",           args[0],                     ")" ]
-        when 2
-          [ "#{rubysym}_ARGS2(",           args[0], args[1],             ")" ]
-        when 3
-          [ "#{rubysym}_ARGS3(",           args[0], args[1], args[2],     ")" ]
-        else
-          false
-        end
-      when 'car', 'cdr', 'not', 'length', 'null?', 'reverse', 'uniq',
-        'write', 'write-to-string', 'display', 'print',
-        'procedure?', 'macro?', 'symbol?', 'keyword?', 'syntax?', 'core-syntax?',
-        'pair?', '%list?', 'integer?', 'number?', 'string?', 'macroexpand-1',
-        'to-s', 'to-i', 'nil?', 'to-list', 'to-arr',
-        'intern', 'string->symbol', 'symbol->string', 'read-from-string'
-        raise ArgumentError, "Error: #{origname} requires 1 argument. "  unless 1 == args.length
-        [ "#{rubysym}(",              args[0],         ")" ]
-      when 'cons', '=', ">", ">=", "<", "<=", "eq?", "equal?", 'set-car!', 'set-cdr!'
-        raise ArgumentError, "Error: #{origname} requires 2 arguments. " unless 2 == args.length
-        [ "#{rubysym}(",            args[0], args[1], ")" ]
-      else
-        false
-      end
-    end
-
     def execFunc( funcname, args, sourcefile, lineno, locals, sourceInfo, execType )
       funcname = castParsedSymbol( funcname )
       if isDefines( funcname )
@@ -470,6 +439,8 @@ module Nendo
               end
             end
             if result
+#              puts "result:"
+#              pp result
               generateEmbedBacktraceInfo( sourcefile, lineno, result )
             else
               _call = case execType
@@ -1113,7 +1084,11 @@ module Nendo
           ppRubyExp( level+1, x )
         else
           str = sprintf( "%s", x )
-          if str.match( /^[,]/ ) or str.match( /^ = / )
+          if str.match( /^[*+-]$/ )
+            sprintf( "%s%s", indent, str )
+          elsif str == ">" or str == ">=" or str == "<" or str == "<="
+            sprintf( "%s%s", indent, str )
+          elsif str.match( /^[,]/ ) or str.match( /^ = / )
             sprintf( "%s%s", indent, str )
           else
             sprintf( "\n%s%s", indent, str )

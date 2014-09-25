@@ -37,20 +37,20 @@ trampCall(
                           ___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30266                           = 
                             Proc.new { |_i,_ans| 
                                 if ( 
-                                    __LTMARK_EQMARK(
-                                        trampCall(_i)                                      ,
-                                      0
-                                    )
+                                    ( 
+                                      trampCall(_i)                                    <=
+                                    0
+                                     ) 
                                  ) then
                                       trampCall(_ans)
                                 else
                                         delayCall( '___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30266',  '__gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30266',
                                             trampCall(___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30266)                                          ,
                                         [
-                                                __MIMARK_ARGS2(
-                                                    trampCall(_i)                                                  ,
-                                                  1
-                                                )                                            ,
+                                                ( 
+                                                  trampCall(_i)                                                -
+                                                1
+                                                 )                                             ,
                                                 _cons(
                                                     trampCall(_elt)                                                  ,
                                                     trampCall(_ans)
@@ -132,20 +132,20 @@ trampCall(
                     ___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30267                     = 
                       Proc.new { |_i,_ans| 
                           if ( 
-                              __LTMARK(
-                                  trampCall(_i)                                ,
-                                0
-                              )
+                              ( 
+                                trampCall(_i)                              <
+                              0
+                               ) 
                            ) then
                                 trampCall(_ans)
                           else
                                   delayCall( '___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30267',  '__gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30267',
                                       trampCall(___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30267)                                    ,
                                   [
-                                          __MIMARK_ARGS2(
-                                              trampCall(_i)                                            ,
-                                            1
-                                          )                                      ,
+                                          ( 
+                                            trampCall(_i)                                          -
+                                          1
+                                           )                                       ,
                                           _cons(
                                                 trampCall( callProcedure(  '_proc',  'proc',
                                                     trampCall(_proc)                                                  ,
@@ -162,10 +162,10 @@ trampCall(
                       delayCall( '___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30267',  '__gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30267',
                           trampCall(___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30267)                        ,
                       [
-                              __MIMARK_ARGS2(
-                                  trampCall(_len)                                ,
-                                1
-                              )                          ,
+                              ( 
+                                trampCall(_len)                              -
+                              1
+                               )                           ,
                           Cell.new()
                       ]
                                    )
@@ -293,10 +293,10 @@ trampCall(
     trampCall(
           Proc.new { |_count,*__rest__| _args = __rest__[0] ;  
               if ( 
-                  __LTMARK(
-                      trampCall(_count)                    ,
-                    0
-                  )
+                  ( 
+                    trampCall(_count)                  <
+                  0
+                   ) 
                ) then
                   begin raise RuntimeError, 
                     "Negative step count" ' ' + 
@@ -317,24 +317,24 @@ trampCall(
                                 ___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30268                                 = 
                                   Proc.new { |_count,_val,_ans| 
                                       if ( 
-                                          __LTMARK_EQMARK(
-                                              trampCall(_count)                                            ,
-                                            0
-                                          )
+                                          ( 
+                                            trampCall(_count)                                          <=
+                                          0
+                                           ) 
                                        ) then
                                             trampCall(_ans)
                                       else
                                               delayCall( '___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30268',  '__gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30268',
                                                   trampCall(___gensym__3a6fb51a4afc9a00b624538ff0c698aecda43d9c_30268)                                                ,
                                               [
-                                                      __MIMARK_ARGS2(
-                                                          trampCall(_count)                                                        ,
-                                                        1
-                                                      )                                                  ,
-                                                      __MIMARK_ARGS2(
-                                                          trampCall(_val)                                                        ,
-                                                          trampCall(_step)
-                                                      )                                                  ,
+                                                      ( 
+                                                        trampCall(_count)                                                      -
+                                                      1
+                                                       )                                                   ,
+                                                      ( 
+                                                        trampCall(_val)                                                      -
+                                                        trampCall(_step)
+                                                       )                                                   ,
                                                       _cons(
                                                           trampCall(_val)                                                        ,
                                                           trampCall(_ans)
@@ -356,16 +356,16 @@ trampCall(
                                        )
                           end
                       } ; ___lambda.call(
-                              __PLMARK_ARGS2(
-                                  trampCall(_start)                                ,
-                                    __ASMARK_ARGS2(
-                                          __MIMARK_ARGS2(
-                                              trampCall(_count)                                            ,
-                                            1
-                                          )                                      ,
-                                        trampCall(_step)
-                                    )
-                              )
+                              ( 
+                                trampCall(_start)                              +
+                                  ( 
+                                      ( 
+                                        trampCall(_count)                                      -
+                                      1
+                                       )                                   *
+                                    trampCall(_step)
+                                   ) 
+                               ) 
                                  )
                     end
                 } ; ___lambda.call(
@@ -1119,10 +1119,10 @@ trampCall(
                                                   _cdr(
                                                       trampCall(_lag)
                                                   )                                              ,
-                                                  __PLMARK_ARGS2(
-                                                      trampCall(_len)                                                    ,
-                                                    1
-                                                  )
+                                                  ( 
+                                                    trampCall(_len)                                                  +
+                                                  1
+                                                   ) 
                                                      )
                                         end
                                     else
@@ -1132,10 +1132,10 @@ trampCall(
                                         _cdr(
                                             trampCall(_x)
                                         )                                    ,
-                                        __PLMARK_ARGS2(
-                                            trampCall(_len)                                          ,
-                                          1
-                                        )
+                                        ( 
+                                          trampCall(_len)                                        +
+                                        1
+                                         ) 
                                            )
                               end
                           else
@@ -1441,10 +1441,10 @@ trampCall(
                                                 _cdr(
                                                     trampCall(_lis)
                                                 )                                            ,
-                                                __MIMARK_ARGS2(
-                                                    trampCall(_k)                                                  ,
-                                                  1
-                                                )
+                                                ( 
+                                                  trampCall(_k)                                                -
+                                                1
+                                                 ) 
                                         ]
                                                      ))
                                 ]
@@ -1495,10 +1495,10 @@ trampCall(
                                         _cdr(
                                             trampCall(_lis)
                                         )                                    ,
-                                        __MIMARK_ARGS2(
-                                            trampCall(_k)                                          ,
-                                          1
-                                        )
+                                        ( 
+                                          trampCall(_k)                                        -
+                                        1
+                                         ) 
                                 ]
                                              )
                           end
@@ -1543,10 +1543,10 @@ trampCall(
                                   trampCall(@_drop)                                ,
                               [
                                     trampCall(_lis)                                  ,
-                                      __MIMARK_ARGS2(
-                                          trampCall(_k)                                        ,
-                                        1
-                                      )
+                                      ( 
+                                        trampCall(_k)                                      -
+                                      1
+                                       ) 
                               ]
                                            ))                          ,
                           Cell.new()
@@ -1789,10 +1789,10 @@ trampCall(
                                                     _cdr(
                                                         trampCall(_lis)
                                                     )                                                ,
-                                                    __MIMARK_ARGS2(
-                                                        trampCall(_k)                                                      ,
-                                                      1
-                                                    )
+                                                    ( 
+                                                      trampCall(_k)                                                    -
+                                                    1
+                                                     ) 
                                             ]
                                                          ))
                                       }                                    ,
@@ -1880,10 +1880,10 @@ trampCall(
                                 trampCall(@_drop)                              ,
                             [
                                   trampCall(_x)                                ,
-                                    __MIMARK_ARGS2(
-                                        trampCall(_k)                                      ,
-                                      1
-                                    )
+                                    ( 
+                                      trampCall(_k)                                    -
+                                    1
+                                     ) 
                             ]
                                          ))
                                )
@@ -3317,10 +3317,10 @@ trampCall(
                                                               ]
                                                                            ))
                                                            ) then
-                                                                __PLMARK_ARGS2(
-                                                                    trampCall(_i)                                                                  ,
-                                                                  1
-                                                                )
+                                                                ( 
+                                                                  trampCall(_i)                                                                +
+                                                                1
+                                                                 ) 
                                                           else
                                                               trampCall(_i)
                                                           end
@@ -3375,10 +3375,10 @@ trampCall(
                                               ]
                                                            ))
                                            ) then
-                                                __PLMARK_ARGS2(
-                                                    trampCall(_i)                                                  ,
-                                                  1
-                                                )
+                                                ( 
+                                                  trampCall(_i)                                                +
+                                                1
+                                                 ) 
                                           else
                                               trampCall(_i)
                                           end
@@ -7453,10 +7453,10 @@ trampCall(
                                                         trampCall(_lp)                                                      ,
                                                     [
                                                           trampCall(_tails)                                                        ,
-                                                            __PLMARK_ARGS2(
-                                                                trampCall(_n)                                                              ,
-                                                              1
-                                                            )
+                                                            ( 
+                                                              trampCall(_n)                                                            +
+                                                            1
+                                                             ) 
                                                     ]
                                                                  ))
                                               end
@@ -7519,10 +7519,10 @@ trampCall(
                                                 _cdr(
                                                     trampCall(_lis)
                                                 )                                            ,
-                                                __PLMARK_ARGS2(
-                                                    trampCall(_n)                                                  ,
-                                                  1
-                                                )
+                                                ( 
+                                                  trampCall(_n)                                                +
+                                                1
+                                                 ) 
                                         ]
                                                      )
                                   end

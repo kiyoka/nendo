@@ -52,13 +52,13 @@ trampCall(
                 } ; ___lambda.call(
                       begin
                         embedBacktraceInfo( \"./spec/nendo-util-test.nnd\", 12 );
-                          __PLMARK_ARGS2(
-                              begin
-                                  trampCall(_arg1)
-                                rescue => __e ; __e.set_backtrace( [\"./spec/nendo-util-test.nnd:12\"] + __e.backtrace ) ; raise __e
-                              end                            ,
-                            1
-                          )
+                          ( 
+                            begin
+                                trampCall(_arg1)
+                              rescue => __e ; __e.set_backtrace( [\"./spec/nendo-util-test.nnd:12\"] + __e.backtrace ) ; raise __e
+                            end                          +
+                          1
+                           ) 
                       end
                            )
               end

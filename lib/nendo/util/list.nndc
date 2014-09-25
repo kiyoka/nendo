@@ -33,12 +33,12 @@ trampCall(
               begin #makeLet
                 ___lambda = lambda { |_fill_QUMARK,_filler| 
                     if ( 
-                        __LTMARK(
-                          0                          ,
-                              _length(
-                                  trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70249)
-                              )
-                        )
+                        ( 
+                        0                        <
+                            _length(
+                                trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70249)
+                            )
+                         ) 
                      ) then
                           begin #execFunc
                             
@@ -55,12 +55,12 @@ trampCall(
                           end
                     end
                     if ( 
-                        __LTMARK(
-                          1                          ,
-                              _length(
-                                  trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70249)
-                              )
-                        )
+                        ( 
+                        1                        <
+                            _length(
+                                trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70249)
+                            )
+                         ) 
                      ) then
                           begin #execFunc
                             
@@ -168,10 +168,10 @@ trampCall(
                                                                 trampCall( self._make_MIMARKlist_METHOD(  'make-list',
                                                                     trampCall(@_make_MIMARKlist)                                                                  ,
                                                                 [
-                                                                        __MIMARK_ARGS2(
-                                                                            trampCall(_k)                                                                          ,
-                                                                            trampCall(_i)
-                                                                        )                                                                    ,
+                                                                        ( 
+                                                                          trampCall(_k)                                                                        -
+                                                                          trampCall(_i)
+                                                                         )                                                                     ,
                                                                       trampCall(_filler)
                                                                 ]
                                                                              ))
@@ -195,10 +195,10 @@ trampCall(
                                                 delayCall( '_loop',  'loop',
                                                     trampCall(_loop)                                                  ,
                                                 [
-                                                        __PLMARK_ARGS2(
-                                                            trampCall(_i)                                                          ,
-                                                          1
-                                                        )                                                    ,
+                                                        ( 
+                                                          trampCall(_i)                                                        +
+                                                        1
+                                                         )                                                     ,
                                                         _cdr(
                                                             trampCall(_lis)
                                                         )                                                    ,
@@ -349,10 +349,10 @@ trampCall(
                                           delayCall( '_loop',  'loop',
                                               trampCall(_loop)                                            ,
                                           [
-                                                  __PLMARK_ARGS2(
-                                                      trampCall(_i)                                                    ,
-                                                    1
-                                                  )                                              ,
+                                                  ( 
+                                                    trampCall(_i)                                                  +
+                                                  1
+                                                   )                                               ,
                                                   _cdr(
                                                       trampCall(_lis)
                                                   )
@@ -391,12 +391,12 @@ trampCall(
               begin #makeLet
                 ___lambda = lambda { |_fill_QUMARK,_filler| 
                     if ( 
-                        __LTMARK(
-                          0                          ,
-                              _length(
-                                  trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70260)
-                              )
-                        )
+                        ( 
+                        0                        <
+                            _length(
+                                trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70260)
+                            )
+                         ) 
                      ) then
                           begin #execFunc
                             
@@ -413,12 +413,12 @@ trampCall(
                           end
                     end
                     if ( 
-                        __LTMARK(
-                          1                          ,
-                              _length(
-                                  trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70260)
-                              )
-                        )
+                        ( 
+                        1                        <
+                            _length(
+                                trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70260)
+                            )
+                         ) 
                      ) then
                           begin #execFunc
                             
@@ -483,19 +483,19 @@ trampCall(
                     begin #makeLet
                       ___lambda = lambda { |_len| 
                           if ( 
-                              __LTMARK_EQMARK(
-                                  trampCall(_k)                                ,
-                                  trampCall(_len)
-                              )
+                              ( 
+                                trampCall(_k)                              <=
+                                trampCall(_len)
+                               ) 
                            ) then
                                   delayCall( '_drop',  'drop',
                                       trampCall(@_drop)                                    ,
                                   [
                                         trampCall(_lis)                                      ,
-                                          __MIMARK_ARGS2(
-                                              trampCall(_len)                                            ,
-                                              trampCall(_k)
-                                          )
+                                          ( 
+                                            trampCall(_len)                                          -
+                                            trampCall(_k)
+                                           ) 
                                   ]
                                                )
                           else
@@ -508,10 +508,10 @@ trampCall(
                                               trampCall( self._make_MIMARKlist_METHOD(  'make-list',
                                                   trampCall(@_make_MIMARKlist)                                                ,
                                               [
-                                                      __MIMARK_ARGS2(
-                                                          trampCall(_k)                                                        ,
-                                                          trampCall(_len)
-                                                      )                                                  ,
+                                                      ( 
+                                                        trampCall(_k)                                                      -
+                                                        trampCall(_len)
+                                                       )                                                   ,
                                                     trampCall(_filler)
                                               ]
                                                            ))                                          ,
@@ -601,19 +601,19 @@ trampCall(
               begin #makeLet
                 ___lambda = lambda { |_len| 
                     if ( 
-                        __LTMARK_EQMARK(
-                            trampCall(_k)                          ,
-                            trampCall(_len)
-                        )
+                        ( 
+                          trampCall(_k)                        <=
+                          trampCall(_len)
+                         ) 
                      ) then
                           delayCall( '_take',  'take',
                               trampCall(@_take)                            ,
                           [
                                 trampCall(_lis)                              ,
-                                  __MIMARK_ARGS2(
-                                      trampCall(_len)                                    ,
-                                      trampCall(_k)
-                                  )
+                                  ( 
+                                    trampCall(_len)                                  -
+                                    trampCall(_k)
+                                   ) 
                           ]
                                        )
                     else
@@ -2253,12 +2253,12 @@ trampCall(
               begin #makeLet
                 ___lambda = lambda { |_eq| 
                     if ( 
-                        __LTMARK(
-                          0                          ,
-                              _length(
-                                  trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70321)
-                              )
-                        )
+                        ( 
+                        0                        <
+                            _length(
+                                trampCall(___gensym__8ac8b7a738109fae1a89eee6598100ae9139175d_70321)
+                            )
+                         ) 
                      ) then
                           begin #execFunc
                             

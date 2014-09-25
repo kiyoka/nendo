@@ -25,10 +25,10 @@ trampCall(
               trampCall(Syslog).log(
                     trampCall(Syslog::LOG_WARNING)                  ,
                   "%s"                  ,
-                      __PLMARK_ARGS2(
-                        "Nendo: "                        ,
-                          trampCall(_str)
-                      )
+                      ( 
+                      "Nendo: "                      +
+                        trampCall(_str)
+                       ) 
                 )
               trampCall(Syslog).close(
                 )
