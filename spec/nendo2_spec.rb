@@ -883,7 +883,6 @@ describe Nendo, "when use regexp litteral and library functions " do
     expect(@nendo.evalStr( ' (rxmatch->string    #/abc/i "xxx")' )).to                                         eq('#f')
     expect(@nendo.evalStr( ' (rxmatch->string    #/XXX/  "xxx")' )).to                                         eq('#f')
 
-    pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
     expect(@nendo.evalStr( <<EOS
 (define matchdata
   (rxmatch #/([あ-ん])([あ-ん])([あ-ん])([あ-ん])([あ-ん])/

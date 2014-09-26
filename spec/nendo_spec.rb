@@ -242,7 +242,6 @@ describe Nendo, "when call evalStr() with literals" do
     expect(@nendo.evalStr( " nil " )).to eq("nil")
     expect(@nendo.evalStr( " #t " )).to eq("#t")
     expect(@nendo.evalStr( " #f " )).to eq("#f")
-    pending( "JRuby can't compute correctly" ) if defined? JRUBY_VERSION
     expect(@nendo.evalStr( ' "日本語" ' )).to eq('"日本語"')
     expect(@nendo.evalStr( ' "日\"本\"語" ' )).to eq('"日\"本\"語"')
   end
