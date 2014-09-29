@@ -313,14 +313,19 @@ module Nendo
     end
 
     def callProcedure( rubysym, origname, pred, args )
-      if @call_counters.has_key?( origname )
-        @call_counters[ origname ] += 1
-      else
-        @call_counters[ origname ]  = 1
+      if @runtimeCheck
+        if @call_counters.has_key?( origname )
+          @call_counters[ origname ] += 1
+        else
+          @call_counters[ origname ]  = 1
+        end
       end
+
       result = pred.call( *toRubyArgument( origname, pred, args ))
 
-      @call_counters[ origname ]   -= 1
+      if @runtimeCheck
+        @call_counters[ origname ]   -= 1
+      end
 
       result
     end
