@@ -3,47 +3,15 @@
 # Release Engineering
 #   1. edit the VERSION.yml file
 #   2. rake compile  &&   rake
-#   3. rake gemspec  &&   gem build nendo.gemspec
+#   3. rake build
 #      to generate nendo-x.x.x.gem
 #   4. install nendo-x.x.x.gem to clean environment and test
 #   5. rake release
 #   6. gem push pkg/nendo-x.x.x.gem   ( need gem version 1.3.6 or higer. Please "gem update --system" to update )
 
 require 'rake'
-begin
-  require 'jeweler2'
-  Jeweler::Tasks.new do |gemspec|
-    gemspec.name = "nendo"
-    gemspec.summary = "Nendo is a dialect of Lisp."
-    gemspec.description = "Nendo is a programming language written in Ruby."
-    gemspec.email = "kiyoka@sumibi.org"
-    gemspec.license = 'New BSD'
-    gemspec.homepage = "http://github.com/kiyoka/nendo"
-    gemspec.authors = ["Kiyoka Nishiyama"]
-    gemspec.files = FileList['Rakefile',
-                             '.gemtest',
-                             'History.txt',
-                             'VERSION.yml',
-                             'README.md',
-                             'COPYING',
-                             'lib/**/*.rb',
-                             'lib/**/*.nnd',
-                             'lib/**/*.nndc',
-                             'bin/*',
-                             'test/*',
-                             'example/*.rb',
-                             'example/*.nnd',
-                             'example/cgi/*',
-                             'example/KyotoCabinet/*.nnd',
-                             'example/KyotoCabinet/*.rb',
-                             'emacs/*.el',
-                             'benchmark/*.rb',
-                             'benchmark/*.nnd'].to_a
-    gemspec.rdoc_options += [ '-x', 'match.nndc' ]
-  end
-rescue LoadError
-  puts 'Jeweler2 not available. If you want to build a gemfile, please install with "sudo gem install jeweler2"'
-end
+require 'bundler/gem_tasks'
+require 'jeweler2'
 
 printf( "Info: NENDO_CLEAN_TEST is [%s]\n", ENV[ 'NENDO_CLEAN_TEST' ] )
 
