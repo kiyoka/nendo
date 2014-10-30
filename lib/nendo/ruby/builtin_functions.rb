@@ -517,6 +517,14 @@ module Nendo
       v[index] = value
     end
 
+    def _make_MIMARKrecord_MIMARKtype( name, field_names )
+      if (name.is_a? String or _symbol_QUMARK( name )) and __PAMARKlist_QUMARK( field_names )
+        name = name.to_s if _symbol_QUMARK( name )
+        record = Nendo::Record.new( name, field_names.to_arr )
+        return record
+      else
+        raise TypeError, "Error: make-record-type requires name(string or symbol) and field(list).\n"
+      end
+    end
   end
-
 end
