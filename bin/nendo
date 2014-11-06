@@ -1,4 +1,4 @@
-g#!/usr/local/bin/ruby
+#!/usr/local/bin/ruby
 # -*- encoding: utf-8 -*-
 #
 # nendo  -  "interpretter main program"
@@ -56,6 +56,10 @@ def userOptionEater
       i += 2
     when '-O'
       i += 2
+    when '-I'
+      i += 2
+    when /^[-]/  # unknown option
+      i += 1
     when /^[^-]/
       break
     else
@@ -69,25 +73,8 @@ def userOptionEater
   return userOptions
 end
 
-def main
-  loadInit  = true
-  compile   = false
-  conflict = 0
-  core = Nendo::Core.new()
-
-  userOptions = userOptionEater
-  opts = GetoptLong.new(
-                        [ '-h', GetoptLong::NO_ARGUMENT ],
-                        [ '-q', GetoptLong::NO_ARGUMENT ],
-                        [ '-c', GetoptLong::NO_ARGUMENT ],
-                        [ '-V', GetoptLong::NO_ARGUMENT ],
-                        [ '-d', GetoptLong::NO_ARGUMENT ],
-                        [ '-l', GetoptLong::REQUIRED_ARGUMENT ],
-                        [ '-O', GetoptLong::REQUIRED_ARGUMENT ]
-                        ).each { |opt, arg|
-    case opt
-    when '-h'
-      puts <<-EOF
+def displayHelp()
+  puts <<-EOF
       
       nendo [OPTION] [script-file]
 
@@ -99,6 +86,9 @@ def main
 
       -V:
         show version
+
+      -I:
+        append path to *load-path* variable.
 
       -l file:
         load nendo script files. ( can specify n times like   -l a.nnd -l b.nnd  )
@@ -112,27 +102,58 @@ def main
       -d:
         disable runtime check.
 
-      EOF
-      exit 0
-    when '-V'
-      printf( "Nendo %s\n", Nendo::Core.version )
-      exit( 1 )
-    when '-q'
-      loadInit = false
-      conflict += 1
-    when '-c'
-      loadInit = true
-      compile  = true
-      conflict += 1
-    when '-l'
-      core.load( arg )
-      STDERR.printf( "loaded file [%s]\n", arg )
-    when '-O'
-      core.setOptimizeLevel( arg.to_i )
-    when '-d'
-      core.disableRuntimeCheck( )
-    end
+EOF
+end
+
+def main
+  loadInit  = true
+  compile   = false
+  conflict = 0
+  core = Nendo::Core.new()
+  path_to_append = []
+  
+  userOptions = userOptionEater
+  opts = nil
+  begin
+    opts = GetoptLong.new(
+      [ '-h', GetoptLong::NO_ARGUMENT ],
+      [ '-q', GetoptLong::NO_ARGUMENT ],
+      [ '-c', GetoptLong::NO_ARGUMENT ],
+      [ '-V', GetoptLong::NO_ARGUMENT ],
+      [ '-d', GetoptLong::NO_ARGUMENT ],
+      [ '-l', GetoptLong::REQUIRED_ARGUMENT ],
+      [ '-O', GetoptLong::REQUIRED_ARGUMENT ],
+      [ '-I', GetoptLong::REQUIRED_ARGUMENT ]
+    ).each { |opt, arg|
+      case opt
+      when '-h'
+        displayHelp()
+        exit 0
+      when '-V'
+        printf( "Nendo %s\n", Nendo::Core.version )
+        exit( 1 )
+      when '-q'
+        loadInit = false
+        conflict += 1
+      when '-c'
+        loadInit = true
+        compile  = true
+        conflict += 1
+      when '-l'
+        core.load( arg )
+        STDERR.printf( "loaded file [%s]\n", arg )
+      when '-O'
+        core.setOptimizeLevel( arg.to_i )
+      when '-d'
+        core.disableRuntimeCheck( )
+      when '-I'
+        path_to_append << File.expand_path( arg )
+      end
   }
+  rescue GetoptLong::InvalidOption
+    displayHelp()
+    exit 0
+  end
 
   if  2 <= conflict 
     STDERR.puts( "Error: Can't specify both -q and -c ...\n" ) 
@@ -152,6 +173,9 @@ def main
     else
       # start script file.
       core.setArgv( userOptions[1..userOptions.length] )
+      path_to_append.each {|path|
+        core.evalStr( sprintf( '(push! *load-path* "%s")', path ))
+      }
       core.load( fn )
       core.evalStr( "(if (and (global-defined? 'main) (procedure? main)) (main *argv*) #f)" )
     end

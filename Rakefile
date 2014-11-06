@@ -123,3 +123,7 @@ end
 task :repl do
   sh "ruby -I ./lib -I ./lib/nendo  ./bin/nendo"
 end
+
+task :hello do
+  sh "ruby -I ./lib -I ./lib/nendo  ./bin/nendo -I ../nendo/example1 -I ../nendo/example2 example/hello.nnd"
+end
