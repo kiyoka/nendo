@@ -1,8 +1,8 @@
 ;;-*- mode: nendo; syntax: scheme -*-
 ;;;
-;;; json-test.nnd - test of json.nnd
+;;; yaml-test.nnd - test of yaml.nnd
 ;;;  
-;;;   Copyright (c) 2011  Kiyoka Nishiyama  <kiyoka@sumibi.org>
+;;;   Copyright (c) 2015  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 ;;;   
 ;;;   Redistribution and use in source and binary forms, with or without
 ;;;   modification, are permitted provided that the following conditions
@@ -34,83 +34,100 @@
 ;;;  $Id: 
 ;;;
 (use nendo.test)
-(use rfc.json)
+(use rfc.yaml)
 
-(test-start "json")
+(test-start "yaml")
 
 ;;===================================================================
 
 ;;-------------------------------------------------------------------
-(test-section "json parser")
+(test-section "yaml parser")
 
 (test* "string (1)"
        '#( "str" )
-       (parse-json-string "[\"str\"]"))
+       (parse-yaml-string "- \"str\""))
 
 (test* "string (2)"
        '#( "Ã" )
-       (parse-json-string "[\"Ã\"]"))
+       (parse-yaml-string "- \"Ã\""))
 
 (test* "string (3)"
        '#( "Ã" "€" )
-       (parse-json-string "[ \"\\u00c3\", \"\\u20ac\" ]"))
+       (parse-yaml-string "- \"\\u00c3\"
+- \"\\u20ac\" "))
 
 (test* "string (4)"
        '#(nil)
-       (parse-json-string "[null]"))
+       (parse-yaml-string "- null"))
 
 (test* "string (4)"
        '#(100)
-       (parse-json-string "[100]"))
+       (parse-yaml-string "- 100"))
 
 (test* "string (5)"
        '#(#t)
-       (parse-json-string "[true]"))
+       (parse-yaml-string "- true"))
 
 (test* "string (6)"
        '#(#f)
-       (parse-json-string "[false]"))
+       (parse-yaml-string "- false"))
 
 
 (test* "simple object (1)"
-       '()
-       (parse-json-string "{}"))
-(test* "simple object (2)"
-       '()
-       (parse-json-string " {   }   "))
+       #f
+       (parse-yaml-string ""))
 (test* "simple object (3)"
        '(("a" . 23))
-       (parse-json-string "{ \"a\": 23  } "))
+       (parse-yaml-string "a: 23"))
 (test* "simple object (4)"
        '(("a" . 23) ("b" . 45))
-       (parse-json-string "{ \"a\": 23 , \"b\": 45  } "))
+       (parse-yaml-string "a: 23
+b: 45"))
 
 (test* "arrays (1)"
        '#(1 2 3)
-       (parse-json-string "[1,2,3]"))
+       (parse-yaml-string "
+- 1
+- 2
+- 3
+"))
 (test* "arrays (2)"
-       '#(#() #(#() #()))
-       (parse-json-string "[[],[[],[]]]"))
+       '#(1 #(2 3 4))
+       (parse-yaml-string "
+- 1
+-
+ - 2
+ - 3
+ - 4
+"))
 (test* "arrays (3)"
        '#(#(4)
           #(#(5) #(6)))
-       (parse-json-string "[[4],[[5],[6]]]"))
+       (parse-yaml-string "
+-
+ - 4
+-
+ -
+  - 5
+ -
+  - 6
+"))
 
 
-(define testdata-json-string
-  (string-join
-   '("["
-     "  { \"a\": 1, "
-     "    \"b\": 2, "
-     "    \"c\": { \"c1\": 10,"
-     "             \"c2\": 20 },"
-     "    \"d\": [ \"vec1\", \"vec2\", \"vec3\" ]"
-     "  },"
-     "  { \"true\"  : true , "
-     "    \"false\" : false , "
-     "    \"null\"  : null "
-     "  }"
-     "]")))
+(define testdata-yaml-string "---
+- a: 1
+  b: 2
+  c:
+    c1: 10
+    c2: 20
+  d:
+  - vec1
+  - vec2
+  - vec3
+- 'true': true
+  'false': false
+  'null': 
+")
 
 (define testdata-lisp-object
   '#(
@@ -127,49 +144,61 @@
 
 (test* "array and hash (1)"
        (write-to-string testdata-lisp-object)
-       (write-to-string (parse-json-string testdata-json-string)))
+       (write-to-string (parse-yaml-string testdata-yaml-string)))
 
 
-(let1 sio (StringIO.new "{\"a\":23,\"b\":45}")
+(let1 sio (StringIO.new "
+a: 23
+b: 45
+")
   (test* "write to IO"
          '(("a" . 23) ("b" . 45))
-         (parse-json sio)))
+         (parse-yaml sio)))
 
 
 
 ;;-------------------------------------------------------------------
-(test-section "json constructor")
+(test-section "yaml constructor")
 
-(test* "string (1)"
-       "[\"str\"]"
-       (construct-json-string '#( "str" )))
+(test* "string (1)" "---
+- str
+"
+       (construct-yaml-string '#( "str" )))
 
-(test* "arrays (1)"
-       "[1,2,3]"
-       (construct-json-string '#(1 2 3)))
-(test* "arrays (2)"
-       "[[],[[],[]]]"
-       (construct-json-string '#(#() #(#() #()))))
+(test* "arrays (1)" "---
+- 1
+- 2
+- 3
+"
+       (construct-yaml-string '#(1 2 3)))
+(test* "arrays (2)" "---
+- []
+- - []
+  - []
+"
+       (construct-yaml-string '#(#() #(#() #()))))
 
-(test* "simple object (1)"
-       "{}"
-       (construct-json-string '()))
-(test* "simple object (2)"
-       "{\"a\":23}"
-       (construct-json-string '(("a" . 23))))
-(test* "simple object (3)"
-       "{\"a\":23,\"b\":45}"
-       (construct-json-string '(("a" . 23) ("b" . 45))))
+(test* "simple object (1)" "---
+a: 23
+"
+       (construct-yaml-string '(("a" . 23))))
+(test* "simple object (2)" "---
+a: 23
+b: 45
+"
+       (construct-yaml-string '(("a" . 23) ("b" . 45))))
 
-(test* "array and hash (1)"
-       (testdata-json-string.gsub #/[ ]/ "")
-       (construct-json-string testdata-lisp-object))
+(test* "array and hash (3)"
+       testdata-yaml-string
+       (construct-yaml-string testdata-lisp-object))
 
 (let1 sio (StringIO.new)
-  (test* "write to IO"
-         "{\"a\":23,\"b\":45}"
+  (test* "write to IO" "---
+a: 23
+b: 45
+"
          (begin
-           (construct-json '(("a" . 23) ("b" . 45)) sio)
+           (construct-yaml '(("a" . 23) ("b" . 45)) sio)
            (sio.rewind)
            (sio.read))))
 
