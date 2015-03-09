@@ -36,6 +36,11 @@
 (use nendo.test)
 (use rfc.yaml)
 
+(when (= "java" RUBY_PLATFORM)
+  (print "Info: YAML not supported on JRuby platform.")
+  (exit 0))
+    
+
 (test-start "yaml")
 
 ;;===================================================================
