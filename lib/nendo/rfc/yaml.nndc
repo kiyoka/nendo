@@ -4,12 +4,23 @@
 # 
 
 trampCall( 
-    delayCall( '_require',  'require',
-        trampCall(@_require)      ,
-    [
-        "psych"
-    ]
-                 )
+  if ( 
+    trampCall(@__ASMARKjruby_MIMARKplatform_ASMARK)
+   ) then
+        delayCall( '_require',  'require',
+            trampCall(@_require)          ,
+        [
+            "yacht"
+        ]
+                     )
+  else
+        delayCall( '_require',  'require',
+            trampCall(@_require)          ,
+        [
+            "psych"
+        ]
+                     )
+  end
  )
 #--------------------
 
@@ -33,9 +44,17 @@ trampCall(
                 delayCall( '__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist',  '%json:hash-table->alist',
                     trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                  ,
                 [
-                      trampCall(Psych).load(
-                            trampCall(_str)
-                        )
+                      if ( 
+                        trampCall(@__ASMARKjruby_MIMARKplatform_ASMARK)
+                       ) then
+                          trampCall(Yacht).load(
+                                trampCall(_str)
+                            )
+                      else
+                          trampCall(Psych).load(
+                                trampCall(_str)
+                            )
+                      end
                 ]
                              )
           }
@@ -102,14 +121,27 @@ trampCall(
     @_construct_MIMARKyaml_MIMARKstring = 
     trampCall(
           Proc.new { |_obj| 
-              trampCall(Psych).dump(
-                      trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                          trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                        ,
-                      [
-                            trampCall(_obj)
-                      ]
-                                   ))
-                )
+              if ( 
+                trampCall(@__ASMARKjruby_MIMARKplatform_ASMARK)
+               ) then
+                  trampCall(Yacht).dump(
+                          trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                              trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                            ,
+                          [
+                                trampCall(_obj)
+                          ]
+                                       ))
+                    )
+              else
+                  trampCall(Psych).dump(
+                          trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                              trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                            ,
+                          [
+                                trampCall(_obj)
+                          ]
+                                       ))
+                    )
+              end
           }
     )
   end
