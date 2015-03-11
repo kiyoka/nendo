@@ -34,10 +34,7 @@
 ;;;  $Id: 
 ;;;
 
-(if *jruby-platform*
-    (require "yacht")
-    (require "psych"))
-
+(require "yaml")
 (use rfc.json)
 
 ;; ------------------------------
@@ -45,9 +42,7 @@
 ;; ------------------------------
 (define (parse-yaml-string str)
   (%json:hash-table->alist 
-   (if *jruby-platform*
-       (Yacht.load str)
-       (Psych.load str))))
+   (YAML.load str)))
        
 
 (define (parse-yaml . io)
@@ -59,9 +54,7 @@
 ;; ------------------------------
 ;; writer
 (define (construct-yaml-string obj)
-  (if *jruby-platform*
-      (Yacht.dump (%json:alist->hash-table obj))
-      (Psych.dump (%json:alist->hash-table obj))))
+  (YAML.dump (%json:alist->hash-table obj)))
   
 (define (construct-yaml obj . io)
   (let1 _ (get-optional io STDOUT)

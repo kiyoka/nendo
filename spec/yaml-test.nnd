@@ -126,7 +126,7 @@ b: 45"))
   - vec3
 - 'true': true
   'false': false
-  'null': 
+  'null': 1
 ")
 
 (define testdata-lisp-object
@@ -139,7 +139,7 @@ b: 45"))
       ("d" . #("vec1" "vec2" "vec3")))
      (("true"  . true)
       ("false" . false)
-      ("null"  . nil))))
+      ("null"  . 1))))
 
 
 (test* "array and hash (1)"

@@ -12949,21 +12949,6 @@ trampCall(
 #--------------------
 
 trampCall( 
-  begin #execFunc
-      def self.__ASMARKjruby_MIMARKplatform_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '__ASMARKjruby_MIMARKplatform_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
-      @global_lisp_binding['__ASMARKjruby_MIMARKplatform_ASMARK'] = self.method( :__ASMARKjruby_MIMARKplatform_ASMARK_METHOD )
-    @__ASMARKjruby_MIMARKplatform_ASMARK = 
-    trampCall(
-            __EQMARK(
-              "java"              ,
-                trampCall(RUBY_PLATFORM)
-            )
-    )
-  end
- )
-#--------------------
-
-trampCall( 
     delayCall( '_load',  'load',
         trampCall(@_load)      ,
     [
