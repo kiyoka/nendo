@@ -313,6 +313,10 @@ module Nendo
     end
 
     def callProcedure( rubysym, origname, pred, args )
+      if pred.nil?
+        raise RuntimeError, sprintf( "Error: function `%s' is undefined.", origname )
+      end
+
       if @runtimeCheck
         if @call_counters.has_key?( origname )
           @call_counters[ origname ] += 1
