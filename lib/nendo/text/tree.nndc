@@ -4,12 +4,20 @@
 # 
 
 trampCall( 
-    delayCall( '_require',  'require',
-        trampCall(@_require)      ,
-    [
-        "stringio"
-    ]
-                 )
+  begin
+    embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 10 );
+      delayCall( '_require',  'require',
+          begin
+            if @global_lisp_binding.has_key?('_require') then
+              trampCall(@_require)
+            else raise NameError.new( "Error: undefined variable require", "require" ) end
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:10"] + __e.backtrace ) ; raise __e
+          end        ,
+      [
+          "stringio"
+      ]
+                   )
+  end
  )
 #--------------------
 
@@ -27,73 +35,149 @@ trampCall(
                           _loop                           = 
                             Proc.new { |_tree| 
                                 if ( 
-                                    _null_QUMARK(
-                                        trampCall(_tree)
-                                    )
+                                  begin
+                                    embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 17 );
+                                      _null_QUMARK(
+                                          begin
+                                              trampCall(_tree)
+                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:17"] + __e.backtrace ) ; raise __e
+                                          end
+                                      )
+                                  end
                                  ) then
                                     true
                                 else
                                     if ( 
-                                        _pair_QUMARK(
-                                            trampCall(_tree)
-                                        )
+                                      begin
+                                        embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+                                          _pair_QUMARK(
+                                              begin
+                                                  trampCall(_tree)
+                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
+                                              end
+                                          )
+                                      end
                                      ) then
                                         begin  #makeBegin
-                                              trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
-                                                  trampCall(@_write_MIMARKtree)                                                ,
-                                              [
-                                                      _car(
-                                                          trampCall(_tree)
-                                                      )                                                  ,
-                                                    trampCall(_out)
-                                              ]
-                                                           ))
-                                              delayCall( '_loop',  'loop',
-                                                  trampCall(_loop)                                                ,
-                                              [
-                                                      _cdr(
-                                                          trampCall(_tree)
-                                                      )
-                                              ]
-                                                           )
+                                            begin
+                                              embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+                                                trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
+                                                    begin
+                                                      if @global_lisp_binding.has_key?('_write_MIMARKtree') then
+                                                        trampCall(@_write_MIMARKtree)
+                                                      else raise NameError.new( "Error: undefined variable write-tree", "write-tree" ) end
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
+                                                    end                                                  ,
+                                                [
+                                                      begin
+                                                        embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+                                                          _car(
+                                                              begin
+                                                                  trampCall(_tree)
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
+                                                              end
+                                                          )
+                                                      end                                                    ,
+                                                      begin
+                                                          trampCall(_out)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                ]
+                                                             ))
+                                            end
+                                            begin
+                                              embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+                                                delayCall( '_loop',  'loop',
+                                                    begin
+                                                        trampCall(_loop)
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
+                                                    end                                                  ,
+                                                [
+                                                      begin
+                                                        embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+                                                          _cdr(
+                                                              begin
+                                                                  trampCall(_tree)
+                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
+                                                              end
+                                                          )
+                                                      end
+                                                ]
+                                                             )
+                                            end
                                         end
                                     else
                                         if ( 
                                         true
                                          ) then
-                                              trampCall(_out).print(
-                                                    trampCall(_tree)
-                                                )
+                                              begin
+                                                  trampCall(_out).print(
+                                                        begin
+                                                            trampCall(_tree)
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
+                                                        end
+                                                    )
+                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
+                                              end
                                         else
                                             Cell.new()
                                         end
                                     end
                                 end
                             }
-                            delayCall( '_loop',  'loop',
-                                trampCall(_loop)                              ,
-                            [
-                                  trampCall(_tree)
-                            ]
-                                         )
+                          begin
+                            embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 16 );
+                              delayCall( '_loop',  'loop',
+                                  begin
+                                      trampCall(_loop)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                    begin
+                                        trampCall(_tree)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
+                                    end
+                              ]
+                                           )
+                          end
                       } ; ___lambda.call(
                       nil
                                  )
                     end
                 } ; ___lambda.call(
                       if ( 
-                          _null_QUMARK(
-                              trampCall(_out)
-                          )
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 13 );
+                            _null_QUMARK(
+                                begin
+                                    trampCall(_out)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:13"] + __e.backtrace ) ; raise __e
+                                end
+                            )
+                        end
                        ) then
-                          trampCall(STDOUT)
+                          begin
+                              trampCall(STDOUT)
+                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:14"] + __e.backtrace ) ; raise __e
+                          end
                       else
-                            delayCall( '_car',  'car',
-                                trampCall(@_car)                              ,
-                            [
-                                  trampCall(_out)
-                            ]
-                                         )
+                          begin
+                            embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 15 );
+                              delayCall( '_car',  'car',
+                                  begin
+                                    if @global_lisp_binding.has_key?('_car') then
+                                      trampCall(@_car)
+                                    else raise NameError.new( "Error: undefined variable car", "car" ) end
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:15"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                    begin
+                                        trampCall(_out)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:15"] + __e.backtrace ) ; raise __e
+                                    end
+                              ]
+                                           )
+                          end
                       end
                            )
               end
@@ -112,19 +196,39 @@ trampCall(
           Proc.new { |_tree| 
               begin #makeLet
                 ___lambda = lambda { |_sio| 
-                      trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
-                          trampCall(@_write_MIMARKtree)                        ,
-                      [
-                            trampCall(_tree)                          ,
-                            trampCall(_sio)
-                      ]
-                                   ))
-                    trampCall(_sio).string(
-                      )
+                    begin
+                      embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 24 );
+                        trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
+                            begin
+                              if @global_lisp_binding.has_key?('_write_MIMARKtree') then
+                                trampCall(@_write_MIMARKtree)
+                              else raise NameError.new( "Error: undefined variable write-tree", "write-tree" ) end
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
+                            end                          ,
+                        [
+                              begin
+                                  trampCall(_tree)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
+                              end                            ,
+                              begin
+                                  trampCall(_sio)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
+                              end
+                        ]
+                                     ))
+                    end
+                    begin
+                        trampCall(_sio).string(
+                          )
+                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:25"] + __e.backtrace ) ; raise __e
+                    end
                 } ; ___lambda.call(
-                      trampCall(StringIO).new(
-                          ""
-                        )
+                      begin
+                          trampCall(StringIO).new(
+                              ""
+                            )
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:23"] + __e.backtrace ) ; raise __e
+                      end
                            )
               end
           }

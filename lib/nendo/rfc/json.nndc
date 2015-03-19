@@ -4,22 +4,38 @@
 # 
 
 trampCall( 
-    delayCall( '_require',  'require',
-        trampCall(@_require)      ,
-    [
-        "json"
-    ]
-                 )
+  begin
+    embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 37 );
+      delayCall( '_require',  'require',
+          begin
+            if @global_lisp_binding.has_key?('_require') then
+              trampCall(@_require)
+            else raise NameError.new( "Error: undefined variable require", "require" ) end
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:37"] + __e.backtrace ) ; raise __e
+          end        ,
+      [
+          "json"
+      ]
+                   )
+  end
  )
 #--------------------
 
 trampCall( 
-    delayCall( '_load',  'load',
-        trampCall(@_load)      ,
-    [
-        "util/list"
-    ]
-                 )
+  begin
+    embedBacktraceInfo( "", 1 );
+      delayCall( '_load',  'load',
+          begin
+            if @global_lisp_binding.has_key?('_load') then
+              trampCall(@_load)
+            else raise NameError.new( "Error: undefined variable load", "load" ) end
+            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+          end        ,
+      [
+          "util/list"
+      ]
+                   )
+  end
  )
 #--------------------
 
@@ -31,84 +47,198 @@ trampCall(
     trampCall(
           Proc.new { |_obj| 
               if ( 
-                  _null_QUMARK(
-                      trampCall(_obj)
-                  )
+                begin
+                  embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 43 );
+                    _null_QUMARK(
+                        begin
+                            trampCall(_obj)
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:43"] + __e.backtrace ) ; raise __e
+                        end
+                    )
+                end
                ) then
-                    trampCall(_obj)
+                    begin
+                        trampCall(_obj)
+                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:44"] + __e.backtrace ) ; raise __e
+                    end
               else
                   if ( 
-                      trampCall( self._vector_QUMARK_METHOD(  'vector?',
-                          trampCall(@_vector_QUMARK)                        ,
-                      [
-                            trampCall(_obj)
-                      ]
-                                   ))
+                    begin
+                      embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 45 );
+                        trampCall( self._vector_QUMARK_METHOD(  'vector?',
+                            begin
+                              if @global_lisp_binding.has_key?('_vector_QUMARK') then
+                                trampCall(@_vector_QUMARK)
+                              else raise NameError.new( "Error: undefined variable vector?", "vector?" ) end
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:45"] + __e.backtrace ) ; raise __e
+                            end                          ,
+                        [
+                              begin
+                                  trampCall(_obj)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:45"] + __e.backtrace ) ; raise __e
+                              end
+                        ]
+                                     ))
+                    end
                    ) then
-                          delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
-                              trampCall(@_list_MIMARK_GTMARKvector)                            ,
-                          [
-                                  trampCall( self._map_METHOD(  'map',
-                                      trampCall(@_map)                                    ,
-                                  [
-                                        Proc.new { |_x| 
-                                              trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
-                                                  trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                                                ,
-                                              [
-                                                    trampCall(_x)
-                                              ]
-                                                           ))
-                                        }                                      ,
-                                          trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
-                                              trampCall(@_vector_MIMARK_GTMARKlist)                                            ,
-                                          [
-                                                trampCall(_obj)
-                                          ]
-                                                       ))
-                                  ]
-                                               ))
-                          ]
-                                       )
-                  else
-                      if ( 
-                          trampCall( self._hash_MIMARKtable_QUMARK_METHOD(  'hash-table?',
-                              trampCall(@_hash_MIMARKtable_QUMARK)                            ,
-                          [
-                                trampCall(_obj)
-                          ]
-                                       ))
-                       ) then
-                              delayCall( '_map',  'map',
-                                  trampCall(@_map)                                ,
-                              [
-                                    Proc.new { |_entry| 
-                                          _cons(
-                                                _car(
-                                                    trampCall(_entry)
-                                                )                                            ,
-                                                trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
-                                                    trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                                                  ,
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 46 );
+                            delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
+                                begin
+                                  if @global_lisp_binding.has_key?('_list_MIMARK_GTMARKvector') then
+                                    trampCall(@_list_MIMARK_GTMARKvector)
+                                  else raise NameError.new( "Error: undefined variable list->vector", "list->vector" ) end
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:46"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                            [
+                                  begin
+                                    embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 47 );
+                                      trampCall( self._map_METHOD(  'map',
+                                          begin
+                                            if @global_lisp_binding.has_key?('_map') then
+                                              trampCall(@_map)
+                                            else raise NameError.new( "Error: undefined variable map", "map" ) end
+                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:47"] + __e.backtrace ) ; raise __e
+                                          end                                        ,
+                                      [
+                                            Proc.new { |_x| 
+                                                begin
+                                                  embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 49 );
+                                                    trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
+                                                        begin
+                                                          if @global_lisp_binding.has_key?('__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist') then
+                                                            trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
+                                                          else raise NameError.new( "Error: undefined variable %json:hash-table->alist", "%json:hash-table->alist" ) end
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:49"] + __e.backtrace ) ; raise __e
+                                                        end                                                      ,
+                                                    [
+                                                          begin
+                                                              trampCall(_x)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:49"] + __e.backtrace ) ; raise __e
+                                                          end
+                                                    ]
+                                                                 ))
+                                                end
+                                            }                                          ,
+                                            begin
+                                              embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 50 );
+                                                trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
+                                                    begin
+                                                      if @global_lisp_binding.has_key?('_vector_MIMARK_GTMARKlist') then
+                                                        trampCall(@_vector_MIMARK_GTMARKlist)
+                                                      else raise NameError.new( "Error: undefined variable vector->list", "vector->list" ) end
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:50"] + __e.backtrace ) ; raise __e
+                                                    end                                                  ,
                                                 [
-                                                        _cdr(
-                                                            trampCall(_entry)
-                                                        )
+                                                      begin
+                                                          trampCall(_obj)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:50"] + __e.backtrace ) ; raise __e
+                                                      end
                                                 ]
                                                              ))
-                                          )
-                                    }                                  ,
-                                      trampCall( self._hash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  'hash-table->alist',
-                                          trampCall(@_hash_MIMARKtable_MIMARK_GTMARKalist)                                        ,
-                                      [
-                                            trampCall(_obj)
+                                            end
                                       ]
                                                    ))
-                              ]
-                                           )
+                                  end
+                            ]
+                                         )
+                        end
+                  else
+                      if ( 
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 51 );
+                            trampCall( self._hash_MIMARKtable_QUMARK_METHOD(  'hash-table?',
+                                begin
+                                  if @global_lisp_binding.has_key?('_hash_MIMARKtable_QUMARK') then
+                                    trampCall(@_hash_MIMARKtable_QUMARK)
+                                  else raise NameError.new( "Error: undefined variable hash-table?", "hash-table?" ) end
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:51"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                            [
+                                  begin
+                                      trampCall(_obj)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:51"] + __e.backtrace ) ; raise __e
+                                  end
+                            ]
+                                         ))
+                        end
+                       ) then
+                            begin
+                              embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 52 );
+                                delayCall( '_map',  'map',
+                                    begin
+                                      if @global_lisp_binding.has_key?('_map') then
+                                        trampCall(@_map)
+                                      else raise NameError.new( "Error: undefined variable map", "map" ) end
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:52"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                [
+                                      Proc.new { |_entry| 
+                                          begin
+                                            embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 54 );
+                                              _cons(
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 54 );
+                                                      _car(
+                                                          begin
+                                                              trampCall(_entry)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:54"] + __e.backtrace ) ; raise __e
+                                                          end
+                                                      )
+                                                  end                                                ,
+                                                  begin
+                                                    embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 55 );
+                                                      trampCall( self.__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  '%json:hash-table->alist',
+                                                          begin
+                                                            if @global_lisp_binding.has_key?('__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist') then
+                                                              trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
+                                                            else raise NameError.new( "Error: undefined variable %json:hash-table->alist", "%json:hash-table->alist" ) end
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
+                                                          end                                                        ,
+                                                      [
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 55 );
+                                                                _cdr(
+                                                                    begin
+                                                                        trampCall(_entry)
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:55"] + __e.backtrace ) ; raise __e
+                                                                    end
+                                                                )
+                                                            end
+                                                      ]
+                                                                   ))
+                                                  end
+                                              )
+                                          end
+                                      }                                    ,
+                                      begin
+                                        embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 56 );
+                                          trampCall( self._hash_MIMARKtable_MIMARK_GTMARKalist_METHOD(  'hash-table->alist',
+                                              begin
+                                                if @global_lisp_binding.has_key?('_hash_MIMARKtable_MIMARK_GTMARKalist') then
+                                                  trampCall(@_hash_MIMARKtable_MIMARK_GTMARKalist)
+                                                else raise NameError.new( "Error: undefined variable hash-table->alist", "hash-table->alist" ) end
+                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:56"] + __e.backtrace ) ; raise __e
+                                              end                                            ,
+                                          [
+                                                begin
+                                                    trampCall(_obj)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:56"] + __e.backtrace ) ; raise __e
+                                                end
+                                          ]
+                                                       ))
+                                      end
+                                ]
+                                             )
+                            end
                       else
                           if ( 
                           true
                            ) then
-                                trampCall(_obj)
+                                begin
+                                    trampCall(_obj)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:58"] + __e.backtrace ) ; raise __e
+                                end
                           else
                               Cell.new()
                           end
@@ -129,85 +259,199 @@ trampCall(
     trampCall(
           Proc.new { |_obj| 
               if ( 
-                  _null_QUMARK(
-                      trampCall(_obj)
-                  )
+                begin
+                  embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 62 );
+                    _null_QUMARK(
+                        begin
+                            trampCall(_obj)
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:62"] + __e.backtrace ) ; raise __e
+                        end
+                    )
+                end
                ) then
-                      delayCall( '_make_MIMARKhash_MIMARKtable',  'make-hash-table',
-                          trampCall(@_make_MIMARKhash_MIMARKtable)                        ,
-                      [
-                      ]
-                                   )
+                    begin
+                      embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 63 );
+                        delayCall( '_make_MIMARKhash_MIMARKtable',  'make-hash-table',
+                            begin
+                              if @global_lisp_binding.has_key?('_make_MIMARKhash_MIMARKtable') then
+                                trampCall(@_make_MIMARKhash_MIMARKtable)
+                              else raise NameError.new( "Error: undefined variable make-hash-table", "make-hash-table" ) end
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:63"] + __e.backtrace ) ; raise __e
+                            end                          ,
+                        [
+                        ]
+                                     )
+                    end
               else
                   if ( 
-                      trampCall( self._vector_QUMARK_METHOD(  'vector?',
-                          trampCall(@_vector_QUMARK)                        ,
-                      [
-                            trampCall(_obj)
-                      ]
-                                   ))
+                    begin
+                      embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 64 );
+                        trampCall( self._vector_QUMARK_METHOD(  'vector?',
+                            begin
+                              if @global_lisp_binding.has_key?('_vector_QUMARK') then
+                                trampCall(@_vector_QUMARK)
+                              else raise NameError.new( "Error: undefined variable vector?", "vector?" ) end
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:64"] + __e.backtrace ) ; raise __e
+                            end                          ,
+                        [
+                              begin
+                                  trampCall(_obj)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:64"] + __e.backtrace ) ; raise __e
+                              end
+                        ]
+                                     ))
+                    end
                    ) then
-                          delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
-                              trampCall(@_list_MIMARK_GTMARKvector)                            ,
-                          [
-                                  trampCall( self._map_METHOD(  'map',
-                                      trampCall(@_map)                                    ,
-                                  [
-                                        Proc.new { |_x| 
-                                              trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                                                  trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                                                ,
-                                              [
-                                                    trampCall(_x)
-                                              ]
-                                                           ))
-                                        }                                      ,
-                                          trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
-                                              trampCall(@_vector_MIMARK_GTMARKlist)                                            ,
-                                          [
-                                                trampCall(_obj)
-                                          ]
-                                                       ))
-                                  ]
-                                               ))
-                          ]
-                                       )
-                  else
-                      if ( 
-                          _pair_QUMARK(
-                              trampCall(_obj)
-                          )
-                       ) then
-                              delayCall( '_alist_MIMARK_GTMARKhash_MIMARKtable',  'alist->hash-table',
-                                  trampCall(@_alist_MIMARK_GTMARKhash_MIMARKtable)                                ,
-                              [
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 65 );
+                            delayCall( '_list_MIMARK_GTMARKvector',  'list->vector',
+                                begin
+                                  if @global_lisp_binding.has_key?('_list_MIMARK_GTMARKvector') then
+                                    trampCall(@_list_MIMARK_GTMARKvector)
+                                  else raise NameError.new( "Error: undefined variable list->vector", "list->vector" ) end
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:65"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                            [
+                                  begin
+                                    embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 66 );
                                       trampCall( self._map_METHOD(  'map',
-                                          trampCall(@_map)                                        ,
+                                          begin
+                                            if @global_lisp_binding.has_key?('_map') then
+                                              trampCall(@_map)
+                                            else raise NameError.new( "Error: undefined variable map", "map" ) end
+                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:66"] + __e.backtrace ) ; raise __e
+                                          end                                        ,
                                       [
-                                            Proc.new { |_entry| 
-                                                  _cons(
-                                                        _car(
-                                                            trampCall(_entry)
-                                                        )                                                    ,
-                                                        trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                                                            trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                                                          ,
-                                                        [
-                                                                _cdr(
-                                                                    trampCall(_entry)
-                                                                )
-                                                        ]
-                                                                     ))
-                                                  )
+                                            Proc.new { |_x| 
+                                                begin
+                                                  embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 68 );
+                                                    trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                                                        begin
+                                                          if @global_lisp_binding.has_key?('__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable') then
+                                                            trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
+                                                          else raise NameError.new( "Error: undefined variable %json:alist->hash-table", "%json:alist->hash-table" ) end
+                                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:68"] + __e.backtrace ) ; raise __e
+                                                        end                                                      ,
+                                                    [
+                                                          begin
+                                                              trampCall(_x)
+                                                            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:68"] + __e.backtrace ) ; raise __e
+                                                          end
+                                                    ]
+                                                                 ))
+                                                end
                                             }                                          ,
-                                            trampCall(_obj)
+                                            begin
+                                              embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 69 );
+                                                trampCall( self._vector_MIMARK_GTMARKlist_METHOD(  'vector->list',
+                                                    begin
+                                                      if @global_lisp_binding.has_key?('_vector_MIMARK_GTMARKlist') then
+                                                        trampCall(@_vector_MIMARK_GTMARKlist)
+                                                      else raise NameError.new( "Error: undefined variable vector->list", "vector->list" ) end
+                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:69"] + __e.backtrace ) ; raise __e
+                                                    end                                                  ,
+                                                [
+                                                      begin
+                                                          trampCall(_obj)
+                                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:69"] + __e.backtrace ) ; raise __e
+                                                      end
+                                                ]
+                                                             ))
+                                            end
                                       ]
                                                    ))
-                              ]
-                                           )
+                                  end
+                            ]
+                                         )
+                        end
+                  else
+                      if ( 
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 70 );
+                            _pair_QUMARK(
+                                begin
+                                    trampCall(_obj)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:70"] + __e.backtrace ) ; raise __e
+                                end
+                            )
+                        end
+                       ) then
+                            begin
+                              embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 71 );
+                                delayCall( '_alist_MIMARK_GTMARKhash_MIMARKtable',  'alist->hash-table',
+                                    begin
+                                      if @global_lisp_binding.has_key?('_alist_MIMARK_GTMARKhash_MIMARKtable') then
+                                        trampCall(@_alist_MIMARK_GTMARKhash_MIMARKtable)
+                                      else raise NameError.new( "Error: undefined variable alist->hash-table", "alist->hash-table" ) end
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:71"] + __e.backtrace ) ; raise __e
+                                    end                                  ,
+                                [
+                                      begin
+                                        embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 72 );
+                                          trampCall( self._map_METHOD(  'map',
+                                              begin
+                                                if @global_lisp_binding.has_key?('_map') then
+                                                  trampCall(@_map)
+                                                else raise NameError.new( "Error: undefined variable map", "map" ) end
+                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:72"] + __e.backtrace ) ; raise __e
+                                              end                                            ,
+                                          [
+                                                Proc.new { |_entry| 
+                                                    begin
+                                                      embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 74 );
+                                                        _cons(
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 74 );
+                                                                _car(
+                                                                    begin
+                                                                        trampCall(_entry)
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:74"] + __e.backtrace ) ; raise __e
+                                                                    end
+                                                                )
+                                                            end                                                          ,
+                                                            begin
+                                                              embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 75 );
+                                                                trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                                                                    begin
+                                                                      if @global_lisp_binding.has_key?('__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable') then
+                                                                        trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
+                                                                      else raise NameError.new( "Error: undefined variable %json:alist->hash-table", "%json:alist->hash-table" ) end
+                                                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
+                                                                    end                                                                  ,
+                                                                [
+                                                                      begin
+                                                                        embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 75 );
+                                                                          _cdr(
+                                                                              begin
+                                                                                  trampCall(_entry)
+                                                                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:75"] + __e.backtrace ) ; raise __e
+                                                                              end
+                                                                          )
+                                                                      end
+                                                                ]
+                                                                             ))
+                                                            end
+                                                        )
+                                                    end
+                                                }                                              ,
+                                                begin
+                                                    trampCall(_obj)
+                                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:76"] + __e.backtrace ) ; raise __e
+                                                end
+                                          ]
+                                                       ))
+                                      end
+                                ]
+                                             )
+                            end
                       else
                           if ( 
                           true
                            ) then
-                                trampCall(_obj)
+                                begin
+                                    trampCall(_obj)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:78"] + __e.backtrace ) ; raise __e
+                                end
                           else
                               Cell.new()
                           end
@@ -227,14 +471,28 @@ trampCall(
     @_parse_MIMARKjson_MIMARKstring = 
     trampCall(
           Proc.new { |_str| 
-                delayCall( '__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist',  '%json:hash-table->alist',
-                    trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                  ,
-                [
-                      trampCall(JSON).parse(
-                            trampCall(_str)
-                        )
-                ]
-                             )
+              begin
+                embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 85 );
+                  delayCall( '__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist',  '%json:hash-table->alist',
+                      begin
+                        if @global_lisp_binding.has_key?('__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist') then
+                          trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
+                        else raise NameError.new( "Error: undefined variable %json:hash-table->alist", "%json:hash-table->alist" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:85"] + __e.backtrace ) ; raise __e
+                      end                    ,
+                  [
+                        begin
+                            trampCall(JSON).parse(
+                                  begin
+                                      trampCall(_str)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:86"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:86"] + __e.backtrace ) ; raise __e
+                        end
+                  ]
+                               )
+              end
           }
     )
   end
@@ -252,36 +510,73 @@ trampCall(
                 ___lambda = lambda { |__| 
                     begin #makeLet
                       ___lambda = lambda { |_str| 
-                            delayCall( '_parse_MIMARKjson_MIMARKstring',  'parse-json-string',
-                                trampCall(@_parse_MIMARKjson_MIMARKstring)                              ,
-                            [
-                                  trampCall(_str)
-                            ]
-                                         )
+                          begin
+                            embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 91 );
+                              delayCall( '_parse_MIMARKjson_MIMARKstring',  'parse-json-string',
+                                  begin
+                                    if @global_lisp_binding.has_key?('_parse_MIMARKjson_MIMARKstring') then
+                                      trampCall(@_parse_MIMARKjson_MIMARKstring)
+                                    else raise NameError.new( "Error: undefined variable parse-json-string", "parse-json-string" ) end
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:91"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                    begin
+                                        trampCall(_str)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:91"] + __e.backtrace ) ; raise __e
+                                    end
+                              ]
+                                           )
+                          end
                       } ; ___lambda.call(
-                            trampCall(__).read(
-                              )
+                            begin
+                                trampCall(__).read(
+                                  )
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:90"] + __e.backtrace ) ; raise __e
+                            end
                                  )
                     end
                 } ; ___lambda.call(
                       begin #makeLet
                         ___lambda = lambda { |___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188| 
                             if ( 
-                                _null_QUMARK(
-                                    trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
-                                )
+                              begin
+                                embedBacktraceInfo( "", 1 );
+                                  _null_QUMARK(
+                                      begin
+                                          trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
+                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                      end
+                                  )
+                              end
                              ) then
-                                trampCall(STDIN)
+                                begin
+                                    trampCall(STDIN)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:89"] + __e.backtrace ) ; raise __e
+                                end
                             else
-                                  delayCall( '_car',  'car',
-                                      trampCall(@_car)                                    ,
-                                  [
-                                        trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
-                                  ]
-                                               )
+                                begin
+                                  embedBacktraceInfo( "", 1 );
+                                    delayCall( '_car',  'car',
+                                        begin
+                                          if @global_lisp_binding.has_key?('_car') then
+                                            trampCall(@_car)
+                                          else raise NameError.new( "Error: undefined variable car", "car" ) end
+                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                        end                                      ,
+                                    [
+                                          begin
+                                              trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90188)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                    ]
+                                                 )
+                                end
                             end
                         } ; ___lambda.call(
-                              trampCall(_io)
+                              begin
+                                  trampCall(_io)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:89"] + __e.backtrace ) ; raise __e
+                              end
                                    )
                       end
                            )
@@ -299,14 +594,28 @@ trampCall(
     @_construct_MIMARKjson_MIMARKstring = 
     trampCall(
           Proc.new { |_obj| 
-              trampCall(JSON).dump(
-                      trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                          trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                        ,
-                      [
-                            trampCall(_obj)
-                      ]
-                                   ))
-                )
+              begin
+                  trampCall(JSON).dump(
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 98 );
+                            trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                                begin
+                                  if @global_lisp_binding.has_key?('__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable') then
+                                    trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
+                                  else raise NameError.new( "Error: undefined variable %json:alist->hash-table", "%json:alist->hash-table" ) end
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:98"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                            [
+                                  begin
+                                      trampCall(_obj)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:98"] + __e.backtrace ) ; raise __e
+                                  end
+                            ]
+                                         ))
+                        end
+                    )
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:97"] + __e.backtrace ) ; raise __e
+              end
           }
     )
   end
@@ -322,33 +631,70 @@ trampCall(
           Proc.new { |_obj,*__rest__| _io = __rest__[0] ;  
               begin #makeLet
                 ___lambda = lambda { |__| 
-                    trampCall(__).print(
-                            trampCall( self._construct_MIMARKjson_MIMARKstring_METHOD(  'construct-json-string',
-                                trampCall(@_construct_MIMARKjson_MIMARKstring)                              ,
-                            [
-                                  trampCall(_obj)
-                            ]
-                                         ))
-                      )
+                    begin
+                        trampCall(__).print(
+                              begin
+                                embedBacktraceInfo( "./lib/nendo/rfc/json.nnd", 103 );
+                                  trampCall( self._construct_MIMARKjson_MIMARKstring_METHOD(  'construct-json-string',
+                                      begin
+                                        if @global_lisp_binding.has_key?('_construct_MIMARKjson_MIMARKstring') then
+                                          trampCall(@_construct_MIMARKjson_MIMARKstring)
+                                        else raise NameError.new( "Error: undefined variable construct-json-string", "construct-json-string" ) end
+                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:103"] + __e.backtrace ) ; raise __e
+                                      end                                    ,
+                                  [
+                                        begin
+                                            trampCall(_obj)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:103"] + __e.backtrace ) ; raise __e
+                                        end
+                                  ]
+                                               ))
+                              end
+                          )
+                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:102"] + __e.backtrace ) ; raise __e
+                    end
                 } ; ___lambda.call(
                       begin #makeLet
                         ___lambda = lambda { |___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189| 
                             if ( 
-                                _null_QUMARK(
-                                    trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
-                                )
+                              begin
+                                embedBacktraceInfo( "", 1 );
+                                  _null_QUMARK(
+                                      begin
+                                          trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
+                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                      end
+                                  )
+                              end
                              ) then
-                                trampCall(STDOUT)
+                                begin
+                                    trampCall(STDOUT)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:101"] + __e.backtrace ) ; raise __e
+                                end
                             else
-                                  delayCall( '_car',  'car',
-                                      trampCall(@_car)                                    ,
-                                  [
-                                        trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
-                                  ]
-                                               )
+                                begin
+                                  embedBacktraceInfo( "", 1 );
+                                    delayCall( '_car',  'car',
+                                        begin
+                                          if @global_lisp_binding.has_key?('_car') then
+                                            trampCall(@_car)
+                                          else raise NameError.new( "Error: undefined variable car", "car" ) end
+                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                        end                                      ,
+                                    [
+                                          begin
+                                              trampCall(___gensym__6d159efe5170a605fc9e84dcf91a427e3f7e5718_90189)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                    ]
+                                                 )
+                                end
                             end
                         } ; ___lambda.call(
-                              trampCall(_io)
+                              begin
+                                  trampCall(_io)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/json.nnd:101"] + __e.backtrace ) ; raise __e
+                              end
                                    )
                       end
                            )

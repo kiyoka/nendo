@@ -6,6 +6,7 @@
 (.load   "./benchmark/ruby_benchmark_code.rb")
 ( load   "./benchmark/nendo_benchmark_code.nnd")
 
+(printf "---- *runtime-check* = [%s] ----\n" (*runtime-check*))
 
 (if (VersionCheck.new.isJRuby)
     (require "jruby-prof")

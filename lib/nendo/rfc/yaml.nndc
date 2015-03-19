@@ -4,22 +4,38 @@
 # 
 
 trampCall( 
-    delayCall( '_require',  'require',
-        trampCall(@_require)      ,
-    [
-        "yaml"
-    ]
-                 )
+  begin
+    embedBacktraceInfo( "./lib/nendo/rfc/yaml.nnd", 37 );
+      delayCall( '_require',  'require',
+          begin
+            if @global_lisp_binding.has_key?('_require') then
+              trampCall(@_require)
+            else raise NameError.new( "Error: undefined variable require", "require" ) end
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:37"] + __e.backtrace ) ; raise __e
+          end        ,
+      [
+          "yaml"
+      ]
+                   )
+  end
  )
 #--------------------
 
 trampCall( 
-    delayCall( '_load',  'load',
-        trampCall(@_load)      ,
-    [
-        "rfc/json"
-    ]
-                 )
+  begin
+    embedBacktraceInfo( "", 1 );
+      delayCall( '_load',  'load',
+          begin
+            if @global_lisp_binding.has_key?('_load') then
+              trampCall(@_load)
+            else raise NameError.new( "Error: undefined variable load", "load" ) end
+            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+          end        ,
+      [
+          "rfc/json"
+      ]
+                   )
+  end
  )
 #--------------------
 
@@ -30,14 +46,28 @@ trampCall(
     @_parse_MIMARKyaml_MIMARKstring = 
     trampCall(
           Proc.new { |_str| 
-                delayCall( '__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist',  '%json:hash-table->alist',
-                    trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)                  ,
-                [
-                      trampCall(YAML).load(
-                            trampCall(_str)
-                        )
-                ]
-                             )
+              begin
+                embedBacktraceInfo( "./lib/nendo/rfc/yaml.nnd", 44 );
+                  delayCall( '__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist',  '%json:hash-table->alist',
+                      begin
+                        if @global_lisp_binding.has_key?('__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist') then
+                          trampCall(@__PAMARKjson_COMARKhash_MIMARKtable_MIMARK_GTMARKalist)
+                        else raise NameError.new( "Error: undefined variable %json:hash-table->alist", "%json:hash-table->alist" ) end
+                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:44"] + __e.backtrace ) ; raise __e
+                      end                    ,
+                  [
+                        begin
+                            trampCall(YAML).load(
+                                  begin
+                                      trampCall(_str)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:45"] + __e.backtrace ) ; raise __e
+                                  end
+                              )
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:45"] + __e.backtrace ) ; raise __e
+                        end
+                  ]
+                               )
+              end
           }
     )
   end
@@ -55,36 +85,73 @@ trampCall(
                 ___lambda = lambda { |__| 
                     begin #makeLet
                       ___lambda = lambda { |_str| 
-                            delayCall( '_parse_MIMARKyaml_MIMARKstring',  'parse-yaml-string',
-                                trampCall(@_parse_MIMARKyaml_MIMARKstring)                              ,
-                            [
-                                  trampCall(_str)
-                            ]
-                                         )
+                          begin
+                            embedBacktraceInfo( "./lib/nendo/rfc/yaml.nnd", 51 );
+                              delayCall( '_parse_MIMARKyaml_MIMARKstring',  'parse-yaml-string',
+                                  begin
+                                    if @global_lisp_binding.has_key?('_parse_MIMARKyaml_MIMARKstring') then
+                                      trampCall(@_parse_MIMARKyaml_MIMARKstring)
+                                    else raise NameError.new( "Error: undefined variable parse-yaml-string", "parse-yaml-string" ) end
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:51"] + __e.backtrace ) ; raise __e
+                                  end                                ,
+                              [
+                                    begin
+                                        trampCall(_str)
+                                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:51"] + __e.backtrace ) ; raise __e
+                                    end
+                              ]
+                                           )
+                          end
                       } ; ___lambda.call(
-                            trampCall(__).read(
-                              )
+                            begin
+                                trampCall(__).read(
+                                  )
+                              rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:50"] + __e.backtrace ) ; raise __e
+                            end
                                  )
                     end
                 } ; ___lambda.call(
                       begin #makeLet
                         ___lambda = lambda { |___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110172| 
                             if ( 
-                                _null_QUMARK(
-                                    trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110172)
-                                )
+                              begin
+                                embedBacktraceInfo( "", 1 );
+                                  _null_QUMARK(
+                                      begin
+                                          trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110172)
+                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                      end
+                                  )
+                              end
                              ) then
-                                trampCall(STDIN)
+                                begin
+                                    trampCall(STDIN)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:49"] + __e.backtrace ) ; raise __e
+                                end
                             else
-                                  delayCall( '_car',  'car',
-                                      trampCall(@_car)                                    ,
-                                  [
-                                        trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110172)
-                                  ]
-                                               )
+                                begin
+                                  embedBacktraceInfo( "", 1 );
+                                    delayCall( '_car',  'car',
+                                        begin
+                                          if @global_lisp_binding.has_key?('_car') then
+                                            trampCall(@_car)
+                                          else raise NameError.new( "Error: undefined variable car", "car" ) end
+                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                        end                                      ,
+                                    [
+                                          begin
+                                              trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110172)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                    ]
+                                                 )
+                                end
                             end
                         } ; ___lambda.call(
-                              trampCall(_io)
+                              begin
+                                  trampCall(_io)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:49"] + __e.backtrace ) ; raise __e
+                              end
                                    )
                       end
                            )
@@ -102,14 +169,28 @@ trampCall(
     @_construct_MIMARKyaml_MIMARKstring = 
     trampCall(
           Proc.new { |_obj| 
-              trampCall(YAML).dump(
-                      trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
-                          trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)                        ,
-                      [
-                            trampCall(_obj)
-                      ]
-                                   ))
-                )
+              begin
+                  trampCall(YAML).dump(
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/rfc/yaml.nnd", 57 );
+                            trampCall( self.__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable_METHOD(  '%json:alist->hash-table',
+                                begin
+                                  if @global_lisp_binding.has_key?('__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable') then
+                                    trampCall(@__PAMARKjson_COMARKalist_MIMARK_GTMARKhash_MIMARKtable)
+                                  else raise NameError.new( "Error: undefined variable %json:alist->hash-table", "%json:alist->hash-table" ) end
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:57"] + __e.backtrace ) ; raise __e
+                                end                              ,
+                            [
+                                  begin
+                                      trampCall(_obj)
+                                    rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:57"] + __e.backtrace ) ; raise __e
+                                  end
+                            ]
+                                         ))
+                        end
+                    )
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:57"] + __e.backtrace ) ; raise __e
+              end
           }
     )
   end
@@ -125,33 +206,70 @@ trampCall(
           Proc.new { |_obj,*__rest__| _io = __rest__[0] ;  
               begin #makeLet
                 ___lambda = lambda { |__| 
-                    trampCall(__).print(
-                            trampCall( self._construct_MIMARKyaml_MIMARKstring_METHOD(  'construct-yaml-string',
-                                trampCall(@_construct_MIMARKyaml_MIMARKstring)                              ,
-                            [
-                                  trampCall(_obj)
-                            ]
-                                         ))
-                      )
+                    begin
+                        trampCall(__).print(
+                              begin
+                                embedBacktraceInfo( "./lib/nendo/rfc/yaml.nnd", 62 );
+                                  trampCall( self._construct_MIMARKyaml_MIMARKstring_METHOD(  'construct-yaml-string',
+                                      begin
+                                        if @global_lisp_binding.has_key?('_construct_MIMARKyaml_MIMARKstring') then
+                                          trampCall(@_construct_MIMARKyaml_MIMARKstring)
+                                        else raise NameError.new( "Error: undefined variable construct-yaml-string", "construct-yaml-string" ) end
+                                        rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:62"] + __e.backtrace ) ; raise __e
+                                      end                                    ,
+                                  [
+                                        begin
+                                            trampCall(_obj)
+                                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:62"] + __e.backtrace ) ; raise __e
+                                        end
+                                  ]
+                                               ))
+                              end
+                          )
+                      rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:61"] + __e.backtrace ) ; raise __e
+                    end
                 } ; ___lambda.call(
                       begin #makeLet
                         ___lambda = lambda { |___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110173| 
                             if ( 
-                                _null_QUMARK(
-                                    trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110173)
-                                )
+                              begin
+                                embedBacktraceInfo( "", 1 );
+                                  _null_QUMARK(
+                                      begin
+                                          trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110173)
+                                        rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                      end
+                                  )
+                              end
                              ) then
-                                trampCall(STDOUT)
+                                begin
+                                    trampCall(STDOUT)
+                                  rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:60"] + __e.backtrace ) ; raise __e
+                                end
                             else
-                                  delayCall( '_car',  'car',
-                                      trampCall(@_car)                                    ,
-                                  [
-                                        trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110173)
-                                  ]
-                                               )
+                                begin
+                                  embedBacktraceInfo( "", 1 );
+                                    delayCall( '_car',  'car',
+                                        begin
+                                          if @global_lisp_binding.has_key?('_car') then
+                                            trampCall(@_car)
+                                          else raise NameError.new( "Error: undefined variable car", "car" ) end
+                                          rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                        end                                      ,
+                                    [
+                                          begin
+                                              trampCall(___gensym__fe1de47a64bc2c3a16f7b3aea3a8f625d4ab36ee_110173)
+                                            rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
+                                          end
+                                    ]
+                                                 )
+                                end
                             end
                         } ; ___lambda.call(
-                              trampCall(_io)
+                              begin
+                                  trampCall(_io)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/rfc/yaml.nnd:60"] + __e.backtrace ) ; raise __e
+                              end
                                    )
                       end
                            )

@@ -4,12 +4,20 @@
 # 
 
 trampCall( 
-    delayCall( '_require',  'require',
-        trampCall(@_require)      ,
-    [
-        "syslog"
-    ]
-                 )
+  begin
+    embedBacktraceInfo( "./lib/nendo/debug/syslog.nnd", 37 );
+      delayCall( '_require',  'require',
+          begin
+            if @global_lisp_binding.has_key?('_require') then
+              trampCall(@_require)
+            else raise NameError.new( "Error: undefined variable require", "require" ) end
+            rescue => __e ; __e.set_backtrace( ["./lib/nendo/debug/syslog.nnd:37"] + __e.backtrace ) ; raise __e
+          end        ,
+      [
+          "syslog"
+      ]
+                   )
+  end
  )
 #--------------------
 
@@ -20,18 +28,36 @@ trampCall(
     @_debug_MIMARKprint_MIMARKoutput_MIMARKfunc = 
     trampCall(
           Proc.new { |_str| 
-              trampCall(Syslog).open(
-                )
-              trampCall(Syslog).log(
-                    trampCall(Syslog::LOG_WARNING)                  ,
-                  "%s"                  ,
-                      ( 
-                      "Nendo: "                      +
-                        trampCall(_str)
-                       ) 
-                )
-              trampCall(Syslog).close(
-                )
+              begin
+                  trampCall(Syslog).open(
+                    )
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/debug/syslog.nnd:40"] + __e.backtrace ) ; raise __e
+              end
+              begin
+                  trampCall(Syslog).log(
+                        begin
+                            trampCall(Syslog::LOG_WARNING)
+                          rescue => __e ; __e.set_backtrace( ["./lib/nendo/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
+                        end                      ,
+                      "%s"                      ,
+                        begin
+                          embedBacktraceInfo( "./lib/nendo/debug/syslog.nnd", 41 );
+                            ( 
+                            "Nendo: "                            +
+                              begin
+                                  trampCall(_str)
+                                rescue => __e ; __e.set_backtrace( ["./lib/nendo/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
+                              end
+                             ) 
+                        end
+                    )
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/debug/syslog.nnd:41"] + __e.backtrace ) ; raise __e
+              end
+              begin
+                  trampCall(Syslog).close(
+                    )
+                rescue => __e ; __e.set_backtrace( ["./lib/nendo/debug/syslog.nnd:42"] + __e.backtrace ) ; raise __e
+              end
           }
     )
   end

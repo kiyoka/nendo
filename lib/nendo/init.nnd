@@ -1177,9 +1177,19 @@
                  (let1 full-path (+ (car load-path) "/" path)
                    (cond
                     ((File.exist? full-path)
-                     (if (rxmatch #/[.]nndc$/ full-path)
-                         (%load-compiled-code full-path)
-                         (%load               full-path)))
+                     (cond
+                      ((and
+                        (rxmatch #/[.]nndc.nc$/ full-path)
+                        (not (*runtime-check*)))
+                       (%load-compiled-code full-path))
+                      ((rxmatch #/[.]nndc$/ full-path)
+                       (%load-compiled-code full-path))
+                      (else
+                       (%load               full-path))))
+                    ((and
+                      (File.exist? (+ full-path ".nndc.nc"))
+                      (not (*runtime-check*)))
+                     (%load-compiled-code (+ full-path ".nndc.nc")))
                     ((File.exist? (+ full-path ".nndc"))
                      (%load-compiled-code (+ full-path ".nndc")))
                     ((File.exist? (+ full-path ".nnd"))

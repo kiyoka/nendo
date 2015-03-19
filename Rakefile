@@ -81,7 +81,8 @@ task :compile do
   end
 
   # Compile
-  sh "/bin/rm -f ./lib/nendo/*.nndc* ./lib/nendo/**/*.nndc*"
+  sh "/bin/rm -f ./lib/nendo/*.nndc    ./lib/nendo/**/*.nndc"
+  sh "/bin/rm -f ./lib/nendo/*.nndc.nc ./lib/nendo/**/*.nndc.nc"
   sh "ruby -rrbconfig -e 'p RbConfig::CONFIG[ \"vendor_dir\" ]'"
   files = []
   files << "./lib/nendo/init.nnd"
@@ -102,7 +103,8 @@ task :compile do
   files << "./lib/nendo/util/combinations.nnd"
   files << "./lib/nendo/nendo/experimental.nnd"
   files.each {|fn|
-    sh sprintf( "ruby -I ./lib ./bin/nendo -d -c %s > %s", fn, fn + "c" )
+    sh sprintf( "ruby -I ./lib ./bin/nendo    -c %s > %s", fn, fn + "c" )
+    sh sprintf( "ruby -I ./lib ./bin/nendo -d -c %s > %s", fn, fn + "c.nc" )
   }
 end
 

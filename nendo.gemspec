@@ -87,7 +87,24 @@ Gem::Specification.new do |spec|
     "lib/nendo/rfc/json.nndc",
     "lib/nendo/srfi-9.nndc",
     "lib/nendo/debug/null.nndc",
-    "lib/nendo/debug/syslog.nndc"
+    "lib/nendo/debug/syslog.nndc",
+    "lib/nendo/util/combinations.nndc.nc",
+    "lib/nendo/util/record.nndc.nc",
+    "lib/nendo/util/list.nndc.nc",
+    "lib/nendo/util/match.nndc.nc",
+    "lib/nendo/srfi-1.nndc.nc",
+    "lib/nendo/srfi-26.nndc.nc",
+    "lib/nendo/text/tree.nndc.nc",
+    "lib/nendo/text/html-lite.nndc.nc",
+    "lib/nendo/srfi-2.nndc.nc",
+    "lib/nendo/nendo/test.nndc.nc",
+    "lib/nendo/nendo/experimental.nndc.nc",
+    "lib/nendo/init.nndc.nc",
+    "lib/nendo/rfc/yaml.nndc.nc",
+    "lib/nendo/rfc/json.nndc.nc",
+    "lib/nendo/srfi-9.nndc.nc",
+    "lib/nendo/debug/null.nndc.nc",
+    "lib/nendo/debug/syslog.nndc.nc"
   ]
   spec.homepage = "http://github.com/kiyoka/nendo"
   spec.licenses = ["New BSD"]

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# builtin_functions.rb  -  "builtin functions for nendo"
+# builitin_functions.rb  -  "builtin functions for nendo"
 #
 #   Copyright (c) 2009-2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #
@@ -505,6 +505,10 @@ module Nendo
 
     def __ASMARKFILE_ASMARK()
       @lastSourcefile
+    end
+
+    def __ASMARKruntime_MIMARKcheck_ASMARK()
+      @runtimeCheck
     end
 
     def _vector_MIMARKset_EXMARK( v, index, value )
