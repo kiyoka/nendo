@@ -1616,7 +1616,7 @@ EOS
 EOS
            )).to  match( /Nendo::LispMacro/ )
     expect(@nendo.evalStr( " (dec!-macro 10) " )).to eq("9")
-    expect(@nendo.evalStr( " (. (dec!-macro 10) class) " )).to eq('Fixnum')
+    expect(@nendo.evalStr( " (define val (dec!-macro 10)) (val.is_a? Integer) " )).to eq("#t")
   end
 end
 
