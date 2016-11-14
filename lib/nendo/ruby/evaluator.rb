@@ -808,7 +808,7 @@ module Nendo
           sym = sexp.to_s
           sym = toRubySymbol( sym )
           lispSymbolReference( sym, locals, nil, sexpArg.sourcefile, sexpArg.lineno )
-        when Fixnum
+        when 1.class
           sexp.to_s
         when String, LispString
           sprintf( "\"%s\"", LispString.escape( sexp ))
