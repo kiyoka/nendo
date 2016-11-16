@@ -267,7 +267,7 @@ module Nendo
     def _range(    num, *args )
       arr = args[0].to_arr
       if 0 < arr.length
-        if arr[0].is_a? Fixnum
+        if arr[0].is_a? Integer
           (0..num-1).to_a.map { |x| x + arr[0] }.to_list
         else
           raise TypeError, "Error range's start expects number."
