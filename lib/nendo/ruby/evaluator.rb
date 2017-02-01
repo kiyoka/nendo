@@ -1123,11 +1123,40 @@ module Nendo
 
     def displayBacktrace( exception )
       if @displayErrorsFlag
-        STDERR.puts( "\n  <<< Backtrace of Nendo >>>" )
-        @backtrace.reverse.each { |x|
-          STDERR.printf( "        from %s \n", x )
+        STDERR.printf("-------------- Nendo backtrace ---------------\n")
+        STDERR.printf("%s\n",exception.to_s)
+        exception.backtrace.each {|str|
+          line = normalizeBacktrace(str)
+          if line
+            STDERR.printf("	from %s\n",line)
+          end
         }
-        STDERR.puts( "          ...\n\n" )
+        STDERR.printf("\n")
+        STDERR.printf("-------------- Ruby  backtrace ---------------\n")
+      end
+    end
+    
+    def normalizeBacktrace( str )
+      fields = str.split(/:/)
+      if 3 <= fields.size()
+        (filename,lineno,funcname) = fields
+        if filename.match( ".nnd$" ) or filename.match( ".scm$" )
+          funcname = funcname.sub(/^in [`]/,"")
+          funcname = funcname.sub(/[']$/,"")
+          if funcname.match(/_METHOD$/)
+            funcname = funcname.sub(/_METHOD$/,"")
+          else
+            return nil
+          end
+          if '_' == funcname[0]
+            funcname = toLispSymbol(funcname)
+          end
+          return sprintf( "%s:%s:in `%s' <nendo function>",filename,lineno,funcname)
+        else
+          return nil
+        end
+      else
+        return nil
       end
     end
 

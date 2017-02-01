@@ -222,6 +222,19 @@ describe Evaluator, "When use Evaluator's util methods" do
   end
 end
 
+describe Evaluator, "When call stacktrace normalizer." do
+  before do
+    @evaluator = Evaluator.new(Nendo::Core.new())
+  end
+  it "should" do
+    # nnd or scm source code
+    expect(@evaluator.normalizeBacktrace( "	from /tmp/t.scm:12:in `block in initialize'" )).to be_nil
+    expect(@evaluator.normalizeBacktrace( "	from /tmp/t.scm:4:in `_func_METHOD'" )).to eq("	from /tmp/t.scm:4:in `func' <nendo function>")
+    # rb source code
+    expect(@evaluator.normalizeBacktrace( "	from /home/kiyoka/work/github/nendo/lib/nendo/ruby/evaluator.rb:328:in `callProcedure'")).to be_nil
+  end
+end
+
 describe Nendo, "when call evalStr() with literals" do
   before do
     @nendo = Nendo::Core.new()
