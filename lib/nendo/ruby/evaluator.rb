@@ -173,7 +173,7 @@ module Nendo
         "  ret = callProcedure( '" + name.to_s + "', origname, pred, args ) ;",
         "  lispMethodExit( origname,  " + _log.to_s + " ) ; ",
         "  return ret ",
-        "end " ].join
+        "end" ].join
     end
 
     def _gensym( )
@@ -393,7 +393,8 @@ module Nendo
         if global_cap and sourceInfo
           sourceInfo.setVarname( toLispSymbol( variable_sym ))
         end
-        [ "begin #execFunc",
+        [ "begin ",
+          makeComment("#execFunc"),
           [
            if global_cap
              [
@@ -403,6 +404,7 @@ module Nendo
            else
              ""
            end,
+           makeComment(sprintf("#execFunc(funcname=%s)",funcname)),
            sprintf( "%s%s = ", global_cap, variable_sym ),
            "trampCall(", [ ar ], ")"],
           "end"
@@ -422,7 +424,7 @@ module Nendo
          "rescue => __e ",
          sprintf( "  __e.set_backtrace( [\"%s:%d\"] + __e.backtrace )", sourcefile, lineno ),
          "  raise __e",
-         "end "]
+         "end"]
       else
         if (EXEC_TYPE_ANONYMOUS != execType) and isRubyInterface( funcname )
           # Ruby method
@@ -475,6 +477,10 @@ module Nendo
       end
     end
 
+    def makeComment( commentStr )
+      [ commentStr ]
+    end
+    
     def makeSetVariable( car, cdr, locals, sourceInfo )
       cdr.cdr.each { |x|
         if Cell == x.class
@@ -491,7 +497,7 @@ module Nendo
       if ar.size < 2
         ar
       else
-        ["begin  #makeBegin", ar, "end"]
+        ["begin ", makeComment("#makeBegin"), ar, "end"]
       end
     end
 
@@ -577,7 +583,8 @@ module Nendo
         }
         lambda_head = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
       end
-      ["begin #makeLet",
+      ["begin",
+       makeComment("#makeLet"),
        [lambda_head,
         rest.map { |e|  translate( e.car, locals.clone + [argsyms] ) },
         sprintf( "} ; %s.call(", _name ),
@@ -603,7 +610,8 @@ module Nendo
         }
         lambda_head = sprintf( "%s = lambda { |%s| ", _name, argsyms.join( "," ))
       end
-      ["begin #makeLetrec",
+      ["begin ",
+       makeComment("#makeLetrec"),
        [lambda_head,
         argsyms.zip( argvals ).map { |x| [ x[0], " = ", x[1] ] },
         rest.map { |e|  translate( e.car, locals.clone + [argsyms] ) },
@@ -618,7 +626,8 @@ module Nendo
       _locals     = locals.clone + [_var]
       _case       = translate( args.cdr.car,         _locals )
       _thunk      = translate( args.cdr.cdr.car,     _locals )
-      ["begin #makeGuard",
+      ["begin ",
+       makeComment("#makeGuard"),
        [ _thunk ],
        "rescue => " + _var,
        [ _case ],
@@ -1093,7 +1102,9 @@ module Nendo
           ppRubyExp( level+1, x )
         else
           str = sprintf( "%s", x )
-          if str.match( /^[*+-]$/ )
+          if str == 'end'
+            sprintf( "\n%s%s", indent, str )
+          elsif str.match( /^[*+-]$/ )
             sprintf( "%s%s", indent, str )
           elsif str == ">" or str == ">=" or str == "<" or str == "<="
             sprintf( "%s%s", indent, str )
@@ -1306,7 +1317,8 @@ module Nendo
       str = [ "def self." + origname + "(" + argsStr + ")",
               sprintf( "  trampCall( callProcedure( nil, '%s', @_%s, [ " + argsStr + " ] )) ",
                        origname, origname ),
-              "end ;",
+              "end",
+              ";",
               "def @core." + origname + "(" + argsStr + ")",
               "  @evaluator." + origname + "(" + argsStr + ") ",
               "end"
