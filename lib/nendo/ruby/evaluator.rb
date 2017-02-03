@@ -40,11 +40,12 @@ module Nendo
     EXEC_TYPE_NORMAL    = 1
     EXEC_TYPE_ANONYMOUS = 2
     EXEC_TYPE_TAILCALL  = 3
-    LINENO_TIMES = 10
+    LINENO_TIMES = 50
 
     attr_accessor :runtimeCheck
 
     def initialize( core, debug = false )
+      @compiledLineno = 5 # header comment of compiled code
       @core    = core
       @indent  = "  "
       @binding = binding
@@ -1192,10 +1193,16 @@ module Nendo
       fields = str.split(/:/)
       if 3 <= fields.size()
         (filename,compiled_lineno,funcname) = fields
-        compiled_lineno = compiled_lineno.to_i
-        lineno = compiled_lineno / LINENO_TIMES
-        
         if filename.match( ".nnd$" ) or filename.match( ".scm$" )
+          lineno = 1
+          if compiled_lineno
+            compiled_lineno = compiled_lineno.to_i
+            lineno = compiled_lineno / LINENO_TIMES
+            if lineno < 1
+              lineno = 1
+            end
+          end
+          
           funcname = funcname.sub(/^in [`]/,"")
           funcname = funcname.sub(/[']$/,"")
           if funcname.match(/_METHOD$/)
@@ -1262,7 +1269,7 @@ module Nendo
     end
 
     def __PAMARKload( filename )
-      @compiledLineno = 0
+      @compiledLineno = 5 # header comment of compiled code
       printer = Printer.new( @debug )
       open( filename, "r:utf-8" ) {|f|
         reader = Reader.new( f, filename, false )

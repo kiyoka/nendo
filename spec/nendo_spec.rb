@@ -229,7 +229,7 @@ describe Evaluator, "When call stacktrace normalizer." do
   it "should" do
     # nnd or scm source code
     expect(@evaluator.normalizeBacktrace( "	from /tmp/t.scm:12:in `block in initialize'" )).to be_nil
-    expect(@evaluator.normalizeBacktrace( "	from /tmp/t.scm:4:in `_func_METHOD'" )).to eq("	from /tmp/t.scm:4:in `func' <nendo function>")
+    expect(@evaluator.normalizeBacktrace( "	from /tmp/t.scm:1:in `_func_METHOD'" )).to eq("	from /tmp/t.scm:1:in `func' <nendo function> (compiled lineno=1)")
     # rb source code
     expect(@evaluator.normalizeBacktrace( "	from /home/kiyoka/work/github/nendo/lib/nendo/ruby/evaluator.rb:328:in `callProcedure'")).to be_nil
   end
