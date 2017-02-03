@@ -40,6 +40,7 @@ module Nendo
     EXEC_TYPE_NORMAL    = 1
     EXEC_TYPE_ANONYMOUS = 2
     EXEC_TYPE_TAILCALL  = 3
+    LINENO_TIMES = 10
 
     attr_accessor :runtimeCheck
 
@@ -1095,14 +1096,52 @@ module Nendo
             macroexpandEngineLoop( sexp, [], [] )))
     end
 
-    def ppRubyExp( level, exp )
+    def adjustLineno( target_lineno, compiledLineno )
+      str = ""
+      if compiledLineno < target_lineno
+        while compiledLineno < target_lineno
+          str += "\n"
+          compiledLineno += 1
+        end
+      end
+      return str
+    end
+
+    def ppRubyExp( level, exp, lineno )
+      cur_lineno = (lineno - 1) * LINENO_TIMES
+
+      first_crs = adjustLineno( cur_lineno, @compiledLineno )
+      @compiledLineno += first_crs.size()
+
+      head = [ first_crs,  sprintf( "\n#line %d curLineno=%d compiledLineno=%d\n", lineno, cur_lineno, @compiledLineno ) ]
+      @compiledLineno += 2
+               
       indent = @indent * level
-      exp.map { |x|
+      body = exp.map { |x|
         if Array == x.class
-          ppRubyExp( level+1, x )
+          ppRubyExp( level+1, x, lineno )
         else
           str = sprintf( "%s", x )
-          if str == 'end'
+          arr = str.split( /\n/ )
+          @compiledLineno += arr.size() - 1
+
+          if str.match(/embedBacktraceInfo.+;/)
+            m = str.match(/^embedBacktraceInfo[(] \"([^\"]+)\", ([0-9]+).+;/)
+            if m
+              fn = m[1]
+              cur_lineno = (m[2].to_i-1) * LINENO_TIMES
+            else
+              fn = ""
+              cur_lineno = 0
+            end
+            crs = adjustLineno( cur_lineno, @compiledLineno )
+            @compiledLineno += crs.size()
+            sprintf( "%s#embedBacktraceInfo  %s  %d  target=%d  cur=%d  %s \n%s%s",
+                     indent, fn, cur_lineno / LINENO_TIMES,
+                     @compiledLineno, cur_lineno, crs,
+                     indent, str)
+          elsif str == 'end'
+            @compiledLineno += 1
             sprintf( "\n%s%s", indent, str )
           elsif str.match( /^[*+-]$/ )
             sprintf( "%s%s", indent, str )
@@ -1111,10 +1150,12 @@ module Nendo
           elsif str.match( /^[,]/ ) or str.match( /^ = / )
             sprintf( "%s%s", indent, str )
           else
+            @compiledLineno += 1
             sprintf( "\n%s%s", indent, str )
           end
         end
       }
+      return head + body
     end
 
     def displayTopOfCalls( exception )
@@ -1150,7 +1191,10 @@ module Nendo
     def normalizeBacktrace( str )
       fields = str.split(/:/)
       if 3 <= fields.size()
-        (filename,lineno,funcname) = fields
+        (filename,compiled_lineno,funcname) = fields
+        compiled_lineno = compiled_lineno.to_i
+        lineno = compiled_lineno / LINENO_TIMES
+        
         if filename.match( ".nnd$" ) or filename.match( ".scm$" )
           funcname = funcname.sub(/^in [`]/,"")
           funcname = funcname.sub(/[']$/,"")
@@ -1162,7 +1206,7 @@ module Nendo
           if '_' == funcname[0]
             funcname = toLispSymbol(funcname)
           end
-          return sprintf( "%s:%s:in `%s' <nendo function>",filename,lineno,funcname)
+          return sprintf( "%s:%s:in `%s' <nendo function> (compiled lineno=%d)",filename,lineno,funcname,compiled_lineno)
         else
           return nil
         end
@@ -1197,7 +1241,7 @@ module Nendo
         sourceInfo.setExpanded( sexp )
 
         arr = [ "trampCall( ", translate( sexp, [], sourceInfo ), " )" ]
-        rubyExp = ppRubyExp( 0, arr ).flatten.join
+        rubyExp = ppRubyExp( 0, arr, lineno ).flatten.join
         sourceInfo.setCompiled( rubyExp )
         if not @compiled_code.has_key?( sourcefile )
           @compiled_code[ sourcefile ] = Array.new
@@ -1218,6 +1262,7 @@ module Nendo
     end
 
     def __PAMARKload( filename )
+      @compiledLineno = 0
       printer = Printer.new( @debug )
       open( filename, "r:utf-8" ) {|f|
         reader = Reader.new( f, filename, false )
