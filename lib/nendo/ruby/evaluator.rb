@@ -46,6 +46,7 @@ module Nendo
 
     def initialize( core, debug = false )
       @compiledLineno = 5 # header comment of compiled code
+      @compiledLinenoStack = []
       @core    = core
       @indent  = "  "
       @binding = binding
@@ -1258,7 +1259,7 @@ module Nendo
           @source_info_hash[ sourceInfo.varname ] = sourceInfo
         end
         printf( "          rubyExp=<<<\n%s\n>>>\n", rubyExp ) if @debug
-        eval( rubyExp, @binding, @lastSourcefile, @lastLineno )
+        eval( rubyExp, @binding, @lastSourcefile, @compiledLineno )
       rescue SystemStackError => e
         displayTopOfCalls( e )
         raise e
@@ -1268,7 +1269,20 @@ module Nendo
       end
     end
 
+    def pushCompiledLineno(lineno)
+      printf("pushed lineno = %d\n", lineno)
+      @compiledLinenoStack.push(lineno)
+    end
+
+    def popCompiledLineno( )
+      if 1 < @compiledLinenoStack.size()
+        return @compiledLinenoStack.pop()
+      end
+      return 0
+    end
+    
     def __PAMARKload( filename )
+      pushCompiledLineno(@compiledLineno)
       @compiledLineno = 5 # header comment of compiled code
       printer = Printer.new( @debug )
       open( filename, "r:utf-8" ) {|f|
@@ -1285,6 +1299,8 @@ module Nendo
         end
       }
       forward_gensym_counter()
+      @compiledLineno = popCompiledLineno()
+      printf( "poped lineno = %d\n", @compiledLineno )
     end
 
     def _load_MIMARKcompiled_MIMARKcode_MIMARKfrom_MIMARKstring( rubyExp )
