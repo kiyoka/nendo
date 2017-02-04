@@ -1698,43 +1698,1742 @@
 
 
 
-#line 35 curLineno=1700 compiledLineno=1700
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 35 curLineno=3400 compiledLineno=3400
 
 trampCall( 
-#line 35 curLineno=1700 compiledLineno=1703
+#line 35 curLineno=3400 compiledLineno=3403
 
   begin 
-#line 35 curLineno=1700 compiledLineno=1706
+#line 35 curLineno=3400 compiledLineno=3406
 
     #execFunc
-#line 35 curLineno=1700 compiledLineno=1709
+#line 35 curLineno=3400 compiledLineno=3409
 
-#line 35 curLineno=1700 compiledLineno=1711
+#line 35 curLineno=3400 compiledLineno=3411
 
       def self._record_QUMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_QUMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_record_QUMARK'] = self.method( :_record_QUMARK_METHOD )
-#line 35 curLineno=1700 compiledLineno=1715
+#line 35 curLineno=3400 compiledLineno=3415
 
       #execFunc(funcname=define)
     @_record_QUMARK = 
     trampCall(
-#line 35 curLineno=1700 compiledLineno=1720
+#line 35 curLineno=3400 compiledLineno=3420
 
-#line 35 curLineno=1700 compiledLineno=1722
+#line 35 curLineno=3400 compiledLineno=3422
 
-#line 35 curLineno=1700 compiledLineno=1724
+#line 35 curLineno=3400 compiledLineno=3424
 
           Proc.new { |_type| 
-#line 35 curLineno=1700 compiledLineno=1727
+#line 35 curLineno=3400 compiledLineno=3427
 
-#line 35 curLineno=1700 compiledLineno=1729
+#line 35 curLineno=3400 compiledLineno=3429
 
               trampCall(_type).is_a?(
-#line 35 curLineno=1700 compiledLineno=1732
+#line 35 curLineno=3400 compiledLineno=3432
 
-#line 35 curLineno=1700 compiledLineno=1734
+#line 35 curLineno=3400 compiledLineno=3434
 
-#line 35 curLineno=1700 compiledLineno=1736
+#line 35 curLineno=3400 compiledLineno=3436
 
                     trampCall(Record)
                 )
@@ -1742,7 +3441,6 @@ trampCall(
     )
   end
  )
-#--------------------
 
 
 
@@ -1850,170 +3548,319 @@ trampCall(
 
 
 
-#line 38 curLineno=1850 compiledLineno=1850
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 38 curLineno=3700 compiledLineno=3700
 
 trampCall( 
-#line 38 curLineno=1850 compiledLineno=1853
+#line 38 curLineno=3700 compiledLineno=3703
 
   begin 
-#line 38 curLineno=1850 compiledLineno=1856
+#line 38 curLineno=3700 compiledLineno=3706
 
     #execFunc
-#line 38 curLineno=1850 compiledLineno=1859
+#line 38 curLineno=3700 compiledLineno=3709
 
-#line 38 curLineno=1850 compiledLineno=1861
+#line 38 curLineno=3700 compiledLineno=3711
 
       def self._record_MIMARKconstructor_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKconstructor', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_record_MIMARKconstructor'] = self.method( :_record_MIMARKconstructor_METHOD )
-#line 38 curLineno=1850 compiledLineno=1865
+#line 38 curLineno=3700 compiledLineno=3715
 
       #execFunc(funcname=define)
     @_record_MIMARKconstructor = 
     trampCall(
-#line 38 curLineno=1850 compiledLineno=1870
+#line 38 curLineno=3700 compiledLineno=3720
 
-#line 38 curLineno=1850 compiledLineno=1872
+#line 38 curLineno=3700 compiledLineno=3722
 
-#line 38 curLineno=1850 compiledLineno=1874
+#line 38 curLineno=3700 compiledLineno=3724
 
           Proc.new { |_rtd,*__rest__| _rest_MIMARKtags = __rest__[0] ;  
-#line 38 curLineno=1850 compiledLineno=1877
+#line 38 curLineno=3700 compiledLineno=3727
 
-#line 38 curLineno=1850 compiledLineno=1879
+#line 38 curLineno=3700 compiledLineno=3729
 
               begin
-#line 38 curLineno=1850 compiledLineno=1882
+#line 38 curLineno=3700 compiledLineno=3732
 
                 #makeLet
-#line 38 curLineno=1850 compiledLineno=1885
+#line 38 curLineno=3700 compiledLineno=3735
 
                 ___lambda = lambda { |_arg_MIMARKcount,_tags| 
-#line 38 curLineno=1850 compiledLineno=1888
+#line 38 curLineno=3700 compiledLineno=3738
 
-#line 38 curLineno=1850 compiledLineno=1890
+#line 38 curLineno=3700 compiledLineno=3740
 
                     Proc.new { |*__rest__| _args = __rest__[0] ;  
-#line 38 curLineno=1850 compiledLineno=1893
+#line 38 curLineno=3700 compiledLineno=3743
 
-#line 38 curLineno=1850 compiledLineno=1895
+#line 38 curLineno=3700 compiledLineno=3745
 
                         if ( 
-#line 38 curLineno=1850 compiledLineno=1898
+#line 38 curLineno=3700 compiledLineno=3748
 
-#line 38 curLineno=1850 compiledLineno=1900
+#line 38 curLineno=3700 compiledLineno=3750
 
                             __EQMARK(
-#line 38 curLineno=1850 compiledLineno=1903
+#line 38 curLineno=3700 compiledLineno=3753
 
-#line 38 curLineno=1850 compiledLineno=1905
+#line 38 curLineno=3700 compiledLineno=3755
 
-#line 38 curLineno=1850 compiledLineno=1907
+#line 38 curLineno=3700 compiledLineno=3757
 
                                   _length(
-#line 38 curLineno=1850 compiledLineno=1910
+#line 38 curLineno=3700 compiledLineno=3760
 
-#line 38 curLineno=1850 compiledLineno=1912
+#line 38 curLineno=3700 compiledLineno=3762
 
                                       trampCall(_args)
                                   )                              ,
-#line 38 curLineno=1850 compiledLineno=1916
+#line 38 curLineno=3700 compiledLineno=3766
 
-#line 38 curLineno=1850 compiledLineno=1918
+#line 38 curLineno=3700 compiledLineno=3768
 
                                 trampCall(_arg_MIMARKcount)
                             )
                          ) then
-#line 38 curLineno=1850 compiledLineno=1923
+#line 38 curLineno=3700 compiledLineno=3773
 
-#line 38 curLineno=1850 compiledLineno=1925
+#line 38 curLineno=3700 compiledLineno=3775
 
                             begin
-#line 38 curLineno=1850 compiledLineno=1928
+#line 38 curLineno=3700 compiledLineno=3778
 
                               #makeLet
-#line 38 curLineno=1850 compiledLineno=1931
+#line 38 curLineno=3700 compiledLineno=3781
 
                               ___lambda = lambda { |_new| 
-#line 38 curLineno=1850 compiledLineno=1934
+#line 38 curLineno=3700 compiledLineno=3784
 
-#line 38 curLineno=1850 compiledLineno=1936
+#line 38 curLineno=3700 compiledLineno=3786
 
-#line 38 curLineno=1850 compiledLineno=1938
+#line 38 curLineno=3700 compiledLineno=3788
 
                                     trampCall( self._for_MIMARKeach_METHOD(  'for-each',
-#line 38 curLineno=1850 compiledLineno=1941
+#line 38 curLineno=3700 compiledLineno=3791
 
-#line 38 curLineno=1850 compiledLineno=1943
+#line 38 curLineno=3700 compiledLineno=3793
 
                                         trampCall(@_for_MIMARKeach)                                      ,
                                     [
-#line 38 curLineno=1850 compiledLineno=1947
+#line 38 curLineno=3700 compiledLineno=3797
 
-#line 38 curLineno=1850 compiledLineno=1949
+#line 38 curLineno=3700 compiledLineno=3799
 
-#line 38 curLineno=1850 compiledLineno=1951
+#line 38 curLineno=3700 compiledLineno=3801
 
                                           Proc.new { |_tag,_arg| 
-#line 38 curLineno=1850 compiledLineno=1954
+#line 38 curLineno=3700 compiledLineno=3804
 
-#line 38 curLineno=1850 compiledLineno=1956
+#line 38 curLineno=3700 compiledLineno=3806
 
                                               trampCall(_new).set!(
-#line 38 curLineno=1850 compiledLineno=1959
+#line 38 curLineno=3700 compiledLineno=3809
 
-#line 38 curLineno=1850 compiledLineno=1961
+#line 38 curLineno=3700 compiledLineno=3811
 
-#line 38 curLineno=1850 compiledLineno=1963
+#line 38 curLineno=3700 compiledLineno=3813
 
                                                     trampCall(_tag)                                                  ,
-#line 38 curLineno=1850 compiledLineno=1966
+#line 38 curLineno=3700 compiledLineno=3816
 
-#line 38 curLineno=1850 compiledLineno=1968
+#line 38 curLineno=3700 compiledLineno=3818
 
                                                     trampCall(_arg)
                                                 )
                                           }                                        ,
-#line 38 curLineno=1850 compiledLineno=1973
+#line 38 curLineno=3700 compiledLineno=3823
 
-#line 38 curLineno=1850 compiledLineno=1975
+#line 38 curLineno=3700 compiledLineno=3825
 
                                           trampCall(_tags)                                        ,
-#line 38 curLineno=1850 compiledLineno=1978
+#line 38 curLineno=3700 compiledLineno=3828
 
-#line 38 curLineno=1850 compiledLineno=1980
+#line 38 curLineno=3700 compiledLineno=3830
 
                                           trampCall(_args)
                                     ]
                                                  ))
-#line 38 curLineno=1850 compiledLineno=1985
+#line 38 curLineno=3700 compiledLineno=3835
 
                                   trampCall(_new)
                               } ; ___lambda.call(
-#line 38 curLineno=1850 compiledLineno=1989
+#line 38 curLineno=3700 compiledLineno=3839
 
-#line 38 curLineno=1850 compiledLineno=1991
+#line 38 curLineno=3700 compiledLineno=3841
 
-#line 38 curLineno=1850 compiledLineno=1993
+#line 38 curLineno=3700 compiledLineno=3843
 
-#line 38 curLineno=1850 compiledLineno=1995
+#line 38 curLineno=3700 compiledLineno=3845
 
                                       trampCall( self._make_MIMARKrecord_MIMARKtype_METHOD(  'make-record-type',
-#line 38 curLineno=1850 compiledLineno=1998
+#line 38 curLineno=3700 compiledLineno=3848
 
-#line 38 curLineno=1850 compiledLineno=2000
+#line 38 curLineno=3700 compiledLineno=3850
 
                                           trampCall(@_make_MIMARKrecord_MIMARKtype)                                        ,
                                       [
-#line 38 curLineno=1850 compiledLineno=2004
+#line 38 curLineno=3700 compiledLineno=3854
 
-#line 38 curLineno=1850 compiledLineno=2006
+#line 38 curLineno=3700 compiledLineno=3856
 
-#line 38 curLineno=1850 compiledLineno=2008
+#line 38 curLineno=3700 compiledLineno=3858
 
                                             trampCall(_rtd).typename                                          ,
-#line 38 curLineno=1850 compiledLineno=2011
+#line 38 curLineno=3700 compiledLineno=3861
 
-#line 38 curLineno=1850 compiledLineno=2013
+#line 38 curLineno=3700 compiledLineno=3863
 
                                             trampCall(_tags)
                                       ]
@@ -2021,111 +3868,111 @@ trampCall(
                                          )
                             end
                         else
-#line 38 curLineno=1850 compiledLineno=2021
+#line 38 curLineno=3700 compiledLineno=3871
 
-#line 38 curLineno=1850 compiledLineno=2023
+#line 38 curLineno=3700 compiledLineno=3873
 
-#line 38 curLineno=1850 compiledLineno=2025
+#line 38 curLineno=3700 compiledLineno=3875
 
                               delayCall( '__PAMARKraise',  '%raise',
-#line 38 curLineno=1850 compiledLineno=2028
+#line 38 curLineno=3700 compiledLineno=3878
 
-#line 38 curLineno=1850 compiledLineno=2030
+#line 38 curLineno=3700 compiledLineno=3880
 
                                   trampCall(@__PAMARKraise)                                ,
                               [
-#line 38 curLineno=1850 compiledLineno=2034
+#line 38 curLineno=3700 compiledLineno=3884
 
-#line 38 curLineno=1850 compiledLineno=2036
+#line 38 curLineno=3700 compiledLineno=3886
 
-#line 38 curLineno=1850 compiledLineno=2038
+#line 38 curLineno=3700 compiledLineno=3888
 
                                     trampCall(ArgumentError)                                  ,
-#line 38 curLineno=1850 compiledLineno=2041
+#line 38 curLineno=3700 compiledLineno=3891
 
-#line 38 curLineno=1850 compiledLineno=2043
+#line 38 curLineno=3700 compiledLineno=3893
 
-#line 38 curLineno=1850 compiledLineno=2045
+#line 38 curLineno=3700 compiledLineno=3895
 
                                       trampCall( self._sprintf_METHOD(  'sprintf',
-#line 38 curLineno=1850 compiledLineno=2048
+#line 38 curLineno=3700 compiledLineno=3898
 
-#line 38 curLineno=1850 compiledLineno=2050
+#line 38 curLineno=3700 compiledLineno=3900
 
                                           trampCall(@_sprintf)                                        ,
                                       [
-#line 38 curLineno=1850 compiledLineno=2054
+#line 38 curLineno=3700 compiledLineno=3904
 
-#line 38 curLineno=1850 compiledLineno=2056
+#line 38 curLineno=3700 compiledLineno=3906
 
                                           "wrong number of arguments to constructor [%s] [%s]"                                          ,
-#line 38 curLineno=1850 compiledLineno=2059
+#line 38 curLineno=3700 compiledLineno=3909
 
-#line 38 curLineno=1850 compiledLineno=2061
+#line 38 curLineno=3700 compiledLineno=3911
 
                                             trampCall(_rtd)                                          ,
-#line 38 curLineno=1850 compiledLineno=2064
+#line 38 curLineno=3700 compiledLineno=3914
 
-#line 38 curLineno=1850 compiledLineno=2066
+#line 38 curLineno=3700 compiledLineno=3916
 
                                             trampCall(_args)
                                       ]
                                                    ))                                  ,
-#line 38 curLineno=1850 compiledLineno=2071
+#line 38 curLineno=3700 compiledLineno=3921
 
-#line 38 curLineno=1850 compiledLineno=2073
+#line 38 curLineno=3700 compiledLineno=3923
 
-#line 38 curLineno=1850 compiledLineno=2075
+#line 38 curLineno=3700 compiledLineno=3925
 
                                       trampCall( self._sprintf_METHOD(  'sprintf',
-#line 38 curLineno=1850 compiledLineno=2078
+#line 38 curLineno=3700 compiledLineno=3928
 
-#line 38 curLineno=1850 compiledLineno=2080
+#line 38 curLineno=3700 compiledLineno=3930
 
                                           trampCall(@_sprintf)                                        ,
                                       [
-#line 38 curLineno=1850 compiledLineno=2084
+#line 38 curLineno=3700 compiledLineno=3934
 
-#line 38 curLineno=1850 compiledLineno=2086
+#line 38 curLineno=3700 compiledLineno=3936
 
                                           "%s:%s raised %s"                                          ,
-#line 38 curLineno=1850 compiledLineno=2089
+#line 38 curLineno=3700 compiledLineno=3939
 
-#line 38 curLineno=1850 compiledLineno=2091
+#line 38 curLineno=3700 compiledLineno=3941
 
-#line 38 curLineno=1850 compiledLineno=2093
+#line 38 curLineno=3700 compiledLineno=3943
 
                                               trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
-#line 38 curLineno=1850 compiledLineno=2096
+#line 38 curLineno=3700 compiledLineno=3946
 
-#line 38 curLineno=1850 compiledLineno=2098
+#line 38 curLineno=3700 compiledLineno=3948
 
                                                   trampCall(@__ASMARKFILE_ASMARK)                                                ,
                                               [
-#line 38 curLineno=1850 compiledLineno=2102
+#line 38 curLineno=3700 compiledLineno=3952
 
                                               ]
                                                            ))                                          ,
-#line 38 curLineno=1850 compiledLineno=2106
+#line 38 curLineno=3700 compiledLineno=3956
 
-#line 38 curLineno=1850 compiledLineno=2108
+#line 38 curLineno=3700 compiledLineno=3958
 
-#line 38 curLineno=1850 compiledLineno=2110
+#line 38 curLineno=3700 compiledLineno=3960
 
                                               trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
-#line 38 curLineno=1850 compiledLineno=2113
+#line 38 curLineno=3700 compiledLineno=3963
 
-#line 38 curLineno=1850 compiledLineno=2115
+#line 38 curLineno=3700 compiledLineno=3965
 
                                                   trampCall(@__ASMARKLINE_ASMARK)                                                ,
                                               [
-#line 38 curLineno=1850 compiledLineno=2119
+#line 38 curLineno=3700 compiledLineno=3969
 
                                               ]
                                                            ))                                          ,
-#line 38 curLineno=1850 compiledLineno=2123
+#line 38 curLineno=3700 compiledLineno=3973
 
-#line 38 curLineno=1850 compiledLineno=2125
+#line 38 curLineno=3700 compiledLineno=3975
 
                                             trampCall(ArgumentError)
                                       ]
@@ -2135,39 +3982,39 @@ trampCall(
                         end
                     }
                 } ; ___lambda.call(
-#line 38 curLineno=1850 compiledLineno=2135
+#line 38 curLineno=3700 compiledLineno=3985
 
-#line 38 curLineno=1850 compiledLineno=2137
+#line 38 curLineno=3700 compiledLineno=3987
 
-#line 38 curLineno=1850 compiledLineno=2139
+#line 38 curLineno=3700 compiledLineno=3989
 
-#line 38 curLineno=1850 compiledLineno=2141
+#line 38 curLineno=3700 compiledLineno=3991
 
                         _length(
-#line 38 curLineno=1850 compiledLineno=2144
+#line 38 curLineno=3700 compiledLineno=3994
 
-#line 38 curLineno=1850 compiledLineno=2146
+#line 38 curLineno=3700 compiledLineno=3996
 
-#line 38 curLineno=1850 compiledLineno=2148
+#line 38 curLineno=3700 compiledLineno=3998
 
                               _car(
-#line 38 curLineno=1850 compiledLineno=2151
+#line 38 curLineno=3700 compiledLineno=4001
 
-#line 38 curLineno=1850 compiledLineno=2153
+#line 38 curLineno=3700 compiledLineno=4003
 
                                   trampCall(_rest_MIMARKtags)
                               )
                         )                    ,
-#line 38 curLineno=1850 compiledLineno=2158
+#line 38 curLineno=3700 compiledLineno=4008
 
-#line 38 curLineno=1850 compiledLineno=2160
+#line 38 curLineno=3700 compiledLineno=4010
 
-#line 38 curLineno=1850 compiledLineno=2162
+#line 38 curLineno=3700 compiledLineno=4012
 
                         _car(
-#line 38 curLineno=1850 compiledLineno=2165
+#line 38 curLineno=3700 compiledLineno=4015
 
-#line 38 curLineno=1850 compiledLineno=2167
+#line 38 curLineno=3700 compiledLineno=4017
 
                             trampCall(_rest_MIMARKtags)
                         )
@@ -2177,7 +4024,6 @@ trampCall(
     )
   end
  )
-#--------------------
 
 
 
@@ -2602,76 +4448,825 @@ trampCall(
 
 
 
-#line 53 curLineno=2600 compiledLineno=2600
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 53 curLineno=5200 compiledLineno=5200
 
 trampCall( 
-#line 53 curLineno=2600 compiledLineno=2603
+#line 53 curLineno=5200 compiledLineno=5203
 
   begin 
-#line 53 curLineno=2600 compiledLineno=2606
+#line 53 curLineno=5200 compiledLineno=5206
 
     #execFunc
-#line 53 curLineno=2600 compiledLineno=2609
+#line 53 curLineno=5200 compiledLineno=5209
 
-#line 53 curLineno=2600 compiledLineno=2611
+#line 53 curLineno=5200 compiledLineno=5211
 
       def self._record_MIMARKpredicate_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKpredicate', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_record_MIMARKpredicate'] = self.method( :_record_MIMARKpredicate_METHOD )
-#line 53 curLineno=2600 compiledLineno=2615
+#line 53 curLineno=5200 compiledLineno=5215
 
       #execFunc(funcname=define)
     @_record_MIMARKpredicate = 
     trampCall(
-#line 53 curLineno=2600 compiledLineno=2620
+#line 53 curLineno=5200 compiledLineno=5220
 
-#line 53 curLineno=2600 compiledLineno=2622
+#line 53 curLineno=5200 compiledLineno=5222
 
-#line 53 curLineno=2600 compiledLineno=2624
+#line 53 curLineno=5200 compiledLineno=5224
 
           Proc.new { |_type| 
-#line 53 curLineno=2600 compiledLineno=2627
+#line 53 curLineno=5200 compiledLineno=5227
 
-#line 53 curLineno=2600 compiledLineno=2629
+#line 53 curLineno=5200 compiledLineno=5229
 
               Proc.new { |_thing| 
-#line 53 curLineno=2600 compiledLineno=2632
+#line 53 curLineno=5200 compiledLineno=5232
 
-#line 53 curLineno=2600 compiledLineno=2634
+#line 53 curLineno=5200 compiledLineno=5234
 
                   if ( 
-#line 53 curLineno=2600 compiledLineno=2637
+#line 53 curLineno=5200 compiledLineno=5237
 
-#line 53 curLineno=2600 compiledLineno=2639
+#line 53 curLineno=5200 compiledLineno=5239
 
                       _not(
-#line 53 curLineno=2600 compiledLineno=2642
+#line 53 curLineno=5200 compiledLineno=5242
 
-#line 53 curLineno=2600 compiledLineno=2644
+#line 53 curLineno=5200 compiledLineno=5244
 
-#line 53 curLineno=2600 compiledLineno=2646
+#line 53 curLineno=5200 compiledLineno=5246
 
                             _eq_QUMARK(
-#line 53 curLineno=2600 compiledLineno=2649
+#line 53 curLineno=5200 compiledLineno=5249
 
                               false                              ,
-#line 53 curLineno=2600 compiledLineno=2652
+#line 53 curLineno=5200 compiledLineno=5252
 
-#line 53 curLineno=2600 compiledLineno=2654
+#line 53 curLineno=5200 compiledLineno=5254
 
-#line 53 curLineno=2600 compiledLineno=2656
+#line 53 curLineno=5200 compiledLineno=5256
 
                                   trampCall( self._record_QUMARK_METHOD(  'record?',
-#line 53 curLineno=2600 compiledLineno=2659
+#line 53 curLineno=5200 compiledLineno=5259
 
-#line 53 curLineno=2600 compiledLineno=2661
+#line 53 curLineno=5200 compiledLineno=5261
 
                                       trampCall(@_record_QUMARK)                                    ,
                                   [
-#line 53 curLineno=2600 compiledLineno=2665
+#line 53 curLineno=5200 compiledLineno=5265
 
-#line 53 curLineno=2600 compiledLineno=2667
+#line 53 curLineno=5200 compiledLineno=5267
 
-#line 53 curLineno=2600 compiledLineno=2669
+#line 53 curLineno=5200 compiledLineno=5269
 
                                         trampCall(_type)
                                   ]
@@ -2679,44 +5274,44 @@ trampCall(
                             )
                       )
                    ) then
-#line 53 curLineno=2600 compiledLineno=2677
+#line 53 curLineno=5200 compiledLineno=5277
 
-#line 53 curLineno=2600 compiledLineno=2679
+#line 53 curLineno=5200 compiledLineno=5279
 
                       if ( 
-#line 53 curLineno=2600 compiledLineno=2682
+#line 53 curLineno=5200 compiledLineno=5282
 
-#line 53 curLineno=2600 compiledLineno=2684
+#line 53 curLineno=5200 compiledLineno=5284
 
                           _not(
-#line 53 curLineno=2600 compiledLineno=2687
+#line 53 curLineno=5200 compiledLineno=5287
 
-#line 53 curLineno=2600 compiledLineno=2689
+#line 53 curLineno=5200 compiledLineno=5289
 
-#line 53 curLineno=2600 compiledLineno=2691
+#line 53 curLineno=5200 compiledLineno=5291
 
                                 _eq_QUMARK(
-#line 53 curLineno=2600 compiledLineno=2694
+#line 53 curLineno=5200 compiledLineno=5294
 
                                   false                                  ,
-#line 53 curLineno=2600 compiledLineno=2697
+#line 53 curLineno=5200 compiledLineno=5297
 
-#line 53 curLineno=2600 compiledLineno=2699
+#line 53 curLineno=5200 compiledLineno=5299
 
-#line 53 curLineno=2600 compiledLineno=2701
+#line 53 curLineno=5200 compiledLineno=5301
 
                                       trampCall( self._record_QUMARK_METHOD(  'record?',
-#line 53 curLineno=2600 compiledLineno=2704
+#line 53 curLineno=5200 compiledLineno=5304
 
-#line 53 curLineno=2600 compiledLineno=2706
+#line 53 curLineno=5200 compiledLineno=5306
 
                                           trampCall(@_record_QUMARK)                                        ,
                                       [
-#line 53 curLineno=2600 compiledLineno=2710
+#line 53 curLineno=5200 compiledLineno=5310
 
-#line 53 curLineno=2600 compiledLineno=2712
+#line 53 curLineno=5200 compiledLineno=5312
 
-#line 53 curLineno=2600 compiledLineno=2714
+#line 53 curLineno=5200 compiledLineno=5314
 
                                             trampCall(_thing)
                                       ]
@@ -2724,40 +5319,40 @@ trampCall(
                                 )
                           )
                        ) then
-#line 53 curLineno=2600 compiledLineno=2722
+#line 53 curLineno=5200 compiledLineno=5322
 
-#line 53 curLineno=2600 compiledLineno=2724
+#line 53 curLineno=5200 compiledLineno=5324
 
-#line 53 curLineno=2600 compiledLineno=2726
+#line 53 curLineno=5200 compiledLineno=5326
 
                             delayCall( '_eq_QUMARK',  'eq?',
-#line 53 curLineno=2600 compiledLineno=2729
+#line 53 curLineno=5200 compiledLineno=5329
 
-#line 53 curLineno=2600 compiledLineno=2731
+#line 53 curLineno=5200 compiledLineno=5331
 
                                 trampCall(@_eq_QUMARK)                              ,
                             [
-#line 53 curLineno=2600 compiledLineno=2735
+#line 53 curLineno=5200 compiledLineno=5335
 
-#line 53 curLineno=2600 compiledLineno=2737
+#line 53 curLineno=5200 compiledLineno=5337
 
-#line 53 curLineno=2600 compiledLineno=2739
+#line 53 curLineno=5200 compiledLineno=5339
 
                                   trampCall(_type).typename                                ,
-#line 53 curLineno=2600 compiledLineno=2742
+#line 53 curLineno=5200 compiledLineno=5342
 
-#line 53 curLineno=2600 compiledLineno=2744
+#line 53 curLineno=5200 compiledLineno=5344
 
                                   trampCall(_thing).typename
                             ]
                                          )
                       else
-#line 53 curLineno=2600 compiledLineno=2750
+#line 53 curLineno=5200 compiledLineno=5350
 
                         false
                       end
                   else
-#line 53 curLineno=2600 compiledLineno=2755
+#line 53 curLineno=5200 compiledLineno=5355
 
                     false
                   end
@@ -2766,7 +5361,6 @@ trampCall(
     )
   end
  )
-#--------------------
 
 
 
@@ -2904,203 +5498,502 @@ trampCall(
 
 
 
-#line 59 curLineno=2900 compiledLineno=2900
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 59 curLineno=5800 compiledLineno=5800
 
 trampCall( 
-#line 59 curLineno=2900 compiledLineno=2903
+#line 59 curLineno=5800 compiledLineno=5803
 
   begin 
-#line 59 curLineno=2900 compiledLineno=2906
+#line 59 curLineno=5800 compiledLineno=5806
 
     #execFunc
-#line 59 curLineno=2900 compiledLineno=2909
+#line 59 curLineno=5800 compiledLineno=5809
 
-#line 59 curLineno=2900 compiledLineno=2911
+#line 59 curLineno=5800 compiledLineno=5811
 
       def self._record_MIMARKaccessor_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKaccessor', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_record_MIMARKaccessor'] = self.method( :_record_MIMARKaccessor_METHOD )
-#line 59 curLineno=2900 compiledLineno=2915
+#line 59 curLineno=5800 compiledLineno=5815
 
       #execFunc(funcname=define)
     @_record_MIMARKaccessor = 
     trampCall(
-#line 59 curLineno=2900 compiledLineno=2920
+#line 59 curLineno=5800 compiledLineno=5820
 
-#line 59 curLineno=2900 compiledLineno=2922
+#line 59 curLineno=5800 compiledLineno=5822
 
-#line 59 curLineno=2900 compiledLineno=2924
+#line 59 curLineno=5800 compiledLineno=5824
 
           Proc.new { |_type,_tag| 
-#line 59 curLineno=2900 compiledLineno=2927
+#line 59 curLineno=5800 compiledLineno=5827
 
-#line 59 curLineno=2900 compiledLineno=2929
+#line 59 curLineno=5800 compiledLineno=5829
 
               Proc.new { |_thing| 
-#line 59 curLineno=2900 compiledLineno=2932
+#line 59 curLineno=5800 compiledLineno=5832
 
-#line 59 curLineno=2900 compiledLineno=2934
+#line 59 curLineno=5800 compiledLineno=5834
 
                   if ( 
-#line 59 curLineno=2900 compiledLineno=2937
+#line 59 curLineno=5800 compiledLineno=5837
 
                     trampCall( callProcedure( nil, 'anonymouse', 
-#line 59 curLineno=2900 compiledLineno=2940
+#line 59 curLineno=5800 compiledLineno=5840
 
-#line 59 curLineno=2900 compiledLineno=2942
+#line 59 curLineno=5800 compiledLineno=5842
 
-#line 59 curLineno=2900 compiledLineno=2944
+#line 59 curLineno=5800 compiledLineno=5844
 
                           trampCall( self._record_MIMARKpredicate_METHOD(  'record-predicate',
-#line 59 curLineno=2900 compiledLineno=2947
+#line 59 curLineno=5800 compiledLineno=5847
 
-#line 59 curLineno=2900 compiledLineno=2949
+#line 59 curLineno=5800 compiledLineno=5849
 
                               trampCall(@_record_MIMARKpredicate)                            ,
                           [
-#line 59 curLineno=2900 compiledLineno=2953
+#line 59 curLineno=5800 compiledLineno=5853
 
-#line 59 curLineno=2900 compiledLineno=2955
+#line 59 curLineno=5800 compiledLineno=5855
 
-#line 59 curLineno=2900 compiledLineno=2957
+#line 59 curLineno=5800 compiledLineno=5857
 
                                 trampCall(_type)
                           ]
                                        ))                      ,
                     [
-#line 59 curLineno=2900 compiledLineno=2963
+#line 59 curLineno=5800 compiledLineno=5863
 
-#line 59 curLineno=2900 compiledLineno=2965
+#line 59 curLineno=5800 compiledLineno=5865
 
-#line 59 curLineno=2900 compiledLineno=2967
+#line 59 curLineno=5800 compiledLineno=5867
 
                           trampCall(_thing)
                     ]
                               ))
                    ) then
-#line 59 curLineno=2900 compiledLineno=2973
+#line 59 curLineno=5800 compiledLineno=5873
 
-#line 59 curLineno=2900 compiledLineno=2975
+#line 59 curLineno=5800 compiledLineno=5875
 
                       trampCall(_thing).get(
-#line 59 curLineno=2900 compiledLineno=2978
+#line 59 curLineno=5800 compiledLineno=5878
 
-#line 59 curLineno=2900 compiledLineno=2980
+#line 59 curLineno=5800 compiledLineno=5880
 
-#line 59 curLineno=2900 compiledLineno=2982
+#line 59 curLineno=5800 compiledLineno=5882
 
                             trampCall(_tag)
                         )
                   else
-#line 59 curLineno=2900 compiledLineno=2987
+#line 59 curLineno=5800 compiledLineno=5887
 
-#line 59 curLineno=2900 compiledLineno=2989
+#line 59 curLineno=5800 compiledLineno=5889
 
-#line 59 curLineno=2900 compiledLineno=2991
+#line 59 curLineno=5800 compiledLineno=5891
 
                         delayCall( '__PAMARKraise',  '%raise',
-#line 59 curLineno=2900 compiledLineno=2994
+#line 59 curLineno=5800 compiledLineno=5894
 
-#line 59 curLineno=2900 compiledLineno=2996
+#line 59 curLineno=5800 compiledLineno=5896
 
                             trampCall(@__PAMARKraise)                          ,
                         [
-#line 59 curLineno=2900 compiledLineno=3000
+#line 59 curLineno=5800 compiledLineno=5900
 
-#line 59 curLineno=2900 compiledLineno=3002
+#line 59 curLineno=5800 compiledLineno=5902
 
-#line 59 curLineno=2900 compiledLineno=3004
+#line 59 curLineno=5800 compiledLineno=5904
 
                               trampCall(ArgumentError)                            ,
-#line 59 curLineno=2900 compiledLineno=3007
+#line 59 curLineno=5800 compiledLineno=5907
 
-#line 59 curLineno=2900 compiledLineno=3009
+#line 59 curLineno=5800 compiledLineno=5909
 
-#line 59 curLineno=2900 compiledLineno=3011
+#line 59 curLineno=5800 compiledLineno=5911
 
                                 trampCall( self._sprintf_METHOD(  'sprintf',
-#line 59 curLineno=2900 compiledLineno=3014
+#line 59 curLineno=5800 compiledLineno=5914
 
-#line 59 curLineno=2900 compiledLineno=3016
+#line 59 curLineno=5800 compiledLineno=5916
 
                                     trampCall(@_sprintf)                                  ,
                                 [
-#line 59 curLineno=2900 compiledLineno=3020
+#line 59 curLineno=5800 compiledLineno=5920
 
-#line 59 curLineno=2900 compiledLineno=3022
+#line 59 curLineno=5800 compiledLineno=5922
 
                                     "accessor applied to bad value [%s] [%s] [%s]"                                    ,
-#line 59 curLineno=2900 compiledLineno=3025
+#line 59 curLineno=5800 compiledLineno=5925
 
-#line 59 curLineno=2900 compiledLineno=3027
+#line 59 curLineno=5800 compiledLineno=5927
 
                                       trampCall(_type)                                    ,
-#line 59 curLineno=2900 compiledLineno=3030
+#line 59 curLineno=5800 compiledLineno=5930
 
-#line 59 curLineno=2900 compiledLineno=3032
+#line 59 curLineno=5800 compiledLineno=5932
 
                                       trampCall(_tag)                                    ,
-#line 59 curLineno=2900 compiledLineno=3035
+#line 59 curLineno=5800 compiledLineno=5935
 
-#line 59 curLineno=2900 compiledLineno=3037
+#line 59 curLineno=5800 compiledLineno=5937
 
                                       trampCall(_thing)
                                 ]
                                              ))                            ,
-#line 59 curLineno=2900 compiledLineno=3042
+#line 59 curLineno=5800 compiledLineno=5942
 
-#line 59 curLineno=2900 compiledLineno=3044
+#line 59 curLineno=5800 compiledLineno=5944
 
-#line 59 curLineno=2900 compiledLineno=3046
+#line 59 curLineno=5800 compiledLineno=5946
 
                                 trampCall( self._sprintf_METHOD(  'sprintf',
-#line 59 curLineno=2900 compiledLineno=3049
+#line 59 curLineno=5800 compiledLineno=5949
 
-#line 59 curLineno=2900 compiledLineno=3051
+#line 59 curLineno=5800 compiledLineno=5951
 
                                     trampCall(@_sprintf)                                  ,
                                 [
-#line 59 curLineno=2900 compiledLineno=3055
+#line 59 curLineno=5800 compiledLineno=5955
 
-#line 59 curLineno=2900 compiledLineno=3057
+#line 59 curLineno=5800 compiledLineno=5957
 
                                     "%s:%s raised %s"                                    ,
-#line 59 curLineno=2900 compiledLineno=3060
+#line 59 curLineno=5800 compiledLineno=5960
 
-#line 59 curLineno=2900 compiledLineno=3062
+#line 59 curLineno=5800 compiledLineno=5962
 
-#line 59 curLineno=2900 compiledLineno=3064
+#line 59 curLineno=5800 compiledLineno=5964
 
                                         trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
-#line 59 curLineno=2900 compiledLineno=3067
+#line 59 curLineno=5800 compiledLineno=5967
 
-#line 59 curLineno=2900 compiledLineno=3069
+#line 59 curLineno=5800 compiledLineno=5969
 
                                             trampCall(@__ASMARKFILE_ASMARK)                                          ,
                                         [
-#line 59 curLineno=2900 compiledLineno=3073
+#line 59 curLineno=5800 compiledLineno=5973
 
                                         ]
                                                      ))                                    ,
-#line 59 curLineno=2900 compiledLineno=3077
+#line 59 curLineno=5800 compiledLineno=5977
 
-#line 59 curLineno=2900 compiledLineno=3079
+#line 59 curLineno=5800 compiledLineno=5979
 
-#line 59 curLineno=2900 compiledLineno=3081
+#line 59 curLineno=5800 compiledLineno=5981
 
                                         trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
-#line 59 curLineno=2900 compiledLineno=3084
+#line 59 curLineno=5800 compiledLineno=5984
 
-#line 59 curLineno=2900 compiledLineno=3086
+#line 59 curLineno=5800 compiledLineno=5986
 
                                             trampCall(@__ASMARKLINE_ASMARK)                                          ,
                                         [
-#line 59 curLineno=2900 compiledLineno=3090
+#line 59 curLineno=5800 compiledLineno=5990
 
                                         ]
                                                      ))                                    ,
-#line 59 curLineno=2900 compiledLineno=3094
+#line 59 curLineno=5800 compiledLineno=5994
 
-#line 59 curLineno=2900 compiledLineno=3096
+#line 59 curLineno=5800 compiledLineno=5996
 
                                       trampCall(ArgumentError)
                                 ]
@@ -3113,7 +6006,6 @@ trampCall(
     )
   end
  )
-#--------------------
 
 
 
@@ -3206,208 +6098,507 @@ trampCall(
 
 
 
-#line 65 curLineno=3200 compiledLineno=3200
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 65 curLineno=6400 compiledLineno=6400
 
 trampCall( 
-#line 65 curLineno=3200 compiledLineno=3203
+#line 65 curLineno=6400 compiledLineno=6403
 
   begin 
-#line 65 curLineno=3200 compiledLineno=3206
+#line 65 curLineno=6400 compiledLineno=6406
 
     #execFunc
-#line 65 curLineno=3200 compiledLineno=3209
+#line 65 curLineno=6400 compiledLineno=6409
 
-#line 65 curLineno=3200 compiledLineno=3211
+#line 65 curLineno=6400 compiledLineno=6411
 
       def self._record_MIMARKmodifier_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_record_MIMARKmodifier', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_record_MIMARKmodifier'] = self.method( :_record_MIMARKmodifier_METHOD )
-#line 65 curLineno=3200 compiledLineno=3215
+#line 65 curLineno=6400 compiledLineno=6415
 
       #execFunc(funcname=define)
     @_record_MIMARKmodifier = 
     trampCall(
-#line 65 curLineno=3200 compiledLineno=3220
+#line 65 curLineno=6400 compiledLineno=6420
 
-#line 65 curLineno=3200 compiledLineno=3222
+#line 65 curLineno=6400 compiledLineno=6422
 
-#line 65 curLineno=3200 compiledLineno=3224
+#line 65 curLineno=6400 compiledLineno=6424
 
           Proc.new { |_type,_tag| 
-#line 65 curLineno=3200 compiledLineno=3227
+#line 65 curLineno=6400 compiledLineno=6427
 
-#line 65 curLineno=3200 compiledLineno=3229
+#line 65 curLineno=6400 compiledLineno=6429
 
               Proc.new { |_thing,_value| 
-#line 65 curLineno=3200 compiledLineno=3232
+#line 65 curLineno=6400 compiledLineno=6432
 
-#line 65 curLineno=3200 compiledLineno=3234
+#line 65 curLineno=6400 compiledLineno=6434
 
                   if ( 
-#line 65 curLineno=3200 compiledLineno=3237
+#line 65 curLineno=6400 compiledLineno=6437
 
                     trampCall( callProcedure( nil, 'anonymouse', 
-#line 65 curLineno=3200 compiledLineno=3240
+#line 65 curLineno=6400 compiledLineno=6440
 
-#line 65 curLineno=3200 compiledLineno=3242
+#line 65 curLineno=6400 compiledLineno=6442
 
-#line 65 curLineno=3200 compiledLineno=3244
+#line 65 curLineno=6400 compiledLineno=6444
 
                           trampCall( self._record_MIMARKpredicate_METHOD(  'record-predicate',
-#line 65 curLineno=3200 compiledLineno=3247
+#line 65 curLineno=6400 compiledLineno=6447
 
-#line 65 curLineno=3200 compiledLineno=3249
+#line 65 curLineno=6400 compiledLineno=6449
 
                               trampCall(@_record_MIMARKpredicate)                            ,
                           [
-#line 65 curLineno=3200 compiledLineno=3253
+#line 65 curLineno=6400 compiledLineno=6453
 
-#line 65 curLineno=3200 compiledLineno=3255
+#line 65 curLineno=6400 compiledLineno=6455
 
-#line 65 curLineno=3200 compiledLineno=3257
+#line 65 curLineno=6400 compiledLineno=6457
 
                                 trampCall(_type)
                           ]
                                        ))                      ,
                     [
-#line 65 curLineno=3200 compiledLineno=3263
+#line 65 curLineno=6400 compiledLineno=6463
 
-#line 65 curLineno=3200 compiledLineno=3265
+#line 65 curLineno=6400 compiledLineno=6465
 
-#line 65 curLineno=3200 compiledLineno=3267
+#line 65 curLineno=6400 compiledLineno=6467
 
                           trampCall(_thing)
                     ]
                               ))
                    ) then
-#line 65 curLineno=3200 compiledLineno=3273
+#line 65 curLineno=6400 compiledLineno=6473
 
-#line 65 curLineno=3200 compiledLineno=3275
+#line 65 curLineno=6400 compiledLineno=6475
 
                       trampCall(_thing).set!(
-#line 65 curLineno=3200 compiledLineno=3278
+#line 65 curLineno=6400 compiledLineno=6478
 
-#line 65 curLineno=3200 compiledLineno=3280
+#line 65 curLineno=6400 compiledLineno=6480
 
-#line 65 curLineno=3200 compiledLineno=3282
+#line 65 curLineno=6400 compiledLineno=6482
 
                             trampCall(_tag)                          ,
-#line 65 curLineno=3200 compiledLineno=3285
+#line 65 curLineno=6400 compiledLineno=6485
 
-#line 65 curLineno=3200 compiledLineno=3287
+#line 65 curLineno=6400 compiledLineno=6487
 
                             trampCall(_value)
                         )
                   else
-#line 65 curLineno=3200 compiledLineno=3292
+#line 65 curLineno=6400 compiledLineno=6492
 
-#line 65 curLineno=3200 compiledLineno=3294
+#line 65 curLineno=6400 compiledLineno=6494
 
-#line 65 curLineno=3200 compiledLineno=3296
+#line 65 curLineno=6400 compiledLineno=6496
 
                         delayCall( '__PAMARKraise',  '%raise',
-#line 65 curLineno=3200 compiledLineno=3299
+#line 65 curLineno=6400 compiledLineno=6499
 
-#line 65 curLineno=3200 compiledLineno=3301
+#line 65 curLineno=6400 compiledLineno=6501
 
                             trampCall(@__PAMARKraise)                          ,
                         [
-#line 65 curLineno=3200 compiledLineno=3305
+#line 65 curLineno=6400 compiledLineno=6505
 
-#line 65 curLineno=3200 compiledLineno=3307
+#line 65 curLineno=6400 compiledLineno=6507
 
-#line 65 curLineno=3200 compiledLineno=3309
+#line 65 curLineno=6400 compiledLineno=6509
 
                               trampCall(ArgumentError)                            ,
-#line 65 curLineno=3200 compiledLineno=3312
+#line 65 curLineno=6400 compiledLineno=6512
 
-#line 65 curLineno=3200 compiledLineno=3314
+#line 65 curLineno=6400 compiledLineno=6514
 
-#line 65 curLineno=3200 compiledLineno=3316
+#line 65 curLineno=6400 compiledLineno=6516
 
                                 trampCall( self._sprintf_METHOD(  'sprintf',
-#line 65 curLineno=3200 compiledLineno=3319
+#line 65 curLineno=6400 compiledLineno=6519
 
-#line 65 curLineno=3200 compiledLineno=3321
+#line 65 curLineno=6400 compiledLineno=6521
 
                                     trampCall(@_sprintf)                                  ,
                                 [
-#line 65 curLineno=3200 compiledLineno=3325
+#line 65 curLineno=6400 compiledLineno=6525
 
-#line 65 curLineno=3200 compiledLineno=3327
+#line 65 curLineno=6400 compiledLineno=6527
 
                                     "modifier applied to bad value [%s] [%s] [%s]"                                    ,
-#line 65 curLineno=3200 compiledLineno=3330
+#line 65 curLineno=6400 compiledLineno=6530
 
-#line 65 curLineno=3200 compiledLineno=3332
+#line 65 curLineno=6400 compiledLineno=6532
 
                                       trampCall(_type)                                    ,
-#line 65 curLineno=3200 compiledLineno=3335
+#line 65 curLineno=6400 compiledLineno=6535
 
-#line 65 curLineno=3200 compiledLineno=3337
+#line 65 curLineno=6400 compiledLineno=6537
 
                                       trampCall(_tag)                                    ,
-#line 65 curLineno=3200 compiledLineno=3340
+#line 65 curLineno=6400 compiledLineno=6540
 
-#line 65 curLineno=3200 compiledLineno=3342
+#line 65 curLineno=6400 compiledLineno=6542
 
                                       trampCall(_thing)
                                 ]
                                              ))                            ,
-#line 65 curLineno=3200 compiledLineno=3347
+#line 65 curLineno=6400 compiledLineno=6547
 
-#line 65 curLineno=3200 compiledLineno=3349
+#line 65 curLineno=6400 compiledLineno=6549
 
-#line 65 curLineno=3200 compiledLineno=3351
+#line 65 curLineno=6400 compiledLineno=6551
 
                                 trampCall( self._sprintf_METHOD(  'sprintf',
-#line 65 curLineno=3200 compiledLineno=3354
+#line 65 curLineno=6400 compiledLineno=6554
 
-#line 65 curLineno=3200 compiledLineno=3356
+#line 65 curLineno=6400 compiledLineno=6556
 
                                     trampCall(@_sprintf)                                  ,
                                 [
-#line 65 curLineno=3200 compiledLineno=3360
+#line 65 curLineno=6400 compiledLineno=6560
 
-#line 65 curLineno=3200 compiledLineno=3362
+#line 65 curLineno=6400 compiledLineno=6562
 
                                     "%s:%s raised %s"                                    ,
-#line 65 curLineno=3200 compiledLineno=3365
+#line 65 curLineno=6400 compiledLineno=6565
 
-#line 65 curLineno=3200 compiledLineno=3367
+#line 65 curLineno=6400 compiledLineno=6567
 
-#line 65 curLineno=3200 compiledLineno=3369
+#line 65 curLineno=6400 compiledLineno=6569
 
                                         trampCall( self.__ASMARKFILE_ASMARK_METHOD(  '*FILE*',
-#line 65 curLineno=3200 compiledLineno=3372
+#line 65 curLineno=6400 compiledLineno=6572
 
-#line 65 curLineno=3200 compiledLineno=3374
+#line 65 curLineno=6400 compiledLineno=6574
 
                                             trampCall(@__ASMARKFILE_ASMARK)                                          ,
                                         [
-#line 65 curLineno=3200 compiledLineno=3378
+#line 65 curLineno=6400 compiledLineno=6578
 
                                         ]
                                                      ))                                    ,
-#line 65 curLineno=3200 compiledLineno=3382
+#line 65 curLineno=6400 compiledLineno=6582
 
-#line 65 curLineno=3200 compiledLineno=3384
+#line 65 curLineno=6400 compiledLineno=6584
 
-#line 65 curLineno=3200 compiledLineno=3386
+#line 65 curLineno=6400 compiledLineno=6586
 
                                         trampCall( self.__ASMARKLINE_ASMARK_METHOD(  '*LINE*',
-#line 65 curLineno=3200 compiledLineno=3389
+#line 65 curLineno=6400 compiledLineno=6589
 
-#line 65 curLineno=3200 compiledLineno=3391
+#line 65 curLineno=6400 compiledLineno=6591
 
                                             trampCall(@__ASMARKLINE_ASMARK)                                          ,
                                         [
-#line 65 curLineno=3200 compiledLineno=3395
+#line 65 curLineno=6400 compiledLineno=6595
 
                                         ]
                                                      ))                                    ,
-#line 65 curLineno=3200 compiledLineno=3399
+#line 65 curLineno=6400 compiledLineno=6599
 
-#line 65 curLineno=3200 compiledLineno=3401
+#line 65 curLineno=6400 compiledLineno=6601
 
                                       trampCall(ArgumentError)
                                 ]

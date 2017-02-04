@@ -40,12 +40,13 @@ module Nendo
     EXEC_TYPE_NORMAL    = 1
     EXEC_TYPE_ANONYMOUS = 2
     EXEC_TYPE_TAILCALL  = 3
-    LINENO_TIMES = 50
+    LINENO_TIMES = 100
+    INITIAL_LINENO = 6 # header comment of compiled code
 
     attr_accessor :runtimeCheck
 
     def initialize( core, debug = false )
-      @compiledLineno = 5 # header comment of compiled code
+      @compiledLineno = INITIAL_LINENO
       @compiledLinenoStack = []
       @core    = core
       @indent  = "  "
@@ -405,6 +406,7 @@ module Nendo
               sprintf( "@global_lisp_binding['%s'] = self.method( :%s_METHOD )", variable_sym, variable_sym )
              ]
            else
+             #kiyoka
              ""
            end,
            makeComment(sprintf("#execFunc(funcname=%s)",funcname)),
@@ -1125,7 +1127,9 @@ module Nendo
         else
           str = sprintf( "%s", x )
           arr = str.split( /\n/ )
-          @compiledLineno += arr.size() - 1
+          if 0 < arr.size()
+            @compiledLineno += arr.size() - 1
+          end
 
           if str.match(/embedBacktraceInfo.+;/)
             m = str.match(/^embedBacktraceInfo[(] \"([^\"]+)\", ([0-9]+).+;/)
@@ -1138,6 +1142,7 @@ module Nendo
             end
             crs = adjustLineno( cur_lineno, @compiledLineno )
             @compiledLineno += crs.size()
+            @compiledLineno += 1 # #embedBacktraceInfo(...) line
             sprintf( "%s#embedBacktraceInfo  %s  %d  target=%d  cur=%d  %s \n%s%s",
                      indent, fn, cur_lineno / LINENO_TIMES,
                      @compiledLineno, cur_lineno, crs,
@@ -1282,7 +1287,7 @@ module Nendo
     
     def __PAMARKload( filename )
       pushCompiledLineno(@compiledLineno)
-      @compiledLineno = 5 # header comment of compiled code
+      @compiledLineno = INITIAL_LINENO
       printer = Printer.new( @debug )
       open( filename, "r:utf-8" ) {|f|
         reader = Reader.new( f, filename, false )

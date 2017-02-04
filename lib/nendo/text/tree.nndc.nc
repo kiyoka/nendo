@@ -448,29 +448,477 @@
 
 
 
-#line 10 curLineno=450 compiledLineno=450
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 10 curLineno=900 compiledLineno=900
 
 trampCall( 
-#line 10 curLineno=450 compiledLineno=453
+#line 10 curLineno=900 compiledLineno=903
 
-#line 10 curLineno=450 compiledLineno=455
+#line 10 curLineno=900 compiledLineno=905
 
     delayCall( '_require',  'require',
-#line 10 curLineno=450 compiledLineno=458
+#line 10 curLineno=900 compiledLineno=908
 
-#line 10 curLineno=450 compiledLineno=460
+#line 10 curLineno=900 compiledLineno=910
 
         trampCall(@_require)      ,
     [
-#line 10 curLineno=450 compiledLineno=464
+#line 10 curLineno=900 compiledLineno=914
 
-#line 10 curLineno=450 compiledLineno=466
+#line 10 curLineno=900 compiledLineno=916
 
         "stringio"
     ]
                  )
  )
-#--------------------
 
 
 
@@ -550,169 +998,268 @@ trampCall(
 
 
 
-#line 12 curLineno=550 compiledLineno=550
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 12 curLineno=1100 compiledLineno=1100
 
 trampCall( 
-#line 12 curLineno=550 compiledLineno=553
+#line 12 curLineno=1100 compiledLineno=1103
 
   begin 
-#line 12 curLineno=550 compiledLineno=556
+#line 12 curLineno=1100 compiledLineno=1106
 
     #execFunc
-#line 12 curLineno=550 compiledLineno=559
+#line 12 curLineno=1100 compiledLineno=1109
 
-#line 12 curLineno=550 compiledLineno=561
+#line 12 curLineno=1100 compiledLineno=1111
 
       def self._write_MIMARKtree_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_write_MIMARKtree', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_write_MIMARKtree'] = self.method( :_write_MIMARKtree_METHOD )
-#line 12 curLineno=550 compiledLineno=565
+#line 12 curLineno=1100 compiledLineno=1115
 
       #execFunc(funcname=define)
     @_write_MIMARKtree = 
     trampCall(
-#line 12 curLineno=550 compiledLineno=570
+#line 12 curLineno=1100 compiledLineno=1120
 
-#line 12 curLineno=550 compiledLineno=572
+#line 12 curLineno=1100 compiledLineno=1122
 
-#line 12 curLineno=550 compiledLineno=574
+#line 12 curLineno=1100 compiledLineno=1124
 
           Proc.new { |_tree,*__rest__| _out = __rest__[0] ;  
-#line 12 curLineno=550 compiledLineno=577
+#line 12 curLineno=1100 compiledLineno=1127
 
-#line 12 curLineno=550 compiledLineno=579
+#line 12 curLineno=1100 compiledLineno=1129
 
               begin
-#line 12 curLineno=550 compiledLineno=582
+#line 12 curLineno=1100 compiledLineno=1132
 
                 #makeLet
-#line 12 curLineno=550 compiledLineno=585
+#line 12 curLineno=1100 compiledLineno=1135
 
                 ___lambda = lambda { |_out| 
-#line 12 curLineno=550 compiledLineno=588
+#line 12 curLineno=1100 compiledLineno=1138
 
-#line 12 curLineno=550 compiledLineno=590
+#line 12 curLineno=1100 compiledLineno=1140
 
                     begin 
-#line 12 curLineno=550 compiledLineno=593
+#line 12 curLineno=1100 compiledLineno=1143
 
                       #makeLetrec
-#line 12 curLineno=550 compiledLineno=596
+#line 12 curLineno=1100 compiledLineno=1146
 
                       ___lambda = lambda { |_loop| 
-#line 12 curLineno=550 compiledLineno=599
+#line 12 curLineno=1100 compiledLineno=1149
 
-#line 12 curLineno=550 compiledLineno=601
+#line 12 curLineno=1100 compiledLineno=1151
 
                           _loop                           = 
-#line 12 curLineno=550 compiledLineno=604
+#line 12 curLineno=1100 compiledLineno=1154
 
                             Proc.new { |_tree| 
-#line 12 curLineno=550 compiledLineno=607
+#line 12 curLineno=1100 compiledLineno=1157
 
-#line 12 curLineno=550 compiledLineno=609
+#line 12 curLineno=1100 compiledLineno=1159
 
                                 if ( 
-#line 12 curLineno=550 compiledLineno=612
+#line 12 curLineno=1100 compiledLineno=1162
 
-#line 12 curLineno=550 compiledLineno=614
+#line 12 curLineno=1100 compiledLineno=1164
 
                                     _null_QUMARK(
-#line 12 curLineno=550 compiledLineno=617
+#line 12 curLineno=1100 compiledLineno=1167
 
-#line 12 curLineno=550 compiledLineno=619
+#line 12 curLineno=1100 compiledLineno=1169
 
                                         trampCall(_tree)
                                     )
                                  ) then
-#line 12 curLineno=550 compiledLineno=624
+#line 12 curLineno=1100 compiledLineno=1174
 
-#line 12 curLineno=550 compiledLineno=626
+#line 12 curLineno=1100 compiledLineno=1176
 
                                     true
                                 else
-#line 12 curLineno=550 compiledLineno=630
+#line 12 curLineno=1100 compiledLineno=1180
 
-#line 12 curLineno=550 compiledLineno=632
+#line 12 curLineno=1100 compiledLineno=1182
 
                                     if ( 
-#line 12 curLineno=550 compiledLineno=635
+#line 12 curLineno=1100 compiledLineno=1185
 
-#line 12 curLineno=550 compiledLineno=637
+#line 12 curLineno=1100 compiledLineno=1187
 
                                         _pair_QUMARK(
-#line 12 curLineno=550 compiledLineno=640
+#line 12 curLineno=1100 compiledLineno=1190
 
-#line 12 curLineno=550 compiledLineno=642
+#line 12 curLineno=1100 compiledLineno=1192
 
                                             trampCall(_tree)
                                         )
                                      ) then
-#line 12 curLineno=550 compiledLineno=647
+#line 12 curLineno=1100 compiledLineno=1197
 
-#line 12 curLineno=550 compiledLineno=649
+#line 12 curLineno=1100 compiledLineno=1199
 
                                         begin 
-#line 12 curLineno=550 compiledLineno=652
+#line 12 curLineno=1100 compiledLineno=1202
 
                                           #makeBegin
-#line 12 curLineno=550 compiledLineno=655
+#line 12 curLineno=1100 compiledLineno=1205
 
-#line 12 curLineno=550 compiledLineno=657
+#line 12 curLineno=1100 compiledLineno=1207
 
-#line 12 curLineno=550 compiledLineno=659
+#line 12 curLineno=1100 compiledLineno=1209
 
                                               trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
-#line 12 curLineno=550 compiledLineno=662
+#line 12 curLineno=1100 compiledLineno=1212
 
-#line 12 curLineno=550 compiledLineno=664
+#line 12 curLineno=1100 compiledLineno=1214
 
                                                   trampCall(@_write_MIMARKtree)                                                ,
                                               [
-#line 12 curLineno=550 compiledLineno=668
+#line 12 curLineno=1100 compiledLineno=1218
 
-#line 12 curLineno=550 compiledLineno=670
+#line 12 curLineno=1100 compiledLineno=1220
 
-#line 12 curLineno=550 compiledLineno=672
+#line 12 curLineno=1100 compiledLineno=1222
 
-#line 12 curLineno=550 compiledLineno=674
+#line 12 curLineno=1100 compiledLineno=1224
 
                                                       _car(
-#line 12 curLineno=550 compiledLineno=677
+#line 12 curLineno=1100 compiledLineno=1227
 
-#line 12 curLineno=550 compiledLineno=679
+#line 12 curLineno=1100 compiledLineno=1229
 
                                                           trampCall(_tree)
                                                       )                                                  ,
-#line 12 curLineno=550 compiledLineno=683
+#line 12 curLineno=1100 compiledLineno=1233
 
-#line 12 curLineno=550 compiledLineno=685
+#line 12 curLineno=1100 compiledLineno=1235
 
                                                     trampCall(_out)
                                               ]
                                                            ))
-#line 12 curLineno=550 compiledLineno=690
+#line 12 curLineno=1100 compiledLineno=1240
 
-#line 12 curLineno=550 compiledLineno=692
+#line 12 curLineno=1100 compiledLineno=1242
 
                                               delayCall( '_loop',  'loop',
-#line 12 curLineno=550 compiledLineno=695
+#line 12 curLineno=1100 compiledLineno=1245
 
-#line 12 curLineno=550 compiledLineno=697
+#line 12 curLineno=1100 compiledLineno=1247
 
                                                   trampCall(_loop)                                                ,
                                               [
-#line 12 curLineno=550 compiledLineno=701
+#line 12 curLineno=1100 compiledLineno=1251
 
-#line 12 curLineno=550 compiledLineno=703
+#line 12 curLineno=1100 compiledLineno=1253
 
-#line 12 curLineno=550 compiledLineno=705
+#line 12 curLineno=1100 compiledLineno=1255
 
-#line 12 curLineno=550 compiledLineno=707
+#line 12 curLineno=1100 compiledLineno=1257
 
                                                       _cdr(
-#line 12 curLineno=550 compiledLineno=710
+#line 12 curLineno=1100 compiledLineno=1260
 
-#line 12 curLineno=550 compiledLineno=712
+#line 12 curLineno=1100 compiledLineno=1262
 
                                                           trampCall(_tree)
                                                       )
@@ -720,56 +1267,56 @@ trampCall(
                                                            )
                                         end
                                     else
-#line 12 curLineno=550 compiledLineno=720
+#line 12 curLineno=1100 compiledLineno=1270
 
-#line 12 curLineno=550 compiledLineno=722
+#line 12 curLineno=1100 compiledLineno=1272
 
                                         if ( 
                                         true
                                          ) then
-#line 12 curLineno=550 compiledLineno=727
+#line 12 curLineno=1100 compiledLineno=1277
 
-#line 12 curLineno=550 compiledLineno=729
+#line 12 curLineno=1100 compiledLineno=1279
 
-#line 12 curLineno=550 compiledLineno=731
+#line 12 curLineno=1100 compiledLineno=1281
 
                                               trampCall(_out).print(
-#line 12 curLineno=550 compiledLineno=734
+#line 12 curLineno=1100 compiledLineno=1284
 
-#line 12 curLineno=550 compiledLineno=736
+#line 12 curLineno=1100 compiledLineno=1286
 
-#line 12 curLineno=550 compiledLineno=738
+#line 12 curLineno=1100 compiledLineno=1288
 
                                                     trampCall(_tree)
                                                 )
                                         else
-#line 12 curLineno=550 compiledLineno=743
+#line 12 curLineno=1100 compiledLineno=1293
 
-#line 12 curLineno=550 compiledLineno=745
+#line 12 curLineno=1100 compiledLineno=1295
 
                                             Cell.new()
                                         end
                                     end
                                 end
                             }
-#line 12 curLineno=550 compiledLineno=752
+#line 12 curLineno=1100 compiledLineno=1302
 
-#line 12 curLineno=550 compiledLineno=754
+#line 12 curLineno=1100 compiledLineno=1304
 
-#line 12 curLineno=550 compiledLineno=756
+#line 12 curLineno=1100 compiledLineno=1306
 
                             delayCall( '_loop',  'loop',
-#line 12 curLineno=550 compiledLineno=759
+#line 12 curLineno=1100 compiledLineno=1309
 
-#line 12 curLineno=550 compiledLineno=761
+#line 12 curLineno=1100 compiledLineno=1311
 
                                 trampCall(_loop)                              ,
                             [
-#line 12 curLineno=550 compiledLineno=765
+#line 12 curLineno=1100 compiledLineno=1315
 
-#line 12 curLineno=550 compiledLineno=767
+#line 12 curLineno=1100 compiledLineno=1317
 
-#line 12 curLineno=550 compiledLineno=769
+#line 12 curLineno=1100 compiledLineno=1319
 
                                   trampCall(_tree)
                             ]
@@ -779,49 +1326,49 @@ trampCall(
                                  )
                     end
                 } ; ___lambda.call(
-#line 12 curLineno=550 compiledLineno=779
+#line 12 curLineno=1100 compiledLineno=1329
 
-#line 12 curLineno=550 compiledLineno=781
+#line 12 curLineno=1100 compiledLineno=1331
 
-#line 12 curLineno=550 compiledLineno=783
+#line 12 curLineno=1100 compiledLineno=1333
 
                       if ( 
-#line 12 curLineno=550 compiledLineno=786
+#line 12 curLineno=1100 compiledLineno=1336
 
-#line 12 curLineno=550 compiledLineno=788
+#line 12 curLineno=1100 compiledLineno=1338
 
                           _null_QUMARK(
-#line 12 curLineno=550 compiledLineno=791
+#line 12 curLineno=1100 compiledLineno=1341
 
-#line 12 curLineno=550 compiledLineno=793
+#line 12 curLineno=1100 compiledLineno=1343
 
                               trampCall(_out)
                           )
                        ) then
-#line 12 curLineno=550 compiledLineno=798
+#line 12 curLineno=1100 compiledLineno=1348
 
-#line 12 curLineno=550 compiledLineno=800
+#line 12 curLineno=1100 compiledLineno=1350
 
                           trampCall(STDOUT)
                       else
-#line 12 curLineno=550 compiledLineno=804
+#line 12 curLineno=1100 compiledLineno=1354
 
-#line 12 curLineno=550 compiledLineno=806
+#line 12 curLineno=1100 compiledLineno=1356
 
-#line 12 curLineno=550 compiledLineno=808
+#line 12 curLineno=1100 compiledLineno=1358
 
                             delayCall( '_car',  'car',
-#line 12 curLineno=550 compiledLineno=811
+#line 12 curLineno=1100 compiledLineno=1361
 
-#line 12 curLineno=550 compiledLineno=813
+#line 12 curLineno=1100 compiledLineno=1363
 
                                 trampCall(@_car)                              ,
                             [
-#line 12 curLineno=550 compiledLineno=817
+#line 12 curLineno=1100 compiledLineno=1367
 
-#line 12 curLineno=550 compiledLineno=819
+#line 12 curLineno=1100 compiledLineno=1369
 
-#line 12 curLineno=550 compiledLineno=821
+#line 12 curLineno=1100 compiledLineno=1371
 
                                   trampCall(_out)
                             ]
@@ -833,7 +1380,6 @@ trampCall(
     )
   end
  )
-#--------------------
 
 
 
@@ -1052,88 +1598,587 @@ trampCall(
 
 
 
-#line 22 curLineno=1050 compiledLineno=1050
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 22 curLineno=2100 compiledLineno=2100
 
 trampCall( 
-#line 22 curLineno=1050 compiledLineno=1053
+#line 22 curLineno=2100 compiledLineno=2103
 
   begin 
-#line 22 curLineno=1050 compiledLineno=1056
+#line 22 curLineno=2100 compiledLineno=2106
 
     #execFunc
-#line 22 curLineno=1050 compiledLineno=1059
+#line 22 curLineno=2100 compiledLineno=2109
 
-#line 22 curLineno=1050 compiledLineno=1061
+#line 22 curLineno=2100 compiledLineno=2111
 
       def self._tree_MIMARK_GTMARKstring_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_tree_MIMARK_GTMARKstring', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_tree_MIMARK_GTMARKstring'] = self.method( :_tree_MIMARK_GTMARKstring_METHOD )
-#line 22 curLineno=1050 compiledLineno=1065
+#line 22 curLineno=2100 compiledLineno=2115
 
       #execFunc(funcname=define)
     @_tree_MIMARK_GTMARKstring = 
     trampCall(
-#line 22 curLineno=1050 compiledLineno=1070
+#line 22 curLineno=2100 compiledLineno=2120
 
-#line 22 curLineno=1050 compiledLineno=1072
+#line 22 curLineno=2100 compiledLineno=2122
 
-#line 22 curLineno=1050 compiledLineno=1074
+#line 22 curLineno=2100 compiledLineno=2124
 
           Proc.new { |_tree| 
-#line 22 curLineno=1050 compiledLineno=1077
+#line 22 curLineno=2100 compiledLineno=2127
 
-#line 22 curLineno=1050 compiledLineno=1079
+#line 22 curLineno=2100 compiledLineno=2129
 
               begin
-#line 22 curLineno=1050 compiledLineno=1082
+#line 22 curLineno=2100 compiledLineno=2132
 
                 #makeLet
-#line 22 curLineno=1050 compiledLineno=1085
+#line 22 curLineno=2100 compiledLineno=2135
 
                 ___lambda = lambda { |_sio| 
-#line 22 curLineno=1050 compiledLineno=1088
+#line 22 curLineno=2100 compiledLineno=2138
 
-#line 22 curLineno=1050 compiledLineno=1090
+#line 22 curLineno=2100 compiledLineno=2140
 
-#line 22 curLineno=1050 compiledLineno=1092
+#line 22 curLineno=2100 compiledLineno=2142
 
                       trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
-#line 22 curLineno=1050 compiledLineno=1095
+#line 22 curLineno=2100 compiledLineno=2145
 
-#line 22 curLineno=1050 compiledLineno=1097
+#line 22 curLineno=2100 compiledLineno=2147
 
                           trampCall(@_write_MIMARKtree)                        ,
                       [
-#line 22 curLineno=1050 compiledLineno=1101
+#line 22 curLineno=2100 compiledLineno=2151
 
-#line 22 curLineno=1050 compiledLineno=1103
+#line 22 curLineno=2100 compiledLineno=2153
 
-#line 22 curLineno=1050 compiledLineno=1105
+#line 22 curLineno=2100 compiledLineno=2155
 
                             trampCall(_tree)                          ,
-#line 22 curLineno=1050 compiledLineno=1108
+#line 22 curLineno=2100 compiledLineno=2158
 
-#line 22 curLineno=1050 compiledLineno=1110
+#line 22 curLineno=2100 compiledLineno=2160
 
                             trampCall(_sio)
                       ]
                                    ))
-#line 22 curLineno=1050 compiledLineno=1115
+#line 22 curLineno=2100 compiledLineno=2165
 
                     trampCall(_sio).string(
-#line 22 curLineno=1050 compiledLineno=1118
+#line 22 curLineno=2100 compiledLineno=2168
 
                       )
                 } ; ___lambda.call(
-#line 22 curLineno=1050 compiledLineno=1122
+#line 22 curLineno=2100 compiledLineno=2172
 
-#line 22 curLineno=1050 compiledLineno=1124
+#line 22 curLineno=2100 compiledLineno=2174
 
-#line 22 curLineno=1050 compiledLineno=1126
+#line 22 curLineno=2100 compiledLineno=2176
 
                       trampCall(StringIO).new(
-#line 22 curLineno=1050 compiledLineno=1129
+#line 22 curLineno=2100 compiledLineno=2179
 
-#line 22 curLineno=1050 compiledLineno=1131
+#line 22 curLineno=2100 compiledLineno=2181
 
                           ""
                         )
