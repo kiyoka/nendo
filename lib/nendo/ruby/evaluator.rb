@@ -711,7 +711,7 @@ module Nendo
           ["begin",
            [sprintf( "if @global_lisp_binding.has_key?('%s') then", variable_sym ),
             expression,
-            sprintf( 'else raise NameError.new( "Error: undefined variable %s", "%s" ) end', toLispSymbol( variable_sym ), toLispSymbol( variable_sym )),
+            sprintf( 'else raise NameError.new( "%s:%d: Error: undefined variable %s", "%s" ) end', sourcefile, lineno, toLispSymbol( variable_sym ), toLispSymbol( variable_sym )),
             sprintf( 'rescue => __e ; __e.set_backtrace( ["%s:%d"] + __e.backtrace ) ; raise __e',  sourcefile, lineno  )],
            "end"]
         else
