@@ -1194,7 +1194,7 @@ module Nendo
       fields = str.split(/:/)
       if 3 <= fields.size()
         (filename,compiled_lineno,funcname) = fields
-        if filename.match( ".nnd$" ) or filename.match( ".scm$" )
+        if filename.match( ".nnd$" ) or filename.match( ".nndc$" ) or filename.match( ".nndc.nc$" ) or filename.match( ".scm$" )
           lineno = 1
           if compiled_lineno
             compiled_lineno = compiled_lineno.to_i
@@ -1308,7 +1308,7 @@ module Nendo
 
     def __PAMARKload_MIMARKcompiled_MIMARKcode( filename )
       open( filename, "r:utf-8" ) { |f|
-        eval( f.read, @binding )
+        eval( f.read, @binding, filename, 1 )
       }
       forward_gensym_counter()
     end
