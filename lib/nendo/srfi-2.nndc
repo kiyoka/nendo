@@ -3,91 +3,1860 @@
 #    generated  "nendo -c src" command. 
 # 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 33 curLineno=1600 compiledLineno=1600
+
 trampCall( 
-  begin #execFunc
-      def self._and_MIMARKlet_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_and_MIMARKlet_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+#line 33 curLineno=1600 compiledLineno=1603
+
+  begin 
+#line 33 curLineno=1600 compiledLineno=1606
+
+    #execFunc
+#line 33 curLineno=1600 compiledLineno=1609
+
+#line 33 curLineno=1600 compiledLineno=1611
+
+      def self._and_MIMARKlet_ASMARK_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_and_MIMARKlet_ASMARK', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_and_MIMARKlet_ASMARK'] = self.method( :_and_MIMARKlet_ASMARK_METHOD )
+#line 33 curLineno=1600 compiledLineno=1615
+
+      #execFunc(funcname=define-syntax)
     @_and_MIMARKlet_ASMARK = 
     trampCall(
+#line 33 curLineno=1600 compiledLineno=1620
+
+#line 33 curLineno=1600 compiledLineno=1622
+
+#line 33 curLineno=1600 compiledLineno=1624
+
           begin
+#line 33 curLineno=1600 compiledLineno=1627
+            #embedBacktraceInfo    0  target=1629  cur=0   
             embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1629
+
               trampCall( self._er_MIMARKmacro_MIMARKtransformer_METHOD(  'er-macro-transformer',
+#line 33 curLineno=1600 compiledLineno=1632
+
+#line 33 curLineno=1600 compiledLineno=1634
+
                   begin
+#line 33 curLineno=1600 compiledLineno=1637
+
                     if @global_lisp_binding.has_key?('_er_MIMARKmacro_MIMARKtransformer') then
+#line 33 curLineno=1600 compiledLineno=1640
+
                       trampCall(@_er_MIMARKmacro_MIMARKtransformer)
                     else raise NameError.new( "Error: undefined variable er-macro-transformer", "er-macro-transformer" ) end
                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                   end                ,
               [
+#line 33 curLineno=1600 compiledLineno=1647
+
+#line 33 curLineno=1600 compiledLineno=1649
+
+#line 33 curLineno=1600 compiledLineno=1651
+
                     Proc.new { |__expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201,__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202,__compare__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30203| 
-                        begin #makeLet
+#line 33 curLineno=1600 compiledLineno=1654
+
+#line 33 curLineno=1600 compiledLineno=1656
+
+                        begin
+#line 33 curLineno=1600 compiledLineno=1659
+
+                          #makeLet
+#line 33 curLineno=1600 compiledLineno=1662
+
                           ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30228| 
+#line 33 curLineno=1600 compiledLineno=1665
+
+#line 33 curLineno=1600 compiledLineno=1667
+
                               if ( 
+#line 33 curLineno=1600 compiledLineno=1670
+
                                 begin
+#line 33 curLineno=1600 compiledLineno=1673
+
+#line 33 curLineno=1600 compiledLineno=1675
+
                                     trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30228)
                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                 end
                                ) then
+#line 33 curLineno=1600 compiledLineno=1681
+
+#line 33 curLineno=1600 compiledLineno=1683
+
                                   begin
+#line 33 curLineno=1600 compiledLineno=1686
+
+#line 33 curLineno=1600 compiledLineno=1688
+
                                       trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30228)
                                     rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                   end
                               else
-                                  begin #makeLet
+#line 33 curLineno=1600 compiledLineno=1694
+
+#line 33 curLineno=1600 compiledLineno=1696
+
+                                  begin
+#line 33 curLineno=1600 compiledLineno=1699
+
+                                    #makeLet
+#line 33 curLineno=1600 compiledLineno=1702
+
                                     ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30229| 
+#line 33 curLineno=1600 compiledLineno=1705
+
+#line 33 curLineno=1600 compiledLineno=1707
+
                                         if ( 
+#line 33 curLineno=1600 compiledLineno=1710
+
                                           begin
+#line 33 curLineno=1600 compiledLineno=1713
+
+#line 33 curLineno=1600 compiledLineno=1715
+
                                               trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30229)
                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                           end
                                          ) then
+#line 33 curLineno=1600 compiledLineno=1721
+
+#line 33 curLineno=1600 compiledLineno=1723
+
                                             begin
+#line 33 curLineno=1600 compiledLineno=1726
+
+#line 33 curLineno=1600 compiledLineno=1728
+
                                                 trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30229)
                                               rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                             end
                                         else
-                                            begin #makeLet
+#line 33 curLineno=1600 compiledLineno=1734
+
+#line 33 curLineno=1600 compiledLineno=1736
+
+                                            begin
+#line 33 curLineno=1600 compiledLineno=1739
+
+                                              #makeLet
+#line 33 curLineno=1600 compiledLineno=1742
+
                                               ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30230| 
+#line 33 curLineno=1600 compiledLineno=1745
+
+#line 33 curLineno=1600 compiledLineno=1747
+
                                                   if ( 
+#line 33 curLineno=1600 compiledLineno=1750
+
                                                     begin
+#line 33 curLineno=1600 compiledLineno=1753
+
+#line 33 curLineno=1600 compiledLineno=1755
+
                                                         trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30230)
                                                       rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                     end
                                                    ) then
+#line 33 curLineno=1600 compiledLineno=1761
+
+#line 33 curLineno=1600 compiledLineno=1763
+
                                                       begin
+#line 33 curLineno=1600 compiledLineno=1766
+
+#line 33 curLineno=1600 compiledLineno=1768
+
                                                           trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30230)
                                                         rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                       end
                                                   else
-                                                      begin #makeLet
+#line 33 curLineno=1600 compiledLineno=1774
+
+#line 33 curLineno=1600 compiledLineno=1776
+
+                                                      begin
+#line 33 curLineno=1600 compiledLineno=1779
+
+                                                        #makeLet
+#line 33 curLineno=1600 compiledLineno=1782
+
                                                         ___lambda = lambda { |___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30231| 
+#line 33 curLineno=1600 compiledLineno=1785
+
+#line 33 curLineno=1600 compiledLineno=1787
+
                                                             if ( 
+#line 33 curLineno=1600 compiledLineno=1790
+
                                                               begin
+#line 33 curLineno=1600 compiledLineno=1793
+
+#line 33 curLineno=1600 compiledLineno=1795
+
                                                                   trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30231)
                                                                 rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                               end
                                                              ) then
+#line 33 curLineno=1600 compiledLineno=1801
+
+#line 33 curLineno=1600 compiledLineno=1803
+
                                                                 begin
+#line 33 curLineno=1600 compiledLineno=1806
+
+#line 33 curLineno=1600 compiledLineno=1808
+
                                                                     trampCall(___gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30231)
                                                                   rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                 end
                                                             else
+#line 33 curLineno=1600 compiledLineno=1814
+
                                                               false
                                                             end
                                                         } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=1819
+
+#line 33 curLineno=1600 compiledLineno=1821
+
+#line 33 curLineno=1600 compiledLineno=1823
+
                                                               begin raise RuntimeError, 
+#line 33 curLineno=1600 compiledLineno=1826
+
                                                                 "no expansion for" ' ' + 
                                                                 _write_MIMARKto_MIMARKstring(
+#line 33 curLineno=1600 compiledLineno=1830
+
                                                                   begin
+#line 33 curLineno=1600 compiledLineno=1833
+                                                                    #embedBacktraceInfo    0  target=1835  cur=0   
                                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1835
+
                                                                       trampCall( self._strip_MIMARKsyntactic_MIMARKclosures_METHOD(  'strip-syntactic-closures',
+#line 33 curLineno=1600 compiledLineno=1838
+
+#line 33 curLineno=1600 compiledLineno=1840
+
                                                                           begin
+#line 33 curLineno=1600 compiledLineno=1843
+
                                                                             if @global_lisp_binding.has_key?('_strip_MIMARKsyntactic_MIMARKclosures') then
+#line 33 curLineno=1600 compiledLineno=1846
+
                                                                               trampCall(@_strip_MIMARKsyntactic_MIMARKclosures)
                                                                             else raise NameError.new( "Error: undefined variable strip-syntactic-closures", "strip-syntactic-closures" ) end
                                                                             rescue => __e ; __e.set_backtrace( [":1"] + __e.backtrace ) ; raise __e
                                                                           end                                                                        ,
                                                                       [
+#line 33 curLineno=1600 compiledLineno=1853
+
+#line 33 curLineno=1600 compiledLineno=1855
+
                                                                           __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201
                                                                       ]
                                                                                    ))
@@ -96,24 +1865,65 @@ trampCall(
                                                               rescue => __e 
                                                                 __e.set_backtrace( [":1"] + __e.backtrace )
                                                                 raise __e
-                                                              end 
+                                                              end
                                                                    )
                                                       end
                                                   end
                                               } ; ___lambda.call(
-                                                    begin #makeLet
+#line 33 curLineno=1600 compiledLineno=1870
+
+#line 33 curLineno=1600 compiledLineno=1872
+
+#line 33 curLineno=1600 compiledLineno=1874
+
+                                                    begin
+#line 33 curLineno=1600 compiledLineno=1877
+
+                                                      #makeLet
+#line 33 curLineno=1600 compiledLineno=1880
+
                                                       ___lambda = lambda { |__v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30221| 
+#line 33 curLineno=1600 compiledLineno=1883
+
+#line 33 curLineno=1600 compiledLineno=1885
+
                                                           if ( 
+#line 33 curLineno=1600 compiledLineno=1888
+
                                                             begin
+#line 33 curLineno=1600 compiledLineno=1891
+                                                              #embedBacktraceInfo    0  target=1893  cur=0   
                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1893
+
                                                                 _not(
+#line 33 curLineno=1600 compiledLineno=1896
+
+#line 33 curLineno=1600 compiledLineno=1898
+
                                                                     begin
+#line 33 curLineno=1600 compiledLineno=1901
+                                                                      #embedBacktraceInfo    0  target=1903  cur=0   
                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1903
+
                                                                         _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=1906
+
                                                                           false                                                                          ,
+#line 33 curLineno=1600 compiledLineno=1909
+
+#line 33 curLineno=1600 compiledLineno=1911
+
                                                                             begin
+#line 33 curLineno=1600 compiledLineno=1914
+                                                                              #embedBacktraceInfo    0  target=1916  cur=0   
                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1916
+
                                                                                 _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=1919
+
                                                                                   __v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30221
                                                                                 )
                                                                             end
@@ -122,19 +1932,58 @@ trampCall(
                                                                 )
                                                             end
                                                            ) then
-                                                              begin #makeLet
+#line 33 curLineno=1600 compiledLineno=1929
+
+#line 33 curLineno=1600 compiledLineno=1931
+
+                                                              begin
+#line 33 curLineno=1600 compiledLineno=1934
+
+                                                                #makeLet
+#line 33 curLineno=1600 compiledLineno=1937
+
                                                                 ___lambda = lambda { |__v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30222| 
+#line 33 curLineno=1600 compiledLineno=1940
+
+#line 33 curLineno=1600 compiledLineno=1942
+
                                                                     if ( 
+#line 33 curLineno=1600 compiledLineno=1945
+
                                                                       begin
+#line 33 curLineno=1600 compiledLineno=1948
+                                                                        #embedBacktraceInfo    0  target=1950  cur=0   
                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1950
+
                                                                           _not(
+#line 33 curLineno=1600 compiledLineno=1953
+
+#line 33 curLineno=1600 compiledLineno=1955
+
                                                                               begin
+#line 33 curLineno=1600 compiledLineno=1958
+                                                                                #embedBacktraceInfo    0  target=1960  cur=0   
                                                                                 embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1960
+
                                                                                   _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=1963
+
                                                                                     false                                                                                    ,
+#line 33 curLineno=1600 compiledLineno=1966
+
+#line 33 curLineno=1600 compiledLineno=1968
+
                                                                                       begin
+#line 33 curLineno=1600 compiledLineno=1971
+                                                                                        #embedBacktraceInfo    0  target=1973  cur=0   
                                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=1973
+
                                                                                           _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=1976
+
                                                                                             __v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30222
                                                                                           )
                                                                                       end
@@ -143,19 +1992,58 @@ trampCall(
                                                                           )
                                                                       end
                                                                      ) then
-                                                                        begin #makeLet
+#line 33 curLineno=1600 compiledLineno=1986
+
+#line 33 curLineno=1600 compiledLineno=1988
+
+                                                                        begin
+#line 33 curLineno=1600 compiledLineno=1991
+
+                                                                          #makeLet
+#line 33 curLineno=1600 compiledLineno=1994
+
                                                                           ___lambda = lambda { |__v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30223| 
+#line 33 curLineno=1600 compiledLineno=1997
+
+#line 33 curLineno=1600 compiledLineno=1999
+
                                                                               if ( 
+#line 33 curLineno=1600 compiledLineno=2002
+
                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2005
+                                                                                  #embedBacktraceInfo    0  target=2007  cur=0   
                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2007
+
                                                                                     _not(
+#line 33 curLineno=1600 compiledLineno=2010
+
+#line 33 curLineno=1600 compiledLineno=2012
+
                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2015
+                                                                                          #embedBacktraceInfo    0  target=2017  cur=0   
                                                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2017
+
                                                                                             _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2020
+
                                                                                               false                                                                                              ,
+#line 33 curLineno=1600 compiledLineno=2023
+
+#line 33 curLineno=1600 compiledLineno=2025
+
                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2028
+                                                                                                  #embedBacktraceInfo    0  target=2030  cur=0   
                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2030
+
                                                                                                     _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2033
+
                                                                                                       __v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30223
                                                                                                     )
                                                                                                 end
@@ -164,23 +2052,80 @@ trampCall(
                                                                                     )
                                                                                 end
                                                                                ) then
-                                                                                  begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2043
+
+#line 33 curLineno=1600 compiledLineno=2045
+
+                                                                                  begin
+#line 33 curLineno=1600 compiledLineno=2048
+
+                                                                                    #makeLet
+#line 33 curLineno=1600 compiledLineno=2051
+
                                                                                     ___lambda = lambda { |__v__16__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30224| 
-                                                                                        begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2054
+
+#line 33 curLineno=1600 compiledLineno=2056
+
+                                                                                        begin
+#line 33 curLineno=1600 compiledLineno=2059
+
+                                                                                          #makeLet
+#line 33 curLineno=1600 compiledLineno=2062
+
                                                                                           ___lambda = lambda { |_expr| 
-                                                                                              begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2065
+
+#line 33 curLineno=1600 compiledLineno=2067
+
+                                                                                              begin
+#line 33 curLineno=1600 compiledLineno=2070
+
+                                                                                                #makeLet
+#line 33 curLineno=1600 compiledLineno=2073
+
                                                                                                 ___lambda = lambda { |__v__17__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30225| 
+#line 33 curLineno=1600 compiledLineno=2076
+
+#line 33 curLineno=1600 compiledLineno=2078
+
                                                                                                     if ( 
+#line 33 curLineno=1600 compiledLineno=2081
+
                                                                                                       begin
+#line 33 curLineno=1600 compiledLineno=2084
+                                                                                                        #embedBacktraceInfo    0  target=2086  cur=0   
                                                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2086
+
                                                                                                           _not(
+#line 33 curLineno=1600 compiledLineno=2089
+
+#line 33 curLineno=1600 compiledLineno=2091
+
                                                                                                               begin
+#line 33 curLineno=1600 compiledLineno=2094
+                                                                                                                #embedBacktraceInfo    0  target=2096  cur=0   
                                                                                                                 embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2096
+
                                                                                                                   _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2099
+
                                                                                                                     false                                                                                                                    ,
+#line 33 curLineno=1600 compiledLineno=2102
+
+#line 33 curLineno=1600 compiledLineno=2104
+
                                                                                                                       begin
+#line 33 curLineno=1600 compiledLineno=2107
+                                                                                                                        #embedBacktraceInfo    0  target=2109  cur=0   
                                                                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2109
+
                                                                                                                           _null_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2112
+
                                                                                                                             __v__17__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30225
                                                                                                                           )
                                                                                                                       end
@@ -189,124 +2134,376 @@ trampCall(
                                                                                                           )
                                                                                                       end
                                                                                                      ) then
-                                                                                                        begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2122
+
+#line 33 curLineno=1600 compiledLineno=2124
+
+                                                                                                        begin
+#line 33 curLineno=1600 compiledLineno=2127
+
+                                                                                                          #makeLet
+#line 33 curLineno=1600 compiledLineno=2130
+
                                                                                                           ___lambda = lambda { |__v__18__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30226| 
-                                                                                                              begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2133
+
+#line 33 curLineno=1600 compiledLineno=2135
+
+                                                                                                              begin
+#line 33 curLineno=1600 compiledLineno=2138
+
+                                                                                                                #makeLet
+#line 33 curLineno=1600 compiledLineno=2141
+
                                                                                                                 ___lambda = lambda { |_rest| 
-                                                                                                                    begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2144
+
+#line 33 curLineno=1600 compiledLineno=2146
+
+                                                                                                                    begin
+#line 33 curLineno=1600 compiledLineno=2149
+
+                                                                                                                      #makeLet
+#line 33 curLineno=1600 compiledLineno=2152
+
                                                                                                                       ___lambda = lambda { |__v__19__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30227| 
-                                                                                                                          begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2155
+
+#line 33 curLineno=1600 compiledLineno=2157
+
+                                                                                                                          begin
+#line 33 curLineno=1600 compiledLineno=2160
+
+                                                                                                                            #makeLet
+#line 33 curLineno=1600 compiledLineno=2163
+
                                                                                                                             ___lambda = lambda { |_body| 
+#line 33 curLineno=1600 compiledLineno=2166
+
+#line 33 curLineno=1600 compiledLineno=2168
+
                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2171
+                                                                                                                                  #embedBacktraceInfo    0  target=2173  cur=0   
                                                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2173
+
                                                                                                                                     _cons(
+#line 33 curLineno=1600 compiledLineno=2176
+
+#line 33 curLineno=1600 compiledLineno=2178
+
                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2181
+                                                                                                                                          #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=2183  cur=0   
                                                                                                                                           embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=2183
+
                                                                                                                                             trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=2186
+
+#line 33 curLineno=1600 compiledLineno=2188
+
                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2191
+
+#line 33 curLineno=1600 compiledLineno=2193
+
                                                                                                                                                     trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                   rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                 end                                                                                                                                              ,
                                                                                                                                             [
+#line 33 curLineno=1600 compiledLineno=2199
+
+#line 33 curLineno=1600 compiledLineno=2201
+
                                                                                                                                                 :"let"
                                                                                                                                             ]
                                                                                                                                                          ))
                                                                                                                                         end                                                                                                                                      ,
+#line 33 curLineno=1600 compiledLineno=2207
+
+#line 33 curLineno=1600 compiledLineno=2209
+
                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2212
+                                                                                                                                          #embedBacktraceInfo    0  target=2214  cur=0   
                                                                                                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2214
+
                                                                                                                                             _cons(
+#line 33 curLineno=1600 compiledLineno=2217
+
+#line 33 curLineno=1600 compiledLineno=2219
+
                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2222
+                                                                                                                                                  #embedBacktraceInfo    0  target=2224  cur=0   
                                                                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2224
+
                                                                                                                                                     _cons(
+#line 33 curLineno=1600 compiledLineno=2227
+
+#line 33 curLineno=1600 compiledLineno=2229
+
                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2232
+                                                                                                                                                          #embedBacktraceInfo    0  target=2234  cur=0   
                                                                                                                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2234
+
                                                                                                                                                             _cons(
+#line 33 curLineno=1600 compiledLineno=2237
+
+#line 33 curLineno=1600 compiledLineno=2239
+
                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2242
+                                                                                                                                                                  #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=2244  cur=0   
                                                                                                                                                                   embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=2244
+
                                                                                                                                                                     trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=2247
+
+#line 33 curLineno=1600 compiledLineno=2249
+
                                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2252
+
+#line 33 curLineno=1600 compiledLineno=2254
+
                                                                                                                                                                             trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                                           rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                         end                                                                                                                                                                      ,
                                                                                                                                                                     [
+#line 33 curLineno=1600 compiledLineno=2260
+
+#line 33 curLineno=1600 compiledLineno=2262
+
                                                                                                                                                                         :"tmp"
                                                                                                                                                                     ]
                                                                                                                                                                                  ))
                                                                                                                                                                 end                                                                                                                                                              ,
+#line 33 curLineno=1600 compiledLineno=2268
+
+#line 33 curLineno=1600 compiledLineno=2270
+
                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2273
+                                                                                                                                                                  #embedBacktraceInfo    0  target=2275  cur=0   
                                                                                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2275
+
                                                                                                                                                                     _cons(
+#line 33 curLineno=1600 compiledLineno=2278
+
+#line 33 curLineno=1600 compiledLineno=2280
+
                                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2283
+
+#line 33 curLineno=1600 compiledLineno=2285
+
                                                                                                                                                                             trampCall(_expr)
                                                                                                                                                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:41"] + __e.backtrace ) ; raise __e
                                                                                                                                                                         end                                                                                                                                                                      ,
+#line 33 curLineno=1600 compiledLineno=2290
+
                                                                                                                                                                       Cell.new()
                                                                                                                                                                     )
                                                                                                                                                                 end
                                                                                                                                                             )
                                                                                                                                                         end                                                                                                                                                      ,
+#line 33 curLineno=1600 compiledLineno=2297
+
                                                                                                                                                       Cell.new()
                                                                                                                                                     )
                                                                                                                                                 end                                                                                                                                              ,
+#line 33 curLineno=1600 compiledLineno=2302
+
+#line 33 curLineno=1600 compiledLineno=2304
+
                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2307
+                                                                                                                                                  #embedBacktraceInfo    0  target=2309  cur=0   
                                                                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2309
+
                                                                                                                                                     _cons(
+#line 33 curLineno=1600 compiledLineno=2312
+
+#line 33 curLineno=1600 compiledLineno=2314
+
                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2317
+                                                                                                                                                          #embedBacktraceInfo    0  target=2319  cur=0   
                                                                                                                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2319
+
                                                                                                                                                             _cons(
+#line 33 curLineno=1600 compiledLineno=2322
+
+#line 33 curLineno=1600 compiledLineno=2324
+
                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2327
+                                                                                                                                                                  #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=2329  cur=0   
                                                                                                                                                                   embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=2329
+
                                                                                                                                                                     trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=2332
+
+#line 33 curLineno=1600 compiledLineno=2334
+
                                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2337
+
+#line 33 curLineno=1600 compiledLineno=2339
+
                                                                                                                                                                             trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                                           rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                         end                                                                                                                                                                      ,
                                                                                                                                                                     [
+#line 33 curLineno=1600 compiledLineno=2345
+
+#line 33 curLineno=1600 compiledLineno=2347
+
                                                                                                                                                                         :"and"
                                                                                                                                                                     ]
                                                                                                                                                                                  ))
                                                                                                                                                                 end                                                                                                                                                              ,
+#line 33 curLineno=1600 compiledLineno=2353
+
+#line 33 curLineno=1600 compiledLineno=2355
+
                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2358
+                                                                                                                                                                  #embedBacktraceInfo    0  target=2360  cur=0   
                                                                                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2360
+
                                                                                                                                                                     _cons(
+#line 33 curLineno=1600 compiledLineno=2363
+
+#line 33 curLineno=1600 compiledLineno=2365
+
                                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2368
+                                                                                                                                                                          #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=2370  cur=0   
                                                                                                                                                                           embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=2370
+
                                                                                                                                                                             trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=2373
+
+#line 33 curLineno=1600 compiledLineno=2375
+
                                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2378
+
+#line 33 curLineno=1600 compiledLineno=2380
+
                                                                                                                                                                                     trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                                                   rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                 end                                                                                                                                                                              ,
                                                                                                                                                                             [
+#line 33 curLineno=1600 compiledLineno=2386
+
+#line 33 curLineno=1600 compiledLineno=2388
+
                                                                                                                                                                                 :"tmp"
                                                                                                                                                                             ]
                                                                                                                                                                                          ))
                                                                                                                                                                         end                                                                                                                                                                      ,
+#line 33 curLineno=1600 compiledLineno=2394
+
+#line 33 curLineno=1600 compiledLineno=2396
+
                                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2399
+                                                                                                                                                                          #embedBacktraceInfo    0  target=2401  cur=0   
                                                                                                                                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2401
+
                                                                                                                                                                             _cons(
+#line 33 curLineno=1600 compiledLineno=2404
+
+#line 33 curLineno=1600 compiledLineno=2406
+
                                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2409
+                                                                                                                                                                                  #embedBacktraceInfo    0  target=2411  cur=0   
                                                                                                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2411
+
                                                                                                                                                                                     _cons(
+#line 33 curLineno=1600 compiledLineno=2414
+
+#line 33 curLineno=1600 compiledLineno=2416
+
                                                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2419
+                                                                                                                                                                                          #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=2421  cur=0   
                                                                                                                                                                                           embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=2421
+
                                                                                                                                                                                             trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=2424
+
+#line 33 curLineno=1600 compiledLineno=2426
+
                                                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2429
+
+#line 33 curLineno=1600 compiledLineno=2431
+
                                                                                                                                                                                                     trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                                                                   rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                 end                                                                                                                                                                                              ,
                                                                                                                                                                                             [
+#line 33 curLineno=1600 compiledLineno=2437
+
+#line 33 curLineno=1600 compiledLineno=2439
+
                                                                                                                                                                                                 :"and-let*"
                                                                                                                                                                                             ]
                                                                                                                                                                                                          ))
                                                                                                                                                                                         end                                                                                                                                                                                      ,
+#line 33 curLineno=1600 compiledLineno=2445
+
+#line 33 curLineno=1600 compiledLineno=2447
+
                                                                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=2450
+                                                                                                                                                                                          #embedBacktraceInfo    0  target=2452  cur=0   
                                                                                                                                                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2452
+
                                                                                                                                                                                             _cons(
+#line 33 curLineno=1600 compiledLineno=2455
+
+#line 33 curLineno=1600 compiledLineno=2457
+
                                                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2460
+
+#line 33 curLineno=1600 compiledLineno=2462
+
                                                                                                                                                                                                     trampCall(_rest)
                                                                                                                                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                 end                                                                                                                                                                                              ,
+#line 33 curLineno=1600 compiledLineno=2467
+
+#line 33 curLineno=1600 compiledLineno=2469
+
                                                                                                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2472
+
+#line 33 curLineno=1600 compiledLineno=2474
+
                                                                                                                                                                                                     trampCall(_body)
                                                                                                                                                                                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:42"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                 end
@@ -314,6 +2511,8 @@ trampCall(
                                                                                                                                                                                         end
                                                                                                                                                                                     )
                                                                                                                                                                                 end                                                                                                                                                                              ,
+#line 33 curLineno=1600 compiledLineno=2483
+
                                                                                                                                                                               Cell.new()
                                                                                                                                                                             )
                                                                                                                                                                         end
@@ -321,6 +2520,8 @@ trampCall(
                                                                                                                                                                 end
                                                                                                                                                             )
                                                                                                                                                         end                                                                                                                                                      ,
+#line 33 curLineno=1600 compiledLineno=2492
+
                                                                                                                                                       Cell.new()
                                                                                                                                                     )
                                                                                                                                                 end
@@ -329,87 +2530,191 @@ trampCall(
                                                                                                                                     )
                                                                                                                                 end
                                                                                                                             } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2502
+
+#line 33 curLineno=1600 compiledLineno=2504
+
                                                                                                                                 __v__19__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30227
                                                                                                                                        )
                                                                                                                           end
                                                                                                                       } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2510
+
+#line 33 curLineno=1600 compiledLineno=2512
+
+#line 33 curLineno=1600 compiledLineno=2514
+
                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=2517
+                                                                                                                              #embedBacktraceInfo    0  target=2519  cur=0   
                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2519
+
                                                                                                                                 _cdr(
+#line 33 curLineno=1600 compiledLineno=2522
+
                                                                                                                                   __v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30221
                                                                                                                                 )
                                                                                                                             end
                                                                                                                                  )
                                                                                                                     end
                                                                                                                 } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2530
+
+#line 33 curLineno=1600 compiledLineno=2532
+
                                                                                                                     __v__18__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30226
                                                                                                                            )
                                                                                                               end
                                                                                                           } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2538
+
+#line 33 curLineno=1600 compiledLineno=2540
+
+#line 33 curLineno=1600 compiledLineno=2542
+
                                                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2545
+                                                                                                                  #embedBacktraceInfo    0  target=2547  cur=0   
                                                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2547
+
                                                                                                                     _cdr(
+#line 33 curLineno=1600 compiledLineno=2550
+
                                                                                                                       __v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30222
                                                                                                                     )
                                                                                                                 end
                                                                                                                      )
                                                                                                         end
                                                                                                     else
+#line 33 curLineno=1600 compiledLineno=2558
+
                                                                                                       false
                                                                                                     end
                                                                                                 } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2563
+
+#line 33 curLineno=1600 compiledLineno=2565
+
+#line 33 curLineno=1600 compiledLineno=2567
+
                                                                                                       begin
+#line 33 curLineno=1600 compiledLineno=2570
+                                                                                                        #embedBacktraceInfo    0  target=2572  cur=0   
                                                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2572
+
                                                                                                           _cdr(
+#line 33 curLineno=1600 compiledLineno=2575
+
                                                                                                             __v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30223
                                                                                                           )
                                                                                                       end
                                                                                                            )
                                                                                               end
                                                                                           } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2583
+
+#line 33 curLineno=1600 compiledLineno=2585
+
                                                                                               __v__16__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30224
                                                                                                      )
                                                                                         end
                                                                                     } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2591
+
+#line 33 curLineno=1600 compiledLineno=2593
+
+#line 33 curLineno=1600 compiledLineno=2595
+
                                                                                           begin
+#line 33 curLineno=1600 compiledLineno=2598
+                                                                                            #embedBacktraceInfo    0  target=2600  cur=0   
                                                                                             embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2600
+
                                                                                               _car(
+#line 33 curLineno=1600 compiledLineno=2603
+
                                                                                                 __v__15__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30223
                                                                                               )
                                                                                           end
                                                                                                )
                                                                                   end
                                                                               else
+#line 33 curLineno=1600 compiledLineno=2611
+
                                                                                 false
                                                                               end
                                                                           } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2616
+
+#line 33 curLineno=1600 compiledLineno=2618
+
+#line 33 curLineno=1600 compiledLineno=2620
+
                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=2623
+                                                                                  #embedBacktraceInfo    0  target=2625  cur=0   
                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2625
+
                                                                                     _car(
+#line 33 curLineno=1600 compiledLineno=2628
+
                                                                                       __v__14__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30222
                                                                                     )
                                                                                 end
                                                                                      )
                                                                         end
                                                                     else
+#line 33 curLineno=1600 compiledLineno=2636
+
                                                                       false
                                                                     end
                                                                 } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2641
+
+#line 33 curLineno=1600 compiledLineno=2643
+
+#line 33 curLineno=1600 compiledLineno=2645
+
                                                                       begin
+#line 33 curLineno=1600 compiledLineno=2648
+                                                                        #embedBacktraceInfo    0  target=2650  cur=0   
                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2650
+
                                                                           _car(
+#line 33 curLineno=1600 compiledLineno=2653
+
                                                                             __v__13__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30221
                                                                           )
                                                                       end
                                                                            )
                                                               end
                                                           else
+#line 33 curLineno=1600 compiledLineno=2661
+
                                                             false
                                                           end
                                                       } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=2666
+
+#line 33 curLineno=1600 compiledLineno=2668
+
+#line 33 curLineno=1600 compiledLineno=2670
+
                                                             begin
+#line 33 curLineno=1600 compiledLineno=2673
+                                                              #embedBacktraceInfo    0  target=2675  cur=0   
                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2675
+
                                                                 _cdr(
+#line 33 curLineno=1600 compiledLineno=2678
+
                                                                   __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201
                                                                 )
                                                             end
@@ -419,19 +2724,60 @@ trampCall(
                                             end
                                         end
                                     } ; ___lambda.call(
-                                          begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2689
+
+#line 33 curLineno=1600 compiledLineno=2691
+
+#line 33 curLineno=1600 compiledLineno=2693
+
+                                          begin
+#line 33 curLineno=1600 compiledLineno=2696
+
+                                            #makeLet
+#line 33 curLineno=1600 compiledLineno=2699
+
                                             ___lambda = lambda { |__v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30212| 
+#line 33 curLineno=1600 compiledLineno=2702
+
+#line 33 curLineno=1600 compiledLineno=2704
+
                                                 if ( 
+#line 33 curLineno=1600 compiledLineno=2707
+
                                                   begin
+#line 33 curLineno=1600 compiledLineno=2710
+                                                    #embedBacktraceInfo    0  target=2712  cur=0   
                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2712
+
                                                       _not(
+#line 33 curLineno=1600 compiledLineno=2715
+
+#line 33 curLineno=1600 compiledLineno=2717
+
                                                           begin
+#line 33 curLineno=1600 compiledLineno=2720
+                                                            #embedBacktraceInfo    0  target=2722  cur=0   
                                                             embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2722
+
                                                               _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2725
+
                                                                 false                                                                ,
+#line 33 curLineno=1600 compiledLineno=2728
+
+#line 33 curLineno=1600 compiledLineno=2730
+
                                                                   begin
+#line 33 curLineno=1600 compiledLineno=2733
+                                                                    #embedBacktraceInfo    0  target=2735  cur=0   
                                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2735
+
                                                                       _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2738
+
                                                                         __v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30212
                                                                       )
                                                                   end
@@ -440,19 +2786,58 @@ trampCall(
                                                       )
                                                   end
                                                  ) then
-                                                    begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2748
+
+#line 33 curLineno=1600 compiledLineno=2750
+
+                                                    begin
+#line 33 curLineno=1600 compiledLineno=2753
+
+                                                      #makeLet
+#line 33 curLineno=1600 compiledLineno=2756
+
                                                       ___lambda = lambda { |__v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213| 
+#line 33 curLineno=1600 compiledLineno=2759
+
+#line 33 curLineno=1600 compiledLineno=2761
+
                                                           if ( 
+#line 33 curLineno=1600 compiledLineno=2764
+
                                                             begin
+#line 33 curLineno=1600 compiledLineno=2767
+                                                              #embedBacktraceInfo    0  target=2769  cur=0   
                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2769
+
                                                                 _not(
+#line 33 curLineno=1600 compiledLineno=2772
+
+#line 33 curLineno=1600 compiledLineno=2774
+
                                                                     begin
+#line 33 curLineno=1600 compiledLineno=2777
+                                                                      #embedBacktraceInfo    0  target=2779  cur=0   
                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2779
+
                                                                         _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2782
+
                                                                           false                                                                          ,
+#line 33 curLineno=1600 compiledLineno=2785
+
+#line 33 curLineno=1600 compiledLineno=2787
+
                                                                             begin
+#line 33 curLineno=1600 compiledLineno=2790
+                                                                              #embedBacktraceInfo    0  target=2792  cur=0   
                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2792
+
                                                                                 _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2795
+
                                                                                   __v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213
                                                                                 )
                                                                             end
@@ -461,19 +2846,58 @@ trampCall(
                                                                 )
                                                             end
                                                            ) then
-                                                              begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2805
+
+#line 33 curLineno=1600 compiledLineno=2807
+
+                                                              begin
+#line 33 curLineno=1600 compiledLineno=2810
+
+                                                                #makeLet
+#line 33 curLineno=1600 compiledLineno=2813
+
                                                                 ___lambda = lambda { |__v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214| 
+#line 33 curLineno=1600 compiledLineno=2816
+
+#line 33 curLineno=1600 compiledLineno=2818
+
                                                                     if ( 
+#line 33 curLineno=1600 compiledLineno=2821
+
                                                                       begin
+#line 33 curLineno=1600 compiledLineno=2824
+                                                                        #embedBacktraceInfo    0  target=2826  cur=0   
                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2826
+
                                                                           _not(
+#line 33 curLineno=1600 compiledLineno=2829
+
+#line 33 curLineno=1600 compiledLineno=2831
+
                                                                               begin
+#line 33 curLineno=1600 compiledLineno=2834
+                                                                                #embedBacktraceInfo    0  target=2836  cur=0   
                                                                                 embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2836
+
                                                                                   _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2839
+
                                                                                     false                                                                                    ,
+#line 33 curLineno=1600 compiledLineno=2842
+
+#line 33 curLineno=1600 compiledLineno=2844
+
                                                                                       begin
+#line 33 curLineno=1600 compiledLineno=2847
+                                                                                        #embedBacktraceInfo    0  target=2849  cur=0   
                                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2849
+
                                                                                           _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2852
+
                                                                                             __v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214
                                                                                           )
                                                                                       end
@@ -482,23 +2906,80 @@ trampCall(
                                                                           )
                                                                       end
                                                                      ) then
-                                                                        begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2862
+
+#line 33 curLineno=1600 compiledLineno=2864
+
+                                                                        begin
+#line 33 curLineno=1600 compiledLineno=2867
+
+                                                                          #makeLet
+#line 33 curLineno=1600 compiledLineno=2870
+
                                                                           ___lambda = lambda { |__v__7__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30215| 
-                                                                              begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2873
+
+#line 33 curLineno=1600 compiledLineno=2875
+
+                                                                              begin
+#line 33 curLineno=1600 compiledLineno=2878
+
+                                                                                #makeLet
+#line 33 curLineno=1600 compiledLineno=2881
+
                                                                                 ___lambda = lambda { |_var| 
-                                                                                    begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2884
+
+#line 33 curLineno=1600 compiledLineno=2886
+
+                                                                                    begin
+#line 33 curLineno=1600 compiledLineno=2889
+
+                                                                                      #makeLet
+#line 33 curLineno=1600 compiledLineno=2892
+
                                                                                       ___lambda = lambda { |__v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30216| 
+#line 33 curLineno=1600 compiledLineno=2895
+
+#line 33 curLineno=1600 compiledLineno=2897
+
                                                                                           if ( 
+#line 33 curLineno=1600 compiledLineno=2900
+
                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=2903
+                                                                                              #embedBacktraceInfo    0  target=2905  cur=0   
                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2905
+
                                                                                                 _not(
+#line 33 curLineno=1600 compiledLineno=2908
+
+#line 33 curLineno=1600 compiledLineno=2910
+
                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=2913
+                                                                                                      #embedBacktraceInfo    0  target=2915  cur=0   
                                                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2915
+
                                                                                                         _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2918
+
                                                                                                           false                                                                                                          ,
+#line 33 curLineno=1600 compiledLineno=2921
+
+#line 33 curLineno=1600 compiledLineno=2923
+
                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=2926
+                                                                                                              #embedBacktraceInfo    0  target=2928  cur=0   
                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2928
+
                                                                                                                 _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2931
+
                                                                                                                   __v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30216
                                                                                                                 )
                                                                                                             end
@@ -507,23 +2988,80 @@ trampCall(
                                                                                                 )
                                                                                             end
                                                                                            ) then
-                                                                                              begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2941
+
+#line 33 curLineno=1600 compiledLineno=2943
+
+                                                                                              begin
+#line 33 curLineno=1600 compiledLineno=2946
+
+                                                                                                #makeLet
+#line 33 curLineno=1600 compiledLineno=2949
+
                                                                                                 ___lambda = lambda { |__v__9__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30217| 
-                                                                                                    begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2952
+
+#line 33 curLineno=1600 compiledLineno=2954
+
+                                                                                                    begin
+#line 33 curLineno=1600 compiledLineno=2957
+
+                                                                                                      #makeLet
+#line 33 curLineno=1600 compiledLineno=2960
+
                                                                                                       ___lambda = lambda { |_expr| 
-                                                                                                          begin #makeLet
+#line 33 curLineno=1600 compiledLineno=2963
+
+#line 33 curLineno=1600 compiledLineno=2965
+
+                                                                                                          begin
+#line 33 curLineno=1600 compiledLineno=2968
+
+                                                                                                            #makeLet
+#line 33 curLineno=1600 compiledLineno=2971
+
                                                                                                             ___lambda = lambda { |__v__10__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30218| 
+#line 33 curLineno=1600 compiledLineno=2974
+
+#line 33 curLineno=1600 compiledLineno=2976
+
                                                                                                                 if ( 
+#line 33 curLineno=1600 compiledLineno=2979
+
                                                                                                                   begin
+#line 33 curLineno=1600 compiledLineno=2982
+                                                                                                                    #embedBacktraceInfo    0  target=2984  cur=0   
                                                                                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2984
+
                                                                                                                       _not(
+#line 33 curLineno=1600 compiledLineno=2987
+
+#line 33 curLineno=1600 compiledLineno=2989
+
                                                                                                                           begin
+#line 33 curLineno=1600 compiledLineno=2992
+                                                                                                                            #embedBacktraceInfo    0  target=2994  cur=0   
                                                                                                                             embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=2994
+
                                                                                                                               _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=2997
+
                                                                                                                                 false                                                                                                                                ,
+#line 33 curLineno=1600 compiledLineno=3000
+
+#line 33 curLineno=1600 compiledLineno=3002
+
                                                                                                                                   begin
+#line 33 curLineno=1600 compiledLineno=3005
+                                                                                                                                    #embedBacktraceInfo    0  target=3007  cur=0   
                                                                                                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3007
+
                                                                                                                                       _null_QUMARK(
+#line 33 curLineno=1600 compiledLineno=3010
+
                                                                                                                                         __v__10__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30218
                                                                                                                                       )
                                                                                                                                   end
@@ -532,108 +3070,336 @@ trampCall(
                                                                                                                       )
                                                                                                                   end
                                                                                                                  ) then
-                                                                                                                    begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3020
+
+#line 33 curLineno=1600 compiledLineno=3022
+
+                                                                                                                    begin
+#line 33 curLineno=1600 compiledLineno=3025
+
+                                                                                                                      #makeLet
+#line 33 curLineno=1600 compiledLineno=3028
+
                                                                                                                       ___lambda = lambda { |__v__11__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30219| 
-                                                                                                                          begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3031
+
+#line 33 curLineno=1600 compiledLineno=3033
+
+                                                                                                                          begin
+#line 33 curLineno=1600 compiledLineno=3036
+
+                                                                                                                            #makeLet
+#line 33 curLineno=1600 compiledLineno=3039
+
                                                                                                                             ___lambda = lambda { |_rest| 
-                                                                                                                                begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3042
+
+#line 33 curLineno=1600 compiledLineno=3044
+
+                                                                                                                                begin
+#line 33 curLineno=1600 compiledLineno=3047
+
+                                                                                                                                  #makeLet
+#line 33 curLineno=1600 compiledLineno=3050
+
                                                                                                                                   ___lambda = lambda { |__v__12__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30220| 
-                                                                                                                                      begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3053
+
+#line 33 curLineno=1600 compiledLineno=3055
+
+                                                                                                                                      begin
+#line 33 curLineno=1600 compiledLineno=3058
+
+                                                                                                                                        #makeLet
+#line 33 curLineno=1600 compiledLineno=3061
+
                                                                                                                                         ___lambda = lambda { |_body| 
+#line 33 curLineno=1600 compiledLineno=3064
+
+#line 33 curLineno=1600 compiledLineno=3066
+
                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3069
+                                                                                                                                              #embedBacktraceInfo    0  target=3071  cur=0   
                                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3071
+
                                                                                                                                                 _cons(
+#line 33 curLineno=1600 compiledLineno=3074
+
+#line 33 curLineno=1600 compiledLineno=3076
+
                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3079
+                                                                                                                                                      #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=3081  cur=0   
                                                                                                                                                       embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=3081
+
                                                                                                                                                         trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=3084
+
+#line 33 curLineno=1600 compiledLineno=3086
+
                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3089
+
+#line 33 curLineno=1600 compiledLineno=3091
+
                                                                                                                                                                 trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                             end                                                                                                                                                          ,
                                                                                                                                                         [
+#line 33 curLineno=1600 compiledLineno=3097
+
+#line 33 curLineno=1600 compiledLineno=3099
+
                                                                                                                                                             :"let"
                                                                                                                                                         ]
                                                                                                                                                                      ))
                                                                                                                                                     end                                                                                                                                                  ,
+#line 33 curLineno=1600 compiledLineno=3105
+
+#line 33 curLineno=1600 compiledLineno=3107
+
                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3110
+                                                                                                                                                      #embedBacktraceInfo    0  target=3112  cur=0   
                                                                                                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3112
+
                                                                                                                                                         _cons(
+#line 33 curLineno=1600 compiledLineno=3115
+
+#line 33 curLineno=1600 compiledLineno=3117
+
                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3120
+                                                                                                                                                              #embedBacktraceInfo    0  target=3122  cur=0   
                                                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3122
+
                                                                                                                                                                 _cons(
+#line 33 curLineno=1600 compiledLineno=3125
+
+#line 33 curLineno=1600 compiledLineno=3127
+
                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3130
+                                                                                                                                                                      #embedBacktraceInfo    0  target=3132  cur=0   
                                                                                                                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3132
+
                                                                                                                                                                         _cons(
+#line 33 curLineno=1600 compiledLineno=3135
+
+#line 33 curLineno=1600 compiledLineno=3137
+
                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3140
+
+#line 33 curLineno=1600 compiledLineno=3142
+
                                                                                                                                                                                 trampCall(_var)
                                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:38"] + __e.backtrace ) ; raise __e
                                                                                                                                                                             end                                                                                                                                                                          ,
+#line 33 curLineno=1600 compiledLineno=3147
+
+#line 33 curLineno=1600 compiledLineno=3149
+
                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3152
+                                                                                                                                                                              #embedBacktraceInfo    0  target=3154  cur=0   
                                                                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3154
+
                                                                                                                                                                                 _cons(
+#line 33 curLineno=1600 compiledLineno=3157
+
+#line 33 curLineno=1600 compiledLineno=3159
+
                                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3162
+
+#line 33 curLineno=1600 compiledLineno=3164
+
                                                                                                                                                                                         trampCall(_expr)
                                                                                                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:38"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                     end                                                                                                                                                                                  ,
+#line 33 curLineno=1600 compiledLineno=3169
+
                                                                                                                                                                                   Cell.new()
                                                                                                                                                                                 )
                                                                                                                                                                             end
                                                                                                                                                                         )
                                                                                                                                                                     end                                                                                                                                                                  ,
+#line 33 curLineno=1600 compiledLineno=3176
+
                                                                                                                                                                   Cell.new()
                                                                                                                                                                 )
                                                                                                                                                             end                                                                                                                                                          ,
+#line 33 curLineno=1600 compiledLineno=3181
+
+#line 33 curLineno=1600 compiledLineno=3183
+
                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3186
+                                                                                                                                                              #embedBacktraceInfo    0  target=3188  cur=0   
                                                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3188
+
                                                                                                                                                                 _cons(
+#line 33 curLineno=1600 compiledLineno=3191
+
+#line 33 curLineno=1600 compiledLineno=3193
+
                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3196
+                                                                                                                                                                      #embedBacktraceInfo    0  target=3198  cur=0   
                                                                                                                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3198
+
                                                                                                                                                                         _cons(
+#line 33 curLineno=1600 compiledLineno=3201
+
+#line 33 curLineno=1600 compiledLineno=3203
+
                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3206
+                                                                                                                                                                              #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=3208  cur=0   
                                                                                                                                                                               embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=3208
+
                                                                                                                                                                                 trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=3211
+
+#line 33 curLineno=1600 compiledLineno=3213
+
                                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3216
+
+#line 33 curLineno=1600 compiledLineno=3218
+
                                                                                                                                                                                         trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                                                       rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                     end                                                                                                                                                                                  ,
                                                                                                                                                                                 [
+#line 33 curLineno=1600 compiledLineno=3224
+
+#line 33 curLineno=1600 compiledLineno=3226
+
                                                                                                                                                                                     :"and"
                                                                                                                                                                                 ]
                                                                                                                                                                                              ))
                                                                                                                                                                             end                                                                                                                                                                          ,
+#line 33 curLineno=1600 compiledLineno=3232
+
+#line 33 curLineno=1600 compiledLineno=3234
+
                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3237
+                                                                                                                                                                              #embedBacktraceInfo    0  target=3239  cur=0   
                                                                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3239
+
                                                                                                                                                                                 _cons(
+#line 33 curLineno=1600 compiledLineno=3242
+
+#line 33 curLineno=1600 compiledLineno=3244
+
                                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3247
+
+#line 33 curLineno=1600 compiledLineno=3249
+
                                                                                                                                                                                         trampCall(_var)
                                                                                                                                                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                     end                                                                                                                                                                                  ,
+#line 33 curLineno=1600 compiledLineno=3254
+
+#line 33 curLineno=1600 compiledLineno=3256
+
                                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3259
+                                                                                                                                                                                      #embedBacktraceInfo    0  target=3261  cur=0   
                                                                                                                                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3261
+
                                                                                                                                                                                         _cons(
+#line 33 curLineno=1600 compiledLineno=3264
+
+#line 33 curLineno=1600 compiledLineno=3266
+
                                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3269
+                                                                                                                                                                                              #embedBacktraceInfo    0  target=3271  cur=0   
                                                                                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3271
+
                                                                                                                                                                                                 _cons(
+#line 33 curLineno=1600 compiledLineno=3274
+
+#line 33 curLineno=1600 compiledLineno=3276
+
                                                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3279
+                                                                                                                                                                                                      #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=3281  cur=0   
                                                                                                                                                                                                       embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=3281
+
                                                                                                                                                                                                         trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=3284
+
+#line 33 curLineno=1600 compiledLineno=3286
+
                                                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3289
+
+#line 33 curLineno=1600 compiledLineno=3291
+
                                                                                                                                                                                                                 trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                             end                                                                                                                                                                                                          ,
                                                                                                                                                                                                         [
+#line 33 curLineno=1600 compiledLineno=3297
+
+#line 33 curLineno=1600 compiledLineno=3299
+
                                                                                                                                                                                                             :"and-let*"
                                                                                                                                                                                                         ]
                                                                                                                                                                                                                      ))
                                                                                                                                                                                                     end                                                                                                                                                                                                  ,
+#line 33 curLineno=1600 compiledLineno=3305
+
+#line 33 curLineno=1600 compiledLineno=3307
+
                                                                                                                                                                                                     begin
+#line 33 curLineno=1600 compiledLineno=3310
+                                                                                                                                                                                                      #embedBacktraceInfo    0  target=3312  cur=0   
                                                                                                                                                                                                       embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3312
+
                                                                                                                                                                                                         _cons(
+#line 33 curLineno=1600 compiledLineno=3315
+
+#line 33 curLineno=1600 compiledLineno=3317
+
                                                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3320
+
+#line 33 curLineno=1600 compiledLineno=3322
+
                                                                                                                                                                                                                 trampCall(_rest)
                                                                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                             end                                                                                                                                                                                                          ,
+#line 33 curLineno=1600 compiledLineno=3327
+
+#line 33 curLineno=1600 compiledLineno=3329
+
                                                                                                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3332
+
+#line 33 curLineno=1600 compiledLineno=3334
+
                                                                                                                                                                                                                 trampCall(_body)
                                                                                                                                                                                                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:39"] + __e.backtrace ) ; raise __e
                                                                                                                                                                                                             end
@@ -641,6 +3407,8 @@ trampCall(
                                                                                                                                                                                                     end
                                                                                                                                                                                                 )
                                                                                                                                                                                             end                                                                                                                                                                                          ,
+#line 33 curLineno=1600 compiledLineno=3343
+
                                                                                                                                                                                           Cell.new()
                                                                                                                                                                                         )
                                                                                                                                                                                     end
@@ -648,6 +3416,8 @@ trampCall(
                                                                                                                                                                             end
                                                                                                                                                                         )
                                                                                                                                                                     end                                                                                                                                                                  ,
+#line 33 curLineno=1600 compiledLineno=3352
+
                                                                                                                                                                   Cell.new()
                                                                                                                                                                 )
                                                                                                                                                             end
@@ -656,112 +3426,246 @@ trampCall(
                                                                                                                                                 )
                                                                                                                                             end
                                                                                                                                         } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3362
+
+#line 33 curLineno=1600 compiledLineno=3364
+
                                                                                                                                             __v__12__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30220
                                                                                                                                                    )
                                                                                                                                       end
                                                                                                                                   } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3370
+
+#line 33 curLineno=1600 compiledLineno=3372
+
+#line 33 curLineno=1600 compiledLineno=3374
+
                                                                                                                                         begin
+#line 33 curLineno=1600 compiledLineno=3377
+                                                                                                                                          #embedBacktraceInfo    0  target=3379  cur=0   
                                                                                                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3379
+
                                                                                                                                             _cdr(
+#line 33 curLineno=1600 compiledLineno=3382
+
                                                                                                                                               __v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30212
                                                                                                                                             )
                                                                                                                                         end
                                                                                                                                              )
                                                                                                                                 end
                                                                                                                             } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3390
+
+#line 33 curLineno=1600 compiledLineno=3392
+
                                                                                                                                 __v__11__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30219
                                                                                                                                        )
                                                                                                                           end
                                                                                                                       } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3398
+
+#line 33 curLineno=1600 compiledLineno=3400
+
+#line 33 curLineno=1600 compiledLineno=3402
+
                                                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3405
+                                                                                                                              #embedBacktraceInfo    0  target=3407  cur=0   
                                                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3407
+
                                                                                                                                 _cdr(
+#line 33 curLineno=1600 compiledLineno=3410
+
                                                                                                                                   __v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213
                                                                                                                                 )
                                                                                                                             end
                                                                                                                                  )
                                                                                                                     end
                                                                                                                 else
+#line 33 curLineno=1600 compiledLineno=3418
+
                                                                                                                   false
                                                                                                                 end
                                                                                                             } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3423
+
+#line 33 curLineno=1600 compiledLineno=3425
+
+#line 33 curLineno=1600 compiledLineno=3427
+
                                                                                                                   begin
+#line 33 curLineno=1600 compiledLineno=3430
+                                                                                                                    #embedBacktraceInfo    0  target=3432  cur=0   
                                                                                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3432
+
                                                                                                                       _cdr(
+#line 33 curLineno=1600 compiledLineno=3435
+
                                                                                                                         __v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30216
                                                                                                                       )
                                                                                                                   end
                                                                                                                        )
                                                                                                           end
                                                                                                       } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3443
+
+#line 33 curLineno=1600 compiledLineno=3445
+
                                                                                                           __v__9__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30217
                                                                                                                  )
                                                                                                     end
                                                                                                 } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3451
+
+#line 33 curLineno=1600 compiledLineno=3453
+
+#line 33 curLineno=1600 compiledLineno=3455
+
                                                                                                       begin
+#line 33 curLineno=1600 compiledLineno=3458
+                                                                                                        #embedBacktraceInfo    0  target=3460  cur=0   
                                                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3460
+
                                                                                                           _car(
+#line 33 curLineno=1600 compiledLineno=3463
+
                                                                                                             __v__8__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30216
                                                                                                           )
                                                                                                       end
                                                                                                            )
                                                                                               end
                                                                                           else
+#line 33 curLineno=1600 compiledLineno=3471
+
                                                                                             false
                                                                                           end
                                                                                       } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3476
+
+#line 33 curLineno=1600 compiledLineno=3478
+
+#line 33 curLineno=1600 compiledLineno=3480
+
                                                                                             begin
+#line 33 curLineno=1600 compiledLineno=3483
+                                                                                              #embedBacktraceInfo    0  target=3485  cur=0   
                                                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3485
+
                                                                                                 _cdr(
+#line 33 curLineno=1600 compiledLineno=3488
+
                                                                                                   __v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214
                                                                                                 )
                                                                                             end
                                                                                                  )
                                                                                     end
                                                                                 } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3496
+
+#line 33 curLineno=1600 compiledLineno=3498
+
                                                                                     __v__7__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30215
                                                                                            )
                                                                               end
                                                                           } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3504
+
+#line 33 curLineno=1600 compiledLineno=3506
+
+#line 33 curLineno=1600 compiledLineno=3508
+
                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=3511
+                                                                                  #embedBacktraceInfo    0  target=3513  cur=0   
                                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3513
+
                                                                                     _car(
+#line 33 curLineno=1600 compiledLineno=3516
+
                                                                                       __v__6__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30214
                                                                                     )
                                                                                 end
                                                                                      )
                                                                         end
                                                                     else
+#line 33 curLineno=1600 compiledLineno=3524
+
                                                                       false
                                                                     end
                                                                 } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3529
+
+#line 33 curLineno=1600 compiledLineno=3531
+
+#line 33 curLineno=1600 compiledLineno=3533
+
                                                                       begin
+#line 33 curLineno=1600 compiledLineno=3536
+                                                                        #embedBacktraceInfo    0  target=3538  cur=0   
                                                                         embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3538
+
                                                                           _car(
+#line 33 curLineno=1600 compiledLineno=3541
+
                                                                             __v__5__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30213
                                                                           )
                                                                       end
                                                                            )
                                                               end
                                                           else
+#line 33 curLineno=1600 compiledLineno=3549
+
                                                             false
                                                           end
                                                       } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3554
+
+#line 33 curLineno=1600 compiledLineno=3556
+
+#line 33 curLineno=1600 compiledLineno=3558
+
                                                             begin
+#line 33 curLineno=1600 compiledLineno=3561
+                                                              #embedBacktraceInfo    0  target=3563  cur=0   
                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3563
+
                                                                 _car(
+#line 33 curLineno=1600 compiledLineno=3566
+
                                                                   __v__4__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30212
                                                                 )
                                                             end
                                                                  )
                                                     end
                                                 else
+#line 33 curLineno=1600 compiledLineno=3574
+
                                                   false
                                                 end
                                             } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3579
+
+#line 33 curLineno=1600 compiledLineno=3581
+
+#line 33 curLineno=1600 compiledLineno=3583
+
                                                   begin
+#line 33 curLineno=1600 compiledLineno=3586
+                                                    #embedBacktraceInfo    0  target=3588  cur=0   
                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3588
+
                                                       _cdr(
+#line 33 curLineno=1600 compiledLineno=3591
+
                                                         __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201
                                                       )
                                                   end
@@ -771,19 +3675,60 @@ trampCall(
                                   end
                               end
                           } ; ___lambda.call(
-                                begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3602
+
+#line 33 curLineno=1600 compiledLineno=3604
+
+#line 33 curLineno=1600 compiledLineno=3606
+
+                                begin
+#line 33 curLineno=1600 compiledLineno=3609
+
+                                  #makeLet
+#line 33 curLineno=1600 compiledLineno=3612
+
                                   ___lambda = lambda { |__v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30209| 
+#line 33 curLineno=1600 compiledLineno=3615
+
+#line 33 curLineno=1600 compiledLineno=3617
+
                                       if ( 
+#line 33 curLineno=1600 compiledLineno=3620
+
                                         begin
+#line 33 curLineno=1600 compiledLineno=3623
+                                          #embedBacktraceInfo    0  target=3625  cur=0   
                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3625
+
                                             _not(
+#line 33 curLineno=1600 compiledLineno=3628
+
+#line 33 curLineno=1600 compiledLineno=3630
+
                                                 begin
+#line 33 curLineno=1600 compiledLineno=3633
+                                                  #embedBacktraceInfo    0  target=3635  cur=0   
                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3635
+
                                                     _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=3638
+
                                                       false                                                      ,
+#line 33 curLineno=1600 compiledLineno=3641
+
+#line 33 curLineno=1600 compiledLineno=3643
+
                                                         begin
+#line 33 curLineno=1600 compiledLineno=3646
+                                                          #embedBacktraceInfo    0  target=3648  cur=0   
                                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3648
+
                                                             _pair_QUMARK(
+#line 33 curLineno=1600 compiledLineno=3651
+
                                                               __v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30209
                                                             )
                                                         end
@@ -792,19 +3737,58 @@ trampCall(
                                             )
                                         end
                                        ) then
-                                          begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3661
+
+#line 33 curLineno=1600 compiledLineno=3663
+
+                                          begin
+#line 33 curLineno=1600 compiledLineno=3666
+
+                                            #makeLet
+#line 33 curLineno=1600 compiledLineno=3669
+
                                             ___lambda = lambda { |__v__2__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30210| 
+#line 33 curLineno=1600 compiledLineno=3672
+
+#line 33 curLineno=1600 compiledLineno=3674
+
                                                 if ( 
+#line 33 curLineno=1600 compiledLineno=3677
+
                                                   begin
+#line 33 curLineno=1600 compiledLineno=3680
+                                                    #embedBacktraceInfo    0  target=3682  cur=0   
                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3682
+
                                                       _not(
+#line 33 curLineno=1600 compiledLineno=3685
+
+#line 33 curLineno=1600 compiledLineno=3687
+
                                                           begin
+#line 33 curLineno=1600 compiledLineno=3690
+                                                            #embedBacktraceInfo    0  target=3692  cur=0   
                                                             embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3692
+
                                                               _eq_QUMARK(
+#line 33 curLineno=1600 compiledLineno=3695
+
                                                                 false                                                                ,
+#line 33 curLineno=1600 compiledLineno=3698
+
+#line 33 curLineno=1600 compiledLineno=3700
+
                                                                   begin
+#line 33 curLineno=1600 compiledLineno=3703
+                                                                    #embedBacktraceInfo    0  target=3705  cur=0   
                                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3705
+
                                                                       _null_QUMARK(
+#line 33 curLineno=1600 compiledLineno=3708
+
                                                                         __v__2__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30210
                                                                       )
                                                                   end
@@ -813,63 +3797,161 @@ trampCall(
                                                       )
                                                   end
                                                  ) then
-                                                    begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3718
+
+#line 33 curLineno=1600 compiledLineno=3720
+
+                                                    begin
+#line 33 curLineno=1600 compiledLineno=3723
+
+                                                      #makeLet
+#line 33 curLineno=1600 compiledLineno=3726
+
                                                       ___lambda = lambda { |__v__3__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30211| 
-                                                          begin #makeLet
+#line 33 curLineno=1600 compiledLineno=3729
+
+#line 33 curLineno=1600 compiledLineno=3731
+
+                                                          begin
+#line 33 curLineno=1600 compiledLineno=3734
+
+                                                            #makeLet
+#line 33 curLineno=1600 compiledLineno=3737
+
                                                             ___lambda = lambda { |_body| 
+#line 33 curLineno=1600 compiledLineno=3740
+
+#line 33 curLineno=1600 compiledLineno=3742
+
                                                                 begin
+#line 33 curLineno=1600 compiledLineno=3745
+                                                                  #embedBacktraceInfo    0  target=3747  cur=0   
                                                                   embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3747
+
                                                                     _cons(
+#line 33 curLineno=1600 compiledLineno=3750
+
+#line 33 curLineno=1600 compiledLineno=3752
+
                                                                         begin
+#line 33 curLineno=1600 compiledLineno=3755
+                                                                          #embedBacktraceInfo  dynamic S-expression ( no source )  0  target=3757  cur=0   
                                                                           embedBacktraceInfo( "dynamic S-expression ( no source )", 1 );
+#line 33 curLineno=1600 compiledLineno=3757
+
                                                                             trampCall( callProcedure(  '__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',  '_rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202',
+#line 33 curLineno=1600 compiledLineno=3760
+
+#line 33 curLineno=1600 compiledLineno=3762
+
                                                                                 begin
+#line 33 curLineno=1600 compiledLineno=3765
+
+#line 33 curLineno=1600 compiledLineno=3767
+
                                                                                     trampCall(__rename__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30202)
                                                                                   rescue => __e ; __e.set_backtrace( ["dynamic S-expression ( no source ):1"] + __e.backtrace ) ; raise __e
                                                                                 end                                                                              ,
                                                                             [
+#line 33 curLineno=1600 compiledLineno=3773
+
+#line 33 curLineno=1600 compiledLineno=3775
+
                                                                                 :"begin"
                                                                             ]
                                                                                          ))
                                                                         end                                                                      ,
+#line 33 curLineno=1600 compiledLineno=3781
+
+#line 33 curLineno=1600 compiledLineno=3783
+
                                                                         begin
+#line 33 curLineno=1600 compiledLineno=3786
+
+#line 33 curLineno=1600 compiledLineno=3788
+
                                                                             trampCall(_body)
                                                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/srfi-2.nnd:36"] + __e.backtrace ) ; raise __e
                                                                         end
                                                                     )
                                                                 end
                                                             } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3796
+
+#line 33 curLineno=1600 compiledLineno=3798
+
                                                                 __v__3__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30211
                                                                        )
                                                           end
                                                       } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3804
+
+#line 33 curLineno=1600 compiledLineno=3806
+
+#line 33 curLineno=1600 compiledLineno=3808
+
                                                             begin
+#line 33 curLineno=1600 compiledLineno=3811
+                                                              #embedBacktraceInfo    0  target=3813  cur=0   
                                                               embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3813
+
                                                                 _cdr(
+#line 33 curLineno=1600 compiledLineno=3816
+
                                                                   __v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30209
                                                                 )
                                                             end
                                                                  )
                                                     end
                                                 else
+#line 33 curLineno=1600 compiledLineno=3824
+
                                                   false
                                                 end
                                             } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3829
+
+#line 33 curLineno=1600 compiledLineno=3831
+
+#line 33 curLineno=1600 compiledLineno=3833
+
                                                   begin
+#line 33 curLineno=1600 compiledLineno=3836
+                                                    #embedBacktraceInfo    0  target=3838  cur=0   
                                                     embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3838
+
                                                       _car(
+#line 33 curLineno=1600 compiledLineno=3841
+
                                                         __v__1__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30209
                                                       )
                                                   end
                                                        )
                                           end
                                       else
+#line 33 curLineno=1600 compiledLineno=3849
+
                                         false
                                       end
                                   } ; ___lambda.call(
+#line 33 curLineno=1600 compiledLineno=3854
+
+#line 33 curLineno=1600 compiledLineno=3856
+
+#line 33 curLineno=1600 compiledLineno=3858
+
                                         begin
+#line 33 curLineno=1600 compiledLineno=3861
+                                          #embedBacktraceInfo    0  target=3863  cur=0   
                                           embedBacktraceInfo( "", 1 );
+#line 33 curLineno=1600 compiledLineno=3863
+
                                             _cdr(
+#line 33 curLineno=1600 compiledLineno=3866
+
                                               __expr__gensym__44adcf5e9bc103ebc6f421698db2c9569e38c060_30201
                                             )
                                         end

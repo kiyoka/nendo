@@ -36,24 +36,142 @@
        (disasm 'dummy-function 'expanded))
 (test* "disasm ruby-code"
        "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 11 curLineno=500 compiledLineno=500
+
 trampCall( 
-  begin #execFunc
-      def self._dummy_MIMARKfunction_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_dummy_MIMARKfunction', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+#line 11 curLineno=500 compiledLineno=503
+
+  begin 
+#line 11 curLineno=500 compiledLineno=506
+
+    #execFunc
+#line 11 curLineno=500 compiledLineno=509
+
+#line 11 curLineno=500 compiledLineno=511
+
+      def self._dummy_MIMARKfunction_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_dummy_MIMARKfunction', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_dummy_MIMARKfunction'] = self.method( :_dummy_MIMARKfunction_METHOD )
+#line 11 curLineno=500 compiledLineno=515
+
+      #execFunc(funcname=define)
     @_dummy_MIMARKfunction = 
     trampCall(
+#line 11 curLineno=500 compiledLineno=520
+
+#line 11 curLineno=500 compiledLineno=522
+
+#line 11 curLineno=500 compiledLineno=524
+
           Proc.new { |_arg1| 
-              begin #makeLet
+#line 11 curLineno=500 compiledLineno=527
+
+#line 11 curLineno=500 compiledLineno=529
+
+              begin
+#line 11 curLineno=500 compiledLineno=532
+
+                #makeLet
+#line 11 curLineno=500 compiledLineno=535
+
                 ___lambda = lambda { |_var| 
+#line 11 curLineno=500 compiledLineno=538
+
+#line 11 curLineno=500 compiledLineno=540
+
                     begin
+#line 11 curLineno=500 compiledLineno=543
+
+#line 11 curLineno=500 compiledLineno=545
+
                         trampCall(_var)
                       rescue => __e ; __e.set_backtrace( [\"./spec/nendo-util-test.nnd:13\"] + __e.backtrace ) ; raise __e
                     end
                 } ; ___lambda.call(
+#line 11 curLineno=500 compiledLineno=551
+
+#line 11 curLineno=500 compiledLineno=553
+
+#line 11 curLineno=500 compiledLineno=555
+
                       begin
+#line 11 curLineno=500 compiledLineno=558
+                        #embedBacktraceInfo  ./spec/nendo-util-test.nnd  11  target=560  cur=550   
                         embedBacktraceInfo( \"./spec/nendo-util-test.nnd\", 12 );
+#line 11 curLineno=500 compiledLineno=560
+
                           ( 
+#line 11 curLineno=500 compiledLineno=563
+
                             begin
+#line 11 curLineno=500 compiledLineno=566
+
+#line 11 curLineno=500 compiledLineno=568
+
                                 trampCall(_arg1)
                               rescue => __e ; __e.set_backtrace( [\"./spec/nendo-util-test.nnd:12\"] + __e.backtrace ) ; raise __e
                             end                          +

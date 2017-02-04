@@ -3,17 +3,482 @@
 #    generated  "nendo -c src" command. 
 # 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 10 curLineno=450 compiledLineno=450
+
 trampCall( 
+#line 10 curLineno=450 compiledLineno=453
+
   begin
+#line 10 curLineno=450 compiledLineno=456
+    #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  9  target=458  cur=450   
     embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 10 );
+#line 10 curLineno=450 compiledLineno=458
+
       delayCall( '_require',  'require',
+#line 10 curLineno=450 compiledLineno=461
+
+#line 10 curLineno=450 compiledLineno=463
+
           begin
+#line 10 curLineno=450 compiledLineno=466
+
             if @global_lisp_binding.has_key?('_require') then
+#line 10 curLineno=450 compiledLineno=469
+
               trampCall(@_require)
             else raise NameError.new( "Error: undefined variable require", "require" ) end
             rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:10"] + __e.backtrace ) ; raise __e
           end        ,
       [
+#line 10 curLineno=450 compiledLineno=476
+
+#line 10 curLineno=450 compiledLineno=478
+
           "stringio"
       ]
                    )
@@ -21,82 +486,511 @@ trampCall(
  )
 #--------------------
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 12 curLineno=550 compiledLineno=550
+
 trampCall( 
-  begin #execFunc
-      def self._write_MIMARKtree_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_write_MIMARKtree', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+#line 12 curLineno=550 compiledLineno=553
+
+  begin 
+#line 12 curLineno=550 compiledLineno=556
+
+    #execFunc
+#line 12 curLineno=550 compiledLineno=559
+
+#line 12 curLineno=550 compiledLineno=561
+
+      def self._write_MIMARKtree_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_write_MIMARKtree', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_write_MIMARKtree'] = self.method( :_write_MIMARKtree_METHOD )
+#line 12 curLineno=550 compiledLineno=565
+
+      #execFunc(funcname=define)
     @_write_MIMARKtree = 
     trampCall(
+#line 12 curLineno=550 compiledLineno=570
+
+#line 12 curLineno=550 compiledLineno=572
+
+#line 12 curLineno=550 compiledLineno=574
+
           Proc.new { |_tree,*__rest__| _out = __rest__[0] ;  
-              begin #makeLet
+#line 12 curLineno=550 compiledLineno=577
+
+#line 12 curLineno=550 compiledLineno=579
+
+              begin
+#line 12 curLineno=550 compiledLineno=582
+
+                #makeLet
+#line 12 curLineno=550 compiledLineno=585
+
                 ___lambda = lambda { |_out| 
-                    begin #makeLetrec
+#line 12 curLineno=550 compiledLineno=588
+
+#line 12 curLineno=550 compiledLineno=590
+
+                    begin 
+#line 12 curLineno=550 compiledLineno=593
+
+                      #makeLetrec
+#line 12 curLineno=550 compiledLineno=596
+
                       ___lambda = lambda { |_loop| 
+#line 12 curLineno=550 compiledLineno=599
+
+#line 12 curLineno=550 compiledLineno=601
+
                           _loop                           = 
+#line 12 curLineno=550 compiledLineno=604
+
                             Proc.new { |_tree| 
+#line 12 curLineno=550 compiledLineno=607
+
+#line 12 curLineno=550 compiledLineno=609
+
                                 if ( 
+#line 12 curLineno=550 compiledLineno=612
+
                                   begin
+#line 12 curLineno=550 compiledLineno=615
+                                    #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  16  target=800  cur=800  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
                                     embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 17 );
+#line 12 curLineno=550 compiledLineno=800
+
                                       _null_QUMARK(
+#line 12 curLineno=550 compiledLineno=803
+
+#line 12 curLineno=550 compiledLineno=805
+
                                           begin
+#line 12 curLineno=550 compiledLineno=808
+
+#line 12 curLineno=550 compiledLineno=810
+
                                               trampCall(_tree)
                                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:17"] + __e.backtrace ) ; raise __e
                                           end
                                       )
                                   end
                                  ) then
+#line 12 curLineno=550 compiledLineno=818
+
+#line 12 curLineno=550 compiledLineno=820
+
                                     true
                                 else
+#line 12 curLineno=550 compiledLineno=824
+
+#line 12 curLineno=550 compiledLineno=826
+
                                     if ( 
+#line 12 curLineno=550 compiledLineno=829
+
                                       begin
+#line 12 curLineno=550 compiledLineno=832
+                                        #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  17  target=850  cur=850  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
                                         embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+#line 12 curLineno=550 compiledLineno=850
+
                                           _pair_QUMARK(
+#line 12 curLineno=550 compiledLineno=853
+
+#line 12 curLineno=550 compiledLineno=855
+
                                               begin
+#line 12 curLineno=550 compiledLineno=858
+
+#line 12 curLineno=550 compiledLineno=860
+
                                                   trampCall(_tree)
                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                               end
                                           )
                                       end
                                      ) then
-                                        begin  #makeBegin
+#line 12 curLineno=550 compiledLineno=868
+
+#line 12 curLineno=550 compiledLineno=870
+
+                                        begin 
+#line 12 curLineno=550 compiledLineno=873
+
+                                          #makeBegin
+#line 12 curLineno=550 compiledLineno=876
+
+#line 12 curLineno=550 compiledLineno=878
+
                                             begin
+#line 12 curLineno=550 compiledLineno=881
+                                              #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  17  target=883  cur=850   
                                               embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+#line 12 curLineno=550 compiledLineno=883
+
                                                 trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
+#line 12 curLineno=550 compiledLineno=886
+
+#line 12 curLineno=550 compiledLineno=888
+
                                                     begin
+#line 12 curLineno=550 compiledLineno=891
+
                                                       if @global_lisp_binding.has_key?('_write_MIMARKtree') then
+#line 12 curLineno=550 compiledLineno=894
+
                                                         trampCall(@_write_MIMARKtree)
                                                       else raise NameError.new( "Error: undefined variable write-tree", "write-tree" ) end
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                 [
+#line 12 curLineno=550 compiledLineno=901
+
+#line 12 curLineno=550 compiledLineno=903
+
+#line 12 curLineno=550 compiledLineno=905
+
                                                       begin
+#line 12 curLineno=550 compiledLineno=908
+                                                        #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  17  target=910  cur=850   
                                                         embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+#line 12 curLineno=550 compiledLineno=910
+
                                                           _car(
+#line 12 curLineno=550 compiledLineno=913
+
+#line 12 curLineno=550 compiledLineno=915
+
                                                               begin
+#line 12 curLineno=550 compiledLineno=918
+
+#line 12 curLineno=550 compiledLineno=920
+
                                                                   trampCall(_tree)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                               end
                                                           )
                                                       end                                                    ,
+#line 12 curLineno=550 compiledLineno=927
+
+#line 12 curLineno=550 compiledLineno=929
+
                                                       begin
+#line 12 curLineno=550 compiledLineno=932
+
+#line 12 curLineno=550 compiledLineno=934
+
                                                           trampCall(_out)
                                                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                       end
                                                 ]
                                                              ))
                                             end
+#line 12 curLineno=550 compiledLineno=942
+
                                             begin
+#line 12 curLineno=550 compiledLineno=945
+                                              #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  17  target=947  cur=850   
                                               embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+#line 12 curLineno=550 compiledLineno=947
+
                                                 delayCall( '_loop',  'loop',
+#line 12 curLineno=550 compiledLineno=950
+
+#line 12 curLineno=550 compiledLineno=952
+
                                                     begin
+#line 12 curLineno=550 compiledLineno=955
+
+#line 12 curLineno=550 compiledLineno=957
+
                                                         trampCall(_loop)
                                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                     end                                                  ,
                                                 [
+#line 12 curLineno=550 compiledLineno=963
+
+#line 12 curLineno=550 compiledLineno=965
+
+#line 12 curLineno=550 compiledLineno=967
+
                                                       begin
+#line 12 curLineno=550 compiledLineno=970
+                                                        #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  17  target=972  cur=850   
                                                         embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 18 );
+#line 12 curLineno=550 compiledLineno=972
+
                                                           _cdr(
+#line 12 curLineno=550 compiledLineno=975
+
+#line 12 curLineno=550 compiledLineno=977
+
                                                               begin
+#line 12 curLineno=550 compiledLineno=980
+
+#line 12 curLineno=550 compiledLineno=982
+
                                                                   trampCall(_tree)
                                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:18"] + __e.backtrace ) ; raise __e
                                                               end
@@ -107,12 +1001,36 @@ trampCall(
                                             end
                                         end
                                     else
+#line 12 curLineno=550 compiledLineno=994
+
+#line 12 curLineno=550 compiledLineno=996
+
                                         if ( 
                                         true
                                          ) then
+#line 12 curLineno=550 compiledLineno=1001
+
+#line 12 curLineno=550 compiledLineno=1003
+
+#line 12 curLineno=550 compiledLineno=1005
+
                                               begin
+#line 12 curLineno=550 compiledLineno=1008
+
+#line 12 curLineno=550 compiledLineno=1010
+
                                                   trampCall(_out).print(
+#line 12 curLineno=550 compiledLineno=1013
+
+#line 12 curLineno=550 compiledLineno=1015
+
+#line 12 curLineno=550 compiledLineno=1017
+
                                                         begin
+#line 12 curLineno=550 compiledLineno=1020
+
+#line 12 curLineno=550 compiledLineno=1022
+
                                                             trampCall(_tree)
                                                           rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
                                                         end
@@ -120,20 +1038,50 @@ trampCall(
                                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:20"] + __e.backtrace ) ; raise __e
                                               end
                                         else
+#line 12 curLineno=550 compiledLineno=1031
+
+#line 12 curLineno=550 compiledLineno=1033
+
                                             Cell.new()
                                         end
                                     end
                                 end
                             }
+#line 12 curLineno=550 compiledLineno=1040
+
+#line 12 curLineno=550 compiledLineno=1042
+
                           begin
+#line 12 curLineno=550 compiledLineno=1045
+                            #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  15  target=1047  cur=750   
                             embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 16 );
+#line 12 curLineno=550 compiledLineno=1047
+
                               delayCall( '_loop',  'loop',
+#line 12 curLineno=550 compiledLineno=1050
+
+#line 12 curLineno=550 compiledLineno=1052
+
                                   begin
+#line 12 curLineno=550 compiledLineno=1055
+
+#line 12 curLineno=550 compiledLineno=1057
+
                                       trampCall(_loop)
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
+#line 12 curLineno=550 compiledLineno=1063
+
+#line 12 curLineno=550 compiledLineno=1065
+
+#line 12 curLineno=550 compiledLineno=1067
+
                                     begin
+#line 12 curLineno=550 compiledLineno=1070
+
+#line 12 curLineno=550 compiledLineno=1072
+
                                         trampCall(_tree)
                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:16"] + __e.backtrace ) ; raise __e
                                     end
@@ -145,33 +1093,87 @@ trampCall(
                                  )
                     end
                 } ; ___lambda.call(
+#line 12 curLineno=550 compiledLineno=1085
+
+#line 12 curLineno=550 compiledLineno=1087
+
+#line 12 curLineno=550 compiledLineno=1089
+
                       if ( 
+#line 12 curLineno=550 compiledLineno=1092
+
                         begin
+#line 12 curLineno=550 compiledLineno=1095
+                          #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  12  target=1097  cur=600   
                           embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 13 );
+#line 12 curLineno=550 compiledLineno=1097
+
                             _null_QUMARK(
+#line 12 curLineno=550 compiledLineno=1100
+
+#line 12 curLineno=550 compiledLineno=1102
+
                                 begin
+#line 12 curLineno=550 compiledLineno=1105
+
+#line 12 curLineno=550 compiledLineno=1107
+
                                     trampCall(_out)
                                   rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:13"] + __e.backtrace ) ; raise __e
                                 end
                             )
                         end
                        ) then
+#line 12 curLineno=550 compiledLineno=1115
+
+#line 12 curLineno=550 compiledLineno=1117
+
                           begin
+#line 12 curLineno=550 compiledLineno=1120
+
+#line 12 curLineno=550 compiledLineno=1122
+
                               trampCall(STDOUT)
                             rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:14"] + __e.backtrace ) ; raise __e
                           end
                       else
+#line 12 curLineno=550 compiledLineno=1128
+
+#line 12 curLineno=550 compiledLineno=1130
+
                           begin
+#line 12 curLineno=550 compiledLineno=1133
+                            #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  14  target=1135  cur=700   
                             embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 15 );
+#line 12 curLineno=550 compiledLineno=1135
+
                               delayCall( '_car',  'car',
+#line 12 curLineno=550 compiledLineno=1138
+
+#line 12 curLineno=550 compiledLineno=1140
+
                                   begin
+#line 12 curLineno=550 compiledLineno=1143
+
                                     if @global_lisp_binding.has_key?('_car') then
+#line 12 curLineno=550 compiledLineno=1146
+
                                       trampCall(@_car)
                                     else raise NameError.new( "Error: undefined variable car", "car" ) end
                                     rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:15"] + __e.backtrace ) ; raise __e
                                   end                                ,
                               [
+#line 12 curLineno=550 compiledLineno=1153
+
+#line 12 curLineno=550 compiledLineno=1155
+
+#line 12 curLineno=550 compiledLineno=1157
+
                                     begin
+#line 12 curLineno=550 compiledLineno=1160
+
+#line 12 curLineno=550 compiledLineno=1162
+
                                         trampCall(_out)
                                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:15"] + __e.backtrace ) ; raise __e
                                     end
@@ -187,44 +1189,129 @@ trampCall(
  )
 #--------------------
 
+#line 22 curLineno=1050 compiledLineno=1177
+
 trampCall( 
-  begin #execFunc
-      def self._tree_MIMARK_GTMARKstring_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_tree_MIMARK_GTMARKstring', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end 
+#line 22 curLineno=1050 compiledLineno=1180
+
+  begin 
+#line 22 curLineno=1050 compiledLineno=1183
+
+    #execFunc
+#line 22 curLineno=1050 compiledLineno=1186
+
+#line 22 curLineno=1050 compiledLineno=1188
+
+      def self._tree_MIMARK_GTMARKstring_METHOD( origname, pred, args )   lispMethodEntry( origname, true ) ;   ret = callProcedure( '_tree_MIMARK_GTMARKstring', origname, pred, args ) ;  lispMethodExit( origname,  true ) ;   return ret end
       @global_lisp_binding['_tree_MIMARK_GTMARKstring'] = self.method( :_tree_MIMARK_GTMARKstring_METHOD )
+#line 22 curLineno=1050 compiledLineno=1192
+
+      #execFunc(funcname=define)
     @_tree_MIMARK_GTMARKstring = 
     trampCall(
+#line 22 curLineno=1050 compiledLineno=1197
+
+#line 22 curLineno=1050 compiledLineno=1199
+
+#line 22 curLineno=1050 compiledLineno=1201
+
           Proc.new { |_tree| 
-              begin #makeLet
+#line 22 curLineno=1050 compiledLineno=1204
+
+#line 22 curLineno=1050 compiledLineno=1206
+
+              begin
+#line 22 curLineno=1050 compiledLineno=1209
+
+                #makeLet
+#line 22 curLineno=1050 compiledLineno=1212
+
                 ___lambda = lambda { |_sio| 
+#line 22 curLineno=1050 compiledLineno=1215
+
+#line 22 curLineno=1050 compiledLineno=1217
+
                     begin
+#line 22 curLineno=1050 compiledLineno=1220
+                      #embedBacktraceInfo  ./lib/nendo/text/tree.nnd  23  target=1222  cur=1150   
                       embedBacktraceInfo( "./lib/nendo/text/tree.nnd", 24 );
+#line 22 curLineno=1050 compiledLineno=1222
+
                         trampCall( self._write_MIMARKtree_METHOD(  'write-tree',
+#line 22 curLineno=1050 compiledLineno=1225
+
+#line 22 curLineno=1050 compiledLineno=1227
+
                             begin
+#line 22 curLineno=1050 compiledLineno=1230
+
                               if @global_lisp_binding.has_key?('_write_MIMARKtree') then
+#line 22 curLineno=1050 compiledLineno=1233
+
                                 trampCall(@_write_MIMARKtree)
                               else raise NameError.new( "Error: undefined variable write-tree", "write-tree" ) end
                               rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
                             end                          ,
                         [
+#line 22 curLineno=1050 compiledLineno=1240
+
+#line 22 curLineno=1050 compiledLineno=1242
+
+#line 22 curLineno=1050 compiledLineno=1244
+
                               begin
+#line 22 curLineno=1050 compiledLineno=1247
+
+#line 22 curLineno=1050 compiledLineno=1249
+
                                   trampCall(_tree)
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
                               end                            ,
+#line 22 curLineno=1050 compiledLineno=1254
+
+#line 22 curLineno=1050 compiledLineno=1256
+
                               begin
+#line 22 curLineno=1050 compiledLineno=1259
+
+#line 22 curLineno=1050 compiledLineno=1261
+
                                   trampCall(_sio)
                                 rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:24"] + __e.backtrace ) ; raise __e
                               end
                         ]
                                      ))
                     end
+#line 22 curLineno=1050 compiledLineno=1269
+
                     begin
+#line 22 curLineno=1050 compiledLineno=1272
+
+#line 22 curLineno=1050 compiledLineno=1274
+
                         trampCall(_sio).string(
+#line 22 curLineno=1050 compiledLineno=1277
+
                           )
                       rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:25"] + __e.backtrace ) ; raise __e
                     end
                 } ; ___lambda.call(
+#line 22 curLineno=1050 compiledLineno=1283
+
+#line 22 curLineno=1050 compiledLineno=1285
+
+#line 22 curLineno=1050 compiledLineno=1287
+
                       begin
+#line 22 curLineno=1050 compiledLineno=1290
+
+#line 22 curLineno=1050 compiledLineno=1292
+
                           trampCall(StringIO).new(
+#line 22 curLineno=1050 compiledLineno=1295
+
+#line 22 curLineno=1050 compiledLineno=1297
+
                               ""
                             )
                         rescue => __e ; __e.set_backtrace( ["./lib/nendo/text/tree.nnd:23"] + __e.backtrace ) ; raise __e
