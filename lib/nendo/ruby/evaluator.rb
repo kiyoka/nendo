@@ -1270,7 +1270,6 @@ module Nendo
     end
 
     def pushCompiledLineno(lineno)
-      printf("pushed lineno = %d\n", lineno)
       @compiledLinenoStack.push(lineno)
     end
 
@@ -1300,7 +1299,6 @@ module Nendo
       }
       forward_gensym_counter()
       @compiledLineno = popCompiledLineno()
-      printf( "poped lineno = %d\n", @compiledLineno )
     end
 
     def _load_MIMARKcompiled_MIMARKcode_MIMARKfrom_MIMARKstring( rubyExp )
