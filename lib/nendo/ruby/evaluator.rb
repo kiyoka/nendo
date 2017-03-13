@@ -1200,6 +1200,10 @@ module Nendo
       if 3 <= fields.size()
         (filename,compiled_lineno,funcname) = fields
         if filename.match( ".nnd$" ) or filename.match( ".nndc$" ) or filename.match( ".nndc.nc$" ) or filename.match( ".scm$" )
+
+          filename = filename.sub( /.nndc.nc$/, ".nnd" )
+          filename = filename.sub( /.nndc$/,    ".nnd" )
+          
           lineno = 1
           if compiled_lineno
             compiled_lineno = compiled_lineno.to_i

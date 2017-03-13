@@ -108,7 +108,14 @@ Gem::Specification.new do |spec|
   ]
   spec.homepage = "http://github.com/kiyoka/nendo"
   spec.licenses = ["New BSD"]
-  spec.rdoc_options = ["-x", "match.nndc"]
+  spec.rdoc_options = []
+  spec.files.each { |fn|
+    if fn.match( /nndc$/ )
+    elsif fn.match( /nndc.nc$/ )
+    else
+      spec.rdoc_options += ["-x", fn]
+    end
+  }
   spec.summary = "Nendo is a dialect of Lisp."
 end
 
