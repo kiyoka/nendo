@@ -7,8 +7,8 @@ rvm:
  - 2.2.0
  - 2.3.1
  - 2.4.0
+ - jruby-9.1.6.0
  - ruby-head
- - jruby-19mode # JRuby in 1.9 mode
 
 env:
  - NENDO_CLEAN_TEST=0
@@ -16,3 +16,7 @@ env:
 
 gemfile:
  - gemfiles/Gemfile
+
+matrix:
+  allow_failures:
+    - rvm: ruby-head
