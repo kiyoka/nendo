@@ -482,6 +482,6 @@ $ nendo ./debug-sample.nnd
 
 ## 次のステップ
 
-このチュートリアルではNendoプログラミングの基礎をカバーしました。より高度なトピックや詳細なリファレンス情報については、[Nendoリファレンスマニュアル](http://oldtype.sumibi.org/show-page/Nendo)を参照し、Nendoリポジトリの`example/`ディレクトリにある例を探求してください。
+このチュートリアルではNendoプログラミングの基礎をカバーしました。より高度なトピックや詳細なリファレンス情報については、[Nendoリファレンスマニュアル](ReferenceManual.ja.md)を参照し、Nendoリポジトリの`example/`ディレクトリにある例を探求してください。
 
 Nendoでのコーディングを楽しんでください！

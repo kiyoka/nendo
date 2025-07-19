@@ -96,12 +96,11 @@ gem install nendo
 ## Projects Written in Nendo
 
 - [sekka](http://github.com/kiyoka/sekka) - Japanese input method
-- [stowspec](http://github.com/kiyoka/stowspec) - Testing framework
-- [dekamoji](http://github.com/kiyoka/dekamoji) - ASCII art generator
 
 ## Documentation
 
-- [Manuals and Tutorials](http://oldtype.sumibi.org/show-page/Nendo)
+- [Tutorial](docs/Tutorial.md)
+- [ReferenceManual](docs/ReferenceManual.md)
 
 ## License
 

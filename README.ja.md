@@ -116,12 +116,11 @@ Ruby 1.9系環境で nendoのgemを追加インストールするだけです。
 ## Nendoで書かれたプロジェクト
 
 - [sekka](http://github.com/kiyoka/sekka) - 日本語入力システム
-- [stowspec](http://github.com/kiyoka/stowspec) - テストフレームワーク
-- [dekamoji](http://github.com/kiyoka/dekamoji) - ASCII アートジェネレータ
 
 ## ドキュメント
 
-- [マニュアルとチュートリアル](http://oldtype.sumibi.org/show-page/Nendo)
+- [チュートリアル](docs/Tutorial.ja.md)
+- [リファレンスマニュアル](docs/ReferenceManual.ja.md)
 
 ## ライセンス
 

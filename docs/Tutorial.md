@@ -465,6 +465,6 @@ $ nendo ./debug-sample.nnd
 
 ## Next Steps
 
-This tutorial covers the fundamentals of Nendo programming. For more advanced topics and detailed reference information, consult the [Nendo Reference Manual](http://oldtype.sumibi.org/show-page/Nendo) and explore the examples in the `example/` directory of the Nendo repository.
+This tutorial covers the fundamentals of Nendo programming. For more advanced topics and detailed reference information, consult the [Nendo Reference Manual](ReferenceManual.md) and explore the examples in the `example/` directory of the Nendo repository.
 
 Happy coding with Nendo!
