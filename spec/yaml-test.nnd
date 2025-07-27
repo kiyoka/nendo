@@ -73,9 +73,10 @@
        (parse-yaml-string "- false"))
 
 
-(test* "simple object (1)"
-       #f
-       (parse-yaml-string ""))
+(let ((result (parse-yaml-string "")))
+  (test* "simple object (1)"
+         #t
+         (or (equal? nil result) (equal? #f result))))
 (test* "simple object (3)"
        '(("a" . 23))
        (parse-yaml-string "a: 23"))

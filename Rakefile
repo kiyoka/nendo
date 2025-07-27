@@ -22,13 +22,13 @@ task :test    => [:test1, :test2] do
 end
 
 task :test1 do
-  sh "rspec -I ./lib -b "
+  sh "rspec -I ./lib -b"
   sh "ruby -I ./lib ./bin/nendo ./spec/srfi-1-test.nnd"
 end
 
 task :test2 do
   sh "/bin/rm -f test.record"
-  sh "echo "" > test.log"
+  sh "echo > test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/textlib-test.nnd              >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/nendo-util-test.nnd           >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/json-test.nnd                 >> test.log"
@@ -37,13 +37,14 @@ task :test2 do
   sh "ruby -I ./lib ./bin/nendo ./spec/srfi-9-test.nnd               >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/srfi-26-test.nnd              >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/util-list-test.nnd            >> test.log"
+  sh "cat test.log"
   sh "cat test.record"
   sh "grep ' 0 failed, ' test.record  > /dev/null"
 end
 
 task :test3 do
   sh "/bin/rm -f test.record"
-  sh "echo "" > test3.log"
+  sh "echo > test3.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/match-test.nnd                | tee -a test3.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/util-combinations-test.nnd    | tee -a test3.log"
   sh "cat test.record"
@@ -61,13 +62,15 @@ end
 task :compile do
   # Replace Version Number
   targetFile = "./lib/nendo/ruby/core.rb"
-  vh = Jeweler::VersionHelper.new "."
+  require 'yaml'
+  version_data = YAML.load_file("VERSION.yml")
   (original, modified) = open( targetFile ) {|f|
     lines = f.readlines
     [ lines,
       lines.map {|line|
         if line.match( /##NENDO-VERSION/ )
-          sprintf( '      "%s"  ##NENDO-VERSION', vh.to_s ) + "\n"
+          version_string = "#{version_data[:major]}.#{version_data[:minor]}.#{version_data[:patch]}"
+          sprintf( '      "%s"  ##NENDO-VERSION', version_string ) + "\n"
         else
           line
         end

@@ -215,9 +215,10 @@ module Nendo
         if 0 == name.length
           ""
         else
+          name = name.dup if name.frozen?
           name.gsub!( Regexp.new( Regexp.escape( '...' )), @char_table_lisp_to_ruby[ '...' ] )
           arr = name.gsub( /["]/, '' ).split( /[.]/ )
-          tmp = arr[0]
+          tmp = arr[0].dup
           tmp.gsub!( /[:][:]/, "  " ) # save '::'
           @char_table_lisp_to_ruby.each_pair { |key,val|
             tmp.gsub!( Regexp.new( Regexp.escape( key )), val )
