@@ -20,7 +20,8 @@
       "Bash(env NENDO_CLEAN_TEST=0 ruby -e \"p ENV[''NENDO_CLEAN_TEST'']\")",
       "Bash(rm:*)",
       "Bash(env NENDO_CLEAN_TEST=0 bundle exec rake --trace)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(bundle exec rspec:*)"
     ],
     "deny": []
   }

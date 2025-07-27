@@ -22,7 +22,7 @@ task :test    => [:test1, :test2] do
 end
 
 task :test1 do
-  sh "rspec -I ./lib -b "
+  sh "rspec -I ./lib -b"
   sh "ruby -I ./lib ./bin/nendo ./spec/srfi-1-test.nnd"
 end
 
