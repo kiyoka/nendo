@@ -75,7 +75,10 @@
 
 (test* "simple object (1)"
        nil
-       (parse-yaml-string ""))
+       (parse-yaml-string "")
+       (lambda (expected actual)
+         (or (equal? expected actual)
+             (and (null? expected) (equal? #f actual)))))
 (test* "simple object (3)"
        '(("a" . 23))
        (parse-yaml-string "a: 23"))
