@@ -37,7 +37,7 @@ Nendo is a dialect of Lisp. `nendo` means clay in Japanese. Lisp programming is 
 ## Installation
 
 ### Requirements
-- Ruby 1.9.3, 2.0.0, 2.1.0, 2.2.0+, 3.2.3
+- Ruby 2.3, 2.4, 2.7, 3.0, 3.1, 3.2, 3.3, 3.4
 - JRuby 1.6.2+
 
 ### Install from RubyGems
