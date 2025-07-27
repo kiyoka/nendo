@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(ruby:*)",
+      "Bash(export PATH=\"$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH\")",
+      "Bash(rake test)",
+      "Bash(find:*)",
+      "Bash(bundle install:*)",
+      "Bash(rake test:*)",
+      "Bash(rake)",
+      "Bash(mkdir:*)",
+      "Bash(git add:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(echo $?)",
+      "Bash(bundle exec rake:*)",
+      "Bash(NENDO_CLEAN_TEST=0 bundle exec rake)",
+      "Bash(env NENDO_CLEAN_TEST=0 bundle exec rake)",
+      "Bash(env NENDO_CLEAN_TEST=0 ruby -e \"p ENV[''NENDO_CLEAN_TEST'']\")",
+      "Bash(rm:*)",
+      "Bash(env NENDO_CLEAN_TEST=0 bundle exec rake --trace)",
+      "Bash(echo:*)",
+      "Bash(bundle exec rspec:*)"
+    ],
+    "deny": []
+  }
+}

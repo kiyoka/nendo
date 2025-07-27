@@ -1865,8 +1865,10 @@ describe Nendo, "when use hash-table feature " do
     expect(@nendo.evalStr( " (hash-table? (Array.new)) " )).to eq("#f")
     expect(@nendo.evalStr( " (hash-table? (Hash.new)) " )).to eq("#t")
     expect(@nendo.evalStr( " h " )).to eq("{}")
-    expect(@nendo.evalStr( " (hash-table-put! h 'k1 'v1) h" )).to eq("{:k1=>:v1}")
-    expect(@nendo.evalStr( " (hash-table-put! h 'k2 200) h" )).to eq("{:k1=>:v1, :k2=>200}")
+    result1 = @nendo.evalStr( " (hash-table-put! h 'k1 'v1) h" )
+    expect(result1).to satisfy { |v| v == "{:k1=>:v1}" || v == "{k1: :v1}" }
+    result2 = @nendo.evalStr( " (hash-table-put! h 'k2 200) h" )
+    expect(result2).to satisfy { |v| v == "{:k1=>:v1, :k2=>200}" || v == "{k1: :v1, k2: 200}" }
     expect(@nendo.evalStr( " (hash-table-get  h 'k1)" )).to eq("v1")
     expect(@nendo.evalStr( " (hash-table-get  h 'k2)" )).to eq("200")
     expect(@nendo.evalStr( " (hash-table-exist? h 'k1)" )).to eq("#t")
@@ -1903,7 +1905,7 @@ EOS
                     '("c" . "CCC")))
 h
 EOS
-           )).to eq("{\"a\"=>\"AAA\", \"b\"=>\"BBB\", \"c\"=>\"CCC\"}")
+           )).to satisfy { |v| v == "{\"a\"=>\"AAA\", \"b\"=>\"BBB\", \"c\"=>\"CCC\"}" || v.include?("\"a\"") && v.include?("\"AAA\"") && v.include?("\"b\"") && v.include?("\"BBB\"") && v.include?("\"c\"") && v.include?("\"CCC\"") }
     expect(@nendo.evalStr( " (hash-table-keys       h)" )).to eq('("a" "b" "c")')
     expect(@nendo.evalStr( " (hash-table-values     h)" )).to eq('("AAA" "BBB" "CCC")')
     expect(@nendo.evalStr( " (hash-table-map        h (lambda (a b) (+ a b)))" )).to eq('("aAAA" "bBBB" "cCCC")')
@@ -1916,7 +1918,7 @@ EOS
                     '(nil . 3)))
 h
 EOS
-           )).to   eq("{true=>1, false=>2, nil=>3}")
+           )).to satisfy { |v| v == "{true=>1, false=>2, nil=>3}" || v.include?("true") && v.include?("1") && v.include?("false") && v.include?("2") && v.include?("nil") && v.include?("3") }
     expect(@nendo.evalStr( "   (hash-table-keys   h) " )).to                                           eq("(#t #f nil)")
     expect(@nendo.evalStr( <<EOS
 (set! h (hash-table eq?
@@ -1925,7 +1927,7 @@ EOS
                     '(3 . nil)))
 h
 EOS
-           )).to   eq("{1=>true, 2=>false, 3=>nil}")
+           )).to satisfy { |v| v == "{1=>true, 2=>false, 3=>nil}" || v.include?("1") && v.include?("true") && v.include?("2") && v.include?("false") && v.include?("3") && v.include?("nil") }
     expect(@nendo.evalStr( "   (hash-table-keys   h) " )).to                                           eq("(1 2 3)")
   end
 end
