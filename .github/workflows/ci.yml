@@ -11,9 +11,6 @@ jobs:
       fail-fast: false
       matrix:
         ruby-version:
-          - '2.3'
-          - '2.4'
-          - '2.5'
           - '2.6'
           - '2.7'
           - '3.0'
@@ -32,12 +29,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: false
-
-    - name: Install dependencies
-      run: |
-        gem install bundler -v "~> 2.0"
-        bundle install
+        bundler-cache: true
 
     - name: Debug environment
       run: |
