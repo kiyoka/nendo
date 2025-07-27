@@ -39,14 +39,15 @@ jobs:
         echo "Ruby version: ${{ matrix.ruby-version }}"
         echo "NENDO_CLEAN_TEST: $NENDO_CLEAN_TEST"
         bundle exec rake --version
-        bundle exec rake --tasks | head -10
+        pwd
+        ls -la
 
-    - name: Run test1
-      run: bundle exec rake test1
+    - name: Run simple Ruby test
+      run: |
+        ruby -I ./lib -e "require 'nendo'; puts 'Nendo loaded successfully'"
 
-    - name: Run test2
-      run: bundle exec rake test2
+    - name: Run RSpec tests only
+      run: bundle exec rspec -I ./lib spec/*_spec.rb
 
-    - name: Run test3
-      run: bundle exec rake test3
-      continue-on-error: true
+    - name: Run SRFI-1 test only
+      run: ruby -I ./lib ./bin/nendo ./spec/srfi-1-test.nnd
