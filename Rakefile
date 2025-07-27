@@ -28,7 +28,7 @@ end
 
 task :test2 do
   sh "/bin/rm -f test.record"
-  sh "echo "" > test.log"
+  sh "echo > test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/textlib-test.nnd              >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/nendo-util-test.nnd           >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/json-test.nnd                 >> test.log"
@@ -43,7 +43,7 @@ end
 
 task :test3 do
   sh "/bin/rm -f test.record"
-  sh "echo "" > test3.log"
+  sh "echo > test3.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/match-test.nnd                | tee -a test3.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/util-combinations-test.nnd    | tee -a test3.log"
   sh "cat test.record"
