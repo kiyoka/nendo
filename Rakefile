@@ -61,13 +61,15 @@ end
 task :compile do
   # Replace Version Number
   targetFile = "./lib/nendo/ruby/core.rb"
-  vh = Jeweler::VersionHelper.new "."
+  require 'yaml'
+  version_data = YAML.load_file("VERSION.yml")
   (original, modified) = open( targetFile ) {|f|
     lines = f.readlines
     [ lines,
       lines.map {|line|
         if line.match( /##NENDO-VERSION/ )
-          sprintf( '      "%s"  ##NENDO-VERSION', vh.to_s ) + "\n"
+          version_string = "#{version_data[:major]}.#{version_data[:minor]}.#{version_data[:patch]}"
+          sprintf( '      "%s"  ##NENDO-VERSION', version_string ) + "\n"
         else
           line
         end
