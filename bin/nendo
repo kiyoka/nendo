@@ -35,7 +35,19 @@
 #  $Id: 
 #
 require 'nendo'
-require 'getoptlong'
+begin
+  require 'getoptlong'
+rescue LoadError
+  # For Ruby 3.4+, getoptlong needs to be explicitly added to Gemfile
+  begin
+    require 'bundler/setup'
+    require 'getoptlong'
+  rescue LoadError => e
+    $stderr.puts "Error: getoptlong is required but not available."
+    $stderr.puts "For Ruby 3.4+, please add 'gem \"getoptlong\"' to your Gemfile."
+    exit 1
+  end
+end
 #require 'profile'
 
 def userOptionEater
