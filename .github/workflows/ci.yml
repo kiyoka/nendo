@@ -35,8 +35,11 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
-        working-directory: ./gemfiles
+
+    - name: Install dependencies
+      run: |
+        cd gemfiles
+        bundle install
 
     - name: Run tests
-      run: bundle exec rake
-      working-directory: ./gemfiles
+      run: rake
