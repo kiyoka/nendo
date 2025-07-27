@@ -34,12 +34,14 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true
 
     - name: Install dependencies
       run: |
+        gem install bundler
         cd gemfiles
         bundle install
 
     - name: Run tests
-      run: rake
+      run: |
+        cd gemfiles
+        bundle exec rake
