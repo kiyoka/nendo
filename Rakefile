@@ -37,6 +37,7 @@ task :test2 do
   sh "ruby -I ./lib ./bin/nendo ./spec/srfi-9-test.nnd               >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/srfi-26-test.nnd              >> test.log"
   sh "ruby -I ./lib ./bin/nendo ./spec/util-list-test.nnd            >> test.log"
+  sh "cat test.log"
   sh "cat test.record"
   sh "grep ' 0 failed, ' test.record  > /dev/null"
 end
