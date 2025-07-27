@@ -6,3 +6,4 @@ gem "git", "~> 1.3"
 gem "json", :platforms => [:ruby_19, :ruby_20, :ruby_21]
 gem "getoptlong"
 gem "ostruct"
+gem "logger"
