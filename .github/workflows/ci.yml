@@ -32,7 +32,12 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true
+        bundler-cache: false
+
+    - name: Install dependencies
+      run: |
+        gem install bundler -v "~> 2.0"
+        bundle install
 
     - name: Debug environment
       run: |
